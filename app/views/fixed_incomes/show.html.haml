@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @fixed_income.name
+%p
+  %b User:
+  = @fixed_income.user
+%p
+  %b Period:
+  = @fixed_income.period
+%p
+  %b Rate of interest:
+  = @fixed_income.rate_of_interest
+%p
+  %b Emi:
+  = @fixed_income.emi
+
+= link_to 'Edit', edit_fixed_income_path(@fixed_income)
+\|
+= link_to 'Back', fixed_incomes_path

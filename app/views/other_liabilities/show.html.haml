@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @other_liability.name
+%p
+  %b User:
+  = @other_liability.user
+%p
+  %b Current price:
+  = @other_liability.current_price
+
+= link_to 'Edit', edit_other_liability_path(@other_liability)
+\|
+= link_to 'Back', other_liabilities_path

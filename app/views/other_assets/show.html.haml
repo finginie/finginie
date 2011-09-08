@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @other_asset.name
+%p
+  %b User:
+  = @other_asset.user
+%p
+  %b Current price:
+  = @other_asset.current_price
+
+= link_to 'Edit', edit_other_asset_path(@other_asset)
+\|
+= link_to 'Back', other_assets_path

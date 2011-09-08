@@ -1,0 +1,27 @@
+%h1 Listing fixed_incomes
+
+%table
+  %tr
+    %th Name
+    %th User
+    %th Period
+    %th Rate of interest
+    %th Emi
+    %th
+    %th
+    %th
+
+  - @fixed_incomes.each do |fixed_income|
+    %tr
+      %td= fixed_income.name
+      %td= fixed_income.user
+      %td= fixed_income.period
+      %td= fixed_income.rate_of_interest
+      %td= fixed_income.emi
+      %td= link_to 'Show', fixed_income
+      %td= link_to 'Edit', edit_fixed_income_path(fixed_income)
+      %td= link_to 'Destroy', fixed_income, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Fixed income', new_fixed_income_path

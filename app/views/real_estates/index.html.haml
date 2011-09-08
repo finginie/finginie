@@ -1,0 +1,25 @@
+%h1 Listing real_estates
+
+%table
+  %tr
+    %th Name
+    %th User
+    %th Current price
+    %th Location
+    %th
+    %th
+    %th
+
+  - @real_estates.each do |real_estate|
+    %tr
+      %td= real_estate.name
+      %td= real_estate.user
+      %td= real_estate.current_price
+      %td= real_estate.location
+      %td= link_to 'Show', real_estate
+      %td= link_to 'Edit', edit_real_estate_path(real_estate)
+      %td= link_to 'Destroy', real_estate, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Real estate', new_real_estate_path

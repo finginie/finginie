@@ -1,0 +1,23 @@
+%h1 Listing other_assets
+
+%table
+  %tr
+    %th Name
+    %th User
+    %th Current price
+    %th
+    %th
+    %th
+
+  - @other_assets.each do |other_asset|
+    %tr
+      %td= other_asset.name
+      %td= other_asset.user
+      %td= other_asset.current_price
+      %td= link_to 'Show', other_asset
+      %td= link_to 'Edit', edit_other_asset_path(other_asset)
+      %td= link_to 'Destroy', other_asset, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Other asset', new_other_asset_path

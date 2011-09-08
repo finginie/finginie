@@ -1,0 +1,12 @@
+= simple_form_for(@loan) do |f|
+  = f.error_notification
+
+  .inputs
+    = f.input :name
+    = f.association :user
+    = f.input :period
+    = f.input :rate_of_interest
+    = f.input :emi
+
+  .actions
+    = f.button :submit

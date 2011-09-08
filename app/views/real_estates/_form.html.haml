@@ -1,0 +1,11 @@
+= simple_form_for(@real_estate) do |f|
+  = f.error_notification
+
+  .inputs
+    = f.input :name
+    = f.association :user
+    = f.input :current_price
+    = f.input :location
+
+  .actions
+    = f.button :submit

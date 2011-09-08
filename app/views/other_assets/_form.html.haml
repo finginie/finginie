@@ -1,0 +1,10 @@
+= simple_form_for(@other_asset) do |f|
+  = f.error_notification
+
+  .inputs
+    = f.input :name
+    = f.association :user
+    = f.input :current_price
+
+  .actions
+    = f.button :submit

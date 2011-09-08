@@ -1,0 +1,27 @@
+%h1 Listing loans
+
+%table
+  %tr
+    %th Name
+    %th User
+    %th Period
+    %th Rate of interest
+    %th Emi
+    %th
+    %th
+    %th
+
+  - @loans.each do |loan|
+    %tr
+      %td= loan.name
+      %td= loan.user
+      %td= loan.period
+      %td= loan.rate_of_interest
+      %td= loan.emi
+      %td= link_to 'Show', loan
+      %td= link_to 'Edit', edit_loan_path(loan)
+      %td= link_to 'Destroy', loan, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Loan', new_loan_path

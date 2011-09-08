@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @loan.name
+%p
+  %b User:
+  = @loan.user
+%p
+  %b Period:
+  = @loan.period
+%p
+  %b Rate of interest:
+  = @loan.rate_of_interest
+%p
+  %b Emi:
+  = @loan.emi
+
+= link_to 'Edit', edit_loan_path(@loan)
+\|
+= link_to 'Back', loans_path
