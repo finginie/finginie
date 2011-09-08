@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Net position:
+  = @transaction.net_position
+%p
+  %b Price:
+  = @transaction.price
+%p
+  %b Date:
+  = @transaction.date
+%p
+  %b Quantity:
+  = @transaction.quantity
+%p
+  %b Comments:
+  = @transaction.comments
+
+= link_to 'Edit', edit_resource_path(@transaction)
+\|
+= link_to 'Back', collection_path

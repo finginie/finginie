@@ -1,0 +1,27 @@
+%h1 Listing transactions
+
+%table
+  %tr
+    %th Net position
+    %th Price
+    %th Date
+    %th Quantity
+    %th Comments
+    %th
+    %th
+    %th
+
+  - @transactions.each do |transaction|
+    %tr
+      %td= transaction.net_position
+      %td= transaction.price
+      %td= transaction.date
+      %td= transaction.quantity
+      %td= transaction.comments
+      %td= link_to 'Show', resource_path(transaction)
+      %td= link_to 'Edit', edit_resource_path(transaction)
+      %td= link_to 'Destroy', resource_path(transaction), :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Transaction', new_resource_path

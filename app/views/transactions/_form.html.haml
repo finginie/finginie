@@ -1,0 +1,12 @@
+= simple_form_for([*association_chain, resource]) do |f|
+  = f.error_notification
+
+  .inputs
+    = f.association :net_position
+    = f.input :price
+    = f.input :date
+    = f.input :quantity
+    = f.input :comments
+
+  .actions
+    = f.button :submit

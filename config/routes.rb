@@ -8,7 +8,9 @@ Finginie::Application.routes.draw do
   resources :stocks
 
   resources :portfolios do
-    resources :net_positions
+    resources :net_positions do
+      resources :transactions
+    end
   end
 
   mount ClearanceOmniauth::Engine => "/auth"
