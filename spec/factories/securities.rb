@@ -2,13 +2,24 @@
 
 FactoryGirl.define do
   factory :security do
-      #type ""
-        #name "MyString"
-        #user
-        #current_price "9.99"
-        #period "9.99"
-        #rate_of_interest "9.99"
-        #location "MyText"
-        #emi "9.99"
+    name "MyString"
+    #user
+    #current_price "9.99"
+    #period "9.99"
+    #rate_of_interest "9.99"
+    #location "MyText"
+    #emi "9.99"
+    factory :stock, :class => Stock do
     end
+    factory :real_estate, :class => RealEstate do
+    end
+    factory :fixed_income, :class => FixedIncome do
+    end
+    factory :loan, :class => Loan do
+    end
+    factory :other_asset, :class => OtherAsset do
+    end
+    factory :other_liability, :class => OtherLiability do
+    end
+  end
 end

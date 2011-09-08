@@ -20,16 +20,11 @@ require 'spec_helper'
 
 describe OtherAssetsController do
 
-  # This should return the minimal set of attributes required to create a valid
-  # OtherAsset. As you add validations to OtherAsset, be sure to
-  # update the return value of this method accordingly.
-  def valid_attributes
-    {}
-  end
+  let (:other_asset) { create :other_asset }
+  let (:valid_attributes) { attributes_for :other_asset }
 
   describe "GET index" do
     it "assigns all other_assets as @other_assets" do
-      other_asset = OtherAsset.create! valid_attributes
       get :index
       assigns(:other_assets).should eq([other_asset])
     end
@@ -37,7 +32,6 @@ describe OtherAssetsController do
 
   describe "GET show" do
     it "assigns the requested other_asset as @other_asset" do
-      other_asset = OtherAsset.create! valid_attributes
       get :show, :id => other_asset.id.to_s
       assigns(:other_asset).should eq(other_asset)
     end
@@ -52,7 +46,6 @@ describe OtherAssetsController do
 
   describe "GET edit" do
     it "assigns the requested other_asset as @other_asset" do
-      other_asset = OtherAsset.create! valid_attributes
       get :edit, :id => other_asset.id.to_s
       assigns(:other_asset).should eq(other_asset)
     end
@@ -86,7 +79,7 @@ describe OtherAssetsController do
         assigns(:other_asset).should be_a_new(OtherAsset)
       end
 
-      it "re-renders the 'new' template" do
+      pending "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         OtherAsset.any_instance.stub(:save).and_return(false)
         post :create, :other_asset => {}
@@ -98,7 +91,6 @@ describe OtherAssetsController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested other_asset" do
-        other_asset = OtherAsset.create! valid_attributes
         # Assuming there are no other other_assets in the database, this
         # specifies that the OtherAsset created on the previous line
         # receives the :update_attributes message with whatever params are
@@ -108,13 +100,11 @@ describe OtherAssetsController do
       end
 
       it "assigns the requested other_asset as @other_asset" do
-        other_asset = OtherAsset.create! valid_attributes
         put :update, :id => other_asset.id, :other_asset => valid_attributes
         assigns(:other_asset).should eq(other_asset)
       end
 
       it "redirects to the other_asset" do
-        other_asset = OtherAsset.create! valid_attributes
         put :update, :id => other_asset.id, :other_asset => valid_attributes
         response.should redirect_to(other_asset)
       end
@@ -122,15 +112,13 @@ describe OtherAssetsController do
 
     describe "with invalid params" do
       it "assigns the other_asset as @other_asset" do
-        other_asset = OtherAsset.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         OtherAsset.any_instance.stub(:save).and_return(false)
         put :update, :id => other_asset.id.to_s, :other_asset => {}
         assigns(:other_asset).should eq(other_asset)
       end
 
-      it "re-renders the 'edit' template" do
-        other_asset = OtherAsset.create! valid_attributes
+      pending "re-renders the 'edit' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         OtherAsset.any_instance.stub(:save).and_return(false)
         put :update, :id => other_asset.id.to_s, :other_asset => {}
@@ -141,14 +129,13 @@ describe OtherAssetsController do
 
   describe "DELETE destroy" do
     it "destroys the requested other_asset" do
-      other_asset = OtherAsset.create! valid_attributes
+      other_asset
       expect {
         delete :destroy, :id => other_asset.id.to_s
       }.to change(OtherAsset, :count).by(-1)
     end
 
     it "redirects to the other_assets list" do
-      other_asset = OtherAsset.create! valid_attributes
       delete :destroy, :id => other_asset.id.to_s
       response.should redirect_to(other_assets_url)
     end

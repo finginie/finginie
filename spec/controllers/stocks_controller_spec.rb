@@ -20,16 +20,11 @@ require 'spec_helper'
 
 describe StocksController do
 
-  # This should return the minimal set of attributes required to create a valid
-  # Stock. As you add validations to Stock, be sure to
-  # update the return value of this method accordingly.
-  def valid_attributes
-    {}
-  end
+  let (:stock) { create :stock }
+  let (:valid_attributes) { attributes_for :stock }
 
   describe "GET index" do
     it "assigns all stocks as @stocks" do
-      stock = Stock.create! valid_attributes
       get :index
       assigns(:stocks).should eq([stock])
     end
@@ -37,7 +32,6 @@ describe StocksController do
 
   describe "GET show" do
     it "assigns the requested stock as @stock" do
-      stock = Stock.create! valid_attributes
       get :show, :id => stock.id.to_s
       assigns(:stock).should eq(stock)
     end
@@ -52,7 +46,6 @@ describe StocksController do
 
   describe "GET edit" do
     it "assigns the requested stock as @stock" do
-      stock = Stock.create! valid_attributes
       get :edit, :id => stock.id.to_s
       assigns(:stock).should eq(stock)
     end
@@ -86,7 +79,7 @@ describe StocksController do
         assigns(:stock).should be_a_new(Stock)
       end
 
-      it "re-renders the 'new' template" do
+      pending "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Stock.any_instance.stub(:save).and_return(false)
         post :create, :stock => {}
@@ -98,7 +91,6 @@ describe StocksController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested stock" do
-        stock = Stock.create! valid_attributes
         # Assuming there are no other stocks in the database, this
         # specifies that the Stock created on the previous line
         # receives the :update_attributes message with whatever params are
@@ -108,13 +100,11 @@ describe StocksController do
       end
 
       it "assigns the requested stock as @stock" do
-        stock = Stock.create! valid_attributes
         put :update, :id => stock.id, :stock => valid_attributes
         assigns(:stock).should eq(stock)
       end
 
       it "redirects to the stock" do
-        stock = Stock.create! valid_attributes
         put :update, :id => stock.id, :stock => valid_attributes
         response.should redirect_to(stock)
       end
@@ -122,15 +112,13 @@ describe StocksController do
 
     describe "with invalid params" do
       it "assigns the stock as @stock" do
-        stock = Stock.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Stock.any_instance.stub(:save).and_return(false)
         put :update, :id => stock.id.to_s, :stock => {}
         assigns(:stock).should eq(stock)
       end
 
-      it "re-renders the 'edit' template" do
-        stock = Stock.create! valid_attributes
+      pending "re-renders the 'edit' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Stock.any_instance.stub(:save).and_return(false)
         put :update, :id => stock.id.to_s, :stock => {}
@@ -141,14 +129,13 @@ describe StocksController do
 
   describe "DELETE destroy" do
     it "destroys the requested stock" do
-      stock = Stock.create! valid_attributes
+      stock
       expect {
         delete :destroy, :id => stock.id.to_s
       }.to change(Stock, :count).by(-1)
     end
 
     it "redirects to the stocks list" do
-      stock = Stock.create! valid_attributes
       delete :destroy, :id => stock.id.to_s
       response.should redirect_to(stocks_url)
     end

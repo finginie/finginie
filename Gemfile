@@ -26,6 +26,9 @@ group :test, :development do
   gem 'shoulda-matchers'
 
   gem 'factory_girl_rails'
+
+  gem 'guard'
+  gem 'spork'
 end
 
 group :production do
