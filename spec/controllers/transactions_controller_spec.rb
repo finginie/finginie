@@ -22,16 +22,11 @@ describe TransactionsController do
 
   let (:portfolio) { create :portfolio }
   let (:net_position) { create :net_position, :portfolio => portfolio }
-  # This should return the minimal set of attributes required to create a valid
-  # Transaction. As you add validations to Transaction, be sure to
-  # update the return value of this method accordingly.
-  def valid_attributes
-    { :net_position_id => net_position.id.to_s}
-  end
+  let (:transaction) { create :transaction, :net_position => net_position }
+  let (:valid_attributes) { attributes_for :transaction, :net_position_id => net_position.id.to_s }
 
   describe "GET index" do
     it "assigns all transactions as @transactions" do
-      transaction = Transaction.create! valid_attributes
       get :index, :portfolio_id => portfolio.id, :net_position_id => net_position.id
       assigns(:transactions).should eq([transaction])
     end
@@ -39,7 +34,6 @@ describe TransactionsController do
 
   describe "GET show" do
     it "assigns the requested transaction as @transaction" do
-      transaction = Transaction.create! valid_attributes
       get :show, :id => transaction.id.to_s, :portfolio_id => portfolio.id, :net_position_id => net_position.id
       assigns(:transaction).should eq(transaction)
     end
@@ -54,7 +48,6 @@ describe TransactionsController do
 
   describe "GET edit" do
     it "assigns the requested transaction as @transaction" do
-      transaction = Transaction.create! valid_attributes
       get :edit, :id => transaction.id.to_s, :portfolio_id => portfolio.id, :net_position_id => net_position.id
       assigns(:transaction).should eq(transaction)
     end
@@ -100,7 +93,6 @@ describe TransactionsController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested transaction" do
-        transaction = Transaction.create! valid_attributes
         # Assuming there are no other transactions in the database, this
         # specifies that the Transaction created on the previous line
         # receives the :update_attributes message with whatever params are
@@ -110,13 +102,11 @@ describe TransactionsController do
       end
 
       it "assigns the requested transaction as @transaction" do
-        transaction = Transaction.create! valid_attributes
         put :update, :id => transaction.id, :transaction => valid_attributes, :portfolio_id => portfolio.id, :net_position_id => net_position.id
         assigns(:transaction).should eq(transaction)
       end
 
       it "redirects to the transaction" do
-        transaction = Transaction.create! valid_attributes
         put :update, :id => transaction.id, :transaction => valid_attributes, :portfolio_id => portfolio.id, :net_position_id => net_position.id
         response.should redirect_to(portfolio_net_position_transaction_path(portfolio, net_position, transaction))
       end
@@ -124,7 +114,6 @@ describe TransactionsController do
 
     describe "with invalid params" do
       it "assigns the transaction as @transaction" do
-        transaction = Transaction.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Transaction.any_instance.stub(:save).and_return(false)
         put :update, :id => transaction.id.to_s, :transaction => {}, :portfolio_id => portfolio.id, :net_position_id => net_position.id
@@ -132,7 +121,6 @@ describe TransactionsController do
       end
 
       pending "re-renders the 'edit' template" do
-        transaction = Transaction.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Transaction.any_instance.stub(:save).and_return(false)
         put :update, :id => transaction.id.to_s, :transaction => {}, :portfolio_id => portfolio.id, :net_position_id => net_position.id
@@ -143,14 +131,13 @@ describe TransactionsController do
 
   describe "DELETE destroy" do
     it "destroys the requested transaction" do
-      transaction = Transaction.create! valid_attributes
+      transaction
       expect {
         delete :destroy, :id => transaction.id.to_s, :portfolio_id => portfolio.id, :net_position_id => net_position.id
       }.to change(Transaction, :count).by(-1)
     end
 
     it "redirects to the transactions list" do
-      transaction = Transaction.create! valid_attributes
       delete :destroy, :id => transaction.id.to_s, :portfolio_id => portfolio.id, :net_position_id => net_position.id
       response.should redirect_to(portfolio_net_position_transactions_url(portfolio, net_position))
     end

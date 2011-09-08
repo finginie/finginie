@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :transaction do
-      #net_position
-        #price "9.99"
-        #date "2011-09-08"
-        #quantity 1
-        #comments "MyText"
-    end
+    net_position
+    price "9.99"
+    date "2011-09-08"
+    quantity 1
+    #comments "MyText"
+  end
 end
