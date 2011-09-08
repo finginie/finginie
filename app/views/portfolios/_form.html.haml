@@ -1,0 +1,9 @@
+= simple_form_for(@portfolio) do |f|
+  = f.error_notification
+
+  .inputs
+    = f.input :name
+    = f.association :user
+
+  .actions
+    = f.button :submit

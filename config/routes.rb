@@ -1,4 +1,6 @@
 Finginie::Application.routes.draw do
+  resources :portfolios
+
   mount ClearanceOmniauth::Engine => "/auth"
   # The priority is based upon order of creation:
   # first created -> highest priority.
