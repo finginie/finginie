@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Portfolio:
+  = resource.portfolio
+%p
+  %b Security:
+  = resource.security
+
+= link_to 'Edit', edit_resource_path(resource)
+\|
+= link_to 'Back', collection_path

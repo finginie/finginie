@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110908092801) do
+ActiveRecord::Schema.define(:version => 20110908103513) do
 
   create_table "clearance_omniauth_authentications", :force => true do |t|
     t.integer  "user_id"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(:version => 20110908092801) do
   end
 
   add_index "clearance_omniauth_authentications", ["user_id"], :name => "index_clearance_omniauth_authentications_on_user_id"
+
+  create_table "net_positions", :force => true do |t|
+    t.integer  "portfolio_id"
+    t.integer  "security_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "net_positions", ["portfolio_id"], :name => "index_net_positions_on_portfolio_id"
+  add_index "net_positions", ["security_id"], :name => "index_net_positions_on_security_id"
 
   create_table "portfolios", :force => true do |t|
     t.string   "name"
