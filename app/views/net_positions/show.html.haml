@@ -1,12 +1,10 @@
 %p#notice= notice
 
 %p
-  %b Portfolio:
-  = resource.portfolio
-%p
   %b Security:
   = resource.security
 
-= link_to 'Edit', edit_resource_path(resource)
-\|
+= link_to 'Transactions', portfolio_net_position_transactions_path(parent,resource)
+
+= button_to 'Edit', edit_resource_path(resource), :method => :get
 = link_to 'Back', collection_path

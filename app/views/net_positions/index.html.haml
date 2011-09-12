@@ -2,20 +2,16 @@
 
 %table
   %tr
-    %th Portfolio
     %th Security
-    %th
-    %th
     %th
 
   - collection.each do |resource|
     %tr
-      %td= resource.portfolio
-      %td= resource.security
-      %td= link_to 'Show', resource_path(resource)
-      %td= link_to 'Edit', edit_resource_path(resource)
-      %td= link_to 'Destroy', resource_path(resource), :confirm => 'Are you sure?', :method => :delete
+      %td= link_to resource.security, resource_path(resource)
+      %td.actions
+        = button_to 'Edit', edit_resource_path(resource), :method => :get
+        = button_to 'Destroy', resource_path(resource), :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Net position', new_resource_path
+= button_to 'New Net position', new_resource_path, :method => :get

@@ -1,21 +1,19 @@
 %h1 Listing portfolios
 
 %table
-  %tr
-    %th Name
-    %th User
-    %th
-    %th
-    %th
-
-  - @portfolios.each do |portfolio|
+  %thead
     %tr
-      %td= portfolio.name
-      %td= portfolio.user
-      %td= link_to 'Show', portfolio
-      %td= link_to 'Edit', edit_portfolio_path(portfolio)
-      %td= link_to 'Destroy', portfolio, :confirm => 'Are you sure?', :method => :delete
+      %th Name
+      %th
+
+  %tbody
+    - @portfolios.each do |portfolio|
+      %tr
+        %td= link_to portfolio.name, portfolio
+        %td.actions
+          = button_to 'Rename', edit_portfolio_path(portfolio), :method => :get
+          = button_to 'Destroy', portfolio, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Portfolio', new_portfolio_path
+= button_to 'New Portfolio', new_portfolio_path, :method => :get
