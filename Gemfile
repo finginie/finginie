@@ -24,11 +24,13 @@ group :test, :development do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
-
   gem 'factory_girl_rails'
 
-  gem 'guard'
   gem 'spork'
+
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'guard-livereload'
 end
 
 group :production do
