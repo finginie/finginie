@@ -5,6 +5,7 @@ gem 'rails', '3.1.0'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'compass', '~> 0.12.alpha.0'
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'

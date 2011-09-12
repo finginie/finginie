@@ -1,21 +1,29 @@
 !!!
 %html
   %head
-    %title RailsApp
+    %title FinGinie
     = stylesheet_link_tag :application
     = javascript_include_tag :application
     = csrf_meta_tags
   %body
     %header
+      %nav.user
+        -# user control links here
       %hgroup.title
-        %h1= link_to "RailsApp", "/" # root_path
+        = link_to root_path do
+          = image_tag 'logo.png', :alt => 'Finginie'
+        %span.tag Beta
+      %nav
+        -# main navigation links here
       %hgroup.page_header
         =yield :header
     %aside
       =yield :aside
-    #main
-      - flash.each do |name, msg|
-        = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
-      = yield
+    .container
+      #main
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :id => "flash_#{name}", :class => name if msg.is_a?(String)
+        = yield
+      %aside
     %footer
       =yield :footer
