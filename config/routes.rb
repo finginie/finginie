@@ -22,6 +22,15 @@ Finginie::Application.routes.draw do
     resources :risk_profilers, :only => [:show, :update]
   end
 
+  def controller_actions(controller, actions)
+    match "#{controller}(/:action)", :controller => controller, :as => controller
+    actions.each do |action|
+      match "#{controller}/#{action}", :as => action
+    end
+  end
+
+  controller_actions 'personal_financial_tools', %w[emi_calculators]
+
   root :to => 'portfolios#index'
 
 end

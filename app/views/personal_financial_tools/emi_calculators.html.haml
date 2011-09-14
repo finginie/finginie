@@ -1,0 +1,14 @@
+= simple_form_for @emi_calculator do |f|
+  = f.error_notification
+
+  .inputs
+    = f.input :cost
+    = f.input :down_payment
+    = f.input :rate
+    = f.input :term
+  .actions
+    = f.button :submit
+
+%section#result
+  %h1 Result
+  %p= @emi_calculator.emi
