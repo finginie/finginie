@@ -17,12 +17,14 @@ gem 'clearance_omniauth', :git => "git://github.com/LoonyBin/clearance_omniauth.
 gem 'haml-rails'
 gem 'inherited_resources'
 gem 'jquery-rails'
+gem 'nested_form', :git => "https://github.com/ryanb/nested_form.git"
 gem 'paper_trail'
 gem 'redis'
 gem 'simple_form'
 
 group :test, :development do
   gem 'capybara'
+  gem 'database_cleaner'
   gem 'sqlite3'
 
   gem 'rspec'
