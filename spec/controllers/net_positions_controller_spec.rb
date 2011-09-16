@@ -26,13 +26,6 @@ describe NetPositionsController do
   # NetPosition. As you add validations to NetPosition, be sure to
   # update the return value of this method accordingly.
 
-  describe "GET index" do
-    it "assigns all net_positions as @net_positions" do
-      get :index, :portfolio_id => net_position.portfolio.id
-      assigns(:net_positions).should eq([net_position])
-    end
-  end
-
   describe "GET show" do
     it "assigns the requested net_position as @net_position" do
       get :show, :id => net_position.id.to_s, :portfolio_id => net_position.portfolio.id
@@ -140,7 +133,7 @@ describe NetPositionsController do
 
     it "redirects to the net_positions list" do
       delete :destroy, :id => net_position.id.to_s, :portfolio_id => net_position.portfolio.id
-      response.should redirect_to(portfolio_net_positions_url(net_position.portfolio))
+      response.should redirect_to(portfolio_url(net_position.portfolio))
     end
   end
 

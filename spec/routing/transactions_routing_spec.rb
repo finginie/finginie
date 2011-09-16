@@ -3,16 +3,8 @@ require "spec_helper"
 describe TransactionsController do
   describe "routing" do
 
-    it "routes to #index" do
-      get("/portfolios/1/net_positions/1/transactions").should route_to("transactions#index", :portfolio_id => "1", :net_position_id => "1")
-    end
-
     it "routes to #new" do
       get("/portfolios/1/net_positions/1/transactions/new").should route_to("transactions#new", :portfolio_id => "1", :net_position_id => "1")
-    end
-
-    it "routes to #show" do
-      get("/portfolios/1/net_positions/1/transactions/1").should route_to("transactions#show", :id => "1", :portfolio_id => "1", :net_position_id => "1")
     end
 
     it "routes to #edit" do

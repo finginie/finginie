@@ -1,0 +1,18 @@
+%h1 Securities
+
+%table
+  %tr
+    %th Security
+    %th
+
+  - net_positions.each do |net_position|
+    %tr
+      %td= link_to net_position.security.name, portfolio_net_position_path(@portfolio, net_position)
+      %td.actions
+        = button_to 'Add Transaction', new_portfolio_net_position_transaction_path(@portfolio, net_position), :method => :get
+        = button_to 'Change Security', edit_portfolio_net_position_path(@portfolio, net_position), :method => :get
+        = button_to 'Destroy', portfolio_net_position_path(@portfolio, net_position), :confirm => 'Are you sure?', :method => :delete, :class => :negetive
+
+%br
+
+= button_to 'Add New Security', new_portfolio_net_position_path(@portfolio), :method => :get

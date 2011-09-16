@@ -25,20 +25,6 @@ describe TransactionsController do
   let (:transaction) { create :transaction, :net_position => net_position }
   let (:valid_attributes) { attributes_for :transaction, :net_position_id => net_position.id.to_s }
 
-  describe "GET index" do
-    it "assigns all transactions as @transactions" do
-      get :index, :portfolio_id => portfolio.id, :net_position_id => net_position.id
-      assigns(:transactions).should eq([transaction])
-    end
-  end
-
-  describe "GET show" do
-    it "assigns the requested transaction as @transaction" do
-      get :show, :id => transaction.id.to_s, :portfolio_id => portfolio.id, :net_position_id => net_position.id
-      assigns(:transaction).should eq(transaction)
-    end
-  end
-
   describe "GET new" do
     it "assigns a new transaction as @transaction" do
       get :new, :portfolio_id => portfolio.id, :net_position_id => net_position.id
@@ -69,7 +55,7 @@ describe TransactionsController do
 
       it "redirects to the created transaction" do
         post :create, :transaction => valid_attributes, :portfolio_id => portfolio.id, :net_position_id => net_position.id
-        response.should redirect_to(portfolio_net_position_transaction_path(portfolio, net_position, Transaction.last))
+        response.should redirect_to(portfolio_net_position_path(portfolio, net_position))
       end
     end
 
@@ -108,7 +94,7 @@ describe TransactionsController do
 
       it "redirects to the transaction" do
         put :update, :id => transaction.id, :transaction => valid_attributes, :portfolio_id => portfolio.id, :net_position_id => net_position.id
-        response.should redirect_to(portfolio_net_position_transaction_path(portfolio, net_position, transaction))
+        response.should redirect_to(portfolio_net_position_path(portfolio, net_position))
       end
     end
 
@@ -139,7 +125,7 @@ describe TransactionsController do
 
     it "redirects to the transactions list" do
       delete :destroy, :id => transaction.id.to_s, :portfolio_id => portfolio.id, :net_position_id => net_position.id
-      response.should redirect_to(portfolio_net_position_transactions_url(portfolio, net_position))
+      response.should redirect_to(portfolio_net_position_url(portfolio, net_position))
     end
   end
 

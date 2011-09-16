@@ -4,7 +4,8 @@
   %b Name:
   = @portfolio.name
 
-= link_to 'Positions', portfolio_net_positions_path(@portfolio)
+%section#net_positions
+  = render 'net_positions', :net_positions => @portfolio.net_positions
 
 = button_to 'Edit', edit_portfolio_path(@portfolio), :method => :get
 \|

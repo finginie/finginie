@@ -22,6 +22,7 @@ gem 'redis'
 gem 'simple_form'
 
 group :test, :development do
+  gem 'capybara'
   gem 'sqlite3'
 
   gem 'rspec'
