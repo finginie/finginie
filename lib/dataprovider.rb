@@ -3,6 +3,8 @@ require 'net/ftp'
 require 'zipruby'
 require 'csv'
 
+require File.expand_path('../../config/environment', __FILE__) 
+
 include Clockwork
 
 handler do
@@ -32,23 +34,7 @@ def get_stock_data
 end
 
 def create_or_update( row )
-#                     tp_code,
-#                     symbol,
-#                     series,
-#                     company_name,
-#                     time,
-#                     best_buy_qty,
-#                     best_buy_price,
-#                     best_sell_qty,
-#                     best_sell_price,
-#                     last_traded_price,
-#                     volume,
-#                     net_change,
-#                     percent_change,
-#                     open_price,
-#                     high_price,
-#                     low_price,
-#                     close_price
-  tpil = row.delete_at(0)
-  print [tpil.to_sym , row ]
+  tpil = row[0].to_i
+  stock_quote = StockQuote.find(tpil) || StockQuote.new
+  stock_quote.from_quote(*row).save
 end

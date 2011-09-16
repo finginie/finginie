@@ -4,7 +4,7 @@ describe StockQuote do
   describe "from quote" do
     it_should_behave_like "ActiveModel"
 
-    let (:stock_quote) { StockQuote.from_quote "8118", "AANJANEYA", "EQ", "Aanjaneya Lifecare", "15-September-2011 15:56:11", "9008", "426.45", "0", "0.00", "426.45", "87942", "4.55", "1.08", "425.40", "432.50", "419.15", "421.90" }
+    let (:stock_quote) { StockQuote.new.from_quote "8118", "AANJANEYA", "EQ", "Aanjaneya Lifecare", "15-September-2011 15:56:11", "9008", "426.45", "0", "0.00", "426.45", "87942", "4.55", "1.08", "425.40", "432.50", "419.15", "421.90" }
     subject { stock_quote }
 
     its(:id)                { should eq 8118 }
@@ -31,11 +31,15 @@ describe StockQuote do
 
     describe "saved stock_quote" do
       before { stock_quote.save }
-      pending "should retrieve the stock by name" do
-        quote = StockQuote.find_by_name("Aanjaneya Lifecare")
+      it "should find a stock quote by id" do
+        quote = StockQuote.find(8118)
         quote.should be_kind_of StockQuote
-        quote.id.should eq 8118
-        quote.symbol.should eq "AANJANEYA"
+        quote.company_name.should eq "Aanjaneya Lifecare"
+        quote.last_traded_price.should eq 426.45
+      end
+
+      it "should return nil for a missing stock quote" do
+        StockQuote.find(1).should be_nil
       end
     end
   end
