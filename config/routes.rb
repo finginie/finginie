@@ -18,6 +18,10 @@ Finginie::Application.routes.draw do
     end
   end
 
+  resource :risk_profile, :only => :show, :controller => :risk_profile do
+    resources :quizzes, :only => [:edit, :update]
+  end
+
   root :to => 'portfolios#index'
 
 end

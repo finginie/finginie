@@ -29,12 +29,15 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'database_cleaner'
 
   gem 'spork'
 
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'guard-livereload'
+  gem 'libnotify'
 end
 
 group :production do

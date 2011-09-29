@@ -75,6 +75,14 @@ ActiveRecord::Schema.define(:version => 20111019102014) do
 
   add_index "portfolios", ["user_id"], :name => "index_portfolios_on_user_id"
 
+  create_table "quizzes", :force => true do |t|
+    t.string   "type"
+    t.string   "name"
+    t.decimal  "weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "securities", :force => true do |t|
     t.string   "type"
     t.string   "name"
