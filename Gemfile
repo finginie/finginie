@@ -25,20 +25,18 @@ gem 'simple_form'
 group :test, :development do
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'sqlite3'
-
+  gem 'factory_girl_rails'
+  gem 'guard-livereload'
+  gem 'guard-rspec'
+  gem 'guard-spork'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
-  gem 'factory_girl_rails'
-
-  gem 'spork'
-
-  gem 'guard-rspec'
-  gem 'guard-spork'
-  gem 'guard-livereload'
+  gem 'spork', '>0.9.0.rc'
+  gem 'sqlite3'
 end
 
 group :production do
   gem 'pg'
+  gem 'thin'
 end

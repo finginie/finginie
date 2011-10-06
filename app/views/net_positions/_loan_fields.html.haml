@@ -1,0 +1,6 @@
+- resource.security = Loan.new
+= f.fields_for :security do |loan|
+  = loan.input :type, :as => :hidden
+  = loan.input :name
+  = loan.input :period
+  = loan.input :rate_of_interest

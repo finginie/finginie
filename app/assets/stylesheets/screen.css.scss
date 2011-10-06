@@ -6,13 +6,13 @@
 
 // Import all the default blueprint modules so that we can access their mixins.
 @import "blueprint";
-@import "blueprint/buttons";
+//@import "blueprint/buttons";
 
 // Combine the partials into a single screen stylesheet.
 @import "partials/page";
 @import "partials/form";
 @import "partials/two_col";
-@import "partials/buttons";
+//@import "partials/buttons";
 
 @import "compass/typography/lists/horizontal-list";
 nav>ul {

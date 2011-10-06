@@ -1,8 +1,9 @@
 = simple_nested_form_for([parent, resource]) do |f|
   = f.error_notification
+  = f.error_messages
 
-  .inputs
-    = f.association :security
+  .security
+    = render "#{resource.security.type.downcase}_fields", :f => f
 
   .transactions
     = f.fields_for :transactions

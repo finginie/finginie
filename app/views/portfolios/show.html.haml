@@ -1,12 +1,12 @@
 %p#notice= notice
 
+= button_to 'Edit', edit_portfolio_path(@portfolio), :method => :get
+
+= link_to 'Back', portfolios_path
+
 %p
   %b Name:
   = @portfolio.name
 
 %section#net_positions
   = render 'net_positions', :net_positions => @portfolio.net_positions
-
-= button_to 'Edit', edit_portfolio_path(@portfolio), :method => :get
-\|
-= link_to 'Back', portfolios_path

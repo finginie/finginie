@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe NetPosition do
-  let (:security) { create :security, :current_price => 20 }
-  let (:net_position) { create :net_position, :security_id => security.id }
+  let (:security) { create :loan, :current_price => 20 }
+  let (:net_position) { create :net_position, :security => security }
   subject { net_position }
 
   it { should have_many :transactions }
@@ -21,4 +21,8 @@ describe NetPosition do
   end
 
   its(:current_market_value) { should eq 200 }
+
+  it "should build the right security class based on the type" do
+    NetPosition.new(:security_attributes => { :type => 'Loan' }).security.type.should eq 'Loan'
+  end
 end

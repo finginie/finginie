@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe Stock do
-  before { create :stock }
+  let (:stock) { create :stock }
+  subject { stock }
+
   it { should validate_uniqueness_of :name }
+
 end

@@ -1,11 +1,12 @@
 require 'spec_helper'
 
 describe "Stocks" do
-  describe "GET /stocks" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get stocks_path
-      response.status.should be(200)
-    end
+  let (:portfolio) { create :portfolio }
+  let (:stock) { create :stock }
+  let (:net_position) { create :net_position, :stock => stock, :portfolio => portfolio }
+  before do
+    stock.transactions.create( :quantity => 100, :price => 653, :date => 1.day.ago )
+    stock.transactions.create( :quantity => -57, :price => 700, :date => 2.days.ago )
   end
+
 end
