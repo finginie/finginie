@@ -1,6 +1,5 @@
 = simple_nested_form_for([parent, resource]) do |f|
   = f.error_notification
-  = f.error_messages
 
   .security
     = render "#{resource.security.type.downcase}_fields", :f => f
