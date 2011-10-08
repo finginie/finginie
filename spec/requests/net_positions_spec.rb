@@ -26,7 +26,7 @@ describe "NetPositions" do
     end
 
     it "adds new fixed income position" do
-      click_on 'Add New Fixed income'
+      click_on 'Add New Fixed Income'
       fill_in 'Name', :with => 'Test Income'
       fill_in 'Period', :with => 20
       fill_in 'Rate of interest', :with => 12
@@ -60,7 +60,7 @@ describe "NetPositions" do
     end
 
     it "adds new real estate position" do
-      click_on 'Add New Real estate'
+      click_on 'Add New Real Estate'
       fill_in 'Name', :with => 'Test Property'
       fill_in 'Location', :with => 'Mordor'
       fill_in 'Current price', :with => 9000000
@@ -72,6 +72,38 @@ describe "NetPositions" do
 
       page.should have_content 'successfully created'
       page.should have_content 'Test Property'
+      page.should have_content 200
+      page.should have_content 30
+    end
+
+    it "adds new asset position" do
+      click_on 'Add New Other Asset'
+      fill_in 'Name', :with => 'Test Asset'
+      fill_in 'Current price', :with => 9000000
+
+      fill_in "Price", :with => 200
+      #fill_in "Date", :with => "29-11-2010"
+      fill_in "Quantity", :with => 30
+      click_on "Create Net position"
+
+      page.should have_content 'successfully created'
+      page.should have_content 'Test Asset'
+      page.should have_content 200
+      page.should have_content 30
+    end
+
+    it "adds new liability position" do
+      click_on 'Add New Other Liability'
+      fill_in 'Name', :with => 'Test Liability'
+      fill_in 'Current price', :with => 9000000
+
+      fill_in "Price", :with => 200
+      #fill_in "Date", :with => "29-11-2010"
+      fill_in "Quantity", :with => 30
+      click_on "Create Net position"
+
+      page.should have_content 'successfully created'
+      page.should have_content 'Test Liability'
       page.should have_content 200
       page.should have_content 30
     end
