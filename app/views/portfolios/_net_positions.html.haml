@@ -17,5 +17,5 @@
 
 .actions
   = button_to 'Add New Security', new_portfolio_net_position_path(@portfolio), :method => :get
-  - %w(stock fixed_income loan).each do |security_type|
+  - %w(stock fixed_income loan real_estate).each do |security_type|
     = link_to "Add New #{security_type.humanize}", new_portfolio_net_position_path(@portfolio, 'net_position[security_attributes][type]' => security_type)#, :method => :get
