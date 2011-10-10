@@ -46,6 +46,17 @@ ActiveRecord::Schema.define(:version => 20111019102014) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
+  create_table "choices", :force => true do |t|
+    t.decimal  "score"
+    t.text     "text"
+    t.decimal  "ceiling"
+    t.integer  "question_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "choices", ["question_id"], :name => "index_choices_on_question_id"
+
   create_table "clearance_omniauth_authentications", :force => true do |t|
     t.integer  "user_id"
     t.string   "provider"
@@ -74,6 +85,16 @@ ActiveRecord::Schema.define(:version => 20111019102014) do
   end
 
   add_index "portfolios", ["user_id"], :name => "index_portfolios_on_user_id"
+
+  create_table "questions", :force => true do |t|
+    t.decimal  "weight"
+    t.text     "text"
+    t.integer  "quiz_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "questions", ["quiz_id"], :name => "index_questions_on_quiz_id"
 
   create_table "quizzes", :force => true do |t|
     t.string   "type"
