@@ -11,9 +11,10 @@ group :assets do
   gem 'uglifier'
 end
 
+gem 'activeadmin'
 gem 'airbrake'
 gem 'cancan'
-gem 'clearance_omniauth', :git => "git://github.com/LoonyBin/clearance_omniauth.git"
+#gem 'clearance_omniauth', :git => "git://github.com/LoonyBin/clearance_omniauth.git"
 gem 'haml-rails'
 gem 'inherited_resources'
 gem 'jquery-rails'

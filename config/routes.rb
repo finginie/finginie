@@ -1,5 +1,9 @@
 Finginie::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   resources :other_assets
   resources :other_liabilities
   resources :loans
@@ -12,8 +16,6 @@ Finginie::Application.routes.draw do
       resources :transactions
     end
   end
-
-  mount ClearanceOmniauth::Engine => "/auth"
 
   root :to => 'portfolios#index'
 

@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  include Clearance::Authentication
   # load_and_authorize_resource
   protect_from_forgery
 
