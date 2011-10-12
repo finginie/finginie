@@ -38,8 +38,8 @@ describe NetPosition do
     verify_for_values :total_cost, 1000, 2200, 2200, 2200
   end
 
-  pending "should calculate total sale" do
-    verify_for_values :total_cost, 0, 0, 1950, 2650
+  it "should calculate total sale" do
+    verify_for_values :total_sale, 0, 0, 1950, 2650
   end
 
   it "should calculate average cost" do
