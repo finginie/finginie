@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "NetPositions" do
-  describe "Add new net position", :js => true do
+  describe "Add new net position" do
     let (:portfolio) { create :portfolio }
     let (:stock) { create :stock }
 

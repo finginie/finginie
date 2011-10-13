@@ -23,6 +23,7 @@ gem 'paper_trail'
 gem 'redis'
 gem 'simple_form'
 gem 'thin'
+gem 'valuable'
 gem 'zipruby'
 
 group :test, :development do
@@ -34,6 +35,7 @@ group :test, :development do
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'guard-livereload'
+  gem 'pry'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
