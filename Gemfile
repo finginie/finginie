@@ -14,7 +14,6 @@ end
 gem 'activeadmin'
 gem 'airbrake'
 gem 'cancan'
-#gem 'clearance_omniauth', :git => "git://github.com/LoonyBin/clearance_omniauth.git"
 gem 'haml-rails'
 gem 'inherited_resources'
 gem 'jquery-rails'
@@ -23,21 +22,20 @@ gem 'redis'
 gem 'simple_form'
 
 group :test, :development do
-  gem 'sqlite3'
-
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'guard-livereload'
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'libnotify'
+  gem 'pry'
+  gem 'rb-inotify'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
-  gem 'factory_girl_rails'
-  gem 'capybara'
-  gem 'database_cleaner'
-
-  gem 'spork'
-
-  gem 'guard-rspec'
-  gem 'guard-spork'
-  gem 'guard-livereload'
-  gem 'libnotify'
+  gem 'spork', '>0.9.0.rc'
+  gem 'sqlite3'
 end
 
 group :production do

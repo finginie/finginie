@@ -3,4 +3,4 @@
 
 %ul#quizzes
   - @quizzes.each do |quiz|
-    %li= link_to quiz.name, edit_risk_profile_quiz_path(quiz)
+    %li= link_to quiz.name, risk_profile_risk_profiler_path(:id => quiz.slug)

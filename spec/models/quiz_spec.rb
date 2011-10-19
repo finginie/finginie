@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Quiz do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:quiz) { create :quiz, :name => "Lorem Ipsum" }
+  subject { quiz }
+
+  its(:slug) { should eq 'lorem-ipsum' }
 end
