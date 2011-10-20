@@ -29,7 +29,8 @@ Finginie::Application.routes.draw do
     end
   end
 
-  controller_actions 'personal_financial_tools', %w[emi_calculators]
+  controller_actions 'personal_financial_tools', %w[emi_calculators income_tax_calculator]
+
 
   root :to => 'portfolios#index'
 
