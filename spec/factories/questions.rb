@@ -2,8 +2,16 @@
 
 FactoryGirl.define do
   factory :question do
-      #weight "9.99"
-        #text "MyText"
-        #quiz
+    ignore do
+      number_of_choices 0
     end
+
+    #weight "9.99"
+    #text "MyText"
+    #quiz
+
+    after_create do |question, proxy|
+      FactoryGirl.create_list :choice, proxy.number_of_choices, :question => question
+    end
+  end
 end

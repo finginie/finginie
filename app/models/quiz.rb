@@ -1,5 +1,8 @@
 class Quiz < ActiveRecord::Base
+  attr_accessible :name, :weight
   has_many :questions, :dependent => :destroy, :order => :id
+
+  validates :name, :presence => true
 
   before_validation :generate_slug
 
@@ -7,6 +10,6 @@ class Quiz < ActiveRecord::Base
 
 private
   def generate_slug
-    self.slug ||= name.parameterize
+    self.slug ||= name.try(:parameterize)
   end
 end
