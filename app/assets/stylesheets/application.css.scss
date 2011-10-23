@@ -1,0 +1,37 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require normalize
+ *= require_self
+ *= require_directory .
+*/
+
+// To configure blueprint, edit the partials/base.sass file.
+@import "partials/base";
+// Import all the default blueprint modules so that we can access their mixins.
+@import "blueprint";
+@import "partials/defaults";
+
+//Navigation
+nav {
+  @include container;
+}
+
+//Title
+hgroup.title .tag { // This makes the beta tag stick to the title
+    color: tan;
+    font-weight: bold;
+    text-shadow: 0 0 5px yellow;
+    text-transform: capitalize;
+    vertical-align: top;
+    position: relative;
+    left: -1em;
+    top: 0.5em;
+}
+
+
+// Footer
+footer {
+  background-color: $auxillary-background-color;
+}

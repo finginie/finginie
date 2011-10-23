@@ -12,12 +12,14 @@ group :assets do
 end
 
 gem 'activeadmin', :git => "git://github.com/TMaYaD/active_admin.git"
-gem 'sass-rails' # stupid activeadmin needs this
-gem 'compass', '~> 0.12.alpha.0' # and sass requires this
+  gem 'sass-rails' # stupid activeadmin needs this
+  gem 'compass', '~> 0.12.alpha.0' # and sass requires this
 gem 'airbrake'
 gem 'cancan'
 gem 'clockwork'
+gem 'devise'
 gem 'haml-rails'
+gem 'high_voltage', :git => 'git://github.com/TMaYaD/high_voltage.git'
 gem 'inherited_resources'
 gem 'jquery-rails'
 gem 'meta_search'

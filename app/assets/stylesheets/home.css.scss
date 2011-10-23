@@ -1,0 +1,289 @@
+// To configure blueprint, edit the partials/base.sass file.
+@import "partials/base";
+
+@import "blueprint/liquid";
+@import "compass/typography/lists/horizontal-list";
+@import "compass/css3/box-shadow";
+@import "compass/css3/transition";
+@import "compass/css3/transform";
+
+// Animations
+/* Fades in the slideshow. Hides the initial animation on the li tag. Ooops!! */
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% { 
+    opacity: 0;
+  }
+  100% { 
+    opacity: 1;
+  }
+}
+
+/* Animation for the :target image. Slides the image in. */
+@-webkit-keyframes moveTarget {
+  0% {
+    left:-700px;
+  }
+  100% { 
+    left:0px;
+  }
+}
+
+/*
+  Animation for the current image. Slides it out the frame and back to the starting position.
+  Adds a lower z-index than the now current image.
+*/
+@-webkit-keyframes moveIt {
+  0% {
+    left:0px;
+  }
+  50% {
+    left:700px;
+  }
+  100% {
+    left:-700px;
+    z-index: 5;
+  }
+}
+
+.ticker {
+  @include column($blueprint-liquid-grid-columns, true);
+  ul {
+    @include horizontal-list;
+  }
+}
+
+.slider {
+  $height: 20em;
+  @include column($blueprint-liquid-grid-columns, true);
+  > ul {
+    list-style: none;
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    height: $height;
+    overflow: hidden;
+    border: 10px solid #000;
+    @include single-box-shadow(#131313, 0px, 3px, 10px);
+    @include single-transition(all, 3s, fadeIn, 0s);
+    -webkit-animation-iteration-count: 1;
+    -moz-animation-iteration-count: 1;
+
+    li {	
+      width: 100%;
+      height: $height;
+      position: absolute;
+
+      p {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: inherit;
+        color: #fff;
+        background: rgba(0, 0, 0, .5);
+        width: 100%;
+
+        span {
+          line-height: 1.2em;
+          padding: 10px;
+          display: block;
+        }
+      }
+
+      &:target {
+        @include single-transition(all, 0.5s, moveTarget, 0s);
+        top:0px;
+        left: 0px;
+        z-index: 10;
+      }
+
+      &:not(:target) {
+        @include single-transition(all, 1.5s, moveTarget, 0s);
+        top:0px;
+        left: 0px;
+      }
+    }
+  }
+  @for $i from 1 through 6 {
+    #slide-#{$i} {
+      background-image: image-url("slider/#{$i}.jpg");
+    }
+  }
+/*
+  ul#thumb {
+    overflow: none;
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+    list-style: none;
+    position: relative;
+    background: #000;
+    overflow: auto;
+    width: 700px;
+  }
+
+  ul#thumb a {
+    -webkit-transition: opacity .2s ease-in-out;
+    border: 1px solid #979797;
+    width: 35px;
+    height: 35px;
+    display: block;
+    overflow: hidden;
+    float: right;
+    margin: 10px 0px 0px 10px;
+    opacity: 0.75;
+  }
+
+  ul#thumb a:hover {
+    opacity: 1;
+  }
+*/
+}
+
+$stock-recommendations-height: 14em;
+$promotions-height: 8em;
+
+.news {
+  @include column($blueprint-liquid-grid-columns - $aside-width);
+  $height: $stock-recommendations-height + $promotions-height;
+  height: $height;
+  padding: 0.7em 0;
+  nav {
+    background-color: inherit;
+    > ul {
+      float: none;
+      border-bottom: 1px solid $secondary-background-color;
+      margin: 0;
+      padding: 0 0 6px 10px;
+    }
+
+    a {
+      text-decoration: none;
+      padding-bottom: 3px
+    }
+
+    li.active a {
+      border-bottom: 4px solid saturate($blueprint-background-color, 40%);
+    }
+  }
+
+  section {
+    h1 {
+      font-size: 1.3em;
+      margin: 0.6em auto 0.3em auto;
+    }
+    p {
+      margin-bottom: 0.6em;
+      height: 1.5em;
+      overflow: hidden;
+    }
+  }
+}
+.weekly {
+  @include column($aside-width, true);
+  height: $stock-recommendations-height + $promotions-height;
+
+  color: white;
+  $lead-color: #81BE00;
+
+  .stock_recommendations {
+    position: relative;
+    > h1 {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      font-size: 1.5em;
+      margin: 0.5em 0;
+      padding: 0.5em 0;
+      position: absolute;
+      top: 2em;
+      width: 3em;
+      z-index: 10;
+    }
+
+    ul {
+      margin: 0.5em 0 0 0;
+      padding: 0;
+    }
+    $margin: 1%;
+    li {
+      display: inline-block;
+      float: left;
+      width: 33%;
+      margin: 0;
+      height: $stock-recommendations-height / 2;
+
+      div {
+        height: 100% - 2 * $margin;
+        width: 100% - 2 * $margin;
+        overflow: hidden;
+        position: relative;
+      }
+
+      h1 {
+        color: white;
+        margin: -4px;
+      }
+
+      dt {
+        @include apply-origin(0 0, false);
+        @include rotate(270deg);
+        font-size: large;
+        position: absolute;
+        bottom: -1.2em;
+        left: -0.3em;
+      }
+
+      dd {
+        text-align: right;
+        margin: 0.2em;
+      }
+
+      &:first-child {
+        height: $stock-recommendations-height;
+        margin-left: 0;
+        div {
+          height: 100% - $margin;
+          margin: 0 0 $margin;
+        }
+
+        dt {
+          font-size: xx-large;
+          bottom: 0;
+          left: 1.5em;
+        }
+
+        dd {
+          bottom: 1em;
+          margin: 0;
+          position: absolute;
+          text-align: center;
+          width: 100%;
+        }
+      }
+
+      @for $i from 1 through 5 {
+        &:nth-child(#{$i}) div {
+          $color: adjust-hue($lead-color, 60deg * $i);
+          background-color: $color;
+          dt {
+            color: lighten($color, 40%);
+          }
+        }
+      }
+    }
+  }
+  .promotion {
+    background-color: $lead-color;
+    height: $promotions-height;
+    width: 99%;
+    h1 {
+      color: lighten($lead-color, 40%);
+      font-size: 2em;
+      margin: 0;
+    }
+    p {
+      padding: 1em;
+    }
+  }
+}

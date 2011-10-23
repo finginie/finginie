@@ -9,25 +9,32 @@
   %body
     %header
       %nav.user
-        - if current_user
-          = button_to 'Sign out', destroy_user_session_path, :method => :delete
-        - else
-          =button_to 'Sign in', new_user_session_path
+        %ul
+          - if current_user
+            %li= link_to current_user.email, edit_user_registration_path
+            %li= button_to 'Sign out', destroy_user_session_path, :method => :delete
+          - else
+            %li= button_to 'Sign in', new_user_session_path
+            %li= link_to 'Sign up', new_user_registration_path
       %hgroup.title
         = link_to root_path do
           = image_tag 'logo.png', :alt => 'Finginie'
         %span.tag Beta
       %nav
-        -# main navigation links here
+        %ul
+          - %w(stocks portfolios).each do |resource|
+            = link_to t(resource), :controller => "/#{resource}"
       %hgroup.page_header
         =yield :header
-    %aside
-      =yield :aside
-    .container
+    #wrapper
+      =yield :wrap
+      %aside
+        =yield :aside
       #main
         - flash.each do |name, msg|
           = content_tag :div, msg, :id => "flash_#{name}", :class => name if msg.is_a?(String)
         = yield
-      %aside
     %footer
+      %nav.sitemap
+      %p All your bases are belongs to us. Finginie &copy; 2011
       =yield :footer

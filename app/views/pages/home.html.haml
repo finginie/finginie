@@ -1,0 +1,3 @@
+- content_for :wrap do
+  - %w(ticker slider news weekly).each do |sectional|
+    %section{:class => sectional}= render sectional

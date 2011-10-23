@@ -1,0 +1,49 @@
+@import "blueprint/liquid";
+@import "compass/typography/lists/horizontal-list";
+@import "highlight";
+
+
+body {
+  @include blueprint-typography(true);
+  @include blueprint-utilities;
+  @include blueprint-debug;
+  @include blueprint-interaction;
+}
+
+header, footer {
+  background-color: $blueprint-background-color;
+}
+
+hgroup {
+  @include container;
+}
+
+nav {
+  background-color: $secondary-background-color;
+  @include container;
+  > ul {
+    @include horizontal-list;
+    float: right;
+    clear: right;
+  }
+}
+
+nav.user {
+  background-color: $auxillary-background-color;
+  width: 100%;
+  > ul {
+    padding: 0.2em 1em;
+  }
+}
+
+#wrapper {
+  @include container;
+}
+
+#main {
+  @include column($blueprint-liquid-grid-columns - $aside-width - 1, true);
+}
+
+aside {
+  @include column($aside-width);
+}
