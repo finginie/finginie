@@ -12,6 +12,8 @@ group :assets do
 end
 
 gem 'activeadmin', :git => "git://github.com/TMaYaD/active_admin.git"
+gem 'sass-rails' # stupid activeadmin needs this
+gem 'compass', '~> 0.12.alpha.0' # and sass requires this
 gem 'airbrake'
 gem 'cancan'
 gem 'haml-rails'
@@ -36,6 +38,11 @@ group :test, :development do
   gem 'shoulda-matchers'
   gem 'spork', '>0.9.0.rc'
   gem 'sqlite3'
+  gem 'tddium-preview'
+end
+
+group :development do
+  gem 'heroku'
 end
 
 group :production do
