@@ -31,10 +31,15 @@ group :test, :development do
   gem 'factory_girl_rails'
 
   gem 'spork'
+  gem 'tddium-preview'
 
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'guard-livereload'
+end
+
+group :development do
+  gem 'heroku'
 end
 
 group :production do
