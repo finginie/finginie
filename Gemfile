@@ -11,12 +11,11 @@ group :assets do
   gem 'uglifier'
 end
 
-gem 'activeadmin'
+gem 'activeadmin', :git => "git://github.com/TMaYaD/active_admin.git"
 gem 'sass-rails' # stupid activeadmin needs this
 gem 'compass', '~> 0.12.alpha.0' # and sass requires this
 gem 'airbrake'
 gem 'cancan'
-#gem 'clearance_omniauth', :git => "git://github.com/LoonyBin/clearance_omniauth.git"
 gem 'haml-rails'
 gem 'inherited_resources'
 gem 'jquery-rails'
@@ -25,19 +24,21 @@ gem 'redis'
 gem 'simple_form'
 
 group :test, :development do
-  gem 'sqlite3'
-
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'guard-livereload'
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'libnotify'
+  gem 'pry'
+  gem 'rb-inotify'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
-  gem 'factory_girl_rails'
-
-  gem 'spork'
+  gem 'spork', '>0.9.0.rc'
+  gem 'sqlite3'
   gem 'tddium-preview'
-
-  gem 'guard-rspec'
-  gem 'guard-spork'
-  gem 'guard-livereload'
 end
 
 group :development do

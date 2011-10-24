@@ -18,6 +18,10 @@ Finginie::Application.routes.draw do
     end
   end
 
+  resource :financial_planner, :only => :show, :controller => :financial_planner do
+    resources :risk_profilers, :only => [:show, :update]
+  end
+
   root :to => 'portfolios#index'
 
 end
