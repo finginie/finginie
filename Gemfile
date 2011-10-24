@@ -12,6 +12,8 @@ group :assets do
 end
 
 gem 'activeadmin'
+gem 'sass-rails' # stupid activeadmin needs this
+gem 'compass', '~> 0.12.alpha.0' # and sass requires this
 gem 'airbrake'
 gem 'cancan'
 #gem 'clearance_omniauth', :git => "git://github.com/LoonyBin/clearance_omniauth.git"
