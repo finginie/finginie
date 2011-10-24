@@ -11,7 +11,7 @@ group :assets do
   gem 'uglifier'
 end
 
-gem 'activeadmin'
+gem 'activeadmin', :git => "git://github.com/TMaYaD/active_admin.git"
 gem 'airbrake'
 gem 'cancan'
 gem 'haml-rails'
