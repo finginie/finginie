@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111019150044) do
+ActiveRecord::Schema.define(:version => 20111020120324) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -97,12 +97,13 @@ ActiveRecord::Schema.define(:version => 20111019150044) do
   add_index "questions", ["quiz_id"], :name => "index_questions_on_quiz_id"
 
   create_table "quizzes", :force => true do |t|
-    t.string   "type"
+    t.string   "result_type"
     t.string   "name"
     t.decimal  "weight"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.string   "buckets"
   end
 
   create_table "responses", :force => true do |t|

@@ -1,8 +1,9 @@
 ActiveAdmin.register Quiz do
- form do |f|
+  form do |f|
     f.inputs do
       f.input :name
       f.input :weight
+      f.input :result_type, :collection => Quiz::RESULT_TYPES, :include_blank => false
     end
 
     f.has_many :questions do |q|
@@ -17,7 +18,6 @@ ActiveAdmin.register Quiz do
         c.input :ceiling
       end
     end
-
     f.buttons
   end
 end

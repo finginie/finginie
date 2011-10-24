@@ -7,7 +7,7 @@ FactoryGirl.define do
     end
 
     #weight "9.99"
-    #text "MyText"
+    text "Are you a good boy?"
     #quiz
 
     after_create do |question, proxy|
