@@ -11,14 +11,41 @@ en:
     error_notification:
       default_message: "Some errors were found, please take a look:"
     # Labels and hints examples
-    # labels:
-    #   password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail para efetuar o sign in.'
-    #     edit:
-    #       email: 'E-mail.'
-    # hints:
-    #   username: 'User name to sign in.'
-    #   password: 'No special characters, please.'
+    labels:
+      # password: 'Password'
+      emi_calculator:
+        cost: 'Cost of Item'
+        down_payment: 'Down payment you made'
+        rate: 'Rate of interest'
+        term: 'Term of the loan(in years)'
+      income_tax_calculator:
+        age: 'Enter Your Age'
+        Sex: 'Sex'
+        metro: 'Is your city metro or non-metro?'
+        basic_salary: 'Your Basic Salary (per month)'
+        house_rent_allowance: 'Your House Rent Allowance (per month)'
+        rent: 'Actual Rent Paid (per month)'
+        medical_allowance: 'Your Medical Allowance (per month)'
+        conveyence_allowance: 'Your Conveyance Allowance (per month)'
+        life_insurance_premium: 'Life Insurance Premium Paid (per annum)'
+        equity_linked_tax_saving: 'Equity Linked Tax Savings (per annum)'
+        pension_fund: 'Pension Fund Savings (per annum)'
+        provident_fund: 'Provident Fund Savings (per annum)'
+        unit_linked_insurance_plan: 'Unit Linked Insurance Plan Savings (per annum)'
+        national_savings_certificate: 'National Savings Certificate (per annum)'
+        fixed_deposits_in_scheduled_banks: 'Fixed Deposits (per annum)'
+        principal_repayment_of_housing_loans: 'Housing Loan Principal Repayment (per annum)'
+        stamp_duty_and_registration_charges: 'Stamp Duty and Registration Charges (per annum)'
+        education_expenses: 'Education Expenses (per annum)'
+        infrastructure_bonds: 'Savings in Infrastructure Bonds (per annum)'
+        interest_paid_or_ayable_on_a_housing_loan: 'Interest Paid(Payable) on Housing Loan (per annum)'
+        health_insurance_premiums_va: 'Health Insurance Premium Paid (per annum)'
+        interest_repayment_on_education_loan: 'Interest Repayment on Education Loan (per annum)'
+
+  helpers:
+    submit:
+      emi_calculator:
+        create: 'Calculate EMI'
+      income_tax_calculator:
+        create: 'Calculate Income Tax Payable'
 

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'PersonalFinancialTools' do
   describe 'income_tax_calculator' do
-    it "should calculate payable_tax", :js => true do
+    it "should calculate payable_tax" do
 
       visit income_tax_calculator_path
       fill_in "income_tax_calculator[age]", :with => 34
@@ -27,7 +27,7 @@ describe 'PersonalFinancialTools' do
       fill_in "income_tax_calculator[interest_on_a_housing_loan]", :with => 250000
       fill_in "income_tax_calculator[health_insurance_premium]", :with => 10000
       fill_in "income_tax_calculator[interest_repayment_on_education_loan]", :with => 60000
-      click_button "Calculate Income Tax Payable"
+      click_button 'Calculate Income Tax Payable'
 
       page.should have_content 249466
 
