@@ -25,6 +25,12 @@ describe StockQuote do
       stock_quote.save.should be_true
     end
 
+    it "should update attributes" do
+      stock_quote.update_attributes({ :volume => "10000", :open_price => "2300"})
+      stock_quote.volume.should eq 10000
+      stock_quote.open_price.should eq 2300
+    end
+
     describe "saved stock_quote" do
       before { stock_quote.save }
       it "should find a stock quote by id" do
@@ -36,6 +42,15 @@ describe StockQuote do
 
       it "should return nil for a missing stock quote" do
         StockQuote.find(999999999).should be_nil
+      end
+
+      pending "should find a stock quote by last traded price range" do
+        StockQuote.find_by_last_traded_price_between( 420, 425 ).first.should be_nil
+        quote = StockQuote.find_by_last_traded_price_between( 426.25, 430 ).first
+        quote.should be_kind_of Array
+        quote.shouldStockQuote
+        quote.company_name.should eq "Aanjaneya Lifecare"
+        quote.last_traded_price.should eq 426.45
       end
     end
   end
