@@ -21,9 +21,8 @@ class EmiCalculator
     false
   end
 
-  def emi
-    i = 1 + rate/1200
-    n = term * 12
-    ((cost - down_payment) * ( i ** n ) * (i - 1) / ( i ** n - 1 )).round
+  def calculate_emi
+    monthly_emi = (cost - down_payment) * ( (1 + rate/1200) ** (term * 12) ) * ( ( 1 + rate/1200 ) - 1) / ( ( 1 + rate/1200 ) ** ( term * 12 ) - 1 )
+    monthly_emi > 0 ? monthly_emi.round(2) : 0.0
   end
 end

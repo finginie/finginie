@@ -1,6 +1,16 @@
 require 'spec_helper'
 
 describe 'PersonalFinancialTools' do
+  it "Should Calculate the correct Emi" do
+    visit emi_calculators_path
+    fill_in      "emi_calculator[cost]",          :with => 400000
+    fill_in      "emi_calculator[down_payment]",  :with => 100000
+    fill_in      "emi_calculator[rate]",          :with => 12.5
+    fill_in      "emi_calculator[term]",          :with => 5
+    click_button "Calculate EMI"
+    page.should have_content("6749.38")
+  end
+
   describe 'income_tax_calculator' do
     it "should calculate payable_tax" do
 
