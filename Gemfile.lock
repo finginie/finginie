@@ -19,12 +19,6 @@ GIT
       sass (>= 3.1.0)
 
 GIT
-  remote: git://github.com/TMaYaD/high_voltage.git
-  revision: 7ed8c73d4f86aafb0450f82fca6042fc9e6c82e7
-  specs:
-    high_voltage (1.0.1)
-
-GIT
   remote: git://github.com/vikashag/nested_form.git
   revision: fc83f0c6dbe076ef6f61a9776c9c4cd06df7332e
   specs:
@@ -143,6 +137,7 @@ GEM
       rest-client (~> 1.6.1)
       rubyzip
       term-ansicolor (~> 1.0.5)
+    high_voltage (1.0.1)
     highline (1.6.5)
     hike (1.2.1)
     httparty (0.8.1)
@@ -173,7 +168,7 @@ GEM
       polyamorous (~> 0.5.0)
     method_source (0.6.7)
       ruby_parser (>= 2.3.1)
-    mime-types (1.17.2)
+    mime-types (1.17.1)
     multi_json (1.0.3)
     multi_xml (0.4.1)
     nokogiri (1.5.0)
@@ -314,7 +309,7 @@ DEPENDENCIES
   guard-spork
   haml-rails
   heroku
-  high_voltage!
+  high_voltage
   inherited_resources
   jquery-rails
   libnotify
