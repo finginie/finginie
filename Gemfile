@@ -18,6 +18,7 @@ gem 'clockwork'
 gem 'haml-rails'
 gem 'inherited_resources'
 gem 'jquery-rails'
+gem 'meta_search'
 gem 'nested_form', :git => "https://github.com/ryanb/nested_form.git"
 gem 'paper_trail'
 gem 'redis'
