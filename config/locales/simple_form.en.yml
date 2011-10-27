@@ -56,6 +56,11 @@ en:
         dependents:
           years: 'Number of years dependent'
           expense: 'Expenses of Dependent per year'
+      sip_calculator:
+        initial_invest: 'Initial Investment (if any)'
+        monthly_amount: 'Monthly Amount you plan to invest'
+        no_months: 'Number of months you plan to invest'
+        ror: 'Rate of return expected'
 
   helpers:
     submit:
@@ -67,4 +72,6 @@ en:
         create: 'Calculate Income Tax Payable'
       life_insurance_calculator:
         create: 'Calculate Additional Insurance Needed'
+      sip_calculator:
+        create: 'Calculate Final Amount Received'
 

@@ -14,4 +14,8 @@ class PersonalFinancialToolsController < ApplicationController
   def life_insurance_calculators
     @life_insurance_calculator = LifeInsuranceCalculator.new(params[:life_insurance_calculator])
   end
+
+  def sip_calculator
+    @sip_calculator = SipCalculator.new(params[:sip_calculator])
+  end
 end

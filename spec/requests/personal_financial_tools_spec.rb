@@ -78,4 +78,14 @@ describe 'PersonalFinancialTools' do
     click_button "Find Maturity Amount Received"
     page.should have_content("10904.13")
   end
+
+  it "Should calculate the correct final sip amount" do
+    visit sip_calculator_path
+    fill_in      "sip_calculator[initial_investment]",        :with => 1
+    fill_in      "sip_calculator[monthly_amount]",            :with => 2000
+    fill_in      "sip_calculator[no_months]",                 :with => 12
+    fill_in      "sip_calculator[rate_of_return]",            :with => 10
+    click_button "Calculate Final Amount Received"
+    page.should have_content("25341.67")
+  end
 end
