@@ -88,4 +88,13 @@ describe 'PersonalFinancialTools' do
     click_button "Calculate Final Amount Received"
     page.should have_content("25341.67")
   end
+
+  it "Should calculate the correct monthly sip" do
+    visit monthly_sip_calculator_path
+    fill_in      "monthly_sip_calculator[financial_goal]", :with => 1000000
+    fill_in      "monthly_sip_calculator[rate_of_return]", :with => 11
+    fill_in      "monthly_sip_calculator[no_months]",      :with => 24
+    click_button "Calculate Monthly Investment"
+    page.should have_content("37101.08")
+  end
 end
