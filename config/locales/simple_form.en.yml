@@ -69,6 +69,12 @@ en:
         ror: 'Rate of Interest'
         no_months: 'Number of months invested'
         interest_compound: 'How is interest compounded?'
+      retirement_corpus_calculator:
+        cur_age: 'Current Age'
+        ret_age: 'Retirement Age'
+        mon_exp: 'Current Monthly Expenditure'
+        inflation: 'Inflation Rate Expected'
+        expected_return: 'Return you can earn by investing'
       sip_calculator:
         initial_invest: 'Initial Investment (if any)'
         monthly_amount: 'Monthly Amount you plan to invest'
@@ -91,6 +97,8 @@ en:
         create: 'Find Rate of Return on the Investment'
       recurring_deposit_calculator:
         create: 'Calculate Maturity Amount Received'
+      retirement_corpus_calculator:
+        create: 'Calculate Monthly Savings'
       sip_calculator:
         create: 'Calculate Final Amount Received'
 

@@ -27,6 +27,10 @@ class PersonalFinancialToolsController < ApplicationController
     @recurring_deposit_calculator = RecurringDepositCalculator.new(params[:recurring_deposit_calculator])
   end
 
+  def retirement_corpus_calculator
+    @retirement_corpus_calculator = RetirementCorpusCalculator.new(params[:retirement_corpus_calculator])
+  end
+
   def sip_calculator
     @sip_calculator = SipCalculator.new(params[:sip_calculator])
   end

@@ -116,4 +116,15 @@ describe 'PersonalFinancialTools' do
     click_button "Calculate Maturity Amount Received"
     page.should have_content("252274.69")
   end
+
+  it "Should calculate the correct required monthly saving" do
+    visit retirement_corpus_calculator_path
+    fill_in      "retirement_corpus_calculator[current_age]",       :with => 42
+    fill_in      "retirement_corpus_calculator[retirement_age]",    :with => 60
+    fill_in      "retirement_corpus_calculator[monthly_expence]",   :with => 15000
+    fill_in      "retirement_corpus_calculator[inflation]",         :with => 6
+    fill_in      "retirement_corpus_calculator[expected_return]",   :with => 9
+    click_button "Calculate Monthly Savings"
+    page.should have_content("14948.55")
+  end
 end
