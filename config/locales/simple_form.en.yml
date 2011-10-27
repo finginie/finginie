@@ -60,6 +60,10 @@ en:
         financial_goal: 'Your Financial Goal'
         ror: 'Rate of Return Expected'
         no_months: 'Number of months you plan to invest'
+      rate_of_return_calculator:
+        initial_invest: 'Initial Investment'
+        received_amount: 'Amount Received'
+        no_years: 'Number of Years Invested'
       sip_calculator:
         initial_invest: 'Initial Investment (if any)'
         monthly_amount: 'Monthly Amount you plan to invest'
@@ -78,6 +82,8 @@ en:
         create: 'Calculate Additional Insurance Needed'
       monthly_sip_calculator:
         create: 'Calculate Monthly Investment'
+      rate_of_return_calculator:
+        create: 'Find Rate of Return on the Investment'
       sip_calculator:
         create: 'Calculate Final Amount Received'
 

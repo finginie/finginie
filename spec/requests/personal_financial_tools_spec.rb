@@ -97,4 +97,13 @@ describe 'PersonalFinancialTools' do
     click_button "Calculate Monthly Investment"
     page.should have_content("37101.08")
   end
+
+  it "Should calculate the correct rate of return" do
+    visit rate_of_return_calculator_path
+    fill_in      "rate_of_return_calculator[initial_investment]", :with => 200000
+    fill_in      "rate_of_return_calculator[received_amount]",    :with => 400000
+    fill_in      "rate_of_return_calculator[no_years]",           :with => 5
+    click_button "Find Rate of Return on the Investment"
+    page.should have_content("14.87")
+  end
 end
