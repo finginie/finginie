@@ -18,6 +18,11 @@ en:
         down_payment: 'Down payment you made'
         rate: 'Rate of interest'
         term: 'Term of the loan(in years)'
+      fixed_deposit_calculator:
+        amount_invested: 'Initial Amount Invested'
+        Ror: 'Rate of Interest Earned'
+        no_months : 'Number of Months you plan to invest'
+        interest_compound: 'How is interest compounded?'
       income_tax_calculator:
         age: 'Enter Your Age'
         Sex: 'Sex'
@@ -56,6 +61,8 @@ en:
     submit:
       emi_calculator:
         create: 'Calculate EMI'
+      fixed_deposit_calculator:
+        create: 'Find Maturity Amount Received'
       income_tax_calculator:
         create: 'Calculate Income Tax Payable'
       life_insurance_calculator:

@@ -68,4 +68,14 @@ describe 'PersonalFinancialTools' do
     click_button "Calculate Additional Insurance Needed"
     page.should have_content("14352006")
   end
+
+  it "Should calculate the correct fixed deposit maturity amount" do
+    visit fixed_deposit_calculators_path
+    fill_in      "fixed_deposit_calculator[amount_invested]", :with => 10000
+    fill_in      "fixed_deposit_calculator[rate_of_return]",  :with => 8.75
+    fill_in      "fixed_deposit_calculator[no_months]",       :with => 12
+    select       "Quarterly"
+    click_button "Find Maturity Amount Received"
+    page.should have_content("10904.13")
+  end
 end
