@@ -41,6 +41,16 @@ en:
         interest_paid_or_ayable_on_a_housing_loan: 'Interest Paid(Payable) on Housing Loan (per annum)'
         health_insurance_premiums_va: 'Health Insurance Premium Paid (per annum)'
         interest_repayment_on_education_loan: 'Interest Repayment on Education Loan (per annum)'
+      life_insurance_calculator:
+        existing_life_insurance: 'Existing Life Insurance (if any)'
+        existing_provident_fund: 'Existing Provident Fund'
+        total_outstanding_liabilities: 'Total Current Liabilities'
+        total_assets: 'Total Current Assets(excluding your primary home and retirement savings)'
+        desired_value_of_bequeathed_estate: 'Value you would like to leave' 
+        family_income: 'Your Annual Family Income (excluding you)'
+        dependents:
+          years: 'Number of years dependent'
+          expense: 'Expenses of Dependent per year'
 
   helpers:
     submit:
@@ -48,4 +58,6 @@ en:
         create: 'Calculate EMI'
       income_tax_calculator:
         create: 'Calculate Income Tax Payable'
+      life_insurance_calculator:
+        create: 'Calculate Additional Insurance Needed'
 

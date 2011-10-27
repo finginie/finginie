@@ -43,4 +43,29 @@ describe 'PersonalFinancialTools' do
 
     end
   end
+
+  it "Should calculate the correct additional life insurance required", :js => true do
+    visit life_insurance_calculators_path
+    fill_in      "life_insurance_calculator[existing_life_insurance]",                :with => 500000
+    fill_in      "life_insurance_calculator[existing_provident_fund]",                :with => 2000000
+    fill_in      "life_insurance_calculator[total_outstanding_liabilities]",          :with => 1500000
+    fill_in      "life_insurance_calculator[total_assets]",                           :with => 5000000
+    fill_in      "life_insurance_calculator[desired_value_of_bequeathed_estate]",     :with => 20000000
+    fill_in      "life_insurance_calculator[family_income]",                          :with => 900000
+    click_link   "Add Dependent"
+    click_link   "Add Dependent"
+
+    fieldsets = page.all("fieldset")
+    within fieldsets.first do
+        fill_in      "years",                                                         :with => 10
+        fill_in      "Expenses",                                                      :with => 800000
+    end
+    within fieldsets.second do
+        fill_in      "years",                                                         :with => 15
+        fill_in      "Expenses",                                                      :with => 300000
+    end
+
+    click_button "Calculate Additional Insurance Needed"
+    page.should have_content("14352006")
+  end
 end

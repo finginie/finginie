@@ -6,4 +6,8 @@ class PersonalFinancialToolsController < ApplicationController
   def income_tax_calculator
     @income_tax_calculator = IncomeTaxCalculator.new(params[:income_tax_calculator])
   end
+
+  def life_insurance_calculators
+    @life_insurance_calculator = LifeInsuranceCalculator.new(params[:life_insurance_calculator])
+  end
 end
