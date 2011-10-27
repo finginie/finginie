@@ -1,0 +1,21 @@
+= simple_form_for @recurring_deposit_calculator, :url => recurring_deposit_calculator_path  do |f|
+  = f.error_notification
+
+  %h4 Recurring Deposit Calculator
+  %ul
+    %li The calculator assumes you are depositing money at the beginning of each month.
+  %br
+
+  .inputs
+    = f.input :amount_deposit
+    = f.input :rate_of_return
+    = f.input :no_months
+    = f.input :interest_compound ,:collection => %w[Monthly Quarterly HalfYearly Yearly], :include_blank => false
+  .actions
+    = f.button :submit
+
+%section#result
+  %h1 Result
+  %label The amount you will receive at maturity is Rs.
+  %b
+    %u= @recurring_deposit_calculator.maturity_amount

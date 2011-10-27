@@ -106,4 +106,14 @@ describe 'PersonalFinancialTools' do
     click_button "Find Rate of Return on the Investment"
     page.should have_content("14.87")
   end
+
+  it "Should calculate the correct recurring deopsit maturity amount" do
+    visit recurring_deposit_calculator_path
+    fill_in      "recurring_deposit_calculator[amount_deposit]", :with => 20000
+    fill_in      "recurring_deposit_calculator[rate_of_return]", :with => 9.25
+    fill_in      "recurring_deposit_calculator[no_months]",      :with => 12
+    select       "Quarterly"
+    click_button "Calculate Maturity Amount Received"
+    page.should have_content("252274.69")
+  end
 end

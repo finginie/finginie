@@ -23,6 +23,10 @@ class PersonalFinancialToolsController < ApplicationController
     @rate_of_return_calculator = RateOfReturnCalculator.new(params[:rate_of_return_calculator])
   end
 
+  def recurring_deposit_calculator
+    @recurring_deposit_calculator = RecurringDepositCalculator.new(params[:recurring_deposit_calculator])
+  end
+
   def sip_calculator
     @sip_calculator = SipCalculator.new(params[:sip_calculator])
   end

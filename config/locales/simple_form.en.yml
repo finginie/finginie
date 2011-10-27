@@ -64,6 +64,11 @@ en:
         initial_invest: 'Initial Investment'
         received_amount: 'Amount Received'
         no_years: 'Number of Years Invested'
+      recurring_deposit_calculator:
+        amount_deposit: 'Amount Deposited Regularly'
+        ror: 'Rate of Interest'
+        no_months: 'Number of months invested'
+        interest_compound: 'How is interest compounded?'
       sip_calculator:
         initial_invest: 'Initial Investment (if any)'
         monthly_amount: 'Monthly Amount you plan to invest'
@@ -84,6 +89,8 @@ en:
         create: 'Calculate Monthly Investment'
       rate_of_return_calculator:
         create: 'Find Rate of Return on the Investment'
+      recurring_deposit_calculator:
+        create: 'Calculate Maturity Amount Received'
       sip_calculator:
         create: 'Calculate Final Amount Received'
 
