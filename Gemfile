@@ -19,12 +19,12 @@ gem 'haml-rails'
 gem 'inherited_resources'
 gem 'jquery-rails'
 gem 'meta_search'
-gem 'nested_form', :git => "https://github.com/ryanb/nested_form.git"
+gem 'nested_form', :git => "git://github.com/ryanb/nested_form.git"
 gem 'paper_trail'
 gem 'redis'
 gem 'simple_form'
 gem 'thin'
-gem 'valuable'
+gem 'valuable', :git => "git://github.com/LoonyBin/valuable.git"
 gem 'zipruby'
 
 group :test, :development do
@@ -36,7 +36,9 @@ group :test, :development do
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'guard-livereload'
+  gem 'libnotify'
   gem 'pry'
+  gem 'rb-inotify'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'shoulda-matchers'

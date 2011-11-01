@@ -97,12 +97,13 @@ ActiveRecord::Schema.define(:version => 20111024124319) do
   add_index "questions", ["quiz_id"], :name => "index_questions_on_quiz_id"
 
   create_table "quizzes", :force => true do |t|
-    t.string   "type"
+    t.string   "result_type"
     t.string   "name"
     t.decimal  "weight"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.string   "buckets"
   end
 
   create_table "responses", :force => true do |t|

@@ -5,8 +5,8 @@ require 'ticker_plant'
 # As these tests stand now, they fetch data from tickerplant and provide reliable data only
 # while the markets are still closed. Also the test data has to be changed day by day
 describe TickerPlant do
-  it "gets and parses the scrip data" do
-    sample =  TickerPlant.data(:scrip)[0]
+  pending "gets and parses the scrip data" do
+    sample =  TickerPlant.fetch_data(:scrip)[0]
     sample[:id].should eq "4283"
     sample[:symbol].should eq "TNTELE"
     sample[:best_buy_qty].should eq "0"
@@ -21,8 +21,8 @@ describe TickerPlant do
     sample[:low_price].should eq "4.25"
   end
 
-  it "gets and parses end of the day data" do
-    sample = TickerPlant.data(:eod)[0]
+  pending "gets and parses end of the day data" do
+    sample = TickerPlant.fetch_data(:stock)[0]
     sample[:id].should eq "1"
     sample[:name].should eq "3i Infotech Ltd"
     sample[:symbol].should eq "3IINFOTECH"
@@ -36,4 +36,5 @@ describe TickerPlant do
     sample[:fifty_two_week_low_date].should eq "26-Aug-11"
   end
 
+  pending "updates the fetched records in the database"
 end
