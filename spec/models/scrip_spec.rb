@@ -61,9 +61,14 @@ describe Scrip do
         end
       end
 
-      pending "should find a scrip by last traded price range" do
-        Scrip.find_ids_by_last_traded_price( 420, 425 ).first.should be_nil
-        Scrip.find_by_last_traded_price_between( 426.25, 430 ).should eq [8118]
+      it "should find a scrip by last traded price range" do
+        Scrip.find_ids_by_last_traded_price( 420, 425 ).should eq []
+        Scrip.find_ids_by_last_traded_price( 426.25, 430 ).should eq [8118]
+      end
+
+      it "should find a scrip by percent change range" do
+        Scrip.find_ids_by_percent_change( 4, 5 ).should eq []
+        Scrip.find_ids_by_percent_change( 1, 2 ).should eq [8118]
       end
     end
   end

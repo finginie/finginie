@@ -6,4 +6,7 @@ class Scrip < RedisRecord
             :percent_change, :open_price, :high_price, :low_price, :close_price
   string    :symbol, :company_name
   datetime  :time
+
+  search_by_range_on :last_traded_price
+  search_by_range_on :percent_change
 end

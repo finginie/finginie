@@ -3,7 +3,13 @@ module RedisRecord::Base
 
   module InstanceMethods
     def save
-      self.persisted = (REDIS.set(key, to_json) == "OK")
+      success = REDIS.multi do
+        REDIS.set(key, to_json)
+        sorted_indices.each do |attr|
+          REDIS.zadd self.class.key(attr), attributes[attr], id
+        end
+      end
+      self.persisted = (success.first == "OK")
     end
 
     def key
@@ -24,6 +30,13 @@ module RedisRecord::Base
 
     def find_or_initialize_by_id(id)
       find(id) || self.new(:id => id)
+    end
+
+    def search_by_range_on(attr)
+      self.sorted_indices += [attr]
+      define_singleton_method "find_ids_by_#{attr}" do |min, max|
+        REDIS.zrangebyscore(key(attr), min, max).map(&:to_i)
+      end
     end
 
     def key(id)
