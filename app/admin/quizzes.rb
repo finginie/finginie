@@ -4,6 +4,7 @@ ActiveAdmin.register Quiz do
       f.input :name
       f.input :weight
       f.input :result_type, :collection => Quiz::RESULT_TYPES, :include_blank => false
+      f.input :buckets
     end
 
     f.has_many :questions do |q|
