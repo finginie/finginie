@@ -1,6 +1,2 @@
-if ENV["REDISTOGO_URL"]
-  uri = URI.parse(ENV["REDISTOGO_URL"])
-  REDIS = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
-else
-  REDIS = Redis.new
-end
+redis = YAML.load(ERB.new(File.read(Rails.root.join('config','redis.yml'))).result)[Rails.env]
+REDIS = Redis.new(redis.symbolize_keys)
