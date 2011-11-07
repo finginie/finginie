@@ -1,19 +1,18 @@
-%h1 Securities
+- net_positions.group_by { |net_position| net_position.security.type }.each do |type, positions|
+  %section{:class => type}
+    %h1=t ".#{type}"
+    %table
+      %tr
+        %th name
+        %th
 
-%table
-  %tr
-    %th Security
-    %th
-
-  - net_positions.each do |net_position|
-    %tr
-      %td= link_to net_position.security.name, portfolio_net_position_path(@portfolio, net_position)
-      %td.actions
-        = button_to 'Add Transaction', new_portfolio_net_position_transaction_path(@portfolio, net_position), :method => :get
-        = button_to 'Change Security', edit_portfolio_net_position_path(@portfolio, net_position), :method => :get
-        = button_to 'Destroy', portfolio_net_position_path(@portfolio, net_position), :confirm => 'Are you sure?', :method => :delete, :class => :negetive
-
-%br
+      - positions.each do |net_position|
+        %tr
+          %td= link_to net_position.security.name, portfolio_net_position_path(@portfolio, net_position)
+          %td.actions
+            = button_to 'Add Transaction', new_portfolio_net_position_transaction_path(@portfolio, net_position), :method => :get
+            = button_to 'Change Security', edit_portfolio_net_position_path(@portfolio, net_position), :method => :get
+            = button_to 'Destroy', portfolio_net_position_path(@portfolio, net_position), :confirm => 'Are you sure?', :method => :delete, :class => :negetive
 
 .actions
   - %w(Stock FixedIncome Loan RealEstate OtherAsset OtherLiability).each do |security_type|
