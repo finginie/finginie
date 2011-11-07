@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe "Stocks" do
-  let (:portfolio) { create :portfolio }
   let (:stock) { create :stock }
-  let (:net_position) { create :net_position, :stock => stock, :portfolio => portfolio }
-  before do
-    stock.transactions.create( :quantity => 100, :price => 653, :date => 1.day.ago )
-    stock.transactions.create( :quantity => -57, :price => 700, :date => 2.days.ago )
-  end
+  let (:scrip) { create :scrip, :id => stock.id, :last_traded_price => 24.22 }
 
+  it "shows the stock details" do
+    scrip.save
+    visit stock_path stock
+    page.should have_content 24.22
+  end
 end

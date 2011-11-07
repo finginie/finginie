@@ -2,15 +2,16 @@ require 'spec_helper'
 
 describe "NetPositions" do
   describe "Add new net position" do
-    let (:portfolio) { create :portfolio }
+    let (:portfolio) { create :portfolio, :user_id => user.id }
     let (:stock) { create :stock }
 
+    login_user
     before :each do
       visit portfolio_path(portfolio)
     end
 
     it "adds new stock position" do
-      stock # ensure stock is created
+      stock.save # ensure stock is created
       click_on 'Add New Stock'
       select stock.name, :from => "Security"
 
