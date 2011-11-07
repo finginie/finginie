@@ -4,20 +4,20 @@ describe Scrip, :redis do
   #it_should_behave_like "ActiveModel"
 
   let (:scrip) { Scrip.new :id => "8118",
-                                      :symbol => "AANJANEYA",
-                                      :company_name => "Aanjaneya Lifecare",
-                                      :best_buy_quantity => "9008",
-                                      :best_buy_price => "426.45",
-                                      :best_sell_qty => "0",
-                                      :best_sell_price => "0",
-                                      :last_traded_price => "426.45",
-                                      :volume => "87942",
-                                      :net_change => "4.55",
-                                      :percent_change => "1.08",
-                                      :open_price => "425.40",
-                                      :high_price => "432.5",
-                                      :low_price => "419.15",
-                                      :close_price => "421.90" }
+                           :symbol => "AANJANEYA",
+                           :company_name => "Aanjaneya Lifecare",
+                           :best_buy_quantity => "9008",
+                           :best_buy_price => "426.45",
+                           :best_sell_quantity => "0",
+                           :best_sell_price => "0",
+                           :last_traded_price => "426.45",
+                           :volume => "87942",
+                           :net_change => "4.55",
+                           :percent_change => "1.08",
+                           :open_price => "425.40",
+                           :high_price => "432.5",
+                           :low_price => "419.15",
+                           :close_price => "421.90" }
   subject { scrip }
 
   it "should be persisted" do

@@ -24,7 +24,7 @@ module Finginie
       g.test_framework  :rspec,
                         :fixture          => true,
                         :helper_specs     => false,
-                        :controller_specs => true,
+                        :controller_specs => false,
                         :view_specs       => false
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end

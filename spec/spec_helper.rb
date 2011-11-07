@@ -27,7 +27,6 @@ Spork.prefork do
 
     # mix factory girl
     config.include Factory::Syntax::Methods
-
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, remove the following line or assign false
     # instead of true.
@@ -38,5 +37,7 @@ end
 
 Spork.each_run do
   # This code will be run each time you run your specs.
-
+  RSpec.configure do |config|
+    config.extend DeviseMacros, :type => :request
+  end
 end

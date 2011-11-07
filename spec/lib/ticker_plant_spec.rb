@@ -11,7 +11,7 @@ describe TickerPlant do
     sample[:symbol].should eq "TNTELE"
     sample[:best_buy_quantity].should eq "0"
     sample[:best_buy_price].should eq "0.00"
-    sample[:best_sell_qty].should eq "0"
+    sample[:best_sell_quantity].should eq "0"
     sample[:best_sell_price].should eq "0.00"
     sample[:last_traded_price].should eq "4.30"
     sample[:volume].should eq "8631"

@@ -4,12 +4,15 @@
     %title FinGinie
     = stylesheet_link_tag :application
     = javascript_include_tag :application
-    = airbrake_javascript_notifier
+    = raw airbrake_javascript_notifier
     = csrf_meta_tags
   %body
     %header
       %nav.user
-        -# user control links here
+        - if current_user
+          = button_to 'Sign out', destroy_user_session_path, :method => :delete
+        - else
+          =button_to 'Sign in', new_user_session_path
       %hgroup.title
         = link_to root_path do
           = image_tag 'logo.png', :alt => 'Finginie'

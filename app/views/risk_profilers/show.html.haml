@@ -1,0 +1,12 @@
+%h1= @risk_profiler.quiz.name
+
+= simple_form_for @risk_profiler, :url => financial_planner_risk_profiler_path(@risk_profiler), :method => :put do |f|
+  %ol
+    = f.simple_fields_for :responses do |r|
+      %li
+        %p= r.object.question.text
+        =r.input :choice_id, :as => :radio, :collection => r.object.question.choices, :label_method => :text
+  .actions
+    = f.submit 'Submit'
+
+= link_to 'Back', :back

@@ -11,9 +11,11 @@ group :assets do
   gem 'uglifier'
 end
 
+gem 'activeadmin', :git => "git://github.com/TMaYaD/active_admin.git"
+gem 'sass-rails' # stupid activeadmin needs this
+gem 'compass', '~> 0.12.alpha.0' # and sass requires this
 gem 'airbrake'
 gem 'cancan'
-gem 'clearance_omniauth', :git => "git://github.com/LoonyBin/clearance_omniauth.git"
 gem 'clockwork'
 gem 'haml-rails'
 gem 'inherited_resources'
@@ -35,7 +37,6 @@ group :test, :development do
   gem 'guard-livereload'
   gem 'guard-rspec'
   gem 'guard-spork'
-  gem 'guard-livereload'
   gem 'libnotify'
   gem 'pry'
   gem 'rb-inotify'
@@ -44,6 +45,11 @@ group :test, :development do
   gem 'shoulda-matchers'
   gem 'spork', '>0.9.0.rc'
   gem 'sqlite3'
+  gem 'tddium-preview'
+end
+
+group :development do
+  gem 'heroku'
 end
 
 group :production do
