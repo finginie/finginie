@@ -1,9 +1,10 @@
 require 'clockwork'
+require File.expand_path('../../config/environment', __FILE__)
 
 include Clockwork
 
 handler do |job|
-  TickerPlant.update(job)
+  TickerPlant.update_records(job)
   # TODO: Stop clockwork if job == :stock
 end
 

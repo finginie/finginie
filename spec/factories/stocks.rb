@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :stock, :parent => :security, :class => Stock do
-    sequence(:name) { |n| "Company #{n}" }
+    sequence(:name, Time.now.to_i) { |n| "Company #{n}" }
   end
 end

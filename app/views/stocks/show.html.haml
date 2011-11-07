@@ -1,9 +1,24 @@
-%p#notice= notice
+%section
+  - %w(symbol name asset_class sector).each do |attr|
+    %div{:class => attr}
+      %dt= t ".#{attr}"
+      %dd= @stock.send(attr)
+%section.daily_prices
+  %dl
+    - %w(last_traded_price last_close_price percent_change day_change volume day_open_price high_price low_price).each do |attr|
+      %dt= t ".#{attr}"
+      %dd= @stock.send(attr)
 
-%p
-  %b Name:
-  = @stock.name
+%section.fundamentals
+  %dl
+    - %w(eps pe fifty_two_week_high_price fifty_two_week_low_price fifty_two_week_high_date fifty_two_week_low_date beta).each do |attr|
+      %dt= t ".#{attr}"
+      %dd= @stock.send(attr)
 
-= link_to 'Edit', edit_stock_path(@stock)
-\|
+%section.trade_prices
+  %dl
+    - %w(best_buy_price best_buy_quantity best_sell_price best_sell_quantity).each do |attr|
+      %dt= t ".#{attr}"
+      %dd= @stock.send(attr)
+
 = link_to 'Back', stocks_path

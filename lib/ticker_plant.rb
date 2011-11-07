@@ -2,8 +2,6 @@ require 'net/ftp'
 require 'zipruby'
 require 'csv'
 
-require File.expand_path('../../config/environment', __FILE__)
-
 class TickerPlant
   DATA_SOURCES = {
     :scrip => {
@@ -24,9 +22,9 @@ class TickerPlant
       :id => 0,
       :symbol => 1,
       :time => 4,
-      :best_buy_qty => 5,
+      :best_buy_quantity => 5,
       :best_buy_price => 6,
-      :best_sell_qty => 7,
+      :best_sell_quantity => 7,
       :best_sell_price => 8,
       :last_traded_price => 9,
       :volume => 10,

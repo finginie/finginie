@@ -9,7 +9,7 @@ describe TickerPlant do
     sample =  TickerPlant.fetch_data(:scrip)[0]
     sample[:id].should eq "4283"
     sample[:symbol].should eq "TNTELE"
-    sample[:best_buy_qty].should eq "0"
+    sample[:best_buy_quantity].should eq "0"
     sample[:best_buy_price].should eq "0.00"
     sample[:best_sell_qty].should eq "0"
     sample[:best_sell_price].should eq "0.00"

@@ -6,7 +6,7 @@ describe Scrip, :redis do
   let (:scrip) { Scrip.new :id => "8118",
                                       :symbol => "AANJANEYA",
                                       :company_name => "Aanjaneya Lifecare",
-                                      :best_buy_qty => "9008",
+                                      :best_buy_quantity => "9008",
                                       :best_buy_price => "426.45",
                                       :best_sell_qty => "0",
                                       :best_sell_price => "0",

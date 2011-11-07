@@ -11,6 +11,9 @@ describe Stock do
       create :scrip, :id => stock.id, :last_traded_price => 24, :percent_change => 50
     end
 
+    its(:last_traded_price) { should eq 24 }
+    its(:percent_change) { should eq 50 }
+
     it "should filter by last traded price range" do
       another_stock = create :stock
       create :scrip, :id => another_stock.id, :last_traded_price => 30
