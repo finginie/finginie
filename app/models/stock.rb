@@ -8,4 +8,8 @@ class Stock < Security
   def scrip
     Scrip.find(id)
   end
+
+  def current_value(transaction)
+    last_traded_price
+  end
 end

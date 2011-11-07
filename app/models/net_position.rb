@@ -32,7 +32,7 @@ class NetPosition < ActiveRecord::Base
   end
 
   def current_value
-    quantity * security.current_price
+    transactions.map(&:current_value).inject(:+)
   end
 
   def average_cost
@@ -40,7 +40,7 @@ class NetPosition < ActiveRecord::Base
   end
 
   def unrealised_profit
-    quantity * ( security.current_price - average_cost )
+    current_value - quantity * average_cost
   end
 
   def profit

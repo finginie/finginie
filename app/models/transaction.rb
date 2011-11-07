@@ -11,6 +11,10 @@ class Transaction < ActiveRecord::Base
     quantity < 0 ? quantity * (price - average_cost) : 0
   end
 
+  def current_value
+    quantity * net_position.security.current_value(self)
+  end
+
 private
   def average_cost
     previous_buy_transactions.sum("quantity * price").to_f / previous_buy_transactions.sum("quantity")
