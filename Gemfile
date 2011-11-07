@@ -46,6 +46,7 @@ group :test, :development do
   gem 'spork', '>0.9.0.rc'
   gem 'sqlite3'
   gem 'tddium-preview'
+  gem 'timecop'
 end
 
 group :development do

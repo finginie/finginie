@@ -12,7 +12,7 @@ class Transaction < ActiveRecord::Base
   end
 
   def current_value
-    quantity * net_position.security.current_value(self)
+    quantity * net_position.security.current_value(self).round
   end
 
 private
