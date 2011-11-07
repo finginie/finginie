@@ -12,6 +12,8 @@ module RedisRecord::Base
       self.persisted = (success.first == "OK")
     end
 
+    alias save! save
+
     def key
       self.class.key(id)
     end
