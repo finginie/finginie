@@ -17,7 +17,8 @@ describe "NetPositions" do
 
       fill_in "Price", :with => 200
       #fill_in "Date", :with => "29-11-2010"
-      fill_in "Quantity", :with => 30
+      select 'buy', :from => "Action"
+      fill_in "Amount", :with => 30
       click_on "Create Net position"
 
       page.should have_content 'successfully created'
@@ -34,7 +35,8 @@ describe "NetPositions" do
 
       fill_in "Price", :with => 200
       #fill_in "Date", :with => "29-11-2010"
-      fill_in "Quantity", :with => 30
+      select 'buy', :from => "Action"
+      fill_in "Amount", :with => 30
       click_on "Create Net position"
 
       page.should have_content 'successfully created'
@@ -51,7 +53,8 @@ describe "NetPositions" do
 
       fill_in "Price", :with => 200
       #fill_in "Date", :with => "29-11-2010"
-      fill_in "Quantity", :with => 30
+      select 'buy', :from => "Action"
+      fill_in "Amount", :with => 30
       click_on "Create Net position"
 
       page.should have_content 'successfully created'
@@ -68,7 +71,8 @@ describe "NetPositions" do
 
       fill_in "Price", :with => 200
       #fill_in "Date", :with => "29-11-2010"
-      fill_in "Quantity", :with => 30
+      select 'buy', :from => "Action"
+      fill_in "Amount", :with => 30
       click_on "Create Net position"
 
       page.should have_content 'successfully created'
@@ -84,7 +88,8 @@ describe "NetPositions" do
 
       fill_in "Price", :with => 200
       #fill_in "Date", :with => "29-11-2010"
-      fill_in "Quantity", :with => 30
+      select 'buy', :from => "Action"
+      fill_in "Amount", :with => 30
       click_on "Create Net position"
 
       page.should have_content 'successfully created'
@@ -100,7 +105,8 @@ describe "NetPositions" do
 
       fill_in "Price", :with => 200
       #fill_in "Date", :with => "29-11-2010"
-      fill_in "Quantity", :with => 30
+      select 'buy', :from => "Action"
+      fill_in "Amount", :with => 30
       click_on "Create Net position"
 
       page.should have_content 'successfully created'

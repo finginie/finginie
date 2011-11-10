@@ -15,6 +15,22 @@ class Transaction < ActiveRecord::Base
     quantity * net_position.security.current_value(self).round
   end
 
+  def action
+    (quantity < 0 ? :sell : :buy) if quantity
+  end
+  def action=(action)
+    set_quantity(amount, action)
+    action
+  end
+
+  def amount
+    quantity && quantity.abs
+  end
+  def amount=(amount)
+    set_quantity(amount, action)
+    amount
+  end
+
 private
   def average_cost
     previous_buy_transactions.sum("quantity * price").to_f / previous_buy_transactions.sum("quantity")
@@ -30,5 +46,11 @@ private
 
   def date_should_not_be_in_the_future
     errors.add(:date, "can't be in the future") if !date.blank? and date > Date.today
+  end
+
+  def set_quantity(amount, action)
+    action ||= :buy
+    amount ||= 0
+    self.quantity = { :buy => 1, :sell => -1}[action.to_sym] * amount.to_i
   end
 end
