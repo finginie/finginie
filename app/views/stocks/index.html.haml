@@ -1,19 +1,34 @@
+- content_for :aside do
+  = simple_form_for @search, :url => collection_path, :html => {:novalidate => true} do |f|
+    = f.input :name_contains
+    = f.input :sector_equals
+    =# f.input :last_traded_price_greater_than_or_equal_to
+    =# f.input :last_traded_price_less_than_or_equal_to
+    = f.input :beta_greater_than_or_equal_to
+    = f.input :beta_less_than_or_equal_to
+    = f.input :pe_greater_than_or_equal_to
+    = f.input :pe_less_than_or_equal_to
+    = f.input :eps_greater_than_or_equal_to
+    = f.input :eps_less_than_or_equal_to
+    =# f.input :percentage_change_greater_than_or_equal_to
+    =# f.input :percentage_change_less_than_or_equal_to
+
+    =f.submit 'Search'
+
 %h1 Listing stocks
 
 %table
   %tr
-    %th Name
-    %th
-    %th
-    %th
+    %th= sort_link @search, :name
+    %th= sort_link @search, :sector
+    %th= sort_link @search, :beta
+    %th= sort_link @search, :pe
+    %th= sort_link @search, :eps
 
   - @stocks.each do |stock|
     %tr
-      %td= stock.name
-      %td= link_to 'Show', stock
-      %td= link_to 'Edit', edit_stock_path(stock)
-      %td= link_to 'Destroy', stock, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Stock', new_stock_path
+      %td= link_to stock.name, resource_path(stock)
+      %td= stock.sector
+      %td= stock.beta
+      %td= stock.pe
+      %td= stock.eps

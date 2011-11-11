@@ -3,10 +3,6 @@ require "spec_helper"
 describe NetPositionsController do
   describe "routing" do
 
-    it "routes to #index" do
-      get("/portfolios/1/net_positions").should route_to("net_positions#index", :portfolio_id => "1")
-    end
-
     it "routes to #new" do
       get("/portfolios/1/net_positions/new").should route_to("net_positions#new", :portfolio_id => "1")
     end

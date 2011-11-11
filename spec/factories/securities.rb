@@ -9,8 +9,6 @@ FactoryGirl.define do
     #rate_of_interest "9.99"
     #location "MyText"
     #emi "9.99"
-    factory :stock, :class => Stock do
-    end
     factory :real_estate, :class => RealEstate do
     end
     factory :fixed_income, :class => FixedIncome do

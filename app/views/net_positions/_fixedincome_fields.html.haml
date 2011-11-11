@@ -1,0 +1,5 @@
+= f.fields_for :security do |income|
+  = income.input :type, :as => :hidden
+  = income.input :name
+  = income.input :period
+  = income.input :rate_of_interest

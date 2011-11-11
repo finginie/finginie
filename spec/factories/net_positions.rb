@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :net_position do
-      #portfolio
-        #security
-    end
+    portfolio
+    security
+  end
 end

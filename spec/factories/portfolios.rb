@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :portfolio do
-      #name "MyString"
-        #user
-    end
+    sequence(:name, Time.now.to_i) { |n| "portfolio #{n}" }
+    user
+  end
 end

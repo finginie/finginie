@@ -1,9 +1,13 @@
-= simple_form_for([parent, resource]) do |f|
+= simple_nested_form_for([parent, resource]) do |f|
   = f.error_notification
 
-  .inputs
-    = f.association :portfolio
-    = f.association :security
+  .security
+    = render "#{resource.security.type.downcase}_fields", :f => f
+
+  .transactions
+    = f.fields_for :transactions
+
+    = f.link_to_add "Add another Transaction", :transactions
 
   .actions
     = f.button :submit

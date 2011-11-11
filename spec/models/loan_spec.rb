@@ -1,5 +1,14 @@
 require 'spec_helper'
 
 describe Loan do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:loan) { create :loan, :period => 5, :rate_of_interest => 12.5 }
+  describe "transaction" do
+    let(:transaction) { create :transaction, :net_position => create(:net_position, :security => loan), :price => 300000, :date => Date.civil(2011, 8, 01) }
+    subject { transaction }
+    its(:current_value) {
+      Timecop.freeze Date.civil(2011, 11, 11) do
+        should eq -285276
+      end
+    }
+  end
 end

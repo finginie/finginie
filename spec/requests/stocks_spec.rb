@@ -1,11 +1,12 @@
 require 'spec_helper'
 
 describe "Stocks" do
-  describe "GET /stocks" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get stocks_path
-      response.status.should be(200)
-    end
+  let (:stock) { create :stock }
+  let (:scrip) { create :scrip, :id => stock.id, :last_traded_price => 24.22 }
+
+  it "shows the stock details" do
+    scrip.save
+    visit stock_path stock
+    page.should have_content 24.22
   end
 end

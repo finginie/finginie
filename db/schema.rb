@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111020120324) do
+ActiveRecord::Schema.define(:version => 20111024124319) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -138,6 +138,19 @@ ActiveRecord::Schema.define(:version => 20111020120324) do
     t.decimal  "emi"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "sector"
+    t.decimal  "beta"
+    t.integer  "pe"
+    t.integer  "eps"
+    t.decimal  "last_close_price"
+    t.decimal  "day_change"
+    t.decimal  "day_open_price"
+    t.string   "symbol"
+    t.string   "asset_class"
+    t.decimal  "fifty_two_week_high_price"
+    t.decimal  "fifty_two_week_low_price"
+    t.date     "fifty_two_week_high_date"
+    t.date     "fifty_two_week_low_date"
   end
 
   add_index "securities", ["user_id"], :name => "index_securities_on_user_id"

@@ -7,8 +7,8 @@ module DeviseMacros
   end
 
   def login_user
+    let(:user) { Factory.create :user }
     before :each do
-      user = Factory.create(:user)
       visit new_user_session_path
       within "#user_new" do
         fill_in 'Password', :with => user.password
