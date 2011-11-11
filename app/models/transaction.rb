@@ -15,6 +15,10 @@ class Transaction < ActiveRecord::Base
     quantity * net_position.security.current_value(self).round
   end
 
+  def maturity_value
+    quantity * net_position.security.maturity_value(self).round
+  end
+
   def action
     (quantity < 0 ? :sell : :buy) if quantity
   end
