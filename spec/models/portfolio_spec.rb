@@ -27,7 +27,9 @@ describe Portfolio do
     add_other_liability(portfolio, 525000)
     add_other_liability(portfolio, 730000)
 
-    portfolio.net_worth.should eq 4045056
+    Timecop.freeze Date.civil(2011, 11, 11) do
+      portfolio.net_worth.should eq 4045056
+    end
   end
 
   def add_stock_position(portfolio, quantity, price)
