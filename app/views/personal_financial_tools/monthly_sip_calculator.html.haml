@@ -1,0 +1,22 @@
+= simple_form_for @monthly_sip_calculator, :url => monthly_sip_calculator_path do |f|
+  = f.error_notification
+
+  %h4 Monthly SIP Calculator
+  %ul
+    %li It is assumed that you make the monthly saving at the beginning of each month.
+    %li The rate of return is effective annual rate which is compounded monthly.
+  %br
+
+
+  .inputs
+    = f.input :financial_goal
+    = f.input :rate_of_return
+    = f.input :no_months
+  .actions
+    = f.button :submit
+
+%section#result
+  %h1 Result
+  %label The monthly amount you need to invest to reach your goal is Rs.
+  %b
+    %u= @monthly_sip_calculator.monthly_sip

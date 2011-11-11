@@ -1,0 +1,31 @@
+= simple_nested_form_for @life_insurance_calculator do |f|
+  = f.error_notification
+
+  %h4 Life Insurance Calculator
+  %ul
+    %li It is assumed that your family income will not contribute to your desired estate value even if the family income is more than enough to cover your dependents’ expenses.
+    %li Only you will contribute to your desired estate value.
+  %br
+
+  .inputs
+    = f.input :existing_life_insurance
+    = f.input :existing_provident_fund
+    = f.input :total_outstanding_liabilities
+    = f.input :total_assets
+    = f.input :desired_value_of_bequeathed_estate
+    = f.input :family_income
+    = f.fields_for :dependents do |d|
+      %fieldset.dependent
+        = d.input :years
+        = d.input :expense
+        = d.link_to_remove "Remove Dependent"
+    = f.link_to_add "Add Dependent", :dependents, :model_class => LifeInsuranceCalculator::Dependent
+
+  .actions
+    = f.button :submit
+
+%section#result
+  %h1 Result
+  %label According to the information you entered, the total insurance you need is Rs.
+  %b
+    %u= @life_insurance_calculator.extra_insurance_required

@@ -21,7 +21,7 @@ gem 'haml-rails'
 gem 'inherited_resources'
 gem 'jquery-rails'
 gem 'meta_search'
-gem 'nested_form', :git => "git://github.com/ryanb/nested_form.git"
+gem 'nested_form', :git => 'git://github.com/vikashag/nested_form.git'
 gem 'paper_trail'
 gem 'redis'
 gem 'simple_form'

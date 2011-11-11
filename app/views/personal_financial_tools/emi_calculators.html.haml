@@ -1,0 +1,23 @@
+= simple_form_for @emi_calculator do |f|
+  = f.error_notification
+
+  %h4 Loan EMI Calculator.
+  %ul
+    %li EMI is calculated based on monthly reducing balance and not on daily reducing balance or annual reducing balance.
+    %li Additional charges like processing fees are not taken into account. Please consult the lending institution for these charges.
+    %li EMI Calculator calculates EMI in arrears (when you pay EMI at the end of the month) and not EMI in advance (when you pay EMI at the start of the loan followed by beginning of each month).
+  %br
+
+  .inputs
+    = f.input :cost
+    = f.input :down_payment
+    = f.input :rate
+    = f.input :term
+  .actions
+    = f.button :submit
+
+%section#result
+  %h1 Result
+  %label The equated monthly installment is Rs.
+  %b
+    %u= @emi_calculator.calculate_emi

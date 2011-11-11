@@ -1,0 +1,40 @@
+= simple_form_for @income_tax_calculator, :url => income_tax_calculator_path do |f|
+  = f.error_notification
+
+  %h4 Income Tax Calculator
+  %ul
+    %li Please note that the deductions shown below are not exhaustive. Please consult a professional tax planner to save your taxes.
+  %br
+
+  .inputs
+    = f.input :age
+    = f.input :sex, :collection => %w[Male FeMale], :as => :radio
+    = f.input :metro, :collection => %w[true false], :as => :radio
+    = f.input :basic_salary
+    = f.input :house_rent_allowance
+    = f.input :rent
+    = f.input :medical_allowance
+    = f.input :conveyence_allowance
+    = f.input :life_insurance_premium
+    = f.input :equity_linked_tax_saving
+    = f.input :pension_fund
+    = f.input :provident_fund
+    = f.input :unit_linked_insurance_plan
+    = f.input :national_savings_certificate
+    = f.input :fixed_deposits_in_scheduled_banks
+    = f.input :principal_repayment_of_housing_loans
+    = f.input :stamp_duty_and_registration_charges
+    = f.input :education_expenses
+    = f.input :infrastructure_bonds
+    = f.input :interest_on_a_housing_loan
+    = f.input :health_insurance_premium
+    = f.input :interest_repayment_on_education_loan
+
+  .actions
+    = f.button :submit
+
+%section#result
+  %h1 Result
+  %label The net tax you are liable to pay is Rs.
+  %b
+    %u= @income_tax_calculator.tax_payable
