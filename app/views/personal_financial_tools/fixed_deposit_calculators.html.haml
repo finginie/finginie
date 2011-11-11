@@ -1,0 +1,21 @@
+= simple_form_for @fixed_deposit_calculator do |f|
+  = f.error_notification
+
+  %h4 Fixed Deposit Calculator
+  %ul
+    %li The calculator assumes you are depositing money at the beginning of each month.
+  %br
+
+  .inputs
+    = f.input :amount_invested
+    = f.input :rate_of_return
+    = f.input :no_months
+    = f.input :interest_compound ,:collection => %w[Monthly Quarterly HalfYearly Yearly], :include_blank => false
+  .actions
+    = f.button :submit
+
+%section#result
+  %h1 Result
+  %label The amount you will receive at maturity is Rs.
+  %b
+    %u= @fixed_deposit_calculator.maturity_amount

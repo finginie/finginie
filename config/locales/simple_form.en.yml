@@ -11,14 +11,94 @@ en:
     error_notification:
       default_message: "Some errors were found, please take a look:"
     # Labels and hints examples
-    # labels:
-    #   password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail para efetuar o sign in.'
-    #     edit:
-    #       email: 'E-mail.'
-    # hints:
-    #   username: 'User name to sign in.'
-    #   password: 'No special characters, please.'
+    labels:
+      # password: 'Password'
+      emi_calculator:
+        cost: 'Cost of Item'
+        down_payment: 'Down payment you made'
+        rate: 'Rate of interest'
+        term: 'Term of the loan(in years)'
+      fixed_deposit_calculator:
+        amount_invested: 'Initial Amount Invested'
+        Ror: 'Rate of Interest Earned'
+        no_months : 'Number of Months you plan to invest'
+        interest_compound: 'How is interest compounded?'
+      income_tax_calculator:
+        age: 'Enter Your Age'
+        Sex: 'Sex'
+        metro: 'Is your city metro or non-metro?'
+        basic_salary: 'Your Basic Salary (per month)'
+        house_rent_allowance: 'Your House Rent Allowance (per month)'
+        rent: 'Actual Rent Paid (per month)'
+        medical_allowance: 'Your Medical Allowance (per month)'
+        conveyence_allowance: 'Your Conveyance Allowance (per month)'
+        life_insurance_premium: 'Life Insurance Premium Paid (per annum)'
+        equity_linked_tax_saving: 'Equity Linked Tax Savings (per annum)'
+        pension_fund: 'Pension Fund Savings (per annum)'
+        provident_fund: 'Provident Fund Savings (per annum)'
+        unit_linked_insurance_plan: 'Unit Linked Insurance Plan Savings (per annum)'
+        national_savings_certificate: 'National Savings Certificate (per annum)'
+        fixed_deposits_in_scheduled_banks: 'Fixed Deposits (per annum)'
+        principal_repayment_of_housing_loans: 'Housing Loan Principal Repayment (per annum)'
+        stamp_duty_and_registration_charges: 'Stamp Duty and Registration Charges (per annum)'
+        education_expenses: 'Education Expenses (per annum)'
+        infrastructure_bonds: 'Savings in Infrastructure Bonds (per annum)'
+        interest_paid_or_ayable_on_a_housing_loan: 'Interest Paid(Payable) on Housing Loan (per annum)'
+        health_insurance_premiums_va: 'Health Insurance Premium Paid (per annum)'
+        interest_repayment_on_education_loan: 'Interest Repayment on Education Loan (per annum)'
+      life_insurance_calculator:
+        existing_life_insurance: 'Existing Life Insurance (if any)'
+        existing_provident_fund: 'Existing Provident Fund'
+        total_outstanding_liabilities: 'Total Current Liabilities'
+        total_assets: 'Total Current Assets(excluding your primary home and retirement savings)'
+        desired_value_of_bequeathed_estate: 'Value you would like to leave' 
+        family_income: 'Your Annual Family Income (excluding you)'
+        dependents:
+          years: 'Number of years dependent'
+          expense: 'Expenses of Dependent per year'
+      monthly_sip_calculator:
+        financial_goal: 'Your Financial Goal'
+        ror: 'Rate of Return Expected'
+        no_months: 'Number of months you plan to invest'
+      rate_of_return_calculator:
+        initial_invest: 'Initial Investment'
+        received_amount: 'Amount Received'
+        no_years: 'Number of Years Invested'
+      recurring_deposit_calculator:
+        amount_deposit: 'Amount Deposited Regularly'
+        ror: 'Rate of Interest'
+        no_months: 'Number of months invested'
+        interest_compound: 'How is interest compounded?'
+      retirement_corpus_calculator:
+        cur_age: 'Current Age'
+        ret_age: 'Retirement Age'
+        mon_exp: 'Current Monthly Expenditure'
+        inflation: 'Inflation Rate Expected'
+        expected_return: 'Return you can earn by investing'
+      sip_calculator:
+        initial_invest: 'Initial Investment (if any)'
+        monthly_amount: 'Monthly Amount you plan to invest'
+        no_months: 'Number of months you plan to invest'
+        ror: 'Rate of return expected'
+
+  helpers:
+    submit:
+      emi_calculator:
+        create: 'Calculate EMI'
+      fixed_deposit_calculator:
+        create: 'Find Maturity Amount Received'
+      income_tax_calculator:
+        create: 'Calculate Income Tax Payable'
+      life_insurance_calculator:
+        create: 'Calculate Additional Insurance Needed'
+      monthly_sip_calculator:
+        create: 'Calculate Monthly Investment'
+      rate_of_return_calculator:
+        create: 'Find Rate of Return on the Investment'
+      recurring_deposit_calculator:
+        create: 'Calculate Maturity Amount Received'
+      retirement_corpus_calculator:
+        create: 'Calculate Monthly Savings'
+      sip_calculator:
+        create: 'Calculate Final Amount Received'
 

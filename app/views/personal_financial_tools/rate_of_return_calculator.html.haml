@@ -1,0 +1,19 @@
+= simple_form_for @rate_of_return_calculator, :url => rate_of_return_calculator_path do |f|
+  = f.error_notification
+
+  %h4 Rate of Return Calculator
+
+  .inputs
+    = f.input :initial_investment
+    = f.input :received_amount
+    = f.input :no_years
+
+  .actions
+    = f.button :submit
+
+%section#result
+  %h1 Result
+  %label The rate of return earned on your investment is
+  %b
+    %u= @rate_of_return_calculator.calculate_rate_of_return
+    %u %
