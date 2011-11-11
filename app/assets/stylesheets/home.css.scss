@@ -17,7 +17,7 @@
   50% { 
     opacity: 0;
   }
-  100% { 
+  100% {
     opacity: 1;
   }
 }
@@ -160,7 +160,8 @@ $promotions-height: 8em;
 
     a {
       text-decoration: none;
-      padding-bottom: 3px
+      padding-bottom: 3px;
+      target-new: window;
     }
 
     li.active a {
@@ -301,5 +302,258 @@ $promotions-height: 8em;
     p {
       padding: 1em;
     }
+  }
+}
+
+article
+{
+  margin: 5px;
+  width: 75%;
+  float: left;
+  h1 {
+    width: 100%;
+    color: #293C5D;
+    font-size: 2.5em;
+    border-bottom: 1px solid #86C9EF;
+  }
+  section
+   {
+     width: 100%;
+     h1 {
+       color: #293C5D;
+       font-size: 1.5em;
+       border-bottom: 0px
+     }
+
+     &:nth-child(odd)
+     {
+       img {
+       float: left;
+       }
+      }
+     &:nth-child(even) 
+     {
+        img {
+       float: right;
+       }
+     }
+  }
+}
+
+extracontent
+{
+  width: 20%;
+  float: left;
+  margin-top: 10px;
+  takeaway {
+    h1 {
+    color: #293C5D;
+    font-size: 1.4em;
+    margin-top: 0px;
+    background: none repeat scroll 0 0 #FBCA54;
+    text-align: center;
+    }
+    float: right;
+    background: none repeat scroll 0 0 white;
+    border: 1px solid #E1E1E1;
+    border-radius: 3px 3px 3px 3px;
+    color: #3F3F3F;
+    font-family: Trebuchet MS,Verdana,lucida sans unicode;
+    font-size: 12px;
+    margin: 0 auto 10px;
+    text-align: left;
+    li:hover {
+      background: none repeat scroll 0 0 #FEF8CE; 
+    }
+    ul
+    {
+      width: 100%;
+      border-radius: 3px 3px 3px 3px;
+      color: #3F3F3F;
+      font-family: Trebuchet MS,Verdana,lucida sans unicode;
+      font-size: 12px;
+      margin-left: -15px;
+      text-align: left;
+      list-style-type: none;
+      li
+      {
+        margin-bottom: 5px;
+        margin-right: 5px;
+        a{
+          text-decoration:none;
+        }
+      }
+    }
+  }
+  articles {
+    float: right;
+    background: none repeat scroll 0 0 white;
+    border: 1px solid #E1E1E1;
+    border-radius: 3px 3px 3px 3px;
+    color: #3F3F3F;
+    font-family: Trebuchet MS,Verdana,lucida sans unicode;
+    font-size: 10px;
+    margin: 0 auto 10px;
+    text-align: left;
+    li:hover {
+      background: none repeat scroll 0 0 #FEF8CE; 
+    }
+
+    h1 {
+    width: 100%;
+    color: #293C5D;
+    font-size: 1.7em;
+    margin-top: 0px;
+    background: none repeat scroll 0 0 #9FC54E;
+    text-align: center;
+    }
+    ul
+    {
+      width: 100%;
+      border-radius: 3px 3px 3px 3px;
+      color: #3F3F3F;
+      font-family: Trebuchet MS,Verdana,lucida sans unicode;
+      font-size: 12px;
+      margin-left: -15px;
+      text-align: left;
+      list-style-type: none;
+      li
+      {
+        margin-bottom: 5px;
+        margin-right: 5px;
+        a{
+          text-decoration:none;
+        }
+      }
+    }
+
+  }
+
+  videos {
+    width: 100%;
+    float: right;
+    background: none repeat scroll 0 0 white;
+    border: 1px solid #E1E1E1;
+    border-radius: 3px 3px 3px 3px;
+    color: #3F3F3F;
+    font-family: Trebuchet MS,Verdana,lucida sans unicode;
+    font-size: 12px;
+    margin: 0 auto 10px;
+    text-align: left;
+    li:hover {
+      background: none repeat scroll 0 0 #FEF8CE; 
+    }
+    h1 {
+    width: 100%;
+    color: #293C5D;
+    font-size: 1.4em;
+    background: none repeat scroll 0 0 #FC575E;
+    margin-top: 0px;
+    text-align: center;
+    }
+    ul
+    {
+      width: 100%;
+      border-radius: 3px 3px 3px 3px;
+      color: #3F3F3F;
+      font-family: Trebuchet MS,Verdana,lucida sans unicode;
+      font-size: 12px;
+      margin-left: -15px;
+      text-align: left;
+      list-style-type: none;
+      li
+      {
+        margin-bottom: 5px;
+        margin-right: 5px;
+        a{
+          text-decoration:none;
+        }
+      }
+    }
+
+  }
+}
+
+category
+{
+    width: 95%;
+    float: left;
+    background: none repeat scroll 0 0 white;
+    border: 1px solid #E1E1E1;
+    border-radius: 3px 3px 3px 3px;
+    color: #3F3F3F;
+    font-family: Trebuchet MS,Verdana,lucida sans unicode;
+    font-size: 12px;
+    margin: 0 auto 10px;
+    text-align: left;
+    li:hover {
+      background: none repeat scroll 0 0 #FEF8CE;
+    }
+    h1 {
+    width: 100%;
+    color: #293C5D;
+    font-size: 1.3em;
+    background: none repeat scroll 0 0 #86C9EF;
+    margin-top: 0px;
+    }
+    ul
+    {
+      width: 100%;
+      border-radius: 3px 3px 3px 3px;
+      color: #3F3F3F;
+      font-family: Trebuchet MS,Verdana,lucida sans unicode;
+      font-size: 12px;
+      margin-left: -15px;
+      text-align: left;
+      list-style-type: none;
+      li
+      {
+        margin-bottom: 5px;
+        margin-right: 5px;
+        a{
+          text-decoration:none;
+        }
+      }
+    }
+}
+
+investmenteducation
+{
+  h1
+  {
+    font-size: 1.5em;
+  }
+  top
+  {
+    section
+    {
+      width: 30%;
+      background-color: #FFFFFF;
+      background-repeat: no-repeat;
+      border: 1px solid #E1E1E1;
+      color: #555555;
+      cursor: pointer;
+      float: left;
+      margin-left: 20px;
+      margin-top: 20px;
+      height: 50%;
+    }
+  }
+  botton
+  {
+     section
+    {
+      width: 30%;
+      height: 50%;
+      background-color: #FFFFFF;
+      background-repeat: no-repeat;
+      border: 1px solid #E1E1E1;
+      color: #555555;
+      cursor: pointer;
+      float: left;
+      margin-left: 20px;
+      margin-top: 20px;
+    }
+
   }
 }

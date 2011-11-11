@@ -1,57 +1,63 @@
-%section
+-content_for :aside do
+  =render "pages/categories"
+%article
   %h1 Investment vs Trading
-%section
-  %h1 A position:
-  %p In trader-speak, one takes a “long position” in an asset if he/she buys that asset and takes a “short position” if he/she short-sells it (borrows that asset and sells it).
-  %h1 The difference between Investing and Trading
-  %p
-    Investors are people who buy assets (in this case, stocks) in anticipation of long
-    term appreciation in their value. Traders are people who buy (or short sell) assets,
-    expecting to profit from short term appreciation (or decline) in their value. So
-    can be observed, investing and trading are two totally different activities.
-%section
-  %h1 The difference between Investing and Trading:
-  =image_tag "investment_education/investingvstrading2.png", :height => "150px", :width => "200px"
-  %p
-    Investors are people who buy assets (in this case, stocks) in anticipation of long
-    term appreciation in their value. Traders are people who buy (or short sell) assets,
-    expecting to profit from short term appreciation (or decline) in their value. So
-    can be observed, investing and trading are two totally different activities.
-%section
-  %h1 Long term and short term investing :
-  %p
-    Investors buy assets (in this case, stocks) for the long run, typically for periods
-    in excess of 5 years. Medium term investors invest with time horizons of 1-3 years
-    while short term investors invest with time horizons of les than 1 year. Traders
-    and speculators hold positions for short periods lasting less than 1 year. Day traders
-    hold positions for less than 1 day at a time.
-%section
-  %h1 Returns to be expected from investing:
-  =image_tag "investment_education/investingvstrading3.png", :height => "150px", :width => "200px"
-  %p
-    Before one starts investing/trading, it is important to have a rough idea of the
-    kind of return to be expected. Returns from investing in broad-based developed market
-    indices over long periods (30 years +) tend to be about 10-12 % p.a. Returns from
-    emerging market indices tend to be higher than those from developed market indices.
-    Investing in individual stocks is more risky than investing in diversified portfolios
-    and often yields more than investing in broad based indices.
-%section
-  %h1 Returns to be expected from trading:
-  %p
-    Returns from trading stocks vary significantly and could theoretically range from
-    negative infinity to positive infinity. Speculative investments in stocks have often
-    yielded over 100% in a single day, just as they have also resulted in returns of
-    minus 90% over a few hours. This kind of volatility is especially present in penny
-    stocks and stocks of companies in emerging markets. Trading is risky business and
-    therefore should be approached with caution by beginners.
-%takeaway
-  %ul
-    %li Investors are people who buy assets hoping for long term appreciation in price.
-    %li Traders are people who buy or sell assets, expecting to profit from short term changes in their price.
-%articles
-  %ul
-    %li=link_to "Difference between Investing & Trading", "http://www.cnbc.com/id/42710009/The_Difference_Between_Investing_Trading"
-    %li=link_to "Investing Vs Trading", "http://www.investnewz.com/investnewz-7-20060621InvestingvsTradingWhatsTheDifference.html"
-%videos
-  %ul
-    %li=link_to "Investment vs Trading", "http://www.facebook.com/video/video.php?v=1176395922417"
+  %section
+    %h1 A position:
+    %p In trader-speak, one takes a “long position” in an asset if he/she buys that asset and takes a “short position” if he/she short-sells it (borrows that asset and sells it).
+    %h1 The difference between Investing and Trading
+    %p
+      Investors are people who buy assets (in this case, stocks) in anticipation of long
+      term appreciation in their value. Traders are people who buy (or short sell) assets,
+      expecting to profit from short term appreciation (or decline) in their value. So
+      can be observed, investing and trading are two totally different activities.
+  %section
+    %h1 The difference between Investing and Trading:
+    =image_tag "investment_education/investingvstrading2.png", :height => "150px", :width => "200px"
+    %p
+      Investors are people who buy assets (in this case, stocks) in anticipation of long
+      term appreciation in their value. Traders are people who buy (or short sell) assets,
+      expecting to profit from short term appreciation (or decline) in their value. So
+      can be observed, investing and trading are two totally different activities.
+  %section
+    %h1 Long term and short term investing :
+    %p
+      Investors buy assets (in this case, stocks) for the long run, typically for periods
+      in excess of 5 years. Medium term investors invest with time horizons of 1-3 years
+      while short term investors invest with time horizons of les than 1 year. Traders
+      and speculators hold positions for short periods lasting less than 1 year. Day traders
+      hold positions for less than 1 day at a time.
+  %section
+    %h1 Returns to be expected from investing:
+    =image_tag "investment_education/investingvstrading3.png", :height => "150px", :width => "200px"
+    %p
+      Before one starts investing/trading, it is important to have a rough idea of the
+      kind of return to be expected. Returns from investing in broad-based developed market
+      indices over long periods (30 years +) tend to be about 10-12 % p.a. Returns from
+      emerging market indices tend to be higher than those from developed market indices.
+      Investing in individual stocks is more risky than investing in diversified portfolios
+      and often yields more than investing in broad based indices.
+  %section
+    %h1 Returns to be expected from trading:
+    %p
+      Returns from trading stocks vary significantly and could theoretically range from
+      negative infinity to positive infinity. Speculative investments in stocks have often
+      yielded over 100% in a single day, just as they have also resulted in returns of
+      minus 90% over a few hours. This kind of volatility is especially present in penny
+      stocks and stocks of companies in emerging markets. Trading is risky business and
+      therefore should be approached with caution by beginners.
+%extracontent
+  %takeaway
+    %h1 Take Away
+    %ul
+      %li Investors are people who buy assets hoping for long term appreciation in price.
+      %li Traders are people who buy or sell assets, expecting to profit from short term changes in their price.
+  %articles
+    %h1 Articles
+    %ul
+      %li=link_to "Difference between Investing & Trading", "http://www.cnbc.com/id/42710009/The_Difference_Between_Investing_Trading", html_options = {:target => "_blank"}
+      %li=link_to "Investing Vs Trading", "http://www.investnewz.com/investnewz-7-20060621InvestingvsTradingWhatsTheDifference.html", html_options = {:target => "_blank"}
+  %videos
+    %h1 Videos
+    %ul
+      %li=link_to "Investment vs Trading", "http://www.facebook.com/video/video.php?v=1176395922417", html_options = {:target => "_blank"}
