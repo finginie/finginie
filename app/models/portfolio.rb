@@ -6,4 +6,8 @@ class Portfolio < ActiveRecord::Base
   validates :user_id, :presence => true
   validates :name, :presence => true,
                   :uniqueness => { :scope => :user_id }
+
+  def net_worth
+    net_positions.map(&:current_value).inject(:+)
+  end
 end

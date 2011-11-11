@@ -7,7 +7,7 @@ describe Loan do
     subject { transaction }
     its(:current_value) {
       Timecop.freeze Date.civil(2011, 11, 11) do
-        should eq 285276
+        should eq -285276
       end
     }
   end
