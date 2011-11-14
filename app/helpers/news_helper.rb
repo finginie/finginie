@@ -31,8 +31,7 @@ module NewsHelper
   }
 
   def get_feeds(section_name)
-    @feeds ||= {}
-    @feeds[section_name] ||= Feedzirra::Feed.fetch_and_parse(SECTIONAL_FEED_URLS[section_name].keys).map { |url, parser|
+    @feeds = Feedzirra::Feed.fetch_and_parse(SECTIONAL_FEED_URLS[section_name].keys).map { |url, parser|
       parser.entries.map { |entry|
         {
           :title =>  entry.title,
