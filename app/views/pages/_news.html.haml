@@ -1,12 +1,7 @@
 %nav
   %ul
-    %li= link_to 'Stock Markets', '#stock_markets'
-    %li.active= link_to 'Economy News', '#economy_news'
-    %li= link_to 'World News', '#world_news'
-    %li= link_to 'IPOs', '#ipos'
-    %li= link_to 'Results', '#results'
-    %li= link_to 'Sector Spotlights', '#sector_spotlights'
-    %li= link_to 'Commodities', '#commodities'
+    - %w(stock_markets economy_news world_news ipos results sector_spotlights commodities).each do |section_name|
+      %li{:id => "#{section_name}-parent"}= link_to t(".#{section_name}"), "##{section_name}", 'data-slidein' => true
 
 - %w(stock_markets economy_news world_news ipos results sector_spotlights commodities).each do |section_name|
   %section{:id => section_name}
