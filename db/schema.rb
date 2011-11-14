@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111020120324) do
+ActiveRecord::Schema.define(:version => 20111111072735) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -67,6 +67,15 @@ ActiveRecord::Schema.define(:version => 20111020120324) do
 
   add_index "clearance_omniauth_authentications", ["user_id"], :name => "index_clearance_omniauth_authentications_on_user_id"
 
+  create_table "financial_planners", :force => true do |t|
+    t.integer  "user_id"
+    t.decimal  "willingness_to_take_risk"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "financial_planners", ["user_id"], :name => "index_financial_planners_on_user_id"
+
   create_table "net_positions", :force => true do |t|
     t.integer  "portfolio_id"
     t.integer  "security_id"
@@ -118,14 +127,14 @@ ActiveRecord::Schema.define(:version => 20111020120324) do
 
   create_table "risk_profilers", :force => true do |t|
     t.integer  "quiz_id"
-    t.integer  "user_id"
     t.decimal  "score"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "financial_planner_id"
   end
 
+  add_index "risk_profilers", ["financial_planner_id"], :name => "index_risk_profilers_on_financial_planner_id"
   add_index "risk_profilers", ["quiz_id"], :name => "index_risk_profilers_on_quiz_id"
-  add_index "risk_profilers", ["user_id"], :name => "index_risk_profilers_on_user_id"
 
   create_table "securities", :force => true do |t|
     t.string   "type"

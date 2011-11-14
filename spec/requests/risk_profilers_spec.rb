@@ -17,7 +17,7 @@ describe "RiskProfilers" do
 
   login_user
 
-  it "should show and save the page",:js => true do
+  it "should show and save the page" do
     visit financial_planner_risk_profiler_path(:id => quiz.slug)
     page.should have_content 'Lorem Ipsum'
 

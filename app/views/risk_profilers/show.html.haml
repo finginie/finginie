@@ -5,7 +5,7 @@
     = f.simple_fields_for :responses do |r|
       %li
         %p= r.object.question.text
-        =r.input :choice_id, :as => :radio, :collection => r.object.question.choices, :label_method => :text
+        = r.input :choice_id, :as => :radio, :collection => r.object.question.choices, :label_method => :text,:collection_wrapper_tag => :ul, :item_wrapper_tag => :li
   .actions
     = f.submit 'Submit'
 

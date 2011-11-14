@@ -1,7 +1,7 @@
 class RiskProfiler < ActiveRecord::Base
-  attr_accessible :score, :responses_attributes
+  attr_accessible :score, :responses_attributes, :quiz
   belongs_to :quiz
-  belongs_to :user
+  belongs_to :financial_planner
   has_many :responses, :dependent => :destroy
 
   validates :quiz_id, :presence => true
@@ -21,6 +21,15 @@ class RiskProfiler < ActiveRecord::Base
     (quiz.questions - questions).each {|question| responses.build :question => question }
     self
   end
+  def get_score
+    if score
+      if quiz.buckets
+        quiz.buckets.scan(/[\w]+/)[score.to_i]
+      else
+        score.round(1)
+      end
+    end
+  end
 
 private
   def clean_responses
@@ -28,7 +37,7 @@ private
   end
 
   def calculate_score
-    self.score = send(quiz.result_type) if responses.length > 0
+    self.score = send(quiz.result_type) if responses.length == quiz.questions.length
   end
 
   def mean
@@ -42,4 +51,5 @@ private
       .sort_by { |k, v| v.map {|r| r.choice.question.weight}.inject(:+) }
       .last.first
   end
+
 end

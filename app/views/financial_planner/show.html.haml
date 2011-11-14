@@ -1,5 +1,24 @@
 %h1 Financial Planner
+#asset-allocation
+  = simple_form_for resource, :url => financial_planner_path(resource), :method => :put do |f|
+    = f.input :willingness_to_take_risk
+    .actions
+      = f.submit 'Submit'
+  %h1 Suggested Asset Allocation
+  - if resource.get_asset_allocation
+    #asset-allocation-chart{ 'data-asset-allocation' => resource.get_asset_allocation.to_a }
 
-%ul#quizzes
-  - @quizzes.each do |quiz|
-    %li= link_to quiz.name, financial_planner_risk_profiler_path(:id => quiz.slug)
+- content_for :aside do
+  %ul#financial_planner
+    - resource.risk_profilers.each do |risk_profiler|
+      %li
+        = link_to risk_profiler.quiz.name, financial_planner_risk_profiler_path(:id => risk_profiler.quiz.slug)
+        %p
+        - if risk_profiler.get_score
+          Your score is 
+          = risk_profiler.get_score
+        - else
+          Complete this quiz to get the score.
+        -if risk_profiler.get_score
+          %div{:id =>risk_profiler.quiz.slug, "#{risk_profiler.quiz.slug}-data" => [6,risk_profiler.get_score.to_i,10]}
+

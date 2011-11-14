@@ -10,12 +10,17 @@ class Quiz < ActiveRecord::Base
                           :inclusion => RESULT_TYPES
 
   before_validation :generate_slug
+  before_save :get_weight
 
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:text].blank? }, :allow_destroy => true
 
 private
   def generate_slug
     self.slug ||= name.try(:parameterize)
+  end
+
+  def get_weight
+    self.weight = 1 if !self.weight
   end
 
 end
