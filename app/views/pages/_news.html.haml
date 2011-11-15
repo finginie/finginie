@@ -8,14 +8,10 @@
     %li= link_to 'Sector Spotlights', '#sector_spotlights'
     %li= link_to 'Commodities', '#commodities'
 
-- %w(stock_markets economy_news world_news ipos results sector_spotlights commodities).each do |section_name|
+- NewsArticle.get_feeds.each do |section_name,articles|
   %section{:id => section_name}
-    - get_feeds(section_name).each do |entry|
-      %article
-        %h1= entry[:title]
-        %p
-          = entry[:summary]
-          = entry[:published]
-          = entry[:source]
-          = link_to "Read more..", entry[:url]
-
+    %article
+    - articles.each do |article|
+      = link_to article.url, :title => article.source, :target => :blank do
+        %h1= article.id
+      %p= article.summary
