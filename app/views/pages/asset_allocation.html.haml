@@ -1,0 +1,118 @@
+-content_for :aside do
+  =render "pages/categories"
+%article
+  %h1 Asset Allocation
+  %section
+    %h1 Assets and Asset Classes:
+    =image_tag  "investment_education/Assets1.png", :height => "150px", :width => "200px"
+    %p
+      An asset is anything that is expected to provide positive cashflow in the future.
+      This is a rather broad definition and thus encompasses securities (e.g. stocks,
+      bonds), real estate (e.g. land, houses), intellectual property (e.g. copyrights,
+      patents) etc.
+    %p
+      Asset classes are sets of assets that have similar features and behave similarly.
+      Securities of one asset class will generally be subject to similar regulations since
+      they exhibit similar characteristics. The main asset classes are – Equity (stocks),
+      Fixed Income Securities (bonds etc), Commodities (gold, silver, oil, wheat etc),
+      Cash Equivalents (short term deposits, money market instruments) and real estate.
+      Some analysts go one step further and have narrower definitions of asset classes
+      resulting in asset classes such as – Large cap domestic stocks, international stocks,
+      mid cap domestic stocks, non-gold commodities etc.
+  %section
+    %h1 Types of Assets and Varying Risk-Return Profiles:
+    =image_tag  "investment_education/assetallocation1.png", :height => "150px", :width => "200px"
+    %p Different assets carry different risks and yield different returns.
+    %ol
+      %li
+        Money market instruments are known as cash equivalents as they are extremely liquid (can be converted
+        to cash very easily). They yield the lowest returns amongst all asset classes as they also carry the least risk.
+      %li
+        Bonds, carry more risk than money market instruments. Bonds are long-term instruments (less liquid)
+        and carry default risk i.e. the risk that the bond-issuer will not be able to make interest/principal payments.
+        Bonds are also subject to inflation risk (the risk that inflation will be more than expected) and interest rate risk
+        (the risk of change interest rates adversely affecting bond prices).
+        %p
+          Since bonds are riskier than cash equivalents, they yield higher returns. If they didn’t , investors
+          wouldn’t have an incentive to invest in bonds and would rather invest in cash equivalents.
+      %li
+        Equity(Stocks) are substantially riskier than bonds.
+        Stock holders only have a right to the residual income/assets of the issuing company
+        after all bond-holders and creditors have been paid. Therefore, the bondholder can
+        be considered “senior” to the share holder. To illustrate the concept of seniority,
+        let us consider the following: Under normal circumstances, the bondholder will be
+        paid his original investment and promised interest as long as the bondholder holds
+        the bond until maturity.
+      =image_tag  "investment_education/assetallocation3.png", :height => "150px", :width => "200px"
+    %p
+      Let us assume that a firm is facing bankruptcy and is liquidated. Proceeds from
+      liquidation will first go to the bondholders and the remaining sum, if any, will
+      go to share holders. However in most cases of bankruptcy, bondholders will get less
+      than their initial investment and the share holders will usually end up with nothing.
+    %p
+      Share prices also depend heavily on market sentiment; corporate earnings etc are
+      a lot more volatile than bond prices. Equities reward investors for taking on all
+      these risk with higher returns than bonds.
+  %section
+    =image_tag  "investment_education/assetallocation2.png", :height => "150px", :width => "200px"
+    %h1 Asset Allocation:
+    %p
+      Asset Allocation is the process by which the total investible capital of the portfolio
+      is distributed across different asset classes. As discussed in the previous article,
+      asset classes are sets of assets that behave similarly and have similar characteristics,
+      e.g. stocks, fixed income securities, commodities and cash (cash equivalents).
+    %p
+      Investors typically do not invest all their money in one asset class or one single
+      security. This is done for the sake of diversification benefits.
+    %p
+      An investor’s asset allocation should be performed based on:
+    %ol
+      %li The investor’s investment goals and needs
+      %li The investor’s risk profile
+      %li The investor’s unique constraints.
+      %li Tax regime
+      %li Investor’s Time horizon
+    %p
+      As discussed in the article on tax planning, tax structures also influence asset
+      allocation. Equities are preferred in countries with high tax rates as taxes typically
+      apply only to dividend income and realized capital gains.Tax drag can be minimized
+      by deferring the realization of capital gains. Tax structures and tax drag are discussed here
+    %p
+      A study found that up to 90% of the return of portfolios can be explained simply
+      by asset allocation (as opposed to market timing or other factors). Thus, in the
+      opinion of most experts, asset allocation is the single most important part of portfolio
+      management.
+  %articlefooter
+    Prev:
+    =link_to "Investment Plan", "investment_plan"
+    %rightAlign
+      Next:
+      =link_to "Choosing Investments", "choosing_investments"
+    %center=link_to "Investment Education Home", "investment_education"
+%extracontent
+  %takeaway
+    %h1 Take Away
+    %ul
+      %li
+        An asset class is a group of investments which have similar characteristics, exhibit
+        similar behavior and are subject to the same regulations.
+      %li
+        Equities, Fixed Income and Cash equivalents are the main asset classes and they
+        varying levels of risk and return.
+      %li
+        The process of asset allocation consists of distributing available capital across
+        various asset classes according to the individual’s needs, risk tolerance and time
+        horizon.
+  %articles
+    %h1 Articles
+    %ul
+      %li=link_to "Try our Asset Allocator.", "http://www.finginie.com/prebeta/membershipPages/PlanningTools.aspx", html_options = {:target => "_blank"}
+      %li=link_to "Finding the Right Asset Allocation", "http://www.schwabmoneywise.com/basics/investing/asset-allocation.php", html_options = {:target => "_blank"}
+      %li=link_to "Common Asset allocation strategies", "http://www.abcsofinvesting.net/asset-allocation-strategies/", html_options = {:target => "_blank"}
+      %li=link_to "Asset allocation strategies", "http://www.investopedia.com/articles/04/031704.asp", html_options = {:target => "_blank"}
+      %li=link_to "Asset Allocation -Wikipedia", "http://en.wikipedia.org/wiki/Asset_allocation", html_options = {:target => "_blank"}
+  %videos
+    %h1 Videos
+    %ul
+      %li=link_to "Examining Asset Allocation and Assumptions", "http://www.youtube.com/watch?v=o-p1q3sGscc", html_options = {:target => "_blank"}
+      %li=link_to "Asset Allocation Pyramid", "http://www.youtube.com/watch?v=uKz4mc1gYeQ&feature=related", html_options = {:target => "_blank"}
