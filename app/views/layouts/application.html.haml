@@ -21,9 +21,7 @@
           = image_tag 'logo.png', :alt => 'Finginie'
         %span.tag Beta
       %nav
-        %ul
-          - %w(stocks portfolios).each do |resource|
-            = link_to t(resource), :controller => "/#{resource}"
+        = render 'layouts/navigation'
       %hgroup.page_header
         =yield :header
     #wrapper

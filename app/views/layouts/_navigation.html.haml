@@ -1,0 +1,4 @@
+%ul
+  - %w(stocks portfolios personal_financial_tools).each do |resource|
+    = link_to t(resource), :controller => "/#{resource}"
+  = link_to t('financial_planner'), financial_planner_path
