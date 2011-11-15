@@ -14,4 +14,4 @@
     - articles.each do |article|
       = link_to article.url, :title => article.source, :target => :blank do
         %h1= article.id
-      %p= article.summary
+      %p= article.summary.gsub(/<\/?[^>]*>/, "")

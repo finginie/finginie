@@ -14,35 +14,6 @@ class NewsData
     { :name => 'Commodity Online',    :section => 'commodities',       :url => 'http://www.commodityonline.com/rssfeed/topstorynews_rss.xml' },
     { :name => 'Financial Express',   :section => 'commodities',       :url => 'http://syndication.financialexpress.com/rss/375/commodities.xml' }
   ]
-  SECTIONAL_FEED_URLS = {
-    'stock_markets' => {
-      'http://syndication.financialexpress.com/rss/98/world-news.xml' => 'Financial Express'
-    },
-    'economy_news' => {
-      'http://economictimes.feedsportal.com/c/33041/f/534033/index.rss' => 'Economic Times',
-      'http://syndication.financialexpress.com/rss/97/economy.xml' => 'Financial Express'
-    },
-    'world_news' => {
-      'http://economictimes.feedsportal.com/c/33041/f/534037/index.rss' => 'Economic Times',
-      'http://syndication.financialexpress.com/rss/96/markets.xml' => 'Financial Express'
-    },
-    'ipos' => {
-      'http://economictimes.feedsportal.com/c/33041/f/534040/index.rss' => 'Economic Times',
-      'http://feeds.feedburner.com/IpoAlertBlog' => 'IPO Investment Blog'
-    },
-    'results' => {
-      'http://economictimes.feedsportal.com/c/33041/f/534040/index.rss' => 'Economic Times',
-      'http://feeds.feedburner.com/IpoAlertBlog' => 'IPO Investment Blog'
-    },
-    'sector_spotlights' => {
-      'http://www.livemint.com/SectionRssfeed.aspx?Id=21' => 'Live Mint',
-      'http://www.livemint.com/SectionRssfeed.aspx?Id=21' => 'Live Mint'
-    },
-    'commodities' => {
-      'http://www.commodityonline.com/rssfeed/topstorynews_rss.xml' => 'Commodity Online',
-      'http://syndication.financialexpress.com/rss/375/commodities.xml' => 'Financial Express'
-    }
-  }
 
   def self.store_feeds
     FEEDS.each do |feed|
