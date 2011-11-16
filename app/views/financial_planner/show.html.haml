@@ -14,11 +14,10 @@
       %li
         = link_to risk_profiler.quiz.name, financial_planner_risk_profiler_path(:id => risk_profiler.quiz.slug)
         %p
+          - if risk_profiler.get_score
+            Your score is "#{risk_profiler.get_score}"
+          - else
+            Complete this quiz to get the score.
         - if risk_profiler.get_score
-          Your score is 
-          = risk_profiler.get_score
-        - else
-          Complete this quiz to get the score.
-        -if risk_profiler.get_score
           %div{:id =>risk_profiler.quiz.slug, "#{risk_profiler.quiz.slug}-data" => [6,risk_profiler.get_score.to_i,10]}
 
