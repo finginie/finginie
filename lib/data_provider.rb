@@ -5,8 +5,8 @@ include Clockwork
 
 handler do |job|
   NewsData.store_feeds and return if job == :news
-  TickerPlant.update_records(job)
   TickerData.store_indices and return if job == :ticker
+  TickerPlant.update_records(job)
   # TODO: Stop clockwork if job == :stock
 end
 
