@@ -6,7 +6,7 @@
         %h1 Investment Concepts
         %p
           Master the important concepts of investing like
-          = link_to t('investment_education.risk_and_return', page_path('investment_education/risk_and_return')
+          = link_to t('investment_education.risk_and_return'), page_path('investment_education/risk_and_return')
           ,
           = link_to t('investment_education.time_value_of_money'), page_path('investment_education/time_value_of_money')
           ,
@@ -36,7 +36,7 @@
           and
           = link_to t('investment_education.reduce_taxes'), page_path('investment_education/reduce_taxes')
           %br/
-          .read_more.button=link_to "Read More..",  page_path('investment_education/analyzing_needs')
+        .read_more.button=link_to "Read More..",  page_path('investment_education/analyzing_needs')
       %td
         =image_tag "investment_education/InvestmentAnalysis_1.jpg"
         %h1 Investment Analysis
@@ -45,7 +45,7 @@
           = link_to t('investment_education.fundamental_analysis1'), page_path('investment_education/fundamental_analysis1')
           and
           = link_to t('investment_education.technical_analysis'), page_path('investment_education/technical_analysis')
-        .read_more.button=link_to "Read More..",  "page_path('investment_education/fundamental_analysis1')
+        .read_more.button=link_to "Read More..",  page_path('investment_education/fundamental_analysis1')
     %tr
       %td
         =image_tag "investment_education/InvestmentTypes_1.jpg"
