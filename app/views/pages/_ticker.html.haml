@@ -1,14 +1,14 @@
 %ul
   %li Sensex
-  %li=indice_result("sensex_current")
-  %li=indice_result("sensex_change")
+  %li= REDIS.get("Ticker_sensex_current")
+  %li= REDIS.get("Ticker_sensex_change")
   %li Nifty
-  %li=indice_result("nifty_current")
-  %li=indice_result("nifty_change")
+  %li= REDIS.get("Ticker_nifty_current")
+  %li= REDIS.get("Ticker_nifty_change")
   %li DowJones
-  %li=indice_result("dowjones_current")
-  %li=indice_result("dowjones_change")
+  %li= REDIS.get("Ticker_dowjones_current")
+  %li= REDIS.get("Ticker_dowjones_change")
   %li USD 1
-  %li=indice_result("usd_to_inr")
+  %li= REDIS.get("Ticker_usd_to_inr")
   %li Gold (10 Gms.)
-  %li=indice_result("gold_current")
+  %li= REDIS.get("Ticker_gold_current")

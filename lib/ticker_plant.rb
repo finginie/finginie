@@ -59,6 +59,7 @@ class TickerPlant
   def self.fetch_data(type)
     data = []
     Net::FTP.open(DATA_SOURCES[type][:url], DATA_SOURCES[type][:username], DATA_SOURCES[type][:password]) do |ftp|
+      ftp.passive = true
       ftp.chdir DATA_SOURCES[type][:directory] if DATA_SOURCES[type][:directory]
       return data unless file_name = ftp.nlst.last
       Zip::Archive.open_buffer (ftp.getbinaryfile file_name, nil) do |archive|
