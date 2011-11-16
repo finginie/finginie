@@ -17,7 +17,7 @@
     =image_tag "investment_education/diver1.png", :width => "255px", :height => "193px"
     %p
       The main benefit of investment_education/diversification is the reduction of risk (volatility of returns). As we discussed in this
-      =link_to "article", "investment_education/risk_and_return"
+      =link_to t('investment_education.risk_and_return'), page_path('investment_education/risk_and_return')
       risk is the volatility of returns. Naturally, fund managers would like to have the highest possible return with the lowest possible risk
   %section
     %h1 Example on the benefits of Diversification:
@@ -173,11 +173,11 @@
       the negative impact caused by sudden labour strikes in the airlines sector.
   %articlefooter
     Prev:
-    =link_to "Diversification", "investment_education/diversification"
+    =link_to t('investment_education.diversification'), page_path('investment_education/diversification')
     %rightAlign
       Next:
-      =link_to "Investment vs Trading", "investment_education/investment_trading"
-    %center=link_to "Investment Education Home", "investment_education"
+      =link_to t('investment_education.investment_trading'),page_path('investment_education/investment_trading')
+    %center=link_to t('investment_education.investment_education'), page_path('investment_education')
 %extracontent
   %takeaway
     %h1 Take Away

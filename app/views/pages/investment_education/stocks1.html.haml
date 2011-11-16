@@ -85,11 +85,11 @@
           =image_tag "investment_education/BSE.png", :height => "200px", :weight => "300px"
   %articlefooter
     Prev:
-    =link_to "Cash Equivalents", "investment_education/cash_equivalents"
+    =link_to t('investment_education.cash_equivalents'), page_path('investment_education/cash_equivalents')
     %rightAlign
       Next:
-      =link_to "Stocks II", "investment_education/stocks2"
-    %center=link_to "Investment Education Home", "investment_education"
+      =link_to t('investment_education.stocks2', page_path('investment_education/stocks2')
+    %center=link_to t('investment_education'), page_path('investment_education')
 %extracontent
   %takeaway
     %h1 Take Away

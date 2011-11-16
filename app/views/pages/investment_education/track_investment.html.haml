@@ -39,10 +39,10 @@
     %ul
       %li
         Come up with a
-        =link_to "written plan", "investment_education/investment_plan"
+        =link_to ('Written Plan'), page_path('investment_education/investment_plan')
         detailing you investment objectives and constraints.
       %li
-        =link_to "Diversify", "investment_education/diversification"
+        =link_to 'Diversify', page_path('investment_education/diversification')
         across asset classes.
       %li Diversify across different securities within asset classes.
       %li Don’t trade too often as brokerage and transaction costs may reduce your return.
@@ -50,11 +50,11 @@
       %li Understand business cycles and their impact on the economy.
   %articlefooter
     Prev:
-    =link_to "Start Investing", "investment_education/start_investing"
+    =link_to t('investment_education.start_investing'), page_path('investment_education/start_investing')
     %rightAlign
       Next:
-      =link_to "Risk Management", "investment_education/risk_management"
-    %center=link_to "Investment Education Home", "investment_education"
+      =link_to t('investment_education.risk_management'), page_path('investment_education/risk_management')
+    %center=link_to t('investment_education'), page_path('investment_education')
 %extracontent
   %takeaway
     %h1 Take Away

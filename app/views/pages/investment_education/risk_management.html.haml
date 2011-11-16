@@ -18,7 +18,7 @@
     %h1 Hedging with Futures:
     =image_tag  "investment_education/RiskManagement2.png", :height => "150px", :width => "200px"
     %p
-      =link_to "Futures contracts", "investment_education/futures1"
+      =link_to "Futures contracts", page_path('investment_education/futures1')
       are normally used to hedge undesirable positions in energy, precious metals, foreign currency and interest rates fluctuations. When you are in a long position, you desire an increase in the price of an asset you are holding while being in the short position will mean that you desire a decrease in the price of the same asset. For example, if you buy a car, you have a natural long position on the car because it will be better for you if the price of the car increased in the future. However, you also have a natural position on petrol since you would like your fuel costs to decrease.
     %p Futures are widely used by firms to reduce their exposures to price fluctuations. A ship-owner, Mark Alphonso needs to buy oil as fuel for his ship. He has a natural short position on oil. He is better off if the barrel of oil falls in price. However, if he thinks that the barrel of oil will become more expensive in three months, he will buy a futures contract to hedge this risk.
     %p George Santino, an oil company executive, sells Mark Alphonso the futures contract. He has a natural long position on the barrel of oil since his company produces oil. George Santino is afraid of the potential fall in oil prices so he will sell the futures contract and hedge his current position so as to reduce exposure to fluctuating oil prices in the future.
@@ -38,11 +38,11 @@
     %p As you can see, you need to ensure that you select your assets so that they are uncorrelated in terms of performance. There is no point in investing solely in securities that are likely to perform the same way.
   %articlefooter
     Prev:
-    =link_to "Track your Investments", "investment_education/track_investment"
+    =link_to t('investment_education.track_your_investment'), page_path('investment_education/track_investment')
     %rightAlign
       Next:
-      =link_to "Reduce Your Taxes", "investment_education/reduce_taxes"
-    %center=link_to "Investment Education Home", "investment_education"
+      =link_to t('investment_education.reduce_your_taxes'), page_path('investment_education/reduce_taxes')
+    %center=link_to t('investment_education'), page_path('investment_education')
 %extracontent
   %takeaway
     %h1 Take Away
