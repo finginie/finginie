@@ -37,7 +37,7 @@ module RedisRecord::Base
     def search_by_range_on(attr)
       self.sorted_indices += [attr]
       define_singleton_method "find_ids_by_#{attr}" do |min, max|
-        REDIS.zrangebyscore(key(attr), min, max)
+        REDIS.zrangebyscore(key(attr), min, max).map { |id| Valuable::Utils.format(:id, id, _attributes) }
       end
     end
 
