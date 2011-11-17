@@ -19,6 +19,12 @@ GIT
       sass (>= 3.1.0)
 
 GIT
+  remote: git://github.com/ryanbraganza/rubyzip.git
+  revision: dad730c9f378dfab3622b770ab36840011e601d1
+  specs:
+    rubyzip (0.9.4a)
+
+GIT
   remote: git://github.com/vikashag/nested_form.git
   revision: fc83f0c6dbe076ef6f61a9776c9c4cd06df7332e
   specs:
@@ -242,7 +248,6 @@ GEM
       rspec (~> 2.7.0)
     ruby_parser (2.3.1)
       sexp_processor (~> 3.0)
-    rubyzip (0.9.4)
     sass (3.1.10)
     sass-rails (3.1.4)
       actionpack (~> 3.1.0)
@@ -336,6 +341,7 @@ DEPENDENCIES
   redis
   rspec
   rspec-rails
+  rubyzip!
   sass-rails
   shoulda-matchers
   simple_form
