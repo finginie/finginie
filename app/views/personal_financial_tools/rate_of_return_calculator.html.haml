@@ -1,3 +1,5 @@
+- content_for :aside do
+  = render 'list'
 = simple_form_for @rate_of_return_calculator, :url => rate_of_return_calculator_path do |f|
   = f.error_notification
 

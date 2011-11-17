@@ -1,3 +1,5 @@
+- content_for :aside do
+  = render 'list'
 = simple_form_for @retirement_corpus_calculator, :url => retirement_corpus_calculator_path do |f|
   = f.error_notification
 

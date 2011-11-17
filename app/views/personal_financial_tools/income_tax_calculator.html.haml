@@ -1,3 +1,5 @@
+- content_for :aside do
+  = render 'list'
 = simple_form_for @income_tax_calculator, :url => income_tax_calculator_path do |f|
   = f.error_notification
 
