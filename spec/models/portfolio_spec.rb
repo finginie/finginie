@@ -36,7 +36,7 @@ describe Portfolio do
     stock_position = create :net_position, :portfolio => portfolio,
                                            :security => create(:stock)
     create :transaction, :net_position => stock_position, :quantity => quantity
-    create :scrip, :id => stock_position.security_id, :last_traded_price => price
+    create :scrip, :id => stock_position.security.symbol, :last_traded_price => price
   end
 
   def add_fixed_income(portfolio, period, interest_rate, amount, date)

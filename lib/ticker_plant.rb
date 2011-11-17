@@ -19,8 +19,7 @@ class TickerPlant
 
   DATA_ATTRIBUTES = {
     :scrip => {
-      :id => 0,
-      :symbol => 1,
+      :id => 1,
       :time => 4,
       :best_buy_quantity => 5,
       :best_buy_price => 6,
@@ -34,7 +33,6 @@ class TickerPlant
       :low_price => 15
     },
     :stock => {
-      :id => 0,
       :name => 1,
       :symbol => 3,
       :sector => 4,

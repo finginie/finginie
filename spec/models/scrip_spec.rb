@@ -3,8 +3,7 @@ require 'spec_helper'
 describe Scrip, :redis do
   #it_should_behave_like "ActiveModel"
 
-  let (:scrip) { Scrip.new :id => "8118",
-                           :symbol => "AANJANEYA",
+  let (:scrip) { Scrip.new :id => "AANJANEYA",
                            :company_name => "Aanjaneya Lifecare",
                            :best_buy_quantity => "9008",
                            :best_buy_price => "426.45",
@@ -35,7 +34,7 @@ describe Scrip, :redis do
   describe "with saved scrip" do
     before { scrip.save }
     it "should find a scrip by id" do
-      scrip = Scrip.find(8118)
+      scrip = Scrip.find("AANJANEYA")
       scrip.should be_kind_of Scrip
       scrip.company_name.should eq "Aanjaneya Lifecare"
       scrip.last_traded_price.should eq 426.45
@@ -47,27 +46,27 @@ describe Scrip, :redis do
 
     describe "using find or initialize" do
       it "should find a scrip by id" do
-        scrip = Scrip.find_or_initialize_by_id(8118)
+        scrip = Scrip.find_or_initialize_by_id("AANJANEYA")
         scrip.should be_kind_of Scrip
         scrip.company_name.should eq "Aanjaneya Lifecare"
         scrip.last_traded_price.should eq 426.45
       end
 
       it "should return new scrip for a missing scrip" do
-        scrip = Scrip.find_or_initialize_by_id(999999)
+        scrip = Scrip.find_or_initialize_by_id("FOOBAR")
         scrip.should be_kind_of Scrip
-        scrip.id.should eq 999999
+        scrip.id.should eq "FOOBAR"
       end
     end
 
     it "should find a scrip by last traded price range" do
       Scrip.find_ids_by_last_traded_price( 420, 425 ).should eq []
-      Scrip.find_ids_by_last_traded_price( 426.25, 430 ).should eq [8118]
+      Scrip.find_ids_by_last_traded_price( 426.25, 430 ).should eq ["AANJANEYA"]
     end
 
     it "should find a scrip by percent change range" do
       Scrip.find_ids_by_percent_change( 4, 5 ).should eq []
-      Scrip.find_ids_by_percent_change( 1, 2 ).should eq [8118]
+      Scrip.find_ids_by_percent_change( 1, 2 ).should eq ["AANJANEYA"]
     end
   end
 end
