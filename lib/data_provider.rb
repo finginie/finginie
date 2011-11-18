@@ -18,4 +18,4 @@ end
 every 1.minute, 'ticker'
 every 10.minutes, 'news'
 every 1.minute, 'scrip'
-every 1.day, 'stock', :at => '16:30'
+every 1.day, 'stock'
