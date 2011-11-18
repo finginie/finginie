@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to sign_in_path and return unless current_user
+    redirect_to new_user_session_path and return unless current_user
     begin
       redirect_to :back, :alert => exception.message
     rescue ActionController::RedirectBackError

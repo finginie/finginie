@@ -1,6 +1,7 @@
 class FinancialPlannerController < InheritedResources::Base
-  defaults :singleton => true
+  load_and_authorize_resource :financial_planner
 
+  defaults :singleton => true
   actions :show, :update
 
   def resource

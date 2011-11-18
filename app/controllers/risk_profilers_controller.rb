@@ -1,4 +1,7 @@
 class RiskProfilersController < InheritedResources::Base
+  load_and_authorize_resource :financial_planner
+  load_and_authorize_resource :risk_profiler, :through => :financial_planner
+
   actions :show, :update
 
   def resource
