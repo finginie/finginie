@@ -54,11 +54,11 @@ describe 'PersonalFinancialTools' do
     fill_in "life_insurance_calculator[family_income]",                          :with => 900000
 
     2.times { click_link   "Add Dependent" }
-    within "fieldset:nth-child(1)" do
+    within ".fields:nth-child(1)" do
       fill_in "years",    :with => 10
       fill_in "Expenses", :with => 800000
     end
-    within "fieldset:nth-child(2)" do
+    within ".fields:nth-child(2)" do
       fill_in "years",    :with => 15
       fill_in "Expenses", :with => 300000
     end
