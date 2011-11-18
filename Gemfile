@@ -34,6 +34,7 @@ gem 'zipruby'
 
 group :test, :development do
   gem 'capybara'
+    gem 'rubyzip', :git => "git://github.com/ryanbraganza/rubyzip.git" # Fix scoping issues
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'foreman'

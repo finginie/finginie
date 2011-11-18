@@ -1,248 +1,250 @@
-article
-{
-  margin: 5px;
-  width: 75%;
-  float: left;
+body.investment_education {
+  article
+  {
+    margin: 5px;
+    width: 75%;
+    float: left;
 
-  articlefooter{
-    display: block;
-    rightAlign{
-      float: right;
-    }
-    centerAlign{
-      align: center;
-    }
-  }
-  h1 {
-    width: 100%;
-    color: #293C5D;
-    font-size: 2.5em;
-    border-bottom: 1px solid #86C9EF;
-  }
-
-  section{
-    width: 100%;
-    h1 {
-      color: #293C5D;
-      font-size: 1.5em;
-      border-bottom: 0px
-    }
-    &:nth-child(odd){
-       img {
-         float: left;
-       }
+    articlefooter{
+      display: block;
+      rightAlign{
+        float: right;
       }
-     &:nth-child(even){
-       img {
-         float: right;
-       }
-     }
-  }
-}
-
-extracontent
-{
-  width: 20%;
-  float: left;
-  margin-top: 10px;
-  takeaway {
-    h1 {
-    color: #293C5D;
-    font-size: 1.4em;
-    margin-top: 0px;
-    background: none repeat scroll 0 0 #FBCA54;
-    text-align: center;
-    }
-    float: right;
-    width: 100%;
-    background: none repeat scroll 0 0 white;
-    border: 1px solid #E1E1E1;
-    border-radius: 3px 3px 3px 3px;
-    color: #3F3F3F;
-    font-family: Trebuchet MS,Verdana,lucida sans unicode;
-    font-size: 12px;
-    margin: 0 auto 10px;
-    text-align: left;
-    ul
-    {
-      width: 100%;
-      border-radius: 3px 3px 3px 3px;
-      color: #3F3F3F;
-      font-family: Trebuchet MS,Verdana,lucida sans unicode;
-      font-size: 12px;
-      margin-left: -15px;
-      text-align: left;
-      list-style-type: none;
-      li:hover {
-          background: none repeat scroll 0 0 #FEF8CE;
-        }
-      li
-      {
-        margin-bottom: 5px;
-        margin-right: 5px;
-        a{
-          text-decoration:none;
-        }
+      centerAlign{
+        align: center;
       }
     }
-  }
-
-  articles {
-    float: right;
-    background: none repeat scroll 0 0 white;
-    width: 100%;
-    border: 1px solid #E1E1E1;
-    border-radius: 3px 3px 3px 3px;
-    color: #3F3F3F;
-    font-family: Trebuchet MS,Verdana,lucida sans unicode;
-    font-size: 10px;
-    margin: 0 auto 10px;
-    text-align: left;
-
     h1 {
       width: 100%;
       color: #293C5D;
-      font-size: 1.7em;
-      margin-top: 0px;
-      background: none repeat scroll 0 0 #9FC54E;
-      text-align: center;
-    }
-    ul{
-      width: 100%;
-      border-radius: 3px 3px 3px 3px;
-      color: #3F3F3F;
-      font-family: Trebuchet MS,Verdana,lucida sans unicode;
-      font-size: 12px;
-      margin-left: -15px;
-      text-align: left;
-      list-style-type: none;
-      li:hover {
-        background: none repeat scroll 0 0 #FEF8CE; 
-      }
-      li
-      {
-        margin-bottom: 5px;
-        margin-right: 5px;
-        a{
-          text-decoration:none;
-        }
-      }
+      font-size: 2.5em;
+      border-bottom: 1px solid #86C9EF;
     }
 
+    section{
+      width: 100%;
+      h1 {
+        color: #293C5D;
+        font-size: 1.5em;
+        border-bottom: 0px
+      }
+      &:nth-child(odd){
+         img {
+           float: left;
+         }
+        }
+       &:nth-child(even){
+         img {
+           float: right;
+         }
+       }
+    }
   }
 
-  videos {
-    float: right;
-    width: 100%;
-    background: none repeat scroll 0 0 white;
-    border: 1px solid #E1E1E1;
-    border-radius: 3px 3px 3px 3px;
-    color: #3F3F3F;
-    font-family: Trebuchet MS,Verdana,lucida sans unicode;
-    font-size: 12px;
-    margin: 0 auto 10px;
-    text-align: left;
-    h1 {
-      width: 100%;
+  extracontent
+  {
+    width: 20%;
+    float: left;
+    margin-top: 10px;
+    takeaway {
+      h1 {
       color: #293C5D;
       font-size: 1.4em;
-      background: none repeat scroll 0 0 #FC575E;
       margin-top: 0px;
+      background: none repeat scroll 0 0 #FBCA54;
       text-align: center;
-    }
-    ul{
+      }
+      float: right;
       width: 100%;
+      background: none repeat scroll 0 0 white;
+      border: 1px solid #E1E1E1;
       border-radius: 3px 3px 3px 3px;
       color: #3F3F3F;
       font-family: Trebuchet MS,Verdana,lucida sans unicode;
       font-size: 12px;
-      margin-left: -15px;
+      margin: 0 auto 10px;
       text-align: left;
-      list-style-type: none;
-      li:hover {
-        background: none repeat scroll 0 0 #FEF8CE; 
-      }
-      li{
-        margin-bottom: 5px;
-        margin-right: 5px;
-        a{
-          text-decoration:none;
-        }
-      }
-    }
-
-  }
-}
-
-category
-{
-    width: 95%;
-    float: left;
-    background: none repeat scroll 0 0 white;
-    border: 1px solid #E1E1E1;
-    border-radius: 3px 3px 3px 3px;
-    color: #3F3F3F;
-    font-family: Trebuchet MS,Verdana,lucida sans unicode;
-    font-size: 12px;
-    margin: 0 auto 10px;
-    text-align: left;
-    h1 {
-      width: 100%;
-      color: #293C5D;
-      font-size: 1.3em;
-      background: none repeat scroll 0 0 #86C9EF;
-      margin-top: 0px;
-    }
-    ul
-    {
-      width: 100%;
-      border-radius: 3px 3px 3px 3px;
-      color: #3F3F3F;
-      font-family: Trebuchet MS,Verdana,lucida sans unicode;
-      font-size: 12px;
-      margin-left: -15px;
-      text-align: left;
-      list-style-type: none;
-      li:hover {
-        background: none repeat scroll 0 0 #FEF8CE;
-      }
-      li
+      ul
       {
-        margin-bottom: 5px;
-        margin-right: 5px;
-        a{
-          text-decoration:none;
+        width: 100%;
+        border-radius: 3px 3px 3px 3px;
+        color: #3F3F3F;
+        font-family: Trebuchet MS,Verdana,lucida sans unicode;
+        font-size: 12px;
+        margin-left: -15px;
+        text-align: left;
+        list-style-type: none;
+        li:hover {
+            background: none repeat scroll 0 0 #FEF8CE;
+          }
+        li
+        {
+          margin-bottom: 5px;
+          margin-right: 5px;
+          a{
+            text-decoration:none;
+          }
         }
       }
     }
-}
 
-investmenteducation
-{
-  margin-top: 10px;
-  margin-left: 20px;
-  ReadMoreButton{
-    background: none repeat scroll 0 0 #FCCA54;
-    border-radius: 10px 10px 10px 10px;
-    color: #F7F7F7;
-    cursor: pointer;
-    font-size: 11px;
-    font-weight: bold;
-    padding: 2px 3px;
-    text-align: center;
-    width: 80px;
-    margin-bottom: 0px;
-    float: right;
+    articles {
+      float: right;
+      background: none repeat scroll 0 0 white;
+      width: 100%;
+      border: 1px solid #E1E1E1;
+      border-radius: 3px 3px 3px 3px;
+      color: #3F3F3F;
+      font-family: Trebuchet MS,Verdana,lucida sans unicode;
+      font-size: 10px;
+      margin: 0 auto 10px;
+      text-align: left;
+
+      h1 {
+        width: 100%;
+        color: #293C5D;
+        font-size: 1.7em;
+        margin-top: 0px;
+        background: none repeat scroll 0 0 #9FC54E;
+        text-align: center;
+      }
+      ul{
+        width: 100%;
+        border-radius: 3px 3px 3px 3px;
+        color: #3F3F3F;
+        font-family: Trebuchet MS,Verdana,lucida sans unicode;
+        font-size: 12px;
+        margin-left: -15px;
+        text-align: left;
+        list-style-type: none;
+        li:hover {
+          background: none repeat scroll 0 0 #FEF8CE; 
+        }
+        li
+        {
+          margin-bottom: 5px;
+          margin-right: 5px;
+          a{
+            text-decoration:none;
+          }
+        }
+      }
+
+    }
+
+    videos {
+      float: right;
+      width: 100%;
+      background: none repeat scroll 0 0 white;
+      border: 1px solid #E1E1E1;
+      border-radius: 3px 3px 3px 3px;
+      color: #3F3F3F;
+      font-family: Trebuchet MS,Verdana,lucida sans unicode;
+      font-size: 12px;
+      margin: 0 auto 10px;
+      text-align: left;
+      h1 {
+        width: 100%;
+        color: #293C5D;
+        font-size: 1.4em;
+        background: none repeat scroll 0 0 #FC575E;
+        margin-top: 0px;
+        text-align: center;
+      }
+      ul{
+        width: 100%;
+        border-radius: 3px 3px 3px 3px;
+        color: #3F3F3F;
+        font-family: Trebuchet MS,Verdana,lucida sans unicode;
+        font-size: 12px;
+        margin-left: -15px;
+        text-align: left;
+        list-style-type: none;
+        li:hover {
+          background: none repeat scroll 0 0 #FEF8CE; 
+        }
+        li{
+          margin-bottom: 5px;
+          margin-right: 5px;
+          a{
+            text-decoration:none;
+          }
+        }
+      }
+
+    }
   }
 
-  a{
-    text-decoration:none;
+  category
+  {
+      width: 95%;
+      float: left;
+      background: none repeat scroll 0 0 white;
+      border: 1px solid #E1E1E1;
+      border-radius: 3px 3px 3px 3px;
+      color: #3F3F3F;
+      font-family: Trebuchet MS,Verdana,lucida sans unicode;
+      font-size: 12px;
+      margin: 0 auto 10px;
+      text-align: left;
+      h1 {
+        width: 100%;
+        color: #293C5D;
+        font-size: 1.3em;
+        background: none repeat scroll 0 0 #86C9EF;
+        margin-top: 0px;
+      }
+      ul
+      {
+        width: 100%;
+        border-radius: 3px 3px 3px 3px;
+        color: #3F3F3F;
+        font-family: Trebuchet MS,Verdana,lucida sans unicode;
+        font-size: 12px;
+        margin-left: -15px;
+        text-align: left;
+        list-style-type: none;
+        li:hover {
+          background: none repeat scroll 0 0 #FEF8CE;
+        }
+        li
+        {
+          margin-bottom: 5px;
+          margin-right: 5px;
+          a{
+            text-decoration:none;
+          }
+        }
+      }
   }
-  td{
-     border: 1px solid #E1E1E1;
-     border-radius: 3px 3px 3px 3px;
-  }
-  h1{
-    font-size: 1.5em;
+
+  investmenteducation
+  {
+    margin-top: 10px;
+    margin-left: 20px;
+    ReadMoreButton{
+      background: none repeat scroll 0 0 #FCCA54;
+      border-radius: 10px 10px 10px 10px;
+      color: #F7F7F7;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: bold;
+      padding: 2px 3px;
+      text-align: center;
+      width: 80px;
+      margin-bottom: 0px;
+      float: right;
+    }
+
+    a{
+      text-decoration:none;
+    }
+    td{
+       border: 1px solid #E1E1E1;
+       border-radius: 3px 3px 3px 3px;
+    }
+    h1{
+      font-size: 1.5em;
+    }
   }
 }

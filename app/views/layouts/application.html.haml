@@ -6,7 +6,7 @@
     = javascript_include_tag :application
     = raw airbrake_javascript_notifier
     = csrf_meta_tags
-  %body
+  %body{:class => [params[:controller], params[:action]] + (params[:id] || '').split('/')}
     %header
       %nav.user
         %ul

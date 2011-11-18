@@ -1,7 +1,7 @@
 -content_for :aside do
   =render "pages/investment_education/categories"
 %article
-  %h1 Fundamental AnalysisI
+  %h1 Fundamental Analysis
   %section
     %h1 What is fundamental analysis?
     =image_tag  "investment_education/FundamentalAnalysis.png"
@@ -114,7 +114,7 @@
     %rightAlign
       Next:
       =link_to t('investment_education.fundamental_analysis2'), page_path('investment_education/fundamental_analysis2')
-    %center=link_to t('investment_education'), page_path('investment_education')
+    %center=link_to t('investment_education.home'), page_path('investment_education')
 %extracontent
   %takeaway
     %h1 Take Away

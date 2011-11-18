@@ -24,7 +24,7 @@ class NetPosition < ActiveRecord::Base
   end
 
   def total_cost
-    buy_transactions.sum("quantity * price")
+    buy_transactions.sum("quantity * price").to_f
   end
 
   def total_sale

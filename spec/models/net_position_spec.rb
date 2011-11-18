@@ -5,7 +5,7 @@ describe NetPosition do
   let (:net_position) { create :net_position, :security => stock }
   subject { net_position }
   before :each do
-    create :scrip, :id => stock.id, :last_traded_price => 20
+    create :scrip, :id => stock.symbol, :last_traded_price => 20
   end
 
   it { should have_many :transactions }

@@ -5,8 +5,8 @@
 
 - NewsArticle.get_feeds.each do |section_name,articles|
   %section{:id => section_name}
-    %article
     - articles.each do |article|
-      = link_to article.url, :title => article.source, :target => :blank do
-        %h1= article.id
-      %p= article.summary.gsub(/<\/?[^>]*>/, "")
+      %article
+        = link_to article.url, :title => article.source, :target => :blank do
+          %h1= article.id
+        %p= article.summary.gsub(/<\/?[^>]*>/, "")
