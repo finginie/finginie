@@ -2,6 +2,10 @@ class FinancialPlanner < ActiveRecord::Base
   belongs_to :user
   has_many :risk_profilers
 
+  validates :willingness_to_take_risk, :numericality => true
+
+  before_validation :set_willingness
+
   ASSET_ALLOCATION = {
     1 => {
           'Govt Securities' => 70, 'Corporate Bonds' => 10, 'Cash' => 20, 'Large Cap Stocks' => 0,
@@ -52,12 +56,16 @@ class FinancialPlanner < ActiveRecord::Base
   end
 
   def get_asset_allocation
-    willingness_to_take_risk = 10 if !willingness_to_take_risk
     ASSET_ALLOCATION[[overall_risk_tolerance.round,willingness_to_take_risk.round].min] if overall_risk_tolerance
   end
 
   def overall_risk_tolerance
     profilers = risk_profilers.delete_if{ |r| r.score.nil?}
     profilers.map{|r| r.score*r.quiz.weight}.inject(:+)/profilers.sum{|r| r.quiz.weight} if profilers.length > 0 && profilers.length == Quiz.all.length
+  end
+
+private
+  def set_willingness
+    self.willingness_to_take_risk ||= 10
   end
 end

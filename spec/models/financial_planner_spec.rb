@@ -6,6 +6,8 @@ describe FinancialPlanner do
 
   subject {financial_planner}
   it { should have_many :risk_profilers}
+  it { should validate_numericality_of :willingness_to_take_risk }
+  its(:willingness_to_take_risk) { should eq 10 }
 
   it "should build risk_profilers for a given quiz" do
     3.times { |i| create :quiz, :name => "quiz_#{i}"}

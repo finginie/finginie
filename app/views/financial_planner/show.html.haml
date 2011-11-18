@@ -1,6 +1,6 @@
 %h1 Financial Planner
 #asset-allocation
-  = simple_form_for resource, :url => financial_planner_path(resource), :method => :put do |f|
+  = simple_form_for resource, :url => financial_planner_path do |f|
     = f.input :willingness_to_take_risk
     .actions
       = f.submit 'Submit'
