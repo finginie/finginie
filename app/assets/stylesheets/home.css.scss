@@ -1,6 +1,4 @@
-// To configure blueprint, edit the partials/base.sass file.
-@import "partials/base";
-
+@import "blueprint/colors";
 @import "blueprint/liquid";
 @import "compass/typography/lists/horizontal-list";
 @import "compass/css3/box-shadow";
@@ -8,13 +6,16 @@
 @import "compass/css3/transform";
 @import "compass/layout/stretching";
 
+// To configure blueprint, edit the partials/base.sass file.
+@import "partials/base";
+
 // Animations
 /* Fades in the slideshow. Hides the initial animation on the li tag. Ooops!! */
 @-webkit-keyframes fadeIn {
   0% {
     opacity: 0;
   }
-  50% { 
+  50% {
     opacity: 0;
   }
   100% {
@@ -65,8 +66,38 @@
 body.home {
   .ticker {
     @include column($blueprint-liquid-grid-columns, true);
+    margin: $blueprint-liquid-grid-margin / 2 0;
+
     ul {
-      @include horizontal-list;
+      @include container;
+      width: 100%;
+      padding: 0;
+
+      li {
+        @include column($blueprint-liquid-grid-columns / 5);
+        &:last-child {
+          @include column($blueprint-liquid-grid-columns / 5, true);
+        }
+
+        background-color: lighten($auxillary-background-color, 20%);
+        color: white;
+
+        height: 3em;
+        .name {
+          @include column($blueprint-liquid-grid-columns * 2 / 3);
+          font-size: x-large;
+          text-align: center;
+        }
+
+        .current, .change {
+          @include column($blueprint-liquid-grid-columns / 3, true);
+        }
+        .change {
+          border-top: thin solid $default-box-shadow-color;
+          &.positive { color: lighten($success-color, 40%); }
+          &.negative { color: lighten($error-color, 40%); }
+        }
+      }
     }
   }
 

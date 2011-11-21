@@ -1,14 +1,7 @@
 %ul
-  %li Sensex
-  %li= REDIS.get("Ticker_sensex_current")
-  %li= REDIS.get("Ticker_sensex_change")
-  %li Nifty
-  %li= REDIS.get("Ticker_nifty_current")
-  %li= REDIS.get("Ticker_nifty_change")
-  %li DowJones
-  %li= REDIS.get("Ticker_dowjones_current")
-  %li= REDIS.get("Ticker_dowjones_change")
-  %li USD 1
-  %li= REDIS.get("Ticker_usd_to_inr")
-  %li Gold (10 Gms.)
-  %li= REDIS.get("Ticker_gold_current")
+  - %w(sensex nifty dowjones usd_to_inr gold).each do |tick|
+    %li
+      .name= t(".#{tick}")
+      .current= REDIS.get("Ticker:#{tick}_current")
+      - if change =  REDIS.get("Ticker:#{tick}_change")
+        .change{ :class => change.to_f < 0 ? :negative : :positive}= change

@@ -40,7 +40,7 @@ class TickerData
     },
     {
       :category => 'USD 1',
-      :name => 'usd_to_inr',
+      :name => 'usd_to_inr_current',
       :url => 'http://www.exchangerateusd.com/INR',
       :xpath => '//html/body/div[1]/div/div/table/tr/td[2]/div/table/tr[2]/td[5]/a/text()'
     },
@@ -53,7 +53,7 @@ class TickerData
   ]
 
   def self.store_indices
-    INDICES.each{ |index|  REDIS.set("Ticker_#{index[:name]}",Nokogiri::HTML(open(index[:url])).xpath(index[:xpath])[0].content.strip) }
+    INDICES.each{ |index|  REDIS.set("Ticker:#{index[:name]}",Nokogiri::HTML(open(index[:url])).xpath(index[:xpath])[0].content.strip) }
   end
 
 end
