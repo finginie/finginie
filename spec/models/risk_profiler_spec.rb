@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe RiskProfiler do
-    let (:quiz) { create :quiz, :result_type => 'mean', :name => 'MeanQuiz', :weight => 2,
+  let (:quiz) { create :quiz, :result_type => 'mean', :name => 'MeanQuiz', :weight => 2,
                   :questions => [
                     create(:question, :weight => 4,:choices => [
                       create(:choice, :text => "Choice 0", :ceiling => 3, :score => 2),

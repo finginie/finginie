@@ -105,17 +105,17 @@ Quiz.create :name => "Investing Behaviour Profile",
                   {
                     :text => "George Soros. He did some crazy stuff, took on lots of risk, even went bankrupt once but is still a billionaire.",
                     :score => 0,
-                    :ceiling => 0
+                    :ceiling => 10
                   },
                   {
                     :text => "Not too sure. I don't know much about investors.",
                     :score => 1,
-                    :ceiling => 0
+                    :ceiling => 10
                   },
                   {
                     :text => "No one is very good. They all lose money during recessions.",
                     :score => 3,
-                    :ceiling => 0
+                    :ceiling => 10
                   }
                 ]
               },
@@ -296,22 +296,22 @@ Quiz.create :name => "Emotional Risk Appetite",
                   {
                     :text => "No way! I might lose money.",
                     :score => 1,
-                    :ceiling =>0
+                    :ceiling => 10
                   },
                   {
                     :text => "Hmmm... I will consider the case.",
                     :score => 4,
-                    :ceiling =>0
+                    :ceiling => 10
                   },
                   {
                     :text => "Maybe I will invest half of my money in them and the rest in safe instruments.",
                     :score => 6,
-                    :ceiling => 0
+                    :ceiling => 10
                   },
                   {
                     :text => "Yeah! Nothing ventured, nothing gained.",
                     :score => 10,
-                    :ceiling => 0
+                    :ceiling => 10
                   }
                 ]
               },
@@ -460,22 +460,22 @@ Quiz.create :name => "Financial Risk Appetite",
                   {
                     :text => "0.25 - 2% P.A.",
                     :score => 1,
-                    :ceiling => 0
+                    :ceiling => 10
                   },
                   {
                     :text => "2 - 5% P.A.",
                     :score => 4,
-                    :ceiling => 0
+                    :ceiling => 10
                   },
                   {
                     :text => "5 - 10% P.A.",
                     :score => 7,
-                    :ceiling => 0
+                    :ceiling => 10
                   },
                   {
                     :text => "Greater than 10% P.A.",
                     :score => 10,
-                    :ceiling => 0
+                    :ceiling => 10
                   }
                 ]
               },
@@ -507,18 +507,22 @@ Quiz.create :name => "Financial Risk Appetite",
                 :choices_attributes => [
                   {
                     :text => "No, I have no such constraints.",
+                    :score => 0,
                     :ceiling => 10
                   },
                   {
                     :text => "Yes, I cant take on excessive risk.",
+                    :score => 0,
                     :ceiling => 7
                   },
                   {
                     :text => "Yes, I can only take on an average amount of risk.",
+                    :score => 0,
                     :ceiling => 6
                   },
                   {
                     :text => "Yes, I can only invest in risk free securities.",
+                    :score => 0,
                     :ceiling => 1
                   }
                 ]

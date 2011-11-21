@@ -26,7 +26,8 @@ class Ability
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
     if user
       can :manage, Portfolio, :user_id => user.id
+      can :manage, FinancialPlanner, :user_id => user.id
+      can :manage, RiskProfiler, :financial_planner => { :user_id => user.id }
     end
-
   end
 end

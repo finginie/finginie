@@ -1,7 +1,16 @@
 class RiskProfilersController < InheritedResources::Base
+  load_and_authorize_resource :financial_planner
+  load_and_authorize_resource :risk_profiler, :through => :financial_planner
+
   actions :show, :update
+
   def resource
     @quiz = Quiz.find_by_slug(params[:id])
-    @risk_profiler = RiskProfiler.find_or_initialize_by_user_id_and_quiz_id(current_user.id, @quiz.id).build_responses
+    @financial_planner = FinancialPlanner.find_or_create_by_user_id(current_user.id)
+    @risk_profiler = @financial_planner.risk_profilers.find_or_initialize_by_quiz_id(@quiz.id).build_responses
+  end
+
+  def update
+    update!(:notice => "You have answered #{resource.responses.length} out of #{resource.quiz.questions.length}.Your responses have been saved successfully. Answer all questions to view your score") { financial_planner_url }
   end
 end

@@ -2,10 +2,11 @@ require 'spec_helper'
 
 describe "NetPositions" do
   describe "Add new net position" do
-    let (:portfolio) { create :portfolio, :user_id => user.id }
+    include_context "logged in user"
+
+    let (:portfolio) { create :portfolio, :user => current_user }
     let (:stock) { create :stock }
 
-    login_user
     before :each do
       visit portfolio_path(portfolio)
     end

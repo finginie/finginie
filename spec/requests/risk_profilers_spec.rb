@@ -15,7 +15,7 @@ describe "RiskProfilers" do
                   ]
   end
 
-  login_user
+  include_context "logged in user"
 
   it "should show and save the page" do
     visit financial_planner_risk_profiler_path(:id => quiz.slug)

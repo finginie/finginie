@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe "Portfolios" do
-  let (:portfolio) { create :portfolio, :user => user }
-  login_user
+  include_context "logged in user"
+  let (:portfolio) { create :portfolio, :user => current_user }
 
   it "groups net positions by asset type" do
     stock_position = create :net_position, :security => create(:stock), :portfolio => portfolio
