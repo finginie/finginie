@@ -24,7 +24,7 @@ class RetirementCorpusCalculator
   end
   AGE_OF_DEATH = 80
 
-  def calculate_monthly_return
+  def monthly_return
    	retirement_corpus = 0.0
 
     for i in 1..retirement_life_span
