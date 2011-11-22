@@ -28,6 +28,7 @@ gem 'nested_form', :git => 'git://github.com/vikashag/nested_form.git'
 gem 'paper_trail'
 gem 'redis'
 gem 'simple_form'
+gem 'simple-navigation'
 gem 'thin'
 gem 'valuable', :git => "git://github.com/LoonyBin/valuable.git"
 gem 'zipruby'

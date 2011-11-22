@@ -1,5 +1,5 @@
 @import "blueprint/liquid";
-@import "compass/typography/lists/horizontal-list";
+@import "compass/typography/lists/inline-block-list";
 @import "highlight";
 
 
@@ -19,12 +19,11 @@ hgroup {
 }
 
 nav {
-  background-color: $secondary-background-color;
-  @include container;
   > ul {
-    @include horizontal-list;
-    float: right;
-    clear: right;
+    @include inline-block-list-container;
+    > li {
+      @include inline-block-list-item;
+    }
   }
 }
 

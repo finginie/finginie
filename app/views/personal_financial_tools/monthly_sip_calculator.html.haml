@@ -1,5 +1,5 @@
 - content_for :aside do
-  = render 'list'
+  = render_navigation :level => 2
 = simple_form_for @monthly_sip_calculator, :url => monthly_sip_calculator_path do |f|
   = f.error_notification
 
