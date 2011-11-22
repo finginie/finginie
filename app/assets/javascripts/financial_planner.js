@@ -38,10 +38,10 @@ $(document).ready(function() {
     });
   };
 
-  if ($("#emotional-risk-appetite").attr("emotional-risk-appetite-data") != undefined) {
+  if ($("#emotional-risk-appetite-chart").attr("data-horizontal-pie-chart") != undefined) {
     new Highcharts.Chart({
       chart: {
-        renderTo: 'emotional-risk-appetite',
+        renderTo: 'emotional-risk-appetite-chart',
         defaultSeriesType: 'column',
         inverted: true
       },
@@ -73,15 +73,15 @@ $(document).ready(function() {
         enabled: false
       },
       series: [{
-        data:  JSON.parse($("#emotional-risk-appetite").attr("emotional-risk-appetite-data"))
+        data:  JSON.parse($("#emotional-risk-appetite-chart").attr("data-horizontal-pie-chart"))
       }]
     });
   };
 
-  if ($("#financial-risk-appetite").attr("financial-risk-appetite-data") != undefined) {
+  if ($("#financial-risk-appetite-chart").attr("data-horizontal-pie-chart") != undefined) {
     new Highcharts.Chart({
       chart: {
-        renderTo: 'financial-risk-appetite',
+        renderTo: 'financial-risk-appetite-chart',
         defaultSeriesType: 'column',
         inverted: true
       },
@@ -113,7 +113,7 @@ $(document).ready(function() {
         enabled: false
       },
       series: [{
-        data:  JSON.parse($("#financial-risk-appetite").attr("financial-risk-appetite-data"))
+        data:  JSON.parse($("#financial-risk-appetite-chart").attr("data-horizontal-pie-chart"))
       }]
     });
   };

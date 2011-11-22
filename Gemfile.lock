@@ -101,6 +101,8 @@ GEM
       orm_adapter (~> 0.0.3)
       warden (~> 1.1)
     diff-lcs (1.1.3)
+    draper (0.9.5)
+      activesupport (>= 2.3.10)
     em-websocket (0.3.5)
       addressable (>= 2.1.1)
       eventmachine (>= 0.12.9)
@@ -322,6 +324,7 @@ DEPENDENCIES
   compass (~> 0.12.alpha.0)
   database_cleaner
   devise
+  draper
   factory_girl_rails
   feedzirra
   foreman

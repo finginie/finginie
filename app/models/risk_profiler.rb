@@ -21,15 +21,6 @@ class RiskProfiler < ActiveRecord::Base
     (quiz.questions - questions).each {|question| responses.build :question => question }
     self
   end
-  def get_score
-    if score
-      if quiz.buckets
-        quiz.buckets.scan(/[\w]+/)[score.to_i]
-      else
-        score.round(1)
-      end
-    end
-  end
 
 private
   def clean_responses
@@ -51,5 +42,4 @@ private
       .sort_by { |k, v| v.map {|r| r.choice.question.weight}.inject(:+) }
       .last.first
   end
-
 end

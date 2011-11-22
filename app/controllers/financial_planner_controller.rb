@@ -6,5 +6,6 @@ class FinancialPlannerController < InheritedResources::Base
 
   def resource
     @financial_planner = FinancialPlanner.find_or_create_by_user_id(current_user.id).build_risk_profilers
+    FinancialPlannerDecorator.decorate(@financial_planner)
   end
 end

@@ -14,7 +14,7 @@ describe "FinancialPlanner" do
   it "should have a message to complete quiz to get score" do
     create :quiz, :name => 'test quiz'
     visit financial_planner_path
-    page.should have_content 'Complete this quiz to get the score'
+    page.should have_content 'Complete this quiz to view your score'
   end
 
   describe "Financial Planner with risk_profilers saved " do
