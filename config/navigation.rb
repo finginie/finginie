@@ -19,11 +19,11 @@ SimpleNavigation::Configuration.run do |navigation|
       secondary.item :portfolios, 'Portfolios', portfolios_path
     end
 
-    # %section
-    # %h1= link_to t('financial_planner_risk_profiler'), financial_planner_risk_profiler_path
-    # %ul
-    #   - Quiz.all.each do |quiz|
-    #     %li= link_to quiz.name, financial_planner_risk_profiler_path(:id => quiz.slug)
+    primary.item :financial_planner, 'Financial Planner', financial_planner_path do |secondary|
+      Quiz.all.each do |quiz|
+        secondary.item quiz.slug.to_sym, quiz.name, financial_planner_risk_profiler_path(:id => quiz.slug)
+      end
+    end
 
     primary.item :personal_financial_tools, 'Personal Financial Tools', personal_financial_tools_path do |secondary|
       secondary.item :emi_calculators, 'EMI Calculator', emi_calculators_path
