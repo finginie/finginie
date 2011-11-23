@@ -26,9 +26,9 @@ gem 'inherited_resources'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'meta_search'
-gem 'nested_form', :git => 'git://github.com/vikashag/nested_form.git'
+gem 'nested_form', :git => "git://github.com/vikashag/nested_form.git"
 gem 'paper_trail'
-gem 'rails-backbone'
+gem 'rails-backbone', :git => "git://github.com/TMaYaD/backbone-rails.git", :branch => "patch-1"
 gem 'redis'
 gem 'simple_form'
 gem 'thin'

@@ -19,6 +19,16 @@ GIT
       sass (>= 3.1.0)
 
 GIT
+  remote: git://github.com/TMaYaD/backbone-rails.git
+  revision: 14611bfb2e5df4908ccc3f33cbb409cb1ace329a
+  branch: patch-1
+  specs:
+    rails-backbone (0.5.4)
+      coffee-script (~> 2.2.0)
+      ejs (~> 1.0.0)
+      rails (~> 3.1.0)
+
+GIT
   remote: git://github.com/ryanbraganza/rubyzip.git
   revision: dad730c9f378dfab3622b770ab36840011e601d1
   specs:
@@ -221,10 +231,6 @@ GEM
       activesupport (= 3.1.0)
       bundler (~> 1.0)
       railties (= 3.1.0)
-    rails-backbone (0.5.4)
-      coffee-script (~> 2.2.0)
-      ejs (~> 1.0.0)
-      rails (~> 3.1.0)
     railties (3.1.0)
       actionpack (= 3.1.0)
       activesupport (= 3.1.0)
@@ -347,7 +353,7 @@ DEPENDENCIES
   pg
   pry
   rails (= 3.1.0)
-  rails-backbone
+  rails-backbone!
   rb-inotify
   redis
   rspec

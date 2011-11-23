@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  respond_to :html, :json
 
   rescue_from CanCan::AccessDenied do |exception|
     current_user ? redirect_back_with(exception) : redirect_to_login
