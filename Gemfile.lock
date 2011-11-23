@@ -339,6 +339,7 @@ DEPENDENCIES
   high_voltage
   inherited_resources
   jquery-rails
+  kaminari
   libnotify
   meta_search
   nested_form!

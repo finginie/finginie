@@ -10,7 +10,7 @@ Finginie::Application.routes.draw do
   resources :loans
   resources :fixed_incomes
   resources :real_estates
-  resources :stocks
+  resources :stocks, :only => [:index, :show]
 
   resources :portfolios do
     resources :net_positions, :except => :index do
