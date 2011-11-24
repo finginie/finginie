@@ -13,6 +13,7 @@ class Finginie.Routers.StocksRouter extends Backbone.Router
     $("#stocks").html(@view.render().el)
 
   show: (id) ->
+    @index()
     stock = @stocks.get(id)
 
     @view = new Finginie.Views.Stocks.ShowView(model: stock)
