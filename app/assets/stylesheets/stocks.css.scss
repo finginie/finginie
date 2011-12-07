@@ -15,6 +15,11 @@ body.stocks {
       @include column($blueprint-liquid-grid-columns, true);
     }
 
+    .stock_chart {
+      height: 350px;
+      overflow: hidden;
+    }
+
     .quote_data {
       @include column($blueprint-liquid-grid-columns / 2);
     }
