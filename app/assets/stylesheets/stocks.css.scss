@@ -3,72 +3,24 @@
 @import "blueprint/liquid";
 
 body.stocks {
-  $height: 3em;
-  $symbol-width: 2;
-  .symbol {
-    @include column($symbol-width);
-    height: $height * 2;
-    $color: adjust-hue($blueprint-background-color, 80deg);
-    background-color: $color;
-    dt {
-      color: lighten($color, 40%);
-    }
-  }
-  .name {
-    @include column($blueprint-liquid-grid-columns - $aside-width - $symbol-width);
-    height: $height * 2;
-    $color: adjust-hue($blueprint-background-color, 160deg);
-    background-color: $color;
-    dt {
-      color: lighten($color, 40%);
-    }
+  #stocks {
+    height: 20em;
+    overflow-y: scroll;
   }
 
-  .asset_class {
-    @include column($aside-width, true);
-    height: $height;
-    $color: adjust-hue($blueprint-background-color, 2400deg);
-    background-color: $color;
-    dt {
-      color: lighten($color, 40%);
-    }
-  }
+  #stock {
+    height: 15em;
 
-  .sector {
-    @include column($aside-width, true);
-    height: $height;
-    $color: adjust-hue($blueprint-background-color, 320deg);
-    background-color: $color;
-    dt {
-      color: lighten($color, 40%);
+    h1, .basic_details, .stock_chart {
+      @include column($blueprint-liquid-grid-columns, true);
     }
-  }
 
-  .daily_prices {
-    @include column($blueprint-liquid-grid-columns / 3);
-    height: $height * 7;
-    $color: adjust-hue($blueprint-background-color, 40deg);
-    background-color: $color;
-    dt {
-      color: lighten($color, 40%);
+    .quote_data {
+      @include column($blueprint-liquid-grid-columns / 2);
     }
-  }
-  .fundamentals {
-    @include column($blueprint-liquid-grid-columns / 3);
-    height: $height * 7;
-    $color: adjust-hue($blueprint-background-color, 120deg);
-    background-color: $color;
-    dt {
-      color: lighten($color, 40%);
-    }
-  }
-  .trade_prices {
-    @include column($blueprint-liquid-grid-columns / 3, true);
-    height: $height * 7;
-    $color: adjust-hue($blueprint-background-color, 200deg);
-    background-color: $color;
-    dt {
-      color: lighten($color, 40%);
+
+    .fundamental_data {
+      @include column($blueprint-liquid-grid-columns / 2, true);
     }
   }
 }

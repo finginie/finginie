@@ -1,7 +1,7 @@
 - content_for :aside do
   = simple_form_for @search, :url => collection_path, :html => {:novalidate => true} do |f|
     = f.input :name_contains
-    = f.input :sector_equals
+    = f.input :sector_contains
     =# f.input :last_traded_price_greater_than_or_equal_to
     =# f.input :last_traded_price_less_than_or_equal_to
     = f.input :beta_greater_than_or_equal_to
@@ -15,20 +15,27 @@
 
     =f.submit 'Search'
 
-%h1 Listing stocks
-
-%table
-  %tr
-    %th= sort_link @search, :name
-    %th= sort_link @search, :sector
-    %th= sort_link @search, :beta
-    %th= sort_link @search, :pe
-    %th= sort_link @search, :eps
-
-  - @stocks.each do |stock|
+#stocks
+  %table
     %tr
-      %td= link_to stock.name, resource_path(stock)
-      %td= stock.sector
-      %td= stock.beta
-      %td= stock.pe
-      %td= stock.eps
+      %th= sort_link @search, :name
+      %th= sort_link @search, :sector
+      %th= sort_link @search, :beta
+      %th= sort_link @search, :pe
+      %th= sort_link @search, :eps
+
+    - @stocks.each do |stock|
+      %tr
+        %td= link_to stock.name, resource_path(stock)
+        %td= stock.sector
+        %td= stock.beta
+        %td= stock.pe
+        %td= stock.eps
+#stock
+
+:javascript
+  $(function() {
+    window.router = new Finginie.Routers.StocksRouter({stocks: #{@stocks.to_json.html_safe}});
+    Backbone.history.start();
+  });
+

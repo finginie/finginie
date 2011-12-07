@@ -5,7 +5,8 @@ class Stock < Security
   validates :name, :uniqueness => true
   validates :symbol, :uniqueness => true
 
-  delegate :last_traded_price, :percent_change, :volume, :high_price, :low_price, :best_buy_price, :best_buy_quantity, :best_sell_price, :best_sell_quantity, :to => :scrip
+  SCRIP_METHODS = [:last_traded_price, :percent_change, :volume, :high_price, :low_price, :best_buy_price, :best_buy_quantity, :best_sell_price, :best_sell_quantity]
+  delegate *SCRIP_METHODS, :to => :scrip, :allow_nil => true
 
   def scrip
     Scrip.find(symbol)
@@ -13,5 +14,10 @@ class Stock < Security
 
   def current_value(transaction)
     last_traded_price
+  end
+
+  def as_json(options = {})
+    options ||= {}
+    super(options.merge(:methods => SCRIP_METHODS))
   end
 end
