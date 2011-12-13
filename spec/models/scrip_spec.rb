@@ -68,5 +68,18 @@ describe Scrip, :redis do
       Scrip.find_ids_by_percent_change( 4, 5 ).should eq []
       Scrip.find_ids_by_percent_change( 1, 2 ).should eq ["AANJANEYA"]
     end
+
+    it "should be destroyable" do
+      destroyed_scrip = scrip.destroy
+      destroyed_scrip.should eq scrip
+      Scrip.find(destroyed_scrip.id).should be_nil
+    end
+
+    it "should clear indices on destroyed scrips" do
+      destroyed_scrip = scrip.destroy
+      Scrip.find_ids_by_last_traded_price( destroyed_scrip.last_traded_price, destroyed_scrip.last_traded_price ).should eq []
+      Scrip.find_ids_by_percent_change( destroyed_scrip.percent_change, destroyed_scrip.percent_change ).should eq []
+    end
+
   end
 end

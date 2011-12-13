@@ -22,6 +22,16 @@ module RedisRecord::Base
       super(attrs)
       save
     end
+
+    def destroy
+      success = REDIS.multi do
+        REDIS.del key
+        sorted_indices.each do |attr|
+          REDIS.zrem self.class.key(attr), id
+        end
+      end
+      success.first == 1 ? self : nil
+    end
   end
 
   module ClassMethods
