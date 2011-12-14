@@ -37,7 +37,7 @@ gem 'zipruby'
 
 group :test, :development do
   gem 'capybara'
-    gem 'rubyzip', :git => "git://github.com/ryanbraganza/rubyzip.git" # Fix scoping issues
+    gem 'rubyzip', :git => "git://github.com/FinGinie/rubyzip.git" # Fix scoping issues
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'foreman'
@@ -58,6 +58,11 @@ end
 
 group :development do
   gem 'heroku'
+  gem 'rails_best_practices'
+end
+
+group :tddium do
+  gem 'tddium'
 end
 
 group :production do
