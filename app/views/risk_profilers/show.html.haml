@@ -1,6 +1,6 @@
-%h1= @risk_profiler.quiz.name
+%h1= resource.quiz.name
 
-= simple_form_for @risk_profiler, :url => financial_planner_risk_profiler_path(@risk_profiler), :method => :put do |f|
+= simple_form_for resource, :url => financial_planner_risk_profiler_path(resource), :method => :put do |f|
   %ol
     = f.simple_fields_for :responses do |r|
       %li

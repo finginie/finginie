@@ -8,12 +8,12 @@
 
       - positions.each do |net_position|
         %tr
-          %td= link_to net_position.security.name, portfolio_net_position_path(@portfolio, net_position)
+          %td= link_to net_position.security.name, portfolio_net_position_path(resource, net_position)
           %td.actions
-            = button_to 'Add Transaction', new_portfolio_net_position_transaction_path(@portfolio, net_position), :method => :get
-            = button_to 'Change Security', edit_portfolio_net_position_path(@portfolio, net_position), :method => :get
-            = button_to 'Destroy', portfolio_net_position_path(@portfolio, net_position), :confirm => 'Are you sure?', :method => :delete, :class => :negetive
+            = button_to 'Add Transaction', new_portfolio_net_position_transaction_path(resource, net_position), :method => :get
+            = button_to 'Change Security', edit_portfolio_net_position_path(resource, net_position), :method => :get
+            = button_to 'Destroy', portfolio_net_position_path(resource, net_position), :confirm => 'Are you sure?', :method => :delete, :class => :negetive
 
 .actions
   - %w(Stock FixedIncome Loan RealEstate OtherAsset OtherLiability).each do |security_type|
-    = link_to "Add New #{security_type.titleize}", new_portfolio_net_position_path(@portfolio, 'net_position[security_attributes][type]' => security_type), :class => :button
+    = link_to "Add New #{security_type.titleize}", new_portfolio_net_position_path(resource, 'net_position[security_attributes][type]' => security_type), :class => :button

@@ -4,7 +4,7 @@ module RedisRecord::DataTypes
     def create_initializer(type, klass, defaults = {})
       define_singleton_method(type) do | *list, opts |
         unless opts.is_a? Hash
-          list << opts 
+          list << opts
           opts = {}
         end
         opts[:klass] ||= klass
