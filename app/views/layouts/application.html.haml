@@ -21,7 +21,7 @@
           = image_tag 'logo.png', :alt => 'Finginie'
         %span.tag Beta
       %nav
-        = render 'layouts/navigation'
+        = render_navigation :level => 1
       %hgroup.page_header
         =yield :header
     #wrapper
@@ -34,5 +34,6 @@
         = yield
     %footer
       %nav.sitemap
+        = render_navigation :expand_all => true, :level => 1..2
       %p All your bases are belongs to us. Finginie &copy; 2011
       =yield :footer

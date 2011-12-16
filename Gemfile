@@ -31,6 +31,7 @@ gem 'paper_trail'
 gem 'rails-backbone', :git => "git://github.com/TMaYaD/backbone-rails.git", :branch => "patch-1"
 gem 'redis'
 gem 'simple_form'
+gem 'simple-navigation'
 gem 'thin'
 gem 'valuable', :git => "git://github.com/LoonyBin/valuable.git"
 gem 'zipruby'

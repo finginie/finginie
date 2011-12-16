@@ -14,8 +14,15 @@
 @import "partials/defaults";
 
 //Navigation
-nav {
-  @include container;
+header {
+  nav {
+    background-color: $secondary-background-color;
+    @include container;
+    ul {
+      float: right;
+      clear: right;
+    }
+  }
 }
 
 //Title
@@ -34,4 +41,6 @@ hgroup.title .tag { // This makes the beta tag stick to the title
 // Footer
 footer {
   background-color: $auxillary-background-color;
+  nav {
+  }
 }

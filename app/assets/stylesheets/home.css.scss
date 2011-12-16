@@ -182,9 +182,7 @@ body.home {
     height: $height;
     padding: 0.7em 0;
     nav {
-      background-color: inherit;
       > ul {
-        float: none;
         border-bottom: 1px solid $secondary-background-color;
         margin: 0;
         padding: 0 0 6px 10px;
