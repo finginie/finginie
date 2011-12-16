@@ -16,17 +16,17 @@ class PersonalFinancialToolsController < ApplicationController
 
   def life_insurance_calculators
     @life_insurance_calculator = LifeInsuranceCalculator.new(params[:life_insurance_calculator])
-    flash[:success] ="According to the informartion you entered, the extra insurance you need is Rs. #{@life_insurance_calculator.extra_insurance_required}" if params[:commit]  
+    flash[:success] ="According to the informartion you entered, the extra insurance you need is Rs. #{@life_insurance_calculator.extra_insurance_required}" if params[:commit]
   end
 
   def monthly_sip_calculator
     @monthly_sip_calculator = MonthlySipCalculator.new(params[:monthly_sip_calculator])
-    flash[:success] ="The monthly you need to invest to reach your goal is Rs. #{@monthly_sip_calculator.monthly_sip}" if params[ :commit]  
+    flash[:success] ="The monthly you need to invest to reach your goal is Rs. #{@monthly_sip_calculator.monthly_sip}" if params[ :commit]
   end
 
   def rate_of_return_calculator
     @rate_of_return_calculator = RateOfReturnCalculator.new(params[:rate_of_return_calculator])
-    flash[:success] ="The rate of return earned on your investment is Rs. #{@rate_of_return_calculator.calculate_rate_of_return}" if params[ :commit]      
+    flash[:success] ="The rate of return earned on your investment is Rs. #{@rate_of_return_calculator.calculate_rate_of_return}" if params[ :commit]
   end
 
   def recurring_deposit_calculator
@@ -36,11 +36,11 @@ class PersonalFinancialToolsController < ApplicationController
 
   def retirement_corpus_calculator
     @retirement_corpus_calculator = RetirementCorpusCalculator.new(params[:retirement_corpus_calculator])
-    flash[:success] ="The corpus you need to meet your expenses after retirement is Rs. #{@retirement_corpus_calculator.monthly_return}" if params[ :commit]   
+    flash[:success] ="The corpus you need to meet your expenses after retirement is Rs. #{@retirement_corpus_calculator.monthly_return}" if params[ :commit]
   end
 
   def sip_calculator
     @sip_calculator = SipCalculator.new(params[:sip_calculator])
-    flash[:success] ="The monthly amount you invest will accumlate to Rs. #{@sip_calculator.calculate_sip}" if params[ :commit]   
+    flash[:success] ="The monthly amount you invest will accumlate to Rs. #{@sip_calculator.calculate_sip}" if params[ :commit]
   end
 end

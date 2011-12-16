@@ -25,14 +25,14 @@ class RetirementCorpusCalculator
   AGE_OF_DEATH = 80
 
   def monthly_return
-   	retirement_corpus = 0.0
+    retirement_corpus = 0.0
 
     for i in 1..retirement_life_span
       retirement_corpus += (( 1 + (inflation/100) ) ** i ) * retirement_year_expenses / (( 1+ (expected_return/100) ) ** i )
     end
 
     monthly_return = ( retirement_corpus * (rate_of_return - 1) )/ ( rate_of_return * ( ( rate_of_return ** months_to_retirement )-1))
-    monthly_return > 0 ? monthly_return.round(2) : 0 
+    monthly_return > 0 ? monthly_return.round(2) : 0
   end
 
   def retirement_year_expenses

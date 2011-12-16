@@ -23,7 +23,7 @@ class SipCalculator
 
   def calculate_sip
     rate_of_return_monthly = (rate_of_return/1200) +1
-  	final_amount = [(monthly_amount * rate_of_return_monthly * (( rate_of_return_monthly ** (no_months) ) -1 )) / (rate_of_return_monthly -1) ,
+    final_amount = [(monthly_amount * rate_of_return_monthly * (( rate_of_return_monthly ** (no_months) ) -1 )) / (rate_of_return_monthly -1) ,
                     (rate_of_return_monthly**no_months)*initial_investment].sum
     final_amount > 0 ? final_amount.round(2) : 0
   end
