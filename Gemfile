@@ -53,17 +53,13 @@ group :test, :development do
   gem 'shoulda-matchers'
   gem 'spork', '>0.9.0.rc'
   gem 'sqlite3'
-  gem 'tddium-preview'
+  gem 'tddium'
   gem 'timecop'
 end
 
 group :development do
   gem 'heroku'
   gem 'rails_best_practices'
-end
-
-group :tddium do
-  gem 'tddium'
 end
 
 group :production do
