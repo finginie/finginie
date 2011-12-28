@@ -30,6 +30,10 @@ class NewsData
         REDIS.lpush(NewsArticle.key(feed[:section]), entry.title)
       end
     end
+    NewsArticle.find_ids_by_published_time(0, NewsArticle.expiry_time.to_i).each do |key|
+      article = NewsArticle.find(key)
+      REDIS.lrem NewsArticle.key(article.section_name), 0, key
+      article.destroy
+    end
   end
-
 end
