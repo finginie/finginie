@@ -53,4 +53,12 @@ describe "Profiles" do
     visit profile_path profile
     page.should have_no_content 'Suit'
   end
+
+  it "should be searchable by name" do
+    visit profiles_path
+    fill_in :name_contains, :with => 'mith'
+    click_button 'Search'
+    page.should have_content 'Smith'
+    page.should have_no_content 'Neo'
+  end
 end

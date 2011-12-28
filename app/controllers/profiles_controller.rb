@@ -8,4 +8,9 @@ class ProfilesController < InheritedResources::Base
   def resource
     @profile ||= params[:id] ? super : current_user
   end
+
+  def collection
+    @search   = end_of_association_chain.search(params[:search])
+    @profiles = @search.page params[:page]
+  end
 end
