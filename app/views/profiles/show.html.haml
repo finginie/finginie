@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @profile.name
+%p
+  %b Avatar url:
+  = @profile.avatar_url
+%p
+  %b Location:
+  = @profile.location
+%p
+  %b Occupation:
+  = @profile.occupation
+%p
+  %b Company:
+  = @profile.company
+
+= link_to_if can?(:edit, @profile), 'Edit', edit_own_profile_path
+\|
+= link_to 'Back', profiles_path

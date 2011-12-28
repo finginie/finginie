@@ -1,0 +1,12 @@
+= simple_form_for @profile, :url => own_profile_path do |f|
+  = f.error_notification
+
+  .inputs
+    = f.input :name
+    = f.input :avatar_url
+    = f.input :location
+    = f.input :occupation
+    = f.input :company
+
+  .actions
+    = f.button :submit

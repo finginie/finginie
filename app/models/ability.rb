@@ -28,6 +28,8 @@ class Ability
       can :manage, Portfolio, :user_id => user.id
       can :manage, FinancialPlanner, :user_id => user.id
       can :manage, RiskProfiler, :financial_planner => { :user_id => user.id }
+      can :manage, User, :id => user.id
+      can :read, User
     end
   end
 end
