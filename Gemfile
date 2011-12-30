@@ -42,12 +42,15 @@ group :test, :development do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'foreman'
+  gem 'guard'
+    gem 'growl', :require => false
+    gem 'libnotify'
+    gem 'rb-inotify', :require => false
+    gem 'rb-fsevent', :require => false
   gem 'guard-livereload'
   gem 'guard-rspec'
   gem 'guard-spork'
-  gem 'libnotify'
   gem 'pry'
-  gem 'rb-inotify'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
