@@ -1,0 +1,23 @@
+%h1 Listing profiles
+
+= simple_form_for @search, :url => collection_path, :html => {:novalidate => true} do |f|
+  = f.input :name_contains
+  = f.submit 'Search'
+
+%table
+  %tr
+    %th Name
+    %th Avatar url
+    %th Location
+    %th Occupation
+    %th Company
+    %th
+
+  - @profiles.each do |profile|
+    %tr
+      %td= profile.name
+      %td= profile.avatar_url
+      %td= profile.location
+      %td= profile.occupation
+      %td= profile.company
+      %td= link_to 'Show', profile_path(profile)

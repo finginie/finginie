@@ -5,6 +5,9 @@ Finginie::Application.routes.draw do
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
 
+  resources :profiles, :only => [:index, :show]
+  resource  :profile,  :only => [:show, :edit, :update], :as => :own_profile
+
   resources :other_assets
   resources :other_liabilities
   resources :loans
