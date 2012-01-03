@@ -12,6 +12,7 @@ end
 
 gem 'airbrake'
 gem 'bourbon', :git => "git://github.com/FinGinie/bourbon.git"
+gem 'bson_ext'
 gem 'cancan'
 gem 'copycopter_client'
 gem 'draper', :git => "git://github.com/jcasimir/draper.git"
@@ -22,6 +23,8 @@ gem 'inherited_resources'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'meta_search'
+gem 'mongoid'
+  gem 'bson_ext'
 gem 'nested_form', :git => "git://github.com/TMaYaD/nested_form.git"
 gem 'newrelic_rpm'
 gem 'omniauth-facebook'
