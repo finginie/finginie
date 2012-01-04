@@ -18,8 +18,7 @@
 
 - if can? :edit, @profile
   = link_to 'Edit', edit_own_profile_path
-= simple_form_for @profile.follows.new do |f|
-  = f.input :subscribable_id, :as => :hidden
-  = f.input :subscribable_type, :as => :hidden
-  = f.submit 'Follow'
+
+= @profile.follow_unfollow_button
+
 = link_to 'Back', profiles_path
