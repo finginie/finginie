@@ -1,11 +1,21 @@
 require 'spec_helper'
 
 describe "Subscriptions" do
-  describe "GET /subscriptions" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get subscriptions_path
-      response.status.should be(200)
-    end
+  include_context "logged in user"
+  let (:profile) { create :user, :with_profile }
+
+  it "index should not display unrelated subscriptions" do
+    subscription = create :user_subscription
+    visit subscriptions_path
+    page.should have_no_content subscription.subscribable.name
+  end
+
+  pending "could be created by following a user", :js do
+    visit profile_path profile
+    click_button 'Follow'
+    page.should have_content profile.name
+    visit profile_path profile
+    page.should have_no_button 'Follow'
+    page.should have_button 'Unfollow'
   end
 end

@@ -2,7 +2,11 @@
 
 FactoryGirl.define do
   factory :subscription do
-      #user
-        #subscribable
+    user
+    #subscribable
+
+    factory :user_subscription do
+      association :subscribable, :factory => :user_with_profile
     end
+  end
 end
