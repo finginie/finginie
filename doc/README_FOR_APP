@@ -78,7 +78,7 @@
     git submodule update
     popd
     ```
-32. # Installing ruby:
+32. #### Installing ruby:
 
     ```shell
     cd
