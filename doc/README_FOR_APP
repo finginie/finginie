@@ -27,6 +27,7 @@
 23.  Again Insert USB Drive. and copy the file named “DPO-RT35662-3592-3062-LinuxSTA-V2.4.1.1-20101217.tgz” to your Desktop
 24.  Now open the terminal.
 25.  In the Terminal type the following commands.
+
      ```shell
      cd Desktop
      tar -xf DPO-RT35662-3592-3062-LinuxSTA-V2.4.1.1-20101217.tgz
@@ -43,12 +44,14 @@
 ##  Installing all the Programs required
 26. open Terminal
 27. Type the following in the terminal
+
     ```shell
     sudo apt-get update -y
     sudo apt-get install ack-grep autoconf build-essential bison curl --fix-missing imagemagick git git-gui libreadline6 libreadline6-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev libxml2-dev libxslt1-dev libc6-dev libpq5 libpq-dev nodejs openssl postgresql redis-server sqlite3 vim-gnome zsh zlib1g zlib1g-dev -y
     ```
 28. Type the password if asked for it and hit “Enter”
 29. To configure zsh,
+
     ```shell
     wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
     chsh -s $(which zsh)
@@ -62,9 +65,9 @@
 30. Now Log out and Login again
     It would ask you whether to set up your .zlogout file.Type Y for this
 31. To Configure VIM copy paste the following code in Terminal
-    > # Installation:
-
+    
     ```shell
+    # Installation:
     git clone git://github.com/TMaYaD/dotvim.git ~/.vim
     # Create symlinks:
     ln -s ~/.vim/vimrc ~/.vimrc
@@ -94,7 +97,7 @@
     #Now go to https://github.com/FinGinie/finginie and go to .rbenv-version file #and check for version and install the version using following command(currently it is #1.9.3-p0)
     rbenv install 1.9.3-p0
     ```
-33. #Configuring and cloning from GitHub:
+33. ###Configuring and cloning from GitHub:
 
      >  Generate a new SSH key.
 
@@ -111,21 +114,24 @@
     ```
     > Now copy the code.Now login on Github, go to Account Settings> SSH Public keys.
      Click on “Add another public key” paste the text you copied into the “Key” field and click “add key”.
-    > # To Configure your git
+    > #### To Configure your git
+
      ```shell
      cd ~
      git config --global user.name "Your name"
      ```
-    > if you get this message “zsh: correct 'config' to '.config' [nyae]?” , type n press    Enter
-    ```shell
-    git config --global user.email “your email@email.com”
-    ```
-    > if you get this message “zsh: correct 'config' to '.config' [nyae]?” , type n press   Enter
+    > if you get this message “zsh: correct 'config' to '.config' [nyae]?” , type n press Enter
+    
+     ```shell
+     git config --global user.email “your email@email.com”
+     ```
+    > if you get this message “zsh: correct 'config' to '.config' [nyae]?” , type n press Enter
     > Cloning repo
       ```shell
       git clone git@github.com:FinGinie/finginie.git
       ```
     > Setting up your git project
+
        ```shell
        cd finginie
        gem install bundler
