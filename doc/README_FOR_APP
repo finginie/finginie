@@ -127,6 +127,7 @@
      ```
     > if you get this message “zsh: correct 'config' to '.config' [nyae]?” , type n press Enter
     > Cloning repo
+
       ```shell
       git clone git@github.com:FinGinie/finginie.git
       ```
