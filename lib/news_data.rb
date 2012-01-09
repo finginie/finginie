@@ -9,7 +9,7 @@ class NewsData
     { :name => 'Economic Times',      :section => 'ipos',              :url => 'http://economictimes.feedsportal.com/c/33041/f/534040/index.rss' },
     { :name => 'IPO Investment Blog', :section => 'ipos',              :url => 'http://feeds.feedburner.com/IpoAlertBlog' },
     { :name => 'Economic Times',      :section => 'results',           :url => 'http://economictimes.feedsportal.com/c/33041/f/534040/index.rss' },
-    { :name => 'IPO INvestment Blog', :section => 'results',           :url => 'http://feeds.feedburner.com/IpoAlertBlog' },
+    { :name => 'IPO Investment Blog', :section => 'results',           :url => 'http://feeds.feedburner.com/IpoAlertBlog' },
     { :name => 'LiveMint',            :section => 'sector_spotlights', :url => 'http://www.livemint.com/SectionRssfeed.aspx?Id=21' },
     { :name => 'Commodity Online',    :section => 'commodities',       :url => 'http://www.commodityonline.com/rssfeed/topstorynews_rss.xml' },
     { :name => 'Financial Express',   :section => 'commodities',       :url => 'http://syndication.financialexpress.com/rss/375/commodities.xml' }
@@ -18,7 +18,7 @@ class NewsData
   def self.store_feeds
     FEEDS.each do |feed|
       Feedzirra::Feed.fetch_and_parse(feed[:url]).entries.each do |entry|
-        entry.summary = "" if !entry.summary
+        entry.summary ||= ""
         NewsArticle.new(
           :id => entry.title,
           :summary => entry.summary,
