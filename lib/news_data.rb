@@ -18,6 +18,7 @@ class NewsData
   def self.store_feeds
     FEEDS.each do |feed|
       Feedzirra::Feed.fetch_and_parse(feed[:url]).entries.each do |entry|
+        entry.summary = "" if !entry.summary
         NewsArticle.new(
           :id => entry.title,
           :summary => entry.summary,
