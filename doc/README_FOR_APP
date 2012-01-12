@@ -39,7 +39,7 @@
      sudo nano /etc/modprobe.d/blacklist.conf
      blacklist rt2800pci
      ```
-     >  Then Restart your machine
+     Then Restart your machine
 
 ##  Installing all the Programs required
 26. open Terminal
@@ -61,18 +61,15 @@
     ```shell
     plugins = (bundler dirpersist gem git git-flow github heroku)
     ```
-    > now press Esc and type “:wq”
+    Now press Esc and type “:wq”
 30. Now Log out and Login again
     It would ask you whether to set up your .zlogout file.Type Y for this
 31. To Configure VIM copy paste the following code in Terminal
     
     ```shell
-    # Installation:
     git clone git://github.com/TMaYaD/dotvim.git ~/.vim
-    # Create symlinks:
     ln -s ~/.vim/vimrc ~/.vimrc
     ln -s ~/.vim/gvimrc ~/.gvimrc
-    # Switch to the `~/.vim` directory, and fetch submodules:
     pushd ~/.vim
     git submodule init
     git submodule update
@@ -85,17 +82,14 @@
     git clone git://github.com/sstephenson/rbenv.git .rbenv
     echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> .zshrc
     echo 'eval "$(rbenv init -)"' >> .zshrc
-    #Close and open the terminal again
     exec $SHELL
     git clone git://github.com/sstephenson/ruby-build.git
     cd ruby-build
-    sudo ./install .sh
+    sudo ./install.sh
     cd ..
     rm -rf ruby-build
-    #Close and open the terminal again
     exec $SHELL
-    #Now go to https://github.com/FinGinie/finginie and go to .rbenv-version file #and check for version and install the version using following command(currently it is #1.9.3-p0)
-    rbenv install 1.9.3-p0
+    rbenv install $(curl "https://raw.github.com/FinGinie/finginie/master/.rbenv-version?login=$(git config --global github.user)&token=$(git config --global github.token)")
     ```
 33. ###Configuring and cloning from GitHub:
 
