@@ -11,7 +11,7 @@ class TickerPlant
       :directory => "Feeder/NSE/NSE_EQ_QUOTES_15MIN"
     },
     :stock => {
-      :url => "124.7.218.87",
+      :url => "203.114.241.172",
       :username => "FORSKA",
       :password => "FORSKA@123"
     }
