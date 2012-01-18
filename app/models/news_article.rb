@@ -3,18 +3,10 @@ require 'redis_record'
 class NewsArticle < RedisRecord
   string :id, :summary, :section_name, :source, :url
   has_value :published, :klass => Time
-  integer :published_time
 
-  search_by_range_on :published_time
-
-  def self.get_feeds
-    find_ids_by_published_time(expiry_time.to_i , Time.now.to_i)
-      .map { |i| find(i) }
-      .sort_by(&:published_time)
+  def self.feeds
+    all
+      .sort_by(&:published)
       .group_by(&:section_name)
-  end
-
-  def self.expiry_time
-    2.days.ago
   end
 end

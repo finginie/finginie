@@ -1,6 +1,10 @@
 require 'capybara/rspec'
 require 'capybara/rails'
 
+Capybara.javascript_driver = :webkit
+headless = Headless.new
+headless.start
+
 RSpec.configure do |config|
   config.use_transactional_fixtures = false
 

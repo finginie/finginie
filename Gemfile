@@ -39,6 +39,8 @@ gem 'zipruby'
 group :test, :development do
   gem 'capybara'
     gem 'rubyzip', :git => "git://github.com/FinGinie/rubyzip.git" # Fix scoping issues
+  gem 'capybara-webkit'
+    gem 'headless'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'foreman'

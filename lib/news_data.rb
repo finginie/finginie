@@ -21,7 +21,6 @@ class NewsData
         article = NewsArticle.new :id => entry.title,
                                   :summary => entry.summary || "",
                                   :published => entry.published,
-                                  :published_time => entry.published.to_i,
                                   :source => feed[:name],
                                   :url => entry.url,
                                   :section_name => feed[:section]
