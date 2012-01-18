@@ -69,31 +69,16 @@
     ```shell
     git clone git://github.com/TMaYaD/dotvim.git ~/.vim
     ln -s ~/.vim/vimrc ~/.vimrc
+    # in the next step it asks to correct gvimrc to .gvimrc type y and enter
     ln -s ~/.vim/gvimrc ~/.gvimrc
     pushd ~/.vim
     git submodule init
     git submodule update
     popd
     ```
-32. #### Installing ruby:
+32. #### Configuring GitHub:
 
-    ```shell
-    cd
-    git clone git://github.com/sstephenson/rbenv.git .rbenv
-    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> .zshrc
-    echo 'eval "$(rbenv init -)"' >> .zshrc
-    exec $SHELL
-    git clone git://github.com/sstephenson/ruby-build.git
-    cd ruby-build
-    sudo ./install.sh
-    cd ..
-    rm -rf ruby-build
-    exec $SHELL
-    rbenv install $(curl "https://raw.github.com/FinGinie/finginie/master/.rbenv-version?login=$(git config --global github.user)&token=$(git config --global github.token)")
-    ```
-33. ###Configuring and cloning from GitHub:
-
-     >  Generate a new SSH key.
+    >  Generate a new SSH key.
 
      ```shell
      ssh-keygen -t rsa -C "your_email@youremail.com"
@@ -109,8 +94,7 @@
     > Now copy the code.Now login on Github, go to Account Settings> SSH Public keys.
      Click on “Add another public key” paste the text you copied into the “Key” field and click “add key”.
     > #### To Configure your git
-
-     ```shell
+    ```shell
      cd ~
      git config --global user.name "Your name"
      ```
@@ -120,6 +104,25 @@
      git config --global user.email “your email@email.com”
      ```
     > if you get this message “zsh: correct 'config' to '.config' [nyae]?” , type n press Enter
+
+33. #### Installing ruby:
+
+    ```shell
+    cd
+    git clone git://github.com/sstephenson/rbenv.git .rbenv
+    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> .zshrc
+    echo 'eval "$(rbenv init -)"' >> .zshrc
+    exec $SHELL
+    git clone git://github.com/sstephenson/ruby-build.git
+    cd ruby-build
+    sudo ./install.sh
+    cd ..
+    rm -rf ruby-build
+    exec $SHELL
+    rbenv install $(curl "https://raw.github.com/FinGinie/finginie/master/.rbenv-version?login=$(git config --global github.user)&token=$(git config --global github.token)")
+    ```
+34. #### Cloning from GitHub:
+     
     > Cloning repo
 
       ```shell
