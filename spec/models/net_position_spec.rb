@@ -15,13 +15,13 @@ describe NetPosition do
   it { should validate_presence_of :portfolio_id }
 
   def verify_for_values(property, *values)
-    net_position.transactions.create attributes_for(:transaction, :quantity => 100, :price => 10)
+    net_position.transactions.create build(:transaction, :quantity => 100, :price => 10).attributes
     net_position.send(property).should eq values[0]
-    net_position.transactions.create attributes_for(:transaction, :quantity => 100, :price => 12)
+    net_position.transactions.create build(:transaction, :quantity => 100, :price => 12).attributes
     net_position.send(property).should eq values[1]
-    net_position.transactions.create attributes_for(:transaction, :quantity => -150, :price => 13)
+    net_position.transactions.create build(:transaction, :quantity => -150, :price => 13).attributes
     net_position.send(property).should eq values[2]
-    net_position.transactions.create attributes_for(:transaction, :quantity => -50, :price => 14)
+    net_position.transactions.create build(:transaction, :quantity => -50, :price => 14).attributes
     net_position.send(property).should eq values[3]
   end
 
