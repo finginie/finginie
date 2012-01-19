@@ -18,23 +18,15 @@ class NewsData
   def self.store_feeds
     FEEDS.each do |feed|
       Feedzirra::Feed.fetch_and_parse(feed[:url]).entries.each do |entry|
-        entry.summary ||= ""
-        NewsArticle.new(
-          :id => entry.title,
-          :summary => entry.summary,
-          :published => entry.published,
-          :published_time => entry.published.to_i,
-          :source => feed[:name],
-          :url => entry.url,
-          :section_name => feed[:section]
-          ).save
-        REDIS.lpush(NewsArticle.key(feed[:section]), entry.title)
+        article = NewsArticle.new :id => entry.title,
+                                  :summary => entry.summary || "",
+                                  :published => entry.published,
+                                  :source => feed[:name],
+                                  :url => entry.url,
+                                  :section_name => feed[:section]
+        article.save
+        REDIS.expireat article.key, (article.published + 2.days).to_i
       end
-    end
-    NewsArticle.find_ids_by_published_time(0, NewsArticle.expiry_time.to_i).each do |key|
-      article = NewsArticle.find(key)
-      REDIS.lrem NewsArticle.key(article.section_name), 0, key
-      article.destroy
     end
   end
 end

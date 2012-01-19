@@ -40,6 +40,10 @@ describe Scrip, :redis do
       scrip.last_traded_price.should eq 426.45
     end
 
+    it "should find all scrips" do
+      Scrip.all.should eq [scrip]
+    end
+
     it "should return nil for a missing scrip" do
       Scrip.find(999999999).should be_nil
     end
@@ -80,6 +84,8 @@ describe Scrip, :redis do
       Scrip.find_ids_by_last_traded_price( destroyed_scrip.last_traded_price, destroyed_scrip.last_traded_price ).should eq []
       Scrip.find_ids_by_percent_change( destroyed_scrip.percent_change, destroyed_scrip.percent_change ).should eq []
     end
+
+
 
   end
 end
