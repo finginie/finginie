@@ -1,2 +1,139 @@
-Use this README file to introduce your application and point to useful places in the API for learning more.
-Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+##  Installing Ubuntu :
+1.  Insert the USB drive which has Ubuntu Software
+2.  Restart your machine.
+3.  While it is starting keep pressing ‘Delete’ button until BIOS options page comes.
+4.  otherwise go to step 2 and repeat the process
+5.  Once you get the BIOS options go to ‘Boot’ from the menu and click on HardDisjDrives
+6.  Change the first drive to USB from SATA HARDDisk
+7.  Then it will boot from the USB drive.
+8.  You can see a exectutable file named ‘Install ubuntu’ double-click on that
+9.  when you proceed you will get options like following
+    > Install Ubuntu Inside Windows
+    > Install Ubuntu replacing windows
+    > Install Ubuntu replacing windows
+10.  Select ‘something else’.
+11.  Now the wizard shows available disks. select the last one (ex: /sda4/).
+12.  Then click on ‘Change’ button
+13.  Select ‘EXt4 journaling file system for “Use as” and / for the Mount Point
+14.  Click on “Install Now”
+15.  It would show a message saying swap space not created.click on “Continue”
+16.  Now in “Where Are you?” window, select kolkata on the map.
+17.  then in “Who Are you?” window set your user name, PC name,password etc.,
+18.  Select the radio button “Log in automatically” and click on “Continue”
+19.  Then “Restart”
+20.  It would  show message like “Please remove installation media and close tray”
+21.  Remove the USB and hit Enter
+22.  Now you are done with installing Ubuntu.Repeat step2 to step5 and change the first drive to SATA disk.
+23.  Again Insert USB Drive. and copy the file named “DPO-RT35662-3592-3062-LinuxSTA-V2.4.1.1-20101217.tgz” to your Desktop
+24.  Now open the terminal.
+25.  In the Terminal type the following commands.
+
+     ```shell
+     cd Desktop
+     tar -xf DPO-RT35662-3592-3062-LinuxSTA-V2.4.1.1-20101217.tgz
+     cd DPO-RT35662-3592-3062-LinuxSTA-V2.4.1.1-20101217.tgz
+     sudo make && sudo make install
+     #Enter password which you had set earlier.
+     #It will tell you you needsome space on the system to install the file.Press Y or Enter
+     sudo modprobe rt3562sta'''
+     sudo nano /etc/modprobe.d/blacklist.conf
+     blacklist rt2800pci
+     ```
+     Then Restart your machine
+
+##  Installing all the Programs required
+26. open Terminal
+27. Type the following in the terminal
+
+    ```shell
+    sudo apt-get update -y
+    sudo apt-get install ack-grep autoconf build-essential bison curl --fix-missing imagemagick git git-gui libreadline6 libreadline6-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev libxml2-dev libxslt1-dev libc6-dev libpq5 libpq-dev nodejs openssl postgresql redis-server sqlite3 vim-gnome zsh zlib1g zlib1g-dev -y
+    ```
+28. Type the password if asked for it and hit “Enter”
+29. To configure zsh,
+
+    ```shell
+    wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+    chsh -s $(which zsh)
+    vim .zshrc
+    ```
+    go to plugins line and edit it as follows
+    ```shell
+    plugins = (bundler dirpersist gem git git-flow github heroku)
+    ```
+    Now press Esc and type “:wq”
+30. Now Log out and Login again
+    It would ask you whether to set up your .zlogout file.Type Y for this
+31. To Configure VIM copy paste the following code in Terminal
+    
+    ```shell
+    git clone git://github.com/TMaYaD/dotvim.git ~/.vim
+    ln -s ~/.vim/vimrc ~/.vimrc
+    # in the next step it asks to correct gvimrc to .gvimrc type y and enter
+    ln -s ~/.vim/gvimrc ~/.gvimrc
+    pushd ~/.vim
+    git submodule init
+    git submodule update
+    popd
+    ```
+32. #### Configuring GitHub:
+
+    >  Generate a new SSH key.
+
+     ```shell
+     ssh-keygen -t rsa -C "your_email@youremail.com"
+     ```
+
+    >press Enter three times to save it in default directory and with no pass-phrase
+    Copy the .ssh directory path mentioned while generating ssh
+    cd “your directory” (ex: home/anitha/.ssh)
+
+    ```shell
+    gedit id_rsa.pub
+    ```
+    > Now copy the code.Now login on Github, go to Account Settings> SSH Public keys.
+     Click on “Add another public key” paste the text you copied into the “Key” field and click “add key”.
+    > #### To Configure your git
+    ```shell
+     cd ~
+     git config --global user.name "Your name"
+     ```
+    > if you get this message “zsh: correct 'config' to '.config' [nyae]?” , type n press Enter
+    
+     ```shell
+     git config --global user.email “your email@email.com”
+     ```
+    > if you get this message “zsh: correct 'config' to '.config' [nyae]?” , type n press Enter
+
+33. #### Installing ruby:
+
+    ```shell
+    cd
+    git clone git://github.com/sstephenson/rbenv.git .rbenv
+    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> .zshrc
+    echo 'eval "$(rbenv init -)"' >> .zshrc
+    exec $SHELL
+    git clone git://github.com/sstephenson/ruby-build.git
+    cd ruby-build
+    sudo ./install.sh
+    cd ..
+    rm -rf ruby-build
+    exec $SHELL
+    rbenv install $(curl "https://raw.github.com/FinGinie/finginie/master/.rbenv-version?login=$(git config --global github.user)&token=$(git config --global github.token)")
+    ```
+34. #### Cloning from GitHub:
+     
+    > Cloning repo
+
+      ```shell
+      git clone git@github.com:FinGinie/finginie.git
+      ```
+    > Setting up your git project
+
+       ```shell
+       cd finginie
+       gem install bundler
+       rbenv rehash
+       bundle install
+       ```
+    > if you get a mesage “zsh: correct 'bundle' to '_bundler' [nyae]?” type n and press Enter
