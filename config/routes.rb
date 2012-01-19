@@ -8,6 +8,8 @@ Finginie::Application.routes.draw do
   resources :profiles, :only => [:index, :show]
   resource  :profile,  :only => [:show, :edit, :update], :as => :own_profile
 
+  resources :subscriptions, :only => [:index, :create, :destroy]
+
   resources :other_assets
   resources :other_liabilities
   resources :loans

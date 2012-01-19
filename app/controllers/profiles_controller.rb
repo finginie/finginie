@@ -6,7 +6,7 @@ class ProfilesController < InheritedResources::Base
   load_and_authorize_resource :user, :parent => false
 
   def resource
-    @profile ||= params[:id] ? super : current_user
+    @profile ||= ProfileDecorator.new( params[:id] ? super : current_user )
   end
 
   def collection

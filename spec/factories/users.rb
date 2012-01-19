@@ -6,6 +6,15 @@ FactoryGirl.define do
     # factory :admin do
     #   role "admin"
     # end
+
+    trait :with_profile do
+      name 'Smith'
+      location '01'
+      occupation 'Agent'
+      company 'Matrix'
+    end
+
+    factory :user_with_profile, :traits => [:with_profile]
   end
 end
 

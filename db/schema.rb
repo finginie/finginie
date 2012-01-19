@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111224211143) do
+ActiveRecord::Schema.define(:version => 20111230170513) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -163,6 +163,17 @@ ActiveRecord::Schema.define(:version => 20111224211143) do
   end
 
   add_index "securities", ["user_id"], :name => "index_securities_on_user_id"
+
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "subscribable_id"
+    t.string   "subscribable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "subscriptions", ["subscribable_id"], :name => "index_subscriptions_on_subscribable_id"
+  add_index "subscriptions", ["user_id"], :name => "index_subscriptions_on_user_id"
 
   create_table "transactions", :force => true do |t|
     t.integer  "net_position_id"

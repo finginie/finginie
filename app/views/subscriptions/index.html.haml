@@ -1,0 +1,11 @@
+%h1 Listing subscriptions
+
+%table
+  %tr
+    %th Subscribable
+    %th
+
+  - @subscriptions.each do |subscription|
+    %tr
+      %td= subscription.subscribable.name
+      %td= link_to 'Destroy', subscription, :confirm => 'Are you sure?', :method => :delete

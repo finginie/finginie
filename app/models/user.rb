@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
 
   has_many :portfolios
   has_one :financial_planner
+
+  has_many :subscriptions, :dependent => :destroy
+  has_many :follows, :dependent => :destroy,
+           :as => :subscribable, :class_name => 'Subscription'
 end

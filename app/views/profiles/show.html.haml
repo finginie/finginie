@@ -16,6 +16,9 @@
   %b Company:
   = @profile.company
 
-= link_to_if can?(:edit, @profile), 'Edit', edit_own_profile_path
-\|
+- if can? :edit, @profile
+  = link_to 'Edit', edit_own_profile_path
+
+= @profile.follow_unfollow_button
+
 = link_to 'Back', profiles_path

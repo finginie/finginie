@@ -35,6 +35,13 @@ GIT
       rails (~> 3.1.0)
 
 GIT
+  remote: git://github.com/jcasimir/draper.git
+  revision: e9bfd183bcc14e45700f80307cfb647762e19995
+  specs:
+    draper (0.9.5)
+      activesupport (>= 2.3.10)
+
+GIT
   remote: git://github.com/vikashag/nested_form.git
   revision: fc83f0c6dbe076ef6f61a9776c9c4cd06df7332e
   specs:
@@ -113,8 +120,6 @@ GEM
       orm_adapter (~> 0.0.3)
       warden (~> 1.1)
     diff-lcs (1.1.3)
-    draper (0.9.5)
-      activesupport (>= 2.3.10)
     ejs (1.0.0)
     em-websocket (0.3.5)
       addressable (>= 2.1.1)
@@ -350,7 +355,7 @@ DEPENDENCIES
   compass (~> 0.12.alpha.0)
   database_cleaner
   devise
-  draper
+  draper!
   factory_girl_rails
   feedzirra
   foreman
