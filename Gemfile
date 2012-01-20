@@ -40,7 +40,7 @@ group :test, :development do
   gem 'capybara'
     gem 'rubyzip', :git => "git://github.com/FinGinie/rubyzip.git" # Fix scoping issues
   gem 'capybara-webkit'
-    gem 'headless'
+    gem 'headless', :git => "git://github.com/LoonyBin/headless.git" # https://github.com/leonid-shevtsov/headless/pull/22
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'foreman'
