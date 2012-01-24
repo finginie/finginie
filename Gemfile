@@ -17,7 +17,6 @@ gem 'activeadmin', :git => "git://github.com/TMaYaD/active_admin.git"
 gem 'airbrake'
 gem 'cancan'
 gem 'clockwork'
-gem 'devise'
 gem 'draper', :git => "git://github.com/jcasimir/draper.git"
 gem 'feedzirra'
 gem 'haml-rails'

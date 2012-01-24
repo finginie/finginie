@@ -18,4 +18,5 @@ class ApplicationController < ActionController::Base
       redirect_to :root, :alert => exception.message
     end
   end
+
 end
