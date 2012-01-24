@@ -1,4 +1,5 @@
 class Loan < Security
+  attr_accessible :period, :rate_of_interest
   belongs_to :user
 
   def current_value(transaction)

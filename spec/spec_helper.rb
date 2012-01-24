@@ -8,11 +8,13 @@ Spork.prefork do
 
   # This file is copied to spec/ when you run 'rails generate rspec:install'
   ENV["RAILS_ENV"] ||= 'test'
+
+  # Stop factory girl from autoloading models is spork prefork
+  require 'factory_girl'
+  Spork.trap_class_method FactoryGirl, :find_definitions
+
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
-
-  # Increase Logger level for faster tests
-  Rails.logger.level = 4
 
   RSpec.configure do |config|
     config.treat_symbols_as_metadata_keys_with_true_values = true

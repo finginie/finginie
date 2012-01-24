@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(:version => 20111230170513) do
     t.integer  "author_id"
     t.string   "author_type"
     t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "namespace"
   end
 
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(:version => 20111230170513) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
   end
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(:version => 20111230170513) do
     t.text     "text"
     t.decimal  "ceiling"
     t.integer  "question_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   add_index "choices", ["question_id"], :name => "index_choices_on_question_id"
@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(:version => 20111230170513) do
     t.integer  "user_id"
     t.string   "provider"
     t.string   "uid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "clearance_omniauth_authentications", ["user_id"], :name => "index_clearance_omniauth_authentications_on_user_id"
@@ -70,8 +70,8 @@ ActiveRecord::Schema.define(:version => 20111230170513) do
   create_table "financial_planners", :force => true do |t|
     t.integer  "user_id"
     t.decimal  "willingness_to_take_risk"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   add_index "financial_planners", ["user_id"], :name => "index_financial_planners_on_user_id"
@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(:version => 20111230170513) do
   create_table "net_positions", :force => true do |t|
     t.integer  "portfolio_id"
     t.integer  "security_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   add_index "net_positions", ["portfolio_id"], :name => "index_net_positions_on_portfolio_id"
@@ -89,8 +89,8 @@ ActiveRecord::Schema.define(:version => 20111230170513) do
   create_table "portfolios", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "portfolios", ["user_id"], :name => "index_portfolios_on_user_id"
@@ -99,8 +99,8 @@ ActiveRecord::Schema.define(:version => 20111230170513) do
     t.decimal  "weight"
     t.text     "text"
     t.integer  "quiz_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "questions", ["quiz_id"], :name => "index_questions_on_quiz_id"
@@ -109,8 +109,8 @@ ActiveRecord::Schema.define(:version => 20111230170513) do
     t.string   "result_type"
     t.string   "name"
     t.decimal  "weight"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "slug"
     t.string   "buckets"
   end
@@ -118,8 +118,8 @@ ActiveRecord::Schema.define(:version => 20111230170513) do
   create_table "responses", :force => true do |t|
     t.integer  "risk_profiler_id"
     t.integer  "choice_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   add_index "responses", ["choice_id"], :name => "index_responses_on_choice_id"
@@ -128,8 +128,8 @@ ActiveRecord::Schema.define(:version => 20111230170513) do
   create_table "risk_profilers", :force => true do |t|
     t.integer  "quiz_id"
     t.decimal  "score"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.integer  "financial_planner_id"
   end
 
@@ -145,8 +145,8 @@ ActiveRecord::Schema.define(:version => 20111230170513) do
     t.decimal  "rate_of_interest"
     t.text     "location"
     t.decimal  "emi"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.string   "sector"
     t.decimal  "beta"
     t.integer  "pe"
@@ -168,8 +168,8 @@ ActiveRecord::Schema.define(:version => 20111230170513) do
     t.integer  "user_id"
     t.integer  "subscribable_id"
     t.string   "subscribable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   add_index "subscriptions", ["subscribable_id"], :name => "index_subscriptions_on_subscribable_id"
@@ -181,8 +181,8 @@ ActiveRecord::Schema.define(:version => 20111230170513) do
     t.date     "date"
     t.integer  "quantity"
     t.text     "comments"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   add_index "transactions", ["net_position_id"], :name => "index_transactions_on_net_position_id"
@@ -193,8 +193,8 @@ ActiveRecord::Schema.define(:version => 20111230170513) do
     t.string   "salt",                   :limit => 128
     t.string   "confirmation_token",     :limit => 128
     t.string   "remember_token",         :limit => 128
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

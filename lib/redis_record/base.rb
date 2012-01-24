@@ -1,41 +1,39 @@
 module RedisRecord::Base
   extend ActiveSupport::Concern
 
-  module InstanceMethods
-    def ==(another)
-      self.attributes == another.attributes
-    end
+  def ==(another)
+    self.attributes == another.attributes
+  end
 
-    def save
-      success = REDIS.multi do
-        REDIS.set(key, to_json)
-        sorted_indices.each do |attr|
-          REDIS.zadd self.class.meta_key(attr), attributes[attr], id
-        end
+  def save
+    success = REDIS.multi do
+      REDIS.set(key, to_json)
+      sorted_indices.each do |attr|
+        REDIS.zadd self.class.meta_key(attr), attributes[attr], id
       end
-      self.persisted = (success.first == "OK")
     end
+    self.persisted = (success.first == "OK")
+  end
 
-    alias save! save
+  alias save! save
 
-    def key
-      self.class.key(id)
-    end
+  def key
+    self.class.key(id)
+  end
 
-    def update_attributes(attrs)
-      super(attrs)
-      save
-    end
+  def update_attributes(attrs)
+    super(attrs)
+    save
+  end
 
-    def destroy
-      success = REDIS.multi do
-        REDIS.del key
-        sorted_indices.each do |attr|
-          REDIS.zrem self.class.meta_key(attr), id
-        end
+  def destroy
+    success = REDIS.multi do
+      REDIS.del key
+      sorted_indices.each do |attr|
+        REDIS.zrem self.class.meta_key(attr), id
       end
-      success.first == 1 ? self : nil
     end
+    success.first == 1 ? self : nil
   end
 
   module ClassMethods

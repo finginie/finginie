@@ -47,7 +47,7 @@
 
     ```shell
     sudo apt-get update -y
-    sudo apt-get install ack-grep autoconf build-essential bison curl --fix-missing imagemagick git git-gui libreadline6 libreadline6-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev libxml2-dev libxslt1-dev libc6-dev libpq5 libpq-dev nodejs openssl postgresql redis-server sqlite3 vim-gnome zsh zlib1g zlib1g-dev -y
+    sudo apt-get install ack-grep autoconf build-essential bison curl imagemagick git git-gui libcurl3 libcurl3-gnutls libcurl4-openssl-dev libqt4-dev libqtwebkit-dev libreadline6 libreadline6-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev libxml2-dev libxslt1-dev libc6-dev libpq5 libpq-dev nodejs openssl postgresql redis-server sqlite3 vim-gnome xvfb zsh zlib1g zlib1g-dev -y --fix-missing
     ```
 28. Type the password if asked for it and hit “Enter”
 29. To configure zsh,

@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.3'
+gem 'rails', '3.2.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -28,7 +28,7 @@ gem 'kaminari'
 gem 'meta_search'
 gem 'nested_form', :git => "git://github.com/vikashag/nested_form.git"
 gem 'paper_trail'
-gem 'rails-backbone', :git => "git://github.com/TMaYaD/backbone-rails.git", :branch => "patch-1"
+gem 'rails-backbone', :git => "git://github.com/TMaYaD/backbone-rails.git"
 gem 'redis'
 gem 'simple_form'
 gem 'simple-navigation'
@@ -56,7 +56,7 @@ group :test, :development do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
-  gem 'spork', '>0.9.0.rc'
+  gem 'spork'
   gem 'sqlite3'
   gem 'tddium'
   gem 'timecop'

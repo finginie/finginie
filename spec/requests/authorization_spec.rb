@@ -9,7 +9,7 @@ describe "Authorization" do
   it "should go back to previous page after logging in" do
     user = Factory.create :user
     visit portfolios_path
-    within "#user_new" do
+    within "#new_user" do
       fill_in 'Password', :with => user.password
       fill_in 'Email', :with => user.email
       click_button 'Sign in'

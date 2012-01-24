@@ -44,10 +44,8 @@ module StiHelper
     end
   end
 
-  module InstanceMethods
-    def sti_base_class
-      self.class.sti_base_class
-    end
+  def sti_base_class
+    self.class.sti_base_class
   end
 
 end
