@@ -1,9 +1,4 @@
 Finginie::Application.routes.draw do
-
-  ActiveAdmin.routes(self)
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
-
   resources :profiles, :only => [:index, :show]
   resource  :profile,  :only => [:show, :edit, :update], :as => :own_profile
 

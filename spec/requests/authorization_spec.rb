@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe "Authorization" do
-  it "should redirect to signin page for the pages requiring authentication" do
+  pending "should redirect to signin page for the pages requiring authentication" do
     visit portfolios_path
     current_path.should eq new_user_session_path
   end
 
-  it "should go back to previous page after logging in" do
+  pending "should go back to previous page after logging in" do
     user = Factory.create :user
     visit portfolios_path
     within "#new_user" do

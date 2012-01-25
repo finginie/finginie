@@ -19,4 +19,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_user
+    User.first_or_create!
+  end
+  helper_method :current_user
 end
