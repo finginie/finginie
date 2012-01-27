@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120124152906) do
+ActiveRecord::Schema.define(:version => 20120125130030) do
+
+  create_table "authentications", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "authentications", ["user_id"], :name => "index_clearance_omniauth_authentications_on_user_id"
 
   create_table "choices", :force => true do |t|
     t.decimal  "score"
@@ -23,16 +33,6 @@ ActiveRecord::Schema.define(:version => 20120124152906) do
   end
 
   add_index "choices", ["question_id"], :name => "index_choices_on_question_id"
-
-  create_table "clearance_omniauth_authentications", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "provider"
-    t.string   "uid"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "clearance_omniauth_authentications", ["user_id"], :name => "index_clearance_omniauth_authentications_on_user_id"
 
   create_table "financial_planners", :force => true do |t|
     t.integer  "user_id"

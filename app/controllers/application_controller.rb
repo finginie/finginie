@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def redirect_to_login
     session[:user_return_to] = request.fullpath
-    redirect_to new_user_session_path
+    redirect_to signin_path
   end
 
   def redirect_back_with(exception)
@@ -19,8 +19,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def current_user
-    User.first_or_create!
-  end
   helper_method :current_user
+
+private
+  def current_user
+    @current_user ||= User.find session[:user_id] if session[:user_id]
+  end
 end
