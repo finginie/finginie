@@ -4,10 +4,11 @@
 guard 'spork', :wait => 30, :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' } do
   watch('config/application.rb')
   watch('config/environment.rb')
+  watch('config/routes.rb')
   watch(%r{^config/environments/.+\.rb$})
   watch(%r{^config/initializers/.+\.rb$})
   watch('spec/spec_helper.rb')
-  watch(%r{^spec/factories/.+\.rb$})
+  watch(%r{^spec/support/.+\.rb$})
 end
 
 guard 'livereload' do
@@ -36,5 +37,5 @@ guard 'rspec', :version => 2, :cli => "--drb" do
   # Capybara request specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
   # Factory Girl
-  watch(%r{^spec/factories/(.+)_factory\.rb$})        { |m| "spec/models/#{m[1].singularize}_spec.rb" }
+  watch(%r{^spec/factories/(.+)\.rb$})                { |m| "spec/models/#{m[1]}_spec.rb" }
 end
