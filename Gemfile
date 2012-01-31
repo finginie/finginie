@@ -11,13 +11,9 @@ group :assets do
   gem 'uglifier'
 end
 
-gem 'activeadmin', :git => "git://github.com/TMaYaD/active_admin.git"
-  gem 'sass-rails' # stupid activeadmin needs this
-  gem 'compass', '~> 0.12.alpha.0' # and sass requires this
 gem 'airbrake'
 gem 'cancan'
 gem 'clockwork'
-gem 'devise'
 gem 'draper', :git => "git://github.com/jcasimir/draper.git"
 gem 'feedzirra'
 gem 'haml-rails'
@@ -26,7 +22,8 @@ gem 'inherited_resources'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'meta_search'
-gem 'nested_form', :git => "git://github.com/vikashag/nested_form.git"
+gem 'nested_form', :git => "git://github.com/TMaYaD/nested_form.git"
+gem 'omniauth-facebook'
 gem 'paper_trail'
 gem 'rails-backbone', :git => "git://github.com/TMaYaD/backbone-rails.git"
 gem 'redis'
