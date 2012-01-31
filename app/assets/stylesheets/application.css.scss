@@ -7,40 +7,68 @@
  *= require_directory .
 */
 
-// To configure blueprint, edit the partials/base.sass file.
-@import "partials/base";
-// Import all the default blueprint modules so that we can access their mixins.
-@import "blueprint";
-@import "partials/defaults";
+//-----------------------------------------------------8<-----------------------------------------------------------
+//-----------------------------------------------------8<-----------------------------------------------------------
 
-//Navigation
+@import "bourbon";
+@import "lists";
+@import "holygrail";
+
+$base-color: #3872C2;
+$aside-width: 220px;
+
+h1 {
+  font-weight: normal;
+}
+
+p {
+  line-height: 1.5em;
+}
+
 header {
+  width: 100%;
+  @include background-image(linear-gradient($base-color, shade($base-color, 30%)));
+  @include box-shadow(0 2px 5px hsla(0, 0%, 0%, 0.65));
+  @include horizontal-list-container;
+  nav, hgroup {
+    @include horizontal-list-item;
+  }
   nav {
-    background-color: $secondary-background-color;
-    @include container;
-    ul {
-      float: right;
-      clear: right;
+    &>ul {
+      @include horizontal-list(0, left, false);
+      li {
+        @include button($base-color);
+        input[type=submit] {
+          @include appearance(normal);
+        }
+      }
+      margin: 0;
+      padding: 0;
+    }
+    padding: 0.75em 0;
+  }
+
+  hgroup.title {
+    padding: 0.5em 1em;
+    width: $aside-width;
+
+    h1 {
+      color: shade($base-color, 60%);
+      text-shadow:1px 1px 2px tint($base-color, 0%);
+      margin: 0;
     }
   }
-}
 
-//Title
-hgroup.title .tag { // This makes the beta tag stick to the title
-    color: tan;
-    font-weight: bold;
-    text-shadow: 0 0 5px yellow;
-    text-transform: capitalize;
-    vertical-align: top;
-    position: relative;
-    left: -1em;
-    top: 0.5em;
-}
+  nav.user {
+    @include float(right);
+  }
 
-
-// Footer
-footer {
-  background-color: $auxillary-background-color;
-  nav {
+  a {
+    @include unstyled-link;
   }
 }
+
+#wrapper {
+  @include holy-grail(250px, 0);
+}
+
