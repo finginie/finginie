@@ -3,41 +3,9 @@
 SimpleNavigation::Configuration.run do |navigation|
   # Define the primary navigation
   navigation.items do |primary|
-    primary.item :home, 'Home', root_path do |secondary|
-      # secondary.item :coming_soon, 'Coming Soon', page_path('coming_soon')
-      # secondary.item :about_us, 'About Us', page_path('about_us')
-      # secondary.item :team, 'Team', page_path('team')
-      # secondary.item :terms_of_use, 'Terms of Use', page_path('terms_of_use')
-      # secondary.item :privacy_policy, 'Privacy Policy', page_path('privacy_policy')
-      # secondary.item :faq, 'FAQ', page_path('faq')
-      # secondary.item :careers, 'Careers', page_path('careers')
-      # secondary.item :contact_us, 'Contact Us', page_path('contact_us')
-    end
+    primary.item :dashboard, 'DashBoard', root_path
 
-    primary.item :dashboard, 'DashBoard', root_path do |secondary|
-      secondary.item :stocks, 'Stock Markets', stocks_path
-      secondary.item :portfolios, 'Portfolios', portfolios_path
-    end
-
-    primary.item :financial_planner, 'Financial Planner', financial_planner_path do |secondary|
-      Quiz.all.each do |quiz|
-        secondary.item quiz.slug.to_sym, quiz.name, financial_planner_risk_profiler_path(:id => quiz.slug)
-      end
-    end
-
-    primary.item :personal_financial_tools, 'Personal Financial Tools', personal_financial_tools_path do |secondary|
-      secondary.item :emi_calculators, 'EMI Calculator', emi_calculators_path
-      secondary.item :fixed_deposit_calculators,'Fixed Deposit Calculators', fixed_deposit_calculators_path
-      secondary.item :recurring_deposit_calculator, 'Recurring Deposit Calculator', recurring_deposit_calculator_path
-      secondary.item :sip_calculator, 'SIP Calculator', sip_calculator_path
-      secondary.item :monthly_sip_calculator, 'Monthly SIP Calculator', monthly_sip_calculator_path
-      secondary.item :income_tax_calculator, 'Income Tax Calculator', income_tax_calculator_path
-      secondary.item :rate_of_return_calculator, 'Rate of Return Calculator', rate_of_return_calculator_path
-      secondary.item :life_insurance_calculators, 'Life Insurance Calculators', life_insurance_calculators_path
-      secondary.item :retirement_corpus_calculator, 'Retirement Corpus Calculator', retirement_corpus_calculator_path
-    end
-
-    primary.item :investment_education, 'Investment Education',page_path('investment_education') do |secondary|
+    primary.item :investment_education, 'Learn Investing',page_path('investment_education') do |secondary|
       secondary.item:investment_concepts, 'Investment Concepts',page_path('investment_education/risk_and_return') do |tertiary|
         tertiary.item:risk_and_return, 'Risk and Return', page_path('investment_education/risk_and_return')
         tertiary.item:time_value_of_money, 'Time Value of Money', page_path('investment_education/time_value_of_money')
@@ -83,5 +51,27 @@ SimpleNavigation::Configuration.run do |navigation|
         tertiary.item:glossary, 'Glossary', page_path('investment_education/glossary')
       end
     end
+
+    primary.item :financial_planner, 'Financial Profile', financial_planner_path do |secondary|
+      Quiz.all.each do |quiz|
+        secondary.item quiz.slug.to_sym, quiz.name, financial_planner_risk_profiler_path(:id => quiz.slug)
+      end
+    end
+
+    primary.item :portfolios, 'My Investments', portfolios_path
+    primary.item :stocks, 'Explore Investments', stocks_path
+
+    primary.item :personal_financial_tools, 'Financial Tools', personal_financial_tools_path do |secondary|
+      secondary.item :emi_calculators, 'EMI Calculator', emi_calculators_path
+      secondary.item :fixed_deposit_calculators,'Fixed Deposit Calculators', fixed_deposit_calculators_path
+      secondary.item :recurring_deposit_calculator, 'Recurring Deposit Calculator', recurring_deposit_calculator_path
+      secondary.item :sip_calculator, 'SIP Calculator', sip_calculator_path
+      secondary.item :monthly_sip_calculator, 'Monthly SIP Calculator', monthly_sip_calculator_path
+      secondary.item :income_tax_calculator, 'Income Tax Calculator', income_tax_calculator_path
+      secondary.item :rate_of_return_calculator, 'Rate of Return Calculator', rate_of_return_calculator_path
+      secondary.item :life_insurance_calculators, 'Life Insurance Calculators', life_insurance_calculators_path
+      secondary.item :retirement_corpus_calculator, 'Retirement Corpus Calculator', retirement_corpus_calculator_path
+    end
+
   end
 end

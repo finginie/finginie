@@ -15,7 +15,7 @@
 @import "holygrail";
 
 $base-color: #3872C2;
-$aside-width: 220px;
+$aside-width: 210px;
 
 h1 {
   font-weight: normal;
@@ -32,30 +32,55 @@ header {
   @include horizontal-list-container;
   nav, hgroup {
     @include horizontal-list-item;
+    padding: 0.5em;
   }
   nav {
     &>ul {
       @include horizontal-list(0, left, false);
-      li {
-        @include button($base-color);
-        input[type=submit] {
-          @include appearance(normal);
-        }
-      }
       margin: 0;
       padding: 0;
     }
-    padding: 0.75em 0;
+
+    &.main {
+      li {
+        @include button($base-color);
+        line-height: 1.3em;
+        font-size: small;
+      }
+    }
+
+    &.user {
+      border-left: thin solid shade($base-color, 35%);
+
+      li {
+        padding: 0 0.25em;
+        font-weight: bold;
+        &:first-child {
+          padding: 0.5em 0.25em;
+          color: tint($base-color, 100%);
+        }
+
+        img {
+          height: 30px;
+        }
+      }
+    }
   }
 
   hgroup.title {
-    padding: 0.5em 1em;
     width: $aside-width;
+    padding: {
+      left: 0;
+      right: 0;
+    }
+    img {
+      height: 32px;
+    }
 
     h1 {
       color: shade($base-color, 60%);
       text-shadow:1px 1px 2px tint($base-color, 0%);
-      margin: 0;
+      margin: 0 0.5em;
     }
   }
 
@@ -69,6 +94,11 @@ header {
 }
 
 #wrapper {
-  @include holy-grail(250px, 0);
+  @include holy-grail($aside-width, 0);
 }
 
+footer {
+  nav.sitemap {
+    @include columns(5);
+  }
+}

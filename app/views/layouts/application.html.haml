@@ -11,18 +11,25 @@
     %header
       %hgroup.title
         = link_to root_path do
-          %h1 Finginie
-      %nav
-        = render_navigation :level => 1
-        = yield :header
+          //%h1 Finginie
+          = image_tag 'logo.png'
       %nav.user
         %ul
           - if current_user
             -#%li= link_to current_user.email, edit_user_registration_path
             %li= button_to 'Sign out', signout_path, :method => :delete
           - else
-            %li= button_to 'Sign in', signin_path
+            %li Login with
+            %li
+              = link_to '/auth/facebook' do
+                = image_tag 'facebook_32.png'
+            %li
+              = link_to '/auth/google' do
+                = image_tag 'google_32.png'
             -#%li= link_to 'Sign up', new_user_registration_path
+      %nav.main
+        = render_navigation :level => 1
+        = yield :header
     #wrapper
       #main
         - flash.each do |name, msg|
