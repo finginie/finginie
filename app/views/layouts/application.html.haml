@@ -6,6 +6,7 @@
     = javascript_include_tag :application
     = raw airbrake_javascript_notifier
     = csrf_meta_tags
+
   %body{:class => [params[:controller], params[:action]] + (params[:id] || '').split('/')}
     %header
       %nav.user
@@ -25,8 +26,9 @@
       %hgroup.page_header
         =yield :header
     #wrapper
-      =yield :wrap
       %aside
+        %h1= active_navigation_item_name :level => 1
+        = render_navigation :expand_all => true, :skip_if_empty => true, :level => 2..3
         =yield :aside
       #main
         - flash.each do |name, msg|
