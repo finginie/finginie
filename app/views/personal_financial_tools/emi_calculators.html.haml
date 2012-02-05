@@ -18,4 +18,8 @@
   .actions
     = f.button :submit
 
-
+%section#result
+  %h1 Result
+  %label The equated monthly installment is Rs.
+  %b
+    %u= @emi_calculator.calculate_emi
