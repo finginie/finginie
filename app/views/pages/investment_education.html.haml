@@ -1,90 +1,89 @@
-- content_for :wrap do
-  %investmenteducation
-    %table
-      %tr
-        %td
-          =image_tag "investment_education/InvestmentConcepts_1.jpg"
-          %h1 Investment Concepts
-          %p
-            Master the important concepts of investing like
-            = link_to t('investment_education.risk_and_return'), page_path('investment_education/risk_and_return')
-            ,
-            = link_to t('investment_education.time_value_of_money'), page_path('investment_education/time_value_of_money')
-            ,
-            = link_to t('investment_education.diversification'), page_path('investment_education/diversification')
-            ,
-            = link_to t('investment_education.investment_trading'), page_path('investment_education/investment_trading')
+%investmenteducation
+  %table
+    %tr
+      %td
+        =image_tag "investment_education/InvestmentConcepts_1.jpg"
+        %h1 Investment Concepts
+        %p
+          Master the important concepts of investing like
+          = link_to t('investment_education.risk_and_return'), page_path('investment_education/risk_and_return')
+          ,
+          = link_to t('investment_education.time_value_of_money'), page_path('investment_education/time_value_of_money')
+          ,
+          = link_to t('investment_education.diversification'), page_path('investment_education/diversification')
+          ,
+          = link_to t('investment_education.investment_trading'), page_path('investment_education/investment_trading')
+        %br/
+        .read_more.button=link_to "Read More..",  page_path('investment_education/risk_and_return')
+      %td
+        =image_tag "investment_education/InvestmentProcess_1.jpg"
+        %h1 Investment Process
+        %p
+          Start investing the smart way by
+          = link_to t('investment_education.analyzing_needs'), page_path('investment_education/analyzing_needs')
+          ,
+          = link_to t('investment_education.investment_plan'), page_path('investment_education/investment_plan')
+          ,
+          = link_to t('investment_education.asset_allocation'), page_path('investment_education/asset_allocation')
+          ,
+          = link_to t('investment_education.choosing_investments'), page_path('investment_education/choosing_investments')
+          ,
+          = link_to t('investment_education.start_investing'), page_path('investment_education/start_investing')
+          ,
+          = link_to t('investment_education.track_investment'), page_path('investment_education/track_investment')
+          ,
+          = link_to t('investment_education.risk_management'), page_path('investment_education/risk_management')
+          and
+          = link_to t('investment_education.reduce_taxes'), page_path('investment_education/reduce_taxes')
           %br/
-          .read_more.button=link_to "Read More..",  page_path('investment_education/risk_and_return')
-        %td
-          =image_tag "investment_education/InvestmentProcess_1.jpg"
-          %h1 Investment Process
-          %p
-            Start investing the smart way by
-            = link_to t('investment_education.analyzing_needs'), page_path('investment_education/analyzing_needs')
-            ,
-            = link_to t('investment_education.investment_plan'), page_path('investment_education/investment_plan')
-            ,
-            = link_to t('investment_education.asset_allocation'), page_path('investment_education/asset_allocation')
-            ,
-            = link_to t('investment_education.choosing_investments'), page_path('investment_education/choosing_investments')
-            ,
-            = link_to t('investment_education.start_investing'), page_path('investment_education/start_investing')
-            ,
-            = link_to t('investment_education.track_investment'), page_path('investment_education/track_investment')
-            ,
-            = link_to t('investment_education.risk_management'), page_path('investment_education/risk_management')
-            and
-            = link_to t('investment_education.reduce_taxes'), page_path('investment_education/reduce_taxes')
-            %br/
-          .read_more.button=link_to "Read More..",  page_path('investment_education/analyzing_needs')
-        %td
-          =image_tag "investment_education/InvestmentAnalysis_1.jpg"
-          %h1 Investment Analysis
-          %p
-            Analyze and identify stocks that can beat the market and give you superior returns by conducting
-            = link_to t('investment_education.fundamental_analysis1'), page_path('investment_education/fundamental_analysis1')
-            and
-            = link_to t('investment_education.technical_analysis'), page_path('investment_education/technical_analysis')
-          .read_more.button=link_to "Read More..",  page_path('investment_education/fundamental_analysis1')
-      %tr
-        %td
-          =image_tag "investment_education/InvestmentTypes_1.jpg"
-          %h1 Types Of Investment
-          %p
-            Discover the secrets of different types of investments such as
-            = link_to t('investment_education.stocks1'), page_path('investment_education/stocks1')
-            ,
-            = link_to t('investment_education.bonds'), page_path('investment_education/bonds')
-            ,
-            = link_to t('investment_education.mutual_funds'), page_path('investment_education/mutual_funds')
-            ,
-            = link_to t('investment_education.exchange_traded'), page_path('investment_education/exchange_traded')
-            ,
-            = link_to t('investment_education.commodities'), page_path('investment_education/commodities')
-            ,
-            = link_to t('investment_education.real_estate_investment'), page_path('investment_education/real_estate_investment')
-            ,
-            = link_to t('investment_education.insurance_products'), page_path('investment_education/insurance_products')
-          %br/
-          .read_more.button=link_to "Read More..",  page_path('investment_education/stocks1')
-        %td
-          =image_tag "investment_education/AdvancedInvestments_1.jpg"
-          %h1 Advanced Investments
-          %p
-            Trade using a lower amount of capital by investing in advanced financial instruments like
-            = link_to t('investment_education.foreign_exchange1'), page_path('investment_education/foreign_exchange1')
-            ,
-            = link_to t('investment_education.forwards'), page_path('investment_education/forwards')
-            ,
-            = link_to t('investment_education.futures1'), page_path('investment_education/futures1')
-            and
-            = link_to t('investment_education.options1'), page_path('investment_education/options1')
-          %br/
-          .read_more.button= link_to "Read More..",  page_path('investment_education/foreign_exchange1')
-        %td
-          =image_tag "investment_education/jargon.jpg"
-          %h1 Jargon Demystified
-          %p Understand the most commonly used financial terms.
-          %br/
-          .read_more.button= link_to "Read More..", page_path('investment_education/glossary')
+        .read_more.button=link_to "Read More..",  page_path('investment_education/analyzing_needs')
+      %td
+        =image_tag "investment_education/InvestmentAnalysis_1.jpg"
+        %h1 Investment Analysis
+        %p
+          Analyze and identify stocks that can beat the market and give you superior returns by conducting
+          = link_to t('investment_education.fundamental_analysis1'), page_path('investment_education/fundamental_analysis1')
+          and
+          = link_to t('investment_education.technical_analysis'), page_path('investment_education/technical_analysis')
+        .read_more.button=link_to "Read More..",  page_path('investment_education/fundamental_analysis1')
+    %tr
+      %td
+        =image_tag "investment_education/InvestmentTypes_1.jpg"
+        %h1 Types Of Investment
+        %p
+          Discover the secrets of different types of investments such as
+          = link_to t('investment_education.stocks1'), page_path('investment_education/stocks1')
+          ,
+          = link_to t('investment_education.bonds'), page_path('investment_education/bonds')
+          ,
+          = link_to t('investment_education.mutual_funds'), page_path('investment_education/mutual_funds')
+          ,
+          = link_to t('investment_education.exchange_traded'), page_path('investment_education/exchange_traded')
+          ,
+          = link_to t('investment_education.commodities'), page_path('investment_education/commodities')
+          ,
+          = link_to t('investment_education.real_estate_investment'), page_path('investment_education/real_estate_investment')
+          ,
+          = link_to t('investment_education.insurance_products'), page_path('investment_education/insurance_products')
+        %br/
+        .read_more.button=link_to "Read More..",  page_path('investment_education/stocks1')
+      %td
+        =image_tag "investment_education/AdvancedInvestments_1.jpg"
+        %h1 Advanced Investments
+        %p
+          Trade using a lower amount of capital by investing in advanced financial instruments like
+          = link_to t('investment_education.foreign_exchange1'), page_path('investment_education/foreign_exchange1')
+          ,
+          = link_to t('investment_education.forwards'), page_path('investment_education/forwards')
+          ,
+          = link_to t('investment_education.futures1'), page_path('investment_education/futures1')
+          and
+          = link_to t('investment_education.options1'), page_path('investment_education/options1')
+        %br/
+        .read_more.button= link_to "Read More..",  page_path('investment_education/foreign_exchange1')
+      %td
+        =image_tag "investment_education/jargon.jpg"
+        %h1 Jargon Demystified
+        %p Understand the most commonly used financial terms.
+        %br/
+        .read_more.button= link_to "Read More..", page_path('investment_education/glossary')

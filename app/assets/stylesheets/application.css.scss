@@ -15,7 +15,9 @@
 
 $base-color: #3872C2;
 $aside-width: 240px;
-$footer-color: #e1e1e1;
+$footer-color: #274F87;
+$nav-font: "Calibri", Helvetica, Arial, sans-serif;
+$footer-top-heading: #131313;
 //$aside-background: #205973;
 
 h1 {
@@ -45,10 +47,11 @@ header {
     &.main {
       li {
         //@include button($base-color);
-		padding: 1.5em 1em 0 1em;
+		    padding: 1.5em 1em 0 1em;
         line-height: 1.3em;
-        font-size: small;
-		font-weight: bold;
+        font-family: $nav-font;
+        font-size: 1em;
+		    font-weight: bold;
 		color: tint($base-color, 80%);
 		cursor: pointer;
       }
@@ -64,14 +67,12 @@ header {
           padding: 0.5em 0.25em;
           color: tint($base-color, 100%);
         }
-
         img {
           height: 30px;
         }
       }
     }
   }
-
   hgroup.title {
     width: $aside-width;
     padding: {
@@ -162,10 +163,11 @@ footer {
 	  //border-bottom: 1px solid #424242;
 	  >a {
 	    text-decoration: none;
-		color: #494949;
+		  color: $footer-top-heading;
 	    font: {
-		  weight: bold;
-		  size: large;
+        family: $nav-font;
+		    weight: bold;
+		    size: 1.3em;
 	    }
 	  padding: {
 	    bottom: 2em;
@@ -173,8 +175,8 @@ footer {
 	  }
 	  margin: {
 	    right: 1em;
-		top: 1em;
-		left: 1em;
+		  top: 1em;
+		  left: 1em;
 	  }
 	  ul {
 		margin: 0;
@@ -183,7 +185,7 @@ footer {
 		  a {
 		    text-decoration: none;
 			&, &:visited, &:hover, &:active, {
-              color: $base-color;
+              color: #fff;
 			}
 			
 		  }

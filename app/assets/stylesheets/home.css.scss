@@ -10,129 +10,146 @@
 
 $base-color: #3872C2;
 $color-font: #336699;
-$color-heading: #0b419e;
+$heading-color: #0b419e;
+$heading-font: "Cambria", Helvetica, Arial, sans-serif;
+$content-font: "Calibri", Helvetica, Arial, sans-serif; 
 
-div#wrapper {
-  margin: 0 auto;
-  padding: 0;
-  width: 980px;
-} 
+body.home {
+  div#wrapper {  // ------------ #Wrapper --------------
+    margin: 0 auto;
+    padding: 0;
+    width: 980px;
+  } 
 
-div#main {
-  ul {
-    list-style: none;
-    margin: 0;
-  }
-  h1 {
-	color: $color-heading;
-	padding:{
-	  left: 0.2em;
-	}
-	margin: {
-	  top: 0.5em;
-	  bottom: 0.2em;
-	}
-    font: {
-      Size: 3em;
-    }	
-  }
-
-// ------------ #content-----------------
-  div#content {
-    width: 974px;  
-    margin-bottom: 4em;
-    @include border-radius(8px);
-    background: #e9f1f4;
-    border: 3px solid #424242;
-    div#image {
-	  img{
-	    margin: 0;
-	  }
-	  padding: { 
-	    left: 0.6em;
-	    top: 0.7em;
-	    bottom: 0;
-	 }
-	}
-	div#desc {
-	  margin: {
-	    bottom: 8em;
-	    top: -1em;
-	  }
-	  padding-top: 0;
-	  ul {
-	    //margin: 0;
-		padding: 0;
-	    li {
-		  margin: {
-		    top: 0;
-			bottom:0;
-			right:0; 
-			left: 1.2em;
-		  }
-		  text-align: center;
-		  float: left;
-		  width: 220px;
-		  color: $color-font;
-		  p {
-		    font: {
-		      size: medium;
-			  weight: bold;
-		    }
-		  }
-		}
-	  }
-	}
-	a {
-	  &:after {
-	    content: url(get-started.png);
-	  }
-      @include sharp-button;
-	  @include border-radius(10px);
-	  text-decoration: none;
-	  text-align: center;
-	  border: 2px solid #cccccc;
-	  margin: {
-	    left: 10em;
-		top: 2em;
-	  }
-	  padding: {
-	    top: 0.4em;
-		left: 0.6em;
-		right: 0.7em;
-		bottom: 0.4em;
-	  }
-	  @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
-	  font: {
-	    //family: RobotoRegular, Arial, sans-serif;
-	    size: 2.2em;
-		weight: bold;
-	  }
-    }
-	&img:nth-child(5) {
-	  margin-left: -2em;
-	}
-  }
-  div#facts {
+  div#main {   // --------------- #main -----------------
     ul {
-	  list-style-image:url('right_arrow.png');
-	  margin-left: 4em;
-	  margin-bottom: 3em;
-	  padding: 0;
-	  li {
-		p {
-		  color: #333333;
-		  font: {
-		    family: Helvetica, Arial, sans-serif;
-			size: 1.3em;
-			weight: normal;
-		  }
-		}
-	  }
-	}
+      list-style: none;
+      margin: 0;
+    }
+    h1 {
+    color: $heading-color;
+    padding:{
+      left: 0.2em;
+    }
+    margin: {
+      top: 0.5em;
+      bottom: 0.2em;
+    }
+      font: {
+        family: $heading-font;
+        Size: 3em;
+        weight: normal;
+      }	
+    }
+    h2 {
+      color: $heading-color;
+      font: {
+        family: $heading-font;
+        size: 2em;
+        weight: normal;
+        }
+      padding:{
+        left: 0.2em;
+      }        
+      }
+
+  // ------------ #content-----------------
+    div#content { 
+      width: 974px;  
+      margin-bottom: 4em;
+      @include border-radius(8px);
+      background: #e9f1f4;
+      border: 1px solid #424242;
+      div#image {
+      img{
+        margin: 0;
+      }
+      padding: { 
+        left: 0.6em;
+        top: 0.7em;
+        bottom: 0;
+      }
+    }
+    div#desc {
+      margin: {
+        bottom: 8em;
+        top: -1em;
+      }
+      padding-top: 0;
+      ul {
+        //margin: 0;
+      padding: 0;
+        li {
+        margin: {
+          top: 0;
+          bottom:0;
+          right:0; 
+          left: 1.2em;
+        }
+        text-align: center;
+        float: left;
+        width: 220px;
+        color: $color-font;
+        p {
+          font: {
+            family: $content-font;
+            size: 1.2em;
+            weight: bold;
+          }
+        }
+      }
+      }
+    }
+    a {
+      &:after {
+        content: url(get-started.png);
+      }
+      @include sharp-button;
+      @include border-radius(10px);
+      text-decoration: none;
+      text-align: center;
+      border: 2px solid #cccccc;
+      margin: {
+        left: 10em;
+      top: 2em;
+      }
+      padding: {
+        top: 0.4em;
+      left: 0.6em;
+      right: 0.7em;
+      bottom: 0.4em;
+      }
+      @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
+      font: {
+        //family: RobotoRegular, Arial, sans-serif;
+        size: 2.2em;
+      weight: bold;
+      }
+      }
+    &img:nth-child(5) {
+      margin-left: -2em;
+    }
+    }
+    div#facts {
+      ul {
+      list-style-image:url('right_arrow.png');
+      margin-left: 4em;
+      margin-bottom: 3em;
+      padding: 0;
+      li {
+        p {
+         color: #333333;
+         font: {
+           family: $content-font;
+           size: 1.2em;
+           weight: normal;
+         }
+      }
+      }
+    }
+    }
+  }
+  aside {
+    display: none;
   }
 }
-
-
-
-
