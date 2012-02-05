@@ -8,7 +8,7 @@ describe RetirementCorpusCalculator do
       :monthly_expence      => 15000,
       :inflation            => 6,
       :expected_return      => 9
-    ).calculate_monthly_return.should eq 14948.55
+    ).monthly_return.should eq 14948.55
 
     RetirementCorpusCalculator.new(
       :current_age          => 45,
@@ -16,7 +16,7 @@ describe RetirementCorpusCalculator do
       :monthly_expence      => 13000,
       :inflation            => 9,
       :expected_return      => 0
-    ).calculate_monthly_return.should eq 0
+    ).monthly_return.should eq 0
 
     RetirementCorpusCalculator.new(
       :current_age          => 42,
@@ -24,7 +24,7 @@ describe RetirementCorpusCalculator do
       :monthly_expence      => 18000,
       :inflation            => 5,
       :expected_return      => 0
-    ).calculate_monthly_return.should eq 0
+    ).monthly_return.should eq 0
 
     RetirementCorpusCalculator.new(
       :current_age          => 36,
@@ -32,6 +32,6 @@ describe RetirementCorpusCalculator do
       :monthly_expence      => 15000,
       :inflation            => 7,
       :expected_return      => 0
-    ).calculate_monthly_return.should eq 0
+    ).monthly_return.should eq 0
   end
 end
