@@ -15,6 +15,8 @@ $heading-color: #3e3e3e;
 $family-font: "Robotolight",Helvetica, Arial, sans-serif;
 $base-color: #3872C2;
 $bottom-grey: #c5c4c4;
+$tr-color: #c0deed;
+$th-color: #1e6a86;
 //--------------------------------------------------------------
 
 
@@ -98,6 +100,7 @@ article{
 	  color: $base-color;
 	  font: {
 	    weight: bold;
+		size: large;
 	  }
 	  margin: {
         bottom: 0;
@@ -149,8 +152,11 @@ article{
 //----------------- Tables ------------------------------
 
 tbody tr {
+  &:nth-child(odd) {
+    background-color: $tr-color;
+  }
   th {
-    background-color: $base-color;
+    background-color: $th-color;
 	color: white;
 	text-align: left;
   }
@@ -162,6 +168,5 @@ tbody tr {
 	  left: 0.6em;
 	  right: 0.6em;
 	}
-	
   }
 }
