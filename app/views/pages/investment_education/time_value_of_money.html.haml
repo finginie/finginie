@@ -146,17 +146,17 @@
         Next:
         =link_to t('investment_education_diversification'), page_path('investment_education/diversification')
       %center=link_to t('investment_education.home'), page_path('investment_education')
-  %extracontent
-    %takeaway
+  .extracontent
+    .takeaway
       %h1 Take Away
       %ul
         %li A sum of money at present has a higher value than the same amount of money in the future.
         %li The Present Value of a of cash flow can be calculated as (Future Value of the cash flow) /[(1+R)]^t where R represents the interest rate.
-    %articles
+    .articles
       %h1 Articles
       %ul
         %li=link_to "Time Value Of Money --> Wikipedia.", "http://en.wikipedia.org/wiki/Time_value_of_money", html_options = {:target => "_blank"}
-    %videos
+    .videos
       %h1 Videos
       %ul
         %li=link_to "Introduction to Present Value", "http://www.youtube.com/watch?v=ks33lMoxst0&feature=relmfu", html_options = {:target => "_blank"}

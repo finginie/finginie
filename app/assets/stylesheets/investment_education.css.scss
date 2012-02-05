@@ -8,6 +8,14 @@
   @include button(shiny, #3a6e9b);
   @include border-radius(0);
 }
+@mixin color-highlights($color: grey) {
+  h1 {
+    background: $color;
+  }
+  li:hover {
+    background: tint($color, 60%);
+  }
+}
 //-----------------------------8<----------------------------
 
 //-------------------- variables ------------------------------
@@ -27,15 +35,39 @@ $content-font: "Calibri", Helvetica, Arial, sans-serif;
   article {
     @include holy-grail-main(250px, 10px, right);
   }
-  extracontent {
+  .extracontent {
     @include holy-grail-aside(250px, 10px, right);
+    padding-top: 4em;
     h1 {
       font: {
         size: large;
         weight: bold;
       }
+      color: white;
+      text-align: center;
+      background: grey;
+      margin-top: 0;
+    }
+    &>div {
       border: thin solid grey;
       @include border-radius(4px);
+      margin-bottom: 1em;
+      ul {
+        padding: 0;
+      }
+      li {
+        @include no-bullet;
+        margin: .5em;
+      }
+    }
+    .takeaway {
+      @include color-highlights(#86C9EF);
+    }
+    .articles {
+      @include color-highlights(#86C9EF);
+    }
+    .videos {
+      @include color-highlights(#86C9EF);
     }
   }
 }

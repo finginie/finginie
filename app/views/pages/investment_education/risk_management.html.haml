@@ -42,21 +42,21 @@
         Next:
         =link_to t('investment_education.reduce_your_taxes'), page_path('investment_education/reduce_taxes')
       %center=link_to t('investment_education.home'), page_path('investment_education')
-  %extracontent
-    %takeaway
+  .extracontent
+    .takeaway
       %h1 Take Away
       %ul
         %li Risk management involves identifying, analyzing and monitoring the risk that your portfolio is exposed to.
         %li It can be done by hedging- a process which offsets the risk in price movements by locking-in prices.
         %li Hedging is usually done using derivatives such as futures and options.
-    %articles
+    .articles
       %h1 Articles
       %ul
         %li=link_to "Hedging -Wikipedia", "http://en.wikipedia.org/wiki/Hedge_%28finance%29", html_options = {:target => "_blank"}
         %li=link_to "How To Offset Risk", "http://www.investopedia.com/articles/trading/09/offset-risk-options-futures-hedge-funds.asp", html_options = {:target => "_blank"}
         %li=link_to "RISK MANAGEMENT: Profiling And Hedging", "http://pages.stern.nyu.edu/~adamodar/pdfiles/papers/hedging.pdf", html_options = {:target => "_blank"}
         %li=link_to "View our Futures, investment_education/forwards and options articles", "investment_education/futures1", html_options = {:target => "_blank"}
-    %videos
+    .videos
       %h1 Videos
       %ul
         %li=link_to "Hedging in Forex,Futures & Options", "http://www.youtube.com/watch?v=8sDdyuYWtC4", html_options = {:target => "_blank"}
