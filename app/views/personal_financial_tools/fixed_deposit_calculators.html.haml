@@ -13,9 +13,7 @@
     = f.input :interest_compound ,:collection => %w[Monthly Quarterly HalfYearly Yearly], :include_blank => false
   .actions
     = f.button :submit
+  #result
+    = flash[:result] if flash[:result].is_a?(String)
 
-%section#result
-  %h1 Result
-  %label The amount you will receive at maturity is Rs.
-  %b
-    %u= @fixed_deposit_calculator.maturity_amount
+

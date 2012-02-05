@@ -11,9 +11,6 @@
   .actions
     = f.button :submit
 
-%section#result
-  %h1 Result
-  %label The rate of return earned on your investment is
-  %b
-    %u= @rate_of_return_calculator.calculate_rate_of_return
-    %u %
+
+  #result
+    = flash[:result] if flash[:result].is_a?(String)

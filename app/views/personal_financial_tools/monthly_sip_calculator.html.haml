@@ -15,8 +15,6 @@
   .actions
     = f.button :submit
 
-%section#result
-  %h1 Result
-  %label The monthly amount you need to invest to reach your goal is Rs.
-  %b
-    %u= @monthly_sip_calculator.monthly_sip
+
+  #result
+    = flash[:result] if flash[:result].is_a?(String)

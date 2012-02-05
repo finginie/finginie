@@ -14,8 +14,6 @@
   .actions
     = f.button :submit
 
-%section#result
-  %h1 Result
-  %label The amount you will receive at maturity is Rs.
-  %b
-    %u= @recurring_deposit_calculator.maturity_amount
+
+  #result
+    = flash[:result] if flash[:result].is_a?(String)

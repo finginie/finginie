@@ -24,8 +24,6 @@
   .actions
     = f.button :submit
 
-%section#result
-  %h1 Result
-  %label According to the information you entered, the total insurance you need is Rs.
-  %b
-    %u= @life_insurance_calculator.extra_insurance_required
+
+  #result
+    = flash[:result] if flash[:result].is_a?(String)

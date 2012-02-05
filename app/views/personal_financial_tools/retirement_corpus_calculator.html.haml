@@ -15,8 +15,6 @@
   .actions
     = f.button :submit
 
-%section#result
-  %h1 Result
-  %label The corpus you need to meet you expenses after retirement is Rs.
-  %b
-    %u= @retirement_corpus_calculator.calculate_monthly_return
+
+  #result
+    = flash[:result] if flash[:result].is_a?(String)
