@@ -1,3 +1,27 @@
-- content_for :wrap do
-  - %w(ticker slider news weekly).each do |sectional|
-    %section{:class => sectional}= render sectional
+%h1 Investing the Finginie way
+#content
+  #image
+    = image_tag "learn_investment.png"
+    = image_tag "investment_mix.png"
+    = image_tag "optmize_investments.png"
+    = image_tag "community.png"
+  #desc
+    %ul
+      %li
+        %p Understand how investing works
+      %li
+        %p Discover your personalized investment mix
+      %li
+        %p Track and optimize your investments	
+      %li
+        %p Collaborate with other investors and experts  
+  = link_to 'Get Started'  
+%h2 Interesting Facts		
+#facts
+  %ul
+    %li
+      %p Despite 2 global recessions, stocks have given a return of 15.3% p.a  over the last 11 years
+    %li
+      %p Instead of buying your old Alto car in 2003, had you invested in Maruti's stock, you could buy 4 Swift cars today.
+    %li
+      %p 2 crore people in India invest. Not all of them are rocket scientists. So, would you prefer investing or be content with a 4-6% bank return?	

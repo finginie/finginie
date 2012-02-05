@@ -1,337 +1,155 @@
-@import "blueprint/colors";
-@import "blueprint/liquid";
-@import "compass/typography/lists/horizontal-list";
-@import "compass/css3/box-shadow";
-@import "compass/css3/transition";
-@import "compass/css3/transform";
-@import "compass/layout/stretching";
+@import "bourbon";
+@import "lists";
 
-// To configure blueprint, edit the partials/base.sass file.
-@import "partials/base";
-
-// Animations
-/* Fades in the slideshow. Hides the initial animation on the li tag. Ooops!! */
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+//-----------------------------8<----------------------------
+@mixin sharp-button {
+  @include button(#3a6e9b);
+  @include border-radius(0);
 }
+//-----------------------------8<----------------------------
 
-/* Animation for the :target image. Slides the image in. */
-@-webkit-keyframes moveTarget {
-  0% {
-    left:-700px;
-  }
-  100% { 
-    left:0px;
-  }
-}
-
-/*
-  Animation for the current image. Slides it out the frame and back to the starting position.
-  Adds a lower z-index than the now current image.
-*/
-@-webkit-keyframes moveIt {
-  0% {
-    left:0px;
-  }
-  50% {
-    left:700px;
-  }
-  100% {
-    left:-700px;
-    z-index: 5;
-  }
-}
-
-@mixin slider-item($offset-top: 0, $offset-right: 0, $offset-bottom: 0, $offset-left: 0) {
-  @include stretch($offset-top, $offset-right, $offset-bottom, $offset-left);
-
-  &.active {
-    @include single-transition(all, 0.5s, moveTarget, 0s);
-    z-index: 10;
-  }
-
-  &:not(.active) {
-    @include single-transition(all, 1.5s, moveTarget, 0s);
-  }
-}
+$base-color: #3872C2;
+$color-font: #336699;
+$heading-color: #0b419e;
+$heading-font: "Cambria", Helvetica, Arial, sans-serif;
+$content-font: "Calibri", Helvetica, Arial, sans-serif; 
 
 body.home {
-  .ticker {
-    @include column($blueprint-liquid-grid-columns, true);
-    margin: $blueprint-liquid-grid-margin / 2 0;
+  div#wrapper {  // ------------ #Wrapper --------------
+    margin: 0 auto;
+    padding: 0;
+    width: 980px;
+  } 
 
+  div#main {   // --------------- #main -----------------
     ul {
-      @include container;
-      width: 100%;
-      padding: 0;
-
-      li {
-        @include column($blueprint-liquid-grid-columns / 5);
-        &:last-child {
-          @include column($blueprint-liquid-grid-columns / 5, true);
-        }
-
-        background-color: lighten($auxillary-background-color, 20%);
-        color: white;
-
-        height: 3em;
-        .name {
-          @include column($blueprint-liquid-grid-columns * 2 / 3);
-          font-size: x-large;
-          text-align: center;
-        }
-
-        .current, .change {
-          @include column($blueprint-liquid-grid-columns / 3, true);
-        }
-        .change {
-          border-top: thin solid $default-box-shadow-color;
-          &.positive { color: lighten($success-color, 40%); }
-          &.negative { color: lighten($error-color, 40%); }
-        }
-      }
-    }
-  }
-
-  .slider {
-    $height: 20em;
-    @include column($blueprint-liquid-grid-columns, true);
-    > ul {
       list-style: none;
-      position: relative;
-      margin: 0px;
-      padding: 0px;
-      height: $height;
-      overflow: hidden;
-      border: 10px solid #000;
-      @include single-box-shadow(#131313, 0px, 3px, 10px);
-      @include single-transition(all, 3s, fadeIn, 0s);
-      -webkit-animation-iteration-count: 1;
-      -moz-animation-iteration-count: 1;
-
-      li {
-        @include slider-item;
-
-        p {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          z-index: inherit;
-          color: #fff;
-          background: rgba(0, 0, 0, .5);
-          width: 100%;
-
-          span {
-            line-height: 1.2em;
-            padding: 10px;
-            display: block;
-          }
+      margin: 0;
+    }
+    h1 {
+    color: $heading-color;
+    padding:{
+      left: 0.2em;
+    }
+    margin: {
+      top: 0.5em;
+      bottom: 0.2em;
+    }
+      font: {
+        family: $heading-font;
+        Size: 3em;
+        weight: normal;
+      }	
+    }
+    h2 {
+      color: $heading-color;
+      font: {
+        family: $heading-font;
+        size: 2em;
+        weight: normal;
         }
+      padding:{
+        left: 0.2em;
+      }        
       }
-    }
-    @for $i from 1 through 6 {
-      #slide-#{$i} {
-        background-image: image-url("slider/#{$i}.jpg");
-      }
-    }
-  /*
-    ul#thumb {
-      overflow: none;
-      margin: 0px 0px 0px 0px;
-      padding: 0px;
-      list-style: none;
-      position: relative;
-      background: #000;
-      overflow: auto;
-      width: 700px;
-    }
 
-    ul#thumb a {
-      -webkit-transition: opacity .2s ease-in-out;
-      border: 1px solid #979797;
-      width: 35px;
-      height: 35px;
-      display: block;
-      overflow: hidden;
-      float: right;
-      margin: 10px 0px 0px 10px;
-      opacity: 0.75;
-    }
-
-    ul#thumb a:hover {
-      opacity: 1;
-    }
-  */
-  }
-
-  $stock-recommendations-height: 14em;
-  $promotions-height: 8em;
-
-  .news {
-    @include column($blueprint-liquid-grid-columns - $aside-width);
-    $height: $stock-recommendations-height + 2 * $promotions-height;
-    position: relative;
-    height: $height;
-    padding: 0.7em 0;
-    nav {
-      > ul {
-        border-bottom: 1px solid $secondary-background-color;
+  // ------------ #content-----------------
+    div#content { 
+      width: 974px;  
+      margin-bottom: 4em;
+      @include border-radius(8px);
+      background: #e9f1f4;
+      border: 1px solid #424242;
+      div#image {
+      img{
         margin: 0;
-        padding: 0 0 6px 10px;
       }
-
-      a {
-        text-decoration: none;
-        padding-bottom: 3px;
-        target-new: window;
-      }
-
-      li.active a {
-        border-bottom: 4px solid saturate($blueprint-background-color, 40%);
+      padding: { 
+        left: 0.6em;
+        top: 0.7em;
+        bottom: 0;
       }
     }
-
-    section {
-      background: white;
-      @include slider-item(2.8em);
-      h1 {
-        font-size: 1.3em;
-        margin: 0.6em auto 0.3em auto;
+    div#desc {
+      margin: {
+        bottom: 8em;
+        top: -1em;
       }
-      p {
-        margin-bottom: 0.6em;
-        height: 1.5em;
-        overflow: hidden;
-      }
-    }
-  }
-  .weekly {
-    @include column($aside-width, true);
-    height: $stock-recommendations-height + 2 * $promotions-height;
-
-    color: white;
-    $lead-color: #81BE00;
-
-    .stock_recommendations {
-      position: relative;
-      > h1 {
-        background-color: rgba(0, 0, 0, 0.5);
-        color: white;
-        font-size: 1.5em;
-        margin: 0.5em 0;
-        padding: 0.5em 0;
-        position: absolute;
-        top: 2em;
-        width: 3em;
-        z-index: 10;
-      }
-
+      padding-top: 0;
       ul {
-        margin: 0.5em 0 0 0;
-        padding: 0;
-      }
-      $margin: 1%;
-      li {
-        display: inline-block;
+        //margin: 0;
+      padding: 0;
+        li {
+        margin: {
+          top: 0;
+          bottom:0;
+          right:0; 
+          left: 1.2em;
+        }
+        text-align: center;
         float: left;
-        width: 33%;
-        margin: 0;
-        height: $stock-recommendations-height / 2;
-
-        div {
-          height: 100% - 2 * $margin;
-          width: 100% - 2 * $margin;
-          overflow: hidden;
-          position: relative;
-        }
-
-        h1 {
-          color: white;
-          margin: -4px;
-        }
-
-        dt {
-          @include apply-origin(0 0, false);
-          @include rotate(270deg);
-          font-size: large;
-          position: absolute;
-          bottom: -1.2em;
-          left: -0.3em;
-        }
-
-        dd {
-          text-align: right;
-          margin: 0.2em;
-        }
-
-        &:first-child {
-          height: $stock-recommendations-height;
-          margin-left: 0;
-          div {
-            height: 100% - $margin;
-            margin: 0 0 $margin;
-          }
-
-          dt {
-            font-size: xx-large;
-            bottom: 0;
-            left: 1.5em;
-          }
-
-          dd {
-            bottom: 1em;
-            margin: 0;
-            position: absolute;
-            text-align: center;
-            width: 100%;
+        width: 220px;
+        color: $color-font;
+        p {
+          font: {
+            family: $content-font;
+            size: 1.2em;
+            weight: bold;
           }
         }
-
-        @for $i from 1 through 5 {
-          &:nth-child(#{$i}) div {
-            $color: adjust-hue($lead-color, 80deg * $i);
-            background-color: $color;
-            dt {
-              color: lighten($color, 40%);
-            }
-          }
-        }
+      }
       }
     }
-    .promotion {
-      &:nth-child(odd) {
-        $color: adjust-hue($lead-color, 80deg * 6);
-        background-color: $color;
-        h1 {
-          color: lighten($color, 40%);
-        }
+    a {
+      &:after {
+        content: url(get-started.png);
       }
-
-      &:nth-child(even) {
-        $color: adjust-hue($lead-color, 80deg * 7);
-        background-color: $color;
-        h1 {
-          color: lighten($color, 40%);
-        }
+      @include sharp-button;
+      @include border-radius(10px);
+      text-decoration: none;
+      text-align: center;
+      border: 2px solid #cccccc;
+      margin: {
+        left: 10em;
+      top: 2em;
       }
-
-      height: $promotions-height;
-      width: 99%;
-      h1 {
-        font-size: 2em;
-        margin: 0;
+      padding: {
+        top: 0.4em;
+      left: 0.6em;
+      right: 0.7em;
+      bottom: 0.4em;
       }
-      p {
-        padding: 1em;
+      @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
+      font: {
+        //family: RobotoRegular, Arial, sans-serif;
+        size: 2.2em;
+      weight: bold;
+      }
+      }
+    &img:nth-child(5) {
+      margin-left: -2em;
+    }
+    }
+    div#facts {
+      ul {
+      list-style-image:url('right_arrow.png');
+      margin-left: 4em;
+      margin-bottom: 3em;
+      padding: 0;
+      li {
+        p {
+         color: #333333;
+         font: {
+           family: $content-font;
+           size: 1.2em;
+           weight: normal;
+         }
+      }
       }
     }
+    }
+  }
+  aside {
+    display: none;
   }
 }

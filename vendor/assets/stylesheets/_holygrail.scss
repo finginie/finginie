@@ -1,0 +1,42 @@
+@function opposite($side) {
+  @if $side == right {
+    @return left;
+  } @else if $side == left {
+    @return right;
+  } @else if $side == top {
+    @return bottom;
+  } @else {
+    @return top;
+  }
+}
+
+//------------------------------8<----------------------------------------
+//
+//// http://www.alistapart.com/articles/holygrail
+//
+
+@mixin holy-grail($aside-width: 200px, $padding: 10px, $direction: left) {
+  @include holy-grail-wrapper($aside-width, $padding, $direction);
+
+  #main { @include holy-grail-main($aside-width, $padding, $direction); }
+  aside { @include holy-grail-aside($aside-width, $padding, $direction); }
+}
+
+@mixin holy-grail-wrapper($aside-width: 200px, $padding: 10px, $direction: left) {
+  padding-#{$direction}: $aside-width;   /* LC width */
+}
+
+@mixin holy-grail-main($aside-width: 200px, $padding: 10px, $direction: left) {
+  position: relative;
+  float: $direction;
+  width: 100%;
+}
+
+@mixin holy-grail-aside($aside-width: 200px, $padding: 10px, $direction: left) {
+  position: relative;
+  float: $direction;
+  width: $aside-width - $padding;          /* LC width */
+  #{opposite($direction)}: $aside-width;          /* LC width */
+  margin-#{$direction}: -100%;
+  padding: 0 $padding;
+}

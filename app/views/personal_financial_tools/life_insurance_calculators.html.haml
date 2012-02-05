@@ -14,7 +14,7 @@
     = f.input :total_assets
     = f.input :desired_value_of_bequeathed_estate
     = f.input :family_income
-    .fieldset.dependents
+    %fieldset.dependents
       = f.fields_for :dependents do |d|
         = d.input :years
         = d.input :expense

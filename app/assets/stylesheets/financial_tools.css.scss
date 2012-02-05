@@ -1,0 +1,141 @@
+@import "bourbon";
+@import "lists";
+
+//-----------------------------8<----------------------------
+@mixin sharp-button {
+  @include button(#3a6e9b);
+  @include border-radius(0);
+}
+//-----------------------------8<----------------------------
+
+
+//-------------------- variables ------------------------------
+
+$heading-color: #3e3e3e;
+$family-font: "Robotolight",Helvetica, Arial sans-serif;
+$base-color: #3872C2;
+$bottom-grey: #c5c4c4;
+$input-color: #063348;
+$heading-font: "Cambria", Helvetica, Arial, sans-serif;
+$content-font: "Calibri", Helvetica, Arial, sans-serif;
+
+//--------------------------------------------------------------
+
+form {
+  input, select {
+    border: 2px solid $bottom-grey;
+	color: $input-color;
+  }
+  margin:{
+    left: 1.5em;
+  }
+  h4 {
+    color: $heading-color;
+    font: {
+      family: $heading-font;
+      size: 2em;
+      weight: regular;
+    }
+	margin: {
+	  top: 0.5em;
+	  bottom: 0.6em;
+	}
+	
+	border: {
+	  bottom: 2px solid $base-color;
+	}
+  }
+  ul {
+    list-style:none;
+	  margin: 0;
+	  padding: 0;
+	li {
+	  padding: {
+	    bottom: 0.6em;
+		  left: 1em;
+	  }
+    font: {
+        family: $content-font;
+	      weight: normal;
+		    size: 1.2em;
+	  }
+	  margin: 0;
+	}
+  }
+  div.inputs {
+    label {
+	  display: inline-block;
+    color: $base-color;
+    width: 25%;
+	  line-height: 1em;
+    text-align: right;
+	  padding: {
+	    top: 0.5em;
+		bottom: 0.4em;
+	  }
+	  font: {
+      family: $content-font;
+	    weight: normal;
+		  size: 1.3em;
+	  }
+	  
+	}
+	input, select {
+	 
+	  margin: {
+	    left: 0.8em;
+	    bottom: 1em;
+	    top: 0.1em;
+	  }
+	  
+	}
+  label.collection_radio,  {
+	  padding-left: 0.6em;
+	  display :inline;
+  }
+  span {
+    &input {
+	  padding-left: 0;
+	}
+  }
+	
+  }
+  div.actions {
+    input.button{
+	  @include sharp-button;
+	  margin: {
+	    left: 26%;
+	    bottom: 0.5em;
+	    top: 1em;
+	  }
+	  font: {
+	    size: large;
+	  }
+	}
+  }  
+}
+
+section#result {
+  h1 {
+    color: $heading-color;
+    font: {
+      family: $family-font;
+      size: 2em;
+      weight: bold;
+    }
+    margin:{
+      left: 1.5em;
+    }
+  }
+  >label, b, label {
+    margin: {
+      top: 0;
+      left: 3em;  
+    }
+    font: {
+      family: $content-font;
+	    weight: normal;
+		  size: 1.2em;
+	  }
+  }  
+} 

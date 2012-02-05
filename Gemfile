@@ -6,12 +6,12 @@ gem 'rails', '3.2.0'
 # in production environments by default.
 group :assets do
   gem 'coffee-rails'
-  gem 'compass', '~> 0.12.alpha.0'
   gem 'sass-rails'
   gem 'uglifier'
 end
 
 gem 'airbrake'
+gem 'bourbon', :git => "git://github.com/FinGinie/bourbon.git"
 gem 'cancan'
 gem 'clockwork'
 gem 'draper', :git => "git://github.com/jcasimir/draper.git"

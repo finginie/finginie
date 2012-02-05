@@ -7,40 +7,204 @@
  *= require_directory .
 */
 
-// To configure blueprint, edit the partials/base.sass file.
-@import "partials/base";
-// Import all the default blueprint modules so that we can access their mixins.
-@import "blueprint";
-@import "partials/defaults";
+//-----------------------------------------------------8<-------------------------------------------------
+//-----------------------------------------------------8<-------------------------------------------------
+@import "bourbon";
+@import "lists";
+@import "holygrail";
 
-//Navigation
+$base-color: #3872C2;
+$aside-width: 240px;
+$footer-color: #274F87;
+$nav-font: "Calibri", Helvetica, Arial, sans-serif;
+$footer-top-heading: #131313;
+//$aside-background: #205973;
+
+h1 {
+  font-weight: normal;
+}
+
+p {
+  line-height: 1.5em;
+}
+
 header {
+  width: 100%;
+  @include background-image(linear-gradient($base-color, shade($base-color, 30%)));
+  @include box-shadow(0 2px 5px hsla(0, 0%, 0%, 0.65));
+  @include horizontal-list-container;
+  nav, hgroup {
+    @include horizontal-list-item;
+    padding: 0.5em;
+  }
   nav {
-    background-color: $secondary-background-color;
-    @include container;
-    ul {
-      float: right;
-      clear: right;
+    &>ul {
+      @include horizontal-list(0, left, false);
+      margin: 0;
+      padding: 0;
     }
+
+    &.main {
+      li {
+        //@include button($base-color);
+		    padding: 1.5em 1em 0 1em;
+        line-height: 1.3em;
+        font-family: $nav-font;
+        font-size: 1em;
+		    font-weight: bold;
+		color: tint($base-color, 80%);
+		cursor: pointer;
+      }
+    }
+
+    &.user {
+      border-left: thin solid shade($base-color, 35%);
+
+      li {
+        padding: 0 0.25em;
+        font-weight: bold;
+        &:first-child {
+          padding: 0.5em 0.25em;
+          color: tint($base-color, 100%);
+        }
+        img {
+          height: 30px;
+        }
+      }
+    }
+  }
+  hgroup.title {
+    width: $aside-width;
+    padding: {
+      left: 0;
+      right: 0;
+    }
+    img {
+      height: 32px;
+    }
+
+    h1 {
+      color: shade($base-color, 60%);
+      text-shadow:1px 1px 2px tint($base-color, 0%);
+      margin: 0 0.5em;
+    }
+  }
+
+  nav.user {
+    @include float(right);
+  }
+
+  a {
+    @include unstyled-link;
   }
 }
 
-//Title
-hgroup.title .tag { // This makes the beta tag stick to the title
-    color: tan;
-    font-weight: bold;
-    text-shadow: 0 0 5px yellow;
-    text-transform: capitalize;
-    vertical-align: top;
-    position: relative;
-    left: -1em;
-    top: 0.5em;
+#wrapper {
+  @include holy-grail($aside-width, 0);
 }
+/*
+aside {
+  background: $aside-background;
+}
+*/
 
 
-// Footer
+//------------------------  Footer ----------------------------------
+
 footer {
-  background-color: $auxillary-background-color;
-  nav {
+  clear: both;
+  background: $footer-color;
+  border: {
+	  top: {
+	    width: 1px;
+		color: #494949;
+		style: solid;
+	  }
+	}
+  
+  //------------------------ Horizontal menu ------------------------
+ /*
+  nav.sitemap { 
+    &>ul>li {
+	  @include horizontal-list-container;
+	  ul {
+	    display: inline;
+		&:before {
+	      content: ">";
+		}
+	  }
+	  li, a {
+	    @include horizontal-list-item;
+		text-decoration: none;
+		padding: {
+	      top: 0.5em;
+		  bottom: 0.6em;
+		  left: 0.2em;
+		}
+		&, &:visited, &:hover, &:active, {
+          color: #424242;
+        }
+	  }
+	}
+  }
+  */
+  //--------------------- vertical Footer menu -----------------------------
+  
+  nav.sitemap {
+    margin: {
+	   left:13em;
+	}
+	
+    &>ul>li {
+	  width: 13em;
+	  //display: inline;
+	  display: block;
+	  float: left;
+	  //border-bottom: 1px solid #424242;
+	  >a {
+	    text-decoration: none;
+		  color: $footer-top-heading;
+	    font: {
+        family: $nav-font;
+		    weight: bold;
+		    size: 1.3em;
+	    }
+	  padding: {
+	    bottom: 2em;
+	  }
+	  }
+	  margin: {
+	    right: 1em;
+		  top: 1em;
+		  left: 1em;
+	  }
+	  ul {
+		margin: 0;
+		padding: 0;
+		li {
+		  a {
+		    text-decoration: none;
+			&, &:visited, &:hover, &:active, {
+              color: #fff;
+			}
+			
+		  }
+		  padding: {
+		    top: 0.8em;
+		  }
+		}
+	  }
+	}
+  }
+  p {
+    clear: both;
+	margin: {
+	  left: 14em;
+	}
+	padding: {
+	  top: 1em;
+	  bottom: 1em;
+	}
+	color: #0e45a8;
   }
 }

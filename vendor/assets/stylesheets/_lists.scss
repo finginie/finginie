@@ -1,0 +1,52 @@
+@mixin float($side: left) {
+  display: inline;
+  float: unquote($side);
+}
+
+@mixin unstyled-link {
+  &, &:visited {
+    color: inherit;
+    text-decoration: inherit;
+    cursor: inherit;
+  }
+  &:active, &:focus {
+    outline: none;
+  }
+}
+
+// ------------------------------8<--------------------------------------
+
+@mixin horizontal-list-container {
+  overflow: hidden;
+}
+
+@mixin no-bullet {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+@mixin horizontal-list-item($padding: 4px, $direction: left, $snip-endings: true) {
+  @include no-bullet;
+  white-space: nowrap;
+  @include float($direction);
+  @if $padding {
+    padding: {
+      left: $padding;
+      right: $padding;
+    }
+    @if $snip-endings {
+      &:first-child, &.first { padding-#{$direction}: 0; }
+      &:last-child { padding-#{opposite-position($direction)}: 0; }
+      &.last { padding-#{opposite-position($direction)}: 0; }
+    }
+  }
+}
+
+@mixin horizontal-list($padding: 4px, $direction: left, $snip-endings: true) {
+  @include horizontal-list-container;
+  &>li {
+    @include horizontal-list-item($padding, $direction, $snip-endings);
+  }
+}
