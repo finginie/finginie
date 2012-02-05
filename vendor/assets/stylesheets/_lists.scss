@@ -24,6 +24,7 @@
   list-style-image: none;
   list-style-type: none;
   margin-left: 0;
+  padding-left: 0;
 }
 
 @mixin horizontal-list-item($padding: 4px, $direction: left, $snip-endings: true) {

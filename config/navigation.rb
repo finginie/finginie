@@ -6,13 +6,13 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :dashboard, 'DashBoard', root_path
 
     primary.item :investment_education, 'Learn Investing',page_path('investment_education') do |secondary|
-      secondary.item:investment_concepts, 'Investment Concepts',page_path('investment_education/risk_and_return') do |tertiary|
+      secondary.item:investment_concepts, 'Investment Concepts' do |tertiary|
         tertiary.item:risk_and_return, 'Risk and Return', page_path('investment_education/risk_and_return')
         tertiary.item:time_value_of_money, 'Time Value of Money', page_path('investment_education/time_value_of_money')
         tertiary.item:diversification, 'Diversification', page_path('investment_education/diversification')
         tertiary.item:investment_trading, 'Investing vs Trading', page_path('investment_education/investment_trading')
       end
-      secondary.item:investment_process, 'Investment Process', page_path('investment_education/analyzing_needs') do |tertiary|
+      secondary.item:investment_process, 'Investment Process' do |tertiary|
         tertiary.item:analyzing_needs, 'Analyzing your needs', page_path('investment_education/analyzing_needs')
         tertiary.item:investment_plan, 'Investment Plan', page_path('investment_education/investment_plan')
         tertiary.item:asset_allocation, 'Asset Allocation', page_path('Asset Allocation')
@@ -22,12 +22,12 @@ SimpleNavigation::Configuration.run do |navigation|
         tertiary.item:risk_management, 'Risk Management', page_path('investment_education/risk_management')
         tertiary.item:reduce_taxes, 'Reducing your taxes', page_path('investment_education/reduce_taxes')
       end
-      secondary.item:investment_analysis, 'Investment Analysis', page_path('investment_education/fundamental_analysis1') do |tertiary|
+      secondary.item:investment_analysis, 'Investment Analysis' do |tertiary|
         tertiary.item:fundamental_analysis1, 'Fundamental Analysis', page_path('investment_education/fundamental_analysis1')
         tertiary.item:fundamental_analysis2, 'Fundamental Analysis II', page_path('investment_education/fundamental_analysis2')
         tertiary.item:technical_analysis, 'Technical Analysis', page_path('investment_education/technical_analysis')
       end
-      secondary.item:investment_types, 'Types of Investments', page_path('investment_education/cash_equivalents') do |tertiary|
+      secondary.item:investment_types, 'Types of Investments' do |tertiary|
         tertiary.item:cash_equivalents, 'Cash Equivalents', page_path('investment_education/cash_equivalents')
         tertiary.item:bonds, 'Bonds', page_path('investment_education/bonds')
         tertiary.item:stocks1, 'Stocks', page_path('investment_education/stocks1')
@@ -38,7 +38,7 @@ SimpleNavigation::Configuration.run do |navigation|
         tertiary.item:insurance_products, 'Insurance Products', page_path('investment_education/insurance_products')
         tertiary.item:real_estate_investment, 'Real estate Investments', page_path('investment_education/real_estate_investment')
       end
-      secondary.item:advanced_investments, 'Advances Investments', page_path('investment_education/foreign_exchange1') do |tertiary|
+      secondary.item:advanced_investments, 'Advances Investments' do |tertiary|
         tertiary.item:foreign_exchange1, 'Foreign Exchange', page_path('investment_education/foreign_exchange1')
         tertiary.item:foreign_exchange2, 'Foreign Exchange II', page_path('investment_education/foreign_exchange2')
         tertiary.item:forwards, 'Forwards', page_path('investment_education/forwards')
@@ -47,7 +47,7 @@ SimpleNavigation::Configuration.run do |navigation|
         tertiary.item:options1, 'Options', page_path('investment_education/options1')
         tertiary.item:options2, 'Options II', page_path('investment_education/options2')
       end
-      secondary.item:jargon_demystified, 'Jargon Demystified', page_path('investment_education/glossary') do |tertiary|
+      secondary.item:jargon_demystified, 'Jargon Demystified' do |tertiary|
         tertiary.item:glossary, 'Glossary', page_path('investment_education/glossary')
       end
     end

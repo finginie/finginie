@@ -7,15 +7,16 @@
  *= require_directory .
 */
 
-//-----------------------------------------------------8<-----------------------------------------------------------
-//-----------------------------------------------------8<-----------------------------------------------------------
-
+//-----------------------------------------------------8<-------------------------------------------------
+//-----------------------------------------------------8<-------------------------------------------------
 @import "bourbon";
 @import "lists";
 @import "holygrail";
 
 $base-color: #3872C2;
-$aside-width: 210px;
+$aside-width: 240px;
+$footer-color: #e1e1e1;
+//$aside-background: #205973;
 
 h1 {
   font-weight: normal;
@@ -43,9 +44,13 @@ header {
 
     &.main {
       li {
-        @include button($base-color);
+        //@include button($base-color);
+		padding: 1.5em 1em 0 1em;
         line-height: 1.3em;
         font-size: small;
+		font-weight: bold;
+		color: tint($base-color, 80%);
+		cursor: pointer;
       }
     }
 
@@ -96,9 +101,108 @@ header {
 #wrapper {
   @include holy-grail($aside-width, 0);
 }
+/*
+aside {
+  background: $aside-background;
+}
+*/
+
+
+//------------------------  Footer ----------------------------------
 
 footer {
+  clear: both;
+  background: $footer-color;
+  border: {
+	  top: {
+	    width: 1px;
+		color: #494949;
+		style: solid;
+	  }
+	}
+  
+  //------------------------ Horizontal menu ------------------------
+ /*
+  nav.sitemap { 
+    &>ul>li {
+	  @include horizontal-list-container;
+	  ul {
+	    display: inline;
+		&:before {
+	      content: ">";
+		}
+	  }
+	  li, a {
+	    @include horizontal-list-item;
+		text-decoration: none;
+		padding: {
+	      top: 0.5em;
+		  bottom: 0.6em;
+		  left: 0.2em;
+		}
+		&, &:visited, &:hover, &:active, {
+          color: #424242;
+        }
+	  }
+	}
+  }
+  */
+  //--------------------- vertical Footer menu -----------------------------
+  
   nav.sitemap {
-    @include columns(5);
+    margin: {
+	   left:13em;
+	}
+	
+    &>ul>li {
+	  width: 13em;
+	  //display: inline;
+	  display: block;
+	  float: left;
+	  //border-bottom: 1px solid #424242;
+	  >a {
+	    text-decoration: none;
+		color: #494949;
+	    font: {
+		  weight: bold;
+		  size: large;
+	    }
+	  padding: {
+	    bottom: 2em;
+	  }
+	  }
+	  margin: {
+	    right: 1em;
+		top: 1em;
+		left: 1em;
+	  }
+	  ul {
+		margin: 0;
+		padding: 0;
+		li {
+		  a {
+		    text-decoration: none;
+			&, &:visited, &:hover, &:active, {
+              color: $base-color;
+			}
+			
+		  }
+		  padding: {
+		    top: 0.8em;
+		  }
+		}
+	  }
+	}
+  }
+  p {
+    clear: both;
+	margin: {
+	  left: 14em;
+	}
+	padding: {
+	  top: 1em;
+	  bottom: 1em;
+	}
+	color: #0e45a8;
   }
 }

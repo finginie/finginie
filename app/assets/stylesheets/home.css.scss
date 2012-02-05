@@ -1,0 +1,122 @@
+@import "bourbon";
+@import "lists";
+
+//-----------------------------8<----------------------------
+@mixin sharp-button {
+  @include button(#3a6e9b);
+  @include border-radius(0);
+}
+//-----------------------------8<----------------------------
+
+$base-color: #3872C2;
+$color-font: #0e4e6f;
+$color-heading: #0d3757;
+
+div#wrapper {
+  margin: 0 auto;
+  padding: 0;
+  width: 980px;
+} 
+
+div#main {
+  //border: 1px solid red;
+  ul {
+    list-style: none;
+    margin: 0;
+  }
+  h1 {
+    //display: block;
+	//width: 680px;
+	color: $color-heading;
+	//border-bottom: 3px solid #f8b747;
+	padding:{
+	  left: 0.2em;
+	}
+    font: {
+      Size: 3em;
+    }	
+  }
+
+
+  div#content {
+    margin-bottom: 4em;
+    @include border-radius(8px);
+    background: #e9f1f4;
+    div#image {
+	  padding: { 
+	    left: 0.7em;
+	    top: 0.7em;
+	    bottom: 0.7em;
+	 }
+	}
+	div#desc {
+	  margin-bottom: 1em;
+	  padding-top: 0;
+	  ul {
+	    //margin: 0;
+		padding: 0;
+	    li {
+		  margin: {
+		    top: 0;
+			bottom:0;
+			right:0; 
+			left: 1.2em;
+		  }
+		  text-align: center;
+		  display: inline-block;
+		  width: 220px;
+		  color: $color-font;
+		  p {
+		  
+		    font: {
+		      size: medium;
+			  weight: bold;
+		    }
+		  }
+		}
+	  }
+	  
+	  
+	
+	}
+	a {
+      @include sharp-button;
+	  @include border-radius(8px);
+	  text-decoration: none;
+	  text-align: center;
+	  margin: {
+	    left: 12em;
+		top: 2em;
+	  }
+	  @include background-image(linear-gradient($base-color, shade($base-color, 40%)));
+	  font: {
+	    //family: RobotoRegular, Arial, sans-serif;
+	    size: xx-large;
+		weight: bold;
+	  }
+    }
+  }
+  div#facts {
+    ul {
+	  margin: 0;
+	  padding: 0;
+	  li {
+	    padding: {
+		  left: 3em;
+		}
+		p {
+		  color: #06334a;
+		  font: {
+		    family: Helvetica, Arial, sans-serif;
+			size: large;
+			weight: normal;
+		  }
+		}
+	  }
+	}
+  }
+}
+
+
+
+
