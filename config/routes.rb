@@ -1,5 +1,7 @@
 Finginie::Application.routes.draw do
 
+  get "share_holding/show"
+
   match "/signin" => "sessions#new", :as => :signin
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
@@ -31,7 +33,9 @@ Finginie::Application.routes.draw do
     resource :cash_flow, :only => [:show], :controller => :cash_flow
     resources :news, :only => [:show]
     resource :ratios, :only => [:show]
+    resource :share_holding, :only => [:show], :controller => :share_holding
   end
+
   resource :comprehensive_risk_profiler, :only =>[:edit, :update, :show]
 
   resources :portfolios do

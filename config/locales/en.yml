@@ -285,3 +285,11 @@ en:
     personnel_expenses_per_employee: 'Personnel Expenses Per Employee'
     deposits_per_employee: 'Deposits Per Employee'
     fund_advances_per_employee: 'Fund Advances Per Employee'
+  share_holding:
+    foreign_institutional_investors_percentage: 'Foreign Institional Investors (FIIs)'
+    domestic_institutional_investors_percentage: 'Domestic Institutional Investors (DIIs)'
+    other_foreign_investors_percentage: 'Other Foreign Investors'
+    promoters_percentage: 'Promoters'
+    directors_and_employees_percentage: 'Directors and Employees'
+    others_percentage: 'Others'
+    public_percentage: 'Public'
