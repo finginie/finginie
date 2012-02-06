@@ -117,8 +117,8 @@ footer {
   border: {
 	  top: {
 	    width: 1px;
-		color: #494949;
-		style: solid;
+		  color: #494949;
+		  style: solid;
 	  }
 	}
   
@@ -135,15 +135,15 @@ footer {
 	  }
 	  li, a {
 	    @include horizontal-list-item;
-		text-decoration: none;
+		  text-decoration: none;
 		padding: {
-	      top: 0.5em;
+	    top: 0.5em;
 		  bottom: 0.6em;
 		  left: 0.2em;
 		}
 		&, &:visited, &:hover, &:active, {
-          color: #424242;
-        }
+      color: #424242;
+    }
 	  }
 	}
   }

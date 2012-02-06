@@ -21,6 +21,29 @@ $content-font: "Calibri", Helvetica, Arial, sans-serif;
 
 //--------------------------------------------------------------
 
+#flash_result {
+  display: none;
+}
+
+#result {
+  background: #b3d1e0;
+  //border: 1px solid $base-color;
+  text-align: center;
+  width: 14em;
+  display: block;
+  margin: {
+    bottom: 2em;
+    left: 22em;
+    top: 1em;
+  }
+  padding: 0.6em;
+  font: {
+    family: $content-font;
+    size: 1.2em;
+    weight: normal;
+  }
+}
+
 form {
   input, select {
     border: 2px solid $bottom-grey;
@@ -139,3 +162,11 @@ section#result {
 	  }
   }  
 } 
+
+dl {
+  margin: {
+    left: 2em;
+    top: 2em;
+  }
+}
+

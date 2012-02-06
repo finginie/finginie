@@ -31,19 +31,21 @@ $content-font: "Calibri", Helvetica, Arial, sans-serif;
 //--------------------------------------------------------------
 
 #main>.wrapper {
-  @include holy-grail-wrapper(250px, 10px, right);
+  @include holy-grail-wrapper(240px, 10px, right);
   article {
-    @include holy-grail-main(250px, 10px, right);
+    @include holy-grail-main(240px, 10px, right);
   }
   .extracontent {
-    @include holy-grail-aside(250px, 10px, right);
+    @include holy-grail-aside(240px, 10px, right);
     padding-top: 4em;
     h1 {
+      
       font: {
+        family: heading-font;
         size: large;
         weight: bold;
       }
-      color: white;
+      color: #000;
       text-align: center;
       background: grey;
       margin-top: 0;
@@ -58,6 +60,9 @@ $content-font: "Calibri", Helvetica, Arial, sans-serif;
       li {
         @include no-bullet;
         margin: .5em;
+        font: {
+          family: $content-font;
+        }
       }
     }
     .takeaway {
@@ -138,6 +143,10 @@ div.wrapper {
   article{
     margin:{
       left: 1.5em;
+      //right: 1.5em;
+    }
+    padding: {
+      right: 1em;
     }
 
   &>h1 {
