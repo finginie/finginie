@@ -15,6 +15,6 @@
     = f.input :term
   .actions
     = f.button :submit
-  #result
-    = flash[:result] if flash[:result].is_a?(String)
+
+  = content_tag :div, flash[:result], :id => 'result' if flash[:result].is_a?(String)
 
