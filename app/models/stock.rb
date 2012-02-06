@@ -117,4 +117,12 @@ class Stock < Security
     options ||= {}
     super(options.merge(:methods => SCRIP_METHODS))
   end
+
+  def company_code
+    company.company_code if company
+  end
+
+  def company
+    CompanyMaster.where( nse_code: symbol).first
+  end
 end
