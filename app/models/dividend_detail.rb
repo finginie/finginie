@@ -1,4 +1,4 @@
-class Dividend
+class DividendDetail
   include Mongoid::Document
 
   field  :company_code, :type => Float
