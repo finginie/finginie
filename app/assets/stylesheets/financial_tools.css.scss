@@ -1,25 +1,22 @@
 @import "bourbon";
 @import "lists";
+@import "utilities";
+@import "defaults";
 
-//-----------------------------8<----------------------------
-@mixin sharp-button {
-  @include button(#3a6e9b);
-  @include border-radius(0);
+// ---------------------index page-------------------
+
+body.personal_financial_tools.index {
+  dt {
+    margin-top: 1em;
+    a, a:visited {
+      color: $link-color;
+    }
+    a:active, a:hover {
+      color: darken($link-color, 20%);
+    }
+  }
 }
-//-----------------------------8<----------------------------
 
-
-//-------------------- variables ------------------------------
-
-$heading-color: #3e3e3e;
-$family-font: "Robotolight",Helvetica, Arial sans-serif;
-$base-color: #3872C2;
-$bottom-grey: #c5c4c4;
-$input-color: #063348;
-$heading-font: "Cambria", Helvetica, Arial, sans-serif;
-$content-font: "Calibri", Helvetica, Arial, sans-serif;
-
-//--------------------------------------------------------------
 
 #flash_result {
   display: none;
@@ -46,8 +43,8 @@ $content-font: "Calibri", Helvetica, Arial, sans-serif;
 
 form {
   input, select {
-    border: 2px solid $bottom-grey;
-	color: $input-color;
+    border: 2px solid $border-color;
+	color: $text-color;
   }
   margin:{
     left: 1.5em;
@@ -142,7 +139,6 @@ section#result {
   h1 {
     color: $heading-color;
     font: {
-      family: $family-font;
       size: 2em;
       weight: bold;
     }
@@ -162,11 +158,3 @@ section#result {
 	  }
   }  
 } 
-
-dl {
-  margin: {
-    left: 2em;
-    top: 2em;
-  }
-}
-

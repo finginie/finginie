@@ -11,6 +11,7 @@
 @import "defaults";
 @import "lists";
 @import "holygrail";
+@import "utilities";
 
 body {
   font-family: $content-font;
@@ -28,6 +29,7 @@ h1 {
     family: $heading-font;
     weight: normal;
   }
+  margin-bottom: 0.3em;
 }
 
 nav {
@@ -92,10 +94,66 @@ header {
   }
 }
 
+//--------------------- main starts ----------------------
 #wrapper {
   @include holy-grail($aside-width, 0);
 }
 
+//--------------------- aside starts ----------------------
+aside{
+  &>h1 {
+    font:{
+      size: x-large;
+    }
+    padding: {
+      left: 0.6em;
+    }
+  }
+
+  nav {
+    ul {
+      @include no-bullet;
+
+      span {
+        @include sharp-button;
+        color: white;
+        display: block;
+        text-align: left;
+        font-size: medium;
+      }
+
+      ul {
+        margin: 0;
+      }
+
+      a {
+        font-size: small;
+        display: block;
+
+        @include unstyled-link;
+        &, &:visited {
+          cursor: pointer;
+          color: $text-color;
+        }
+
+        padding: {
+          left: 24px;
+          top: 8px;
+          bottom:8px;
+        }
+
+        border:{
+          bottom: 1px solid $border-color;
+        }
+
+        &:hover, &.selected {
+          color: $base-color;
+          background-color: $border-color;
+        }
+      }
+    }
+  }
+}
 
 //------------------------  Footer ----------------------------------
 

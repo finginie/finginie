@@ -1,6 +1,7 @@
 $base-color: #3872C2;
 $text-color: #333333;
-$border-color: $text-color;
+$border-color: tint($text-color, 80%);
+$link-color: $base-color + $text-color;
 $aside-width: 240px;
 $footer-color: #274F87;
 $nav-font: "Calibri", Helvetica, Arial, sans-serif;
