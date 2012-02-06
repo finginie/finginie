@@ -24,6 +24,7 @@ gem 'kaminari'
 gem 'meta_search'
 gem 'nested_form', :git => "git://github.com/TMaYaD/nested_form.git"
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 gem 'paper_trail'
 gem 'rails-backbone', :git => "git://github.com/TMaYaD/backbone-rails.git"
 gem 'redis'
