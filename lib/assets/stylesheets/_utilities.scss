@@ -1,0 +1,8 @@
+@mixin sharp-button {
+  @include button(#3a6e9b);
+  @include border-radius(0);
+}
+
+@mixin center {
+  margin: 0 auto;
+}

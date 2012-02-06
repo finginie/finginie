@@ -21,7 +21,6 @@
 //-------------------- variables ------------------------------
 
 $heading-color: #3e3e3e;
-$family-font: "Robotolight",Helvetica, Arial, sans-serif;
 $base-color: #3872C2;
 $bottom-grey: #c5c4c4;
 $tr-color: #c0deed;
@@ -31,19 +30,20 @@ $content-font: "Calibri", Helvetica, Arial, sans-serif;
 //--------------------------------------------------------------
 
 #main>.wrapper {
-  @include holy-grail-wrapper(250px, 10px, right);
+  @include holy-grail-wrapper(240px, 10px, right);
   article {
-    @include holy-grail-main(250px, 10px, right);
+    @include holy-grail-main(240px, 10px, right);
   }
   .extracontent {
-    @include holy-grail-aside(250px, 10px, right);
+    @include holy-grail-aside(240px, 10px, right);
     padding-top: 4em;
     h1 {
       font: {
+        family: heading-font;
         size: large;
         weight: bold;
       }
-      color: white;
+      color: #000;
       text-align: center;
       background: grey;
       margin-top: 0;
@@ -58,6 +58,9 @@ $content-font: "Calibri", Helvetica, Arial, sans-serif;
       li {
         @include no-bullet;
         margin: .5em;
+        font: {
+          family: $content-font;
+        }
       }
     }
     .takeaway {
@@ -71,65 +74,6 @@ $content-font: "Calibri", Helvetica, Arial, sans-serif;
     }
   }
 }
-
-aside ul {
-  span {
-    @include sharp-button;
-    color: white;
-    display: block;
-    text-align: left;
-    font-size: medium;
-	
-  }
-}
-/*
-aside h1 {
-  font:{
-    family: $heading-font;
-    size: 2em;
-    weight: regular;
-  }
-}
-*/
-aside ul {
-  @include no-bullet;
-  
-  ul {
-    margin: 0;
-  }
-
-  a {
-    @include unstyled-link;
-
-    padding: {
-      left: 24px;
-      top: 8px;
-      bottom:8px;
-    }
-
-    font: {
-      family: "Helvetica", Arial, sans-serif;
-      size: 14px;
-      weight: bold;
-    }
-
-    border:{
-      bottom: 1px solid $bottom-grey;
-    }
-
-    display: block;
-    &, &:visited, &:hover, &:active, {
-      color: #424242;
-    }
-
-    &:hover{
-      color: $base-color;
-      background-color: $bottom-grey;
-    }
-  }
-}
-
-
 //---------------------------- content -------------------------------------
 div.wrapper {
   margin: { 
@@ -138,6 +82,10 @@ div.wrapper {
   article{
     margin:{
       left: 1.5em;
+      //right: 1.5em;
+    }
+    padding: {
+      right: 1em;
     }
 
   &>h1 {

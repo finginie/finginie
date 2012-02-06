@@ -1,23 +1,5 @@
 /*! normalize.css 2011-09-22T17:42 UTC - http://github.com/necolas/normalize.css */
 
-/* ==============================================================================
- * Load some fonts first
- * ============================================================================== */
-
-@font-face {
-  font-family: "RobotoRegular";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/fonts/Roboto-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/Roboto-Regular-webfont.woff") format("woff"), url("/fonts/Roboto-Regular-webfont.ttf") format("truetype"), url("/fonts/Roboto-Regular-webfont.svg#RobotoRegular") format("svg");
-}
-
-@font-face {
-  font-family: "RobotoLight";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/fonts/Roboto-Light-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/Roboto-Light-webfont.woff") format("woff"), url("/fonts/Roboto-Light-webfont.ttf") format("truetype"), url("/fonts/Roboto-Light-webfont.svg#RobotoLight") format("svg");
-}
-
 /* =============================================================================
    HTML5 display definitions
    ========================================================================== */
@@ -96,7 +78,7 @@ body {
     margin: 0;
 }
 
-/*
+/* 
  * Addresses font-family inconsistency between 'textarea' and other form elements.
  */
 
@@ -105,8 +87,9 @@ button,
 input,
 select,
 textarea {
-    font-family: RobotoLight;
+    font-family: sans-serif;
 }
+
 
 /* =============================================================================
    Links
@@ -155,9 +138,9 @@ abbr[title] {
  * Addresses style set to 'bolder' in FF3/4, S4/5, Chrome
 */
 
-b,
-strong {
-    font-weight: bold;
+b, 
+strong { 
+    font-weight: bold; 
 }
 
 blockquote {

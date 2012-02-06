@@ -1,27 +1,22 @@
 %h1 Investing the Finginie way
-#content
-  #image
-    = image_tag "learn_investment.png"
-    = image_tag "investment_mix.png"
-    = image_tag "optmize_investments.png"
-    = image_tag "community.png"
-  #desc
-    %ul
-      %li
-        %p Understand how investing works
-      %li
-        %p Discover your personalized investment mix
-      %li
-        %p Track and optimize your investments	
-      %li
-        %p Collaborate with other investors and experts  
-  = link_to 'Get Started'  
-%h2 Interesting Facts		
-#facts
+%section.banner
   %ul
     %li
-      %p Despite 2 global recessions, stocks have given a return of 15.3% p.a  over the last 11 years
+      = image_tag "learn_investment.png"
+      %h1 Understand how investing works
     %li
-      %p Instead of buying your old Alto car in 2003, had you invested in Maruti's stock, you could buy 4 Swift cars today.
+      = image_tag "investment_mix.png"
+      %h1 Discover your personalized investment mix
     %li
-      %p 2 crore people in India invest. Not all of them are rocket scientists. So, would you prefer investing or be content with a 4-6% bank return?	
+      = image_tag "optmize_investments.png"
+      %h1 Track and optimize your investments
+    %li
+      = image_tag "community.png"
+      %h1 Collaborate with other investors and experts
+  = link_to 'Get Started', page_path(:get_started), :class => :get_started
+%section.interesting_facts
+  %h1 Interesting Facts
+  %ul
+    %li Despite 2 global recessions, stocks have given a return of 15.3% p.a  over the last 11 years
+    %li Instead of buying your old Alto car in 2003, had you invested in Maruti's stock, you could buy 4 Swift cars today.
+    %li 2 crore people in India invest. Not all of them are rocket scientists. So, would you prefer investing or be content with a 4-6% bank return?
