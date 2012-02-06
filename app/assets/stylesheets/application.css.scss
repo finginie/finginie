@@ -43,7 +43,6 @@ header {
       margin: 0;
       padding: 0;
     }
-
     &.main {
       li {
         //@include button($base-color);
@@ -52,8 +51,9 @@ header {
         font-family: $nav-font;
         font-size: 1em;
 		    font-weight: bold;
-		color: tint($base-color, 80%);
-		cursor: pointer;
+		    color: tint($base-color, 80%);
+        cursor: pointer;
+		
       }
     }
 
