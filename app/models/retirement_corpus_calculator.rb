@@ -3,13 +3,13 @@ class RetirementCorpusCalculator
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
-  attr_accessor :current_age, :retirement_age, :monthly_expence, :inflation, :expected_return
+  attr_accessor :current_age, :retirement_age, :monthly_expenses, :inflation, :expected_return
 
   def initialize(attributes)
     attributes = {
       :current_age => 0,
       :retirement_age => 0,
-      :monthly_expence => 0,
+      :monthly_expenses => 0,
       :inflation => 0,
       :expected_return => 0
 
@@ -36,7 +36,7 @@ class RetirementCorpusCalculator
   end
 
   def retirement_year_expenses
-     monthly_expence * 12 * (((1 + (inflation / 100))**(retirement_age - current_age)))
+     monthly_expenses * 12 * (((1 + (inflation / 100))**(retirement_age - current_age)))
   end
 
   def months_to_retirement

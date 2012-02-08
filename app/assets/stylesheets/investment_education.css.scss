@@ -111,8 +111,9 @@ div.wrapper {
       font: {
         family: $content-font;
 	      weight: normal;
-		    size: 1.2em;
+		    size: 1em;
 	    }
+			padding:0;
     }
     h1 {
       clear: both;
@@ -135,11 +136,11 @@ div.wrapper {
 	  margin: 0.6em; 
 	  border: {
 	    width: 4px;
-		style: solid;
-		color: $bottom-grey;
+		  style: solid;
+		  color: $bottom-grey;
 	  }
 	}
-
+/*
     &:nth-child(odd) img {
       float: right;
     }
@@ -147,6 +148,7 @@ div.wrapper {
     &:nth-child(even) img {
       float: left;
     }
+*/		
   }
   /*
   section>img {
