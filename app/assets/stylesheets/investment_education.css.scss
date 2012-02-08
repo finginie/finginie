@@ -1,6 +1,42 @@
 @import "bourbon";
 @import "holygrail";
 @import "lists";
+@import "defaults";
+
+body.investment_education {
+  #main {
+    li {
+      @include horizontal-list;
+      display: inline-block;
+      width: 33%;
+      span {
+        display: block;
+        font: $heading-font;
+      }
+      p, ul {
+        display: inline;
+      }
+      li {
+        display: inline;
+        &:before {
+          content: ', ';
+        }
+        &:first-child:before {
+          content: '';
+        }
+        &:last-child:before {
+          content: ' and ';
+        }
+      }
+      // background images for article sections
+    }
+    #investment_concepts span:before {
+      content: url('investment_education/InvestmentConcepts_1.jpg');
+      display: block;
+      width: 100%;
+    }
+  }
+}
 
 
 //-----------------------------8<----------------------------
