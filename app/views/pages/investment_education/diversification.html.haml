@@ -10,13 +10,13 @@
         of shares of a single company.  In the latter case, the investor’s returns depend entirely on the performance of
         one single company, thereby making the portfolio extremely risky.
       %p Losses from one security are usually offset by gains in other securities and vice versa. Therefore, the portfolio returns are subject to smaller swings, and the resulting curve is smoother.
-      %p Investors typically spread their investment portfolios across different asset classes( e.g. stocks, investment_education/bonds, investment_education/commodities etc) in order to minimize risk as the correlation between different asset classes is less than 1.
+      %p Investors typically spread their investment portfolios across different asset classes( e.g. stocks, #{link_to 'Bonds', page_path('investment_education/bonds')}, #{link_to 'Commodities', page_path('investment_education/commodities')} etc) in order to minimize risk as the correlation between different asset classes is less than 1.
     %section
       %h1 Benefits of Diversification:
       =image_tag "investment_education/diver1.png", :width => "255px", :height => "193px"
       %p
         The main benefit of investment_education/diversification is the reduction of risk (volatility of returns). As we discussed in this
-        =link_to t('investment_education.risk_and_return'), page_path('investment_education/risk_and_return')
+        #{link_to 'Risk and Return', page_path('investment_education/risk_and_return')}
         risk is the volatility of returns. Naturally, fund managers would like to have the highest possible return with the lowest possible risk
     %section
       %h1 Example on the benefits of Diversification:
@@ -121,7 +121,7 @@
         risk of the portfolio. The larger the number of securities, the lower the variance
         and thus, the lower the risk of the portfolio (assuming a correlation of less than 1
         between the stocks). In fact, investors have found that a portfolio of 30 stocks
-        provides the best kind of investment_education/diversification, keeping in mind cost-effectiveness.
+        provides the best kind of #{link_to 'Diversification', page_path('investment_education/diversification')}, keeping in mind cost-effectiveness.
     %section
       %h1 The importance of correlation:
       %p
@@ -133,19 +133,16 @@
     %section
       %h1 Illustration:
       =image_tag "investment_education/diver6.png", :width => "250px", :height => "150px"
-      %dl
-        %dt Series A:
-        %dd 1, 3, 4, 5, 6, 8
-        %dt Series B:
-        %dd 3, 4, 6, 8, 6, 9
-        %dt Series C:
-        %dd -5, -3, -1, -7, -12, -14
-        Series A and Series B are highly correlated (correlation coefficient of 0.9)
-        while Series A and Series C are negatively correlated (correlation coefficient
-        of -0.7). We will cover the quantitative aspects of correlation in a different
-        article. For now it will suffice to understand that the overall volatility
-        (risk) of the portfolio decreases as the correlation between the different in
-        the portfolio decreases.
+      %ul
+        %li Series A: 1, 3, 4, 5, 6, 8
+        %li Series B: 3, 4, 6, 8, 6, 9
+        %li Series C: -5, -3, -1, -7, -12, -14
+        %p
+          Series A and Series B are highly correlated (correlation coefficient of 0.9)
+          while Series A and Series C are negatively correlated (correlation coefficient of -0.7). 
+          We will cover the quantitative aspects of correlation in a different article.
+          For now it will suffice to understand that the overall volatility (risk) of the portfolio
+          decreases as the correlation between the different in the portfolio decreases.
     %section
       %h1 Diversifiable and Non-Diversifiable Risk:
       =image_tag "investment_education/diver5.png", :width => "250px", :height => "150px"
@@ -182,7 +179,8 @@
       %h1 Take Away
       %ul
         %li Diversification is the process of reducing the overall risk of the portfolio by investing in several securities, across different industries, instead of investing in a single security.
-        %li Losses from one security are usually offset by gains in other securities by investment_education/diversification.
+        %li Losses from one security are usually offset by gains in other securities by #{link_to 'Diversification', page_path('investment_education/diversification')}
+        			
     .articles
       %h1 Articles
       %ul

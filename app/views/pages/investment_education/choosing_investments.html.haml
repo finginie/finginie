@@ -8,12 +8,12 @@
         in the asset allocation stage. The next
         step consists of selecting which securities to invest in and how much to invest
         in each security. This is called security selection. Securities could be individual
-        stocks, investment_education/bonds, investment_education/commodities, mutual funds, ETFs etc.
+        #{link_to 'Stocks', page_path('investment_education/stocks')}, #{link_to 'Bonds', page_path('investment_education/bonds')}, #{link_to 'Commodities', page_path('investment_education/commodities')}, #{link_to 'Mutual Funds', page_path('investment_education/mutual_funds')},#{link_to 'ETFs', page_path('investment_education/exchange_traded')} etc.
       %p
         For example, let us assume that a portfolio consists of Rs.100,000 of capital and
         that we have determined during the asset allocation stage that 10% will be allocated
         to international stocks, 20% to large-cap domestic stocks, 30% to mid and small
-        cap stocks, 30% to corporate investment_education/bonds and 10% to cash. This implies that the amount
+        cap stocks, 30% to corporate #{link_to 'Bonds', page_path('investment_education/bonds')} and 10% to cash. This implies that the amount
         of money allocated to each asset class is:
       %table{:border => "1px"}
         %tr
@@ -57,7 +57,7 @@
         decision is called security selection.
       %p
         Investors could invest passively in ETFs/Mutual funds tracking major indices or
-        invest in individual stocks/investment_education/bonds. That decision is influenced by the investor’s
+        invest in individual #{link_to 'Stocks', page_path('investment_education/stocks')}/#{link_to 'Bonds', page_path('investment_education/bonds')}. That decision is influenced by the investor’s
         perceptions of his skill, of market efficiency etc.
     %section
       %h1 Business Cycles:
@@ -99,7 +99,7 @@
           promises some returns, though not as high as those of an aggressive portfolio. A
           balanced portfolio carries higher risks than a defensive portfolio but lower risks
           than an aggressive portfolio. Such a portfolio carries a relatively equal mix of
-          investment_education/bonds/cash equivalents and equities.
+          #{link_to 'Bonds', page_path('investment_education/bonds')}/#{link_to 'Cash Equivalents', page_path('investment_education/cash_equivalents')} and equities.
     %section
       %h1 There are several approaches to valuing securities:
       =image_tag  "investment_education/ss4.png", :width => "250px", :height => "150px"
@@ -125,7 +125,7 @@
       %h1 Take Away
       %ul
         %li
-          Security Selection involves choosing which securities e.g. stocks, investment_education/bonds, etc to
+          Security Selection involves choosing which securities e.g. #{link_to 'Stocks', page_path('investment_education/stocks')}, #{link_to 'Bonds', page_path('investment_education/bonds')}, etc to
           invest in and how much to invest in each security.
         %li
           Depending on how much risk is being taken, selection strategies can be commonly

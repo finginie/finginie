@@ -15,7 +15,7 @@ SimpleNavigation::Configuration.run do |navigation|
       secondary.item:investment_process, 'Investment Process' do |tertiary|
         tertiary.item:analyzing_needs, 'Analyzing your needs', page_path('investment_education/analyzing_needs')
         tertiary.item:investment_plan, 'Investment Plan', page_path('investment_education/investment_plan')
-        tertiary.item:asset_allocation, 'Asset Allocation', page_path('Asset Allocation')
+        tertiary.item:asset_allocation, 'Asset Allocation', page_path('investment_education/asset_allocation')
         tertiary.item:choosing_investments, 'Choosing Investments', page_path('investment_education/choosing_investments')
         tertiary.item:start_investing, 'Start investing', page_path('investment_education/start_investing')
         tertiary.item:track_investment, 'Tracking your investments', page_path('investment_education/track_investment')

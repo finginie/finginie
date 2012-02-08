@@ -55,7 +55,11 @@
         %li=link_to "Hedging -Wikipedia", "http://en.wikipedia.org/wiki/Hedge_%28finance%29", html_options = {:target => "_blank"}
         %li=link_to "How To Offset Risk", "http://www.investopedia.com/articles/trading/09/offset-risk-options-futures-hedge-funds.asp", html_options = {:target => "_blank"}
         %li=link_to "RISK MANAGEMENT: Profiling And Hedging", "http://pages.stern.nyu.edu/~adamodar/pdfiles/papers/hedging.pdf", html_options = {:target => "_blank"}
-        %li=link_to "View our Futures, investment_education/forwards and options articles", "investment_education/futures1", html_options = {:target => "_blank"}
+        %li=link_to "View our Futures", page_path('investment_education/futures1')
+        %li=link_to "View our Forwards", page_path('investment_education/forwards')		
+        %li=link_to "View our Options", page_path('investment_education/options1')		
+ 	
+				
     .videos
       %h1 Videos
       %ul

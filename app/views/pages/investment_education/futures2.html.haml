@@ -61,14 +61,14 @@
       =link_to t('investment_education.futures1'), page_path('investment_education/futures1')
       %rightAlign
         Next:
-        =link_to t('investment_education.options1'), ('investment_education/options1')
+        =link_to t('investment_education.options1'), page_path('investment_education/options1')
       %center=link_to t('investment_education.home'), page_path('investment_education')
   .extracontent
     .takeaway
       %h1 Take Away
       %ul
         %li Futures contracts are usually cash settled, the physical asset is not delivered.
-        %li Futures are marked to market and are the size of the contract is not customizable like investment_education/forwards.
+        %li Futures are marked to market and are the size of the contract is not customizable like #{link_to 'forwards', page_path('investment_education/forwards')}.
         %li Futures prices depend on carrying costs, interest rates, convenience benefits and dividend yields.
         %li Futures can be used to hedge risks by taking long and short positions.
     .articles
