@@ -1,4 +1,4 @@
-class BonusDetail
+class Bonus
   include Mongoid::Document
 
   field :company_code, :type => Float
