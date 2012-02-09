@@ -1,0 +1,9 @@
+- if @ratio.model
+  %table
+    - @ratio.view_items.each do |group, items|
+      %tr
+        %td= group
+      - items.each do |item|
+        %tr
+          %td= t "ratios.#{item}"
+          %td= @ratio.send(item.to_sym)
