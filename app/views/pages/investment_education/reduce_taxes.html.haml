@@ -28,7 +28,7 @@
       %h1 Tax on Dividends and Interests:
       =image_tag  "investment_education/tax1.png", :height => "138px", :width => "241px"
       %p
-        Income earned as dividends from stocks or interest payments from investment_education/bonds, bank deposits etc is
+        Income earned as dividends from stocks or interest payments from #{link_to 'Bonds', page_path('investment_education/bonds')}, bank deposits etc is
         usually subject to taxation. The tax rate applicable depends on the tax structure of the country of which the investor is a
         resident. Some governments tax dividends and/or interest at a lower rate than other types of income, thereby giving investors the
         incentive to own stocks and/or interest bearing securities.
@@ -81,7 +81,7 @@
       =image_tag  "investment_education/tax4.png", :height => "216px", :width => "275px"
       %p
         Wealth tax is the tax imposed by some governments on the net assets of its citizens.
-        Taxable wealth may include property, houses, stocks, investment_education/bonds and other securities. The laws pertaining to wealth tax vary widely from country to country.
+        Taxable wealth may include property, houses, #{link_to 'Stocks', page_path('investment_education/stocks')}, #{link_to 'Bonds', page_path('investment_education/bonds')}and other securities. The laws pertaining to wealth tax vary widely from country to country.
         Fortunately, wealth tax rates are generally much lower than income tax rates and are typically in the order of about 1% p.a. For example,
         the maximum wealth tax applicable in Switzerland is about 1.5% p.a. of net assets.
     %section
@@ -426,8 +426,8 @@
         In the event that long-term capital gains are tax exempt (e.g. India), consider
         holding stocks for long periods to avoid capital gains tax.
       %p
-        Also consider tax-exempt investment_education/bonds issued by your local government (e.g. some RBI investment_education/bonds in India, certain Municipal
-        investment_education/bonds in USA)
+        Also consider tax-exempt #{link_to 'bonds', page_path('investment_education/bonds')} issued by your local government (e.g. some RBI bonds in India, certain Municipal
+        bonds in USA)
     %articlefooter
       Prev:
       =link_to t('investment_education.risk_management'), page_path('investment_education/risk_management')
