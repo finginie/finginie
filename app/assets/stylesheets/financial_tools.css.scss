@@ -26,11 +26,8 @@ body.personal_financial_tools.index {
   background: #b3d1e0;
   //border: 1px solid $base-color;
   text-align: center;
-  width: 14em;
-  display: block;
   margin: {
     bottom: 2em;
-    left: 22em;
     top: 1em;
   }
   padding: 0.6em;
@@ -86,7 +83,7 @@ form {
     label {
 	  display: inline-block;
     color: $base-color;
-    width: 25%;
+    width: 49%;
 	  line-height: 1em;
     text-align: right;
 	  padding: {
@@ -121,10 +118,11 @@ form {
 	
   }
   div.actions {
+		text-align: center;
     input.button{
 	  @include sharp-button;
+		
 	  margin: {
-	    left: 26%;
 	    bottom: 0.5em;
 	    top: 1em;
 	  }
