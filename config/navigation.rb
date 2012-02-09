@@ -38,7 +38,7 @@ SimpleNavigation::Configuration.run do |navigation|
         tertiary.item :insurance_products, 'Insurance Products', page_path('investment_education/insurance_products')
         tertiary.item :real_estate_investment, 'Real estate Investments', page_path('investment_education/real_estate_investment')
       end
-      secondary.item :advanced_investments, 'Advances Investments', :desc => 'Trade using a lower amount of capital by investing in advanced financial instruments like' do |tertiary|
+      secondary.item :advanced_investments, 'Advanced Investments', :desc => 'Trade using a lower amount of capital by investing in advanced financial instruments like' do |tertiary|
         tertiary.item :foreign_exchange1, 'Foreign Exchange', page_path('investment_education/foreign_exchange1')
         tertiary.item :foreign_exchange2, 'Foreign Exchange II', page_path('investment_education/foreign_exchange2')
         tertiary.item :forwards, 'Forwards', page_path('investment_education/forwards')

@@ -5,36 +5,87 @@
 
 body.investment_education {
   #main {
-    li {
-      @include horizontal-list;
-      display: inline-block;
-      width: 33%;
-      span {
-        display: block;
-        font: $heading-font;
-      }
-      p, ul {
-        display: inline;
+    >ul {
+      margin: 0;
+      padding: {
+        top: 1em;
+        left: 1em;
       }
       li {
-        display: inline;
-        &:before {
-          content: ', ';
+        padding: 0;
+        @include horizontal-list;
+        display: inline-block;
+        width: 33%;
+        height: 350px;
+        span {
+          display: block;
+          color: $heading-color;
+          font: { 
+            family:$heading-font;
+            size: large;
+          }
         }
-        &:first-child:before {
-          content: '';
+        //margin-left: 1em;
+        a {
+          text-decoration: none;
         }
-        &:last-child:before {
-          content: ' and ';
+        p {
+          display: inline;
+          padding-left: 0;
         }
+        ul {
+          display: inline;
+          padding-left: 0;
+          padding-right: 1em;
+        }
+        li {
+          display: inline;
+          &:before {
+            content: ', ';
+          }
+          &:first-child:before {
+            content: '';
+          }
+          &:last-child:before {
+            content: ' and ';
+          }
+        }
+        // background images for article sections
       }
-      // background images for article sections
     }
     #investment_concepts span:before {
       content: url('investment_education/InvestmentConcepts_1.jpg');
       display: block;
       width: 100%;
     }
+		#investment_process span:before {
+      content: url('investment_education/InvestmentProcess_1.jpg');
+      display: block;
+      width: 100%;
+    }
+		#investment_analysis span:before {
+      content: url('investment_education/InvestmentAnalysis_1.jpg');
+      display: block;
+      width: 100%;
+    }
+		#investment_types span:before {
+      content: url('investment_education/InvestmentTypes_1.jpg');
+      display: block;
+      width: 100%;
+    }
+		#advanced_investments span:before {
+      content: url('investment_education/AdvancedInvestments_1.jpg');
+      display: block;
+      width: 100%;
+    }
+		#jargon_demystified span:before {
+      content: url('investment_education/jargon.jpg');
+      display: block;
+      width: 100%;
+    }
+		ul>li {
+			padding: 0;
+	  }
   }
 }
 
