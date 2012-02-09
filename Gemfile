@@ -30,6 +30,7 @@ gem 'newrelic_rpm'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'paper_trail'
+gem 'pinch'
 gem 'rails-backbone', :git => "git://github.com/TMaYaD/backbone-rails.git"
 gem 'redis'
 gem 'simple_form'
@@ -62,6 +63,8 @@ group :test, :development do
   gem 'sqlite3'
   gem 'tddium'
   gem 'timecop'
+  gem 'vcr'
+    gem 'fakeweb'
 end
 
 group :development do
