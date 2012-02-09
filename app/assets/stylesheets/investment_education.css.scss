@@ -24,6 +24,12 @@ body.investment_education {
             family:$heading-font;
             size: large;
           }
+
+          &:before {
+            display: block;
+            width: 100%;
+            text-align: center;
+          }
         }
         //margin-left: 1em;
         a {
@@ -43,11 +49,11 @@ body.investment_education {
           &:before {
             content: ', ';
           }
-          &:first-child:before {
-            content: '';
-          }
           &:last-child:before {
             content: ' and ';
+          }
+          &:first-child:before {
+            content: ' ';
           }
         }
         // background images for article sections
@@ -55,34 +61,23 @@ body.investment_education {
     }
     #investment_concepts span:before {
       content: url('investment_education/InvestmentConcepts_1.jpg');
-      display: block;
-      width: 100%;
     }
 		#investment_process span:before {
       content: url('investment_education/InvestmentProcess_1.jpg');
-      display: block;
-      width: 100%;
     }
 		#investment_analysis span:before {
       content: url('investment_education/InvestmentAnalysis_1.jpg');
-      display: block;
-      width: 100%;
     }
 		#investment_types span:before {
       content: url('investment_education/InvestmentTypes_1.jpg');
-      display: block;
-      width: 100%;
     }
 		#advanced_investments span:before {
       content: url('investment_education/AdvancedInvestments_1.jpg');
-      display: block;
-      width: 100%;
     }
 		#jargon_demystified span:before {
       content: url('investment_education/jargon.jpg');
-      display: block;
-      width: 100%;
     }
+
 		ul>li {
 			padding: 0;
 	  }
@@ -144,9 +139,12 @@ $content-font: "Calibri", Helvetica, Arial, sans-serif;
       }
       li {
         @include no-bullet;
-        margin: .5em;
+        margin: 0.5em;
         font: {
           family: $content-font;
+        }
+        a {
+          text-decoration: none;
         }
       }
     }
@@ -198,7 +196,7 @@ div.wrapper {
       font: {
         family: $content-font;
 	      weight: normal;
-		    size: 1em;
+		    size: medium;
 	    }
 			padding:0;
     }
@@ -218,7 +216,10 @@ div.wrapper {
 	    top: 12px;
 	  }
     }
-	
+    li {
+      font-size: medium;
+      line-height: 1.5em;
+    }
 	img {
 	  margin: 0.6em; 
 	  border: {
