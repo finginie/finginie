@@ -64,7 +64,7 @@ group :test, :development do
   gem 'tddium'
   gem 'timecop'
   gem 'vcr'
-    gem 'fakeweb'
+    gem 'webmock'
 end
 
 group :development do

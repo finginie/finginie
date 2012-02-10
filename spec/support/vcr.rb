@@ -1,7 +1,8 @@
 VCR.config do |c|
+  c.default_cassette_options = { :record => :new_episodes, :match_requests_on => [:method, :uri, :headers] }
   c.allow_http_connections_when_no_cassette = true
   c.cassette_library_dir  = Rails.root.join("spec", "vcr")
-  c.stub_with :fakeweb
+  c.stub_with :webmock
 end
 RSpec.configure do |c|
   c.treat_symbols_as_metadata_keys_with_true_values = true

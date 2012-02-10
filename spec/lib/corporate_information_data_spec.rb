@@ -2,9 +2,11 @@ require 'spec_helper'
 require 'vcr'
 
 describe CorporateInformationData do
-  it "parses the data from xmls", :vcr, :record => :all do
-    Timecop.freeze(Time.parse("2011-12-27 23:00:00 +530")) do
-      CorporateInformationData.update_data
+  before(:all) do
+    VCR.use_cassette("corporate_info_parsing") do
+      Timecop.freeze(Time.parse("2011-12-27 23:00:00 +530")) do
+        CorporateInformationData.update_data
+      end
     end
   end
 
