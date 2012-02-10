@@ -32,6 +32,10 @@ h1 {
   margin-bottom: 0.3em;
 }
 
+table, td, th {
+  border: 1px solid $base-color;
+}
+
 nav {
   li {
     font-family: $nav-font;

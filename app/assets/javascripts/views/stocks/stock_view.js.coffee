@@ -6,4 +6,4 @@ class Finginie.Views.Stocks.StockView extends Backbone.View
 
   render: ->
     $(this.el).html(@template(@model.toJSON() ))
-    return this
+    this

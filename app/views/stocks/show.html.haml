@@ -1,11 +1,17 @@
+%h1= @stock.name
 %section
-  - %w(symbol name asset_class sector).each do |attr|
+  - %w( symbol asset_class sector).each do |attr|
     %div{:class => attr}
       %dt= t ".#{attr}"
       %dd= @stock.send(attr)
+
 %section.daily_prices
+  #daily_price_change
+    %h1= @stock.last_traded_price
+    = @stock.net_change
+    = "#{@stock.percent_change}%"
   %dl
-    - %w(last_traded_price last_close_price percent_change day_change volume day_open_price high_price low_price).each do |attr|
+    - %w(last_close_price day_open_price volume).each do |attr|
       %dt= t ".#{attr}"
       %dd= @stock.send(attr)
 

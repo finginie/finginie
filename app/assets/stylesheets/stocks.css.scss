@@ -1,0 +1,94 @@
+@import "bourbon";
+@import "holygrail";
+@import "lists";
+@import "defaults";
+
+body.stocks.index {
+  #stock_search {
+    label {
+      display: inline-block;
+      color: $base-color;
+      width: 20%;
+      line-height: 1em;
+      text-align: right;
+      padding: {
+        top: 0.5em;
+        bottom: 0.4em;
+      }
+	  font: {
+      family: $content-font;
+	    weight: normal;
+		  size: large;
+	  }
+
+  }
+  div {
+    input {
+      margin-left: 1em;
+    }
+  }
+  abbr {
+    border: none;
+    color: red;
+  }
+  #btn_submit {
+    //text-align: center;
+    input{
+	  //@include sharp-button;
+      margin: {
+        bottom: 0.5em;
+        top: 1em;
+      }
+      font: {
+        size: large;
+      }
+    }
+  }
+
+  }
+  aside {
+    display: none;
+  }
+  #stocks {
+    padding-left: 7em;
+    table {
+      th a {
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+body.stocks.show {
+  #main {
+    .symbol, .asset_class, .sector {
+      display: inline-block;
+      //width: 20%;
+      dd {
+        float: left;
+        padding-left: 0.4em;
+        margin:0;
+        color: $text-color;
+      }
+      dt{
+        float: left;
+        padding-left:0.6em;
+        color: $base-color;
+        &:after {
+            content: ': ';
+        }
+      }
+    }
+    .daily_prices {
+      #daily_price_change {
+      }
+      dl {
+        dd, dt {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
+
