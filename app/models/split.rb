@@ -11,4 +11,7 @@ class Split
   field :xs_date, :type => Date
   field :modified_date, :type => DateTime
   field :delete_flag
+
+  key :company_code, :date_of_announcement
+
 end
