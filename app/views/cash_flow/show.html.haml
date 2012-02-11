@@ -1,0 +1,20 @@
+- if @cash_flows.instance_variable_get("@cash_flow_decorators").first
+  %h1= "#{@stock.name} - Cash Flow"
+  %table
+    %tr
+      %th
+      - @cash_flows.instance_variable_get("@cash_flow_decorators").each do |cash_flow|
+        %th= cash_flow.year_ending
+    - @cash_flows.collection_non_null_fields.each do |field|
+      %tr
+        %td
+          - if field == "net_c_flow_op" || field == "nt_csh_in_ia" || field == "nt_csh_usd_fa" || field == "csh_end_year"
+            %b= t "cash_flow.#{field}"
+          - else
+            = t "cash_flow.#{field}"
+        - @cash_flows.instance_variable_get("@cash_flow_decorators").each do |cash_flow|
+          %td= cash_flow.send(field.to_sym)
+      - if field == "net_c_flow_op" || field == "nt_csh_in_ia" || field == "nt_csh_usd_fa"
+        %tr
+- else
+  %p Data not available for this company
