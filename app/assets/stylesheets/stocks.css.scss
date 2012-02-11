@@ -32,12 +32,12 @@ body.stocks.index {
     color: red;
   }
   #btn_submit {
-    //text-align: center;
     input{
-	  //@include sharp-button;
+      @include sharp-button;
       margin: {
-        bottom: 0.5em;
+        bottom: 1em;
         top: 1em;
+        left: 18em;
       }
       font: {
         size: large;
@@ -62,33 +62,94 @@ body.stocks.index {
 
 body.stocks.show {
   #main {
+    h1 {
+      margin-bottom: 0;
+    }
     .symbol, .asset_class, .sector {
       display: inline-block;
-      //width: 20%;
       dd {
-        float: left;
         padding-left: 0.4em;
         margin:0;
         color: $text-color;
       }
       dt{
-        float: left;
-        padding-left:0.6em;
+        //padding-left:0.6em;
         color: $base-color;
         &:after {
-            content: ': ';
+          content: ': ';
+        }
+      }
+      dd, dt {
+        float: left;
+        font: {
+          size: small;
+          family: $content-font;
         }
       }
     }
     .daily_prices {
-      #daily_price_change {
+      .daily_price_change, .last_close_price, .day_open_price, .volume {
+        display: inline-block;
+        width: 15%;
+        p {
+          text-align: left;
+          color: $label-color;
+        }
+        strong {
+          color: $text-color;
+        }
       }
-      dl {
-        dd, dt {
-          display: inline-block;
+      .daily_price_change {
+        h1 {
+          padding-bottom: 0.2em;
+          margin-top: 0;
+          font: {
+            size: xx-large;
+            weight: bold;
+            family: Arial;
+          }
+        }
+        strong {
+          padding-right: 0.4em;
+          font: {
+            size: large;
+          }
         }
       }
     }
+    .eps_pe_beta {
+      margin-top: 1em;
+      width: 77%;
+      text-align: center;
+      .eps, .pe, .beta {
+        display: inline-block;
+        padding: 0.3em 0.6em;
+        margin: {
+          right: 5.5em;
+        }
+        label {
+          &:after {
+            content: ': ';
+          }
+          color: $label-color;
+          padding-right: 0.2em;
+        }
+      }
+    }
+    .fundamentals {
+      margin: 1em 0;
+      div {
+        display: inline-block;
+        padding-right: 1em;
+      label {
+        padding-right: 0.4em;
+      }
+      }
+    }
+  }
+  a {
+    text-decoration: none;
+    color: $base-color;
   }
 }
 
