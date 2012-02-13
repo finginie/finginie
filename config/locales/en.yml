@@ -48,3 +48,19 @@ en:
     options1: 'Options'
     options2: 'Options II'
     glossary: 'Glossary'
+
+  stocks:
+    show:
+      symbol: 'NSE Code'
+      asset_class: 'Asset Class'
+      sector: 'Sector'
+      last_close_price: 'Previous Close'
+      day_open_price: 'Open Price'
+      volume: 'Volume'
+      eps: 'EPS'
+      beta: 'Beta'
+      pe: 'P/E'
+      fifty_two_week_high_price: '52 week High Price'
+      fifty_two_week_low_price: '52 week Low Price'
+      
+      

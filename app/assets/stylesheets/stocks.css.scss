@@ -88,11 +88,25 @@ body.stocks.show {
       }
     }
     .daily_prices {
-      .daily_price_change, .last_close_price, .day_open_price, .volume {
+      border: {
+        top: {
+          width: 1px;
+          style: solid;
+          color: lightgrey;
+        }
+        bottom: {
+          width: 1px;
+          style: solid;
+          color: lightgrey;
+        }
+      
+      }
+      .daily_price_change, .last_close_price, .day_open_price, .volume,  .high_price, .low_price {
         display: inline-block;
-        width: 15%;
+        border-left: 1px solid lightgrey;
+        width: 10em;
+        text-align: center;
         p {
-          text-align: left;
           color: $label-color;
         }
         strong {
@@ -102,6 +116,7 @@ body.stocks.show {
       .daily_price_change {
         h1 {
           padding-bottom: 0.2em;
+          padding-top: 0.3em;
           margin-top: 0;
           font: {
             size: xx-large;
@@ -117,20 +132,15 @@ body.stocks.show {
         }
       }
     }
-    .eps_pe_beta {
-      margin-top: 1em;
-      width: 77%;
-      text-align: center;
-      .eps, .pe, .beta {
+    .fundamentals {
+      margin-left: 10.3em;
+      border-bottom: 1px solid lightgrey;
+      .eps, .pe, .beta, .week_high_price, .week_low_price {
+        border-left: 1px solid lightgrey;
+        text-align: center;
         display: inline-block;
-        padding: 0.3em 0.6em;
-        margin: {
-          right: 5.5em;
-        }
-        label {
-          &:after {
-            content: ': ';
-          }
+        width: 10em;        
+        p {
           color: $label-color;
           padding-right: 0.2em;
         }
