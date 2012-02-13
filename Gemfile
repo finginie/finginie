@@ -14,6 +14,7 @@ gem 'airbrake'
 gem 'bourbon', :git => "git://github.com/FinGinie/bourbon.git"
 gem 'cancan'
 gem 'clockwork'
+gem 'copycopter_client'
 gem 'draper', :git => "git://github.com/jcasimir/draper.git"
 gem 'feedzirra'
 gem 'haml-rails'
