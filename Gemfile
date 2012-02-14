@@ -24,6 +24,7 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'meta_search'
 gem 'nested_form', :git => "git://github.com/TMaYaD/nested_form.git"
+gem 'newrelic_rpm'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'paper_trail'
