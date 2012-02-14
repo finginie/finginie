@@ -1,5 +1,6 @@
 class NavQuarterlyDetail
   include Mongoid::Document
+  extend MongoidHelpers
 
   field :security_code, :type => BigDecimal
   field :year_end, :type => Integer

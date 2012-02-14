@@ -1,5 +1,6 @@
 class NsePrice
   include Mongoid::Document
+  extend MongoidHelpers
 
     field :security_code, :type => BigDecimal
     field :price_date, :type => Date

@@ -1,5 +1,6 @@
 class SchemeMaster
   include Mongoid::Document
+  extend MongoidHelpers
 
   field :securitycode, :type => BigDecimal
   field :scheme_name

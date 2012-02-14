@@ -63,7 +63,7 @@ group :test, :development do
   gem 'sqlite3'
   gem 'tddium'
   gem 'timecop'
-  gem 'vcr'
+  gem 'vcr', '~>2.0.0.rc1'
     gem 'webmock'
 end
 

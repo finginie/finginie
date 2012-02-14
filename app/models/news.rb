@@ -1,5 +1,6 @@
 class News
   include Mongoid::Document
+  extend MongoidHelpers
 
   field :company_code, :type => Float
   field :news_date, :type => Date

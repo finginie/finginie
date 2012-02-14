@@ -1,5 +1,6 @@
 class MfDividendDetail
   include Mongoid::Document
+  extend MongoidHelpers
 
   field :securitycode, :type => BigDecimal
   field :dividend_date, :type => Date

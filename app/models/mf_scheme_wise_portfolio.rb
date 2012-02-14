@@ -1,5 +1,6 @@
 class MfSchemeWisePortfolio
   include Mongoid::Document
+  extend MongoidHelpers
 
   field :security_code, :type => BigDecimal
   field :holding_date, :type => Date

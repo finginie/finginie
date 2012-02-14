@@ -1,5 +1,6 @@
 class IndustryMaster
   include Mongoid::Document
+  extend MongoidHelpers
 
   field :industry_code, :type => Integer
   field :industry_name

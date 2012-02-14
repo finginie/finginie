@@ -1,5 +1,6 @@
 class IndividualHolding
   include Mongoid::Document
+  extend MongoidHelpers
 
   field :company_code, :type => Float
   field :share_holding_date, :type => Date

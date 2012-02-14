@@ -1,7 +1,8 @@
 class Split
   include Mongoid::Document
+  extend MongoidHelpers
 
-  field :company_code, :type => Float
+  field :companycode, :type => Float
   field :date_of_announcement, :type => Date
   field :old_face_value, :type => BigDecimal
   field :new_face_value, :type => BigDecimal
@@ -12,6 +13,6 @@ class Split
   field :modified_date, :type => DateTime
   field :delete_flag
 
-  key :company_code, :date_of_announcement
+  key :companycode, :date_of_announcement
 
 end

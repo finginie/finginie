@@ -1,10 +1,18 @@
 require 'pinch'
 
+class Hash
+  def underscore_keys!
+    keys.each do |key|
+      self[(key.underscore rescue key) || key] = delete(key)
+    end
+    self
+  end
+end
 class CorporateInformationData
 
-  DATA_SOURCES = {
-    :url => 'http://download.dionglobal.in//portals//'
-  }
+  attr_accessor :file_list
+
+  DATA_URL = 'http://download.dionglobal.in//portals//'
 
   FILE_NAMES = [
     'AccountingPolicy.xml',
@@ -50,53 +58,49 @@ class CorporateInformationData
   ]
 
   def self.update_data
-    self.fetch_data.each do |key,values|
-      model = key.constantize
-      values.each do |attributes|
-        conditions = {}
-        model.primary_key.each do |key|
-          conditions[key] = attributes[key]
-          attributes.delete(key)
-        end
-        instance = model.find_or_initialize_by(conditions)
-        instance.update_attributes(attributes)
+    parser = new
+    parser.file_list.each do |file|
+      begin
+        parser.parse_and_update file
+      rescue => ex
+        Airbrake.notify ex
       end
     end
   end
 
-  def self.fetch_data
-    data = {}
-    type = get_type
-    files = Pinch.file_list("#{DATA_SOURCES[:url]}XI#{Date.today.strftime('%d%m%Y')}#{type}.zip")
-    FILE_NAMES.each do |file|
-      if files.include?(file)
-        rows_data = []
-        xml_data = Pinch.get("#{DATA_SOURCES[:url]}XI#{Date.today.strftime('%d%m%Y')}#{type}.zip", file)
-        if xml_data
-          data_hash = Hash.from_xml(xml_data)
-          if data_hash[File.basename(file,'.xml')]["Item"].class == Array
-            data_hash[File.basename(file,'.xml')]["Item"].each do |item|
-              rows_data << item.inject({}){|memo,(k,v)| memo[k.underscore.to_sym] = v; memo}
-            end
-          else
-            rows_data << data_hash[File.basename(file,'.xml')]["Item"].inject({}){|memo,(k,v)| memo[k.underscore.to_sym] = v; memo}
-          end
-          data[File.basename(file,'.xml').underscore.classify] = rows_data
-        end
-      end
-    end
-    data
+  def initialize
+    @remote_archive = Pinch.new("#{DATA_URL}XI#{Date.today.strftime('%d%m%Y')}#{type}.zip")
+    @file_list = @remote_archive.file_list & FILE_NAMES
   end
 
-  def self.get_type
-    current_time = Time.now.strftime('%H%M').to_i
-    case
-      when current_time < 1230
-        "01"
-      when current_time > 1230 && current_time < 2230
-        "02"
-      else
-        "04"
+  ##
+  # {
+  #   "AccountingPolicy" => {
+  #     "Item" => [<Hashes of records>]
+  #   }
+  # }
+  #
+  def parse_and_update(file_name)
+    data_hash = Hash.from_xml(@remote_archive.get file_name)
+
+    data_hash.each do |key, value|
+      model = key.underscore.classify.constantize
+      [value["Item"]].flatten.each do |attributes|
+        attributes.underscore_keys!.symbolize_keys!
+        model.find_and_update_attributes attributes
+      end
+    end
+    self
+  end
+
+  def type
+    @type ||= case Time.now.strftime('%H%M').to_i
+    when 0..1230
+      "01"
+    when 1230..2230
+      "02"
+    else
+      "04"
     end
   end
 end

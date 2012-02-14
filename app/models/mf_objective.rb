@@ -1,5 +1,6 @@
 class MfObjective
   include Mongoid::Document
+  extend MongoidHelpers
 
   field :securitycode, :type => BigDecimal
   field :objective

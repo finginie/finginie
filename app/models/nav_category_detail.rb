@@ -1,5 +1,6 @@
 class NavCategoryDetail
   include Mongoid::Document
+  extend MongoidHelpers
 
   field  :scheme_class_code, :type => BigDecimal
   field  :scheme_class_description

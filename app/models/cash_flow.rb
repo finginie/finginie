@@ -1,5 +1,6 @@
 class CashFlow
   include Mongoid::Document
+  extend MongoidHelpers
 
   field  :company_code, :type => Float
   field  :year_ending, :type => Date

@@ -1,5 +1,6 @@
 class NavMaster
   include Mongoid::Document
+  extend MongoidHelpers
 
   field  :security_code, :type => BigDecimal
   field  :scheme_code, :type => Float

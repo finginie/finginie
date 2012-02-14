@@ -1,5 +1,6 @@
 class CompanyMaster
   include Mongoid::Document
+  extend MongoidHelpers
 
     field :company_code, :type => Float
     field :company_name

@@ -1,5 +1,6 @@
 class Navcp
   include Mongoid::Document
+  extend MongoidHelpers
 
   field  :security_code, :type => BigDecimal
   field  :ticker

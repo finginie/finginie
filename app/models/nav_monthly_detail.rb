@@ -1,5 +1,6 @@
 class NavMonthlyDetail
   include Mongoid::Document
+  extend MongoidHelpers
 
   field :security_code, :type => BigDecimal
   field :nav_date, :type => Date

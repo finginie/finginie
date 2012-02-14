@@ -1,5 +1,6 @@
 class AnnouncementsAgmbc
   include Mongoid::Document
+  extend MongoidHelpers
 
     field :company_code, :type => Float
     field :date_of_announcement, :type => Date

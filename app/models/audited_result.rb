@@ -1,5 +1,6 @@
 class AuditedResult
   include Mongoid::Document
+  extend MongoidHelpers
 
     field  :companycode,  :type => Float
     field  :year_ending,  :type => Date
