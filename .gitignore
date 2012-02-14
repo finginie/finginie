@@ -10,3 +10,4 @@ tmp/
 config/database.yml
 .tddium*
 .tddium
+public/assets

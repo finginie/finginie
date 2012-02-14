@@ -66,7 +66,7 @@ body.stocks.show {
       margin-bottom: 0;
     }
     .symbol, .asset_class, .sector {
-      display: inline-block;
+      float: left;
       dd {
         padding-left: 0.4em;
         margin:0;
@@ -88,32 +88,29 @@ body.stocks.show {
       }
     }
     .daily_prices {
-      border: {
-        top: {
-          width: 1px;
-          style: solid;
-          color: lightgrey;
-        }
-        bottom: {
-          width: 1px;
-          style: solid;
-          color: lightgrey;
-        }
-      
-      }
+      display: block;
+      clear: both;
       .daily_price_change, .last_close_price, .day_open_price, .volume,  .high_price, .low_price {
-        display: inline-block;
         border-left: 1px solid lightgrey;
+        border-top: 1px solid lightgrey;
+        float: left;
+        padding: 0.5em 0;
         width: 10em;
         text-align: center;
         p {
           color: $label-color;
+          margin: 0;
+          padding: 0.5em 0;
         }
         strong {
           color: $text-color;
         }
       }
+      .low_price {
+        border-right: 1px solid lightgrey;
+      }
       .daily_price_change {
+        border: none;
         h1 {
           padding-bottom: 0.2em;
           padding-top: 0.3em;
@@ -133,17 +130,25 @@ body.stocks.show {
       }
     }
     .fundamentals {
-      margin-left: 10.3em;
-      border-bottom: 1px solid lightgrey;
+      clear: both;
+      margin-bottom: 10em;
+      margin-left: 10em;
       .eps, .pe, .beta, .week_high_price, .week_low_price {
         border-left: 1px solid lightgrey;
+        border-bottom: 1px solid lightgrey;
+        border-top: 1px solid lightgrey;
+        padding: 0.5em 0;
         text-align: center;
-        display: inline-block;
-        width: 10em;        
+        float: left;
+        width: 10em;
         p {
           color: $label-color;
-          padding-right: 0.2em;
+          margin: 0;
+          padding-bottom: 1em;
         }
+      }
+      .week_low_price {
+        border-right: 1px solid lightgrey;
       }
     }
     .fundamentals {
@@ -151,13 +156,14 @@ body.stocks.show {
       div {
         display: inline-block;
         padding-right: 1em;
-      label {
-        padding-right: 0.4em;
-      }
+        label {
+          padding-right: 0.4em;
+        }
       }
     }
   }
   a {
+      clear: both;
     text-decoration: none;
     color: $base-color;
   }
