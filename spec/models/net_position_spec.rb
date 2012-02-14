@@ -59,12 +59,6 @@ describe NetPosition do
 
   it "should calculate profits" do
     verify_for_values :profit, 0, 0, 300, 450
-    pending do
-      net_position.transactions[0].profit.should eq 0
-      net_position.transactions[1].profit.should eq 0
-      net_position.transactions[2].profit.should eq 300
-      net_position.transactions[3].profit.should eq 150
-    end
   end
 
   it "should build the right security class based on the type" do
