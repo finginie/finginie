@@ -1,17 +1,7 @@
 - content_for :aside do
   = simple_form_for @search, :url => collection_path, :html => {:novalidate => true} do |f|
     = f.input :name_contains
-    = f.input :sector_contains
-    =# f.input :last_traded_price_greater_than_or_equal_to
-    =# f.input :last_traded_price_less_than_or_equal_to
-    = f.input :beta_greater_than_or_equal_to
-    = f.input :beta_less_than_or_equal_to
-    = f.input :pe_greater_than_or_equal_to
-    = f.input :pe_less_than_or_equal_to
-    = f.input :eps_greater_than_or_equal_to
-    = f.input :eps_less_than_or_equal_to
-    =# f.input :percentage_change_greater_than_or_equal_to
-    =# f.input :percentage_change_less_than_or_equal_to
+    = f.input :sector_contains, :collection => Stock::SECTOR_NAMES, :prompt => "Any"
 
     =f.submit 'Search'
 
