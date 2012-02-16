@@ -1,12 +1,20 @@
 $base-color: #3872C2;
 $text-color: #333333;
+$label-color: #0099cc;
 $border-color: tint($text-color, 80%);
 $link-color: $base-color + $text-color;
 $aside-width: 240px;
 $footer-color: #274F87;
+$tr-color: #c0deed;
+$th-color: #1e6a86;
 $nav-font: "Calibri", Helvetica, Arial, sans-serif;
 
 $heading-color: $base-color; //#0b419e;
 $heading-font: "Cambria", Helvetica, Arial, sans-serif;
 $content-font: "Calibri", Helvetica, Arial, sans-serif; 
 
+
+@mixin sharp-button {
+  @include button(shiny, #3a6e9b);
+  @include border-radius(0);
+}

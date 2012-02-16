@@ -6,3 +6,31 @@
 @mixin center {
   margin: 0 auto;
 }
+
+@function opposite($side) {
+  @if $side == right {
+    @return left;
+  } @else if $side == left {
+    @return right;
+  } @else if $side == top {
+    @return bottom;
+  } @else {
+    @return top;
+  }
+}
+
+@mixin float($side: left) {
+  display: inline;
+  float: unquote($side);
+}
+
+@mixin unstyled-link {
+  &, &:visited {
+    color: inherit;
+    text-decoration: inherit;
+    cursor: inherit;
+  }
+  &:active, &:focus {
+    outline: none;
+  }
+}

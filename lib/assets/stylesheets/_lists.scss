@@ -1,20 +1,4 @@
-@mixin float($side: left) {
-  display: inline;
-  float: unquote($side);
-}
-
-@mixin unstyled-link {
-  &, &:visited {
-    color: inherit;
-    text-decoration: inherit;
-    cursor: inherit;
-  }
-  &:active, &:focus {
-    outline: none;
-  }
-}
-
-// ------------------------------8<--------------------------------------
+@import "utilities";
 
 @mixin horizontal-list-container {
   overflow: hidden;
@@ -38,8 +22,8 @@
     }
     @if $snip-endings {
       &:first-child, &.first { padding-#{$direction}: 0; }
-      &:last-child { padding-#{opposite-position($direction)}: 0; }
-      &.last { padding-#{opposite-position($direction)}: 0; }
+      &:last-child { padding-#{opposite($direction)}: 0; }
+      &.last { padding-#{opposite($direction)}: 0; }
     }
   }
 }
