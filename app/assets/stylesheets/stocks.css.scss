@@ -6,7 +6,6 @@
 body.stocks.index {
   #stock_search {
     label {
-      display: inline-block;
       color: $base-color;
       width: 20%;
       line-height: 1em;
@@ -15,36 +14,16 @@ body.stocks.index {
         top: 0.5em;
         bottom: 0.4em;
       }
-	  font: {
-      family: $content-font;
-	    weight: normal;
-		  size: large;
-	  }
-
-  }
-  div {
-    input {
-      margin-left: 1em;
     }
-  }
-  abbr {
-    border: none;
-    color: red;
-  }
-  #btn_submit {
-    input{
-      @include sharp-button;
-      margin: {
-        bottom: 1em;
-        top: 1em;
-        left: 18em;
-      }
-      font: {
-        size: large;
+    div {
+      input, select {
+        margin-left: 1em;
       }
     }
-  }
-
+    abbr {
+      border: none;
+      color: red;
+    }
   }
   aside {
     display: none;
@@ -62,11 +41,7 @@ body.stocks.index {
 
 body.stocks.show {
   #main {
-    h1 {
-      margin-bottom: 0;
-    }
     .symbol, .asset_class, .sector {
-      float: left;
       dd {
         padding-left: 0.4em;
         margin:0;
@@ -88,8 +63,10 @@ body.stocks.show {
       }
     }
     .daily_prices {
-      display: block;
-      clear: both;
+      @include horizontal-list-container;
+      > div {
+        @include horizontal-list-container;
+      }
       .daily_price_change, .last_close_price, .day_open_price, .volume,  .high_price, .low_price {
         border-left: 1px solid lightgrey;
         border-top: 1px solid lightgrey;
@@ -151,21 +128,11 @@ body.stocks.show {
         border-right: 1px solid lightgrey;
       }
     }
-    .fundamentals {
-      margin: 1em 0;
-      div {
-        display: inline-block;
-        padding-right: 1em;
-        label {
-          padding-right: 0.4em;
-        }
-      }
-    }
-  }
-  a {
+    .back {
       clear: both;
-    text-decoration: none;
-    color: $base-color;
+      text-decoration: none;
+      color: $base-color;
+    }
   }
 }
 
