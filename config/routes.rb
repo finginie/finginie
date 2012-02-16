@@ -15,6 +15,7 @@ Finginie::Application.routes.draw do
   resources :fixed_incomes
   resources :real_estates
   resources :stocks, :only => [:index, :show]
+  resource :comprehensive_risk_profiler, :only =>[:edit, :update, :show]
 
   resources :portfolios do
     resources :net_positions, :except => :index do

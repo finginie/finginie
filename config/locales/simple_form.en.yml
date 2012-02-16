@@ -80,6 +80,20 @@ en:
         monthly_amount: 'Monthly Amount you plan to invest'
         no_months: 'Number of months you plan to invest'
         ror: 'Rate of return expected'
+      comprehensive_risk_profiler:
+        age: 'What is your age?'
+        household_savings: 'What is your current total household savings?'
+        household_income: 'What is your monthly household income?'
+        dependent: 'How many people are dependent on you?'
+        household_expenditure: 'What is your monthly household expenditure?'
+        special_goals: 'Do you have any special goals to meet in future?'
+        special_goals_amount: 'What is the amount?'
+        special_goals_years: 'No. of years from now'
+        preference: 'Which of the following would you prefer?'
+        investment_check: 'Have you invested anything in tax-saving investments?'
+        tax_saving_investment: 'Enter amount if yes'
+        portfolio_investment: 'You have invested in a portfolio which is a good mix of stocks, bonds, gold, cash, etc. If the value of that portfolio falls by 25% because of a global recession what would you do?'
+        time_horizon: 'What is the time horizon for your investment? (No. of years)'
 
   helpers:
     submit:

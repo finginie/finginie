@@ -34,6 +34,26 @@ ActiveRecord::Schema.define(:version => 20120214145641) do
 
   add_index "choices", ["question_id"], :name => "index_choices_on_question_id"
 
+  create_table "comprehensive_risk_profilers", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "age"
+    t.integer  "household_savings"
+    t.integer  "household_income"
+    t.integer  "dependent"
+    t.integer  "household_expenditure"
+    t.integer  "special_goals_amount"
+    t.integer  "special_goals_years"
+    t.integer  "tax_saving_investment"
+    t.integer  "preference"
+    t.integer  "portfolio_investment"
+    t.integer  "time_horizon"
+    t.decimal  "score_cache"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "comprehensive_risk_profilers", ["user_id"], :name => "index_comprehensive_risk_profilers_on_user_id"
+
   create_table "net_positions", :force => true do |t|
     t.integer  "portfolio_id"
     t.integer  "security_id"

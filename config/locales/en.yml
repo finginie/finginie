@@ -48,6 +48,18 @@ en:
     options1: 'Options'
     options2: 'Options II'
     glossary: 'Glossary'
+  comprehensive_risk_profiler:
+    preference:
+      1: 'Take no risk and generate very low return'
+      4: 'Take low risk and generate low Return'
+      6: 'Take average risk and generate average return'
+      8: 'Take high risk and generate high return'
+      10: 'Take very high risk and generate very high return'
+    portfolio_investment:
+      1: 'Move all your investments to fixed deposits'
+      5: 'Move 50% of your investments to fixed deposits and hold 50%'
+      8: 'Keep holding your portfolio because you think it will pick up'
+      10: 'Invest another 50% in that portfolio because you think it is a right buying opportunity'
 
   stocks:
     show:
@@ -62,5 +74,3 @@ en:
       pe: 'P/E'
       fifty_two_week_high_price: '52 week High Price'
       fifty_two_week_low_price: '52 week Low Price'
-      
-      
