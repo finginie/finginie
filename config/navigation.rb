@@ -54,12 +54,6 @@ SimpleNavigation::Configuration.run do |navigation|
       end
     end
 
-    primary.item :financial_planner, 'Financial Profile', financial_planner_path do |secondary|
-      Quiz.all.each do |quiz|
-        secondary.item quiz.slug.to_sym, quiz.name, financial_planner_risk_profiler_path(:id => quiz.slug)
-      end
-    end
-
     primary.item :portfolios, 'My Investments', portfolios_path
     primary.item :stocks, 'Explore Investments', stocks_path
 

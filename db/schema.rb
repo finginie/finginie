@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120125130030) do
+ActiveRecord::Schema.define(:version => 20120214145641) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -33,15 +33,6 @@ ActiveRecord::Schema.define(:version => 20120125130030) do
   end
 
   add_index "choices", ["question_id"], :name => "index_choices_on_question_id"
-
-  create_table "financial_planners", :force => true do |t|
-    t.integer  "user_id"
-    t.decimal  "willingness_to_take_risk"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
-  end
-
-  add_index "financial_planners", ["user_id"], :name => "index_financial_planners_on_user_id"
 
   create_table "net_positions", :force => true do |t|
     t.integer  "portfolio_id"
@@ -91,17 +82,6 @@ ActiveRecord::Schema.define(:version => 20120125130030) do
 
   add_index "responses", ["choice_id"], :name => "index_responses_on_choice_id"
   add_index "responses", ["risk_profiler_id"], :name => "index_responses_on_risk_profiler_id"
-
-  create_table "risk_profilers", :force => true do |t|
-    t.integer  "quiz_id"
-    t.decimal  "score"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
-    t.integer  "financial_planner_id"
-  end
-
-  add_index "risk_profilers", ["financial_planner_id"], :name => "index_risk_profilers_on_financial_planner_id"
-  add_index "risk_profilers", ["quiz_id"], :name => "index_risk_profilers_on_quiz_id"
 
   create_table "securities", :force => true do |t|
     t.string   "type"
@@ -156,12 +136,8 @@ ActiveRecord::Schema.define(:version => 20120125130030) do
 
   create_table "users", :force => true do |t|
     t.string   "email"
-    t.string   "encrypted_password", :limit => 128
-    t.string   "salt",               :limit => 128
-    t.string   "confirmation_token", :limit => 128
-    t.string   "remember_token",     :limit => 128
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "name"
     t.string   "avatar_url"
     t.string   "location"
@@ -170,7 +146,6 @@ ActiveRecord::Schema.define(:version => 20120125130030) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
-  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
   create_table "versions", :force => true do |t|
     t.string   "item_type",  :null => false
