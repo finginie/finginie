@@ -5,7 +5,8 @@ class MutualFundsController < InheritedResources::Base
   end
 
   def scheme_summary
-
+    @scheme = SchemeMaster.where( scheme_name: params[:id] ).first
+    @scheme = SchemeMasterDecorator.decorate(@scheme)
   end
 
   def scheme_returns

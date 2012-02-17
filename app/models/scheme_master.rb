@@ -39,4 +39,62 @@ class SchemeMaster
   field :delete_flag
 
   key :securitycode
+
+
+  def fund_master
+    FundMaster.where(company_code: company_code).first
+  end
+
+  def company_name
+    fund_master.company_name if fund_master
+  end
+
+  def nav_master
+    NavMaster.where( security_code: securitycode ).first
+  end
+
+  def bench_mark_index
+    nav_master.bench_mark_index_name if nav_master
+  end
+
+  def mf_objective
+    MfObjective.where(securitycode: securitycode).first
+  end
+
+  def objective
+    mf_objective.objective if mf_objective
+  end
+
+  def mf_dividend_detail
+    MfDividendDetail.all(conditions: { securitycode: securitycode }, sort: [[ :dividend_date, :desc ]]).first
+  end
+
+  def dividend_percentage
+    mf_dividend_detail.percentage if mf_dividend_detail
+  end
+
+  def dividend_date
+    mf_dividend_detail.dividend_date if mf_dividend_detail
+  end
+
+  def net_asset_value_current_price
+    Navcp.all(conditions: { security_code: securitycode }, sort: [[ :datetime, :desc ]]).first
+  end
+
+  def nav_amount
+    net_asset_value_current_price.nav_amount if net_asset_value_current_price
+  end
+
+  def percentage_change
+    net_asset_value_current_price.percentage_change if net_asset_value_current_price
+  end
+
+  def prev_nav_amount
+    net_asset_value_current_price.prev_nav_amount if net_asset_value_current_price
+  end
+
+  def day_change
+   (nav_amount - net_asset_value_current_price.prev_nav_amount) if nav_amount && prev_nav_amount
+  end
+
 end
