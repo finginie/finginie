@@ -118,6 +118,7 @@ $(document).ready(function() {
       chart: {
         renderTo: 'mf-comparative-returns-chart',
         defaultSeriesType: 'column',
+        borderWidth: 2
       },
       title: {
         text: 'Comparative Returns'

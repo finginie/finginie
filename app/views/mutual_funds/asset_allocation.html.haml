@@ -1,11 +1,15 @@
 - if @scheme.asset_allocation
-  %h1= "Asset Allocation"
-  #mf-asset-allocation-chart{ 'mf-data-asset-allocation' => @scheme.asset_allocation.to_a }
-  #asset-allocation
-    %table
-      - @scheme.asset_allocation.each do |name, value|
-        %tr
-          %td= name
-          %td= value
+  .mf_container  
+    %h1= "Asset Allocation"
+    #asset_allocation
+      #mf-asset-allocation-chart{ 'mf-data-asset-allocation' => @scheme.asset_allocation.to_a }
+      #asset_allocation_data
+        %table
+          %th Asset Class
+          %th Percentage
+          - @scheme.asset_allocation.each do |name, value|
+            %tr
+              %td= name
+              %td= value
 - else
   %p Data not available

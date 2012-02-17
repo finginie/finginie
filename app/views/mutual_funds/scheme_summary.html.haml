@@ -1,90 +1,91 @@
 - if @scheme.model
-  #titlebar
-    .scheme_name
-      %h1
-        =@scheme.scheme_name
-    .nav_amount
-      %strong
-        =@scheme.nav_amount
-    .day_change
-      =@scheme.day_change
-    .percentage_change
-      = "(#{@scheme.percentage_change}%)"
-  #title_details
-    %strong= 'Category :'
-    %span= @scheme.scheme_class_description
-    %strong= 'Benchmark Index :'
-    %span= @scheme.bench_mark_index
-  #content
-    %table
-      %tr
-        %td
-          %b= 'Company Name'
-        %td= @scheme.company_name
-      %tr
-        %td
-          %b= 'Plan'
-        %td= @scheme.scheme_plan_description
+  #scheme_container
+    #titlebar
+      .scheme_name
+        %h1
+          =@scheme.scheme_name
+      .nav_amount
+        %strong
+          =@scheme.nav_amount
+      .day_change
+        =@scheme.day_change
+      .percentage_change
+        = "(#{@scheme.percentage_change}%)"
+    #title_details
+      %strong= 'Category :'
+      %span= @scheme.scheme_class_description
+      %strong= 'Benchmark Index :'
+      %span= @scheme.bench_mark_index
+    #content
+      %table
+        %tr
+          %td
+            %b= 'Company Name'
+          %td= @scheme.company_name
+        %tr
+          %td
+            %b= 'Plan'
+          %td= @scheme.scheme_plan_description
 
-      %tr
-        %td
-          %b= 'Type'
-        %td= @scheme.scheme_type_description
+        %tr
+          %td
+            %b= 'Type'
+          %td= @scheme.scheme_type_description
 
-      %tr
-        %td
-          %b= 'Launch Date'
-        %td= @scheme.launch_date
+        %tr
+          %td
+            %b= 'Launch Date'
+          %td= @scheme.launch_date
 
-      %tr
-        %td
-          %b= 'Minimum Investment'
-        %td= @scheme.minimum_invement_amount
+        %tr
+          %td
+            %b= 'Minimum Investment'
+          %td= @scheme.minimum_invement_amount
 
-      %tr
-        %td
-          %b= 'Entry Load'
-        %td{:style => "width:70%"}= @scheme.entry_load
+        %tr
+          %td
+            %b= 'Entry Load'
+          %td{:style => "width:70%"}= @scheme.entry_load
 
-      %tr
-        %td
-          %b= 'Exit Load'
-        %td= @scheme.exit_load
+        %tr
+          %td
+            %b= 'Exit Load'
+          %td= @scheme.exit_load
 
-      %tr
-        %td
-          %b= 'Redemption Frequency'
-        %td= @scheme.redemption_ferq
+        %tr
+          %td
+            %b= 'Redemption Frequency'
+          %td= @scheme.redemption_ferq
 
-      %tr
-        %td
-          %b= 'SIP Possible ?'
-        %td= @scheme.sip
+        %tr
+          %td
+            %b= 'SIP Possible ?'
+          %td= @scheme.sip
 
-      %tr
-        %td
-          %b= 'Fund Manager Name'
-        %td= "#{@scheme.fund_manager_prefix} #{@scheme.fund_manager_name}"
+        %tr
+          %td
+            %b= 'Fund Manager Name'
+          %td= "#{@scheme.fund_manager_prefix} #{@scheme.fund_manager_name}"
 
-      %tr
-        %td
-          %b= 'Size'
-        %td= "#{@scheme.size}cr"
+        %tr
+          %td
+            %b= 'Size'
+          %td= "#{@scheme.size}cr"
 
 
-      %tr
-        %td
-          %b= 'Objective'
-        %td= @scheme.objective
+        %tr
+          %td
+            %b= 'Objective'
+          %td= @scheme.objective
 
-      %tr
-        %td
-          %b= 'Dividend'
-        %td= @scheme.dividend_percentage
+        %tr
+          %td
+            %b= 'Dividend'
+          %td= @scheme.dividend_percentage
 
-      %tr
-        %td
-          %b= 'Date of Dividend'
-        %td= @scheme.dividend_date
+        %tr
+          %td
+            %b= 'Date of Dividend'
+          %td= @scheme.dividend_date
 - else
   %p Data not available
