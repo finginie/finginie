@@ -1,7 +1,10 @@
 class SchemeMasterDecorator < ApplicationDecorator
   decorates :scheme_master
 
-  FIELDS_TO_ROUND = [ 'percentage', 'nav_amount', 'percentage_change', 'dividend_percentage', 'day_change' ]
+  FIELDS_TO_ROUND = [ 'percentage', 'nav_amount', 'percentage_change', 'dividend_percentage', 'day_change', 'prev1_week_per',
+                      'prev1_month_per', 'prev3_months_per', 'prev6_months_per', 'prev9_months_per', 'prev_year_per', 'prev2_year_comp_per', 'prev3_year_comp_per',
+                      'one_day_return', 'one_week_return', 'one_month_return', 'three_months_return', 'six_months_return', 'nine_months_return', 'one_year_return',
+                      'two_year_return', 'three_year_return' ]
   def sip
     if model.sip == "True"
       "Yes"
@@ -22,6 +25,14 @@ class SchemeMasterDecorator < ApplicationDecorator
     define_method(key.to_sym) do
       model.send(key.to_sym) ? model.send(key.to_sym).round(2).to_f : "NA"
     end
+  end
+
+  def scheme_returns
+    [ prev1_week_per, prev1_month_per, prev3_months_per, prev6_months_per, prev9_months_per, prev_year_per, prev2_year_comp_per, prev3_year_comp_per ]
+  end
+
+  def category_returns
+    [ one_week_return, one_month_return, three_months_return, six_months_return, nine_months_return, one_year_return, two_year_return, three_year_return]
   end
 
 end

@@ -40,6 +40,13 @@ class SchemeMaster
 
   key :securitycode
 
+  NAVCP_METHODS = [ :nav_amount, :prev_nav_amount, :percentage_change, :prev1_week_per, :prev1_month_per, :prev3_months_per, :prev6_months_per, :prev9_months_per, :prev_year_per,
+    :prev2_year_comp_per, :prev3_year_comp_per]
+  delegate *NAVCP_METHODS, :to => :net_asset_value_current_price, :allow_nil => true
+
+  CATEGORY_METHODS = [ :one_day_return, :one_week_return, :one_month_return, :three_months_return, :six_months_return, :nine_months_return, :one_year_return,
+    :two_year_return, :three_year_return ]
+  delegate *CATEGORY_METHODS, :to => :category_wise_net_asset_value_detail, :allow_nil => true
 
   def fund_master
     FundMaster.where(company_code: company_code).first
@@ -81,20 +88,11 @@ class SchemeMaster
     Navcp.all(conditions: { security_code: securitycode }, sort: [[ :datetime, :desc ]]).first
   end
 
-  def nav_amount
-    net_asset_value_current_price.nav_amount if net_asset_value_current_price
-  end
-
-  def percentage_change
-    net_asset_value_current_price.percentage_change if net_asset_value_current_price
-  end
-
-  def prev_nav_amount
-    net_asset_value_current_price.prev_nav_amount if net_asset_value_current_price
-  end
-
   def day_change
    (nav_amount - net_asset_value_current_price.prev_nav_amount) if nav_amount && prev_nav_amount
   end
 
+  def category_wise_net_asset_value_detail
+    NavCategoryDetail.all(conditions: { scheme_class_code: scheme_class_code }, sort: [[ :modified_date, :desc ]]).first
+  end
 end

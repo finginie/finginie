@@ -17,6 +17,12 @@ describe SchemeMaster do
   its(:company_name) { should eq @fund_master.company_name }
   its(:bench_mark_index) { should eq @nav_master.bench_mark_index_name }
   its(:objective) { should eq @mf_objective.objective }
-  its(:dividend_percentage) { should eq @mf_dividend_detail.percentage.round(2).to_f }
+  its(:dividend_percentage) { should eq @mf_dividend_detail.percentage }
   its(:dividend_date) { should eq @mf_dividend_detail.dividend_date }
+  its(:one_day_return) { should eq @nav_category_detail.one_day_return }
+  its(:one_year_return) { should eq @nav_category_detail.one_year_return }
+  its(:prev1_week_per) { should eq @navcp.prev1_week_per }
+  its(:prev3_months_per) { should eq @navcp.prev3_months_per }
+  its(:prev9_months_per) { should eq @navcp.prev9_months_per }
+  its(:prev3_year_comp_per) { should eq @navcp.prev3_year_comp_per }
 end
