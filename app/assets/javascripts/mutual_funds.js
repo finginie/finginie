@@ -1,4 +1,42 @@
 $(document).ready(function() {
+  if ($("#mf-sectoral-allocation-chart").attr("mf-data-sectoral-allocation") != undefined) {
+    new Highcharts.Chart({
+      chart: {
+        renderTo: 'mf-sectoral-allocation-chart'
+      },
+      title: {
+        text: 'Sectoral Allocation'
+      },
+      series: [{
+        type: 'pie',
+        data: JSON.parse($("#mf-sectoral-allocation-chart").attr("mf-data-sectoral-allocation"))
+      }],
+      legend: {
+        labelFormatter: function() {
+          return this.name + ': ' + this.y + '%';
+        }
+      },
+      tooltip: {
+        formatter: function() {
+          return '' + this.point.name +': '+ (Math.round(this.y*10) / 10) + '%';
+          }
+      },
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: true,
+            formatter: function() {
+            return '' + this.point.name +': '+ (Math.round(this.y*10) / 10) + '%';
+            }
+          },
+          showInLegend: true
+        }
+      }
+    });
+  };
+
   if ($("#mf-asset-allocation-chart").attr("mf-data-asset-allocation") != undefined) {
     new Highcharts.Chart({
       chart: {

@@ -37,6 +37,7 @@ class MutualFundsController < InheritedResources::Base
   end
 
   def sectoral_allocation
-
+    @scheme = SchemeMaster.where( scheme_name: params[:id] ).first
+    @scheme = SchemeMasterDecorator.decorate(@scheme)
   end
 end

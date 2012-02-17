@@ -111,4 +111,24 @@ class SchemeMaster
     groupwise_percentage.each_key { |k| groupwise_percentage[k] = groupwise_percentage[k].round(2) }
   end
 
+  def equity_holdings
+    portfolio_holdings.select { |p| p["InstrumentCode"] == "2089" } if portfolio_holdings.length > 0
+  end
+
+  def industry(industry_code)
+    IndustryMaster.where( industry_code: industry_code ).first
+  end
+
+  def broad_industry_name(industry_code)
+    industry(industry_code).broad_industry_name if industry(industry_code)
+  end
+
+  def sectoral_allocation
+    return nil if !equity_holdings
+    allocation = Hash.new(0.0)
+    equity_holdings.each { |p|  allocation[broad_industry_name(p["IndustryCode"])]+= p["Percentage"].to_f if broad_industry_name(p["IndustryCode"]) }
+    allocation.each_key { |k| allocation[k] = allocation[k].round(2) }
+    allocation.sort_by { |k,v| -v }.take(10)
+  end
+
 end
