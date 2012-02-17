@@ -104,4 +104,11 @@ class SchemeMaster
     [ scheme_portfolio.element ].flatten.sort_by { |hsh| -hsh["Percentage"].to_f } if scheme_portfolio
   end
 
+  def asset_allocation
+    return nil if !scheme_portfolio
+    groupwise_percentage = Hash.new(0.0)
+    portfolio_holdings.each { |portfolio| groupwise_percentage[portfolio["InstrumentName"]] += portfolio["Percentage"].to_f }
+    groupwise_percentage.each_key { |k| groupwise_percentage[k] = groupwise_percentage[k].round(2) }
+  end
+
 end

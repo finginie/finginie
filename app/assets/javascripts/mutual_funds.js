@@ -1,4 +1,41 @@
 $(document).ready(function() {
+  if ($("#mf-asset-allocation-chart").attr("mf-data-asset-allocation") != undefined) {
+    new Highcharts.Chart({
+      chart: {
+        renderTo: 'mf-asset-allocation-chart'
+      },
+      title: {
+        text: 'Asset Allocation'
+      },
+      series: [{
+        type: 'pie',
+        data: JSON.parse($("#mf-asset-allocation-chart").attr("mf-data-asset-allocation"))
+      }],
+      legend: {
+        labelFormatter: function() {
+          return this.name + ': ' + this.y + '%';
+        }
+      },
+      tooltip: {
+        formatter: function() {
+          return '' + this.point.name +': '+ (Math.round(this.y*10) / 10) + '%';
+          }
+      },
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: true,
+            formatter: function() {
+            return '' + this.point.name +': '+ (Math.round(this.y*10) / 10) + '%';
+            }
+          },
+          showInLegend: true
+        }
+      }
+    });
+  };
 
   if ($("#top-holdings-chart").attr("data-percentages") != undefined) {
     new Highcharts.Chart({
