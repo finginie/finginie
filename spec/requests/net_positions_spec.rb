@@ -80,5 +80,20 @@ describe "NetPositions" do
       page.should have_content 'Test Property'
       page.should have_content 200
     end
+
+    it "adds new Gold position" do
+      click_on 'Add New Gold'
+
+      fill_in "Price", :with => 200
+      #fill_in "Date", :with => "29-11-2010"
+      select 'buy', :from => "Action"
+      fill_in "Amount", :with => 30
+      click_on "Create Net position"
+
+      page.should have_content 'successfully created'
+      page.should have_content 'Gold'
+      page.should have_content 200
+      page.should have_content 30
+     end
   end
 end
