@@ -34,3 +34,8 @@
     outline: none;
   }
 }
+@mixin hide-aside {
+  aside {
+      display: none;
+  }
+}

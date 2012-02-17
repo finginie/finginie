@@ -1,2 +1,19 @@
-=button_to "Google",    '/auth/google',   :method => :get
-=button_to "Facebook",  '/auth/facebook', :method => :get
+.login_signup_container
+  .loginformcontainer
+    %h1 login
+    .connect
+      =button_to "Google",    '/auth/google',   :method => :get
+      =button_to "Facebook",  '/auth/facebook', :method => :get
+    #register_or
+    #registration_lower_form
+      %form
+        .inner
+          %ul
+            %li
+              %label{:for => "Email"} EMAIL
+              %input{:type => "text", :maxlength => "100"}/
+            %li
+              %label{:for => "Email"} PASSWORD
+              %input{:type => "password", :maxlength => "100"}/  
+  .singupformcontainer
+    %h1 Signup

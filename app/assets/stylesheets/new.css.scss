@@ -1,0 +1,27 @@
+@import "bourbon";
+@import "holygrail";
+@import "lists";
+@import "defaults";
+@import "utilities";
+
+body.sessions.new {
+  #wrapper {
+    padding-left: 0;
+    @include hide-aside;
+    #main {
+      .login_signup_container {
+        margin: 0 auto;
+        //width: 900px;
+        .loginformcontainer, .singupformcontainer {
+          float: left;
+          background-color: #424242;
+          //border: 3px solid #FFFFFF;
+          border-radius: 10px 10px 10px 10px;
+          min-height: 200px;
+          //position: relative;
+          width: 350px;
+        }
+      }  
+    }  
+  }
+}  
