@@ -1,1 +1,22 @@
+%h1= "#{@scheme.company_name}'s Top Holdings"
 
+- if @scheme.portfolio_holdings
+  #top-holdings-chart{ 'data-percentages' => @scheme.top_ten_holdings_percentages }
+  #top-holdings
+    %table
+      %tr
+        %th= 'Name'
+        %th= 'Percenatge'
+        %th= 'Class'
+        %th= 'Industry'
+        %th= 'Rating'
+        - @scheme.portfolio_holdings.take(10).each do |portfolio|
+          %tr
+          %td= portfolio["InvestedCompanyName"]
+          %td= portfolio["Percentage"]
+          %td= portfolio["InstrumentName"]
+          %td= portfolio["IndustryName"] || "NA"
+          %td= portfolio["Rating"] || "NA"
+
+- else
+  %p Data not available

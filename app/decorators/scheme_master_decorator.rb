@@ -35,4 +35,8 @@ class SchemeMasterDecorator < ApplicationDecorator
     [ one_week_return, one_month_return, three_months_return, six_months_return, nine_months_return, one_year_return, two_year_return, three_year_return]
   end
 
+  def top_ten_holdings_percentages
+    model.portfolio_holdings.take(10).map { |p| [ p["InvestedCompanyName"] , p["Percentage"].to_f.round(2) ] } if model.portfolio_holdings
+  end
+
 end

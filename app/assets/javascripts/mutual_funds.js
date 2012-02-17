@@ -1,5 +1,43 @@
 $(document).ready(function() {
 
+  if ($("#top-holdings-chart").attr("data-percentages") != undefined) {
+    new Highcharts.Chart({
+      chart: {
+        renderTo: 'top-holdings-chart'
+      },
+      title: {
+        text: 'Top 10 Holdings Distribution'
+      },
+      series: [{
+        type: 'pie',
+        data: JSON.parse($("#top-holdings-chart").attr("data-percentages"))
+      }],
+      legend: {
+        labelFormatter: function() {
+          return this.name + ': ' + this.y + '%';
+        }
+      },
+      tooltip: {
+        formatter: function() {
+          return '' + this.point.name +': '+ (Math.round(this.y*10) / 10) + '%';
+          }
+      },
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: true,
+            formatter: function() {
+            return '' + this.point.name +': '+ (Math.round(this.y*10) / 10) + '%';
+            }
+          },
+          showInLegend: false
+        }
+      }
+    });
+  };
+
   if ($("#mf-comparative-returns-chart").attr("data-scheme-returns") != undefined) {
     new Highcharts.Chart({
       chart: {
