@@ -26,7 +26,8 @@ class MutualFundsController < InheritedResources::Base
   end
 
   def detailed_holdings
-
+    @scheme = SchemeMaster.where( scheme_name: params[:id] ).first
+    @scheme = SchemeMasterDecorator.decorate(@scheme)
   end
 
   def asset_allocation

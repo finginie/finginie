@@ -95,4 +95,13 @@ class SchemeMaster
   def category_wise_net_asset_value_detail
     NavCategoryDetail.all(conditions: { scheme_class_code: scheme_class_code }, sort: [[ :modified_date, :desc ]]).first
   end
+
+  def scheme_portfolio
+    MfSchemeWisePortfolio.all( conditions: { security_code: securitycode }, sort: [[ :holding_date, :desc ]]).first
+  end
+
+  def portfolio_holdings
+    [ scheme_portfolio.element ].flatten.sort_by { |hsh| -hsh["Percentage"].to_f } if scheme_portfolio
+  end
+
 end

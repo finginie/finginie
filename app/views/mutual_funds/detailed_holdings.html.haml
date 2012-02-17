@@ -1,1 +1,21 @@
+%h1= "#{@scheme.company_name}'s Detailed holdings"
 
+- if @scheme.portfolio_holdings
+  %table
+    %tr
+      %th= 'Invested Company Name'
+      %th= 'Industry Name'
+      %th= 'Instrument Name'
+      %th= 'Percenatge'
+      %th= 'Market Value'
+      %th= 'Rating'
+    - @scheme.portfolio_holdings.each do |portfolio|
+      %tr
+      %td= portfolio["InvestedCompanyName"]
+      %td= portfolio["IndustryName"] || "NA"
+      %td= portfolio["InstrumentName"]
+      %td= portfolio["Percentage"]
+      %td= portfolio["MarketValue"]
+      %td= portfolio["Rating"] || "NA"
+- else
+  %p Data Not available
