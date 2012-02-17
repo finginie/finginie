@@ -80,39 +80,5 @@ describe "NetPositions" do
       page.should have_content 'Test Property'
       page.should have_content 200
     end
-
-    it "adds new asset position" do
-      click_on 'Add New Other Asset'
-      fill_in 'Name', :with => 'Test Asset'
-      fill_in 'Current price', :with => 9000000
-
-      fill_in "Price", :with => 200
-      #fill_in "Date", :with => "29-11-2010"
-      select 'buy', :from => "Action"
-      fill_in "Quantity", :with => 30
-      click_on "OtherAsset"
-
-      page.should have_content 'successfully created'
-      page.should have_content 'Test Asset'
-      page.should have_content 200
-      page.should have_content 30
-    end
-
-    it "adds new liability position" do
-      click_on 'Add New Other Liability'
-      fill_in 'Name', :with => 'Test Liability'
-      fill_in 'Current price', :with => 9000000
-
-      fill_in "Price", :with => 200
-      #fill_in "Date", :with => "29-11-2010"
-      select 'buy', :from => "Action"
-      fill_in "Quantity", :with => 30
-      click_on "OtherLiability"
-
-      page.should have_content 'successfully created'
-      page.should have_content 'Test Liability'
-      page.should have_content 200
-      page.should have_content 30
-    end
   end
 end
