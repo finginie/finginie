@@ -9,19 +9,33 @@ body.sessions.new {
     padding-left: 0;
     @include hide-aside;
     #main {
-      .login_signup_container {
+      .container {
+        padding: 1em;
+        width: 948px;  
         margin: 0 auto;
-        //width: 900px;
-        .loginformcontainer, .singupformcontainer {
-          float: left;
-          background-color: #424242;
-          //border: 3px solid #FFFFFF;
-          border-radius: 10px 10px 10px 10px;
-          min-height: 200px;
-          //position: relative;
-          width: 350px;
+        @include border-radius(8px);
+        background: lighten($base-color, 45%);
+        border: 1px solid $border-color;
+        .connect_container {
+          .btn_connect {
+            ul {
+             list-style: none;
+             li {
+              display: inline-block;
+             }
+            }
+          }
+        }
+        .signin_signup_container {
+          .signin_container, .signup_container {
+            display: inline-block;
+            width: 417px;
+            @include border-radius(6px);
+            background: #e4e4e4;
+          }
         }
       }  
+      
     }  
   }
 }  

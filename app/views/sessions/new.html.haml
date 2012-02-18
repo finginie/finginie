@@ -1,11 +1,32 @@
-.login_signup_container
-  .loginformcontainer
-    %h1 login
-    .connect
-      =button_to "Google",    '/auth/google',   :method => :get
-      =button_to "Facebook",  '/auth/facebook', :method => :get
-    #register_or
-    #registration_lower_form
+=button_to "Google",    '/auth/google',   :method => :get
+=button_to "Facebook",  '/auth/facebook', :method => :get
+
+%section.container
+  .connect_container
+    %h1 Connect
+    .btn_connect
+      %ul
+        %li
+          = link_to image_tag("fb.png")
+        %li
+          = link_to image_tag("fb.png")
+      = image_tag("img_or.png")
+  .signin_signup_container
+    .signin_container
+      %h1 Sign In
+      %form
+        .inner
+          %ul
+            %li
+              %label{:for => "Email"} EMAIL
+              %input{:type => "text", :maxlength => "100"}/
+            %li
+              %label{:for => "Email"} PASSWORD
+              %input{:type => "password", :maxlength => "100"}/
+        = link_to 'Forgot your password?', page_path(:password_forgot), :class => :forgot_password      
+        = link_to 'Sign In', page_path(:Signin), :class => :signin
+    .signup_container
+      %h1 Sign Up
       %form
         .inner
           %ul
@@ -15,5 +36,4 @@
             %li
               %label{:for => "Email"} PASSWORD
               %input{:type => "password", :maxlength => "100"}/  
-  .singupformcontainer
-    %h1 Signup
+        = link_to 'Sign Up', page_path(:Signin), :class => :signin      
