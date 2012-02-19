@@ -18,10 +18,10 @@
         .inner
           %ul
             %li
-              %label{:for => "Email"} EMAIL
-              %input{:type => "text", :maxlength => "100"}/
+              %label.infield{:for => "Email"} EMAIL
+              %input{:type => "text", :maxlength => "100", :tabindex => "1"}/
             %li
-              %label{:for => "Email"} PASSWORD
+              %label.infield{:for => "Email"} PASSWORD
               %input{:type => "password", :maxlength => "100"}/
         = link_to 'Forgot your password?', page_path(:password_forgot), :class => :forgot_password      
         = link_to 'Sign In', page_path(:Signin), :class => :signin
