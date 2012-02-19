@@ -17,6 +17,7 @@ Finginie::Application.routes.draw do
   resources :stocks, :only => [:index, :show]
 
   resources :portfolios do
+    resources :transactions, :only => [:index]
     resources :net_positions, :except => :index do
       resources :transactions, :except => [:index, :show]
     end

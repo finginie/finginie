@@ -7,6 +7,8 @@ class Transaction < ActiveRecord::Base
   validates :quantity, :presence => true
   validates :price, :presence => true
 
+  scope :statement, lambda {|portfolio_id| joins(:net_position).where('net_positions.portfolio_id = ?', portfolio_id).order('date') }
+
   def profit #TODO: Move related specs from net_positions
     quantity < 0 ? quantity * (price - average_cost) : 0
   end
@@ -33,6 +35,10 @@ class Transaction < ActiveRecord::Base
   def amount=(amount)
     set_quantity(amount, action)
     amount
+  end
+
+  def total_value
+    quantity * price
   end
 
 private
