@@ -18,6 +18,7 @@ Finginie::Application.routes.draw do
   resource :comprehensive_risk_profiler, :only =>[:edit, :update, :show]
 
   resources :portfolios do
+    resources :transactions, :only => [:index]
     resources :net_positions, :except => :index do
       resources :transactions, :except => [:index, :show]
     end
