@@ -1,3 +1,4 @@
+%h1 Stock Quotes
 = simple_form_for @search, :url => collection_path, :html => {:novalidate => true} do |f|
   = f.input :name_contains, :required => false
   = f.input :sector_contains, :collection => Stock::SECTOR_NAMES, :prompt => "Any", :required => false

@@ -118,7 +118,7 @@ $content-font: "Calibri", Helvetica, Arial, sans-serif;
   }
   .extracontent {
     @include holy-grail-aside(240px, 10px, right);
-    padding-top: 4em;
+    padding: 1.5em 0.5em 0 0;
     h1 {
       font: {
         family: heading-font;
@@ -161,17 +161,8 @@ $content-font: "Calibri", Helvetica, Arial, sans-serif;
 }
 //---------------------------- content -------------------------------------
 div.wrapper {
-  margin: { 
-    left: 1.5em;
-  }
+  padding-left: 1em;
   article{
-    margin:{
-      left: 1.5em;
-      //right: 1.5em;
-    }
-    padding: {
-      right: 1em;
-    }
 
   &>h1 {
     color: $heading-color;
@@ -182,7 +173,7 @@ div.wrapper {
     }
 	margin: {
 	  top: 0.5em;
-	  bottom: 0.6em;
+	  bottom: 0.3em;
 	}
 	
 	border: {
@@ -193,14 +184,22 @@ div.wrapper {
   section {
     p {
       color: #333333;
+      margin: 0;
+      padding: {
+        left: 0.5em;
+        bottom: 0.6em
+      }
+      
       font: {
         family: $content-font;
 	      weight: normal;
 		    size: medium;
 	    }
-			padding:0;
+			
     }
     h1 {
+      margin: 0;
+      padding-bottom: 0.5em;
       clear: both;
 	    color: $base-color;
 	    font: {
@@ -208,42 +207,25 @@ div.wrapper {
 	      weight: bold;
 		    size: large;
 	    }
-	  margin: {
-        bottom: 0;
-		top: 0;
-	  }
-	  padding: {
-	    top: 12px;
-	  }
     }
     li {
       font-size: medium;
       line-height: 1.5em;
     }
-	img {
-	  margin: 0.6em; 
-	  border: {
-	    width: 4px;
-		  style: solid;
-		  color: $bottom-grey;
-	  }
-	}
-/*
-    &:nth-child(odd) img {
-      float: right;
-    }
-
-    &:nth-child(even) img {
+    img {
       float: left;
-    }
-*/		
+      margin:{
+       right: 1em;
+       bottom: 1em;
+      }
+      
+      border: {
+        width: 4px;
+        style: solid;
+        color: $bottom-grey;
+      }
+    }  
   }
-  /*
-  section>img {
-     width: 258px;
-     height: 166px;
-  }
-  */
  }
 }
 
@@ -252,7 +234,9 @@ div.wrapper {
 
 //----------------- Tables ------------------------------
 
-tbody tr {
+tbody {
+  
+ tr {
   &:nth-child(odd) {
     background-color: $tr-color;
   }
@@ -270,8 +254,8 @@ tbody tr {
 	  right: 0.6em;
 	}
   }
+  }
 }
-
 articlefooter {
   center {
     a {
@@ -279,4 +263,7 @@ articlefooter {
     }
   }
 
+}
+rightalign {
+  float: right;
 }
