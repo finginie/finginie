@@ -202,3 +202,26 @@ footer {
     clear: both;
   }
 }
+
+//----------------------------------- Tables ---------------------------------------
+
+tbody tr {
+  &:nth-child(odd) {
+    background-color: $tr-color;
+  }
+
+  th {
+    background-color: $th-color;
+	  color: white;
+	  text-align: left;
+  }
+
+  th, td {
+    padding: {
+	  top: 0.4em;
+	  bottom: 0.4em;
+	  left: 0.6em;
+	  right: 0.6em;
+	}
+  }
+}

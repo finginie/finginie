@@ -105,10 +105,6 @@ body.investment_education {
 $heading-color: #3e3e3e;
 $base-color: #3872C2;
 $bottom-grey: #c5c4c4;
-$tr-color: #c0deed;
-$th-color: #1e6a86;
-$heading-font: "Cambria", Helvetica, Arial, sans-serif;
-$content-font: "Calibri", Helvetica, Arial, sans-serif;
 //--------------------------------------------------------------
 
 #main>.wrapper {
@@ -240,6 +236,7 @@ tbody {
   &:nth-child(odd) {
     background-color: $tr-color;
   }
+
   th {
     background-color: $th-color;
 	  color: white;
