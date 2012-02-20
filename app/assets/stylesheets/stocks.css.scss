@@ -5,35 +5,9 @@
 
 body.stocks.index {
   #stock_search {
-    label {
-      color: $base-color;
-      width: 20%;
-      line-height: 1em;
-      text-align: right;
-      padding: {
-        top: 0.5em;
-        bottom: 0.4em;
-      }
-    }
     div {
-      input, select {
-        margin-left: 1em;
-      }
-    }
-    abbr {
-      border: none;
-      color: red;
-    }
-  }
-  aside {
-    display: none;
-  }
-  #stocks {
-    padding-left: 7em;
-    table {
-      th a {
-        color: white;
-        text-decoration: none;
+      label {
+        width: 70%;
       }
     }
   }
@@ -41,14 +15,16 @@ body.stocks.index {
 
 body.stocks.show {
   #main {
+    h1{
+      margin-bottom: 0;
+    }
     .symbol, .asset_class, .sector {
       dd {
-        padding-left: 0.4em;
+        padding-right: 0.6em;
         margin:0;
         color: $text-color;
       }
       dt{
-        //padding-left:0.6em;
         color: $base-color;
         &:after {
           content: ': ';
@@ -63,10 +39,7 @@ body.stocks.show {
       }
     }
     .daily_prices {
-      @include horizontal-list-container;
-      > div {
-        @include horizontal-list-container;
-      }
+      padding-top: 2em;
       .daily_price_change, .last_close_price, .day_open_price, .volume,  .high_price, .low_price {
         border-left: 1px solid lightgrey;
         border-top: 1px solid lightgrey;
@@ -130,8 +103,10 @@ body.stocks.show {
     }
     .back {
       clear: both;
-      text-decoration: none;
-      color: $base-color;
+      a {
+        text-decoration: none;
+        color: $base-color;
+      }
     }
   }
 }
