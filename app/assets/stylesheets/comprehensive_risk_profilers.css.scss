@@ -5,88 +5,85 @@
 
 // ---------------------risk profiler page-------------------
 
-abbr[title] {
-  color: red;
-  border-bottom: none;
-}
+body.comprehensive_risk_profilers {
+  abbr[title] {
+    color: red;
+    border-bottom: none;
+  }
 
-label {
-	  display: inline-block;
+  label {
+    display: inline-block;
     color: $base-color;
-	  line-height: 1em;
+    line-height: 1em;
     width: 100%;
     text-size: large;
-	  padding: {
-	    top: 0.5em;
+    padding: {
+      top: 0.5em;
       bottom: 0.4em;
-	  }
+    }
     font: {
       size: large;
     }
-}
+  }
 
-label.collection_radio,  {
-	  padding-left: 0.3em;
+  label.collection_radio,  {
+    padding-left: 0.3em;
     padding-right: 1em;
-	  display :inline;
-}
-
-fieldset, {
-  border : none;
-}
-
-
-.collection_radio{
-  color: $text-color;
-}
-.required {
-  >input {
-    margin-left: 1em;
+    display :inline;
   }
-}
 
-div.actions {
-    input{
-	  @include sharp-button;
-	  margin: {
-	    left: 26%;
-	    bottom: 0.5em;
-	    top: 1em;
-	  }
-	  font: {
-	    size: large;
-	  }
+  fieldset, {
+    border : none;
+  }
+
+  .collection_radio{
+    color: $text-color;
+  }
+  .required {
+    >input {
+      margin-left: 1em;
     }
-}  
-
-ol li {
-  overflow : visible;
-  vertical-align: top;
-}
-
-
-
-aside>h1 {
-  border: none;
-}
-
-body.comprehensive_risk_profilers.show {
-#main {
-  p b {
-    color: $base-color;
-  
   }
-  ul{
-    //width: 80%;
-    list-style-image: url('right_arrow.png');
-    li {
-      padding-bottom: 1em;
-      color: $text-color;
+
+  div.actions {
+    input{
+      @include sharp-button;
+      margin: {
+        left: 26%;
+        bottom: 0.5em;
+        top: 1em;
+      }
       font: {
-        size: medium;
-        
+        size: large;
       }
     }
   }
-} 
+
+  ol li {
+    overflow : visible;
+    vertical-align: top;
+  }
+
+  aside>h1 {
+    border: none;
+  }
+}
+
+body.comprehensive_risk_profilers.show {
+  #main {
+    p b {
+      color: $base-color;
+    }
+    ul{
+      //width: 80%;
+      list-style-image: url('right_arrow.png');
+      li {
+        padding-bottom: 1em;
+        color: $text-color;
+        font: {
+          size: medium;
+        }
+      }
+    }
+  }
 }
