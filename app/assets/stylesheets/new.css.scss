@@ -12,74 +12,53 @@ body.sessions.new {
       .container {
         padding: 1em;
         width: 948px;  
-        margin: 0 auto;
-        @include border-radius(8px);
-        background: lighten($base-color, 45%);
-        border: 1px solid $border-color;
+        margin: 5em auto;
+        background: #fff;
         h1 {
           margin: 0;
+          padding-bottom: 1em;
+          font: {
+            size: xx-large;
+            weight: bold;
+          }
         }
         .connect_container {
-          .btn_connect {
-            ul {
-             list-style: none;
-             margin: 0;
-             padding: 1em;
-             li {
-              display: inline-block;
-              width: 450px;
-              text-align: center;
-             }
-            }
-          }
-        }
-        .signin_signup_container {
-          padding: 1.2em;
-          .signup_container {
-            float: right;
-          }
-          .signin_container, .signup_container {
+          
+          .facebook, .google {
             display: inline-block;
-            width: 420px;
-            @include border-radius(6px);
-            background: #e4e4e4;
-            padding: 1em;
-            form  {
+            width: 450px;
+            text-align: center;
+            form {
               margin: 0;
-              input[type="text"], input[type="password"] {
-                border: 1px solid #808080;
-                padding: 8px 0 9px 11px;
-                width: 97%;
-                @include border-radius(6px);
-                color: #000;
-              }
-              li {
-                position: relative;
-                text-align: right;
-                padding-left: 0;
-              }
-              label {
-                width: 94%;
-                display: block;
-                left: 0;
-                opacity: 1;
-                position: absolute;
-                top: 0;
-                color: #cccccc;
-                padding-top: 0.5em;
+              input[type="submit"] {
+                width: 300px;
+                @include button($base-color);
+                @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
+                background-repeat:no-repeat;
+                background-postion: left top;
                 font: {
-                  size: 1em;
-                  weight: bold;
+                  size: x-large;
+                }
+                 padding: 9px 20px 7px 60px;
+              }
+              input[value="Login with Facebook"] {  
+                background-image: url('social_facebook.png');
+                &:hover {
+                  background-image: url('social_facebook.png');
+                }
+                
+              }
+              input[value="Login with Google"] {  
+                background-image: url('social_google.png');
+                &:hover {
+                  background-image: url('social_google.png');
                 }
               }
             }
           }
-          .signin_container {
-            
-          }
+          
         }
       }  
-      
     }  
   }
 }  
