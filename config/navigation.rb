@@ -40,6 +40,7 @@ SimpleNavigation::Configuration.run do |navigation|
         tertiary.item :insurance_products, 'Insurance Products', page_path('investment_education/insurance_products')
         tertiary.item :real_estate_investment, 'Real estate Investments', page_path('investment_education/real_estate_investment')
       end
+
       secondary.item :advanced_investments, 'Advanced Investments', :desc => 'Trade using a lower amount of capital by investing in advanced financial instruments like' do |tertiary|
         tertiary.item :foreign_exchange1, 'Foreign Exchange', page_path('investment_education/foreign_exchange1')
         tertiary.item :foreign_exchange2, 'Foreign Exchange II', page_path('investment_education/foreign_exchange2')
@@ -52,6 +53,11 @@ SimpleNavigation::Configuration.run do |navigation|
       secondary.item :jargon_demystified, 'Jargon Demystified', :desc => 'Understand the most commonly used financial terms.' do |tertiary|
         tertiary.item :glossary, 'Glossary', page_path('investment_education/glossary')
       end
+    end
+
+    primary.item :financial_planner, 'Financial Profile', edit_comprehensive_risk_profiler_path do |secondary|
+      secondary.item :edit_comprehensive_risk_profilers, 'Comprehensive Risk Profiler', edit_comprehensive_risk_profiler_path
+      secondary.item :comprehensive_risk_profilers, 'Ideal Asset Allocation', comprehensive_risk_profiler_path
     end
 
     primary.item :portfolios, 'My Investments', portfolios_path
