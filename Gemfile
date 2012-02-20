@@ -12,6 +12,7 @@ end
 
 gem 'airbrake'
 gem 'bourbon', :git => "git://github.com/FinGinie/bourbon.git"
+gem 'bson_ext'
 gem 'cancan'
 gem 'copycopter_client'
 gem 'draper', :git => "git://github.com/jcasimir/draper.git"
@@ -22,11 +23,14 @@ gem 'inherited_resources'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'meta_search'
+gem 'mongoid'
+  gem 'bson_ext'
 gem 'nested_form', :git => "git://github.com/TMaYaD/nested_form.git"
 gem 'newrelic_rpm'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'paper_trail'
+gem 'pinch'
 gem 'rails-backbone', :git => "git://github.com/TMaYaD/backbone-rails.git"
 gem 'redis'
 gem 'simple_form'
@@ -59,6 +63,8 @@ group :test, :development do
   gem 'sqlite3'
   gem 'tddium'
   gem 'timecop'
+  gem 'vcr', '~>2.0.0.rc1'
+    gem 'webmock'
 end
 
 group :development do

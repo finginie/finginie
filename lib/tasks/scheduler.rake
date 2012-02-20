@@ -9,5 +9,10 @@ namespace :scheduler do
   task :stock => :environment do
     TickerPlant.update_records(:stock)
   end
+
+  desc "This task is for Corporate& Mutual fund Data and runs three times a day at 9.30 am, 1 pm, 11 pm"
+  task :corporate_and_mutual_funds_data => :environment do
+    CorporateInformationData.update_data
+  end
 end
 
