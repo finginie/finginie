@@ -1,7 +1,7 @@
 = f.input :price
 = f.input :date
 = f.input :action, :collection => [:buy, :sell]
-= f.input :amount
+= f.input :amount unless %w[RealEstate Loan].include?(resource.security.type)
 = f.input :comments
 
 = f.link_to_remove "Remove This Transaction"

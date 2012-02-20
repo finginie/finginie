@@ -60,7 +60,7 @@ private
 
   def set_quantity(amount, action)
     action ||= :buy
-    amount ||= 0
+    amount ||= 1
     self.quantity = { :buy => 1, :sell => -1}[action.to_sym] * amount.to_i
   end
 end
