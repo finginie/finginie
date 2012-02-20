@@ -22,13 +22,8 @@ describe Portfolio do
     add_loan_position(portfolio,  5, 12.50,  300000, Date.civil(2011, 8, 1))
     add_loan_position(portfolio, 10, 12.75, 1500000, Date.civil(2010, 1, 1))
 
-    add_other_asset(portfolio, 4000000)
-    add_other_asset(portfolio, 2000000)
-    add_other_liability(portfolio, 525000)
-    add_other_liability(portfolio, 730000)
-
     Timecop.freeze Date.civil(2011, 11, 11) do
-      portfolio.net_worth.should eq 4045056
+      portfolio.net_worth.should eq -699944
     end
   end
 
@@ -49,17 +44,5 @@ describe Portfolio do
     position = create :net_position, :portfolio => portfolio,
                                      :security => create(:loan, :period => period, :rate_of_interest => interest_rate)
     create :transaction, :net_position => position, :date => date, :price => amount
-  end
-
-  def add_other_asset(portfolio, amount)
-    position = create :net_position, :portfolio => portfolio,
-                                     :security => create(:other_asset)
-    create :transaction, :net_position => position, :price => amount
-  end
-
-  def add_other_liability(portfolio, amount)
-    position = create :net_position, :portfolio => portfolio,
-                                     :security => create(:other_liability)
-    create :transaction, :net_position => position, :price => amount
   end
 end

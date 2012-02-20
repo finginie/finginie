@@ -15,9 +15,5 @@ FactoryGirl.define do
     end
     factory :loan, :class => Loan do
     end
-    factory :other_asset, :class => OtherAsset do
-    end
-    factory :other_liability, :class => OtherLiability do
-    end
   end
 end
