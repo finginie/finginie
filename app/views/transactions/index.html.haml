@@ -10,7 +10,6 @@
     %th Quantity
     %th Value
     %th Portfolio Value
-    -portfolio_value = 0
     -@transactions.each do |transaction|
       %tr
         %td= transaction.date
@@ -20,4 +19,3 @@
         %td= transaction.price
         %td= transaction.quantity
         %td= transaction.total_value
-        %td= portfolio_value += transaction.total_value

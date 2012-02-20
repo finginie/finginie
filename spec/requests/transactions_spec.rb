@@ -16,9 +16,11 @@ describe "Transactions" do
       add_stock_position(net_position, 1, 1, Date.civil(2007, 3, 31), :sell)
 
       visit portfolio_transactions_path(portfolio)
-      expected_table = [["Date", "Asset Name", "Type", "Action", "Price Per Unit", "Quantity", "Value", "Portfolio Value"],
-                        ["2007-01-31", "Foo 1", "Stock", "buy", "1.0", "1", "1.0", "1.0"],
-                        ["2007-03-31", "Foo 1", "Stock", "sell", "1.0", "-1", "-1.0", "0.0"]]
+      expected_table =  [
+                          ["Date", "Asset Name", "Type", "Action", "Price Per Unit", "Quantity", "Value", "Portfolio Value"],
+                          ["2007-01-31", "Foo 1", "Stock", "buy", "1.0", "1", "1.0"],
+                          ["2007-03-31", "Foo 1", "Stock", "sell", "1.0", "-1", "-1.0"]
+                        ]
       rows = page.find("table").all('tr')
       table = rows.map { |r| r.all('th,td').map { |c| c.text.strip } }
       table.should eq expected_table
