@@ -15,15 +15,12 @@ Finginie::Application.routes.draw do
   resources :fixed_incomes
   resources :real_estates
   resources :stocks, :only => [:index, :show]
+  resource :comprehensive_risk_profiler, :only =>[:edit, :update, :show]
 
   resources :portfolios do
     resources :net_positions, :except => :index do
       resources :transactions, :except => [:index, :show]
     end
-  end
-
-  resource :financial_planner, :only => [:show, :update], :controller => :financial_planner do
-    resources :risk_profilers, :only => [:show, :update]
   end
 
   def controller_actions(controller, actions)

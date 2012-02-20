@@ -1,0 +1,19 @@
+%p
+  %b Your Risk Appetite is :
+  = resource.score
+  out of 10. 10 indicates maximum risk taking ability
+  %ul
+    = resource.summary
+  %h1 Suggested Ideal Asset Allocation
+  - if resource.score
+    %table
+      %tr
+        %th Asset Class
+        %th Percentage
+      - FinancialPlanner.ideal_asset_allocation(resource).each do |asset_class,percentage|
+        %tr
+          %td= asset_class
+          %td= "#{percentage}%"
+    #asset-allocation-chart{ 'data-asset-allocation' => FinancialPlanner.ideal_asset_allocation(resource).to_a }
+#sign_up
+  =button_to "Facebook",  '/auth/Facebook',   :method => :get

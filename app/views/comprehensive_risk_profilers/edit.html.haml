@@ -1,0 +1,21 @@
+%h1 Ideal Asset Allocation
+= simple_form_for resource, :url => comprehensive_risk_profiler_path, :method => :put do |f|
+  = f.input :age
+  = f.input :household_savings
+  = f.input :household_income
+  = f.input :dependent
+  = f.input :household_expenditure
+  %fieldset#special_goals
+    = f.input :special_goals, :collection => %w[Yes No], :as => :radio
+    #special_goals_field
+      = f.input :special_goals_amount
+      = f.input :special_goals_years
+  %fieldset#tax_saving_investment
+    = f.input :investment_check, :collection => %w[Yes No], :as => :radio
+    #tax_saving_investment_field
+      = f.input :tax_saving_investment
+  = f.input :preference, :collection => t("comprehensive_risk_profiler.preference").invert, :as => :radio
+  = f.input :portfolio_investment, :collection => t("comprehensive_risk_profiler.portfolio_investment").invert, :as => :radio
+  = f.input :time_horizon
+  .actions
+    = f.submit 'Submit'
