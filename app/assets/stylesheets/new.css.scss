@@ -1,0 +1,64 @@
+@import "bourbon";
+@import "holygrail";
+@import "lists";
+@import "defaults";
+@import "utilities";
+
+body.sessions.new {
+  #wrapper {
+    padding-left: 0;
+    @include hide-aside;
+    #main {
+      .container {
+        padding: 1em;
+        width: 948px;  
+        margin: 5em auto;
+        background: #fff;
+        h1 {
+          margin: 0;
+          padding-bottom: 1em;
+          font: {
+            size: xx-large;
+            weight: bold;
+          }
+        }
+        .connect_container {
+          
+          .facebook, .google {
+            display: inline-block;
+            width: 450px;
+            text-align: center;
+            form {
+              margin: 0;
+              input[type="submit"] {
+                width: 300px;
+                @include button($base-color);
+                @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
+                background-repeat:no-repeat;
+                background-postion: left top;
+                font: {
+                  size: x-large;
+                }
+                 padding: 9px 20px 7px 60px;
+              }
+              input[value="Login with Facebook"] {  
+                background-image: url('social_facebook.png');
+                &:hover {
+                  background-image: url('social_facebook.png');
+                }
+                
+              }
+              input[value="Login with Google"] {  
+                background-image: url('social_google.png');
+                &:hover {
+                  background-image: url('social_google.png');
+                }
+              }
+            }
+          }
+          
+        }
+      }  
+    }  
+  }
+}  
