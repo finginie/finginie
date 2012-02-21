@@ -1,1 +1,1 @@
-= f.association :security, :select => Gold.find_or_create_by_name("Gold"), :include_blank => false
+= f.hidden_field :security_id, :value => Gold.find_or_create_by_name("Gold").id
