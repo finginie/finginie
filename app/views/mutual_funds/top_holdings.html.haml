@@ -1,6 +1,6 @@
 - if @scheme.portfolio_holdings
   .mf_container
-    %h1= "#{@scheme.company_name}'s Top Holdings"
+    %h1= "#{@scheme.scheme_name}'s Top Holdings"
     #top_holdings
       #top-holdings-chart{ 'data-percentages' => @scheme.top_ten_holdings_percentages }
       #top_holdings_data

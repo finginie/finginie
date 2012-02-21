@@ -1,6 +1,6 @@
 - if @scheme.asset_allocation
-  .mf_container  
-    %h1= "Asset Allocation"
+  .mf_container
+    %h1= "#{@scheme.scheme_name}'s Asset Allocation"
     #asset_allocation
       #mf-asset-allocation-chart{ 'mf-data-asset-allocation' => @scheme.asset_allocation.to_a }
       #asset_allocation_data
