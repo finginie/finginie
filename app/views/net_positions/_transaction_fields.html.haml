@@ -1,6 +1,6 @@
 = f.input :price
 = f.input :date
-= f.input :action, :collection => [:buy, :sell], :label_method => lambda { |item| t ".#{item}.#{resource.security.type}" }
+= f.input :action, :collection => [:buy, :sell], :label_method => lambda { |item| t ".#{resource.security.type}.#{item}" }
 = f.input :amount unless %w[RealEstate Loan].include?(resource.security.type)
 = f.input :comments
 

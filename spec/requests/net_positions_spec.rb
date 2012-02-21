@@ -19,7 +19,7 @@ describe "NetPositions" do
 
       fill_in "Price", :with => 200
       #fill_in "Date", :with => "29-11-2010"
-      select 'buy', :from => "Action"
+      select 'Buy', :from => "Action"
       fill_in "Quantity", :with => 30
       click_on "Stock"
 
@@ -38,7 +38,7 @@ describe "NetPositions" do
 
       fill_in "Price", :with => 200
       #fill_in "Date", :with => "29-11-2010"
-      select 'buy', :from => "Action"
+      select 'Buy', :from => "Action"
       fill_in "Quantity", :with => 30
       click_on "FixedIncome"
 
@@ -57,7 +57,7 @@ describe "NetPositions" do
 
       fill_in "Price", :with => 200
       #fill_in "Date", :with => "29-11-2010"
-      select 'repay', :from => "Action"
+      select 'Repay', :from => "Action"
       click_on "Loan"
 
       page.should have_content 'successfully created'
@@ -73,7 +73,7 @@ describe "NetPositions" do
 
       fill_in "Price", :with => 200
       #fill_in "Date", :with => "29-11-2010"
-      select 'buy', :from => "Action"
+      select 'Buy', :from => "Action"
       click_on "RealEstate"
 
       page.should have_content 'successfully created'
@@ -86,7 +86,7 @@ describe "NetPositions" do
 
       fill_in "Price", :with => 200
       #fill_in "Date", :with => "29-11-2010"
-      select 'buy', :from => "Action"
+      select 'Buy', :from => "Action"
       fill_in "Quantity", :with => 30
       click_on "Gold"
 

@@ -62,20 +62,9 @@ en:
       10: 'Invest another 50% in that portfolio because you think it is a right buying opportunity'
   net_positions:
     transaction_fields:
-      buy:
-        Loan: 'repay'
-        Stock: 'buy'
-        FixedIncome: 'buy'
-        MutualFund: 'buy'
-        RealEstate: 'buy'
-        Gold: 'buy'
-      sell:
-        Loan: 'borrow'
-        Stock: 'sell'
-        FixedIncome: 'sell'
-        MutualFund: 'sell'
-        RealEstate: 'sell'
-        Gold: 'sell'
+      Loan:
+        buy: 'Repay'
+        sell: 'Borrow'
 
   stocks:
     show:
