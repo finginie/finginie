@@ -61,7 +61,15 @@ SimpleNavigation::Configuration.run do |navigation|
     end
 
     primary.item :portfolios, 'My Investments', portfolios_path
-    primary.item :stocks, 'Explore Investments', stocks_path
+    primary.item :stocks, 'Stocks', stocks_path
+    primary.item :mutual_funds, 'Mutual Funds', mutual_funds_path do |secondary|
+      secondary.item :scheme_summary, 'Scheme Summary', scheme_summary_mutual_fund_path
+      secondary.item :scheme_returns, 'Scheme Returns', scheme_returns_mutual_fund_path
+      secondary.item :top_holdings,   'Top Holdings',   top_holdings_mutual_fund_path
+      secondary.item :detailed_holdings, 'Detailed Holdings', detailed_holdings_mutual_fund_path
+      secondary.item :asset_allocation, 'Asset Allocation', asset_allocation_mutual_fund_path
+      secondary.item :sectoral_allocation, 'Sectoral Allocation', sectoral_allocation_mutual_fund_path
+    end
 
     primary.item :personal_financial_tools, 'Financial Tools', personal_financial_tools_path do |secondary|
       secondary.item :emi_calculators, 'EMI Calculator', emi_calculators_path

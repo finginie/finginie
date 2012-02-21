@@ -9,6 +9,17 @@ Finginie::Application.routes.draw do
 
   resources :subscriptions, :only => [:index, :create, :destroy]
 
+  resources :mutual_funds, :only => [:index, :show] do
+    member do
+      get 'scheme_summary'
+      get 'scheme_returns'
+      get 'top_holdings'
+      get 'detailed_holdings'
+      get 'asset_allocation'
+      get 'sectoral_allocation'
+    end
+  end
+
   resources :other_assets
   resources :other_liabilities
   resources :loans

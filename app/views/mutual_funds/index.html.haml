@@ -1,0 +1,4 @@
+%h1 MutualFunds#index
+%ul
+- @mutual_funds.each do |mf|
+  %li= link_to mf.scheme_name, scheme_summary_mutual_fund_path(mf.scheme_name)
