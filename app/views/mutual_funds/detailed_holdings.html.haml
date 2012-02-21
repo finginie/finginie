@@ -1,21 +1,24 @@
-%h1= "#{@scheme.company_name}'s Detailed holdings"
+
 
 - if @scheme.portfolio_holdings
-  %table
-    %tr
-      %th= 'Invested Company Name'
-      %th= 'Industry Name'
-      %th= 'Instrument Name'
-      %th= 'Percenatge'
-      %th= 'Market Value'
-      %th= 'Rating'
-    - @scheme.portfolio_holdings.each do |portfolio|
-      %tr
-      %td= portfolio["InvestedCompanyName"]
-      %td= portfolio["IndustryName"] || "NA"
-      %td= portfolio["InstrumentName"]
-      %td= portfolio["Percentage"]
-      %td= portfolio["MarketValue"]
-      %td= portfolio["Rating"] || "NA"
+  .mf_container
+    %h1= "#{@scheme.scheme_name}'s Detailed holdings"
+    #detailed_holdings_data
+      %table
+        %tr
+          %th= 'Company Name'
+          %th= 'Sector'
+          %th= 'Asset Class'
+          %th= 'Percentage'
+          %th= 'Market Value'
+          %th= 'Rating'
+        - @scheme.portfolio_holdings.each do |portfolio|
+          %tr
+          %td= portfolio["InvestedCompanyName"]
+          %td= portfolio["IndustryName"] || "NA"
+          %td= portfolio["InstrumentName"]
+          %td= portfolio["Percentage"]
+          %td= portfolio["MarketValue"]
+          %td= portfolio["Rating"] || "NA"
 - else
   %p Data Not available
