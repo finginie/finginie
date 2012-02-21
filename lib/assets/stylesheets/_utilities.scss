@@ -36,6 +36,15 @@
 }
 @mixin hide-aside {
   aside {
-      display: none;
+    display: none;
   }
 }
+
+@mixin required-field {
+  abbr {
+    color: red;
+    border: none;
+  }
+}
+
+

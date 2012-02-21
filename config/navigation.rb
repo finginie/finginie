@@ -60,8 +60,14 @@ SimpleNavigation::Configuration.run do |navigation|
       secondary.item :comprehensive_risk_profilers, 'Ideal Asset Allocation', comprehensive_risk_profiler_path
     end
 
-    primary.item :portfolios, 'My Investments', portfolios_path
-    primary.item :stocks, 'Stocks', stocks_path
+    primary.item :portfolios, 'My Investments', portfolios_path do |secondary|
+      current_user.portfolios.each do |portfolio|
+        secondary.item "portfolio_#{portfolio.id}".to_sym, portfolio.name, portfolio_path(portfolio)
+      end
+    end
+
+    primary.item :stocks, 'Explore Investments', stocks_path
+
     primary.item :mutual_funds, 'Mutual Funds', mutual_funds_path do |secondary|
       if @scheme.try(:scheme_name)
         secondary.item :scheme_summary, 'Scheme Summary', scheme_summary_mutual_fund_path(@scheme.scheme_name)
