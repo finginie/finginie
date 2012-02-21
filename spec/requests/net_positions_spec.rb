@@ -21,7 +21,7 @@ describe "NetPositions" do
       #fill_in "Date", :with => "29-11-2010"
       select 'Buy', :from => "Action"
       fill_in "Quantity", :with => 30
-      click_on "Stock"
+      click_on "Submit Stock"
 
       page.should have_content 'successfully created'
       page.should have_content stock.name
