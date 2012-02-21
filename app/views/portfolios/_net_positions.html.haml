@@ -15,5 +15,5 @@
             = button_to 'Destroy', portfolio_net_position_path(resource, net_position), :confirm => 'Are you sure?', :method => :delete, :class => :negetive
 
 .actions
-  - %w(Stock FixedIncome Loan RealEstate Gold).each do |security_type|
+  - %w(Stock FixedIncome Loan RealEstate Gold MutualFund).each do |security_type|
     = link_to "Add New #{security_type.titleize}", new_portfolio_net_position_path(resource, 'net_position[security_attributes][type]' => security_type), :class => :button

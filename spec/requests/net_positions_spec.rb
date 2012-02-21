@@ -95,5 +95,23 @@ describe "NetPositions" do
       page.should have_content 200
       page.should have_content 30
      end
+
+    let(:scheme_master) { create :scheme_master }
+    it "adds new mutual fund position", :mongoid do
+      scheme_master.save # ensure scheme master is created
+      click_on 'Add New Mutual Fund'
+      select scheme_master.scheme_name, :from => "Scheme"
+
+      fill_in 'Price', :with => 10000
+      #fill_in "Date", :with => "29-11-2010"
+      select 'buy', :from => "Action"
+      fill_in "Quantity", :with => 30
+      click_on "MutualFund"
+
+      page.should have_content 'successfully created'
+      page.should have_content scheme_master.scheme_name
+      page.should have_content 10000
+      page.should have_content 30
+    end
   end
 end

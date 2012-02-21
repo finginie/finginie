@@ -15,5 +15,7 @@ FactoryGirl.define do
     end
     factory :loan, :class => Loan do
     end
+    factory :mutual_fund, :class => MutualFund do
+    end
   end
 end
