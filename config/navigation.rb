@@ -5,7 +5,6 @@ SimpleNavigation::Configuration.run do |navigation|
 
   # Define the primary navigation
   navigation.items do |primary|
-    primary.item :dashboard, 'DashBoard', root_path
 
     primary.item :investment_education, 'Learn Investing',page_path('investment_education') do |secondary|
       secondary.item :investment_concepts, 'Investment Concepts', :desc => 'Master the important concepts of investing like' do |tertiary|
