@@ -18,7 +18,9 @@ describe "Authentication" do
 
   it "should go back to previous page after logging in" do
     visit portfolios_path
-    click_button 'Facebook'
+    within "#main" do
+      click_button 'Facebook'
+    end
     current_path.should eq portfolios_path
   end
 

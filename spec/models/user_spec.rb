@@ -36,20 +36,22 @@ describe User do
     end
   end
 
-  context "with existing comprehensive risk profiler" do
-    let(:user) { User.find_or_create_by_omniauth(auth_hash) }
+  context "with comprehensive risk profiler in session" do
+    let(:comprehensive_risk_profiler_attributes) {
+      attributes_for  :comprehensive_risk_profiler, :age => 245, :household_savings => 823
+    }
 
-    context "should merge with comprehensive risk profiler" do
-      let(:comprehensive_risk_profiler) { build :comprehensive_risk_profiler }
-      subject { user.merge_comprehensive_risk_profiler(comprehensive_risk_profiler.attributes).comprehensive_risk_profiler }
-      its(:score) { should eq comprehensive_risk_profiler.score }
+    it "should merge comprehensive risk profiler attributes" do
+      user.merge_comprehensive_risk_profiler(comprehensive_risk_profiler_attributes)
+      user.comprehensive_risk_profiler.age.should eq 245
+      user.comprehensive_risk_profiler.household_savings.should eq 823
     end
 
-    let(:comprehensive_risk_profiler) { create :comprehensive_risk_profiler, :user => user }
-    it "should not create new record" do
-      comprehensive_risk_profiler.save
-      user.merge_comprehensive_risk_profiler(comprehensive_risk_profiler.attributes)
-      ComprehensiveRiskProfiler.count.should eq 1
+    it "should not overwrite existing comprehensive risk profiler" do
+      create :comprehensive_risk_profiler, :user => user, :age => 28, :household_savings => 4000
+      user.merge_comprehensive_risk_profiler(comprehensive_risk_profiler_attributes)
+      user.comprehensive_risk_profiler.age.should eq 28
+      user.comprehensive_risk_profiler.household_savings.should eq 4000
     end
   end
 end

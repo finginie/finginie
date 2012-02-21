@@ -1,7 +1,7 @@
 Capybara.javascript_driver = :webkit
 unless ENV.member?('TDDIUM')
-  headless = Headless.new
-  headless.start
+  HEADLESS = Headless.new
+  HEADLESS.start
 end
 
 RSpec.configure do |c|

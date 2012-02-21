@@ -1,4 +1,8 @@
 class ComprehensiveRiskProfiler < ActiveRecord::Base
+  attr_accessible :age, :dependent, :household_expenditure, :household_income, :household_savings,
+                  :portfolio_investment, :preference, :special_goals_amount, :special_goals_years,
+                  :tax_saving_investment, :time_horizon
+
   belongs_to :user
 
   PREFERENCE_OPTIONS = [1,4,6,8,10]

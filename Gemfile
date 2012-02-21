@@ -63,13 +63,16 @@ group :test, :development do
   gem 'sqlite3'
   gem 'tddium'
   gem 'timecop'
-  gem 'vcr', '~>2.0.0.rc1'
-    gem 'webmock'
 end
 
 group :development do
   gem 'heroku'
   gem 'rails_best_practices'
+end
+
+group :test do
+  gem 'vcr', '~>2.0.0.rc1'
+    gem 'webmock'
 end
 
 group :production do

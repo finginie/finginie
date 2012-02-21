@@ -87,8 +87,8 @@ describe "NetPositions" do
       fill_in "Price", :with => 200
       #fill_in "Date", :with => "29-11-2010"
       select 'buy', :from => "Action"
-      fill_in "Amount", :with => 30
-      click_on "Create Net position"
+      fill_in "Quantity", :with => 30
+      click_on "Gold"
 
       page.should have_content 'successfully created'
       page.should have_content 'Gold'

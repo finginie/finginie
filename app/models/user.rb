@@ -21,9 +21,7 @@ class User < ActiveRecord::Base
   end
 
   def merge_comprehensive_risk_profiler(attributes)
-    attributes.delete("user_id")
-    ComprehensiveRiskProfiler.find_or_initialize_by_user_id(self.id)
-      .update_attributes(attributes)
+    create_comprehensive_risk_profiler(attributes) unless comprehensive_risk_profiler.persisted?
     self
   end
 

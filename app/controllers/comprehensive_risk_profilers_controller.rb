@@ -17,10 +17,10 @@ class ComprehensiveRiskProfilersController < InheritedResources::Base
 
   def update_resource(object, attributes)
     if current_user
-      object.update_attributes(attributes)
+      super
     else
-      object.attributes = attributes
-      session[:comprehensive_risk_profiler] = object.attributes if object.valid?
+      object.attributes = attributes.first
+      session[:comprehensive_risk_profiler] = attributes.first if object.valid?
       object
     end
   end
