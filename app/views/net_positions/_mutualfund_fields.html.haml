@@ -1,0 +1,4 @@
+= f.fields_for :security do |mutual_fund|
+  = mutual_fund.input :type, :as => :hidden
+  = mutual_fund.input :scheme do
+    = mutual_fund.select :scheme, SchemeMaster.all.map { |r| [r.scheme_name, r.scheme_name] }
