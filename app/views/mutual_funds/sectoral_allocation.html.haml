@@ -1,0 +1,13 @@
+- if @scheme.sectoral_allocation
+  %h1= "Sectoral Allocation"
+  #mf-sectoral-allocation-chart{ 'mf-data-sectoral-allocation' => @scheme.sectoral_allocation.to_a }
+  #sectoral-allocation
+    %table
+      %th Sector
+      %th Percentage
+      - @scheme.sectoral_allocation.each do |name, value|
+        %tr
+          %td= name
+          %td= value
+- else
+  %p Data not available
