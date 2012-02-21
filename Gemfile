@@ -25,6 +25,7 @@ gem 'kaminari'
 gem 'meta_search'
 gem 'mongoid'
   gem 'bson_ext'
+gem 'mongoid_search'
 gem 'nested_form', :git => "git://github.com/TMaYaD/nested_form.git"
 gem 'newrelic_rpm'
 gem 'omniauth-facebook'
