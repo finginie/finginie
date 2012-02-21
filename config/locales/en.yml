@@ -60,6 +60,22 @@ en:
       5: 'Move 50% of your investments to fixed deposits and hold 50%'
       8: 'Keep holding your portfolio because you think it will pick up'
       10: 'Invest another 50% in that portfolio because you think it is a right buying opportunity'
+  net_positions:
+    transaction_fields:
+      buy:
+        Loan: 'repay'
+        Stock: 'buy'
+        FixedIncome: 'buy'
+        MutualFund: 'buy'
+        RealEstate: 'buy'
+        Gold: 'buy'
+      sell:
+        Loan: 'borrow'
+        Stock: 'sell'
+        FixedIncome: 'sell'
+        MutualFund: 'sell'
+        RealEstate: 'sell'
+        Gold: 'sell'
 
   stocks:
     show:

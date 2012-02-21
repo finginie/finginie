@@ -57,7 +57,7 @@ describe "NetPositions" do
 
       fill_in "Price", :with => 200
       #fill_in "Date", :with => "29-11-2010"
-      select 'buy', :from => "Action"
+      select 'repay', :from => "Action"
       click_on "Loan"
 
       page.should have_content 'successfully created'
