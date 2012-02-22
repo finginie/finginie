@@ -1,7 +1,5 @@
 Finginie::Application.routes.draw do
 
-  get "share_holding/show"
-
   match "/signin" => "sessions#new", :as => :signin
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
