@@ -1,7 +1,9 @@
 class FixedIncome < Security
   attr_accessible :period, :rate_of_interest
-
   belongs_to :user
+
+  validates :period, :presence => true
+  validates :rate_of_interest, :presence => true
 
   def current_value(transaction)
     value_at_date(transaction.price, [(Date.today - transaction.date) / 365, period].min)

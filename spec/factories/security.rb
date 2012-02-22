@@ -17,5 +17,7 @@ FactoryGirl.define do
     end
     factory :mutual_fund, :class => MutualFund do
     end
+    factory :gold, :class => Gold do
+    end
   end
 end

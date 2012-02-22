@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe FixedIncome do
+  it { should validate_presence_of :period }
+  it { should validate_presence_of :rate_of_interest }
+
   let(:fixed_income) { create :fixed_income, :period => 5, :rate_of_interest => 8.89 }
   describe "with transaction" do
     let(:transaction) { create :transaction, :net_position => create(:net_position, :security => fixed_income), :price => 10000, :date => Date.civil(2007, 1, 31) }
