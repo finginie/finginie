@@ -1,0 +1,78 @@
+@import "bourbon";
+@import "lists";
+@import "utilities";
+@import "defaults";
+
+
+
+body.portfolios.index {
+  #wrapper {
+    min-height: 600px;
+    @include hide-aside;
+    #main {
+      h1 {
+        margin-bottom: 0;
+      }
+      form {
+        >div {
+          width: 45%;
+          text-align:right;
+        }
+        input[type="submit"] {
+          @include sharp-button;
+        }   
+      }
+      table {
+        margin-top: 3em;
+        td, th {
+          border: none;
+          width: 40%;
+          text-align: left;
+          padding: {
+            left: 0;
+            
+          }
+        }
+        .actions {
+          form {
+            float:left;
+          }
+        }
+      }
+    }
+  }
+}
+
+body.portfolios.new {
+  #wrapper {
+    min-height: 600px;
+    #main {
+      #new_portfolio {
+        .inputs {
+          div {
+            label {
+              width: 10%;
+            }
+            #portfolio_name {
+              margin: {
+                bottom: 1em;
+                left: 0.8em;
+                top: 0.1em;
+              }
+            }
+          }
+        }
+        .actions {
+          width: 25%;
+          text-align: right;
+          .button {
+            @include sharp-button;
+          }
+        }
+      }  
+    }
+  }
+}
+
+
+
