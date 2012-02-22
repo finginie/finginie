@@ -1,0 +1,5 @@
+%h1= "Ratios - #{@stock.name}"
+- if @stock.company && @stock.company.major_sector == 2
+  = render 'banking_ratio'
+- if @stock.company && @stock.company.major_sector != 2
+  = render 'non_banking_ratio'

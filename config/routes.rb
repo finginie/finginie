@@ -30,7 +30,10 @@ Finginie::Application.routes.draw do
     resource :profit_loss, :only => [:show], :controller => :profit_loss
     resource :cash_flow, :only => [:show], :controller => :cash_flow
     resources :news, :only => [:show]
+    resource :ratios, :only => [:show]
+    resource :share_holding, :only => [:show], :controller => :share_holding
   end
+
   resource :comprehensive_risk_profiler, :only =>[:edit, :update, :show]
 
   resources :portfolios do
