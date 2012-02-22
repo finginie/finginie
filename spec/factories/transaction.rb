@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :transaction do
     net_position
-    price "9.99"
+    price 9
     date "2011-09-08"
     quantity 1
     #comments "MyText"
