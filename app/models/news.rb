@@ -12,4 +12,8 @@ class News
   field :modify_on, :type => DateTime
 
   key :company_code, :news_date, :headlines
+
+  scope :headlines, lambda { |company_code| where( company_code: company_code) }
+  scope :latest, lambda { |limit| order_by(:modify_on => :desc).limit(limit) }
+
 end

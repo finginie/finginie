@@ -124,4 +124,79 @@ class AuditedResult
     field  :modified_date,  :type => DateTime
 
     key :companycode, :year_ending
+
+    [
+      :equity_capital, :share_appl_money, :pref_capital, :resand_surplus, :revaluation_reserve,
+      :long_term_loan, :unsecured_term_loans, :unsecured_loans, :borrowings_by_bank, :cash_credits,
+      :bills_purchased, :term_loans, :net_block, :capital_wip, :net_current_assets, :misc_exp_not_w_off,
+      :investments, :cash_credits, :bills_purchased, :term_loans, :cash_and_bank_balance,
+      :money_at_call_short_notice, :raw_inventory, :wip_inventory, :finished_goods_inventory,
+      :other_inventory, :excise, :operating_income, :other_recurring_income, :non_recurring_income,
+      :adjusted_pbdit, :financial_expences, :extr_ordinary_items, :layoffretrench_vrs, :insuranceclaims,
+      :reported_net_profit, :numberof_equity_shares
+    ].each do |attr|                                          ##
+      define_method "#{attr}!" do                             # def attr!
+        send(attr) || 0.0                                     #   attr || 0.0
+      end                                                     # end
+    end                                                       ##
+
+  def banking_company?
+    @company ||= CompanyMaster.where( company_code: companycode).first
+    @company.major_sector == 2
+  end
+  def net_worth
+    @net_worth ||= total_share_capital + resand_surplus!
+    @net_worth += revaluation_reserve! unless banking_company?
+    @net_worth
+  end
+
+  def total_share_capital
+    @total_share_capital ||= equity_capital!+ share_appl_money! + pref_capital!
+  end
+
+  def total_debt
+    long_term_loan! + unsecured_term_loans! unless banking_company?
+  end
+
+  def total_liabilities
+    net_worth + ( banking_company? ? unsecured_loans! + borrowings_by_bank! : total_debt )
+  end
+
+  def advances
+    (cash_credits! + bills_purchased!  + term_loans!) if banking_company?
+  end
+
+  def total_assets
+    value = net_block! + capital_wip! + net_current_assets! + misc_exp_not_w_off! + investments!
+    value += advances + cash_and_bank_balance! + money_at_call_short_notice! if banking_company?
+    value
+  end
+
+  def inventory
+    raw_inventory! + wip_inventory! + finished_goods_inventory! + other_inventory!
+  end
+
+  def sales
+    operating_income!+ excise! unless banking_company?
+  end
+
+  def other_income
+    other_recurring_income! + non_recurring_income! unless banking_company?
+  end
+
+  def total_income
+    operating_income!+ other_recurring_income!+ non_recurring_income! unless banking_company?
+  end
+
+  def pbdt
+    adjusted_pbdit! - financial_expences! unless banking_company?
+  end
+
+  def extra_ordinary_items
+    extr_ordinary_items! + layoffretrench_vrs! + insuranceclaims! unless banking_company?
+  end
+
+  def earnings_per_share
+    (reported_net_profit / numberof_equity_shares).round(2) if reported_net_profit && numberof_equity_shares
+  end
 end

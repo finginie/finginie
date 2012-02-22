@@ -2,10 +2,12 @@ require 'spec_helper'
 
 describe Stock do
   let (:stock) { create :stock }
+  let (:company_master) { create :company_master, :nse_code => stock.symbol }
   subject { stock }
 
   it { should validate_uniqueness_of :name }
   it { should validate_uniqueness_of :symbol }
+  its(:company_code) { should eq company_master.company_code }
 
   it "should mass assign attributes" do
     Stock.find_or_initialize_by_id(1).update_attributes({
@@ -44,6 +46,17 @@ describe Stock do
 
       Stock.by_percent_change(40, 60).should include stock
       Stock.by_percent_change(40, 60).should_not include another_stock
+    end
+  end
+
+  describe "with news", :mongoid do
+    before :each do
+      @company = create :company_master, :company_code => "123234", :nse_code => stock.symbol
+      6.times { |i| create :news, :company_code => @company.company_code, :headlines => "headlines #{i}", :modify_on => Time.now - i }
+    end
+    it "should get all the news for a company" do
+      stock.news_headlines.should include( "headlines 0", "headlines 1", "headlines 2", "headlines 3", "headlines 4" )
+      stock.news_headlines.should_not include "headlines 5"
     end
   end
 end
