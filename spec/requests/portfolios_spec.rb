@@ -5,9 +5,10 @@ describe "Portfolios" do
   let (:portfolio) { create :portfolio, :user => current_user }
 
   it "groups net positions by asset type" do
-    stock_position = create :net_position, :security => create(:stock), :portfolio => portfolio
-    loan_position = create :net_position, :security => create(:loan), :portfolio => portfolio
-    fixed_income_position = create :net_position, :security => create(:fixed_income), :portfolio => portfolio
+    stock_position = create :net_position_with_transactions, :security => create(:stock_with_scrip), :portfolio => portfolio
+    loan_position = create :net_position_with_transactions, :security => create(:loan), :portfolio => portfolio
+    fixed_income_position = create :net_position_with_transactions, :security => create(:fixed_income), :portfolio => portfolio
+
     visit portfolio_path portfolio
     within "section.Stock table" do
       page.should have_content stock_position.security.name
@@ -18,5 +19,19 @@ describe "Portfolios" do
     within "section.Loan table" do
       page.should have_content loan_position.security.name
     end
+  end
+
+  it "shows stock net positions summary" do
+    stock_position = create :net_position, :security => create(:stock, :name => "FOO 1", :current_price => 20), :portfolio => portfolio
+    create :scrip, :id => stock_position.security.symbol, :last_traded_price => 20
+    stock_position.transactions.create build(:transaction, :quantity => 100, :price => 10).attributes
+    stock_position.transactions.create build(:transaction, :quantity => 100, :price => 12).attributes
+
+    visit portfolio_path portfolio
+    expected_table =[
+                      ["Name", "Quantity", "Average Cost Price", "Market Price", "Amount Invested", "Market value", "Profit", ""],
+                      ["FOO 1", "200", "11.0", "20.0", "2200.0", "4000", "1800.0", ""]
+                    ]
+    tableish("section.Stock table").should eq expected_table
   end
 end

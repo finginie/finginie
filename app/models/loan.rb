@@ -2,6 +2,9 @@ class Loan < Security
   attr_accessible :period, :rate_of_interest
   belongs_to :user
 
+  validates :period, :presence => true
+  validates :rate_of_interest, :presence => true
+
   def current_value(transaction)
     time_period = (Date.today.year - transaction.date.year) * 12 + (Date.today.month - transaction.date.month) + 1
     emi = EmiCalculator.new(:cost => transaction.price, :rate => rate_of_interest, :term => period).calculate_emi

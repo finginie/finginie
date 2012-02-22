@@ -1,7 +1,8 @@
 # Read about factories at http://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :scrip do
-    last_traded_price 20
+  factory :loan, :parent => :security, :class => Loan do
+    period 9
+    rate_of_interest 5
   end
 end

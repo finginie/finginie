@@ -11,11 +11,9 @@ FactoryGirl.define do
     #emi "9.99"
     factory :real_estate, :class => RealEstate do
     end
-    factory :fixed_income, :class => FixedIncome do
-    end
-    factory :loan, :class => Loan do
-    end
     factory :mutual_fund, :class => MutualFund do
+    end
+    factory :gold, :class => Gold do
     end
   end
 end

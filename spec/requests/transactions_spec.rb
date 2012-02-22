@@ -21,9 +21,7 @@ describe "Transactions" do
                           ["2007-01-31", "Foo 1", "Stock", "buy", "1.0", "1", "1.0"],
                           ["2007-03-31", "Foo 1", "Stock", "sell", "1.0", "-1", "-1.0"]
                         ]
-      rows = page.find("table").all('tr')
-      table = rows.map { |r| r.all('th,td').map { |c| c.text.strip } }
-      table.should eq expected_table
+      tableish("table").should eq expected_table
     end
 
     def add_stock_position(stock_position, quantity, price, date, action)

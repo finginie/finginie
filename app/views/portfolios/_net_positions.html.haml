@@ -3,12 +3,24 @@
     %h1=t ".#{type}"
     %table
       %tr
-        %th name
+        %th Name
+        %th Quantity
+        %th Average Cost Price
+        %th Market Price
+        %th Amount Invested
+        %th Market value
+        %th Profit
         %th
 
       - positions.each do |net_position|
         %tr
           %td= link_to net_position.security.name, portfolio_net_position_path(resource, net_position)
+          %td= net_position.quantity
+          %td= net_position.average_cost
+          %td= net_position.security.current_price
+          %td= net_position.total_cost
+          %td= net_position.current_value
+          %td= net_position.unrealised_profit
           %td.actions
             = button_to 'Add Transaction', new_portfolio_net_position_transaction_path(resource, net_position), :method => :get
             = button_to 'Change Security', edit_portfolio_net_position_path(resource, net_position), :method => :get
