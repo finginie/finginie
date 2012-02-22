@@ -124,4 +124,44 @@ class AuditedResult
     field  :modified_date,  :type => DateTime
 
     key :companycode, :year_ending
+
+  def banking_company?
+    @company ||= CompanyMaster.where( company_code: companycode).first
+    return true if @company.major_sector == 2
+    return false
+  end
+  def net_worth
+    if !@net_worth
+      @net_worth = ( total_share_capital || 0.0 ) + ( resand_surplus || 0.0 ) if (total_share_capital || resand_surplus)
+      @net_worth = ( revaluation_reserve || 0.0 ) + ( total_share_capital || 0.0 ) + ( resand_surplus || 0.0 ) if !banking_company?
+    end
+    @net_worth
+  end
+
+  def total_share_capital
+    @total_share_capital ||= ( (equity_capital || 0.0 )+ ( share_appl_money || 0.0) + ( pref_capital || 0.0 ) if equity_capital || share_appl_money || pref_capital )
+  end
+
+  def total_debt
+    (long_term_loan || 0.0 ) + ( unsecured_term_loans || 0.0 ) if !banking_company?
+  end
+
+  def total_liabilities
+    return ( net_worth || 0.0 ) + ( total_debt || 0.0 ) if !banking_company?
+    ( net_worth || 0.0 ) + ( unsecured_loans || 0.0 ) + ( borrowings_by_bank || 0.0 )
+  end
+
+  def advances
+    ( (cash_credits || 0.0) + (bills_purchased || 0.0)  + (term_loans || 0.0)) if banking_company?
+  end
+
+  def total_assets
+    value = (net_block || 0.0) + (capital_wip || 0.0) + (net_current_assets || 0.0) + (misc_exp_not_w_off || 0.0) + (investments || 0.0)
+    value += (advances || 0.0) + (cash_and_bank_balance || 0.0) + (money_at_call_short_notice || 0.0) if banking_company?
+    value
+  end
+
+  def inventory
+    (raw_inventory || 0.0) + (wip_inventory || 0.0) + (finished_goods_inventory || 0.0) + (other_inventory || 0.0)
+  end
 end
