@@ -2,10 +2,12 @@ require 'spec_helper'
 
 describe Stock do
   let (:stock) { create :stock }
+  let (:company_master) { create :company_master, :nse_code => stock.symbol }
   subject { stock }
 
   it { should validate_uniqueness_of :name }
   it { should validate_uniqueness_of :symbol }
+  its(:company_code) { should eq company_master.company_code }
 
   it "should mass assign attributes" do
     Stock.find_or_initialize_by_id(1).update_attributes({

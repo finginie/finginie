@@ -25,7 +25,11 @@ Finginie::Application.routes.draw do
   resources :loans
   resources :fixed_incomes
   resources :real_estates
-  resources :stocks, :only => [:index, :show]
+  resources :stocks, :only => [:index, :show] do
+    resource :balance_sheet, :only => [:show], :controller => :balance_sheet
+    resource :profit_loss, :only => [:show], :controller => :profit_loss
+    resource :cash_flow, :only => [:show], :controller => :cash_flow
+  end
   resource :comprehensive_risk_profiler, :only =>[:edit, :update, :show]
 
   resources :portfolios do
