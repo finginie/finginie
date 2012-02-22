@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe AuditedResult do
+describe AuditedResult, :mongoid do
   let(:company_master) { create :company_master }
   let(:audited_result) { create :audited_result, :companycode => company_master.company_code,
                                 :equity_capital             => "6349990000",
@@ -28,7 +28,18 @@ describe AuditedResult do
                                 :raw_inventory              => "1753000000",
                                 :wip_inventory              => "262000000",
                                 :finished_goods_inventory   => "3285000000",
-                                :other_inventory            => "172800000"
+                                :other_inventory            => "172800000",
+                                :excise                     => "9347100000",
+                                :operating_income           => "955255776000",
+                                :other_recurring_income     => "10651411000",
+                                :non_recurring_income       => "912682000",
+                                :adjusted_pbdit             => "17282385200",
+                                :financial_expences         => "4886795610",
+                                :extr_ordinary_items        => "-894171300",
+                                :layoffretrench_vrs         => "0",
+                                :insuranceclaims            => "926200000",
+                                :reported_net_profit        => "82645190000",
+                                :numberof_equity_shares     => "634998991"
 
   }
   subject { audited_result }
@@ -41,28 +52,8 @@ describe AuditedResult do
     audited_result.total_share_capital.to_i.should eq 6352667777
   end
 
-  describe "for banking sector" do
-    before(:each) { company_master.update_attribute(:major_sector, 2) }
-
-    it "should calculate the networth for banking sector" do
-      audited_result.net_worth.to_i.should eq 649863109777
-    end
-
-    it "should calculate total liabilites" do
-      audited_result.total_liabilities.to_i.should eq 652328878542
-    end
-
-    it "should calculate advances" do
-      audited_result.advances.to_i.should eq 7567194480000
-    end
-
-    it "should calculate total assets" do
-      audited_result.total_assets.to_i.should eq 11184878234434
-    end
-  end
-
   describe "for non-banking sector" do
-    it "should calculate the net_worth for non-banking sector" do
+    it "should calculate the net_worth" do
       audited_result.net_worth.to_i.should eq 683196443110
     end
 
@@ -81,5 +72,51 @@ describe AuditedResult do
     it "should calculate inventory" do
       audited_result.inventory.to_i.should eq 5472800000
     end
+
+    it "should calculate sales" do
+      audited_result.sales.to_i.should eq 964602876000
+    end
+
+    it "should calculate other_income" do
+      audited_result.other_income.to_i.should eq 11564093000
+    end
+
+    it "should calculate total_income" do
+      audited_result.total_income.to_i.should eq 966819869000
+    end
+
+    it "should calculate pbdt" do
+      audited_result.pbdt.to_i.should eq 12395589590
+    end
+
+    it "should calcualte extra_ordinary_items" do
+      audited_result.extra_ordinary_items.to_i.should eq 32028700
+    end
+
+    it "should calculate earnings_per_share" do
+      audited_result.earnings_per_share.to_f.should eq 130.15
+    end
   end
+
+  describe "for banking sector" do
+    before(:all) { company_master.update_attribute(:major_sector, 2) }
+
+    it "should calculate the networth for banking sector" do
+      audited_result.net_worth.to_i.should eq 649863109777
+    end
+
+    it "should calculate total liabilites" do
+      audited_result.total_liabilities.to_i.should eq 652328878542
+    end
+
+    it "should calculate advances" do
+      audited_result.advances.to_i.should eq 7567194480000
+    end
+
+    it "should calculate total assets" do
+      audited_result.total_assets.to_i.should eq 11184878234434
+    end
+  end
+
+
 end

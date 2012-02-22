@@ -27,6 +27,7 @@ Finginie::Application.routes.draw do
   resources :real_estates
   resources :stocks, :only => [:index, :show] do
     resource :balance_sheet, :only => [:show], :controller => :balance_sheet
+    resource :profit_loss, :only => [:show], :controller => :profit_loss
   end
   resource :comprehensive_risk_profiler, :only =>[:edit, :update, :show]
 

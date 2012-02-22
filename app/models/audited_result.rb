@@ -162,6 +162,30 @@ class AuditedResult
   end
 
   def inventory
-    (raw_inventory || 0.0) + (wip_inventory || 0.0) + (finished_goods_inventory || 0.0) + (other_inventory || 0.0)
+    ( raw_inventory || 0.0 ) + ( wip_inventory || 0.0 ) + (finished_goods_inventory || 0.0 ) + ( other_inventory || 0.0 )
+  end
+
+  def sales
+    ( operating_income || 0.0 )+ ( excise || 0.0 ) if !banking_company?
+  end
+
+  def other_income
+    ( other_recurring_income || 0.0 ) + ( non_recurring_income || 0.0 ) if !banking_company?
+  end
+
+  def total_income
+    ( operating_income || 0.0 )+ ( other_recurring_income || 0.0 )+ ( non_recurring_income || 0.0 ) if !banking_company?
+  end
+
+  def pbdt
+    ( adjusted_pbdit || 0.0 ) - ( financial_expences || 0.0 ) if !banking_company?
+  end
+
+  def extra_ordinary_items
+    ( extr_ordinary_items || 0.0 ) + ( layoffretrench_vrs || 0.0 ) + ( insuranceclaims || 0.0 ) if !banking_company?
+  end
+
+  def earnings_per_share
+    return (reported_net_profit / numberof_equity_shares).round(2) if reported_net_profit && numberof_equity_shares
   end
 end
