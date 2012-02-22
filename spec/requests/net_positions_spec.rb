@@ -104,7 +104,7 @@ describe "NetPositions" do
 
       fill_in 'Price', :with => 10000
       #fill_in "Date", :with => "29-11-2010"
-      select 'buy', :from => "Action"
+      select 'Buy', :from => "Action"
       fill_in "Quantity", :with => 30
       click_on "MutualFund"
 
