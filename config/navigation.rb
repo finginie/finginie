@@ -60,8 +60,10 @@ SimpleNavigation::Configuration.run do |navigation|
     end
 
     primary.item :portfolios, 'My Investments', portfolios_path do |secondary|
-      current_user.portfolios.each do |portfolio|
-        secondary.item "portfolio_#{portfolio.id}".to_sym, portfolio.name, portfolio_path(portfolio)
+      if current_user
+        current_user.portfolios.each do |portfolio|
+          secondary.item "portfolio_#{portfolio.id}".to_sym, portfolio.name, portfolio_path(portfolio)
+        end
       end
     end
 

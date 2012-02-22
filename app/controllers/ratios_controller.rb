@@ -10,6 +10,7 @@ class RatiosController < InheritedResources::Base
       else
         @ratio = Ratio.all( conditions: { company_code: parent.company_code }, sort: [[ :year_ending, :desc ]] ).first
         @ratio = RatioDecorator.decorate(@ratio)
+      end
     end
   end
 end
