@@ -31,4 +31,15 @@
     %strong= @stock.fifty_two_week_low_price
     %span (#{@stock.fifty_two_week_low_date})
 
+%section.news
+  %h1 News
+  %ul
+    - if @stock.news_headlines
+      - @stock.news_headlines.each do |headline|
+        %li
+          = link_to headline, stock_news_path(:stock_id => @stock.id, :id => headline)
+
+%section
+%iframe{:src => @chart_url, :style => "width:800px; height:600px"}
+
 .back= link_to 'Back', stocks_path
