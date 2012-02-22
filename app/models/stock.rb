@@ -27,7 +27,7 @@ class Stock < Security
 
   SCRIP_METHODS = [:last_traded_price, :percent_change, :net_change, :volume, :high_price, :low_price, :best_buy_price, :best_buy_quantity, :best_sell_price, :best_sell_quantity]
   delegate *SCRIP_METHODS, :to => :scrip, :allow_nil => true
-  delegate :company_code, :to => :company
+  delegate :company_code, :to => :company, :allow_nil => true
 
   def scrip
     Scrip.find(symbol)
@@ -40,6 +40,10 @@ class Stock < Security
   def as_json(options = {})
     options ||= {}
     super(options.merge(:methods => SCRIP_METHODS))
+  end
+
+  def news_headlines
+    News.headlines(company_code).latest(5).map { |news| news.headlines }
   end
 
   def company

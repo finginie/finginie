@@ -29,6 +29,7 @@ Finginie::Application.routes.draw do
     resource :balance_sheet, :only => [:show], :controller => :balance_sheet
     resource :profit_loss, :only => [:show], :controller => :profit_loss
     resource :cash_flow, :only => [:show], :controller => :cash_flow
+    resources :news, :only => [:show]
   end
   resource :comprehensive_risk_profiler, :only =>[:edit, :update, :show]
 
