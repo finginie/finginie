@@ -37,13 +37,13 @@ describe "Ratios", :mongoid do
     visit stock_ratios_path(:stock_id => stock.id)
     page.should have_content 'Capital Adequacy Ratio'
     page.should have_content 'COMPONENT RATIOS'
-    page.should have_content @ratio.sell_distribut_cost_comp
-    page.should have_content @ratio.interest_coverage
-    page.should have_content @ratio.total_debtto_ownersfund
-    page.should have_content @ratio.investments_turn_ratio
-    page.should have_content @ratio.earning_retention_ratio
-    page.should have_content @ratio.reported_cash_eps
-    page.should have_content @ratio.net_profit_margin
-    page.should have_content @ratio.asset_turnover_ratio
+    page.should have_content @ratio.sell_distribut_cost_comp.round(2)
+    page.should have_content @ratio.interest_coverage.round(2)
+    page.should have_content @ratio.total_debtto_ownersfund.round(2)
+    page.should have_content @ratio.investments_turn_ratio.round(2)
+    page.should have_content @ratio.earning_retention_ratio.round(2)
+    page.should have_content @ratio.reported_cash_eps.round(2)
+    page.should have_content @ratio.net_profit_margin.round(2)
+    page.should have_content @ratio.asset_turnover_ratio.round(2)
   end
 end

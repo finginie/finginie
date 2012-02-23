@@ -2,7 +2,8 @@
   %table
     - @ratio.view_items.each do |group, items|
       %tr
-        %td= group
+        %td
+          %b= "#{group}:"
       - items.each do |item|
         %tr
           %td= t "ratios.#{item}"

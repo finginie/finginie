@@ -38,4 +38,11 @@ class BankingRatioDecorator < ApplicationDecorator
   def view_items
     RATIO_GROUPS
   end
+
+  RATIO_GROUPS.values.flatten.each do |attr|
+    define_method "#{attr}" do
+      model.send(attr) ? model.send(attr).round(2) : "NA"
+    end
+  end
+
 end

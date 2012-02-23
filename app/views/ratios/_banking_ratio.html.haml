@@ -1,11 +1,12 @@
 - if @ratio.model
   %table
     %tr
-    %td= t "ratios.capital_adequacy_ratio"
-    %td= @ratio.send(:capital_adequacy_ratio)
+      %td= t "ratios.capital_adequacy_ratio"
+      %td= @ratio.send(:capital_adequacy_ratio)
     - @ratio.view_items.each do |group, items|
       %tr
-        %td= group
+        %td
+          %b="#{group}:"
       - items.each do |item|
         %tr
           %td= t "ratios.#{item}"
