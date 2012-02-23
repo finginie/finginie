@@ -40,7 +40,7 @@ class NetPosition < ActiveRecord::Base
   end
 
   def unrealised_profit
-    current_value - quantity * average_cost
+    current_value - quantity * average_cost unless transactions.empty?
   end
 
   def profit

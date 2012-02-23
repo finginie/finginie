@@ -4,10 +4,12 @@ describe "Portfolios" do
   include_context "logged in user"
   let (:portfolio) { create :portfolio, :user => current_user }
 
-  it "groups net positions by asset type" do
+  it "groups net positions by asset type", :mongoid do
     stock_position = create :net_position_with_transactions, :security => create(:stock_with_scrip), :portfolio => portfolio
     loan_position = create :net_position_with_transactions, :security => create(:loan), :portfolio => portfolio
     fixed_income_position = create :net_position_with_transactions, :security => create(:fixed_income), :portfolio => portfolio
+    mutual_fund_position = create :net_position_with_transactions, :security => create(:mutual_fund_with_scheme_master), :portfolio => portfolio
+    gold_position = create :net_position, :security => create(:gold), :portfolio => portfolio
 
     visit portfolio_path portfolio
     within "section.Stock table" do
@@ -18,6 +20,12 @@ describe "Portfolios" do
     end
     within "section.Loan table" do
       page.should have_content loan_position.security.name
+    end
+    within "section.MutualFund table" do
+      page.should have_content mutual_fund_position.security.name
+    end
+    within "section.Gold table" do
+      page.should have_content gold_position.security.name
     end
   end
 

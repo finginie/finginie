@@ -18,5 +18,12 @@ FactoryGirl.define do
     sip "True"
     fund_manager_prefix "Mr."
     fund_manager_name "Chirag Setalvad"
+
+    trait :with_mfnav_detail do
+      after_create do |scheme_master|
+        FactoryGirl.create :mfnav_detail, :security_code => scheme_master.securitycode
+      end
+    end
+    factory :scheme_master_with_mfnav_detail, :traits => [:with_mfnav_detail]
   end
 end
