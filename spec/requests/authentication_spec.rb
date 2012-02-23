@@ -47,9 +47,10 @@ describe "Authentication" do
       OmniAuth.config.add_mock authentication.provider, { :uid => authentication.uid }
 
       within "#sign_up" do
-        click_button "Facebook"
+        click_link "Signin"
       end
 
+      click_button "Facebook"
       page.should have_content 'Successfully signed in'
 
       visit comprehensive_risk_profiler_path

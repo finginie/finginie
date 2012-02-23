@@ -13,3 +13,34 @@ $ ->
           $("##{element}_field").hide()
   show_hide_input_field("special_goals")
   show_hide_input_field("tax_saving_investment")
+
+$ ->
+  if ($("#asset-allocation-chart").attr("data-asset-allocation") != undefined)
+    new Highcharts.Chart({
+      chart: {
+        renderTo: 'asset-allocation-chart'
+      },
+      title: {
+        text: 'Suggested Asset Allocation'
+      },
+      series: [{
+        type: 'pie',
+        data: JSON.parse($("#asset-allocation-chart").attr("data-asset-allocation"))
+      }],
+      legend: {
+        labelFormatter: ->  this.name + ': ' + this.y + '%'
+      },
+      tooltip: {
+        formatter: -> '' + this.point.name +': '+ (Math.round(this.y*10) / 10) + '%'
+      },
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: false
+                      },
+          showInLegend: true
+             }
+      }
+    });

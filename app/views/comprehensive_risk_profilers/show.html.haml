@@ -4,7 +4,8 @@
   out of 10. 10 indicates maximum risk taking ability
   %ul
     = resource.summary
-  %h1 Suggested Ideal Asset Allocation
+  %h1 Suggested Investment Mix
+  = t ".suggestion"
   - if resource.score
     %table
       %tr
@@ -15,5 +16,7 @@
           %td= asset_class
           %td= "#{percentage}%"
     #asset-allocation-chart{ 'data-asset-allocation' => FinancialPlanner.ideal_asset_allocation(resource).to_a }
-#sign_up
-  =button_to "Facebook",  '/auth/Facebook',   :method => :get
+-unless current_user
+  #sign_up
+    =link_to "Signin",  '/signin'
+= t ".future_investment"

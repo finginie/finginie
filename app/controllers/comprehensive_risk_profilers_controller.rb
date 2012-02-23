@@ -4,7 +4,7 @@ class ComprehensiveRiskProfilersController < InheritedResources::Base
 
   def show
     if first_time?
-      redirect_to edit_comprehensive_risk_profiler_path, :notice => "Please take the short quiz below to view your personalized asset allocation"
+      redirect_to edit_comprehensive_risk_profiler_path, :notice => t(".comprehensive_risk_profilers.message")
     else
       show!
     end
@@ -26,7 +26,7 @@ class ComprehensiveRiskProfilersController < InheritedResources::Base
   end
 
 private
- def first_time?
-   !(current_user && current_user.comprehensive_risk_profiler.valid? || session[:comprehensive_risk_profiler])
- end
+  def first_time?
+    !(current_user && current_user.comprehensive_risk_profiler.valid? || session[:comprehensive_risk_profiler])
+  end
 end
