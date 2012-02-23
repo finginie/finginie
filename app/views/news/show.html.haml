@@ -1,4 +1,3 @@
 %h1= @news.headlines
--if @news.modify_on
-  %p= @news.modify_on.strftime("%d-%m-%Y, %H:%M:%S")
+%p #{time_ago_in_words @news.modify_on} ago
 %p= @news.notes
