@@ -9,7 +9,9 @@
     - @ratio.view_items.each do |group, items|
       %tr
         %th.group{:colspan => 2}= group
-        - items.each do |item|
+      - items.each do |item|
         %tr
           %td= t "ratios.#{item}"
           %td= @ratio.send(item.to_sym)
+- else
+  %p No Data Available
