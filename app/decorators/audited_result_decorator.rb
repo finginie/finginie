@@ -229,12 +229,12 @@ class AuditedResultDecorator < ApplicationDecorator
 
   FIELDS_CRORE.each do |key|
     define_method(key.to_sym) do
-      model.send(key.to_sym) ? (model.send(key.to_sym) / 10000000).round(2).to_f : "NA"
+      model.send(key.to_sym) ? (model.send(key.to_sym) / 10000000).round(2).to_f : h.t('not_available')
     end
   end
 
   def number_of_equity_shares
-    (model.numberof_equity_shares) ? (model.numberof_equity_shares / 100000).round(2).to_f : "NA"
+    (model.numberof_equity_shares) ? (model.numberof_equity_shares / 100000).round(2).to_f : h.t('not_available')
   end
 
   def balance_sheet_view_items

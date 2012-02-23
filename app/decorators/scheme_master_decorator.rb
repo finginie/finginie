@@ -21,7 +21,7 @@ class SchemeMasterDecorator < ApplicationDecorator
 
   FIELDS_TO_ROUND.each do |key|
     define_method(key.to_sym) do
-      model.send(key.to_sym) ? model.send(key.to_sym).round(2).to_f : "NA"
+      model.send(key.to_sym) ? model.send(key.to_sym).round(2).to_f : h.t('not_available')
     end
   end
 

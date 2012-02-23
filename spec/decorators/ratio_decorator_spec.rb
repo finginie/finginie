@@ -10,5 +10,5 @@ describe RatioDecorator do
 
   its(:current_ratio)          { should eq 1.23 }
   its(:quick_ratio)            { should eq 2.35 }
-  its(:free_reserves_per_share){ should eq "NA" }
+  its(:free_reserves_per_share){ should eq "N/A" }
 end

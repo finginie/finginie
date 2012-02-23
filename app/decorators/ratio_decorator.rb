@@ -59,7 +59,7 @@ class RatioDecorator < ApplicationDecorator
 
   RATIO_GROUPS.values.flatten.each do |attr|
     define_method "#{attr}" do
-      model.send(attr) ? model.send(attr).round(2) : "NA"
+      model.send(attr) ? model.send(attr).round(2) : h.t('not_available')
     end
   end
 

@@ -9,5 +9,5 @@ describe BankingRatioDecorator do
 
   its(:adjusted_return_on_net_worth) { should eq 1.23 }
   its(:cost_of_funds_ratio)          { should eq 2.35 }
-  its(:net_profit_margin)            { should eq "NA" }
+  its(:net_profit_margin)            { should eq "N/A" }
 end
