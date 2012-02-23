@@ -13,13 +13,11 @@ class SchemeMasterDecorator < ApplicationDecorator
     end
   end
 
-  def entry_load
-    model.entry_load || "NA"
-  end
-
-  def exit_load
-    model.exit_load || "NA"
-  end
+  [ :company_name, :objective, :bench_mark_index, :dividend_percentage, :dividend_date, :entry_load, :exit_load ].each do |attr|
+    define_method "#{attr}" do                            # def attr
+      model.send(attr) || "NA"                            #   model.attr || "NA"
+    end                                                   # end
+  end                                                     ##
 
   FIELDS_TO_ROUND.each do |key|
     define_method(key.to_sym) do
