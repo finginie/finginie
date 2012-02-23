@@ -72,7 +72,7 @@ SimpleNavigation::Configuration.run do |navigation|
       if @stock
         secondary.item :stock,           "#{@stock.name}",        stock_path(@stock) do |tertiary|
           tertiary.item :balance_sheet,  'Balance Sheet',         stock_balance_sheet_path(@stock)
-          tertiary.item :profit_loss,    'Income Statemkent',     stock_profit_loss_path(@stock)
+          tertiary.item :profit_loss,    'Income Statement',      stock_profit_loss_path(@stock)
           tertiary.item :cash_flow,      'Cash Flow',             stock_cash_flow_path(@stock)
           tertiary.item :ratios,         'Ratios',                stock_ratios_path(@stock)
           tertiary.item :share_holding,  'Share Holding Pattern', stock_share_holding_path(@stock)

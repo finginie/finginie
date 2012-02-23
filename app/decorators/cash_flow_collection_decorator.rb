@@ -4,6 +4,6 @@ class CashFlowCollectionDecorator
   end
 
   def collection_non_null_fields
-    @cash_flow_decorators.map { |decorator| decorator.non_null_fields }.flatten.uniq - [ "company_code", "year_ending", "months", "type", "_id" ]
+    @cash_flow_decorators.map { |decorator| decorator.non_null_fields }.flatten.uniq - [ "company_code", "year_ending", "months", "type", "_id", "modified_date" ]
   end
 end

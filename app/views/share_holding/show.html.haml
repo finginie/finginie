@@ -1,14 +1,16 @@
 - if @share_holding.model
   %h1= "ShareHolding - #{@stock.name}"
   %table
+    %th Investor Type
+    %th Percentage
     - [ 'foreign_institutional_investors_percentage', 'domestic_institutional_investors_percentage', 'other_foreign_investors_percentage', 'promoters_percentage', 'directors_and_employees_percentage', 'others_percentage', 'public_percentage' ].each do |attr|
       %tr
         %td
           %b= t "share_holding.#{attr}"
+        %td= @share_holding.send(attr)
       - ShareHoldingDecorator::SHARE_HOLDING_CODES[attr].each do |item|
         - if @share_holding.get_element_by_code(item[:code])["Percentage"]
           %tr
-            %td
             %td= item[:name]
             %td= @share_holding.get_element_by_code(item[:code])["Percentage"]
       %tr
