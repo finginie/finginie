@@ -3,7 +3,7 @@ require 'spec_helper'
 describe ComprehensiveRiskProfilersController do
 
   let(:comprehensive_risk_profiler_attributes) {
-attributes_for :comprehensive_risk_profiler, :household_savings => 123456
+    attributes_for :comprehensive_risk_profiler, :household_savings => 123456
   }
 
   describe "GET 'edit'" do
