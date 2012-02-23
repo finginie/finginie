@@ -26,7 +26,7 @@ class ComprehensiveRiskProfilersController < InheritedResources::Base
   end
 
 private
- def first_time?
-   !(current_user && current_user.comprehensive_risk_profiler.valid? || session[:comprehensive_risk_profiler])
- end
+  def first_time?
+    !(current_user && current_user.comprehensive_risk_profiler.valid? || session[:comprehensive_risk_profiler])
+  end
 end

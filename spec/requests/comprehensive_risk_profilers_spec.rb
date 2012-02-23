@@ -6,10 +6,18 @@ describe "ComprehensiveRiskProfilers" do
 
     before(:each){ visit edit_comprehensive_risk_profiler_path }
 
-    it "should show the score on page if quiz is answered" do
-      answer_comprehensive_risk_profiler_with(comprehensive_risk_profiler)
+    context "if quiz is answered " do
+      before(:each) { answer_comprehensive_risk_profiler_with(comprehensive_risk_profiler) }
 
-      page.should have_content "Your Risk Appetite is : #{comprehensive_risk_profiler.score.round}"
+      it "should show the score on page" do
+        page.should have_content "Your Risk Appetite is : #{comprehensive_risk_profiler.score.round}"
+      end
+
+      it "should show the login link on page" do
+        within "#sign_up" do
+          page.should have_link('Signin')
+        end
+      end
     end
 
     it "should show the hidden questions by default" do
@@ -95,12 +103,19 @@ describe "ComprehensiveRiskProfilers" do
 
     let(:comprehensive_risk_profiler) { build :comprehensive_risk_profiler }
 
-    it "should show the score on page if quiz is answered" do
-      visit edit_comprehensive_risk_profiler_path
+    context "if quiz is answered " do
+      before(:each) do
+        visit edit_comprehensive_risk_profiler_path
+        answer_comprehensive_risk_profiler_with(comprehensive_risk_profiler)
+      end
 
-      answer_comprehensive_risk_profiler_with(comprehensive_risk_profiler)
+      it "should show the score on page" do
+        page.should have_content "Your Risk Appetite is : #{comprehensive_risk_profiler.score.round}"
+      end
 
-      page.should have_content "Your Risk Appetite is : #{comprehensive_risk_profiler.score.round}"
+      it "shouldn't show the login link on page" do
+        page.should_not have_link('Signin')
+      end
     end
   end
 
