@@ -56,12 +56,12 @@ class SchemeMaster
     :two_year_return, :three_year_return ]
   delegate *CATEGORY_METHODS, :to => :category_wise_net_asset_value_detail, :allow_nil => true
 
+  delegate :company_name, :to => :fund_master, :allow_nil => true
+  delegate :objective, :to => :mf_objective, :allow_nil => true
+  delegate :dividend_date, :to => :mf_dividend_detail, :allow_nil => true
+
   def fund_master
     FundMaster.where(company_code: company_code).first
-  end
-
-  def company_name
-    fund_master.company_name if fund_master
   end
 
   def nav_master
@@ -76,20 +76,12 @@ class SchemeMaster
     MfObjective.where(securitycode: securitycode).first
   end
 
-  def objective
-    mf_objective.objective if mf_objective
-  end
-
   def mf_dividend_detail
     MfDividendDetail.all(conditions: { securitycode: securitycode }, sort: [[ :dividend_date, :desc ]]).first
   end
 
   def dividend_percentage
     mf_dividend_detail.percentage if mf_dividend_detail
-  end
-
-  def dividend_date
-    mf_dividend_detail.dividend_date if mf_dividend_detail
   end
 
   def net_asset_value_current_price
@@ -120,7 +112,7 @@ class SchemeMaster
   end
 
   def equity_holdings
-    portfolio_holdings.select { |p| p["InstrumentCode"] == "2089" } if portfolio_holdings.length > 0
+    portfolio_holdings.select { |p| p["InstrumentCode"] == "2089" } if portfolio_holdings && portfolio_holdings.length > 0
   end
 
   def industry(industry_code)
@@ -132,7 +124,7 @@ class SchemeMaster
   end
 
   def sectoral_allocation
-    return nil if !equity_holdings
+    return nil unless equity_holdings && equity_holdings.length > 0
     allocation = Hash.new(0.0)
     equity_holdings.each { |p|  allocation[broad_industry_name(p["IndustryCode"])]+= p["Percentage"].to_f if broad_industry_name(p["IndustryCode"]) }
     allocation.each_key { |k| allocation[k] = allocation[k].round(2) }

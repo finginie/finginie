@@ -1,6 +1,6 @@
 .mf_container
   %h1 MutualFunds
-  = simple_form_for @search, :url => mutual_funds_path, :method => :get, :html => {:novalidate => true} do |f|
+  = simple_form_for @search, :url => collection_path, :method => :get, :html => {:novalidate => true} do |f|
     = f.input :scheme_name
     = f.submit 'Search'
 
@@ -27,7 +27,8 @@
             %td= cat.one_year_return.round(2)
             %td= cat.two_year_return.round(2)
             %td= cat.three_year_return.round(2)
-    -if @scheme_masters
+
+    - if @scheme_masters && @scheme_masters.count > 0
       = paginate @scheme_masters
       %table
         %th Scheme
@@ -37,4 +38,7 @@
             %td
               =link_to scheme.scheme_name, scheme_summary_mutual_fund_path(scheme.scheme_name)
             %td= scheme.minimum_invement_amount
+
+    - if !(@categories || @scheme_masters || @scheme_masters.count > 0)
+      %p= "Your search did not match any Mutual Fund names. Please try another keyword."
 
