@@ -66,6 +66,9 @@ en:
       Loan:
         buy: 'Repay'
         sell: 'Borrow'
+      Gold:
+        price: 'Price (gram)'
+        quantity: 'Quantity (gram)'
 
   stocks:
     show:

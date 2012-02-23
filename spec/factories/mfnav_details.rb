@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :mfnav_detail do
+    nav_amount 100
   end
 end
