@@ -1,5 +1,15 @@
 %h1= "Ratios - #{@stock.name}"
-- if @stock.company && @stock.company.major_sector == 2
-  = render 'banking_ratio'
-- if @stock.company && @stock.company.major_sector != 2
-  = render 'non_banking_ratio'
+
+- if @ratio.model && @stock.company
+  %table
+    - if @stock.company.major_sector == 2
+      %tr
+        %td= t "ratios.capital_adequacy_ratio"
+        %td= @ratio.send(:capital_adequacy_ratio)
+    - @ratio.view_items.each do |group, items|
+      %tr
+        %th.group{:colspan => 2}= group
+        - items.each do |item|
+        %tr
+          %td= t "ratios.#{item}"
+          %td= @ratio.send(item.to_sym)

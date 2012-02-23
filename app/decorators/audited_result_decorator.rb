@@ -224,17 +224,17 @@ class AuditedResultDecorator < ApplicationDecorator
                    'pl_sale_of_asset', 'non_recurring_income', 'non_cash_adjustments', 'reported_net_profit', 'appropriations', 'equity_dividend',
                    'proposed_pref_divdnd', 'corporate_dividend_tax', 'retained_earnings','sales', 'excise', 'other_income', 'total_income', 'raw_mat_consumed',
                    'packing_material_consumed', 'spares_stores_consmption', 'purchase_finish_goods', 'dec_inc_in_stocks', 'material_consumed', 'power_fuel',
-                   'other_manufacturing_exp', 'pbdt', 'extra_ordinary_items'
+                   'other_manufacturing_exp', 'pbdt', 'extra_ordinary_items', 'total_share_capital'
   ]
 
   FIELDS_CRORE.each do |key|
     define_method(key.to_sym) do
-      model.send(key.to_sym) ? (model.send(key.to_sym) / 10000000).round(2).to_f : "NA"
+      model.send(key.to_sym) ? (model.send(key.to_sym) / 10000000).round(2).to_f : h.t('not_available')
     end
   end
 
   def number_of_equity_shares
-    (model.numberof_equity_shares) ? (model.numberof_equity_shares / 100000).round(2).to_f : "NA"
+    (model.numberof_equity_shares) ? (model.numberof_equity_shares / 100000).round(2).to_f : h.t('not_available')
   end
 
   def balance_sheet_view_items
