@@ -6,9 +6,20 @@ describe "Authentication" do
     page.should have_content 'Successfully signed in'
   end
 
-  pending "should sign in using gmail" do
-    visit '/auth/google'
+  it "should sign in using gmail" do
+    visit '/auth/google_oauth2'
     page.should have_content 'Successfully signed in'
+  end
+
+  context "while logged in" do
+    include_context "logged in user"
+
+    it "should logout and go to homepage when the user signed out" do
+      visit root_path
+      click_button 'Sign out'
+      current_path.should eq root_path
+      page.should have_content 'Successfully signed out'
+    end
   end
 
   it "should redirect to signin page for the pages requiring authentication" do
