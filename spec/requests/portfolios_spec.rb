@@ -21,6 +21,12 @@ describe "Portfolios" do
     end
   end
 
+  it "should show new portfolio form page" do
+    visit new_portfolio_path
+
+    page.should have_content "New portfolio"
+  end
+
   it "shows stock net positions summary" do
     stock_position = create :net_position, :security => create(:stock, :name => "FOO 1", :current_price => 20), :portfolio => portfolio
     create :scrip, :id => stock_position.security.symbol, :last_traded_price => 20
