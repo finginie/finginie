@@ -4,13 +4,31 @@
 @import "defaults";
 
 body.stocks.index {
-  #stock_search {
-    div {
-      label {
-        width: 70%;
+  #main {
+    #stock_search {
+      div {
+      width: 60%;
+      padding-bottom: 1em;
+      
+        label {
+          font: {
+            size: large;
+            weight: bold;
+          }
+        }
+        input, select {
+          float: right;
+          width: 65%;
+        }
       }
     }
+    #stocks {
+      margin-bottom: 1em;
+    }
   }
+  aside {
+    display: none;
+  }  
 }
 
 body.stocks.show {
@@ -40,7 +58,7 @@ body.stocks.show {
     }
     .daily_prices {
       padding-top: 2em;
-      .daily_price_change, .last_close_price, .day_open_price, .volume,  .high_price, .low_price {
+      .daily_price_change, .close_price, .open_price, .volume,  .high_price, .low_price {
         border-left: 1px solid lightgrey;
         border-top: 1px solid lightgrey;
         float: left;
@@ -48,9 +66,9 @@ body.stocks.show {
         width: 10em;
         text-align: center;
         p {
-          color: $label-color;
+          color: $base-color;
           margin: 0;
-          padding: 0.5em 0;
+          padding-bottom: 1em;
         }
         strong {
           color: $text-color;
@@ -92,7 +110,7 @@ body.stocks.show {
         float: left;
         width: 10em;
         p {
-          color: $label-color;
+          color: $base-color;
           margin: 0;
           padding-bottom: 1em;
         }
