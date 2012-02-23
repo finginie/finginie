@@ -48,4 +48,16 @@ describe "Portfolios" do
                     ]
     tableish("section.Stock table").should eq expected_table
   end
+
+  it "shows loan net positions summary" do
+    loan_position = create :net_position, :security => create(:loan), :portfolio => portfolio
+    loan_position.transactions.create build(:transaction, :quantity => 100, :price => 12).attributes
+
+    visit portfolio_path portfolio
+    expected_table =[
+                      ["Name", "Market value", ""],
+                      ["MyString", "-1230", ""]
+                    ]
+    tableish("section.Loan table").should eq expected_table
+  end
 end
