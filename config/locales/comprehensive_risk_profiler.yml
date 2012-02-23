@@ -1,6 +1,9 @@
 en:
-  comprehensive_risk_profiler:
+  comprehensive_risk_profilers:
     message: 'Please answer the following questions so that we can suggest investments that are suitable for your unique needs.'
+    show:
+      suggestion: 'Based on your responses,we suggest that your investment mix be structured as follows. Remember, these are guidelines only.'
+      future_investment: 'Great! Now you broadly know what you should invest in. But which specific stocks/fixed deposits/mutual funds should you invest in? Click below to find out.'
   initial_investment: 'Your Initial Investment can be Rs %{initial_investment_amount}'
   three_month_investment: 'Every 3 months you can invest Rs %{three_month_investment_amount}'
   age_summary:

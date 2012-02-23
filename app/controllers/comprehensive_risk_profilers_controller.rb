@@ -4,7 +4,7 @@ class ComprehensiveRiskProfilersController < InheritedResources::Base
 
   def show
     if first_time?
-      redirect_to edit_comprehensive_risk_profiler_path, :notice => t(".comprehensive_risk_profiler.message")
+      redirect_to edit_comprehensive_risk_profiler_path, :notice => t(".comprehensive_risk_profilers.message")
     else
       show!
     end

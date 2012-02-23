@@ -60,7 +60,7 @@ describe "ComprehensiveRiskProfilers" do
         visit comprehensive_risk_profiler_url
 
         current_path.should eq edit_comprehensive_risk_profiler_path
-        page.should have_content I18n.t('.comprehensive_risk_profiler.message')
+        page.should have_content I18n.t('.comprehensive_risk_profilers.message')
       end
     end
 
@@ -97,7 +97,7 @@ describe "ComprehensiveRiskProfilers" do
 
       current_path.should eq edit_comprehensive_risk_profiler_path
 
-      page.should have_content I18n.t('.comprehensive_risk_profiler.message')
+      page.should have_content I18n.t('.comprehensive_risk_profilers.message')
     end
 
     let(:comprehensive_risk_profiler) { build :comprehensive_risk_profiler }

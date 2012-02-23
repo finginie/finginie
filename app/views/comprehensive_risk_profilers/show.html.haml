@@ -4,7 +4,8 @@
   out of 10. 10 indicates maximum risk taking ability
   %ul
     = resource.summary
-  %h1 Suggested Ideal Asset Allocation
+  %h1 Suggested Investment Mix
+  = t ".suggestion"
   - if resource.score
     %table
       %tr
@@ -18,3 +19,4 @@
 -unless current_user
   #sign_up
     =link_to "Signin",  '/signin'
+= t ".future_investment"
