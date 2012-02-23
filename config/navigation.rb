@@ -2,6 +2,7 @@
 # Configures your navigation
 SimpleNavigation::Configuration.run do |navigation|
   navigation.id_generator = Proc.new { |key| "navigation-#{key}" }
+  navigation.renderer = LevelTaggedList
 
   # Define the primary navigation
   navigation.items do |primary|
