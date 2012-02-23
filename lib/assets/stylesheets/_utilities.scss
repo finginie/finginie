@@ -28,7 +28,6 @@
   &, &:visited {
     color: inherit;
     text-decoration: inherit;
-    cursor: inherit;
   }
   &:active, &:focus {
     outline: none;
@@ -47,4 +46,11 @@
   }
 }
 
+@mixin flash-message( $bg-color, $color, $border-color) {
+  padding: 0.6em;
+  margin-bottom: 1em;
+  border: 2px solid $border-color;
+  background: $bg-color;
+  color: $color;
+}
 

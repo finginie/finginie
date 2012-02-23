@@ -33,7 +33,7 @@ h1 {
 }
 
 table, td, th {
-  border: 1px solid $base-color;
+  border: 2px solid $border-color;
 }
 
 nav {
@@ -79,6 +79,12 @@ header {
         }
         img {
           height: 30px;
+        }
+        form {
+          input[type="submit"] {
+            @include button($base-color);
+            @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
+          }
         }
       }
     }
@@ -222,6 +228,12 @@ tbody tr {
 	  bottom: 0.4em;
 	  left: 0.6em;
 	  right: 0.6em;
-	}
+	  }
   }
 }
+
+//--------------------------------Flash Notice message-------------------------------
+#flash_notice {
+  @include flash-message(#fff6bf, #514721, #ffd324)
+}
+
