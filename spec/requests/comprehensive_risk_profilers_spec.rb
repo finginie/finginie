@@ -60,8 +60,7 @@ describe "ComprehensiveRiskProfilers" do
         visit comprehensive_risk_profiler_url
 
         current_path.should eq edit_comprehensive_risk_profiler_path
-
-        page.should have_content 'Please take the short quiz below to view your personalized asset allocation'
+        page.should have_content I18n.t('.comprehensive_risk_profiler.message')
       end
     end
 
@@ -98,7 +97,7 @@ describe "ComprehensiveRiskProfilers" do
 
       current_path.should eq edit_comprehensive_risk_profiler_path
 
-      page.should have_content 'Please take the short quiz below to view your personalized asset allocation'
+      page.should have_content I18n.t('.comprehensive_risk_profiler.message')
     end
 
     let(:comprehensive_risk_profiler) { build :comprehensive_risk_profiler }

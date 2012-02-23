@@ -1,4 +1,6 @@
 en:
+  comprehensive_risk_profiler:
+    message: 'Please answer the following questions so that we can suggest investments that are suitable for your unique needs.'
   initial_investment: 'Your Initial Investment can be Rs %{initial_investment_amount}'
   three_month_investment: 'Every 3 months you can invest Rs %{three_month_investment_amount}'
   age_summary:
