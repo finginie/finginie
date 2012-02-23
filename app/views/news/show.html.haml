@@ -1,4 +1,3 @@
 %h1= @news.headlines
-
-%p= @news.modify_on
+%p #{time_ago_in_words @news.modify_on} ago
 %p= @news.notes

@@ -37,7 +37,7 @@
     - if @stock.news_headlines
       - @stock.news_headlines.each do |headline|
         %li
-          = link_to headline, stock_news_path(:stock_id => @stock.id, :id => headline)
+          = link_to headline, stock_news_path(:stock_id => @stock.id, :id => headline), :target => "_blank"
 
 %section
 %iframe{:src => @chart_url, :style => "width:800px; height:600px"}
