@@ -29,8 +29,10 @@ class TickerPlant
       :volume => 10,
       :net_change => 11,
       :percent_change => 12,
+      :open_price => 13,
       :high_price => 14,
-      :low_price => 15
+      :low_price => 15,
+      :close_price => 16
     },
     :stock => {
       :name => 1,

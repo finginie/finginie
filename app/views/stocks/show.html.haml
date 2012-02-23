@@ -12,7 +12,7 @@
     %strong= @stock.net_change
     %span= "(#{@stock.percent_change}%)"
 
-  - %w(last_close_price day_open_price volume high_price low_price).each do |attr|
+  - %w(close_price open_price volume high_price low_price).each do |attr|
     %div{:class => attr}
       %p= t ".#{attr}"
       %strong= @stock.send(attr) || "N/A"
