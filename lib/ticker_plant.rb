@@ -61,7 +61,7 @@ class TickerPlant
     Net::FTP.open(DATA_SOURCES[type][:url], DATA_SOURCES[type][:username], DATA_SOURCES[type][:password]) do |ftp|
       ftp.passive = true
       ftp.chdir DATA_SOURCES[type][:directory] if DATA_SOURCES[type][:directory]
-      return data unless file_name = ftp.nlst.last
+      return data unless file_name = ftp.nlst.sort_by { |f| ftp.mtime f }.last
       Zip::Archive.open_buffer (ftp.getbinaryfile file_name, nil) do |archive|
         csv_data = ''
         archive.fopen archive.get_name(0) do |f|
