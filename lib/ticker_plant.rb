@@ -51,8 +51,15 @@ class TickerPlant
   def self.update_records(type)
     self.fetch_data(type).each do |attributes|
       model = type.to_s.classify.constantize
-      id = attributes.delete(:id)
-      model.find_or_initialize_by_id(id).update_attributes(attributes)
+      item = case type
+        when :stock
+          model.find_or_initialize_by_symbol attributes.delete :symbol
+        when :scrip
+          model.find_or_initialize_by_id attributes.delete :id
+        else
+          return
+        end
+      item.update_attributes(attributes)
     end
   end
 
