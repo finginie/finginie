@@ -1,4 +1,4 @@
 %h1= @news.headlines
-
-%p= @news.modify_on
+-if @news.modify_on
+  %p= @news.modify_on.strftime("%d-%m-%Y, %H:%M:%S")
 %p= @news.notes
