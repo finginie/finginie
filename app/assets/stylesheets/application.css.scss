@@ -213,10 +213,6 @@ footer {
 //----------------------------------- Tables ---------------------------------------
 
 tbody tr {
-  &:nth-child(odd) {
-    background-color: $tr-color;
-  }
-
   th {
     background-color: $th-color;
 	  color: white;
