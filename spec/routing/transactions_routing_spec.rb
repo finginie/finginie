@@ -22,9 +22,5 @@ describe TransactionsController do
     it "routes to #destroy" do
       delete("/portfolios/1/net_positions/1/transactions/1").should route_to("transactions#destroy", :id => "1", :portfolio_id => "1", :net_position_id => "1")
     end
-
-    it "routes to #index" do
-      get("/portfolios/1/transactions").should route_to("transactions#index", :portfolio_id => "1")
-    end
   end
 end
