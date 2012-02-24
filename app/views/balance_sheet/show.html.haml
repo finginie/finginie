@@ -5,7 +5,7 @@
     %tr
       %th
       - @audited_results.each do |audited_result|
-        %th= audited_result.year_ending
+        %th= l audited_result.year_ending, :format => :yearly_results
 
     - @audited_results[0].balance_sheet_view_items.each do |item|
       %tr

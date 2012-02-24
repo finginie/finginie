@@ -15,10 +15,10 @@
         - @scheme.portfolio_holdings.each do |portfolio|
           %tr
           %td= portfolio["InvestedCompanyName"]
-          %td= portfolio["IndustryName"] || "NA"
-          %td= portfolio["InstrumentName"]
+          %td= portfolio["IndustryName"] || "-"
+          %td= portfolio["InstrumentName"] || "-"
           %td= portfolio["Percentage"]
           %td= portfolio["MarketValue"]
-          %td= portfolio["Rating"] || "NA"
+          %td= portfolio["Rating"] || "-"
 - else
   %p Data Not available

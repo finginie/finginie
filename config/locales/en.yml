@@ -2,7 +2,13 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  date:
+    formats:
+      default: "%d-%m-%Y"  # 31-03-2011
+      yearly_results: "%Y" # 2011
+      long: "%B %d, %Y"    # March 31 2011
   not_available: "N/A"
+  tables_not_available: "-"
   personal_financial_tools:
     home: 'Personal Financial Tools'
     list:
