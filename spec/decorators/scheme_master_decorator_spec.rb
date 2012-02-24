@@ -19,6 +19,6 @@ describe SchemeMasterDecorator do
   subject { scheme_master_decorator }
 
   its(:sip) { should eq "Yes" }
-  its(:entry_load) { should eq "NA" }
-  its(:exit_load) { should eq "NA" }
+  its(:entry_load) { should eq "-" }
+  its(:exit_load) { should eq "-" }
 end
