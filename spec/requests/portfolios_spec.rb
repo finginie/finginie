@@ -26,6 +26,7 @@ describe "Portfolios" do
     end
     within "section.Gold table" do
       page.should have_content gold_position.security.name
+      page.should have_content "2858.5"
     end
   end
 
@@ -36,7 +37,7 @@ describe "Portfolios" do
   end
 
   it "shows stock net positions summary" do
-    stock_position = create :net_position, :security => create(:stock, :name => "FOO 1", :current_price => 20), :portfolio => portfolio
+    stock_position = create :net_position, :security => create(:stock, :name => "FOO 1"), :portfolio => portfolio
     create :scrip, :id => stock_position.security.symbol, :last_traded_price => 20
     stock_position.transactions.create build(:transaction, :quantity => 100, :price => 10).attributes
     stock_position.transactions.create build(:transaction, :quantity => 100, :price => 12).attributes
