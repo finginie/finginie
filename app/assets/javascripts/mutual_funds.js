@@ -31,7 +31,7 @@ $(document).ready(function() {
             return '' + this.point.name +': '+ (Math.round(this.y*10) / 10) + '%';
             }
           },
-          showInLegend: true
+          showInLegend: false
         }
       }
     });
@@ -69,7 +69,7 @@ $(document).ready(function() {
             return '' + this.point.name +': '+ (Math.round(this.y*10) / 10) + '%';
             }
           },
-          showInLegend: true
+          showInLegend: false
         }
       }
     });
@@ -126,26 +126,10 @@ $(document).ready(function() {
       xAxis: {
         categories: ['1 week', '1 month', '3 months', '6 months', '9 months', '1 year', '2 years', '3 years']
       },
-      legend: {
-         layout: 'vertical',
-         align: 'left',
-         verticalAlign: 'top',
-         floating: true,
-         shadow: true
-      },
       tooltip: {
         formatter: function() {
-          return '' + this.x + ': ' + this.y + '';
+          return '' + this.series.name + ': ' + this.y + '';
           }
-      },
-      plotOptions: {
-        series: {
-          colorByPoint: true,
-          showInLegend: false
-                },
-        column: {
-          pointPadding: 0.2
-                }
       },
       series: [{
         name: 'Scheme Returns',
