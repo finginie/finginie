@@ -43,8 +43,8 @@ describe "Portfolios" do
 
     visit portfolio_path portfolio
     expected_table =[
-                      ["Name", "Quantity", "Average Cost Price", "Market Price", "Amount Invested", "Market value", "Profit", ""],
-                      ["FOO 1", "200", "11.0", "20.0", "2200.0", "4000", "1800.0", ""]
+                      ["Name", "Quantity", "Average Cost Price", "Market Price", "Amount Invested", "Market value", "Profit"],
+                      ["FOO 1", "200", "11.0", "20.0", "2200.0", "4000", "1800.0"]
                     ]
     tableish("section.Stock table").should eq expected_table
   end
@@ -55,8 +55,8 @@ describe "Portfolios" do
 
     visit portfolio_path portfolio
     expected_table =[
-                      ["Name", "Market value", ""],
-                      ["MyString", "-1230", ""]
+                      ["Name", "Market value"],
+                      ["MyString", "-1230"]
                     ]
     tableish("section.Loan table").should eq expected_table
   end
