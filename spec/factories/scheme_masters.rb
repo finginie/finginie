@@ -19,11 +19,11 @@ FactoryGirl.define do
     fund_manager_prefix "Mr."
     fund_manager_name "Chirag Setalvad"
 
-    trait :with_mfnav_detail do
+    trait :with_navcp do
       after_create do |scheme_master|
-        FactoryGirl.create :mfnav_detail, :security_code => scheme_master.securitycode
+        FactoryGirl.create :navcp, :security_code => scheme_master.securitycode
       end
     end
-    factory :scheme_master_with_mfnav_detail, :traits => [:with_mfnav_detail]
+    factory :scheme_master_with_navcp, :traits => [:with_navcp]
   end
 end

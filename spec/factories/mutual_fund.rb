@@ -6,7 +6,7 @@ FactoryGirl.define do
 
     trait :with_scheme_master do
       after_create do |mutual_fund|
-        FactoryGirl.create :scheme_master_with_mfnav_detail, :scheme_name => mutual_fund.name
+        FactoryGirl.create :scheme_master_with_navcp, :scheme_name => mutual_fund.name
       end
     end
     factory :mutual_fund_with_scheme_master, :traits => [:with_scheme_master]
