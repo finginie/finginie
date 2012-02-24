@@ -19,14 +19,15 @@ body.portfolios.index {
           text-align:right;
         }
         input[type="submit"] {
-          @include sharp-button;
+          @include button($base-color);
+          @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
+          font-size: small;
         }   
       }
       table {
         margin-top: 3em;
         td, th {
-          border: none;
-          width: 40%;
+          width: 30%;
           text-align: left;
           padding: {
             left: 0;
@@ -49,6 +50,7 @@ body.portfolios.new {
     #main {
       #new_portfolio {
         .inputs {
+          @include required-field;
           div {
             label {
               width: 10%;
@@ -66,7 +68,9 @@ body.portfolios.new {
           width: 25%;
           text-align: right;
           .button {
-            @include sharp-button;
+            @include button($base-color);
+            @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
+            font-size: small;
           }
         }
       }  

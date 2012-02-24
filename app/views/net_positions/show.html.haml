@@ -1,5 +1,3 @@
-%p#notice= notice
-
 %p
   %b Portfolio:
   = parent.name
@@ -10,6 +8,4 @@
 
 %section#transactions
   = render 'transactions', :transactions => @net_position.transactions
-
-= button_to 'Edit', edit_resource_path(resource), :method => :get
 = link_to 'Back', parent_path

@@ -1,7 +1,5 @@
-%h1 Editing transaction
+%h1= "Edit transaction- #{parent.security.name}"
 
 = render 'form'
 
-= link_to 'Show', resource_path(@transaction)
-\|
 = link_to 'Back', parent_path

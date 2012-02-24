@@ -7,6 +7,7 @@
     %th Quantity
     %th Comments
     %th
+    %th
 
   - transactions.each do |transaction|
     %tr
@@ -16,8 +17,7 @@
       %td= transaction.comments
       %td.actions
         = button_to 'Edit', edit_portfolio_net_position_transaction_path(parent, resource, transaction), :method => :get
-        = button_to 'Destroy', portfolio_net_position_transaction_path(parent, resource, transaction), :confirm => 'Are you sure?', :method => :delete
+      %td.actions  
+        = button_to 'Delete', portfolio_net_position_transaction_path(parent, resource, transaction), :confirm => 'Are you sure?', :method => :delete
 
 %br
-
-= button_to 'New Transaction', new_portfolio_net_position_transaction_path(parent, resource), :method => :get
