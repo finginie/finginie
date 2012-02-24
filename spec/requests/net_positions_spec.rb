@@ -5,7 +5,7 @@ describe "NetPositions" do
     include_context "logged in user"
 
     let (:portfolio) { create :portfolio, :user => current_user }
-    let (:stock) { create :stock }
+    let (:stock) { create :stock_with_scrip }
 
     before :each do
       visit portfolio_path(portfolio)
