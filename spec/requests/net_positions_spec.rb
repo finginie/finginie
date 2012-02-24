@@ -23,7 +23,7 @@ describe "NetPositions" do
       fill_in "Quantity", :with => 30
       click_on "Submit Stock"
 
-      page.should have_content 'successfully created'
+      page.should have_content I18n.t('.net_positions.success_message')
       page.should have_content stock.name
       page.should have_content 200
       page.should have_content 30
@@ -42,7 +42,7 @@ describe "NetPositions" do
       fill_in "Quantity", :with => 30
       click_on "FixedIncome"
 
-      page.should have_content 'successfully created'
+      page.should have_content I18n.t('.net_positions.success_message')
       page.should have_content 'Test Income'
       page.should have_content 200
       page.should have_content 30
@@ -60,7 +60,7 @@ describe "NetPositions" do
       select 'Repay', :from => "Action"
       click_on "Loan"
 
-      page.should have_content 'successfully created'
+      page.should have_content I18n.t('.net_positions.success_message')
       page.should have_content 'Test Loan'
       page.should have_content 200
     end
@@ -76,7 +76,7 @@ describe "NetPositions" do
       select 'Buy', :from => "Action"
       click_on "RealEstate"
 
-      page.should have_content 'successfully created'
+      page.should have_content I18n.t('.net_positions.success_message')
       page.should have_content 'Test Property'
       page.should have_content 200
     end
@@ -90,7 +90,7 @@ describe "NetPositions" do
       fill_in "Quantity", :with => 30
       click_on "Gold"
 
-      page.should have_content 'successfully created'
+      page.should have_content I18n.t('.net_positions.success_message')
       page.should have_content 'Gold'
       page.should have_content 200
       page.should have_content 30
@@ -108,7 +108,7 @@ describe "NetPositions" do
       fill_in "Quantity", :with => 30
       click_on "MutualFund"
 
-      page.should have_content 'successfully created'
+      page.should have_content I18n.t('.net_positions.success_message')
       page.should have_content scheme_master.scheme_name
       page.should have_content 10000
       page.should have_content 30
@@ -122,7 +122,7 @@ describe "NetPositions" do
       fill_in "Quantity", :with => 30
       click_on "Gold"
 
-      page.should have_content 'successfully created'
+      page.should have_content I18n.t('.net_positions.success_message')
       page.should have_content 'Gold'
       page.should have_content 200
       page.should have_content 30

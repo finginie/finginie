@@ -10,6 +10,10 @@ class ComprehensiveRiskProfilersController < InheritedResources::Base
     end
   end
 
+  def update
+    update!(:notice =>t(".comprehensive_risk_profilers.success_message"))
+  end
+
   def resource
     @comprehensive_risk_profiler ||= current_user && current_user.comprehensive_risk_profiler || ComprehensiveRiskProfiler.new(session[:comprehensive_risk_profiler])
     ComprehensiveRiskProfilerDecorator.decorate(@comprehensive_risk_profiler)

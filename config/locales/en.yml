@@ -71,6 +71,7 @@ en:
       8: 'Keep holding your portfolio because you think it will pick up'
       10: 'Invest another 50% in that portfolio because you think it is a right buying opportunity'
   net_positions:
+    success_message: 'Successfully added transaction'
     transaction_fields:
       Loan:
         buy: 'Repay'
