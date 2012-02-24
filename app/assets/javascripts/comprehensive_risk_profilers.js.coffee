@@ -31,7 +31,7 @@ $ ->
         labelFormatter: ->  this.name + ': ' + this.y + '%'
       },
       tooltip: {
-        formatter: -> '' + this.point.name +': '+ (Math.round(this.y*10) / 10) + '%'
+        formatter: -> '' + this.point.name +': '+ Math.round(this.y*10) / 10 + '%'
       },
       plotOptions: {
         pie: {
