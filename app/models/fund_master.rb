@@ -1,5 +1,6 @@
 class FundMaster
   include Mongoid::Document
+  extend MongoidHelpers
 
   field :company_code, :type => BigDecimal
   field :company_name

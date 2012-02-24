@@ -35,7 +35,7 @@
         %tr
           %td
             %b= 'Launch Date'
-          %td= @scheme.launch_date
+          %td= l @scheme.launch_date , :format => :short_date
 
         %tr
           %td
@@ -45,12 +45,12 @@
         %tr
           %td
             %b= 'Entry Load'
-          %td{:style => "width:70%"}= @scheme.entry_load
+          %td{:style => "width:70%"}= "#{@scheme.entry_load.to_f} %"
 
         %tr
           %td
             %b= 'Exit Load'
-          %td= @scheme.exit_load
+          %td= "#{@scheme.exit_load.to_f} %"
 
         %tr
           %td

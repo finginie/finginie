@@ -128,7 +128,7 @@ class CashFlowDecorator < ApplicationDecorator
 
    FIELDS_CRORE.each do |item|
     define_method(item.to_sym) do
-      model.send(item.to_sym) ? (model.send(item.to_sym) / 10000000).round(2).to_f : h.t('not_available')
+      model.send(item.to_sym) ? (model.send(item.to_sym) / 10000000).round(2).to_f : h.t('tables_not_available')
      end
    end
 

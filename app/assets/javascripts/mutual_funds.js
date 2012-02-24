@@ -126,6 +126,21 @@ $(document).ready(function() {
       xAxis: {
         categories: ['1 week', '1 month', '3 months', '6 months', '9 months', '1 year', '2 years', '3 years']
       },
+      yAxis: {
+        title: {
+          text: 'Percentage Returns'
+          }
+      },
+      legend: {
+        layout: 'vertical',
+        backgroundColor: '#FFFFFF',
+        align: 'left',
+        verticalAlign: 'top',
+        x: 100,
+        y: 70,
+        floating: true,
+        shadow: true
+		  },
       tooltip: {
         formatter: function() {
           return '' + this.series.name + ': ' + this.y + '';
@@ -142,5 +157,22 @@ $(document).ready(function() {
       ]
     });
   };
+
+  var change = parseFloat($(".day_change").text().trim())
+  var percentage_change = parseFloat($(".percentage_change").text().trim().slice(1,-2))
+
+  if(change < 0){
+    $(".day_change").css('color', 'red')
+  }
+  else{
+    $(".day_change").css('color', 'green')
+  }
+
+  if(percentage_change < 0){
+    $(".percentage_change").css('color', 'red')
+  }
+  else{
+    $(".percentage_change").css('color', 'red')
+  }
 
 });
