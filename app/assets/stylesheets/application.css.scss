@@ -107,6 +107,7 @@ header {
 //--------------------- main starts ----------------------
 #wrapper {
   @include holy-grail($aside-width, 0);
+  min-height: 800px;
 }
 
 //--------------------- aside starts ----------------------
@@ -159,7 +160,7 @@ aside{
           bottom: 1px solid $border-color;
         }
 
-        &:hover, &.selected {
+        &.selected {
           color: $base-color;
           background-color: $border-color;
         }
@@ -236,4 +237,9 @@ tbody tr {
 #flash_notice {
   @include flash-message(#fff6bf, #514721, #ffd324)
 }
-
+#flash_error {
+  @include flash-message(#fbe3e4, #8a1f11, #fbc2c4 );
+}
+#flash_info {
+  @include flash-message(#d5edf8, #205791, #92cae4);
+}
