@@ -1,6 +1,13 @@
+#portfolio-net-worth-chart{ 'data-portfolio-net-worth-allocation' => resource.net_worth_security_share }
+
+.actions
+  - %w(Stock FixedIncome Loan RealEstate Gold MutualFund).each do |security_type|
+    = link_to "Add New #{security_type.titleize}", new_portfolio_net_position_path(resource, 'net_position[security_attributes][type]' => security_type), :class => :button
+
 - net_positions.group_by { |net_position| net_position.security.type }.each do |type, positions|
   %section{:class => type}
     %h1=t ".#{type}"
+    = link_to "Add New #{type.titleize}", new_portfolio_net_position_path(resource, 'net_position[security_attributes][type]' => type), :class => :button
     %table
       %tr
         %th Name
@@ -24,6 +31,3 @@
           %td= net_position.current_value
           - unless type == "Loan"
             %td= net_position.unrealised_profit
-.actions
-  - %w(Stock FixedIncome Loan RealEstate Gold MutualFund).each do |security_type|
-    = link_to "Add New #{security_type.titleize}", new_portfolio_net_position_path(resource, 'net_position[security_attributes][type]' => security_type), :class => :button
