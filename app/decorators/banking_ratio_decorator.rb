@@ -41,7 +41,7 @@ class BankingRatioDecorator < ApplicationDecorator
 
   RATIO_GROUPS.values.flatten.each do |attr|
     define_method "#{attr}" do
-      model.send(attr) ? model.send(attr).round(2) : h.t('not_available')
+      model.send(attr) ? model.send(attr).round(2) : h.t('tables_not_available')
     end
   end
 

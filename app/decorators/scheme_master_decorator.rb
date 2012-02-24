@@ -15,13 +15,13 @@ class SchemeMasterDecorator < ApplicationDecorator
 
   [ :company_name, :objective, :bench_mark_index, :dividend_percentage, :dividend_date, :entry_load, :exit_load ].each do |attr|
     define_method "#{attr}" do                            # def attr
-      model.send(attr) || "NA"                            #   model.attr || "NA"
+      model.send(attr) || "-"                            #   model.attr || "NA"
     end                                                   # end
   end                                                     ##
 
   FIELDS_TO_ROUND.each do |key|
     define_method(key.to_sym) do
-      model.send(key.to_sym) ? model.send(key.to_sym).round(2).to_f : h.t('not_available')
+      model.send(key.to_sym) ? model.send(key.to_sym).round(2).to_f : h.t('tables_not_available')
     end
   end
 
