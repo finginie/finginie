@@ -16,7 +16,6 @@ $ ->
 
 $ ->
   if ($("#asset-allocation-chart").attr("data-asset-allocation") != undefined)
-    alert '---------'
     new Highcharts.Chart({
       chart: {
         renderTo: 'asset-allocation-chart'
