@@ -22,8 +22,10 @@ describe Portfolio do
     add_loan_position(portfolio,  5, 12.50,  300000, Date.civil(2011, 8, 1))
     add_loan_position(portfolio, 10, 12.75, 1500000, Date.civil(2010, 1, 1))
 
+    add_mutual_fund_position(portfolio, 30000, 35000, 1)
+
     Timecop.freeze Date.civil(2011, 11, 11) do
-      portfolio.net_worth.should eq -699944
+      portfolio.net_worth.should eq -629944
     end
   end
 
@@ -44,5 +46,12 @@ describe Portfolio do
     position = create :net_position, :portfolio => portfolio,
                                      :security => create(:loan, :period => period, :rate_of_interest => interest_rate)
     create :transaction, :net_position => position, :date => date, :price => amount
+  end
+
+  def add_mutual_fund_position(portfolio, amount1, amount2, quantity)
+    position = create :net_position, :portfolio => portfolio,
+                                     :security => create(:mutual_fund)
+    create :transaction, :net_position => position, :quantity => quantity, :price => amount1
+    create :transaction, :net_position => position, :quantity => quantity, :price => amount2
   end
 end
