@@ -3,6 +3,6 @@ class NetPositionsController < InheritedResources::Base
   actions :all, :except => [:index]
 
   def create
-    create!{ portfolio_path(@net_position.portfolio_id) }
+    create!(:notice => t(".net_positions.success_message")) { portfolio_path(@net_position.portfolio_id) }
   end
 end
