@@ -5,7 +5,7 @@
     %tr
       %th
       - @cash_flows.instance_variable_get("@cash_flow_decorators").each do |cash_flow|
-        %th= cash_flow.year_ending
+        %th=  l cash_flow.year_ending, :format => :yearly_results
     - @cash_flows.collection_non_null_fields.each do |field|
       %tr
         %td
