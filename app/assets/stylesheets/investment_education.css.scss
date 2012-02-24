@@ -114,7 +114,7 @@ $bottom-grey: #c5c4c4;
   }
   .extracontent {
     @include holy-grail-aside(240px, 10px, right);
-    padding: 1.5em 0.5em 0 0;
+    padding: 1.5em 0.5em 0 1em;
     h1 {
       font: {
         family: heading-font;
@@ -228,7 +228,7 @@ div.wrapper {
 
 
 
-//----------------- Tables ------------------------------
+
 
 
 articlefooter {

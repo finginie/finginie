@@ -107,6 +107,7 @@ header {
 //--------------------- main starts ----------------------
 #wrapper {
   @include holy-grail($aside-width, 0);
+  min-height: 800px;
 }
 
 //--------------------- aside starts ----------------------
@@ -159,7 +160,7 @@ aside{
           bottom: 1px solid $border-color;
         }
 
-        &:hover, &.selected {
+        &.selected {
           color: $base-color;
           background-color: $border-color;
         }
@@ -186,7 +187,8 @@ footer {
       @include horizontal-list(1.5em);
 
       li {
-        color: black;
+        color: #FFD02A;
+	font-size: medium;
       }
       line-height: 1.5em;
 
@@ -194,10 +196,10 @@ footer {
         @include no-bullet;
 
         li {
-          color: white;
+          color: #96B1D2;
           font: {
-            size: medium;
-            weight: normal;
+            size: small;
+            weight: bold;
           }
         }
       }
@@ -212,10 +214,6 @@ footer {
 //----------------------------------- Tables ---------------------------------------
 
 tbody tr {
-  &:nth-child(odd) {
-    background-color: $tr-color;
-  }
-
   th {
     background-color: $th-color;
 	  color: white;
@@ -238,9 +236,8 @@ tbody tr {
   @include flash-message(#fff6bf, #514721, #ffd324)
 }
 
-
-input[type="submit"] {
-  @include button($base-color);
-  @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
-  font-size: small;
+#flash_error {
+  @include flash-message(#fbe3e4, #8a1f11, #fbc2c4 );
 }
+#flash_info {
+  @include flash-message(#d5edf8, #205791, #92cae4);

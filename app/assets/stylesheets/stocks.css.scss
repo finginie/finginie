@@ -3,6 +3,9 @@
 @import "lists";
 @import "defaults";
 
+$quote-border: 2px solid lightgray;
+
+
 body.stocks.index {
   #main {
     #stock_search {
@@ -59,8 +62,11 @@ body.stocks.show {
     .daily_prices {
       padding-top: 2em;
       .daily_price_change, .close_price, .open_price, .volume,  .high_price, .low_price {
-        border-left: 1px solid lightgrey;
-        border-top: 1px solid lightgrey;
+        border: {
+          left: $quote-border;  
+          top: $quote-border;
+          bottom:  $quote-border;
+        }
         float: left;
         padding: 0.5em 0;
         width: 10em;
@@ -75,7 +81,7 @@ body.stocks.show {
         }
       }
       .low_price {
-        border-right: 1px solid lightgrey;
+        border-right: $quote-border;
       }
       .daily_price_change {
         border: none;
@@ -102,9 +108,11 @@ body.stocks.show {
       margin-bottom: 10em;
       margin-left: 10em;
       .eps, .pe, .beta, .week_high_price, .week_low_price {
-        border-left: 1px solid lightgrey;
-        border-bottom: 1px solid lightgrey;
-        border-top: 1px solid lightgrey;
+        border: {
+          left: $quote-border;  
+          top: $quote-border;
+          bottom: $quote-border;
+        }
         padding: 0.5em 0;
         text-align: center;
         float: left;
@@ -116,7 +124,7 @@ body.stocks.show {
         }
       }
       .week_low_price {
-        border-right: 1px solid lightgrey;
+        border-right: $quote-border;
       }
     }
     .back {
@@ -128,6 +136,7 @@ body.stocks.show {
     }
     
     .news {
+      clear: both;
       ul {
         margin: 0;
         padding-left: 0;
