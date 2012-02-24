@@ -7,6 +7,9 @@ en:
       default: "%d-%m-%Y"  # 31-03-2011
       yearly_results: "%Y" # 2011
       long: "%B %d, %Y"    # March 31 2011
+  time:
+    formats:
+      short_date: "%B %d, %Y"
   not_available: "N/A"
   tables_not_available: "-"
   personal_financial_tools:
