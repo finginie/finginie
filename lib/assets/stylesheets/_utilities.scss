@@ -54,3 +54,45 @@
   color: $color;
 }
 
+@mixin simple-form {
+  .simple_form {
+    @include required-field;
+    label {
+      display: inline-block;
+      width: 20%;
+      text-align: right;
+      color: $base-color;
+      padding: {
+        top: 0.5em;
+        bottom: 0.4em;
+      }
+      font: {
+        family: $content-font;
+        weight: normal;
+        size: 1.3em;
+      }
+    }
+    input, select, textarea {
+      margin: {
+        left: 0.8em;
+      }
+    }
+    textarea, input[type="text"], input[type="number"] {
+      width: 400px;
+      height: 20px;
+    }
+    textarea {
+      vertical-align: middle;
+    }
+    .actions {
+      width: 80%;
+      text-align: center;
+      input[type="submit"] {
+        @include button($base-color);
+        @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
+        font-size: small;
+      }
+    }
+  }
+}
+
