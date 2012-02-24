@@ -49,4 +49,8 @@ class Stock < Security
   def company
     CompanyMaster.where( nse_code: symbol).first
   end
+
+  def current_price
+    last_traded_price
+  end
 end

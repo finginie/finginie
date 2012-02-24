@@ -30,6 +30,7 @@ describe Stock do
     end
 
     its(:last_traded_price) { should eq 24 }
+    its(:current_price)     { should eq 24 }
     its(:percent_change) { should eq 50 }
 
     it "should filter by last traded price range" do

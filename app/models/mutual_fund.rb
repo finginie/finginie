@@ -18,4 +18,8 @@ class MutualFund < Security
   def current_value(transaction)
     nav_amount || transaction.net_position.transactions.last.price
   end
+
+  def current_price
+    nav_amount
+  end
 end
