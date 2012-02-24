@@ -1,6 +1,7 @@
 en:
   comprehensive_risk_profilers:
     message: 'Please answer the following questions so that we can suggest investments that are suitable for your unique needs.'
+    success_message: 'Your answers were successfully updated. Our suggestions for you are as follows.'
     show:
       suggestion: 'Based on your responses,we suggest that your investment mix be structured as follows. Remember, these are guidelines only.'
       future_investment: 'Great! Now you broadly know what you should invest in. But which specific stocks/fixed deposits/mutual funds should you invest in? Sign up with Facebook/Google find out. Signing-up is absolutely free,takes less than 5 seconds and does not require a credit card or an email address.'

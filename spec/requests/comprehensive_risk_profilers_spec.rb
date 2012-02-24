@@ -10,6 +10,7 @@ describe "ComprehensiveRiskProfilers" do
       before(:each) { answer_comprehensive_risk_profiler_with(comprehensive_risk_profiler) }
 
       it "should show the score on page" do
+        page.should have_content I18n.t(".comprehensive_risk_profilers.success_message")
         page.should have_content "Your Risk Appetite is : #{comprehensive_risk_profiler.score.round}"
       end
 
