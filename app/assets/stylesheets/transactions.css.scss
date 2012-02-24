@@ -1,0 +1,14 @@
+@import "bourbon";
+@import "lists";
+@import "utilities";
+@import "defaults";
+
+
+
+body.transactions.edit {
+  #wrapper {
+    #main {
+      @include simple-form;
+    }
+  }
+} 

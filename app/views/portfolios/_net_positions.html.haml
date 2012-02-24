@@ -25,11 +25,6 @@
           %td= net_position.current_value
           - unless type == "Loan"
             %td= net_position.unrealised_profit
-          %td.actions
-            = button_to 'Add Transaction', new_portfolio_net_position_transaction_path(resource, net_position), :method => :get
-            = button_to 'Change Security', edit_portfolio_net_position_path(resource, net_position), :method => :get
-            = button_to 'Destroy', portfolio_net_position_path(resource, net_position), :confirm => 'Are you sure?', :method => :delete, :class => :negetive
-
 .actions
   - %w(Stock FixedIncome Loan RealEstate Gold MutualFund).each do |security_type|
     = link_to "Add New #{security_type.titleize}", new_portfolio_net_position_path(resource, 'net_position[security_attributes][type]' => security_type), :class => :button

@@ -229,6 +229,7 @@ tbody tr {
 	  left: 0.6em;
 	  right: 0.6em;
 	  }
+    font-size: small;	  
   }
 }
 
@@ -237,3 +238,9 @@ tbody tr {
   @include flash-message(#fff6bf, #514721, #ffd324)
 }
 
+
+input[type="submit"] {
+  @include button($base-color);
+  @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
+  font-size: small;
+}
