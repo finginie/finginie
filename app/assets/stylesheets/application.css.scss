@@ -187,7 +187,8 @@ footer {
       @include horizontal-list(1.5em);
 
       li {
-        color: black;
+        color: #FFD02A;
+	font-size: medium;
       }
       line-height: 1.5em;
 
@@ -195,10 +196,10 @@ footer {
         @include no-bullet;
 
         li {
-          color: white;
+          color: #96B1D2;
           font: {
-            size: medium;
-            weight: normal;
+            size: small;
+            weight: bold;
           }
         }
       }
