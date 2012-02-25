@@ -172,7 +172,7 @@ $(document).ready(function() {
     $(".percentage_change").css('color', 'red')
   }
   else{
-    $(".percentage_change").css('color', 'red')
+    $(".percentage_change").css('color', 'green')
   }
 
 });
