@@ -17,6 +17,7 @@ body.personal_financial_tools.index {
   }
 }
 
+//------------------ Flash result --------------------------
 
 #flash_result {
   display: none;
@@ -24,135 +25,101 @@ body.personal_financial_tools.index {
 
 #result {
   background: #b3d1e0;
-  //border: 1px solid $base-color;
   text-align: center;
   margin: {
-    bottom: 2em;
-    top: 1em;
+    bottom: 1em;
   }
-  padding: 0.6em;
+  padding: 0.5em;
   font: {
     family: $content-font;
-    size: 1.2em;
+    size: large;
     weight: normal;
   }
 }
 
+//-------------------- Form calculators --------------------
+
 form {
   input, select {
-    border: 2px solid $border-color;
-	color: $text-color;
+    margin: {
+      left: 0.8em;
+      bottom: 1em;
+    }
   }
-  margin:{
+  padding: {
     left: 1.5em;
   }
   h4 {
     color: $heading-color;
     font: {
       family: $heading-font;
-      size: 2em;
+      size: x-large;
       weight: regular;
     }
-	margin: {
-	  top: 0.5em;
-	  bottom: 0.6em;
-	}
-	
-	border: {
-	  bottom: 2px solid $base-color;
-	}
+    margin: {
+      top: 0.5em;
+      bottom: 0.6em;
+    }
+    border: {
+      bottom: 2px solid $base-color;
+    }
   }
   ul {
     list-style:none;
-	  margin: 0;
-	  padding: 0;
-	li {
-	  padding: {
-	    bottom: 0.6em;
-		  left: 1em;
-	  }
-    font: {
-        family: $content-font;
-	      weight: normal;
-		    size: 1.2em;
-	  }
-	  margin: 0;
-	}
+    margin: 0;
+    padding: 0;
+    li {
+      margin: 0;      
+      padding: {
+        bottom: 0.6em;
+	left: 1em;
+      }
+      font: {
+	family: $content-font;
+	weight: normal;
+	size: medium;
+      }
+    }
   }
   div.inputs {
     label {
-	  display: inline-block;
-    color: $base-color;
-    width: 49%;
-	  line-height: 1em;
-    text-align: right;
-	  padding: {
-	    top: 0.5em;
-		bottom: 0.4em;
-	  }
-	  font: {
-      family: $content-font;
-	    weight: normal;
-		  size: 1.3em;
-	  }
-	  
-	}
-	input, select {
-	 
-	  margin: {
-	    left: 0.8em;
-	    bottom: 1em;
-	    top: 0.1em;
-	  }
-	  
-	}
-  label.collection_radio,  {
-	  padding-left: 0.6em;
-	  display :inline;
-  }
-  span {
-    &input {
-	  padding-left: 0;
-	}
-  }
-	
+      display: inline-block;
+      color: $base-color;
+      width: 40%;
+      line-height: 1em;
+      text-align: right;
+      padding: {
+	top: 0.5em;
+	bottom: 0.4em;
+      }
+      font: {
+	family: $content-font;
+	weight: normal;
+	size: $label-font-size;
+      }
+    }
+    label.collection_radio,  {
+      padding-left: 0.6em;
+      display :inline;
+    }
+    span {
+      &input {
+	padding-left: 0;
+      }
+    }
+    .dependents {
+      border: none;
+      a {
+	color: $base-color;
+	padding: 0.5em 0;
+      }
+    }
   }
   div.actions {
-		text-align: center;
-    input.button{
-	  @include sharp-button;
-		
-	  margin: {
-	    bottom: 0.5em;
-	    top: 1em;
-	  }
-	  font: {
-	    size: large;
-	  }
-	}
+    text-align: center;
   }  
 }
 
-section#result {
-  h1 {
-    color: $heading-color;
-    font: {
-      size: 2em;
-      weight: bold;
-    }
-    margin:{
-      left: 1.5em;
-    }
-  }
-  >label, b, label {
-    margin: {
-      top: 0;
-      left: 3em;  
-    }
-    font: {
-      family: $content-font;
-	    weight: normal;
-		  size: 1.2em;
-	  }
-  }  
-} 
+
+
+

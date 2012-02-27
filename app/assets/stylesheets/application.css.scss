@@ -242,3 +242,24 @@ tbody tr {
 #flash_info {
   @include flash-message(#d5edf8, #205791, #92cae4);
 }
+
+
+//--------------------------- input[Submit Button]--------------------------------------
+
+form {
+  input[type="submit"] {
+    @include button($base-color);
+    @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
+    font-size: medium;
+  }
+}
+
+input, select {
+  border: {
+    width: 2px;
+    style: solid;
+    color: $border-color;
+  }
+  color: $text-color;
+}
+
