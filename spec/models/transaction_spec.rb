@@ -30,4 +30,17 @@ describe Transaction do
     transaction.quantity.should eq -10
   end
 
+  it "should destroy net position if net position has one transaction" do
+    transaction = create :transaction, :quantity => 100, :price => 10, :net_position => create(:net_position)
+    transaction.destroy
+    NetPosition.count.should eq 0
+  end
+
+  it "shouldn't destroy net position if net position has many transaction" do
+    net_position = create(:net_position)
+    create :transaction, :quantity => 100, :price => 10, :net_position => net_position
+    transaction = create :transaction, :quantity => 100, :price => 10, :net_position => net_position
+    transaction.destroy
+    NetPosition.count.should eq 1
+  end
 end

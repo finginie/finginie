@@ -6,6 +6,26 @@ describe "Transactions" do
     let (:net_position) { create :net_position, :portfolio => portfolio}
   end
 
+  describe "#destroy" do
+    include_context "logged in user"
+    let(:portfolio) { create :portfolio, :user => current_user }
+    let(:transaction) { create :transaction, :quantity => 100, :price => 10, :net_position => create(:net_position, :portfolio => portfolio) }
+
+    before(:each) {
+      visit portfolio_net_position_path(portfolio.id, transaction.net_position_id)
+    }
+
+    it "should destroy net position if only one transaction" do
+      click_button "Delete"
+      NetPosition.count.should eq 0
+    end
+
+    it "should redirect to portfolio show page" do
+      click_button "Delete"
+      current_path.should eq portfolio_path(portfolio.id)
+    end
+  end
+
 # TODO: Transaction index page cuases error in update and destroy transaction
 # As these tests stand now, delete it later
   pending "#index" do

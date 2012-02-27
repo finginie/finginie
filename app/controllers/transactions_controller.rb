@@ -9,4 +9,8 @@ class TransactionsController < InheritedResources::Base
   def update
     update!{ portfolio_path(resource.net_position.portfolio_id) }
   end
+
+  def destroy
+    destroy!{ portfolio_path(resource.net_position.portfolio_id) }
+  end
 end
