@@ -1,9 +1,10 @@
 - if @share_holding.model
   %h1= "ShareHolding - #{@stock.name}"
+  #share-holding-chart{ 'data-share-holding' => @share_holding.groupwise_percentages }
   %table
     %th Investor Type
     %th Percentage(%)
-    - [ 'foreign_institutional_investors_percentage', 'domestic_institutional_investors_percentage', 'other_foreign_investors_percentage', 'promoters_percentage', 'directors_and_employees_percentage', 'others_percentage', 'public_percentage' ].each do |attr|
+    - @share_holding.non_zero_groups.each do |attr|
       %tr
         %th.group{:colspan => 2}= t "share_holding.#{attr}"
       - ShareHoldingDecorator::SHARE_HOLDING_CODES[attr].each do |item|
