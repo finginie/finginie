@@ -32,7 +32,7 @@ class NetPosition < ActiveRecord::Base
   end
 
   def current_value
-    transactions.map(&:current_value).inject(:+)
+   transactions.empty? ? 0 : transactions.map(&:current_value).inject(:+)
   end
 
   def average_cost

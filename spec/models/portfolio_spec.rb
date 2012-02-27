@@ -24,6 +24,8 @@ describe Portfolio do
       add_loan_position(portfolio, 10, 12.75, 1500000, Date.civil(2010, 1, 1))
 
       add_mutual_fund_position(portfolio, 30000, 35000, 1)
+
+      add_mutual_fund_position_without_transaction(portfolio)
     end
 
     its(:net_worth) do
@@ -72,5 +74,10 @@ describe Portfolio do
                                      :security => create(:mutual_fund)
     create :transaction, :net_position => position, :quantity => quantity, :price => amount1
     create :transaction, :net_position => position, :quantity => quantity, :price => amount2
+  end
+
+  def add_mutual_fund_position_without_transaction(portfolio)
+    position = create :net_position, :portfolio => portfolio,
+                                     :security => create(:mutual_fund)
   end
 end
