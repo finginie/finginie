@@ -21,15 +21,15 @@
   - %w(eps pe beta).each do |attr|
     %div{:class => attr}
       %p= t ".#{attr}"
-      %strong= @stock.send(attr)
+      %strong= @stock.send(attr) || "N/A"
   .week_high_price
     %p= t ".fifty_two_week_high_price"
     %strong= @stock.fifty_two_week_high_price
-    %span (#{@stock.fifty_two_week_high_date})
+    %span= "(#{l(@stock.fifty_two_week_high_date.change(:year => @stock.fifty_two_week_high_date.year + 2000), :format => :stock_52w_date)})"
   .week_low_price
     %p= t ".fifty_two_week_low_price"
     %strong= @stock.fifty_two_week_low_price
-    %span (#{@stock.fifty_two_week_low_date})
+    %span= "(#{l(@stock.fifty_two_week_low_date.change(:year => @stock.fifty_two_week_low_date.year + 2000), :format => :stock_52w_date)})"
 
 %section.news
   %h1 News
