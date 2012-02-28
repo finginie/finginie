@@ -5,7 +5,8 @@
   %ul
     = resource.summary
   %h1 Suggested Investment Mix
-  = t ".suggestion"
+  %p
+    = t ".suggestion"
   - if resource.score
     %table
       %tr
@@ -16,7 +17,9 @@
           %td= asset_class
           %td= "#{percentage}%"
     #asset-allocation-chart{ 'data-asset-allocation' => FinancialPlanner.ideal_asset_allocation(resource).to_a }
+%p
+  = t ".future_investment"
 -unless current_user
   #sign_up
     =link_to "Signin",  '/signin'
-= t ".future_investment"
+

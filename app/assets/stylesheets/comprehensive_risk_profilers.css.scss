@@ -6,23 +6,18 @@
 // ---------------------risk profiler page-------------------
 
 body.comprehensive_risk_profilers {
-  abbr[title] {
-    color: red;
-    border-bottom: none;
-  }
-
+  @include required-field;
   label {
     display: inline-block;
     color: $base-color;
     line-height: 1em;
     width: 100%;
-    text-size: large;
     padding: {
       top: 0.5em;
       bottom: 0.4em;
     }
     font: {
-      size: large;
+      size: $label-font-size;
     }
   }
 
@@ -47,26 +42,16 @@ body.comprehensive_risk_profilers {
 
   div.actions {
     input{
-      @include sharp-button;
       margin: {
-        left: 26%;
         bottom: 0.5em;
         top: 1em;
       }
-      font: {
-        size: large;
-      }
     }
   }
-
-  ol li {
-    overflow : visible;
-    vertical-align: top;
+  input {
+    margin-bottom: 1em;  
   }
 
-  aside>h1 {
-    border: none;
-  }
 }
 
 body.comprehensive_risk_profilers.show {
@@ -75,7 +60,6 @@ body.comprehensive_risk_profilers.show {
       color: $base-color;
     }
     ul{
-      //width: 80%;
       list-style-image: url('right_arrow.png');
       li {
         padding-bottom: 1em;
@@ -85,5 +69,19 @@ body.comprehensive_risk_profilers.show {
         }
       }
     }
+    #sign_up {
+      margin-bottom: 2em;
+      text-align: center;
+      a {
+        text-decoration: none;
+        @include button($base-color);
+        @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
+        font-size: medium;
+      }
+    }
+    .highcharts-container, table {
+      margin: 0 auto;
+    }
+    
   }
 }
