@@ -3,7 +3,7 @@ class StocksController < InheritedResources::Base
 
   def resource
     @chart_url =  "http://www.cs4w.in/Forska/TechnicalChart.aspx?Code=" + super.symbol + "&width=800" + "&height=600"
-    super
+    @stock = StockDecorator.decorate(super)
   end
 
   def collection

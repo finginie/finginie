@@ -110,7 +110,7 @@ describe "NetPositions" do
 
       page.should have_content I18n.t('.net_positions.success_message')
       page.should have_content scheme_master.scheme_name
-      page.should have_content 10000
+      page.should have_content "10,000"
       page.should have_content 30
     end
 
