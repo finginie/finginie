@@ -24,10 +24,10 @@
         %tr
           %td= link_to net_position.security.name, portfolio_net_position_path(resource, net_position)
           - unless type == "Loan"
-            %td= net_position.quantity
-            %td= net_position.average_cost
-            %td= net_position.security.current_price
-            %td= net_position.total_cost
-          %td= net_position.current_value
+            %td=  number_to_indian_currency net_position.quantity
+            %td= number_to_indian_currency net_position.average_cost
+            %td= number_to_indian_currency net_position.security.current_price
+            %td= number_to_indian_currency net_position.total_cost
+          %td= number_to_indian_currency net_position.current_value
           - unless type == "Loan"
-            %td= net_position.unrealised_profit
+            %td= number_to_indian_currency net_position.unrealised_profit

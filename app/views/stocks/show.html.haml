@@ -9,13 +9,13 @@
 %section.daily_prices
   .daily_price_change
     %h1= @stock.last_traded_price
-    %strong= @stock.net_change
-    %span= "(#{@stock.percent_change}%)"
+    %strong.net_change= @stock.net_change
+    %span.percent_change= "(#{@stock.percent_change}%)"
 
   - %w(close_price open_price volume high_price low_price).each do |attr|
     %div{:class => attr}
       %p= t ".#{attr}"
-      %strong= @stock.send(attr) || "N/A"
+      %strong= @stock.send(attr)
 
 %section.fundamentals
   - %w(eps pe beta).each do |attr|
@@ -25,11 +25,13 @@
   .week_high_price
     %p= t ".fifty_two_week_high_price"
     %strong= @stock.fifty_two_week_high_price
-    %span (#{@stock.fifty_two_week_high_date})
+    - if @stock.fifty_two_week_high_date
+      %span= "(#{l(@stock.fifty_two_week_high_date.change(:year => @stock.fifty_two_week_high_date.year + 2000), :format => :stock_52w_date)})"
   .week_low_price
     %p= t ".fifty_two_week_low_price"
     %strong= @stock.fifty_two_week_low_price
-    %span (#{@stock.fifty_two_week_low_date})
+    - if @stock.fifty_two_week_low_date
+      %span= "(#{l(@stock.fifty_two_week_low_date.change(:year => @stock.fifty_two_week_low_date.year + 2000), :format => :stock_52w_date)})"
 
 %section.news
   %h1 News
