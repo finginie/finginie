@@ -21,7 +21,6 @@ body {
 
 p {
   line-height: 1.5em;
-  //padding: 1em;
 }
 
 h1 {
@@ -68,6 +67,24 @@ header {
     &.main {
       margin-top: 1em;
     }
+    .level_1 {
+       li {
+       	 padding: {
+	   bottom: 0.2em;
+	   top: 0.2em
+	 }
+	 a {
+	   display: block;
+	   &.selected, {
+	     color: $base-color;
+	   }
+	 }
+	 &.selected {
+	   background-color: #D7E2F2;
+	   @include border-radius(4px 4px 0 0);
+	 }
+       }  
+    }
 
     &.user {
       @include float(right);
@@ -76,10 +93,11 @@ header {
       li {
         padding: 0 0.25em;
         &:first-child {
-          padding: 0.5em 0.25em;
+          padding-top: 1.2em;
         }
         img {
           height: 30px;
+	  padding-top: 0.5em;
         }
         form {
           input[type="submit"] {
@@ -95,6 +113,7 @@ header {
 
     img {
       height: 32px;
+      padding-top: 0.4em;
     }
 
     h1 {
