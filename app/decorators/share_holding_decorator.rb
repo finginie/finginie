@@ -38,4 +38,13 @@ class ShareHoldingDecorator < ApplicationDecorator
   def share_holder_codes
     element.map { |e| e["ShareHolderCode"] }
   end
+
+  def non_zero_groups
+    (SHARE_HOLDING_CODES.keys.map { |key|  { :group => key, :group_total => send(key)} if send(key) != 0.0 } - [nil])
+      .sort_by { |item| -item[:group_total] }.map { |item| item[:group] }
+  end
+
+  def groupwise_percentages
+    non_zero_groups.map { |key| [ h.t("share_holding.#{key}"), send(key)] }
+  end
 end

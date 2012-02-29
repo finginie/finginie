@@ -20,4 +20,16 @@ describe ShareHoldingDecorator do
   its(:directors_and_employees_percentage) { should eq 0.0 }
   its(:others_percentage) { should eq 3.7 }
   its(:public_percentage) { should eq 6.56 }
+  its(:non_zero_groups) { should eq [ "promoters_percentage",
+                                      "foreign_institutional_investors_percentage",
+                                      "public_percentage",
+                                      "others_percentage",
+                                      "domestic_institutional_investors_percentage",
+                                      "other_foreign_investors_percentage" ] }
+  its(:groupwise_percentages) { should eq [ [ 'Promoters',                              77.99],
+                                            [ 'Foreign Institional Investors (FIIs)',   8.52 ],
+                                            [ 'Public',                                 6.56 ],
+                                            [ 'Others',                                 3.7  ],
+                                            [ 'Domestic Institutional Investors (DIIs)',3.0  ],
+                                            [ 'Other Foreign Investors',                0.24 ] ] }
 end
