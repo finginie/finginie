@@ -16,7 +16,7 @@ class Portfolio < ActiveRecord::Base
   end
 
   def net_worth_security_share
-      net_positions_by_security_type.map { |type, net_positions| [type,(net_positions.map(&:current_value).inject(:+).to_f/net_worth_except_loan * 100).round(2)] unless type =="Loan" }.compact
+    net_positions_by_security_type.map { |type, net_positions| [type,(net_positions.map(&:current_value).inject(:+).to_f/net_worth_except_loan * 100).round(2)] unless type =="Loan" }.compact
   end
 
   def net_positions_by_security_type

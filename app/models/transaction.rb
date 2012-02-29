@@ -6,6 +6,7 @@ class Transaction < ActiveRecord::Base
   validates :net_position_id, :presence => true, :unless => :net_position
   validates :quantity, :presence => true
   validates :price, :presence => true
+  before_destroy :delete_net_position
 
   scope :statement, lambda {|portfolio_id| joins(:net_position).where('net_positions.portfolio_id = ?', portfolio_id).order('date') }
 
@@ -62,5 +63,9 @@ private
     action ||= :buy
     amount ||= 1
     self.quantity = { :buy => 1, :sell => -1}[action.to_sym] * amount.to_i
+  end
+
+  def delete_net_position
+    net_position.destroy if net_position.transactions.size == 1
   end
 end
