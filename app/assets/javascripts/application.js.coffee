@@ -9,6 +9,7 @@
 #
 #= require nested_form
 #= require highcharts
+#= require chosen.jquery.min
 #
 #= require underscore
 #= require backbone
