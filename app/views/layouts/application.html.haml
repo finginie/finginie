@@ -31,6 +31,7 @@
         = render_navigation :level => 1
         = yield :header
     #wrapper
+      %nav.breadcrumbs= render_navigation :renderer => :breadcrumbs, :join_with => " &gt; "
       #main
         - flash.each do |name, msg|
           = content_tag :div, msg, :id => "flash_#{name}", :class => name if msg.is_a?(String)
