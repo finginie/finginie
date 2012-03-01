@@ -15,7 +15,7 @@ describe TransactionsController do
 
   describe "DELETE 'destroy'" do
     it "should be redirect" do
-      delete 'destroy', :id => transaction.id, :net_position_id => transaction.id, :portfolio_id => portfolio.id
+      delete 'destroy', :id => transaction.id, :net_position_id => transaction.net_position_id, :portfolio_id => portfolio.id
       response.should redirect_to(portfolio_path(portfolio.id))
     end
   end
