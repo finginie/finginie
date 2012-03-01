@@ -63,7 +63,7 @@ body.stocks.show {
       padding-top: 2em;
       .daily_price_change, .close_price, .open_price, .volume,  .high_price, .low_price {
         border: {
-          left: $quote-border;  
+          left: $quote-border;
           top: $quote-border;
           bottom:  $quote-border;
         }
@@ -75,9 +75,6 @@ body.stocks.show {
           color: $base-color;
           margin: 0;
           padding-bottom: 1em;
-        }
-        strong {
-          color: $text-color;
         }
       }
       .low_price {

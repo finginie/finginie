@@ -162,17 +162,17 @@ $(document).ready(function() {
   var percentage_change = parseFloat($(".percentage_change").text().trim().slice(1,-2))
 
   if(change < 0){
-    $(".day_change").css('color', 'red')
+    $("body.mutual_funds .day_change").removeClass('green').addClass('red')
   }
   else{
-    $(".day_change").css('color', 'green')
+    $("body.mutual_funds .day_change").removeClass('red').addClass('green')
   }
 
   if(percentage_change < 0){
-    $(".percentage_change").css('color', 'red')
+    $("body.mutual_funds .percentage_change").removeClass('green').addClass('red')
   }
   else{
-    $(".percentage_change").css('color', 'green')
+    $("body.mutual_funds .percentage_change").removeClass('red').addClass('green')
   }
 
 });
