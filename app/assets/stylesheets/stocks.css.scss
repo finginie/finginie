@@ -9,24 +9,30 @@ $quote-border: 2px solid lightgray;
 body.stocks.index {
   #main {
     #stock_search {
+      margin-left: 2em;
       div {
-      width: 60%;
+      width: 100%;
       padding-bottom: 1em;
-      
         label {
+          display: inline-block;
+          width: 170px;
+          color: $base-color;
           font: {
-            size: large;
-            weight: bold;
+            size: medium;
           }
         }
         input, select {
-          float: right;
-          width: 65%;
+          width: 600px;
+          border: {
+            width: 2px;
+            style: solid;
+            color: #d6d6d6;
+          }
         }
       }
     }
     #stocks {
-      margin-bottom: 1em;
+      margin-left: 2em;
     }
   }
   aside {
@@ -41,7 +47,10 @@ body.stocks.show {
     }
     .symbol, .asset_class, .sector {
       dd {
-        padding-right: 0.6em;
+        padding : {
+          right: 0.6em;
+          left: 0.4em;
+        }  
         margin:0;
         color: $text-color;
       }
@@ -124,14 +133,6 @@ body.stocks.show {
         border-right: $quote-border;
       }
     }
-    .back {
-      clear: both;
-      a {
-        text-decoration: none;
-        color: $base-color;
-      }
-    }
-    
     .news {
       clear: both;
       ul {
@@ -145,6 +146,16 @@ body.stocks.show {
             color: #0099cc;
           }
         } 
+      }
+    }
+  }
+  .level_2 {
+    #navigation-stock {
+      >a {
+        @include sharp-button;
+        display: block;
+        text-align: left;
+        font-size: medium;
       }
     }
   }
