@@ -53,12 +53,14 @@ describe "Portfolios" do
   it "shows loan net positions summary" do
     loan_position = create :net_position, :security => create(:loan), :portfolio => portfolio
     loan_position.transactions.create build(:transaction, :quantity => 100, :price => 12).attributes
-
-    visit portfolio_path portfolio
-    expected_table =[
-                      ["Name", "Market value"],
-                      ["MyString", "-1,230"]
-                    ]
-    tableish("section.Loan table").should eq expected_table
+  
+    Timecop.freeze Date.civil(2012, 02, 11) do
+      visit portfolio_path portfolio
+      expected_table =[
+                        ["Name", "Market value"],
+                        ["MyString", "-1,230"]
+                      ]
+      tableish("section.Loan table").should eq expected_table
+    end
   end
 end
