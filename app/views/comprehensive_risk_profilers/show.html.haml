@@ -17,9 +17,15 @@
           %td= asset_class
           %td= "#{percentage}%"
     #asset-allocation-chart{ 'data-asset-allocation' => FinancialPlanner.ideal_asset_allocation(resource).to_a }
-%p
+-if current_user
+  #sign_up
+    =link_to 'Continue', portfolios_path
   = t ".future_investment"
--unless current_user
+-else
   #sign_up
     =link_to "Signin",  '/signin'
+  = t ".future_investment"
+  = t ".sign_up"
+=link_to 'Mutual Funds', mutual_funds_path
+
 

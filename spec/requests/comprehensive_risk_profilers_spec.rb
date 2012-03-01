@@ -116,6 +116,10 @@ describe "ComprehensiveRiskProfilers" do
       it "shouldn't show the login link on page" do
         page.should_not have_link('Signin')
       end
+
+      it"should show the continue link on page" do
+        page.should have_link('Continue')
+      end
     end
   end
 
