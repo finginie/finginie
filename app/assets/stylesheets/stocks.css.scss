@@ -149,7 +149,8 @@ body.stocks.show {
       }
     }
   }
-  .level_2 {
+  
+  aside{
     #navigation-stock {
       >a {
         @include sharp-button;

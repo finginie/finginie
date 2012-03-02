@@ -18,6 +18,9 @@ body {
   font-family: $content-font;
   color: $text-color;
 }
+h1, h4 {
+  margin: 0;
+}
 
 p {
   line-height: 1.5em;
@@ -130,6 +133,11 @@ header {
   min-height: 800px;
 }
 
+#main {
+  >h1 {
+    font-size: x-large; 
+  }
+}
 //--------------------- aside starts ----------------------
 aside{
   &>h1 {
@@ -139,11 +147,7 @@ aside{
     padding: {
       left: 0.6em;
     }
-    margin: {
-      top: 0.6em;
-    }
   }
-
   nav {
     ul {
       @include no-bullet;
@@ -236,18 +240,18 @@ footer {
 tbody tr {
   th {
     background-color: $th-color;
-	  color: white;
-	  text-align: left;
+    color: white;
+    text-align: left;
   }
 
   th, td {
     padding: {
-	  top: 0.4em;
-	  bottom: 0.4em;
-	  left: 0.6em;
-	  right: 0.6em;
-	  }
-    font-size: small;	  
+      top: 0.4em;
+      bottom: 0.4em;
+      left: 0.6em;
+      right: 0.6em;
+    }
+  font-size: small;	  
   }
 }
 

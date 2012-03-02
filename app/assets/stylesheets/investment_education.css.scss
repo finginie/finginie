@@ -114,20 +114,19 @@ $bottom-grey: #c5c4c4;
   }
   .extracontent {
     @include holy-grail-aside(240px, 10px, right);
-    padding: 1.5em 0.5em 0 1em;
+    padding: 0 0.2em 0 1em;
     h1 {
       font: {
         family: heading-font;
-        size: large;
-        weight: bold;
+        size: medium;
+        weight: normal;
       }
+      padding: 0.3em 0;
       color: #000;
       text-align: center;
-      background: grey;
-      margin-top: 0;
     }
     &>div {
-      border: thin solid grey;
+      border: 2px solid $border-color;
       @include border-radius(4px);
       margin-bottom: 1em;
       ul {
@@ -138,6 +137,7 @@ $bottom-grey: #c5c4c4;
         margin: 0.5em;
         font: {
           family: $content-font;
+	  size: small;
         }
         a {
           text-decoration: none;
@@ -161,14 +161,14 @@ div.wrapper {
   article{
 
   &>h1 {
-    color: $heading-color;
+    color: $base-color;
     font: {
       family: $heading-font;
-      size: 2em;
+      size: x-large;
       weight: regular;
     }
 	margin: {
-	  top: 0.5em;
+	  //top: 0.5em;
 	  bottom: 0.3em;
 	}
 	
@@ -185,24 +185,22 @@ div.wrapper {
         left: 0.5em;
         bottom: 0.6em
       }
-      
       font: {
         family: $content-font;
-	      weight: normal;
-		    size: medium;
-	    }
-			
+	weight: normal;
+	size: medium;
+      }
     }
     h1 {
       margin: 0;
       padding-bottom: 0.5em;
       clear: both;
-	    color: $base-color;
-	    font: {
+      color: $base-color;
+      font: {
         family: $heading-font;
-	      weight: bold;
-		    size: large;
-	    }
+	weight: normal;
+	size: large;
+      }
     }
     li {
       font-size: medium;
@@ -237,7 +235,6 @@ articlefooter {
       display: none;
     }
   }
-
 }
 rightalign {
   float: right;
