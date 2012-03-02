@@ -11,43 +11,14 @@ describe Portfolio do
         should validate_uniqueness_of(:name).scoped_to(:user_id)
      }
 
-  context "should calculate the net worth of a portfolio" do
-    before(:each) do
-      add_stock_position(portfolio, 100, 227.5)
-      add_stock_position(portfolio, 200, 821)
-      add_stock_position(portfolio, 250, 34.6)
+  it { should have_many :stock_transactions }
+  it "should have many stock_positions" do
+    stock = create :stock
+    4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    4.times { |n| create :stock_transaction, :stock => create( :stock), :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-      add_fixed_income(portfolio, 5, 8.89,  10000, Date.civil(2007, 1, 31))
-      add_fixed_income(portfolio, 5, 9.75, 500000, Date.civil(2008, 1, 18))
-
-      add_loan_position(portfolio,  5, 12.50,  300000, Date.civil(2011, 8, 1))
-      add_loan_position(portfolio, 10, 12.75, 1500000, Date.civil(2010, 1, 1))
-
-      add_mutual_fund_position(portfolio, 30000, 35000, 1)
-
-      add_mutual_fund_position_without_transaction(portfolio)
-    end
-
-    its(:net_worth) do
-      Timecop.freeze Date.civil(2011, 11, 11) do
-        should eq -629944
-      end
-    end
-
-    its(:net_worth_except_loan) do
-      Timecop.freeze Date.civil(2011, 11, 11) do
-        should eq 993760
-      end
-    end
-
-    its(:net_worth_security_share) do
-      excepted_net_worth_security_share = [
-                                            ["Stock", 19.68], ["FixedIncome", 73.27], ["MutualFund", 7.04]
-                                          ]
-      Timecop.freeze Date.civil(2011, 11, 11) do
-        should eq excepted_net_worth_security_share
-      end
-    end
+    portfolio.stock_positions.first.quantity.should eq 10
+    portfolio.stock_positions.first.average_cost_price.should eq 3
   end
 
   def add_stock_position(portfolio, quantity, price)
