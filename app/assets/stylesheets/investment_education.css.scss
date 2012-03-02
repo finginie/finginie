@@ -145,13 +145,13 @@ $bottom-grey: #c5c4c4;
       }
     }
     .takeaway {
-      @include color-highlights(#86C9EF);
+      @include color-highlights(#99CC99);
     }
     .articles {
-      @include color-highlights(#86C9EF);
+      @include color-highlights(#99CC99);
     }
     .videos {
-      @include color-highlights(#86C9EF);
+      @include color-highlights(#99CC99);
     }
   }
 }
@@ -161,22 +161,17 @@ div.wrapper {
   article{
 
   &>h1 {
-    color: $base-color;
+    color: $heading-red;
     font: {
       family: $heading-font;
       size: x-large;
       weight: regular;
     }
-	margin: {
-	  //top: 0.5em;
-	  bottom: 0.3em;
-	}
-	
-	border: {
-	  bottom: 2px solid $base-color;
-	}
+    margin: {
+      //top: 0.5em;
+      bottom: 0.3em;
+    }
   }
-
   section {
     p {
       color: #333333;
@@ -193,7 +188,7 @@ div.wrapper {
     }
     h1 {
       margin: 0;
-      padding-bottom: 0.5em;
+      padding-bottom: 0.3em;
       clear: both;
       color: $base-color;
       font: {

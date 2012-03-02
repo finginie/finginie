@@ -69,24 +69,21 @@ header {
 
     &.main {
       margin-top: 1em;
-    }
-    .level_1 {
-       li {
-       	 padding: {
-	   bottom: 0.2em;
-	   top: 0.2em
-	 }
-	 a {
-	   display: block;
-	   &.selected, {
-	     color: $base-color;
-	   }
-	 }
-	 &.selected {
-	   background-color: #D7E2F2;
-	   @include border-radius(4px 4px 0 0);
-	 }
-       }  
+      li {
+	padding: {
+	  bottom: 0.2em;
+	  top: 0.2em
+	}
+	a {
+	  display: block;
+	  &.selected, {
+	    color: $base-color;
+	  }
+	}
+	&.selected {
+	  background-color: #f3f4f5;
+	}
+      }  
     }
 
     &.user {
@@ -135,7 +132,8 @@ header {
 
 #main {
   >h1 {
-    font-size: x-large; 
+    font-size: x-large;
+    color: $heading-red;
   }
 }
 //--------------------- aside starts ----------------------

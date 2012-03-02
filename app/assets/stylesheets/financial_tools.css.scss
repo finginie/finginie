@@ -50,18 +50,14 @@ form {
     left: 1.5em;
   }
   h4 {
-    color: $base-color;
+    color: $heading-red;
     font: {
       family: $heading-font;
       size: x-large;
       weight: normal;
     }
     margin: {
-      //top: 0.5em;
-      bottom: 0.6em;
-    }
-    border: {
-      bottom: 2px solid $base-color;
+      bottom: 0.3em;
     }
   }
   ul {
