@@ -2,7 +2,9 @@ class StockTransaction < ActiveRecord::Base
   belongs_to :portfolio
   belongs_to :stock
 
-  validates_presence_of :price, :quantity
+  validates_presence_of :price, :quantity, :date
+  validates_numericality_of :price, :quantity
+  validate  :date_should_not_be_in_the_future
 
   scope :for, lambda { |stock| where(:stock_id => stock).order(:date) } do
     def quantity
@@ -13,8 +15,12 @@ class StockTransaction < ActiveRecord::Base
       first.stock.name
     end
 
+    def current_price
+      first.stock.current_price
+    end
+
     def current_value
-      quantity * first.stock.current_price
+      quantity * current_price
     end
 
     def buy_transactions
@@ -53,6 +59,37 @@ class StockTransaction < ActiveRecord::Base
   end
 
   def profit_or_loss
-     (- quantity * ( price - StockTransaction.for(stock).average_price(self) ) )if quantity < 0
+    (- quantity * ( price - StockTransaction.for(stock).average_price(self) ) )if quantity < 0
+  end
+
+  def total_cost
+    amount * price
+  end
+
+  def action
+    (quantity < 0 ? :sell : :buy) if quantity
+  end
+  def action=(action)
+    set_quantity(amount, action)
+    action
+  end
+
+  def amount
+    quantity && quantity.abs
+  end
+  def amount=(amount)
+    set_quantity(amount, action)
+    amount
+  end
+
+private
+  def set_quantity(amount, action)
+    action ||= :buy
+    amount ||= 1
+    self.quantity = { :buy => 1, :sell => -1}[action.to_sym] * amount.to_i
+  end
+
+  def date_should_not_be_in_the_future
+    errors.add(:date, "can't be in the future") if !date.blank? and date > Date.today
   end
 end

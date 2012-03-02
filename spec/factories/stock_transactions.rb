@@ -2,10 +2,9 @@
 
 FactoryGirl.define do
   factory :stock_transaction do
-      #name "MyString"
-        #quantity 1
-        #price "9.99"
-        #date "2012-03-02"
+      quantity 1
+      price 9.99
+      date "2012-03-02"
         #portfolio
         #stock
     end

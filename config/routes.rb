@@ -1,5 +1,6 @@
 Finginie::Application.routes.draw do
 
+
   match "/signin" => "sessions#new", :as => :signin
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
@@ -37,6 +38,10 @@ Finginie::Application.routes.draw do
   resource :comprehensive_risk_profiler, :only =>[:edit, :update, :show]
 
   resources :portfolios do
+    member do
+      get 'details'
+    end
+    resources :stock_transactions
     resources :net_positions, :except => :index do
       resources :transactions, :except => [:index, :show]
     end

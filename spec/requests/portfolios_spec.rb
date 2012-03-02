@@ -4,63 +4,19 @@ describe "Portfolios" do
   include_context "logged in user"
   let (:portfolio) { create :portfolio, :user => current_user }
 
-  it "groups net positions by asset type", :mongoid do
-    stock_position = create :net_position_with_transactions, :security => create(:stock_with_scrip), :portfolio => portfolio
-    loan_position = create :net_position_with_transactions, :security => create(:loan), :portfolio => portfolio
-    fixed_income_position = create :net_position_with_transactions, :security => create(:fixed_income), :portfolio => portfolio
-    mutual_fund_position = create :net_position_with_transactions, :security => create(:mutual_fund_with_scheme_master), :portfolio => portfolio
-    gold_position = create :net_position, :security => create(:gold), :portfolio => portfolio
+  let(:stock) { create :stock }
+  let(:scrip) { create :scrip, :last_traded_price => 5, :id => stock.symbol}
 
-    visit portfolio_path portfolio
-    within "section.Stock table" do
-      page.should have_content stock_position.security.name
-    end
-    within "section.FixedIncome table" do
-      page.should have_content fixed_income_position.security.name
-    end
-    within "section.Loan table" do
-      page.should have_content loan_position.security.name
-    end
-    within "section.MutualFund table" do
-      page.should have_content mutual_fund_position.security.name
-    end
-    within "section.Gold table" do
-      page.should have_content gold_position.security.name
-      page.should have_content "2,858.5"
-    end
-  end
+  it "should show all net positions in details page" do
+    scrip.save
+    4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    visit details_portfolio_path(portfolio)
 
-  it "should show new portfolio form page" do
-    visit new_portfolio_path
-
-    page.should have_content "New portfolio"
-  end
-
-  it "shows stock net positions summary" do
-    stock_position = create :net_position, :security => create(:stock, :name => "FOO 1"), :portfolio => portfolio
-    create :scrip, :id => stock_position.security.symbol, :last_traded_price => 20
-    stock_position.transactions.create build(:transaction, :quantity => 100, :price => 10).attributes
-    stock_position.transactions.create build(:transaction, :quantity => 100, :price => 12).attributes
-
-    visit portfolio_path portfolio
-    expected_table =[
-                      ["Name", "Quantity", "Average Cost Price", "Market Price", "Amount Invested", "Market value", "Profit"],
-                      ["FOO 1", "200", "11.0", "20.0", "2,200.0", "4,000", "1,800.0"]
+    expected_table = [
+                      ["Name", "Quantity", "Average Cost Price", "Market Price", "Amount Invested", "Market Value", "Profit"],
+                      [stock.name, "10", "3.0", "5.0", "30.0", "50.0", "20.0"]
                     ]
-    tableish("section.Stock table").should eq expected_table
+    tableish("table").should eq expected_table
   end
 
-  it "shows loan net positions summary" do
-    loan_position = create :net_position, :security => create(:loan), :portfolio => portfolio
-    loan_position.transactions.create build(:transaction, :quantity => 100, :price => 12).attributes
-  
-    Timecop.freeze Date.civil(2012, 02, 11) do
-      visit portfolio_path portfolio
-      expected_table =[
-                        ["Name", "Market value"],
-                        ["MyString", "-1,230"]
-                      ]
-      tableish("section.Loan table").should eq expected_table
-    end
-  end
 end
