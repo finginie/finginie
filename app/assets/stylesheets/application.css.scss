@@ -18,6 +18,9 @@ body {
   font-family: $content-font;
   color: $text-color;
 }
+h1, h4 {
+  margin: 0;
+}
 
 p {
   line-height: 1.5em;
@@ -66,24 +69,21 @@ header {
 
     &.main {
       margin-top: 1em;
-    }
-    .level_1 {
-       li {
-       	 padding: {
-	   bottom: 0.2em;
-	   top: 0.2em
-	 }
-	 a {
-	   display: block;
-	   &.selected, {
-	     color: $base-color;
-	   }
-	 }
-	 &.selected {
-	   background-color: #D7E2F2;
-	   @include border-radius(4px 4px 0 0);
-	 }
-       }  
+      li {
+	padding: {
+	  bottom: 0.2em;
+	  top: 0.2em
+	}
+	a {
+	  display: block;
+	  &.selected, {
+	    color: $base-color;
+	  }
+	}
+	&.selected {
+	  background-color: #f3f4f5;
+	}
+      }  
     }
 
     &.user {
@@ -93,7 +93,7 @@ header {
       li {
         padding: 0 0.25em;
         &:first-child {
-          padding-top: 1.2em;
+          padding-top: 0.8em;
         }
         img {
           height: 30px;
@@ -103,6 +103,7 @@ header {
           input[type="submit"] {
             @include button($base-color);
             @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
+	    margin: 0;
           }
         }
       }
@@ -128,7 +129,20 @@ header {
 #wrapper {
   @include holy-grail($aside-width, 0);
   min-height: 800px;
+  padding-top: 1em;
 }
+
+#main {
+  .container {
+    padding: 0 0 1em 1em;
+    >h1 {
+      font-size: x-large;
+      color: $heading-red;
+    }
+  }  
+}
+
+
 
 //--------------------- aside starts ----------------------
 aside{
@@ -139,15 +153,10 @@ aside{
     padding: {
       left: 0.6em;
     }
-    margin: {
-      top: 0.6em;
-    }
   }
-
   nav {
     ul {
       @include no-bullet;
-
       span {
         @include sharp-button;
         color: white;
@@ -236,18 +245,18 @@ footer {
 tbody tr {
   th {
     background-color: $th-color;
-	  color: white;
-	  text-align: left;
+    color: white;
+    text-align: left;
   }
 
   th, td {
     padding: {
-	  top: 0.4em;
-	  bottom: 0.4em;
-	  left: 0.6em;
-	  right: 0.6em;
-	  }
-    font-size: small;	  
+      top: 0.4em;
+      bottom: 0.4em;
+      left: 0.6em;
+      right: 0.6em;
+    }
+  font-size: small;	  
   }
 }
 

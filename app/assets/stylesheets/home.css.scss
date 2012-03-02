@@ -12,14 +12,18 @@ body.home {
     padding: 0;
     margin: 0;
     #main {
-      float: none;
-      @include center;
-      width: $column_width * 4 + $gutter_width * 3 + $margin_width * 2;
+      .container {
+        float: none;
+        @include center;
+        width: $column_width * 4 + $gutter_width * 3 + $margin_width * 2;
+      }
     }
   }
 
-  #main>h1 {
-    font-size: 3em;
+  #main .container>h1 {
+    font-size: 2em;
+    margin-top: 1em;
+    color: $base-color;
   }
 
   .banner {
@@ -28,7 +32,7 @@ body.home {
     border: 1px solid $border-color;
     padding: $margin_width - 1;
     text-align: center;
-
+    margin-bottom: 2em;
     ul {
       @include horizontal-list($gutter_width, left, true);
       padding: 0;

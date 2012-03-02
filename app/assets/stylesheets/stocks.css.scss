@@ -9,7 +9,6 @@ $quote-border: 2px solid lightgray;
 body.stocks.index {
   #main {
     #stock_search {
-      margin-left: 2em;
       div {
       width: 100%;
       padding-bottom: 1em;
@@ -22,7 +21,7 @@ body.stocks.index {
           }
         }
         input, select {
-          width: 600px;
+          width: 300px;
           border: {
             width: 2px;
             style: solid;
@@ -32,7 +31,7 @@ body.stocks.index {
       }
     }
     #stocks {
-      margin-left: 2em;
+      margin-left: 0;
     }
   }
   aside {
@@ -149,7 +148,21 @@ body.stocks.show {
       }
     }
   }
-  .level_2 {
+  
+  aside {
+    #navigation-stock {
+      >a {
+        @include sharp-button;
+        display: block;
+        text-align: left;
+        font-size: medium;
+      }
+    }
+  }
+}
+
+body.balance_sheet, body.profit_loss, body.cash_flow, body.ratios, body.share_holding {
+    aside {
     #navigation-stock {
       >a {
         @include sharp-button;

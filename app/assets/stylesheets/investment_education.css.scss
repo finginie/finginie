@@ -5,82 +5,84 @@
 
 body.investment_education {
   #main {
-    >ul {
-      margin: 0;
-      padding: {
-        top: 1em;
-        left: 1em;
-      }
-      li {
-        padding: 0;
-        @include horizontal-list;
-        display: inline-block;
-        width: 33%;
-        height: 350px;
-        span {
-          display: block;
-          color: $heading-color;
-          font: { 
-            family:$heading-font;
-            size: large;
-          }
-
-          &:before {
-            display: block;
-            width: 100%;
-            text-align: center;
-          }
-        }
-        //margin-left: 1em;
-        a {
-          text-decoration: none;
-        }
-        p {
-          display: inline;
-          padding-left: 0;
-        }
-        ul {
-          display: inline;
-          padding-left: 0;
-          padding-right: 1em;
-        }
-        li {
-          display: inline;
-          &:before {
-            content: ', ';
-          }
-          &:last-child:before {
-            content: ' and ';
-          }
-          &:first-child:before {
-            content: ' ';
-          }
-        }
-        // background images for article sections
-      }
-    }
-    #navigation-investment_concepts span:before {
-      content: url('investment_education/InvestmentConcepts_1.jpg');
-    }
-		#navigation-investment_process span:before {
-      content: url('investment_education/InvestmentProcess_1.jpg');
-    }
-		#navigation-investment_analysis span:before {
-      content: url('investment_education/InvestmentAnalysis_1.jpg');
-    }
-		#navigation-investment_types span:before {
-      content: url('investment_education/InvestmentTypes_1.jpg');
-    }
-		#navigation-advanced_investments span:before {
-      content: url('investment_education/AdvancedInvestments_1.jpg');
-    }
-		#navigation-jargon_demystified span:before {
-      content: url('investment_education/jargon.jpg');
-    }
-
-		ul>li {
-			padding: 0;
+    .container {
+      >ul {
+	margin: 0;
+	padding: {
+	  top: 1em;
+	  left: 1em;
+	}
+	li {
+	  padding: 0;
+	  @include horizontal-list;
+	  display: inline-block;
+	  width: 33%;
+	  height: 350px;
+	  span {
+	    display: block;
+	    color: $heading-color;
+	    font: { 
+	      family:$heading-font;
+	      size: large;
+	    }
+  
+	    &:before {
+	      display: block;
+	      width: 100%;
+	      text-align: center;
+	    }
 	  }
+	  //margin-left: 1em;
+	  a {
+	    text-decoration: none;
+	  }
+	  p {
+	    display: inline;
+	    padding-left: 0;
+	  }
+	  ul {
+	    display: inline;
+	    padding-left: 0;
+	    padding-right: 1em;
+	  }
+	  li {
+	    display: inline;
+	    &:before {
+	      content: ', ';
+	    }
+	    &:last-child:before {
+	      content: ' and ';
+	    }
+	    &:first-child:before {
+	      content: ' ';
+	    }
+	  }
+	  // background images for article sections
+	}
+      }
+      #navigation-investment_concepts span:before {
+	content: url('investment_education/InvestmentConcepts_1.jpg');
+      }
+		  #navigation-investment_process span:before {
+	content: url('investment_education/InvestmentProcess_1.jpg');
+      }
+		  #navigation-investment_analysis span:before {
+	content: url('investment_education/InvestmentAnalysis_1.jpg');
+      }
+		  #navigation-investment_types span:before {
+	content: url('investment_education/InvestmentTypes_1.jpg');
+      }
+		  #navigation-advanced_investments span:before {
+	content: url('investment_education/AdvancedInvestments_1.jpg');
+      }
+		  #navigation-jargon_demystified span:before {
+	content: url('investment_education/jargon.jpg');
+      }
+  
+		  ul>li {
+			  padding: 0;
+	    }
+    }
   }
 }
 
@@ -107,27 +109,27 @@ $base-color: #3872C2;
 $bottom-grey: #c5c4c4;
 //--------------------------------------------------------------
 
-#main>.wrapper {
+#main .container>.wrapper {
   @include holy-grail-wrapper(240px, 10px, right);
   article {
     @include holy-grail-main(240px, 10px, right);
+    padding-bottom: 1em;
   }
   .extracontent {
     @include holy-grail-aside(240px, 10px, right);
-    padding: 1.5em 0.5em 0 1em;
+    padding: 0 0.2em 0 1em;
     h1 {
       font: {
         family: heading-font;
-        size: large;
-        weight: bold;
+        size: medium;
+        weight: normal;
       }
+      padding: 0.3em 0;
       color: #000;
       text-align: center;
-      background: grey;
-      margin-top: 0;
     }
     &>div {
-      border: thin solid grey;
+      border: 2px solid $border-color;
       @include border-radius(4px);
       margin-bottom: 1em;
       ul {
@@ -138,6 +140,7 @@ $bottom-grey: #c5c4c4;
         margin: 0.5em;
         font: {
           family: $content-font;
+	  size: small;
         }
         a {
           text-decoration: none;
@@ -145,38 +148,32 @@ $bottom-grey: #c5c4c4;
       }
     }
     .takeaway {
-      @include color-highlights(#86C9EF);
+      @include color-highlights(#99CC99);
     }
     .articles {
-      @include color-highlights(#86C9EF);
+      @include color-highlights(#99CC99);
     }
     .videos {
-      @include color-highlights(#86C9EF);
+      @include color-highlights(#99CC99);
     }
   }
 }
 //---------------------------- content -------------------------------------
 div.wrapper {
-  padding-left: 1em;
+  //padding-left: 1em;
   article{
-
   &>h1 {
-    color: $heading-color;
+    color: $heading-red;
     font: {
       family: $heading-font;
-      size: 2em;
+      size: x-large;
       weight: regular;
     }
-	margin: {
-	  top: 0.5em;
-	  bottom: 0.3em;
-	}
-	
-	border: {
-	  bottom: 2px solid $base-color;
-	}
+    margin: {
+      //top: 0.5em;
+      bottom: 0.3em;
+    }
   }
-
   section {
     p {
       color: #333333;
@@ -185,24 +182,22 @@ div.wrapper {
         left: 0.5em;
         bottom: 0.6em
       }
-      
       font: {
         family: $content-font;
-	      weight: normal;
-		    size: medium;
-	    }
-			
+	weight: normal;
+	size: medium;
+      }
     }
     h1 {
       margin: 0;
-      padding-bottom: 0.5em;
+      padding-bottom: 0.3em;
       clear: both;
-	    color: $base-color;
-	    font: {
+      color: $base-color;
+      font: {
         family: $heading-font;
-	      weight: bold;
-		    size: large;
-	    }
+	weight: normal;
+	size: large;
+      }
     }
     li {
       font-size: medium;
@@ -237,7 +232,6 @@ articlefooter {
       display: none;
     }
   }
-
 }
 rightalign {
   float: right;
