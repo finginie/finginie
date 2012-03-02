@@ -93,7 +93,7 @@ header {
       li {
         padding: 0 0.25em;
         &:first-child {
-          padding-top: 1.2em;
+          padding-top: 0.8em;
         }
         img {
           height: 30px;
@@ -103,6 +103,7 @@ header {
           input[type="submit"] {
             @include button($base-color);
             @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
+	    margin: 0;
           }
         }
       }
@@ -128,14 +129,21 @@ header {
 #wrapper {
   @include holy-grail($aside-width, 0);
   min-height: 800px;
+  padding-top: 1em;
 }
 
 #main {
-  >h1 {
-    font-size: x-large;
-    color: $heading-red;
-  }
+  .container {
+    padding: 0 0 1em 1em;
+    >h1 {
+      font-size: x-large;
+      color: $heading-red;
+    }
+  }  
 }
+
+
+
 //--------------------- aside starts ----------------------
 aside{
   &>h1 {
@@ -149,7 +157,6 @@ aside{
   nav {
     ul {
       @include no-bullet;
-
       span {
         @include sharp-button;
         color: white;

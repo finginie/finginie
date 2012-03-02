@@ -5,82 +5,84 @@
 
 body.investment_education {
   #main {
-    >ul {
-      margin: 0;
-      padding: {
-        top: 1em;
-        left: 1em;
-      }
-      li {
-        padding: 0;
-        @include horizontal-list;
-        display: inline-block;
-        width: 33%;
-        height: 350px;
-        span {
-          display: block;
-          color: $heading-color;
-          font: { 
-            family:$heading-font;
-            size: large;
-          }
-
-          &:before {
-            display: block;
-            width: 100%;
-            text-align: center;
-          }
-        }
-        //margin-left: 1em;
-        a {
-          text-decoration: none;
-        }
-        p {
-          display: inline;
-          padding-left: 0;
-        }
-        ul {
-          display: inline;
-          padding-left: 0;
-          padding-right: 1em;
-        }
-        li {
-          display: inline;
-          &:before {
-            content: ', ';
-          }
-          &:last-child:before {
-            content: ' and ';
-          }
-          &:first-child:before {
-            content: ' ';
-          }
-        }
-        // background images for article sections
-      }
-    }
-    #navigation-investment_concepts span:before {
-      content: url('investment_education/InvestmentConcepts_1.jpg');
-    }
-		#navigation-investment_process span:before {
-      content: url('investment_education/InvestmentProcess_1.jpg');
-    }
-		#navigation-investment_analysis span:before {
-      content: url('investment_education/InvestmentAnalysis_1.jpg');
-    }
-		#navigation-investment_types span:before {
-      content: url('investment_education/InvestmentTypes_1.jpg');
-    }
-		#navigation-advanced_investments span:before {
-      content: url('investment_education/AdvancedInvestments_1.jpg');
-    }
-		#navigation-jargon_demystified span:before {
-      content: url('investment_education/jargon.jpg');
-    }
-
-		ul>li {
-			padding: 0;
+    .container {
+      >ul {
+	margin: 0;
+	padding: {
+	  top: 1em;
+	  left: 1em;
+	}
+	li {
+	  padding: 0;
+	  @include horizontal-list;
+	  display: inline-block;
+	  width: 33%;
+	  height: 350px;
+	  span {
+	    display: block;
+	    color: $heading-color;
+	    font: { 
+	      family:$heading-font;
+	      size: large;
+	    }
+  
+	    &:before {
+	      display: block;
+	      width: 100%;
+	      text-align: center;
+	    }
 	  }
+	  //margin-left: 1em;
+	  a {
+	    text-decoration: none;
+	  }
+	  p {
+	    display: inline;
+	    padding-left: 0;
+	  }
+	  ul {
+	    display: inline;
+	    padding-left: 0;
+	    padding-right: 1em;
+	  }
+	  li {
+	    display: inline;
+	    &:before {
+	      content: ', ';
+	    }
+	    &:last-child:before {
+	      content: ' and ';
+	    }
+	    &:first-child:before {
+	      content: ' ';
+	    }
+	  }
+	  // background images for article sections
+	}
+      }
+      #navigation-investment_concepts span:before {
+	content: url('investment_education/InvestmentConcepts_1.jpg');
+      }
+		  #navigation-investment_process span:before {
+	content: url('investment_education/InvestmentProcess_1.jpg');
+      }
+		  #navigation-investment_analysis span:before {
+	content: url('investment_education/InvestmentAnalysis_1.jpg');
+      }
+		  #navigation-investment_types span:before {
+	content: url('investment_education/InvestmentTypes_1.jpg');
+      }
+		  #navigation-advanced_investments span:before {
+	content: url('investment_education/AdvancedInvestments_1.jpg');
+      }
+		  #navigation-jargon_demystified span:before {
+	content: url('investment_education/jargon.jpg');
+      }
+  
+		  ul>li {
+			  padding: 0;
+	    }
+    }
   }
 }
 
@@ -107,10 +109,11 @@ $base-color: #3872C2;
 $bottom-grey: #c5c4c4;
 //--------------------------------------------------------------
 
-#main>.wrapper {
+#main .container>.wrapper {
   @include holy-grail-wrapper(240px, 10px, right);
   article {
     @include holy-grail-main(240px, 10px, right);
+    padding-bottom: 1em;
   }
   .extracontent {
     @include holy-grail-aside(240px, 10px, right);
@@ -157,9 +160,8 @@ $bottom-grey: #c5c4c4;
 }
 //---------------------------- content -------------------------------------
 div.wrapper {
-  padding-left: 1em;
+  //padding-left: 1em;
   article{
-
   &>h1 {
     color: $heading-red;
     font: {
