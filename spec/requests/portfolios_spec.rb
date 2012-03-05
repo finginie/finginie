@@ -69,4 +69,27 @@ describe "Portfolios" do
     current_path.should eq details_portfolio_path(portfolio)
     page.should_not have_selector("section.Loan table")
   end
+
+  it "should show fixed deposit net position in details page" do
+    fixed_deposit = create :fixed_deposit, :period => 1, :rate_of_interest => 10, :name => "Foo"
+    create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 100000, :date => 8.months.ago.to_date
+
+    visit details_portfolio_path(portfolio)
+    expected_table = [
+                       [ "Date", "Name", "Rate of Interest", "Duration", "Invested Amount", "Current Value", "Profit"],
+                       [ 8.months.ago.to_date.to_s(:db), "Foo", "10.0", "1.0","1,00,000.0", "1,06,578.78", "6,578.78", ""]
+                    ]
+    tableish("section.FixedDeposit table").should eq expected_table
+  end
+
+  it "user should able to redeem the fixed deposit" do
+    fixed_deposit = create :fixed_deposit, :period => 1, :rate_of_interest => 10, :name => "Foo"
+    create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 100000, :date => 8.months.ago.to_date
+
+    visit details_portfolio_path(portfolio)
+    click_button "Redeem"
+    fill_in "Rate of interest", :with => 8
+    click_on "Submit"
+    page.should_not have_selector("section.FixedDeposit table")
+  end
 end

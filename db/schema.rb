@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120306074830) do
+ActiveRecord::Schema.define(:version => 20120307105446) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -53,6 +53,19 @@ ActiveRecord::Schema.define(:version => 20120306074830) do
   end
 
   add_index "comprehensive_risk_profilers", ["user_id"], :name => "index_comprehensive_risk_profilers_on_user_id"
+
+  create_table "fixed_deposit_transactions", :force => true do |t|
+    t.decimal  "price"
+    t.date     "date"
+    t.text     "comments"
+    t.integer  "portfolio_id"
+    t.integer  "fixed_deposit_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "fixed_deposit_transactions", ["fixed_deposit_id"], :name => "index_fixed_deposit_transactions_on_fixed_deposit_id"
+  add_index "fixed_deposit_transactions", ["portfolio_id"], :name => "index_fixed_deposit_transactions_on_portfolio_id"
 
   create_table "gold_transactions", :force => true do |t|
     t.decimal  "price"

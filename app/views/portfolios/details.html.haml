@@ -10,7 +10,6 @@
           %th Amount Invested
           %th Market Value
           %th Profit
-
         - resource.send(positions).each do |net_position|
           %tr
             %td= link_to net_position.name
@@ -44,4 +43,5 @@
 
 %section{:class => "Loan"}
   = render "loan_positions", :loan_positions => resource.loan_positions
-
+%section{:class => "FixedDeposit"}
+  = render "fixed_deposit_positions", :fixed_deposit_positions => resource.fixed_deposit_positions

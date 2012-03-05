@@ -6,10 +6,12 @@ class Portfolio < ActiveRecord::Base
   has_many :mutual_fund_transactions
   has_many :gold_transactions, :order => :date, :extend => GoldPosition
   has_many :loan_transactions
+  has_many :fixed_deposit_transactions
 
   has_many :stocks, :through => :stock_transactions, :uniq => true
   has_many :mutual_funds, :through => :mutual_fund_transactions, :uniq => true
   has_many :loans, :through => :loan_transactions, :uniq => true
+  has_many :fixed_deposits, :through => :fixed_deposit_transactions, :uniq => true
 
 
   validates :user_id, :presence => true
@@ -26,6 +28,10 @@ class Portfolio < ActiveRecord::Base
 
   def loan_positions
     loans.map { |loan|  loan_transactions.for(loan) if loan.loan_transactions.count == 1  } - [ nil ] if loans
+  end
+
+  def fixed_deposit_positions
+    fixed_deposits.map(&:name).uniq.map { |name|  fixed_deposit_transactions.for(name) if FixedDeposit.where(:name => name).count == 1 } - [ nil ]
   end
 
   def net_worth

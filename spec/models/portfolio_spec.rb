@@ -15,6 +15,7 @@ describe Portfolio do
   it { should have_many :mutual_fund_transactions }
   it { should have_many :gold_transactions }
   it { should have_many :loan_transactions }
+  it { should have_many :fixed_deposit_transactions }
 
   it "should have many stock_positions" do
     stock = create :stock

@@ -1,6 +1,5 @@
 Finginie::Application.routes.draw do
 
-
   match "/signin" => "sessions#new", :as => :signin
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
@@ -44,6 +43,12 @@ Finginie::Application.routes.draw do
     resources :loan_transactions do
       member do
         post 'clear'
+      end
+    end
+    resources :fixed_deposit_transactions do
+      member do
+        get 'redeem'
+        put 'create_redeem'
       end
     end
     resources :stock_transactions
