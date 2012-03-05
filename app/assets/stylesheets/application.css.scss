@@ -128,11 +128,16 @@ header {
 //--------------------- main starts ----------------------
 #wrapper {
   @include holy-grail($aside-width, 0);
+  height: 100%;
   min-height: 800px;
   padding-top: 1em;
+  width: 976px;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 #main {
+  width: 100%;
   .container {
     padding: 0 0 1em 1em;
     >h1 {
@@ -146,23 +151,38 @@ header {
 
 //--------------------- aside starts ----------------------
 aside{
+  //border: 2px solid $base-color;
+  //border-radius: 4px 4px 0 0;
   &>h1 {
+    @include background-image(linear-gradient(#A1D004, shade(#6B9A00, 30%)));
+    //border: 1px solid #A1D004;
+    border-radius: 4px 4px 0 0;
+    //text-align: center;
+    color: #fff;
     font:{
       size: x-large;
+      
     }
     padding: {
-      left: 0.6em;
+      top: 8px;
+      bottom: 8px;
+      left: 18px;
     }
+    margin: 0;
   }
   nav {
     ul {
+      margin-top: 2px;
       @include no-bullet;
       span {
-        @include sharp-button;
-        color: white;
+	@include button($base-color);
+	@include background-image(linear-gradient($base-color, shade(#022744, 10%)));
+	border-radius: 0;
+	color: white;
         display: block;
         text-align: left;
         font-size: medium;
+	border: none;
       }
 
       ul {
@@ -186,13 +206,18 @@ aside{
         }
 
         border:{
-          bottom: 1px solid $border-color;
+          bottom: $nav-border;
+	  left: $nav-border;
+	  right: $nav-border;
         }
 
         &.selected {
           color: $base-color;
           background-color: $border-color;
         }
+	&:hover {
+	  color: $base-color;
+	}
       }
     }
   }
