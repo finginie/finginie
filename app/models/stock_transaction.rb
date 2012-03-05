@@ -4,7 +4,7 @@ class StockTransaction < ActiveRecord::Base
 
   validates_presence_of :price, :quantity, :date
   validates_numericality_of :price, :quantity
-  validate  :date_should_not_be_in_the_future
+  validate  :date_should_not_be_in_the_future, :sell_quantity_should_be_less_than_or_equal_to_quantity
 
   scope :for, lambda { |stock| where(:stock_id => stock).order(:date) } do
     def quantity
@@ -91,5 +91,9 @@ private
 
   def date_should_not_be_in_the_future
     errors.add(:date, "can't be in the future") if !date.blank? and date > Date.today
+  end
+
+  def sell_quantity_should_be_less_than_or_equal_to_quantity
+    errors.add(:amount, "Your portfolio do not have sufficient number of stocks for this action") if action == :sell && portfolio.stock_transactions.for(stock.id).quantity <= amount
   end
 end

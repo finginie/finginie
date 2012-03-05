@@ -4,16 +4,14 @@ class Portfolio < ActiveRecord::Base
   has_many :net_positions
   has_many :stock_transactions
 
+  has_many :stocks, :through => :stock_transactions, :uniq => true
+
   validates :user_id, :presence => true
   validates :name, :presence => true,
                   :uniqueness => { :scope => :user_id }
 
   def stock_positions
     stocks.map { |stock|  stock_transactions.for(stock) }
-  end
-
-  def stocks
-    stock_transactions.map(&:stock_id).uniq
   end
 
   def net_worth

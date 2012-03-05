@@ -30,4 +30,10 @@ describe StockTransaction do
     stock_transaction.amount = 10
     stock_transaction.quantity.should eq -10
   end
+
+  it "should not allow sell transaction if there is no buy transaction for that stock" do
+    stock_transaction.action = :sell
+    stock_transaction.amount = 20
+    stock_transaction.valid?.should be_false
+  end
 end

@@ -20,6 +20,18 @@ describe "StockTransactions" do
       select 'buy', :from => "Action"
       fill_in "Amount", :with => 30
       click_on "Create"
+      page.should have_content "successfully"
+    end
+
+    it "should not add a new sell transaction if the quantity for that stock is not available in the portfolio" do
+      stock.save
+      visit new_portfolio_stock_transaction_path(portfolio)
+      select stock.name, :from => "Stock"
+      fill_in "Price", :with => 200
+      select 'sell', :from => "Action"
+      fill_in "Amount", :with => 30
+      click_on "Create"
+      page.should_not have_content "successfully"
     end
 
     it "should show stock transactons index page" do

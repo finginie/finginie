@@ -20,6 +20,7 @@ describe "StockPosition" do
   its (:unrealised_profit) { should eq 20 }
 
   it "should calculate the average cost price after sell transaction" do
+    subject # ensure stock transaction is saved
     create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => -4, :price => 6, :date => Date.today
     subject.average_cost_price.should eq 3
     subject.total_cost.should eq 18
@@ -28,6 +29,7 @@ describe "StockPosition" do
   end
 
   it "should calculate the average cost price after sell tranaction and a buy transaction" do
+    subject # ensure stock transaction is saved
     create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => -4, :price => 6, :date => Date.today
     create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => 3 , :price => 6, :date => Date.today
     subject.average_cost_price.should eq 4
