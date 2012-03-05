@@ -3,15 +3,21 @@ class Portfolio < ActiveRecord::Base
 
   has_many :net_positions
   has_many :stock_transactions
+  has_many :mutual_fund_transactions
 
   has_many :stocks, :through => :stock_transactions, :uniq => true
+  has_many :mutual_funds, :through => :mutual_fund_transactions, :uniq => true
 
   validates :user_id, :presence => true
   validates :name, :presence => true,
                   :uniqueness => { :scope => :user_id }
 
   def stock_positions
-    stocks.map { |stock|  stock_transactions.for(stock) }
+    stocks.map { |stock|  stock_transactions.for(stock) } if stocks
+  end
+
+  def mutual_fund_positions
+    mutual_funds.map(&:name).uniq.map { |name| mutual_fund_transactions.for(name) } if mutual_funds
   end
 
   def net_worth

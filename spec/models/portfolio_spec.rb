@@ -12,6 +12,8 @@ describe Portfolio do
      }
 
   it { should have_many :stock_transactions }
+  it { should have_many :mutual_fund_transactions }
+
   it "should have many stock_positions" do
     stock = create :stock
     4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
@@ -19,6 +21,14 @@ describe Portfolio do
 
     portfolio.stock_positions.first.quantity.should eq 10
     portfolio.stock_positions.first.average_cost_price.should eq 3
+  end
+
+  it "should have many mutual_fund_positions" do
+    scheme = create :scheme_master
+    4.times { |n| create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+
+    portfolio.mutual_fund_positions.first.quantity.should eq 10
+    portfolio.mutual_fund_positions.first.average_cost_price.should eq 3
   end
 
   def add_stock_position(portfolio, quantity, price)
