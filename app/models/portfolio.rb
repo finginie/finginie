@@ -4,6 +4,7 @@ class Portfolio < ActiveRecord::Base
   has_many :net_positions
   has_many :stock_transactions
   has_many :mutual_fund_transactions
+  has_many :gold_transactions, :order => :date, :extend => GoldPosition
 
   has_many :stocks, :through => :stock_transactions, :uniq => true
   has_many :mutual_funds, :through => :mutual_fund_transactions, :uniq => true

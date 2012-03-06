@@ -21,3 +21,23 @@
             %td= number_to_indian_currency net_position.current_value
             %td= number_to_indian_currency net_position.unrealised_profit
 
+- if resource.gold_transactions
+  #gold_positions
+    %table
+      %tr
+        %th Name
+        %th Quantity
+        %th Average Cost Price
+        %th Market Price
+        %th Amount Invested
+        %th Market Value
+        %th Profit
+
+      %tr
+        %td= link_to resource.gold_transactions.name
+        %td=  number_to_indian_currency resource.gold_transactions.quantity
+        %td= number_to_indian_currency resource.gold_transactions.average_cost_price
+        %td= number_to_indian_currency resource.gold_transactions.current_price
+        %td= number_to_indian_currency resource.gold_transactions.total_cost
+        %td= number_to_indian_currency resource.gold_transactions.current_value
+        %td= number_to_indian_currency resource.gold_transactions.unrealised_profit

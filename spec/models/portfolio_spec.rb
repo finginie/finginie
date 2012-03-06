@@ -13,6 +13,7 @@ describe Portfolio do
 
   it { should have_many :stock_transactions }
   it { should have_many :mutual_fund_transactions }
+  it { should have_many :gold_transactions }
 
   it "should have many stock_positions" do
     stock = create :stock
@@ -29,6 +30,14 @@ describe Portfolio do
 
     portfolio.mutual_fund_positions.first.quantity.should eq 10
     portfolio.mutual_fund_positions.first.average_cost_price.should eq 3
+  end
+
+  it "should have a gold position" do
+    gold = create :gold, :name => "Gold", :current_price => 5
+    4.times { |n| create :gold_transaction, :gold => gold, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+
+    portfolio.gold_transactions.quantity.should eq 10
+    portfolio.gold_transactions.average_cost_price.should eq 3
   end
 
   def add_stock_position(portfolio, quantity, price)

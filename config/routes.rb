@@ -43,6 +43,7 @@ Finginie::Application.routes.draw do
     end
     resources :stock_transactions
     resources :mutual_fund_transactions
+    resources :gold_transactions
     resources :net_positions, :except => :index do
       resources :transactions, :except => [:index, :show]
     end

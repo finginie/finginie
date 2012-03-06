@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Price:
+  = @gold_transaction.price
+%p
+  %b Date:
+  = @gold_transaction.date
+%p
+  %b Quantity:
+  = @gold_transaction.quantity
+%p
+  %b Comments:
+  = @gold_transaction.comments
+%p
+  %b Portfolio:
+  = @gold_transaction.portfolio
+%p
+  %b Gold:
+  = @gold_transaction.gold
+
+= link_to 'Edit', edit_resource_path(@gold_transaction)
+\|
+= link_to 'Back', collection_path
