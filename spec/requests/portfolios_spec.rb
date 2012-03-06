@@ -92,4 +92,28 @@ describe "Portfolios" do
     click_on "Submit"
     page.should_not have_selector("section.FixedDeposit table")
   end
+
+  it "should show real estate net position in details page" do
+    real_estate = create :real_estate, :name => "Test Property", :location => "Mordor", :current_price => 60000
+    create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => 50000, :date => Date.civil(2011,12,10)
+
+    visit details_portfolio_path(portfolio)
+    expected_table = [
+                       [ "Date", "Name", "Buy Value", "Current Value", "Profit"],
+                       [ "2011-12-10", "Test Property", "50,000.0", "60,000.0", "10,000.0", ""],
+                    ]
+    tableish("section.RealEstate table").should eq expected_table
+  end
+
+   it "user should able to sell real estate property" do
+    real_estate = create :real_estate,:name => "Test Property", :location => "Mordor", :current_price => 60000
+    create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => 100000, :date => 8.months.ago.to_date
+
+    visit details_portfolio_path(portfolio)
+    click_button "Sell"
+    fill_in "Amount", :with => 120000
+    click_on "Submit"
+    page.should_not have_selector("section.RealEstate table")
+  end
+
 end

@@ -147,6 +147,19 @@ ActiveRecord::Schema.define(:version => 20120307105446) do
     t.string   "buckets"
   end
 
+  create_table "real_estate_transactions", :force => true do |t|
+    t.decimal  "price"
+    t.date     "date"
+    t.text     "comments"
+    t.integer  "portfolio_id"
+    t.integer  "real_estate_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "real_estate_transactions", ["portfolio_id"], :name => "index_real_estate_transactions_on_portfolio_id"
+  add_index "real_estate_transactions", ["real_estate_id"], :name => "index_real_estate_transactions_on_real_estate_id"
+
   create_table "responses", :force => true do |t|
     t.integer  "risk_profiler_id"
     t.integer  "choice_id"

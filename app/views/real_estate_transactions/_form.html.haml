@@ -1,0 +1,17 @@
+= simple_nested_form_for([parent, resource]) do |f|
+  = f.error_notification
+
+  .security
+    = f.fields_for :real_estate do |real_estate|
+      = real_estate.input :type, :as => :hidden
+      = real_estate.input :name
+      = real_estate.input :location
+      = real_estate.input :current_price
+
+  .inputs
+    = f.input :price
+    = f.input :date
+    = f.input :comments
+
+  .actions
+    = f.button :submit

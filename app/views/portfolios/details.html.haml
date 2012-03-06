@@ -40,8 +40,6 @@
         %td= number_to_indian_currency resource.gold_transactions.total_cost
         %td= number_to_indian_currency resource.gold_transactions.current_value
         %td= number_to_indian_currency resource.gold_transactions.unrealised_profit
-
-%section{:class => "Loan"}
-  = render "loan_positions", :loan_positions => resource.loan_positions
-%section{:class => "FixedDeposit"}
-  = render "fixed_deposit_positions", :fixed_deposit_positions => resource.fixed_deposit_positions
+- %w(Loan FixedDeposit RealEstate).each do |security|
+  %section{ :class => security }
+    = render "#{security.underscore}_positions", "#{security.underscore}_positions".to_sym => resource.send("#{security.underscore}_positions")

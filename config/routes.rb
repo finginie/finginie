@@ -51,6 +51,12 @@ Finginie::Application.routes.draw do
         put 'create_redeem'
       end
     end
+    resources :real_estate_transactions do
+      member do
+        get 'sell'
+        put 'create_sell'
+      end
+    end
     resources :stock_transactions
     resources :mutual_fund_transactions
     resources :gold_transactions

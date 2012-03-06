@@ -1,0 +1,22 @@
+%h1 Listing real_estate_transactions
+
+%table
+  %tr
+    %th Date
+    %th Type
+    %th Name
+    %th Buy Value
+    %th Current Value
+    %th Change (%)
+
+  - collection.each do |real_estate_transaction|
+    %tr
+      %td= real_estate_transaction.date
+      %td= real_estate_transaction.action
+      %td= real_estate_transaction.name
+      %td= number_to_indian_currency real_estate_transaction.price
+      %td= number_to_indian_currency real_estate_transaction.current_value
+      %td= real_estate_transaction.percentage_change
+      %td= link_to 'Show', resource_path(real_estate_transaction)
+      %td= link_to 'Edit', edit_resource_path(real_estate_transaction)
+      %td= link_to 'Destroy', resource_path(real_estate_transaction), :confirm => 'Are you sure?', :method => :delete
