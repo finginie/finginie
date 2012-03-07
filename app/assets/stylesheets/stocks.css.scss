@@ -2,6 +2,7 @@
 @import "holygrail";
 @import "lists";
 @import "defaults";
+@import "utilities";
 
 $quote-border: 2px solid lightgray;
 
@@ -165,10 +166,13 @@ body.stocks.show {
   aside {
     #navigation-stock {
       >a {
-        @include sharp-button;
+        @include button($base-color);
+        @include background-image(linear-gradient($base-color, shade(#022744, 10%)));
+        border-radius: 0;
         display: block;
         text-align: left;
         font-size: medium;
+        @include aside-links-padding;
       }
     }
   }
@@ -178,13 +182,20 @@ body.balance_sheet, body.profit_loss, body.cash_flow, body.ratios, body.share_ho
     aside {
     #navigation-stock {
       >a {
-        @include sharp-button;
+        @include button($base-color);
+        @include background-image(linear-gradient($base-color, shade(#022744, 10%)));
+        border-radius: 0;
         display: block;
         text-align: left;
         font-size: medium;
+        @include aside-links-padding;
       }
     }
   }
 }
 
-
+body.share_holding{
+  #share-holding-chart {
+    margin-bottom: 1em;
+  }
+}

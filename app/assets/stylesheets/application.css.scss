@@ -21,6 +21,9 @@ body {
 h1, h4 {
   margin: 0;
 }
+ul {
+  list-style: none;
+}
 
 p {
   line-height: 1.5em;
@@ -131,9 +134,11 @@ header {
   height: 100%;
   min-height: 800px;
   padding-top: 1em;
+  padding-bottom: 1em;
   width: 980px;
   margin: 0 auto;
   overflow: hidden;
+  border: 1px solid red;
 }
 
 #main {
@@ -167,11 +172,7 @@ aside{
       size: x-large;
       
     }
-    padding: {
-      top: 8px;
-      bottom: 8px;
-      left: 18px;
-    }
+    @include aside-links-padding;
     margin: 0;
   }
   nav {
@@ -187,8 +188,8 @@ aside{
         text-align: left;
         font-size: medium;
 	border: none;
+        @include aside-links-padding;
       }
-
       ul {
         margin: 0;
       }
@@ -202,12 +203,7 @@ aside{
           cursor: pointer;
           color: $text-color;
         }
-
-        padding: {
-          left: 24px;
-          top: 8px;
-          bottom:8px;
-        }
+        @include aside-links-padding;
 
         border:{
           bottom: $nav-border;
