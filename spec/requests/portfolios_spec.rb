@@ -47,4 +47,26 @@ describe "Portfolios" do
     end
   end
 
+  it "should show loan net position in details page" do
+    loan = create :loan, :period => 1, :rate_of_interest => 10, :name => "Test Loan"
+    create :loan_transaction, :loan => loan, :portfolio => portfolio, :price => -100000, :date => 8.months.ago.to_date
+
+    visit details_portfolio_path(portfolio)
+    expected_table = [
+                       [ "Date", "Name", "Rate of Interest", "Duration", "Outstanding Amount"],
+                       [ 8.months.ago.to_date.to_s(:db), "Test Loan", "10.0", "1.0", "25,937.39", ""],
+                    ]
+    tableish("section.Loan table").should eq expected_table
+  end
+
+  it "user should able to clear the loan" do
+    loan = create :loan, :period => 1, :rate_of_interest => 10, :name => "Test Loan"
+    create :loan_transaction, :loan => loan, :portfolio => portfolio, :price => -100000, :date => 8.months.ago.to_date
+
+    visit details_portfolio_path(portfolio)
+    click_button "clear the loan"
+    page.should have_content "Successfully cleared the loan"
+    current_path.should eq details_portfolio_path(portfolio)
+    page.should_not have_selector("section.Loan table")
+  end
 end

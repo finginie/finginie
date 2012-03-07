@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120306054451) do
+ActiveRecord::Schema.define(:version => 20120306074830) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -67,6 +67,19 @@ ActiveRecord::Schema.define(:version => 20120306054451) do
 
   add_index "gold_transactions", ["gold_id"], :name => "index_gold_transactions_on_gold_id"
   add_index "gold_transactions", ["portfolio_id"], :name => "index_gold_transactions_on_portfolio_id"
+
+  create_table "loan_transactions", :force => true do |t|
+    t.decimal  "price"
+    t.date     "date"
+    t.text     "comments"
+    t.integer  "portfolio_id"
+    t.integer  "loan_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "loan_transactions", ["loan_id"], :name => "index_loan_transactions_on_loan_id"
+  add_index "loan_transactions", ["portfolio_id"], :name => "index_loan_transactions_on_portfolio_id"
 
   create_table "mutual_fund_transactions", :force => true do |t|
     t.decimal  "price"

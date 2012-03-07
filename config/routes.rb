@@ -41,6 +41,11 @@ Finginie::Application.routes.draw do
     member do
       get 'details'
     end
+    resources :loan_transactions do
+      member do
+        post 'clear'
+      end
+    end
     resources :stock_transactions
     resources :mutual_fund_transactions
     resources :gold_transactions
