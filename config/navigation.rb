@@ -6,7 +6,11 @@ SimpleNavigation::Configuration.run do |navigation|
 
   # Define the primary navigation
   navigation.items do |primary|
-
+    primary.item :about_us, 'About us', page_path('about_us') do |secondary|
+      secondary.item :team, 'Team', page_path('team')
+      secondary.item :careers, 'Careers', page_path('careers')
+      secondary.item :contact_us, 'Contact us', page_path('contact_us')
+    end
     primary.item :investment_education, 'Learn Investing',page_path('investment_education') do |secondary|
       secondary.item :investment_concepts, 'Investment Concepts' do |tertiary|
         tertiary.item :risk_and_return, 'Risk and Return', page_path('investment_education/risk_and_return')
@@ -103,6 +107,5 @@ SimpleNavigation::Configuration.run do |navigation|
       secondary.item :life_insurance_calculators, 'Life Insurance Calculators', life_insurance_calculators_path
       secondary.item :retirement_corpus_calculator, 'Retirement Corpus Calculator', retirement_corpus_calculator_path
     end
-
   end
 end
