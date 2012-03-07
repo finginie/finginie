@@ -9,15 +9,14 @@ body.investment_education {
       >ul {
 	margin: 0;
 	padding: {
-	  top: 1em;
+	  top: 0;
 	  left: 1em;
 	}
 	li {
 	  padding: 0;
 	  @include horizontal-list;
 	  display: inline-block;
-	  width: 33%;
-	  height: 350px;
+	  height: 300px;
 	  span {
 	    display: block;
 	    color: $heading-color;
@@ -61,27 +60,27 @@ body.investment_education {
 	}
       }
       #navigation-investment_concepts span:before {
-	content: url('investment_education/InvestmentConcepts_1.jpg');
+	content: url('investment_education/InvestmentConcepts_1.png');
       }
-		  #navigation-investment_process span:before {
-	content: url('investment_education/InvestmentProcess_1.jpg');
+      #navigation-investment_process span:before {
+	content: url('investment_education/InvestmentProcess_1.png');
       }
-		  #navigation-investment_analysis span:before {
-	content: url('investment_education/InvestmentAnalysis_1.jpg');
+      #navigation-investment_analysis span:before {
+	content: url('investment_education/InvestmentAnalysis_1.png');
       }
-		  #navigation-investment_types span:before {
-	content: url('investment_education/InvestmentTypes_1.jpg');
+      #navigation-investment_types span:before {
+	content: url('investment_education/InvestmentTypes_1.png');
       }
-		  #navigation-advanced_investments span:before {
-	content: url('investment_education/AdvancedInvestments_1.jpg');
+      #navigation-advanced_investments span:before {
+	content: url('investment_education/AdvancedInvestments_1.png');
       }
-		  #navigation-jargon_demystified span:before {
-	content: url('investment_education/jargon.jpg');
+      #navigation-jargon_demystified span:before {
+	content: url('investment_education/jargon.png');
       }
-  
-		  ul>li {
-			  padding: 0;
-	    }
+      ul>li {
+	padding: 0;
+	margin-left: 15px;
+      }
     }
   }
 }
@@ -234,6 +233,7 @@ div.wrapper {
 
 
 articlefooter {
+  display: inline-block;
   center {
     a {
       display: none;
@@ -241,5 +241,5 @@ articlefooter {
   }
 }
 rightalign {
-  float: right;
+  margin-left: 30px;
 }
