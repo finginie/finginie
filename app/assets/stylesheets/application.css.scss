@@ -75,16 +75,30 @@ header {
       li {
 	padding: {
 	  bottom: 0.2em;
-	  top: 0.2em
+	  top: 0.2em;
 	}
 	a {
+	  font: {
+	    size: 16px;
+	    weight: bold;
+	    family: arial,sans-serif; 
+	  }
 	  display: block;
+	  color: #BBBBBB;
 	  &.selected, {
 	    color: $base-color;
 	  }
 	}
 	&.selected {
-	  background-color: #f3f4f5;
+	  background-color: #d6dbbf;
+	  border-radius: 4px 4px 0 0;
+	  border: {
+	    bottom: {
+	      width: 2px;
+	      style: solid;
+	      color:  #CC2222;
+	    }
+	  }  
 	}
       }  
     }
@@ -113,7 +127,7 @@ header {
     }
   }
   hgroup.title {
-    width: 200px;
+    width: 220px;
 
     img {
       height: 32px;
@@ -138,7 +152,6 @@ header {
   width: 980px;
   margin: 0 auto;
   overflow: hidden;
-  border: 1px solid red;
 }
 
 #main {
