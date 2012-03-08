@@ -116,4 +116,40 @@ describe "Portfolios" do
     page.should_not have_selector("section.RealEstate table")
   end
 
+  it "should show the summary in show page" do
+    create_positions_of_all_securities
+
+    visit portfolio_path(portfolio)
+    expected_table = [
+                       [ 'Asset Class', 'Percentage(%)', 'Amount' ],
+                       [ 'Stocks',        "5.84",             "50.0"],
+                       [ 'Mutual Funds',  "5.84",             "50.0"],
+                       [ 'Gold',          "5.84",             "50.0"],
+                       [ 'Fixed Deposits',"12.44",        "106.58"],
+                       [ 'Real Estate',   "70.05",           "600.0"]
+                      ]
+    tableish("table").should eq expected_table
+  end
+
+  def create_positions_of_all_securities
+    stock = create :stock
+    scrip = create :scrip, :last_traded_price => 5, :id => stock.symbol
+    4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+
+    scheme = create :scheme_master
+    navcp  = create :navcp, :nav_amount => "5", :security_code => scheme.securitycode
+    4.times { |n| create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+
+    gold = create :gold, :name => "Gold", :current_price => 5
+    4.times { |n| create :gold_transaction, :gold => gold, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+
+    loan =  create :loan, :name => "Foo Loan", :rate_of_interest => "10", :period => "1"
+    loan_transaction =  create :loan_transaction, :loan => loan, :price => -1000, :date => 8.months.ago.to_date, :portfolio => portfolio
+
+    fixed_deposit = create :fixed_deposit, :name => "Foo", :period => 5, :rate_of_interest => 10.0
+    create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 100, :date => 8.months.ago.to_date
+
+    real_estate = create :real_estate, :name => "Test Property", :location => "Mordor", :current_price => 600
+    create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => 500, :date => Date.civil(2011, 12, 01)
+  end
 end

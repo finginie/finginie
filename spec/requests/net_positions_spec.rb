@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe "NetPositions" do
-  describe "Add new net position" do
+#TODO: Remove Net Position
+  pending "Add new net position" do
     include_context "logged in user"
 
     let (:portfolio) { create :portfolio, :user => current_user }

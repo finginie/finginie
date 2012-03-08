@@ -5,8 +5,8 @@ class GoldTransactionsController < InheritedResources::Base
     super.order("date DESC")
   end
 
-  def resource
-    super.gold = Gold.first
+  def create_resource(object)
+    object.gold_id = Gold.first.id
     super
   end
 end

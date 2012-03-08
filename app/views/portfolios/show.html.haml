@@ -4,5 +4,18 @@
   %b Portfolio Name:
   = @portfolio.name
 
-%section#net_positions
-  = render 'net_positions', :net_positions => @portfolio.net_positions
+#portfolio-total-asset-allocation-chart{ 'data-portfolio-total-asset-allocation' => resource.total_assets_distribution }
+
+%table
+  %tr
+    %th Asset Class
+    %th Percentage(%)
+    %th Amount
+  -resource.total_assets_distribution_table.each do |asset|
+    %tr
+      %td= asset[:asset_type]
+      %td= asset[:percentage]
+      %td= asset[:amount]
+
+- if resource.assets_and_liabilities?
+  #net-worth-chart{ 'data-net-worth' => resource.assets_and_liabilities }

@@ -21,15 +21,15 @@ class Portfolio < ActiveRecord::Base
                   :uniqueness => { :scope => :user_id }
 
   def stock_positions
-    stocks.map { |stock|  stock_transactions.for(stock) } if stocks
+    stocks.map { |stock|  stock_transactions.for(stock) }
   end
 
   def mutual_fund_positions
-    mutual_funds.map(&:name).uniq.map { |name| mutual_fund_transactions.for(name) } if mutual_funds
+    mutual_funds.map(&:name).uniq.map { |name| mutual_fund_transactions.for(name) }
   end
 
   def loan_positions
-    loans.map { |loan|  loan_transactions.for(loan) if loan.loan_transactions.count == 1  } - [ nil ] if loans
+    loans.map { |loan|  loan_transactions.for(loan) if loan.loan_transactions.count == 1  } - [ nil ]
   end
 
   def fixed_deposit_positions
@@ -37,22 +37,39 @@ class Portfolio < ActiveRecord::Base
   end
 
   def real_estate_positions
-    real_estates.map { |real_estate|  real_estate_transactions.for(real_estate) if real_estate.real_estate_transactions.count == 1 } - [ nil ] if real_estates
+    real_estates.map { |real_estate|  real_estate_transactions.for(real_estate) if real_estate.real_estate_transactions.count == 1 } - [ nil ]
+  end
+
+  def total_liabilitites_value
+    (loan_positions.map(&:outstanding_amount).sum).round(2)
+  end
+
+  def total_assets_value
+    ( stocks_value + mutual_funds_value + gold_value + fixed_deposits_value + real_estates_value ).round(2)
   end
 
   def net_worth
-    net_positions.map(&:current_value).inject(:+)
+    total_assets_value + total_liabilitites_value
   end
 
-  def net_worth_except_loan
-    net_positions_by_security_type.map { |type, net_positions| net_positions.map(&:current_value).inject(:+) unless type =="Loan" }.compact.inject(:+)
+  def stocks_value
+    stock_positions.map(&:current_value).sum
   end
 
-  def net_worth_security_share
-    net_positions_by_security_type.map { |type, net_positions| [type,(net_positions.map(&:current_value).inject(:+).to_f/net_worth_except_loan * 100).round(2)] unless type =="Loan" }.compact
+  def mutual_funds_value
+    mutual_fund_positions.map(&:current_value).sum
   end
 
-  def net_positions_by_security_type
-    net_positions.group_by { |net_position| net_position.security.type }
+  def gold_value
+    gold_transactions.current_value
   end
+
+  def real_estates_value
+    real_estate_positions.map(&:current_value).sum
+  end
+
+  def fixed_deposits_value
+    fixed_deposit_positions.map(&:current_value).sum
+  end
+
 end

@@ -4,11 +4,11 @@ module GoldPosition
   end
 
   def name
-    all.first.gold.name
+    first.gold.name
   end
 
   def current_price
-    all.first.gold.current_price
+    all.empty? ? 0.0 : first.gold.current_price
   end
 
   def current_value
