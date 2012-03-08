@@ -3,16 +3,16 @@ $(document).ready(function() {
     new Highcharts.Chart({
       chart: {
         renderTo: 'mf-sectoral-allocation-chart',
-	width: 950,
-	borderColor: '#CE5A5A',
+        width: 950,
+        borderColor: '#CE5A5A',
         borderWidth: 2
       },
       title: {
         text: 'Sectoral Allocation',
-	style: {
-            color: '#000',
-            fontWeight: 'bold',
-	    fontSize: '16px'
+        style: {
+          color: '#000',
+          fontWeight: 'bold',
+          fontSize: '16px'
         }
       },
       series: [{
@@ -49,16 +49,16 @@ $(document).ready(function() {
     new Highcharts.Chart({
       chart: {
         renderTo: 'mf-asset-allocation-chart',
-	width: 950,
-	borderColor: '#CE5A5A',
+        width: 950,
+        borderColor: '#CE5A5A',
         borderWidth: 2
       },
       title: {
         text: 'Asset Allocation',
-	style: {
-            color: '#000',
-            fontWeight: 'bold',
-	    fontSize: '16px'
+        style: {
+          color: '#000',
+          fontWeight: 'bold',
+          fontSize: '16px'
         }
       },
       series: [{
@@ -95,16 +95,16 @@ $(document).ready(function() {
     new Highcharts.Chart({
       chart: {
         renderTo: 'top-holdings-chart',
-	width: 950,
-	borderColor: '#CE5A5A',
+        width: 950,
+        borderColor: '#CE5A5A',
         borderWidth: 2
       },
       title: {
         text: 'Top 10 Holdings Distribution',
-	style: {
-            color: '#000',
-            fontWeight: 'bold',
-	    fontSize: '16px'
+        style: {
+          color: '#000',
+          fontWeight: 'bold',
+          fontSize: '16px'
         }
       },
       series: [{
@@ -142,16 +142,16 @@ $(document).ready(function() {
       chart: {
         renderTo: 'mf-comparative-returns-chart',
         defaultSeriesType: 'column',
-	width: 950,
-	borderColor: '#CE5A5A',
+        width: 950,
+        borderColor: '#CE5A5A',
         borderWidth: 2
       },
       title: {
         text: 'Comparative Returns',
-	style: {
-            color: '#000',
-            fontWeight: 'bold',
-	    fontSize: '16px'
+        style: {
+          color: '#000',
+          fontWeight: 'bold',
+          fontSize: '16px'
         }
       },
       xAxis: {

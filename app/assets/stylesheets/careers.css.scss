@@ -1,7 +1,4 @@
 body.careers {
-  aside {
-    display: none;
-  }
   h1 {
     font: {
       size: large;
@@ -15,7 +12,7 @@ body.careers {
       weight: medium;
     }
   }
-  p {
+  p, li {
     text-align: justify;
     font: {
       size: 14px;

@@ -9,9 +9,9 @@ $(document).ready(function() {
       title: {
         text: 'Share Holding Pattern',
         style: {
-            color: '#000',
-            fontWeight: 'bold',
-	    fontSize: '16px'
+          color: '#000',
+          fontWeight: 'bold',
+          fontSize: '16px'
         }
       },
       series: [{
