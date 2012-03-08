@@ -70,35 +70,38 @@ header {
       padding: 0;
     }
     &.main {
+      #navigation-about_us {
+        display: none;
+      }
       margin-top: 1em;
       li {
-	padding: {
-	  bottom: 0.2em;
-	  top: 0.2em;
-	}
-	a {
-	  font: {
-	    size: 16px;
-	    weight: bold;
-	    family: arial,sans-serif; 
-	  }
-	  display: block;
-	  color: #BBBBBB;
-	  &.selected, {
-	    color: $base-color;
-	  }
-	}
-	&.selected {
-	  background-color: #d6dbbf;
-	  border-radius: 4px 4px 0 0;
-	  border: {
-	    bottom: {
-	      width: 2px;
-	      style: solid;
-	      color:  #CC2222;
-	    }
-	  }  
-	}
+	      padding: {
+	        bottom: 0.2em;
+	        top: 0.2em;
+	      }
+	      a {
+	        font: {
+	          size: 16px;
+	          weight: bold;
+	          family: arial,sans-serif; 
+	        }
+	        display: block;
+	        color: #BBBBBB;
+	        &.selected, {
+	          color: $base-color;
+	        }
+	      }
+	      &.selected {
+	        background-color: #d6dbbf;
+	        border-radius: 4px 4px 0 0;
+	        border: {
+	          bottom: {
+	            width: 2px;
+	            style: solid;
+	            color:  #CC2222;
+	          }
+	        }
+	      }
       }  
     }
 
@@ -113,13 +116,13 @@ header {
         }
         img {
           height: 30px;
-	  padding-top: 0.5em;
+          padding-top: 0.5em;
         }
         form {
           input[type="submit"] {
             @include button($base-color);
             @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
-	    margin: 0;
+            margin: 0;
           }
         }
       }
@@ -160,13 +163,11 @@ header {
     padding: 0 0 0 10px;
     >h1 {
       font: {
-	size: x-large;
-	//weight: bold;
+        size: x-large;
       }
       color: $heading-red;
-      
     }
-  }  
+  }
 }
 
 
@@ -181,9 +182,8 @@ aside{
     border-radius: 4px 4px 0 0;
     //text-align: center;
     color: #fff;
-    font:{
+    font: {
       size: x-large;
-      
     }
     @include aside-links-padding;
     margin: 0;
@@ -193,44 +193,40 @@ aside{
       margin-top: 2px;
       @include no-bullet;
       span {
-	@include button($base-color);
-	@include background-image(linear-gradient($base-color, shade(#022744, 10%)));
-	border-radius: 0;
-	color: white;
+        @include button($base-color);
+        @include background-image(linear-gradient($base-color, shade(#022744, 10%)));
+        border-radius: 0;
+        color: white;
         display: block;
         text-align: left;
         font-size: medium;
-	border: none;
+        border: none;
         @include aside-links-padding;
       }
       ul {
         margin: 0;
       }
-
       a {
         font-size: small;
         display: block;
-
         @include unstyled-link;
         &, &:visited {
           cursor: pointer;
           color: $text-color;
         }
         @include aside-links-padding;
-
         border:{
           bottom: $nav-border;
-	  left: $nav-border;
-	  right: $nav-border;
+          left: $nav-border;
+          right: $nav-border;
         }
-
         &.selected {
           color: $base-color;
           background-color: $border-color;
         }
-	&:hover {
-	  color: $base-color;
-	}
+        &:hover {
+          color: $base-color;
+        }
       }
     }
   }

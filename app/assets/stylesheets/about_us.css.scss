@@ -1,0 +1,24 @@
+body.about_us {
+  aside {
+    display: none;
+  }
+  h1 {
+    font: {
+      size: large;
+      weight: bold;
+    }
+  }
+  h2 {
+    color: #D83527;
+    font: {
+      size: medium;
+      weight: medium;
+    }
+  }
+  p {
+    text-align: justify;
+    font: {
+      size: 14px;
+    }
+  }
+}

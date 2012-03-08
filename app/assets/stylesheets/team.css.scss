@@ -1,0 +1,18 @@
+
+body.team {
+  aside {
+    display: none;
+  }
+  h1 {
+    font: {
+      size: large;
+      weight: bold;
+    }
+  }
+  p {
+    text-align: justify;
+    font: {
+      size: 14px;
+    }
+  }
+}

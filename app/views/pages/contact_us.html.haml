@@ -1,8 +1,12 @@
-<h3>Contact Us</h3>
-<h4>Feedback</h4>
-Have a burning idea? Love something about our site? Want to see something changed? We'd love to hear from you.
-
-<p>Email us </p> Link to mailto:contact@finginie.com
-<p>contact at finginie dot com</p>
-<li><a href="http://twitter.com/finginie">Twitter </a>
-<a href="http://www.facebook.com/home.php?#!/pages/Finginie/122486667773444?ref=ts">Facebook </a></li></ul>
+%h1
+  Contact Us
+%h2
+  Feedback
+%p Have a burning idea? Love something about our site? Want to see something changed? We'd love to hear from you.
+%p
+  Email us:
+  %a{:href => "mailto:contact@finginie.com"} contact@finginie.com
+%p contact at finginie.com
+%ul
+  %li= link_to 'Twitter', 'http://twitter.com/finginie', :target => :blank
+  %li= link_to 'Facebook', 'http://www.facebook.com/home.php?#!/pages/Investopres/122486667773444?ref=ts', :target => :blank
