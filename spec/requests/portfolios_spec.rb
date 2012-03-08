@@ -12,14 +12,14 @@ describe "Portfolios" do
 
   it "should show all net positions in details page" do
     scrip.save
-    scheme.save
     navcp.save
-    gold.save
     4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
     4.times { |n| create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme.scheme_name),
                           :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
     4.times { |n| create :gold_transaction, :gold => gold, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
-    visit details_portfolio_path(portfolio)
+    visit portfolio_path(portfolio)
+    page.should have_link 'Details'
+    click_link 'Details'
 
     expected_table_for_stocks = [
                                   ["Name", "Quantity", "Average Cost Price", "Market Price", "Amount Invested", "Market Value", "Profit"],
@@ -45,6 +45,13 @@ describe "Portfolios" do
     within "#gold_positions" do
       tableish("table").should eq expected_table_for_gold
     end
+
+    page.should have_link 'Add Stock'
+    page.should have_link 'Add Mutual Fund'
+    page.should have_link 'Add Gold'
+    page.should have_link 'Add Fixed Deposit'
+    page.should have_link 'Add Real Estate'
+    page.should have_link 'Add Loan'
   end
 
   it "should show loan net position in details page" do
@@ -131,16 +138,34 @@ describe "Portfolios" do
     tableish("table").should eq expected_table
   end
 
+  it "should show all transactions in transactions page" do
+    scrip.save
+    navcp.save
+    create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => 1, :price => 5, :date => Date.today
+    create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio,:quantity => 1, :price => 5, :date => Date.today
+
+    visit portfolio_path(portfolio)
+    click_link 'Transactions'
+
+    expected_table_for_stock_transactions = [
+                       [ "Date","Type", "Name", "Quantity", "Price", "Total Amount"],
+                       [ Date.today.to_s(:db), "buy", stock.name, "1", "5.0", "5.0", "Show", "Edit", "Destroy"],
+                    ]
+    expected_table_for_mutual_fund_transactions = [
+                         [ "Date","Type", "Name", "Quantity", "Price", "Total Amount"],
+                         [ Date.today.to_s(:db), "buy", scheme.scheme_name, "1", "5.0", "5.0", "Show", "Edit", "Destroy"],
+                      ]
+    tableish("section.StockTransactions table").should eq expected_table_for_stock_transactions
+    tableish("section.MutualFundTransactions table").should eq expected_table_for_mutual_fund_transactions
+  end
+
   def create_positions_of_all_securities
-    stock = create :stock
-    scrip = create :scrip, :last_traded_price => 5, :id => stock.symbol
+    scrip.save
     4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-    scheme = create :scheme_master
-    navcp  = create :navcp, :nav_amount => "5", :security_code => scheme.securitycode
+    navcp.save
     4.times { |n| create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-    gold = create :gold, :name => "Gold", :current_price => 5
     4.times { |n| create :gold_transaction, :gold => gold, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     loan =  create :loan, :name => "Foo Loan", :rate_of_interest => "10", :period => "1"

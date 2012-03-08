@@ -1,0 +1,20 @@
+%table
+  %tr
+    %th Date
+    %th Type
+    %th Name
+    %th Quantity
+    %th Price
+    %th Total Amount
+
+  - gold_transactions.each do |gold_transaction|
+    %tr
+      %td= gold_transaction.date
+      %td= gold_transaction.action
+      %td= gold_transaction.gold.name
+      %td= gold_transaction.amount
+      %td= gold_transaction.price
+      %td= gold_transaction.total_cost
+      %td= link_to 'Show', resource_path(gold_transaction)
+      %td= link_to 'Edit', edit_resource_path(gold_transaction)
+      %td= link_to 'Destroy', resource_path(gold_transaction), :confirm => 'Are you sure?', :method => :delete

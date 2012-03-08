@@ -1,0 +1,3 @@
+- %w(stock_transactions mutual_fund_transactions gold_transactions fixed_deposit_transactions real_estate_transactions loan_transactions).each do |transaction|
+  %section{ :class => transaction.camelize }
+    = render "#{transaction}/#{transaction}", transaction.to_sym => resource.send(transaction)

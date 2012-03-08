@@ -39,6 +39,7 @@ Finginie::Application.routes.draw do
   resources :portfolios do
     member do
       get 'details'
+      get 'transactions'
     end
     resources :loan_transactions do
       member do

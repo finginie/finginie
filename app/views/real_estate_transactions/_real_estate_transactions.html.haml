@@ -9,7 +9,7 @@
     %th Current Value
     %th Change (%)
 
-  - collection.each do |real_estate_transaction|
+  - real_estate_transactions.each do |real_estate_transaction|
     %tr
       %td= real_estate_transaction.date
       %td= real_estate_transaction.action

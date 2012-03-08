@@ -1,0 +1,26 @@
+%h1 Listing fixed_income_transactions
+
+%table
+  %tr
+    %th Date
+    %th Type
+    %th Name
+    %th Rate of Interest
+    %th Duration
+    %th Invested Amount
+    %th Current Value
+    %th Interest
+
+  - fixed_deposit_transactions.each do |transaction|
+    %tr
+      %td= transaction.date
+      %td= transaction.action
+      %td= transaction.name
+      %td= transaction.rate_of_interest
+      %td= transaction.period
+      %td= number_to_indian_currency transaction.invested_amount
+      %td= number_to_indian_currency transaction.current_value
+      %td= number_to_indian_currency transaction.interest
+      %td= link_to 'Show', resource_path(transaction)
+      %td= link_to 'Edit', edit_resource_path(transaction)
+      %td= link_to 'Destroy', resource_path(transaction), :confirm => 'Are you sure?', :method => :delete
