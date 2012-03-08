@@ -9,15 +9,14 @@ body.investment_education {
       >ul {
 	margin: 0;
 	padding: {
-	  top: 1em;
+	  top: 0;
 	  left: 1em;
 	}
 	li {
 	  padding: 0;
 	  @include horizontal-list;
 	  display: inline-block;
-	  width: 33%;
-	  height: 350px;
+	  height: 300px;
 	  span {
 	    display: block;
 	    color: $heading-color;
@@ -61,27 +60,27 @@ body.investment_education {
 	}
       }
       #navigation-investment_concepts span:before {
-	content: url('investment_education/InvestmentConcepts_1.jpg');
+	content: url('investment_education/InvestmentConcepts_1.png');
       }
-		  #navigation-investment_process span:before {
-	content: url('investment_education/InvestmentProcess_1.jpg');
+      #navigation-investment_process span:before {
+	content: url('investment_education/InvestmentProcess_1.png');
       }
-		  #navigation-investment_analysis span:before {
-	content: url('investment_education/InvestmentAnalysis_1.jpg');
+      #navigation-investment_analysis span:before {
+	content: url('investment_education/InvestmentAnalysis_1.png');
       }
-		  #navigation-investment_types span:before {
-	content: url('investment_education/InvestmentTypes_1.jpg');
+      #navigation-investment_types span:before {
+	content: url('investment_education/InvestmentTypes_1.png');
       }
-		  #navigation-advanced_investments span:before {
-	content: url('investment_education/AdvancedInvestments_1.jpg');
+      #navigation-advanced_investments span:before {
+	content: url('investment_education/AdvancedInvestments_1.png');
       }
-		  #navigation-jargon_demystified span:before {
-	content: url('investment_education/jargon.jpg');
+      #navigation-jargon_demystified span:before {
+	content: url('investment_education/jargon.png');
       }
-  
-		  ul>li {
-			  padding: 0;
-	    }
+      ul>li {
+	padding: 0;
+	margin-left: 15px;
+      }
     }
   }
 }
@@ -95,9 +94,10 @@ body.investment_education {
 @mixin color-highlights($color: grey) {
   h1 {
     background: $color;
+    border-radius: 2px 2px 0 0;
   }
   li:hover {
-    background: tint($color, 60%);
+    background: tint($color, 40%);
   }
 }
 //-----------------------------8<----------------------------
@@ -110,14 +110,13 @@ $bottom-grey: #c5c4c4;
 //--------------------------------------------------------------
 
 #main .container>.wrapper {
-  @include holy-grail-wrapper(240px, 10px, right);
+  @include holy-grail-wrapper(200px, 10px, right);
   article {
-    @include holy-grail-main(240px, 10px, right);
-    padding-bottom: 1em;
+    @include holy-grail-main(200px, 10px, right);
+    //padding-bottom: 1em;
   }
   .extracontent {
-    @include holy-grail-aside(240px, 10px, right);
-    padding: 0 0.2em 0 1em;
+    @include holy-grail-aside(200px, 0, right);
     h1 {
       font: {
         family: heading-font;
@@ -125,19 +124,20 @@ $bottom-grey: #c5c4c4;
         weight: normal;
       }
       padding: 0.3em 0;
-      color: #000;
+      color: #fff;
       text-align: center;
     }
     &>div {
-      border: 2px solid $border-color;
-      @include border-radius(4px);
+      border: 1px solid $border-color;
+      @include border-radius(4px 4px 0 0);
       margin-bottom: 1em;
       ul {
         padding: 0;
       }
       li {
         @include no-bullet;
-        margin: 0.5em;
+        margin: 2px;
+	padding: 4px;
         font: {
           family: $content-font;
 	  size: small;
@@ -148,13 +148,13 @@ $bottom-grey: #c5c4c4;
       }
     }
     .takeaway {
-      @include color-highlights(#99CC99);
+      @include color-highlights(#CE5A5A);
     }
     .articles {
-      @include color-highlights(#99CC99);
+      @include color-highlights(#B6CE61);
     }
     .videos {
-      @include color-highlights(#99CC99);
+      @include color-highlights(#446C99);
     }
   }
 }
@@ -176,38 +176,44 @@ div.wrapper {
   }
   section {
     p {
+      text-align: justify;
       color: #333333;
       margin: 0;
       padding: {
-        left: 0.5em;
-        bottom: 0.6em
+        left: 6px;
+        bottom: 10px;
+	right: 14px;
       }
       font: {
         family: $content-font;
 	weight: normal;
-	size: medium;
+	size: 14px;
       }
     }
     h1 {
       margin: 0;
       padding-bottom: 0.3em;
       clear: both;
-      color: $base-color;
+      color: #D83527;
       font: {
         family: $heading-font;
 	weight: normal;
-	size: large;
+	size: medium;
       }
     }
+    ul {
+      list-style: none;
+      margin: 0;
+    }
     li {
-      font-size: medium;
+      font-size: 14px;
       line-height: 1.5em;
     }
     img {
       float: left;
       margin:{
-       right: 1em;
-       bottom: 1em;
+        right: 1em;
+        bottom: 1em;
       }
       
       border: {
@@ -220,13 +226,8 @@ div.wrapper {
  }
 }
 
-
-
-
-
-
-
 articlefooter {
+  display: inline-block;
   center {
     a {
       display: none;
@@ -234,5 +235,5 @@ articlefooter {
   }
 }
 rightalign {
-  float: right;
+  margin-left: 30px;
 }

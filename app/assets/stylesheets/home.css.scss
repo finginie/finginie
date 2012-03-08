@@ -10,7 +10,7 @@ $margin_width: 12px;
 body.home {
   #wrapper {
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
     #main {
       .container {
         float: none;
@@ -20,12 +20,22 @@ body.home {
     }
   }
 
-  #main .container>h1 {
-    font-size: 2em;
-    margin-top: 1em;
-    color: $base-color;
+  #main .container {
+    >img {
+      width: 250px;
+      margin: {
+        top: 1em;
+      }
+    }
+    >h1 {
+      font-size: x-large;
+      color: #D83527;
+      margin: 0;
+      padding: {
+        left: 10px;
+      }
+    }
   }
-
   .banner {
     @include border-radius(8px);
     background: lighten($base-color, 45%);
@@ -64,6 +74,13 @@ body.home {
   }
 
   .interesting_facts {
+    h1 {
+      font-size: x-large;
+      color: #D83527;
+      padding: {
+        left: 10px;
+      }
+    }
     ul {
       list-style-image: url('right_arrow.png');
       li {
@@ -74,5 +91,8 @@ body.home {
 
   aside {
     display: none;
+  }
+  .title {
+    visibility: hidden;
   }
 }

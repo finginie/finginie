@@ -2,10 +2,18 @@ $(document).ready(function() {
   if ($("#mf-sectoral-allocation-chart").attr("mf-data-sectoral-allocation") != undefined) {
     new Highcharts.Chart({
       chart: {
-        renderTo: 'mf-sectoral-allocation-chart'
+        renderTo: 'mf-sectoral-allocation-chart',
+        width: 950,
+        borderColor: '#CE5A5A',
+        borderWidth: 2
       },
       title: {
-        text: 'Sectoral Allocation'
+        text: 'Sectoral Allocation',
+        style: {
+          color: '#000',
+          fontWeight: 'bold',
+          fontSize: '16px'
+        }
       },
       series: [{
         type: 'pie',
@@ -40,10 +48,18 @@ $(document).ready(function() {
   if ($("#mf-asset-allocation-chart").attr("mf-data-asset-allocation") != undefined) {
     new Highcharts.Chart({
       chart: {
-        renderTo: 'mf-asset-allocation-chart'
+        renderTo: 'mf-asset-allocation-chart',
+        width: 950,
+        borderColor: '#CE5A5A',
+        borderWidth: 2
       },
       title: {
-        text: 'Asset Allocation'
+        text: 'Asset Allocation',
+        style: {
+          color: '#000',
+          fontWeight: 'bold',
+          fontSize: '16px'
+        }
       },
       series: [{
         type: 'pie',
@@ -78,10 +94,18 @@ $(document).ready(function() {
   if ($("#top-holdings-chart").attr("data-percentages") != undefined) {
     new Highcharts.Chart({
       chart: {
-        renderTo: 'top-holdings-chart'
+        renderTo: 'top-holdings-chart',
+        width: 950,
+        borderColor: '#CE5A5A',
+        borderWidth: 2
       },
       title: {
-        text: 'Top 10 Holdings Distribution'
+        text: 'Top 10 Holdings Distribution',
+        style: {
+          color: '#000',
+          fontWeight: 'bold',
+          fontSize: '16px'
+        }
       },
       series: [{
         type: 'pie',
@@ -118,10 +142,17 @@ $(document).ready(function() {
       chart: {
         renderTo: 'mf-comparative-returns-chart',
         defaultSeriesType: 'column',
+        width: 950,
+        borderColor: '#CE5A5A',
         borderWidth: 2
       },
       title: {
-        text: 'Comparative Returns'
+        text: 'Comparative Returns',
+        style: {
+          color: '#000',
+          fontWeight: 'bold',
+          fontSize: '16px'
+        }
       },
       xAxis: {
         categories: ['1 week', '1 month', '3 months', '6 months', '9 months', '1 year', '2 years', '3 years']
@@ -136,7 +167,7 @@ $(document).ready(function() {
         backgroundColor: '#FFFFFF',
         align: 'left',
         verticalAlign: 'top',
-        x: 100,
+        x: 200,
         y: 70,
         floating: true,
         shadow: true
