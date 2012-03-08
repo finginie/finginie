@@ -56,6 +56,7 @@
 
 @mixin simple-form {
   .simple_form {
+    margin-bottom: 1em;
     @include required-field;
     label {
       display: inline-block;
@@ -64,12 +65,12 @@
       color: $base-color;
       padding: {
         top: 0.5em;
-        bottom: 0.4em;
+        bottom: 0.8em;
       }
       font: {
         family: $content-font;
         weight: normal;
-        size: 1.3em;
+        size: medium;
       }
     }
     input, select, textarea {
@@ -90,7 +91,8 @@
       input[type="submit"] {
         @include button($base-color);
         @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
-        font-size: small;
+        font-size: medium;
+        margin-top: 1em;
       }
     }
   }

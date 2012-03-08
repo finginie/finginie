@@ -1,0 +1,9 @@
+@import "bourbon";
+@import "lists";
+@import "utilities";
+@import "defaults";
+
+body.new {
+  @include simple-form;
+  @include hide-aside;
+}
