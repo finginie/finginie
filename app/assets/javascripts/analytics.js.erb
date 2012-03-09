@@ -9,17 +9,16 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 
-  (function() {
-    var _we = document.createElement('script');
-    _we.type = 'text/javascript';
-    _we.async = true;
-    var _weWidgetJs = "/js/widget/webengage-min-v-2.0.js";
-    if(document.location.protocol == 'https:') {
-      _we.src="//ssl.widgets.webengage.com" +_weWidgetJs;
-    } else {
-      _we.src="//cdn.widgets.webengage.com" +_weWidgetJs;
-    };
-    var _sNode = document.getElementsByTagName('webengage');
-    _sNode.appendChild(_we);
-  })();
+  $(document).ready(function() {
+      var _we = document.createElement('script');
+      _we.type = 'text/javascript';
+      _we.async = true;
+      var _weWidgetJs = "/js/widget/webengage-min-v-2.0.js";
+      if(document.location.protocol == 'https:') {
+        _we.src="//ssl.widgets.webengage.com" +_weWidgetJs;
+      } else {
+        _we.src="//cdn.widgets.webengage.com" +_weWidgetJs;
+      };
+      $('webengage').append(_we);
+  });
 <% end %>
