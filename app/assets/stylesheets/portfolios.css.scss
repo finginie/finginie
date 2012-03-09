@@ -95,7 +95,7 @@ body.portfolios.show {
         }
       }
       #net-worth-chart {
-        clear: both;
+        margin-top: 2em;
       }
     }
   }
@@ -136,6 +136,32 @@ body.portfolios.transactions {
       }
       section {
         padding-bottom: 2em;
+      }
+    }
+  }
+}
+
+body.portfolios.accumulated_profits {
+  table {
+    margin: {
+      top: 2em;
+      bottom: 2em;
+    }
+  }
+}
+
+body.portfolios.analysis {
+  #main {
+    .container {
+      h1 {
+        color: $heading-red;
+        font-size: large;
+      }
+      #stocks-profit-or-loss-chart, #mutual-fund-profit-or-loss-chart {
+        margin: {
+          top: 1em;
+          bottom: 1em;
+        }
       }
     }
   }
