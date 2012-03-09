@@ -1,6 +1,6 @@
 class PortfoliosController < InheritedResources::Base
   load_and_authorize_resource
-  custom_actions :resource => [ :details, :transactions ]
+  custom_actions :resource => [ :details, :transactions, :analysis ]
 
   def resource
     PortfolioDecorator.decorate(super)

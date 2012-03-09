@@ -40,6 +40,7 @@ Finginie::Application.routes.draw do
     member do
       get 'details'
       get 'transactions'
+      get 'analysis'
     end
     resources :loan_transactions do
       member do

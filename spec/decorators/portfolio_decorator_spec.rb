@@ -3,6 +3,9 @@ require 'spec_helper'
 describe PortfolioDecorator do
   before { ApplicationController.new.set_current_view_context }
   let (:portfolio) { create :portfolio }
+  let(:stock) { create :stock, :sector => "FOO" }
+  let(:scheme) { create :scheme_master, :scheme_class_description => "FOO" }
+
   subject {
     create_securities
     PortfolioDecorator.decorate(portfolio)
@@ -14,12 +17,53 @@ describe PortfolioDecorator do
   its(:fixed_deposits_percentage) { should eq 12.44 }
   its(:real_estates_percentage) { should eq 70.05 }
 
+  it"should have sector_wise_stock_percentage" do
+    stock1 = create :stock_with_scrip, :sector => "BAR"
+    create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
+
+    subject.sector_wise_stock_percentage.should include(*[["FOO", 71.43], ["BAR", 28.57]])
+  end
+
+  it"should have stocks sell positions" do
+    subject
+    create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => -4, :price => 6, :date => Date.today
+    stock1 = create :stock_with_scrip, :sector => "BAR"
+    create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
+    create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => :sell
+
+    subject.stocks_positions_profit_or_loss.should include(*[[stock.name, 12 ], [stock1.name, -4]])
+  end
+
+  it "should have catogorywise mf percentages" do
+    subject
+    scheme2 = create :scheme_master_with_navcp, :scheme_class_description => "BAR"
+    create :mutual_fund_transaction, :mutual_fund => create( :mutual_fund, :name => scheme2.scheme_name), :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today
+
+    subject.category_wise_mutual_funds_percentage.should include(*[["FOO", 71.43], ["BAR", 28.57]])
+  end
+
+  it "should have mutual fund sell positions" do
+    subject
+    create :mutual_fund_transaction, :mutual_fund => create( :mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio, :quantity => -4, :price => 6, :date => Date.today
+    scheme2 = create :scheme_master, :scheme_class_description => "BAR"
+    2.times { |n| create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme2.scheme_name),
+                                                   :portfolio => portfolio, :quantity => 1- n * (n +1),
+                                                   :price => -n+5, :date => (-n +2).days.ago }
+
+    subject.mutual_fund_positions_profit_or_loss.should include(*[[ scheme.scheme_name, 12 ],[ scheme2.scheme_name, -1]] )
+  end
+
+  it "should have fixed deposit open positions rate of interests" do
+    subject
+    fixed_deposit2 = create :fixed_deposit, :name => "BAR", :period => 5, :rate_of_interest => 12.0
+    create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit2, :portfolio => portfolio, :price => 1000, :date => 5.months.ago.to_date
+    subject.fixed_deposit_open_positions_rate_of_interests.should include(*[[10.0, 100], [12.0, 1000]])
+  end
+
   def create_securities
-    stock = create :stock
     scrip = create :scrip, :last_traded_price => 5, :id => stock.symbol
     4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-    scheme = create :scheme_master
     navcp  = create :navcp, :nav_amount => "5", :security_code => scheme.securitycode
     4.times { |n| create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 

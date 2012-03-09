@@ -21,11 +21,11 @@ class Portfolio < ActiveRecord::Base
                   :uniqueness => { :scope => :user_id }
 
   def stock_positions
-    stocks.map { |stock|  stock_transactions.for(stock) }
+    stocks.map { |stock|  stock_transactions.for(stock) }.select{ |position| position.quantity != 0}
   end
 
   def mutual_fund_positions
-    mutual_funds.map(&:name).uniq.map { |name| mutual_fund_transactions.for(name) }
+    mutual_funds.map(&:name).uniq.map { |name| mutual_fund_transactions.for(name) }.select{ |position| position.quantity != 0}
   end
 
   def loan_positions
@@ -41,7 +41,7 @@ class Portfolio < ActiveRecord::Base
   end
 
   def total_liabilitites_value
-    (loan_positions.map(&:outstanding_amount).sum).round(2)
+    (loan_positions.map(&:outstanding_amount).sum).round(2).to_f
   end
 
   def total_assets_value
@@ -71,5 +71,4 @@ class Portfolio < ActiveRecord::Base
   def fixed_deposits_value
     fixed_deposit_positions.map(&:current_value).sum
   end
-
 end

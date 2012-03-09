@@ -1,68 +1,80 @@
 $ ->
-  if ($("#portfolio-total-asset-allocation-chart").attr("data-portfolio-total-asset-allocation") != undefined)
-    new Highcharts.Chart({
-      chart: {
-        renderTo: 'portfolio-total-asset-allocation-chart'
-      },
-      title: {
-        text: 'Portfolio Assets Composition'
-      },
-      series: [{
-        type: 'pie',
-        data: JSON.parse($("#portfolio-total-asset-allocation-chart").attr("data-portfolio-total-asset-allocation"))
-      }],
-      legend: {
-        labelFormatter: ->  this.name + ': ' + this.y + '%'
-      },
-      tooltip: {
-        formatter: -> '' + this.point.name + ': ' + Math.round(this.y*10) / 10 + '%'
-      },
-      plotOptions: {
-        pie: {
-          allowPointSelect: true,
-          cursor: 'pointer',
-          dataLabels: {
-            enabled: true,
-            formatter: -> '' + this.point.name + ': ' + Math.round(this.y*10) / 10 + '%'
-            },
-          showInLegend: false
-             }
-      }
-    });
-
-  if ($("#net-worth-chart").attr("data-net-worth") != undefined)
-    new Highcharts.Chart({
-      chart: {
-        renderTo: 'net-worth-chart',
-        defaultSeriesType: 'column',
-        borderWidth: 2
-      },
-      title: {
-        text: 'Net Worth'
-      },
-      xAxis: {
-        categories: ['Assets', 'Liabilities', 'Net Worth' ]
-      },
-      yAxis: {
+  pie_chart = (element, data, title) ->
+    if ($("##{element}").attr("#{data}") != undefined)
+      new Highcharts.Chart({
+        chart: {
+          renderTo: element,
+          borderColor: '#CE5A5A',
+          borderWidth: 2,
+        },
         title: {
-          text: 'Amount'
+          text: title,
+          style: {
+            color: '#000',
+            fontWeight: 'bold',
+            fontSize: '16px'
           }
-      },
-      legend: {
-        layout: 'vertical',
-        backgroundColor: '#FFFFFF',
-        align: 'left',
-        verticalAlign: 'top',
-        x: 100,
-        y: 70,
-        floating: true,
-        shadow: true
-      },
-      tooltip: {
-              formatter: -> '' + this.series.name + ': ' + this.y + ''
-      },
-      series: [{
-        data: JSON.parse($("#net-worth-chart").attr("data-net-worth"))
+        },
+        series: [{
+          type: 'pie',
+          data: JSON.parse($("#"+element).attr(data))
+        }],
+        legend: {
+          labelFormatter: ->  this.name + ': ' + this.y + '%'
+        },
+        tooltip: {
+          formatter: -> '' + this.point.name + ': ' + Math.round(this.y*10) / 10 + '%'
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+              enabled: true,
+              formatter: -> '' + this.point.name + ': ' + Math.round(this.y*10) / 10 + '%'
+              },
+            showInLegend: false
+               }
         }
-      ]
-    });
+      });
+
+  bar_chart = (element, data, title, categories, y_axis_title) ->
+    if ($("##{element}").attr(data) != undefined)
+      new Highcharts.Chart({
+        chart: {
+          renderTo: element,
+          defaultSeriesType: 'column',
+          borderWidth: 2
+        },
+        title: {
+          text: title
+        },
+        xAxis: {
+          categories: categories
+        },
+        yAxis: {
+          title: {
+            text: y_axis_title
+            }
+        },
+        plotOptions: {
+          column: {
+            pointWidth: 50
+            }
+        },
+        tooltip: {
+                formatter: -> '' + this.x + ': ' + this.y + ''
+        },
+        series: [{
+          data: JSON.parse($("##{element}").attr(data))
+          }
+        ]
+      });
+  pie_chart('portfolio-total-asset-allocation-chart', 'data-portfolio-total-asset-allocation', 'Portfolio Assets Composition')
+  pie_chart('stock-sectoral-allocation-chart', 'data-stocks-sectoral-asset-allocation', 'Sector Wise Stocks Allocation')
+  pie_chart('mutual-fund-category-wise-allocation-chart', 'data-mutual-fund-category-wise-asset-allocation', 'Category Wise Mutual Funds Allocation')
+
+  bar_chart('net-worth-chart','data-net-worth','Net Worth',['Assets', 'Liabilities', 'Net Worth' ],'Amount')
+  bar_chart('stocks-profit-or-loss-chart','data-stocks-profit-or-loss','Profit/Loss on Stock sells', JSON.parse($("#stocks-profit-or-loss-chart").attr("data-categories")), 'Amount')
+  bar_chart('mutual-fund-profit-or-loss-chart','data-mutual-fund-profit-or-loss','Profit/Loss on Mutual Funds sells', JSON.parse($("#mutual-fund-profit-or-loss-chart").attr("data-categories")), 'Amount')
+  bar_chart('fixed-deposits-chart','data-fixed-deposits','Your Fixed Deposits', JSON.parse($("#fixed-deposits-chart").attr("data-categories")), 'Amount Invested')

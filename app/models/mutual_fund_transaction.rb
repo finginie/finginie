@@ -19,6 +19,10 @@ class MutualFundTransaction < ActiveRecord::Base
       first.mutual_fund.name
     end
 
+    def category
+      first.mutual_fund.category
+    end
+
     def current_price
       first.mutual_fund.current_price
     end
@@ -40,7 +44,7 @@ class MutualFundTransaction < ActiveRecord::Base
     end
 
     def average_cost_price
-      all.map { |t| average_price(t) * t.quantity }.inject(:+) /quantity
+      (all.map { |t| average_price(t) * t.quantity }.inject(:+) /quantity).round(2) if quantity > 0
     end
 
     def total_cost
@@ -63,7 +67,7 @@ class MutualFundTransaction < ActiveRecord::Base
   end
 
   def profit_or_loss
-    (- quantity * ( price - StockTransaction.for(stock).average_price(self) ) )if quantity < 0
+    ( amount * ( price - MutualFundTransaction.for(mutual_fund.name).average_price(self) ) ) if quantity < 0
   end
 
   def total_cost
@@ -104,6 +108,6 @@ private
   end
 
   def sell_quantity_should_be_less_than_or_equal_to_quantity
-    errors.add(:amount, "Your portfolio do not have sufficient number of stocks for this action") if action == :sell && portfolio.mutual_fund_transactions.for(mutual_fund.name).quantity <= amount
+    errors.add(:amount, "Your portfolio do not have sufficient number of mutual funds for this action") if action == :sell && portfolio.mutual_fund_transactions.for(mutual_fund.name).quantity < amount
   end
 end

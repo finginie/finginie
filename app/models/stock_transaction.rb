@@ -15,6 +15,10 @@ class StockTransaction < ActiveRecord::Base
       first.stock.name
     end
 
+    def sector
+      first.stock.sector
+    end
+
     def current_price
       first.stock.current_price
     end
@@ -59,7 +63,7 @@ class StockTransaction < ActiveRecord::Base
   end
 
   def profit_or_loss
-    (- quantity * ( price - StockTransaction.for(stock).average_price(self) ) )if quantity < 0
+    (- quantity * ( price - StockTransaction.for(stock).average_price(self) ) ) if quantity < 0
   end
 
   def total_cost
@@ -94,6 +98,6 @@ private
   end
 
   def sell_quantity_should_be_less_than_or_equal_to_quantity
-    errors.add(:amount, "Your portfolio do not have sufficient number of stocks for this action") if action == :sell && portfolio.stock_transactions.for(stock.id).quantity <= amount
+    errors.add(:amount, "Your portfolio do not have sufficient number of stocks for this action") if action == :sell && portfolio.stock_transactions.for(stock.id).quantity < amount
   end
 end

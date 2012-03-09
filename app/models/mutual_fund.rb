@@ -11,6 +11,10 @@ class MutualFund < Security
     SchemeMaster.where(:scheme_name => scheme).first
   end
 
+  def category
+    scheme_master.scheme_class_description
+  end
+
   def navcp
     Navcp.where(:security_code => securitycode).first
   end
