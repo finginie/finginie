@@ -94,11 +94,48 @@ body.portfolios.show {
           right: 4em;
         }
       }
-      tabel {
-        margin: 2em;
-      }
       #net-worth-chart {
         clear: both;
+      }
+    }
+  }
+}
+
+body.portfolios.details {
+  #main {
+    .container {
+      h1 {
+        color: $heading-red;
+        font: {
+          size: large;
+        }
+      }
+      #stock_positions, #mutual_fund_positions, #gold_positions, .Loan, .FixedDeposit, .RealEstate{
+        padding: 0 0 2em 0;
+      }
+      #add_links {
+        a {
+          @include button(#A1D004);
+          @include background-image(linear-gradient(#A1D004, shade(#6B9A00, 30%)));
+          font-size: small;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+body.portfolios.transactions {
+  #main {
+    .container {
+      h1 {
+        color: $heading-red;
+        font: {
+          size: large;
+        }
+      }
+      section {
+        padding-bottom: 2em;
       }
     }
   }

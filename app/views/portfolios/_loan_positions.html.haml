@@ -5,7 +5,7 @@
       %th Name
       %th Rate of Interest
       %th Duration
-      %th Outstanding Amount
+      %th{:colspan => 2} Outstanding Amount
     - loan_positions.each do |net_position|
       %tr
         %td= net_position.date

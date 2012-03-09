@@ -1,5 +1,3 @@
-%h1 Listing loan_transactions
-
 %table
   %tr
     %th Date
@@ -15,6 +13,4 @@
       %td= number_to_indian_currency loan_transaction.amount
       %td= loan_transaction.rate_of_interest
       %td= loan_transaction.period
-      %td= link_to 'Show', resource_path(loan_transaction)
-      %td= link_to 'Edit', edit_resource_path(loan_transaction)
-      %td= link_to 'Destroy', resource_path(loan_transaction), :confirm => 'Are you sure?', :method => :delete
+ 

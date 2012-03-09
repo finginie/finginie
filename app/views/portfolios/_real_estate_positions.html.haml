@@ -5,7 +5,7 @@
       %th Name
       %th Buy Value
       %th Current Value
-      %th Profit
+      %th{:colspan => 2} Profit
     - real_estate_positions.each do |net_position|
       %tr
         %td= net_position.first.date

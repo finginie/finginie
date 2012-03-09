@@ -1,5 +1,3 @@
-%h1 Listing fixed_income_transactions
-
 %table
   %tr
     %th Date
@@ -21,6 +19,3 @@
       %td= number_to_indian_currency transaction.invested_amount
       %td= number_to_indian_currency transaction.current_value
       %td= number_to_indian_currency transaction.interest
-      %td= link_to 'Show', resource_path(transaction)
-      %td= link_to 'Edit', edit_resource_path(transaction)
-      %td= link_to 'Destroy', resource_path(transaction), :confirm => 'Are you sure?', :method => :delete

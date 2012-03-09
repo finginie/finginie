@@ -89,9 +89,9 @@
       width: 80%;
       text-align: center;
       input[type="submit"] {
-        @include button($base-color);
-        @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
-        font-size: medium;
+        //@include button($base-color);
+        //@include background-image(linear-gradient($base-color, shade($base-color, 60%)));
+        //font-size: small;
         margin-top: 1em;
       }
     }

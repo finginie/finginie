@@ -7,7 +7,7 @@
       %th Duration
       %th Invested Amount
       %th Current Value
-      %th Profit
+      %th{:colspan => 2} Profit
     - fixed_deposit_positions.each do |net_position|
       %tr
         %td= net_position.first.date
