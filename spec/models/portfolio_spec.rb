@@ -11,73 +11,85 @@ describe Portfolio do
         should validate_uniqueness_of(:name).scoped_to(:user_id)
      }
 
-  context "should calculate the net worth of a portfolio" do
-    before(:each) do
-      add_stock_position(portfolio, 100, 227.5)
-      add_stock_position(portfolio, 200, 821)
-      add_stock_position(portfolio, 250, 34.6)
+  it { should have_many :stock_transactions }
+  it { should have_many :mutual_fund_transactions }
+  it { should have_many :gold_transactions }
+  it { should have_many :loan_transactions }
+  it { should have_many :fixed_deposit_transactions }
+  it { should have_many :real_estate_transactions }
+  its(:net_worth) { should eq 0 }
+  its(:total_assets_value) { should eq 0 }
+  its(:total_liabilitites_value) { should eq 0 }
 
-      add_fixed_income(portfolio, 5, 8.89,  10000, Date.civil(2007, 1, 31))
-      add_fixed_income(portfolio, 5, 9.75, 500000, Date.civil(2008, 1, 18))
+  it "should have many stock_positions" do
+    stock = create :stock
+    4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    4.times { |n| create :stock_transaction, :stock => create( :stock), :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-      add_loan_position(portfolio,  5, 12.50,  300000, Date.civil(2011, 8, 1))
-      add_loan_position(portfolio, 10, 12.75, 1500000, Date.civil(2010, 1, 1))
+    portfolio.stock_positions.first.quantity.should eq 10
+    portfolio.stock_positions.first.average_cost_price.should eq 3
+  end
 
-      add_mutual_fund_position(portfolio, 30000, 35000, 1)
+  it "should have many mutual_fund_positions" do
+    scheme = create :scheme_master
+    4.times { |n| create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-      add_mutual_fund_position_without_transaction(portfolio)
+    portfolio.mutual_fund_positions.first.quantity.should eq 10
+    portfolio.mutual_fund_positions.first.average_cost_price.should eq 3
+  end
+
+  it "should have a gold position" do
+    gold = create :gold, :name => "Gold", :current_price => 5
+    4.times { |n| create :gold_transaction, :gold => gold, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+
+    portfolio.gold_transactions.quantity.should eq 10
+    portfolio.gold_transactions.average_cost_price.should eq 3
+  end
+
+  describe "Net Worth" do
+    subject {
+      create_positions_of_all_securities
+      portfolio
+    }
+
+    its(:stocks_value) { should eq 50 }
+    its(:mutual_funds_value) { should eq 50 }
+    its(:gold_value) { should eq 50 }
+    its(:fixed_deposits_value) { should eq 106.58 }
+    its(:real_estates_value) { should eq 600 }
+
+    it "should calculate net worth of portfolio" do
+      subject.net_worth.should eq 597.95
     end
 
-    its(:net_worth) do
-      Timecop.freeze Date.civil(2011, 11, 11) do
-        should eq -629944
-      end
+    it "should calculate total asset value" do
+      subject.total_assets_value.should eq 856.58
     end
 
-    its(:net_worth_except_loan) do
-      Timecop.freeze Date.civil(2011, 11, 11) do
-        should eq 993760
-      end
-    end
-
-    its(:net_worth_security_share) do
-      excepted_net_worth_security_share = [
-                                            ["Stock", 19.68], ["FixedIncome", 73.27], ["MutualFund", 7.04]
-                                          ]
-      Timecop.freeze Date.civil(2011, 11, 11) do
-        should eq excepted_net_worth_security_share
-      end
+    it "should calcualte total liabilities" do
+      subject.total_liabilitites_value.should eq -258.63
     end
   end
 
-  def add_stock_position(portfolio, quantity, price)
-    stock_position = create :net_position, :portfolio => portfolio,
-                                           :security => create(:stock)
-    create :transaction, :net_position => stock_position, :quantity => quantity
-    create :scrip, :id => stock_position.security.symbol, :last_traded_price => price
-  end
+  def create_positions_of_all_securities
+    stock = create :stock, :sector => "FOO"
+    scrip = create :scrip, :last_traded_price => 5, :id => stock.symbol
+    4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-  def add_fixed_income(portfolio, period, interest_rate, amount, date)
-    position = create :net_position, :portfolio => portfolio,
-                                     :security => create(:fixed_income, :period => period, :rate_of_interest => interest_rate)
-    create :transaction, :net_position => position, :date => date, :price => amount
-  end
+    scheme = create :scheme_master
+    navcp  = create :navcp, :nav_amount => "5", :security_code => scheme.securitycode
+    4.times { |n| create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-  def add_loan_position(portfolio, period, interest_rate, amount, date)
-    position = create :net_position, :portfolio => portfolio,
-                                     :security => create(:loan, :period => period, :rate_of_interest => interest_rate)
-    create :transaction, :net_position => position, :date => date, :price => amount
-  end
+    gold = create :gold, :name => "Gold", :current_price => 5
+    4.times { |n| create :gold_transaction, :gold => gold, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-  def add_mutual_fund_position(portfolio, amount1, amount2, quantity)
-    position = create :net_position, :portfolio => portfolio,
-                                     :security => create(:mutual_fund)
-    create :transaction, :net_position => position, :quantity => quantity, :price => amount1
-    create :transaction, :net_position => position, :quantity => quantity, :price => amount2
-  end
+    loan =  create :loan, :name => "Foo Loan", :rate_of_interest => "10", :period => "1"
+    loan_transaction =  create :loan_transaction, :loan => loan, :price => -1000, :date => 8.months.ago.to_date, :portfolio => portfolio
 
-  def add_mutual_fund_position_without_transaction(portfolio)
-    position = create :net_position, :portfolio => portfolio,
-                                     :security => create(:mutual_fund)
+    fixed_deposit = create :fixed_deposit, :name => "Foo", :period => 5, :rate_of_interest => 10.0
+    create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 100, :date => 8.months.ago.to_date
+
+    real_estate = create :real_estate, :name => "Test Property", :location => "Mordor", :current_price => 600
+    create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => 500, :date => Date.civil(2011, 12, 01)
   end
 end

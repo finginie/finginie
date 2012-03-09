@@ -163,7 +163,7 @@ div.wrapper {
   //padding-left: 1em;
   article{
   &>h1 {
-    color: $heading-red;
+    color: $heading-blue;
     font: {
       family: $heading-font;
       size: x-large;
@@ -194,7 +194,7 @@ div.wrapper {
       margin: 0;
       padding-bottom: 0.3em;
       clear: both;
-      color: #D83527;
+      color: $heading-red;
       font: {
         family: $heading-font;
 	weight: normal;

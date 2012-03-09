@@ -22,7 +22,7 @@ body.portfolios.index {
           @include button($base-color);
           @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
           font-size: small;
-        }   
+        }
       }
       table {
         margin-top: 3em;
@@ -31,7 +31,6 @@ body.portfolios.index {
           text-align: left;
           padding: {
             left: 0;
-            
           }
         }
         .actions {
@@ -79,4 +78,91 @@ body.portfolios.new {
 }
 
 
+body.portfolios.show {
+  #main {
+    .container {
+      p {
+        margin-top: 0;
+        b {
+        color: #12179E;
+        }
+      }
+      #portfolio-total-asset-allocation-chart {
+        float: left;
+        margin: {
+          bottom: 2em;
+          right: 4em;
+        }
+      }
+      #net-worth-chart {
+        margin-top: 2em;
+      }
+    }
+  }
+}
 
+body.portfolios.details {
+  #main {
+    .container {
+      h1 {
+        color: $heading-red;
+        font: {
+          size: large;
+        }
+      }
+      #stock_positions, #mutual_fund_positions, #gold_positions, .Loan, .FixedDeposit, .RealEstate{
+        padding: 0 0 2em 0;
+      }
+      #add_links {
+        a {
+          @include button(#A1D004);
+          @include background-image(linear-gradient(#A1D004, shade(#6B9A00, 30%)));
+          font-size: small;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+body.portfolios.transactions {
+  #main {
+    .container {
+      h1 {
+        color: $heading-red;
+        font: {
+          size: large;
+        }
+      }
+      section {
+        padding-bottom: 2em;
+      }
+    }
+  }
+}
+
+body.portfolios.accumulated_profits {
+  table {
+    margin: {
+      top: 2em;
+      bottom: 2em;
+    }
+  }
+}
+
+body.portfolios.analysis {
+  #main {
+    .container {
+      h1 {
+        color: $heading-red;
+        font-size: large;
+      }
+      #stocks-profit-or-loss-chart, #mutual-fund-profit-or-loss-chart {
+        margin: {
+          top: 1em;
+          bottom: 1em;
+        }
+      }
+    }
+  }
+}

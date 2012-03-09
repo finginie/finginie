@@ -1,0 +1,18 @@
+= simple_nested_form_for([parent, resource]) do |f|
+  = f.error_notification
+
+  .security
+    = f.fields_for :loan do |income|
+      = income.input :type, :as => :hidden
+      = income.input :name
+      = income.input :period
+      = income.input :rate_of_interest
+
+  .inputs
+    = f.input :action, :collection => [:borrow, :repay], :include_blank => false
+    = f.input :amount
+    = f.input :date
+    = f.input :comments
+
+  .actions
+    = f.button :submit

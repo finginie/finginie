@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120214145641) do
+ActiveRecord::Schema.define(:version => 20120307105446) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -54,6 +54,60 @@ ActiveRecord::Schema.define(:version => 20120214145641) do
 
   add_index "comprehensive_risk_profilers", ["user_id"], :name => "index_comprehensive_risk_profilers_on_user_id"
 
+  create_table "fixed_deposit_transactions", :force => true do |t|
+    t.decimal  "price"
+    t.date     "date"
+    t.text     "comments"
+    t.integer  "portfolio_id"
+    t.integer  "fixed_deposit_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "fixed_deposit_transactions", ["fixed_deposit_id"], :name => "index_fixed_deposit_transactions_on_fixed_deposit_id"
+  add_index "fixed_deposit_transactions", ["portfolio_id"], :name => "index_fixed_deposit_transactions_on_portfolio_id"
+
+  create_table "gold_transactions", :force => true do |t|
+    t.decimal  "price"
+    t.date     "date"
+    t.integer  "quantity"
+    t.text     "comments"
+    t.integer  "portfolio_id"
+    t.integer  "gold_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "gold_transactions", ["gold_id"], :name => "index_gold_transactions_on_gold_id"
+  add_index "gold_transactions", ["portfolio_id"], :name => "index_gold_transactions_on_portfolio_id"
+
+  create_table "loan_transactions", :force => true do |t|
+    t.decimal  "price"
+    t.date     "date"
+    t.text     "comments"
+    t.integer  "portfolio_id"
+    t.integer  "loan_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "loan_transactions", ["loan_id"], :name => "index_loan_transactions_on_loan_id"
+  add_index "loan_transactions", ["portfolio_id"], :name => "index_loan_transactions_on_portfolio_id"
+
+  create_table "mutual_fund_transactions", :force => true do |t|
+    t.decimal  "price"
+    t.date     "date"
+    t.integer  "quantity"
+    t.text     "comments"
+    t.integer  "portfolio_id"
+    t.integer  "mutual_fund_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "mutual_fund_transactions", ["mutual_fund_id"], :name => "index_mutual_fund_transactions_on_mutual_fund_id"
+  add_index "mutual_fund_transactions", ["portfolio_id"], :name => "index_mutual_fund_transactions_on_portfolio_id"
+
   create_table "net_positions", :force => true do |t|
     t.integer  "portfolio_id"
     t.integer  "security_id"
@@ -93,6 +147,19 @@ ActiveRecord::Schema.define(:version => 20120214145641) do
     t.string   "buckets"
   end
 
+  create_table "real_estate_transactions", :force => true do |t|
+    t.decimal  "price"
+    t.date     "date"
+    t.text     "comments"
+    t.integer  "portfolio_id"
+    t.integer  "real_estate_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "real_estate_transactions", ["portfolio_id"], :name => "index_real_estate_transactions_on_portfolio_id"
+  add_index "real_estate_transactions", ["real_estate_id"], :name => "index_real_estate_transactions_on_real_estate_id"
+
   create_table "responses", :force => true do |t|
     t.integer  "risk_profiler_id"
     t.integer  "choice_id"
@@ -130,6 +197,20 @@ ActiveRecord::Schema.define(:version => 20120214145641) do
   end
 
   add_index "securities", ["user_id"], :name => "index_securities_on_user_id"
+
+  create_table "stock_transactions", :force => true do |t|
+    t.integer  "quantity"
+    t.decimal  "price"
+    t.date     "date"
+    t.text     "comments"
+    t.integer  "portfolio_id"
+    t.integer  "stock_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "stock_transactions", ["portfolio_id"], :name => "index_stock_transactions_on_portfolio_id"
+  add_index "stock_transactions", ["stock_id"], :name => "index_stock_transactions_on_stock_id"
 
   create_table "subscriptions", :force => true do |t|
     t.integer  "user_id"

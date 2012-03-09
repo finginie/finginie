@@ -1,0 +1,28 @@
+#accumulated_profits_or_losses
+  %h1 Your Accumulated Profits or Losses
+  - unless resource.top_five_profits.empty?
+    #accumulated_profits
+      #accumulated-profits-chart{ 'data-accumulated-profits' => resource.top_five_profits.map(&:last),
+                                    'data-categories' => resource.top_five_profits.map(&:first) }
+      %table
+        %tr
+          %th Security
+          %th Profit
+        - resource.top_five_profits.each do |security|
+          %tr
+            %td= security.first
+            %td= security.last
+
+  - unless resource.top_five_losses.empty?
+    #accumulated_losses
+      #accumulated-losses-chart{ 'data-accumulated-losses' => resource.top_five_losses.map(&:last),
+                                    'data-categories' => resource.top_five_losses.map(&:first) }
+
+      %table
+        %tr
+          %th Security
+          %th Losses
+        - resource.top_five_losses.each do |security|
+          %tr
+            %td= security.first
+            %td= security.last
