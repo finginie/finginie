@@ -2,6 +2,8 @@
 %html
   %head
     %title FinGinie
+    - if ENV['PRODUCTION_INSTANCE']
+      %webengage{license: '76aa3c4'}
     = stylesheet_link_tag :application
     = javascript_include_tag :application
     = raw airbrake_javascript_notifier
