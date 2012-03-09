@@ -42,5 +42,9 @@ describe PortfoliosController do
     it "routes to #analysis" do
       get("/portfolios/1/analysis").should route_to("portfolios#analysis", :id => "1")
     end
+
+    it "routes to #profits" do
+      get("/portfolios/1/accumulated_profits").should route_to("portfolios#accumulated_profits", :id => "1")
+    end
   end
 end

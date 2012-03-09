@@ -27,6 +27,10 @@ class RealEstateTransaction < ActiveRecord::Base
     def unrealised_profit
       (current_value - buy_value)
     end
+
+    def profit_or_loss
+      last.profit_or_loss if all.count == 2
+    end
   end
 
   def profit_or_loss

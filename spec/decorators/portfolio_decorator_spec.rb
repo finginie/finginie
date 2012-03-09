@@ -5,6 +5,7 @@ describe PortfolioDecorator do
   let (:portfolio) { create :portfolio }
   let(:stock) { create :stock, :sector => "FOO" }
   let(:scheme) { create :scheme_master, :scheme_class_description => "FOO" }
+  let(:real_estate) { create :real_estate, :name => "Test Property", :location => "Mordor", :current_price => 600 }
 
   subject {
     create_securities
@@ -38,7 +39,6 @@ describe PortfolioDecorator do
     subject
     scheme2 = create :scheme_master_with_navcp, :scheme_class_description => "BAR"
     create :mutual_fund_transaction, :mutual_fund => create( :mutual_fund, :name => scheme2.scheme_name), :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today
-
     subject.category_wise_mutual_funds_percentage.should include(*[["FOO", 71.43], ["BAR", 28.57]])
   end
 
@@ -60,6 +60,20 @@ describe PortfolioDecorator do
     subject.fixed_deposit_open_positions_rate_of_interests.should include(*[[10.0, 100], [12.0, 1000]])
   end
 
+  it "should give top five profits" do
+    subject
+    create_sell_position_of_all_securities_type
+    expected = [["Test Property", 400], [stock.name, 12.0], [scheme.scheme_name, 12.0], ["Foo", 4.64]]
+    subject.top_five_profits.should include *expected
+  end
+
+  it "should give top five losses" do
+    subject
+    create_sell_position_of_all_securities_type
+    expected = [["Test Property2", -400.0], ["FOO", -4.0], ["Foo Scheme Name", -1.0]]
+    subject.top_five_losses.should include *expected
+  end
+
   def create_securities
     scrip = create :scrip, :last_traded_price => 5, :id => stock.symbol
     4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
@@ -76,7 +90,27 @@ describe PortfolioDecorator do
     fixed_deposit = create :fixed_deposit, :name => "Foo", :period => 5, :rate_of_interest => 10.0
     create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 100, :date => 8.months.ago.to_date
 
-    real_estate = create :real_estate, :name => "Test Property", :location => "Mordor", :current_price => 600
     create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => 500, :date => Date.civil(2011, 12, 01)
+  end
+
+  def create_sell_position_of_all_securities_type
+    create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => -4, :price => 6, :date => Date.today
+    stock1 = create :stock_with_scrip, :sector => "BAR", :name => "FOO"
+    create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
+    create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => :sell
+
+    create :mutual_fund_transaction, :mutual_fund => create( :mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio, :quantity => -4, :price => 6, :date => Date.today
+    scheme2 = create :scheme_master, :scheme_class_description => "BAR", :scheme_name => "Foo Scheme Name"
+    2.times { |n| create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme2.scheme_name),
+                                                   :portfolio => portfolio, :quantity => 1- n * (n +1),
+                                                   :price => -n+5, :date => (-n +2).days.ago }
+
+    fixed_deposit = create :fixed_deposit, :name => "Foo", :period => 5, :rate_of_interest => 8.0
+    create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => -100, :date => 1.months.ago.to_date
+
+    create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => -900, :date => Date.civil(2012, 2, 01)
+    real_estate_2 = create :real_estate, :name => "Test Property2", :location => "Mordor", :current_price => 500
+    create :real_estate_transaction, :real_estate => real_estate_2, :portfolio => portfolio, :price => 900, :date => Date.civil(2011, 12, 01)
+    create :real_estate_transaction, :real_estate => real_estate_2, :portfolio => portfolio, :price => -500, :date => Date.civil(2012, 01, 01)
   end
 end

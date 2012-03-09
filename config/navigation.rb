@@ -72,6 +72,8 @@ SimpleNavigation::Configuration.run do |navigation|
             secondary.item "portfolio_#{portfolio.id}".to_sym, portfolio.name, portfolio_path(portfolio)
             secondary.item :details, 'Details', details_portfolio_path(portfolio)
             secondary.item :transactions, 'Transactions', transactions_portfolio_path(portfolio)
+            secondary.item :analysis,     'Analysis', analysis_portfolio_path(portfolio)
+            secondary.item :accumulated_profits, 'Accumulated Profits', accumulated_profits_portfolio_path(portfolio)
           end
         end
       end

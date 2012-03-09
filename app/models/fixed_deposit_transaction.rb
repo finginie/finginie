@@ -35,6 +35,10 @@ class FixedDepositTransaction < ActiveRecord::Base
     def unrealised_profit
       (current_value - first.amount).round(2)
     end
+
+    def profit_or_loss
+      last.profit_or_loss if all.count == 2
+    end
   end
 
   def profit_or_loss

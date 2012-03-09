@@ -80,4 +80,31 @@ class PortfolioDecorator < ApplicationDecorator
   def fixed_deposit_open_positions_rate_of_interests
     fixed_deposit_positions.map{ |fd| [ fd.rate_of_interest.to_f, fd.invested_amount.to_f ] }
   end
+
+  def fixed_deposit_positions_profit_or_loss
+    fixed_deposits.map(&:name).uniq.map { |fd_name| [fd_name, fixed_deposit_transactions.for(fd_name).profit_or_loss ] if fixed_deposit_transactions.for(fd_name).profit_or_loss } - [nil]
+  end
+
+  def real_estate_positions_profit_or_loss
+    real_estates.map { |re| [ re.name, real_estate_transactions.for(re.id).profit_or_loss.to_f ] if real_estate_transactions.for(re.id).profit_or_loss } - [nil]
+  end
+
+  def gold_positions_profit_or_loss
+    gold_transactions.profit_or_loss ? [[ "Gold", gold_transactions.profit_or_loss]] : []
+  end
+
+  def positions
+    stocks_positions_profit_or_loss + mutual_fund_positions_profit_or_loss +
+        fixed_deposit_positions_profit_or_loss +
+        real_estate_positions_profit_or_loss +
+        gold_positions_profit_or_loss
+  end
+
+  def top_five_losses
+    positions.select{ |position| position.last < 0 }.sort_by(&:last).take(5)
+  end
+
+  def top_five_profits
+    positions.select{ |position| position.last > 0 }.sort_by(&:last).reverse.take(5)
+  end
 end
