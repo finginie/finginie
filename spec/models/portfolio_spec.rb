@@ -21,7 +21,7 @@ describe Portfolio do
   its(:total_assets_value) { should eq 0 }
   its(:total_liabilitites_value) { should eq 0 }
 
-  it "should have many stock_positions" do
+  pending "should have many stock_positions" do
     stock = create :stock
     4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
     4.times { |n| create :stock_transaction, :stock => create( :stock), :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
@@ -30,7 +30,7 @@ describe Portfolio do
     portfolio.stock_positions.first.average_cost_price.should eq 3
   end
 
-  it "should have many mutual_fund_positions" do
+  pending "should have many mutual_fund_positions" do
     scheme = create :scheme_master
     4.times { |n| create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
