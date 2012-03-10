@@ -150,11 +150,11 @@ describe "Portfolios" do
 
     expected_table_for_stock_transactions = [
                        [ "Date","Type", "Name", "Quantity", "Price", "Total Amount"],
-                       [ Date.today.to_s(:db), "buy", stock.name, "1", "5.0", "5.0", "Show", "Edit", "Destroy"],
+                       [ Date.today.to_s(:db), "buy", stock.name, "1", "5.0", "5.0"],
                     ]
     expected_table_for_mutual_fund_transactions = [
                          [ "Date","Type", "Name", "Quantity", "Price", "Total Amount"],
-                         [ Date.today.to_s(:db), "buy", scheme.scheme_name, "1", "5.0", "5.0", "Show", "Edit", "Destroy"],
+                         [ Date.today.to_s(:db), "buy", scheme.scheme_name, "1", "5.0", "5.0"],
                       ]
     tableish("section.StockTransactions table").should eq expected_table_for_stock_transactions
     tableish("section.MutualFundTransactions table").should eq expected_table_for_mutual_fund_transactions
