@@ -61,7 +61,7 @@ nav {
 
 header {
   width: 100%;
-  @include background-image(linear-gradient($base-color, shade($base-color, 30%)));
+  @include background-image(linear-gradient(#438DF2, shade(#0F3F7A, 10%)));
   @include box-shadow(0 2px 5px hsla(0, 0%, 0%, 0.65));
   @include horizontal-list-container;
   nav, hgroup {
@@ -79,33 +79,32 @@ header {
       }
       margin-top: 1em;
       li {
-	      padding: {
-	        bottom: 0.2em;
-	        top: 0.2em;
-	      }
-	      a {
-	        font: {
-	          size: 16px;
-	          weight: bold;
-	          family: arial,sans-serif; 
-	        }
-	        display: block;
-	        color: #BBBBBB;
-	        &.selected, {
-	          color: $base-color;
-	        }
-	      }
-	      &.selected {
-	        background-color: #d6dbbf;
-	        border-radius: 4px 4px 0 0;
-	        border: {
-	          bottom: {
-	            width: 2px;
-	            style: solid;
-	            color:  #CC2222;
-	          }
-	        }
-	      }
+	padding: {
+	  bottom: 0.2em;
+	  top: 0.2em;
+	}
+	a {
+	  font: {
+	    size: 16px;
+	    weight: bold;
+	    family: arial,sans-serif; 
+	  }
+	  color: #FFD02A;
+	  &.selected {
+	    color: $base-color;
+	  }
+	}
+	&.selected {
+	  background-color: #DCEDFC;
+	  border-radius: 4px 4px 0 0;
+	  border: {
+	    bottom: {
+	      width: 2px;
+	      style: solid;
+	      color:  #FFD02A;
+	    }
+	  }
+	}
       }  
     }
 

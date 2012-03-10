@@ -1,15 +1,24 @@
+@import "bourbon";
+@import "defaults";
+@import "lists";
+@import "holygrail";
+@import "utilities";
 
 body.team {
-  h1 {
-    font: {
-      size: large;
-      weight: bold;
-    }
-  }
-  p {
-    text-align: justify;
-    font: {
-      size: 14px;
-    }
+  #main {
+    .container {
+      h1 {
+        font: {
+          size: large;
+          weight: normal;
+        }
+      }
+      p {
+        text-align: justify;
+        font: {
+          size: 14px;
+        }
+      }
+    }  
   }
 }

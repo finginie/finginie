@@ -227,7 +227,7 @@ div.wrapper {
 }
 
 articlefooter {
-  display: inline-block;
+  display: -block;
   center {
     a {
       display: none;
@@ -235,5 +235,5 @@ articlefooter {
   }
 }
 rightalign {
-  margin-left: 30px;
+  float: right;
 }
