@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe "NetPositions" do
-  describe "Add new net position" do
+#TODO: Remove Net Position
+  pending "Add new net position" do
     include_context "logged in user"
 
     let (:portfolio) { create :portfolio, :user => current_user }
@@ -82,6 +83,7 @@ describe "NetPositions" do
     end
 
     it "adds new Gold position" do
+      create :gold, :current_price => '2456', :name => "Gold"
       click_on 'Add New Gold'
 
       fill_in "Price", :with => 200
@@ -115,6 +117,7 @@ describe "NetPositions" do
     end
 
     it "adds new Gold position without action field" do
+      create :gold, :current_price => '2456', :name => "Gold"
       click_on 'Add New Gold'
 
       fill_in "Price", :with => 200

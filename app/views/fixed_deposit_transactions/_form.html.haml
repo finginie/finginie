@@ -1,0 +1,17 @@
+= simple_nested_form_for([parent, resource]) do |f|
+  = f.error_notification
+
+  .security
+    = f.fields_for :fixed_deposit do |deposit|
+      = deposit.input :type, :as => :hidden
+      = deposit.input :name
+      = deposit.input :period
+      = deposit.input :rate_of_interest
+
+  .inputs
+    = f.input :price
+    = f.input :date
+    = f.input :comments
+
+  .actions
+    = f.button :submit

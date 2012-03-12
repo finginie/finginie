@@ -31,5 +31,20 @@ describe PortfoliosController do
       delete("/portfolios/1").should route_to("portfolios#destroy", :id => "1")
     end
 
+    it "routes to #details" do
+      get("/portfolios/1/details").should route_to("portfolios#details", :id => "1")
+    end
+
+    it "routes to #transactions" do
+      get("/portfolios/1/transactions").should route_to("portfolios#transactions", :id => "1")
+    end
+
+    it "routes to #analysis" do
+      get("/portfolios/1/analysis").should route_to("portfolios#analysis", :id => "1")
+    end
+
+    it "routes to #profits" do
+      get("/portfolios/1/accumulated_profits").should route_to("portfolios#accumulated_profits", :id => "1")
+    end
   end
 end

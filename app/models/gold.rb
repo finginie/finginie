@@ -4,8 +4,5 @@ class Gold < Security
   def current_value(transaction)
     current_price
   end
-
-  def current_price
-    @current_price || 2858.5
-  end
 end
+

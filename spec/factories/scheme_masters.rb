@@ -21,7 +21,7 @@ FactoryGirl.define do
 
     trait :with_navcp do
       after_create do |scheme_master|
-        FactoryGirl.create :navcp, :security_code => scheme_master.securitycode
+        FactoryGirl.create :navcp, :security_code => scheme_master.securitycode, :nav_amount => 5
       end
     end
     factory :scheme_master_with_navcp, :traits => [:with_navcp]

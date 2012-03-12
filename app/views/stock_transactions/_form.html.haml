@@ -1,0 +1,13 @@
+= simple_form_for([parent, resource]) do |f|
+  = f.error_notification
+
+  .inputs
+    = f.association :stock, :collection => Stock.all
+    = f.input :action, :collection => [:buy, :sell], :include_blank => false
+    = f.input :price
+    = f.input :date
+    = f.input :amount
+    = f.input :comments
+
+  .actions
+    = f.button :submit

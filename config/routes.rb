@@ -37,6 +37,32 @@ Finginie::Application.routes.draw do
   resource :comprehensive_risk_profiler, :only =>[:edit, :update, :show]
 
   resources :portfolios do
+    member do
+      get 'details'
+      get 'transactions'
+      get 'analysis'
+      get 'accumulated_profits'
+    end
+    resources :loan_transactions do
+      member do
+        post 'clear'
+      end
+    end
+    resources :fixed_deposit_transactions do
+      member do
+        get 'redeem'
+        put 'create_redeem'
+      end
+    end
+    resources :real_estate_transactions do
+      member do
+        get 'sell'
+        put 'create_sell'
+      end
+    end
+    resources :stock_transactions
+    resources :mutual_fund_transactions
+    resources :gold_transactions
     resources :net_positions, :except => :index do
       resources :transactions, :except => [:index, :show]
     end

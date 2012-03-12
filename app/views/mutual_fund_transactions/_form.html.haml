@@ -1,0 +1,16 @@
+= simple_nested_form_for([parent, resource]) do |f|
+  = f.error_notification
+
+  .inputs
+    .security
+      = f.fields_for :mutual_fund do |mf|
+        = mf.input :scheme do
+          = mf.select :scheme, SchemeMaster.all.map { |r| [r.scheme_name, r.scheme_name] }
+    = f.input :price
+    = f.input :date
+    = f.input :amount
+    = f.input :action, :collection => [:buy, :sell]
+    = f.input :comments
+
+  .actions
+    = f.button :submit

@@ -1,0 +1,18 @@
+= simple_nested_form_for([parent, resource], :url => create_sell_portfolio_real_estate_transaction_path) do |f|
+  = f.error_notification
+
+  .security
+    = resource.name
+    = resource.price
+
+  .inputs
+    = f.input :date
+    = f.input :comments
+    = f.input :amount
+    = f.hidden_field :action, :value => :sell
+    = f.input :portfolio_id, :as => :hidden
+    = f.input :real_estate_id, :as => :hidden
+
+  .actions
+    = f.submit 'Submit'
+

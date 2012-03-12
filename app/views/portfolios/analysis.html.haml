@@ -1,0 +1,16 @@
+#stocks_analysis
+  %h1 Your Stocks Analysis
+  #stock-sectoral-allocation-chart{ 'data-stocks-sectoral-asset-allocation' => resource.sector_wise_stock_percentage }
+  #stocks-profit-or-loss-chart{ 'data-stocks-profit-or-loss' => resource.stocks_positions_profit_or_loss.map(&:last),
+                                'data-categories' => resource.stocks_positions_profit_or_loss.map(&:first) }
+#mutual_funds_analysis
+  %h1 Your Mutual Funds Analysis
+  #mutual-fund-category-wise-allocation-chart{ 'data-mutual-fund-category-wise-asset-allocation' => resource.category_wise_mutual_funds_percentage }
+  #mutual-fund-profit-or-loss-chart{ 'data-mutual-fund-profit-or-loss' => resource.mutual_fund_positions_profit_or_loss.map(&:last),
+                                     'data-categories' => resource.mutual_fund_positions_profit_or_loss.map(&:first) }
+- unless resource.fixed_deposit_open_positions_rate_of_interests.empty?
+  #fixed_deposits_analysis
+    %h1 Your Fixed Deposits
+    #fixed-deposits-chart{ 'data-fixed-deposits' => resource.fixed_deposit_open_positions_rate_of_interests.map(&:last),
+                                  'data-categories' => resource.fixed_deposit_open_positions_rate_of_interests.map(&:first) }
+

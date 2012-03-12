@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :scrip do
-    last_traded_price 20
+    last_traded_price 5
   end
 end

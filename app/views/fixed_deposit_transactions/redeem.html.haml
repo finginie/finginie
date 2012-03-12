@@ -1,0 +1,21 @@
+= simple_nested_form_for([parent, resource], :url => create_redeem_portfolio_fixed_deposit_transaction_path) do |f|
+  = f.error_notification
+
+  .security
+    = f.fields_for :fixed_deposit do |income|
+      = income.input :type, :as => :hidden
+      = income.input :name, :as => :hidden
+      = resource.name
+      = income.input :period, :as => :hidden
+      = resource.period
+      = income.input :rate_of_interest
+
+  .inputs
+    = f.input :date
+    = f.input :comments
+    = f.input :price, :as => :hidden
+    = f.hidden_field :action, :value => :sell
+    = f.input :portfolio_id, :as => :hidden
+
+  .actions
+    = f.submit 'Submit'
