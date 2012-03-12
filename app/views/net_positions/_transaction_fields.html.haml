@@ -1,7 +1,0 @@
-= f.input :price, :label => t(".#{resource.security.type}.price")
-= f.input :date
-= f.input :action, :collection => [:buy, :sell], :label_method => lambda { |item| t ".#{resource.security.type}.#{item}" }, :include_blank => false
-= f.input :amount, :label => t(".#{resource.security.type}.quantity") unless %w[RealEstate Loan].include?(resource.security.type)
-= f.input :comments
-
-=# f.link_to_remove "Remove This Transaction"
