@@ -30,7 +30,7 @@ describe "GoldTransactions" do
     visit portfolio_gold_transactions_path(portfolio)
     expected_table = [
                        [ "Date","Type", "Name", "Quantity", "Price", "Total Amount"],
-                       [ Date.today.to_s(:db), "buy", "Gold", "1", "5.0", "5.0"],
+                       [ Date.today.to_s(:db), "buy", "Gold", "1", "5.00", "5.00"],
                     ]
     tableish("table").should eq expected_table
   end

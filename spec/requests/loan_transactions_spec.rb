@@ -24,7 +24,7 @@ describe "LoanTransactions" do
       visit portfolio_loan_transactions_path(portfolio)
       expected_table = [
                          ["Date", "Name", "Amount", "Rate of Interest", "Duration"],
-                         [ "2011-12-10", loan.name, "5,000.0", "10.0", "5.0"]
+                         [ "2011-12-10", loan.name, "5,000.00", "10.0", "5.0"]
                       ]
       tableish("table").should eq expected_table
     end

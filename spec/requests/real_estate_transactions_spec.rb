@@ -22,7 +22,7 @@ describe "RealEstateTransactions" do
     visit portfolio_real_estate_transactions_path(portfolio)
     expected_table = [
                        [ "Date", "Type", "Name", "Buy Value", "Current Value", "Change (%)"],
-                       [ "2011-12-10", "buy", "Test Property", "50,000.0", "60,000.0", "20.0"],
+                       [ "2011-12-10", "buy", "Test Property", "50,000.00", "60,000.00", "20.00"],
                     ]
     tableish("table").should eq expected_table
   end
