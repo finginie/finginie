@@ -5,7 +5,7 @@
     .security
       = f.fields_for :mutual_fund do |mf|
         = mf.input :scheme do
-          = mf.select :scheme, SchemeMaster.all.map { |r| [r.scheme_name, r.scheme_name] }
+          = mf.text_field :scheme, data: { autocomplete_source: mutual_funds_path }
     = f.input :price
     = f.input :date
     = f.input :amount

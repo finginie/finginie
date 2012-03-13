@@ -7,6 +7,9 @@ class MutualFundsController < InheritedResources::Base
     if params[:scheme_master]
       @search_records = SchemeMaster.search(params[:scheme_master][:scheme_name], :allow_empty_search => true)
       @scheme_masters = @search_records.page(params[:page]).per(10)
+    elsif params[:term]
+      @search_records = SchemeMaster.search(params[:term], :allow_empty_search => true)
+      @search_records.all.map(&:scheme_name)
     else
       @categories = NavCategoryDetail.all( sort: [[:scheme_class_description, :asc]])
     end
