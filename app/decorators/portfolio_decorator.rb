@@ -5,23 +5,23 @@ class PortfolioDecorator < ApplicationDecorator
 
   #portfolio page asset_class wise percentages
   def stocks_percentage
-    ( stocks_value / total_assets_value * 100).round(2)
+    number_to_indian_currency(( stocks_value / total_assets_value * 100).round(2))
   end
 
   def mutual_funds_percentage
-    ( mutual_funds_value / total_assets_value * 100).round(2)
+    number_to_indian_currency(( mutual_funds_value / total_assets_value * 100).round(2))
   end
 
   def gold_percentage
-    ( gold_value / total_assets_value * 100).round(2)
+    number_to_indian_currency(( gold_value / total_assets_value * 100).round(2))
   end
 
   def fixed_deposits_percentage
-    ( fixed_deposits_value / total_assets_value * 100).round(2)
+   number_to_indian_currency(( fixed_deposits_value / total_assets_value * 100).round(2))
   end
 
   def real_estates_percentage
-    ( real_estates_value / total_assets_value * 100).round(2)
+   number_to_indian_currency(( real_estates_value / total_assets_value * 100).round(2))
   end
 
   def total_assets_distribution

@@ -12,11 +12,11 @@ describe PortfolioDecorator do
     PortfolioDecorator.decorate(portfolio)
   }
 
-  its(:stocks_percentage) { should eq 5.84 }
-  its(:mutual_funds_percentage) { should eq 5.84 }
-  its(:gold_percentage) { should eq 5.84 }
-  its(:fixed_deposits_percentage) { should eq 12.44 }
-  its(:real_estates_percentage) { should eq 70.05 }
+  its(:stocks_percentage) { should eq "5.84" }
+  its(:mutual_funds_percentage) { should eq "5.84" }
+  its(:gold_percentage) { should eq "5.84" }
+  its(:fixed_deposits_percentage) { should eq "12.44" }
+  its(:real_estates_percentage) { should eq "70.05" }
 
   it"should have sector_wise_stock_percentage" do
     stock1 = create :stock_with_scrip, :sector => "BAR"
