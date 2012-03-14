@@ -13,5 +13,5 @@
       %td= gold_transaction.action
       %td= gold_transaction.gold.name
       %td= gold_transaction.amount
-      %td= gold_transaction.price
-      %td= gold_transaction.total_cost
+      %td= number_to_indian_currency gold_transaction.price
+      %td= number_to_indian_currency gold_transaction.total_cost

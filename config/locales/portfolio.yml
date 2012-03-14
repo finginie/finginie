@@ -1,0 +1,4 @@
+en:
+  portfolios:
+    show:
+      empty_transactions: You do not have any open transactions. Please add transactions to your portfolio.

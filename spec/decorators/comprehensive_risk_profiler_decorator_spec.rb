@@ -33,13 +33,13 @@ describe ComprehensiveRiskProfilerDecorator do
 
   its(:inadequate_household_savings) { should eq nil }
 
-  its(:initial_investment) { should eq "1,30,000" }
+  its(:initial_investment) { should eq "1,30,000.00" }
 
   its(:monthly_savings_needed) { should eq 4826 }
 
-  its(:three_month_investment_amount) { should eq "75,000" }
+  its(:three_month_investment_amount) { should eq "75,000.00" }
 
-  its(:three_month_household_expenditure) { should eq "1,05,000" }
+  its(:three_month_household_expenditure) { should eq "1,05,000.00" }
 
   its(:summary) { should_not include "translation missing" }
 

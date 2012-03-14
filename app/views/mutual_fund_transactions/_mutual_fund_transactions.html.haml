@@ -13,5 +13,5 @@
       %td= mf_transaction.action
       %td= mf_transaction.mutual_fund.name
       %td= mf_transaction.amount
-      %td= mf_transaction.price
-      %td= mf_transaction.total_cost
+      %td= number_to_indian_currency mf_transaction.price
+      %td= number_to_indian_currency mf_transaction.total_cost

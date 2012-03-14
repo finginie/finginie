@@ -48,7 +48,7 @@ describe "MutualFundTransactions" do
 
     expected_table = [
                          [ "Date","Type", "Name", "Quantity", "Price", "Total Amount"],
-                         [ Date.today.to_s(:db), "buy", scheme.scheme_name, "1", "5.0", "5.0"]
+                         [ Date.today.to_s(:db), "buy", scheme.scheme_name, "1", "5.00", "5.00"]
                       ]
       tableish("table").should eq expected_table
   end

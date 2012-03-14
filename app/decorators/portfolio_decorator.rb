@@ -1,25 +1,27 @@
 class PortfolioDecorator < ApplicationDecorator
   decorates :portfolio
+  include Draper::LazyHelpers
+  include NumberHelper
 
   #portfolio page asset_class wise percentages
   def stocks_percentage
-    ( stocks_value / total_assets_value * 100).round(2)
+    number_to_indian_currency(( stocks_value / total_assets_value * 100).round(2))
   end
 
   def mutual_funds_percentage
-    ( mutual_funds_value / total_assets_value * 100).round(2)
+    number_to_indian_currency(( mutual_funds_value / total_assets_value * 100).round(2))
   end
 
   def gold_percentage
-    ( gold_value / total_assets_value * 100).round(2)
+    number_to_indian_currency(( gold_value / total_assets_value * 100).round(2))
   end
 
   def fixed_deposits_percentage
-    ( fixed_deposits_value / total_assets_value * 100).round(2)
+   number_to_indian_currency(( fixed_deposits_value / total_assets_value * 100).round(2))
   end
 
   def real_estates_percentage
-    ( real_estates_value / total_assets_value * 100).round(2)
+   number_to_indian_currency(( real_estates_value / total_assets_value * 100).round(2))
   end
 
   def total_assets_distribution
@@ -35,28 +37,32 @@ class PortfolioDecorator < ApplicationDecorator
     total_assets_value != 0 || total_liabilitites_value != 0 || net_worth != 0
   end
 
+  def empty_transactions?
+    stocks_value == 0 && mutual_funds_value == 0 && gold_value == 0 && real_estates_value == 0 && fixed_deposits_value == 0
+  end
+
   def total_assets_distribution_table
     [
       {
         :asset_type => "Stocks",
         :percentage => stocks_percentage,
-        :amount     => stocks_value },
+        :amount     => number_to_indian_currency(stocks_value) },
       {
         :asset_type => "Mutual Funds",
         :percentage => mutual_funds_percentage,
-        :amount     => mutual_funds_value },
+        :amount     => number_to_indian_currency(mutual_funds_value) },
       {
         :asset_type => "Gold",
         :percentage => gold_percentage,
-        :amount     => gold_value },
+        :amount     => number_to_indian_currency(gold_value) },
       {
         :asset_type => "Fixed Deposits",
         :percentage => fixed_deposits_percentage,
-        :amount     => fixed_deposits_value},
+        :amount     => number_to_indian_currency(fixed_deposits_value)},
       {
          :asset_type => "Real Estate" ,
          :percentage => real_estates_percentage,
-         :amount     => real_estates_value }
+         :amount     => number_to_indian_currency(real_estates_value) }
       ]
   end
 
@@ -66,7 +72,7 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def stocks_positions_profit_or_loss
-    stocks.map { |stock| [ stock.name, stock_transactions.for(stock).sell_transactions.map(&:profit_or_loss).sum.round(2).to_f ] if !stock_transactions.for(stock).sell_transactions.empty?} - [nil]
+    stocks.map { |stock| [ stock.name, number_to_indian_currency(stock_transactions.for(stock).sell_transactions.map(&:profit_or_loss).sum.round(2).to_f) ] if !stock_transactions.for(stock).sell_transactions.empty?} - [nil]
   end
 
   def category_wise_mutual_funds_percentage
@@ -74,7 +80,7 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def mutual_fund_positions_profit_or_loss
-    mutual_funds.map(&:name).uniq.map { |mf_name| [ mf_name, mutual_fund_transactions.for(mf_name).sell_transactions.map(&:profit_or_loss).sum.round(2).to_f ] }
+    mutual_funds.map(&:name).uniq.map { |mf_name| [ mf_name, number_to_indian_currency(mutual_fund_transactions.for(mf_name).sell_transactions.map(&:profit_or_loss).sum.round(2).to_f) ] }
   end
 
   def fixed_deposit_open_positions_rate_of_interests
@@ -82,15 +88,15 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def fixed_deposit_positions_profit_or_loss
-    fixed_deposits.map(&:name).uniq.map { |fd_name| [fd_name, fixed_deposit_transactions.for(fd_name).profit_or_loss ] if fixed_deposit_transactions.for(fd_name).profit_or_loss } - [nil]
+    fixed_deposits.map(&:name).uniq.map { |fd_name| [fd_name, number_to_indian_currency(fixed_deposit_transactions.for(fd_name).profit_or_loss) ] if fixed_deposit_transactions.for(fd_name).profit_or_loss } - [nil]
   end
 
   def real_estate_positions_profit_or_loss
-    real_estates.map { |re| [ re.name, real_estate_transactions.for(re.id).profit_or_loss.to_f ] if real_estate_transactions.for(re.id).profit_or_loss } - [nil]
+    real_estates.map { |re| [ re.name, number_to_indian_currency(real_estate_transactions.for(re.id).profit_or_loss.to_f) ] if real_estate_transactions.for(re.id).profit_or_loss } - [nil]
   end
 
   def gold_positions_profit_or_loss
-    gold_transactions.profit_or_loss ? [[ "Gold", gold_transactions.profit_or_loss]] : []
+    gold_transactions.profit_or_loss ? [[ "Gold", number_to_indian_currency(gold_transactions.profit_or_loss)]] : []
   end
 
   def positions
@@ -101,10 +107,10 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def top_five_losses
-    positions.select{ |position| position.last < 0 }.sort_by(&:last).take(5)
+    positions.select{ |position| position.last.to_f < 0 }.sort_by(&:last).take(5)
   end
 
   def top_five_profits
-    positions.select{ |position| position.last > 0 }.sort_by(&:last).reverse.take(5)
+    positions.select{ |position| position.last.to_f > 0 }.sort_by(&:last).reverse.take(5)
   end
 end

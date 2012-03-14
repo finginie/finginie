@@ -12,11 +12,11 @@ describe PortfolioDecorator do
     PortfolioDecorator.decorate(portfolio)
   }
 
-  its(:stocks_percentage) { should eq 5.84 }
-  its(:mutual_funds_percentage) { should eq 5.84 }
-  its(:gold_percentage) { should eq 5.84 }
-  its(:fixed_deposits_percentage) { should eq 12.44 }
-  its(:real_estates_percentage) { should eq 70.05 }
+  its(:stocks_percentage) { should eq "5.84" }
+  its(:mutual_funds_percentage) { should eq "5.84" }
+  its(:gold_percentage) { should eq "5.84" }
+  its(:fixed_deposits_percentage) { should eq "12.44" }
+  its(:real_estates_percentage) { should eq "70.05" }
 
   it"should have sector_wise_stock_percentage" do
     stock1 = create :stock_with_scrip, :sector => "BAR"
@@ -32,7 +32,7 @@ describe PortfolioDecorator do
     create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
     create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => :sell
 
-    subject.stocks_positions_profit_or_loss.should include(*[[stock.name, 12 ], [stock1.name, -4]])
+    subject.stocks_positions_profit_or_loss.should include(*[[stock.name, "12.00" ], [stock1.name, "-4.00"]])
   end
 
   it "should have catogorywise mf percentages" do
@@ -50,7 +50,7 @@ describe PortfolioDecorator do
                                                    :portfolio => portfolio, :quantity => 1- n * (n +1),
                                                    :price => -n+5, :date => (-n +2).days.ago }
 
-    subject.mutual_fund_positions_profit_or_loss.should include(*[[ scheme.scheme_name, 12 ],[ scheme2.scheme_name, -1]] )
+    subject.mutual_fund_positions_profit_or_loss.should include(*[[ scheme.scheme_name, "12.00" ],[ scheme2.scheme_name, "-1.00"]] )
   end
 
   it "should have fixed deposit open positions rate of interests" do
@@ -63,14 +63,14 @@ describe PortfolioDecorator do
   it "should give top five profits" do
     subject
     create_sell_position_of_all_securities_type
-    expected = [["Test Property", 400], [stock.name, 12.0], [scheme.scheme_name, 12.0], ["Foo", 4.64]]
+    expected = [["Test Property", "400.00"], [stock.name, "12.00"], [scheme.scheme_name, "12.00"], ["Foo", "4.64"]]
     subject.top_five_profits.should include *expected
   end
 
   it "should give top five losses" do
     subject
     create_sell_position_of_all_securities_type
-    expected = [["Test Property2", -400.0], ["FOO", -4.0], ["Foo Scheme Name", -1.0]]
+    expected = [["Test Property2", "-400.00"], ["FOO", "-4.00"], ["Foo Scheme Name", "-1.00"]]
     subject.top_five_losses.should include *expected
   end
 

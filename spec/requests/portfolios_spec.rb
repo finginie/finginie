@@ -24,15 +24,15 @@ describe "Portfolios" do
 
     expected_table_for_stocks = [
                                   ["Name", "Quantity", "Average Cost Price", "Market Price", "Amount Invested", "Market Value", "Profit"],
-                                  [stock.name, "10", "3.0", "5.0", "30.0", "50.0", "20.0"]
+                                  [stock.name, "10.00", "3.00", "5.00", "30.00", "50.00", "20.00"]
                                 ]
     expected_table_for_mfs =    [
                                   ["Name", "Quantity", "Average Cost Price", "Market Price", "Amount Invested", "Market Value", "Profit"],
-                                  [scheme.scheme_name, "10", "3.0", "5.0", "30.0", "50.0", "20.0"]
+                                  [scheme.scheme_name, "10.00", "3.00", "5.00", "30.00", "50.00", "20.00"]
                                 ]
     expected_table_for_gold =   [
                                   ["Name", "Quantity", "Average Cost Price", "Market Price", "Amount Invested", "Market Value", "Profit"],
-                                  ["Gold", "10", "3.0", "5.0", "30.0", "50.0", "20.0"]
+                                  ["Gold", "10.00", "3.00", "5.00", "30.00", "50.00", "20.00"]
                                 ]
 
     within "#stock_positions" do
@@ -85,7 +85,7 @@ describe "Portfolios" do
     visit details_portfolio_path(portfolio)
     expected_table = [
                        [ "Date", "Name", "Rate of Interest", "Duration", "Invested Amount", "Current Value", "Profit"],
-                       [ 8.months.ago.to_date.to_s(:db), "Foo", "10.0", "1.0","1,00,000.0", "1,06,578.78", "6,578.78", ""]
+                       [ 8.months.ago.to_date.to_s(:db), "Foo", "10.0", "1.0","1,00,000.00", "1,06,578.78", "6,578.78", ""]
                     ]
     tableish("section.FixedDeposit table").should eq expected_table
   end
@@ -108,7 +108,7 @@ describe "Portfolios" do
     visit details_portfolio_path(portfolio)
     expected_table = [
                        [ "Date", "Name", "Buy Value", "Current Value", "Profit"],
-                       [ "2011-12-10", "Test Property", "50,000.0", "60,000.0", "10,000.0", ""],
+                       [ "2011-12-10", "Test Property", "50,000.00", "60,000.00", "10,000.00", ""],
                     ]
     tableish("section.RealEstate table").should eq expected_table
   end
@@ -130,13 +130,36 @@ describe "Portfolios" do
     visit portfolio_path(portfolio)
     expected_table = [
                        [ 'Asset Class', 'Percentage(%)', 'Amount' ],
-                       [ 'Stocks',        "5.84",             "50.0"],
-                       [ 'Mutual Funds',  "5.84",             "50.0"],
-                       [ 'Gold',          "5.84",             "50.0"],
+                       [ 'Stocks',        "5.84",             "50.00"],
+                       [ 'Mutual Funds',  "5.84",             "50.00"],
+                       [ 'Gold',          "5.84",             "50.00"],
                        [ 'Fixed Deposits',"12.44",        "106.58"],
-                       [ 'Real Estate',   "70.05",           "600.0"]
+                       [ 'Real Estate',   "70.05",           "600.00"]
                       ]
     tableish("table").should eq expected_table
+  end
+
+  context "new portfolio" do
+    before(:each) do
+      new_portfolio = create :portfolio, :user => current_user
+      visit portfolio_path(new_portfolio)
+    end
+
+    it "should show default transaction summary in show page" do
+      expected_table = [
+                         [ 'Asset Class', 'Percentage(%)',      'Amount'],
+                         [ 'Stocks',        "0.00",             "0.00"],
+                         [ 'Mutual Funds',  "0.00",             "0.00"],
+                         [ 'Gold',          "0.00",             "0.00"],
+                         [ 'Fixed Deposits',"0.00",             "0.00"],
+                         [ 'Real Estate',   "0.00",             "0.00"]
+                        ]
+      tableish("table").should eq expected_table
+    end
+
+    it "should display default message" do
+      page.should have_content I18n.t("portfolios.show.empty_transactions")
+    end
   end
 
   it "should show all transactions in transactions page" do
@@ -150,11 +173,11 @@ describe "Portfolios" do
 
     expected_table_for_stock_transactions = [
                        [ "Date","Type", "Name", "Quantity", "Price", "Total Amount"],
-                       [ Date.today.to_s(:db), "buy", stock.name, "1", "5.0", "5.0"],
+                       [ Date.today.to_s(:db), "buy", stock.name, "1", "5.00", "5.00"],
                     ]
     expected_table_for_mutual_fund_transactions = [
                          [ "Date","Type", "Name", "Quantity", "Price", "Total Amount"],
-                         [ Date.today.to_s(:db), "buy", scheme.scheme_name, "1", "5.0", "5.0"],
+                         [ Date.today.to_s(:db), "buy", scheme.scheme_name, "1", "5.00", "5.00"],
                       ]
     tableish("section.StockTransactions table").should eq expected_table_for_stock_transactions
     tableish("section.MutualFundTransactions table").should eq expected_table_for_mutual_fund_transactions
@@ -166,8 +189,8 @@ describe "Portfolios" do
     visit portfolio_path(portfolio)
 
     click_link 'Accumulated Profits'
-    expected_table_profits = [["Test Property", "400.0"], [stock.name, "12.0"], [scheme.scheme_name, "12.0"], ["Foo", "4.64"]]
-    expected_table_losses = [["Test Property2", "-400.0"], ["FOO", "-4.0"], ["Foo Scheme Name", "-1.0"]]
+    expected_table_profits = [["Test Property", "400.00"], [stock.name, "12.00"], [scheme.scheme_name, "12.00"], ["Foo", "4.64"]]
+    expected_table_losses = [["Test Property2", "-400.00"], ["FOO", "-4.00"], ["Foo Scheme Name", "-1.00"]]
 
     tableish("#accumulated_profits table").should include *expected_table_profits
     tableish("#accumulated_losses table").should include *expected_table_losses
