@@ -7,6 +7,10 @@ class RealEstateTransactionsController < InheritedResources::Base
     super.order("date DESC")
   end
 
+  def create
+    create! { portfolio_path(parent) }
+  end
+
   def create_sell
     params[:real_estate_transaction].delete "id"
     object = build_resource

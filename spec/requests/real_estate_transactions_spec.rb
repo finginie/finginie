@@ -13,6 +13,7 @@ describe "RealEstateTransactions" do
 
     click_on "Create"
     page.should have_content "successfully"
+    current_path.should eq portfolio_path(portfolio)
   end
 
   let (:real_estate) { create :real_estate, :name => "Test Property", :location => "Mordor", :current_price => 60000 }

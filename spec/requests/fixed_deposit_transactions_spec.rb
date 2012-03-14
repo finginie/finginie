@@ -12,6 +12,7 @@ describe "FixedDepositTransactions" do
     fill_in "Price", :with => 200
     click_on "Create"
     page.should have_content "successfully"
+    current_path.should eq portfolio_path(portfolio)
   end
 
   let (:fixed_deposit) { create :fixed_deposit, :period => 5, :rate_of_interest => 10 }
