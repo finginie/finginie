@@ -1,15 +1,18 @@
 %h1 My Portfolios
 = button_to 'Create New Portfolio', new_portfolio_path, :method => :get
-%table
-  %thead
-    %tr
-      %th Name
-      %th
-      %th
-
-  %tbody
-    - @portfolios.each do |portfolio|
+- unless collection.empty?
+  %table
+    %thead
       %tr
-        %td= link_to portfolio.name, portfolio
-        %td.actions= button_to 'Rename', edit_portfolio_path(portfolio), :method => :get
-        %td.actions= button_to 'Delete', portfolio, :confirm => 'Are you sure?', :method => :delete
+        %th Name
+        %th
+        %th
+
+    %tbody
+      - @portfolios.each do |portfolio|
+        %tr
+          %td= link_to portfolio.name, portfolio
+          %td.actions= button_to 'Rename', edit_portfolio_path(portfolio), :method => :get
+          %td.actions= button_to 'Delete', portfolio, :confirm => 'Are you sure?', :method => :delete
+-else
+  %p= t(".empty_portfolio")

@@ -196,6 +196,11 @@ describe "Portfolios" do
     tableish("#accumulated_losses table").should include *expected_table_losses
   end
 
+  it "should flash message where there is no portfolio" do
+    visit portfolios_path
+    page.should have_content I18n.t("portfolios.index.empty_portfolio")
+  end
+
   def create_positions_of_all_securities
     scrip.save
     4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
