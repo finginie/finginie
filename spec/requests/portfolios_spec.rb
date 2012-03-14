@@ -139,19 +139,27 @@ describe "Portfolios" do
     tableish("table").should eq expected_table
   end
 
-  it "new portfolio should show the empty summary in show page" do
-    empty_portfolio = create :portfolio, :user => current_user
+  context "new portfolio" do
+    before(:each) do
+      new_portfolio = create :portfolio, :user => current_user
+      visit portfolio_path(new_portfolio)
+    end
 
-    visit portfolio_path(empty_portfolio)
-    expected_table = [
-                       [ 'Asset Class', 'Percentage(%)',      'Amount'],
-                       [ 'Stocks',        "0.00",             "0.00"],
-                       [ 'Mutual Funds',  "0.00",             "0.00"],
-                       [ 'Gold',          "0.00",             "0.00"],
-                       [ 'Fixed Deposits',"0.00",             "0.00"],
-                       [ 'Real Estate',   "0.00",             "0.00"]
-                      ]
-    tableish("table").should eq expected_table
+    it "should show default transaction summary in show page" do
+      expected_table = [
+                         [ 'Asset Class', 'Percentage(%)',      'Amount'],
+                         [ 'Stocks',        "0.00",             "0.00"],
+                         [ 'Mutual Funds',  "0.00",             "0.00"],
+                         [ 'Gold',          "0.00",             "0.00"],
+                         [ 'Fixed Deposits',"0.00",             "0.00"],
+                         [ 'Real Estate',   "0.00",             "0.00"]
+                        ]
+      tableish("table").should eq expected_table
+    end
+
+    it "should display default message" do
+      page.should have_content I18n.t("portfolios.show.empty_transactions")
+    end
   end
 
   it "should show all transactions in transactions page" do

@@ -37,6 +37,10 @@ class PortfolioDecorator < ApplicationDecorator
     total_assets_value != 0 || total_liabilitites_value != 0 || net_worth != 0
   end
 
+  def empty_transactions?
+    stocks_value == 0 && mutual_funds_value == 0 && gold_value == 0 && real_estates_value == 0 && fixed_deposits_value == 0
+  end
+
   def total_assets_distribution_table
     [
       {

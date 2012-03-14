@@ -1,9 +1,9 @@
 %p
   %b Portfolio Name:
   = @portfolio.name
-
+- if resource.empty_transactions?
+  = t ".empty_transactions"
 #portfolio-total-asset-allocation-chart{ 'data-portfolio-total-asset-allocation' => resource.total_assets_distribution }
-
 %table
   %tr
     %th Asset Class
