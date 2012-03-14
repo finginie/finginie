@@ -94,6 +94,8 @@ en:
         tax_saving_investment: 'Enter amount if yes'
         portfolio_investment: 'You have invested in a portfolio which is a good mix of stocks, bonds, gold, cash, etc. If the value of that portfolio falls by 25% because of a global recession what would you do?'
         time_horizon: 'What is the time horizon for your investment? (No. of years)'
+      search:
+        sector_contains: 'Sector Contains (optional)'
 
   helpers:
     submit:
