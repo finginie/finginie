@@ -160,6 +160,21 @@ describe "Portfolios" do
     it "should display default message" do
       page.should have_content I18n.t("portfolios.show.empty_transactions")
     end
+
+    it "should display default message for stock when there is no stock transaction" do
+      click_link "Analysis"
+      page.should have_content I18n.t("portfolios.analysis.no_stock_transaction")
+    end
+
+    it "should display default message for mutual funds when there is no mutual fund transaction" do
+      click_link "Analysis"
+      page.should have_content I18n.t("portfolios.analysis.no_mutual_fund_transaction")
+    end
+
+    it "should display default message for fixed deposit when there is no fixed deposit transaction" do
+      click_link "Analysis"
+      page.should have_content I18n.t("portfolios.analysis.no_fixed_deposit_transaction")
+    end
   end
 
   it "should show all transactions in transactions page" do
@@ -196,7 +211,8 @@ describe "Portfolios" do
     tableish("#accumulated_losses table").should include *expected_table_losses
   end
 
-  it "should flash message where there is no portfolio" do
+  it "should display flash message where there is no portfolio" do
+    Portfolio.destroy_all
     visit portfolios_path
     page.should have_content I18n.t("portfolios.index.empty_portfolio")
   end

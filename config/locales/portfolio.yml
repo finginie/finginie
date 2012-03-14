@@ -1,6 +1,12 @@
 en:
   portfolios:
     show:
-      empty_transactions: You do not have any transactions in this portfolio. Please add transactions to your portfolio.
+      empty_transactions: 'You do not have any transactions in this portfolio. Please add transactions to your portfolio.'
     index:
-      empty_portfolio: You have no portrfolios. Please create a new portfolio.
+      empty_portfolio: 'You have no portrfolios. Please create a new portfolio.'
+    analysis:
+      no_fixed_deposit_transaction: 'No Fixed deposit to analyze'
+      no_stock_transaction: 'No Stocks in portfolio to analyze'
+      no_mutual_fund_transaction: 'No Mutual Funds to analyze'
+      no_sell_stock_transaction: 'No Realized Profit/Loss to analyze'
+      no_sell_mutual_fund_transaction: 'No Realized Profit/Loss to analyze'

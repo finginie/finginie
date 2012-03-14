@@ -80,7 +80,7 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def mutual_fund_positions_profit_or_loss
-    mutual_funds.map(&:name).uniq.map { |mf_name| [ mf_name, number_to_indian_currency(mutual_fund_transactions.for(mf_name).sell_transactions.map(&:profit_or_loss).sum.round(2).to_f) ] }
+    mutual_funds.map(&:name).uniq.map { |mf_name| [ mf_name, number_to_indian_currency(mutual_fund_transactions.for(mf_name).sell_transactions.map(&:profit_or_loss).sum.round(2).to_f) ] if !mutual_fund_transactions.for(mf_name).sell_transactions.empty? } - [nil]
   end
 
   def fixed_deposit_open_positions_rate_of_interests
