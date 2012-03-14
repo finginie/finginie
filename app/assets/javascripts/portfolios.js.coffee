@@ -67,6 +67,7 @@ $ ->
         },
         series: [{
           data: JSON.parse($("##{element}").attr(data))
+          showInLegend: false
           }
         ]
       });
@@ -77,10 +78,10 @@ $ ->
   bar_chart('net-worth-chart','data-net-worth','Net Worth',['Assets', 'Liabilities', 'Net Worth' ],'Amount')
 
   if $("#stocks-profit-or-loss-chart").attr("data-categories") != undefined
-    bar_chart('stocks-profit-or-loss-chart','data-stocks-profit-or-loss','Profit/Loss on Stock sells', JSON.parse($("#stocks-profit-or-loss-chart").attr("data-categories")), 'Amount')
+    bar_chart('stocks-profit-or-loss-chart','data-stocks-profit-or-loss','Realized Profit/Loss on Stocks', JSON.parse($("#stocks-profit-or-loss-chart").attr("data-categories")), 'Amount')
 
   if $("#mutual-fund-profit-or-loss-chart").attr("data-categories") != undefined
-    bar_chart('mutual-fund-profit-or-loss-chart','data-mutual-fund-profit-or-loss','Profit/Loss on Mutual Funds sells', JSON.parse($("#mutual-fund-profit-or-loss-chart").attr("data-categories")), 'Amount')
+    bar_chart('mutual-fund-profit-or-loss-chart','data-mutual-fund-profit-or-loss','Realized Profit/Loss on Mutual Funds', JSON.parse($("#mutual-fund-profit-or-loss-chart").attr("data-categories")), 'Amount')
 
   if $("#fixed-deposits-chart").attr("data-categories") != undefined
     bar_chart('fixed-deposits-chart','data-fixed-deposits','Your Fixed Deposits', JSON.parse($("#fixed-deposits-chart").attr("data-categories")), 'Amount Invested')

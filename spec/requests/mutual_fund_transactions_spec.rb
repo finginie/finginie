@@ -20,6 +20,7 @@ describe "MutualFundTransactions" do
     fill_in "Amount", :with => 20
     click_on "Create"
     page.should have_content "successfully"
+    current_path.should eq portfolio_path(portfolio)
   end
 
   it "should not add a new sell transaction if the quantity for that mutual fund is not available in the portfolio" do

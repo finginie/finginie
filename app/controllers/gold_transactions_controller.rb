@@ -9,4 +9,8 @@ class GoldTransactionsController < InheritedResources::Base
     object.gold_id = Gold.first.id
     super
   end
+
+  def create
+    create! { portfolio_path(parent) }
+  end
 end

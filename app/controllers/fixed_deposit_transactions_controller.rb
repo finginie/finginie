@@ -7,6 +7,10 @@ class FixedDepositTransactionsController < InheritedResources::Base
     super.order("date DESC")
   end
 
+  def create
+    create! { portfolio_path(parent) }
+  end
+
   def create_redeem
     params[:fixed_deposit_transaction]["fixed_deposit_attributes"].delete "id"
     object = build_resource

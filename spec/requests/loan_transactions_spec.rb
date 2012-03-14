@@ -14,6 +14,7 @@ describe "LoanTransactions" do
     select 'borrow', :from => "Action"
     click_on "Create"
     page.should have_content "successfully"
+    current_path.should eq portfolio_path(portfolio)
   end
 
   let (:loan) { create :loan, :period => 5, :rate_of_interest => 10 }
