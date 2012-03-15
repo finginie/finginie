@@ -175,3 +175,23 @@ body.portfolios.analysis {
     }
   }
 }
+
+body.portfolios.edit {
+  #main {
+    div {
+      input[type="submit"] {
+        margin: 0.6em 0 1em 12em;
+      }
+      label {
+        padding-right: 1em;
+        font-size: medium;
+        color: $base-color;
+        @include required-field;
+      }
+      input[type="text"] {
+        width: 300px;
+      }
+    }
+  }
+  @include hide-aside; // Remove this line once the bug is fixed in navigation.rb
+}
