@@ -16,7 +16,7 @@ describe "MutualFundPosition" do
   its (:name) { should eq scheme.scheme_name }
   its (:quantity) { should eq 10 }
   its (:average_cost_price) { should eq 3 }
-  its (:buy_transactions) { should include *portfolio.mutual_fund_transactions }
+  its (:buys) { should include *portfolio.mutual_fund_transactions }
   its (:value) { should eq 30 }
   its (:current_value) { should eq 50 }
   its (:unrealised_profit) { should eq 20 }

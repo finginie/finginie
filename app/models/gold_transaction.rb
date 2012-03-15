@@ -6,6 +6,9 @@ class GoldTransaction < ActiveRecord::Base
   validates_numericality_of :price, :quantity
   validate  :date_should_not_be_in_the_future, :sell_quantity_should_be_less_than_or_equal_to_quantity
 
+  scope :buys, where("quantity >= ?", 0)
+  scope :before, lambda { |date| where('date < ?', date) }
+
   def value
     amount * price
   end

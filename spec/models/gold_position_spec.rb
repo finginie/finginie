@@ -14,7 +14,7 @@ describe "GoldPosition" do
   its (:name) { should eq gold.name }
   its (:quantity) { should eq 10 }
   its (:average_cost_price) { should eq 3 }
-  its (:buy_transactions) { should include *portfolio.gold_transactions }
+  its (:buys) { should include *portfolio.gold_transactions }
   its (:value) { should eq 30 }
   its (:current_value) { should eq 50 }
   its (:unrealised_profit) { should eq 20 }

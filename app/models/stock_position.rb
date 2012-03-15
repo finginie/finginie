@@ -1,4 +1,5 @@
 module StockPosition
+
   delegate :name, :sector, :current_price, :to => :stock
 
   def stock
@@ -10,7 +11,7 @@ module StockPosition
   end
 
   def current_value
-    quantity * current_price
+    quantity ? ( current_price ? quantity * current_price : 0 ) : 0
   end
 
   def profit_or_loss
