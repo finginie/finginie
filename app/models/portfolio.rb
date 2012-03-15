@@ -44,7 +44,7 @@ class Portfolio < ActiveRecord::Base
   end
 
   def total_assets_value
-    ( stocks_value + mutual_funds_value + gold_value + fixed_deposits_value + real_estates_value ).round(2)
+    ( stocks_value + mutual_funds_value + gold_value + fixed_deposits_value + real_estates_value ).round(2).to_f
   end
 
   def net_worth

@@ -194,3 +194,12 @@ body.portfolios.edit {
   }
   @include hide-aside; // Remove this line once the bug is fixed in navigation.rb
 }
+
+body.portfolios.add_transaction {
+  @include simple-form;
+  #type_of_investment_select {
+    label {
+      color: $base-color;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+#type_of_investment_select
+  - securities = ["gold", "stock", "mutual_fund", "fixed_deposit", "real_estate", "loan"]
+  = label_tag :type_of_investment
+  = select_tag(:type_of_investment, options_for_select(securities.collect {|security| [security.titleize, security]}), { :include_blank => true })
+
+#type_of_investment
+  - ["stock_transactions", "mutual_fund_transactions", "fixed_deposit_transactions", "real_estate_transactions", "loan_transactions", "gold_transactions"].each do |transaction|
+    = render "#{transaction}/form", :resource => resource.send(transaction).build, :parent => resource

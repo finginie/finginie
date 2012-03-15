@@ -223,6 +223,25 @@ describe "Portfolios" do
     page.should have_content I18n.t("portfolios.index.empty_portfolio")
   end
 
+  it "user can able to add transactions after selecting securities type", :js => true do
+    create :gold, :name => "Gold", :current_price => 2456
+
+    visit portfolio_path(portfolio)
+
+    click_link "Add Transaction"
+    current_path.should eq add_transaction_portfolio_path(portfolio)
+    select "Gold", :from => "Type of investment"
+
+    wait_until {  page.should have_selector("#new_gold_transaction") }
+
+    fill_in "Price", :with => 200
+    select 'Buy', :from => "Action"
+    fill_in I18n.t("simple_form.labels.gold_transaction.amount"), :with => 30
+    click_on I18n.t("helpers.submit.gold_transaction.create")
+    page.should have_content "successfully"
+    current_path.should eq details_portfolio_path(portfolio)
+  end
+
   def create_positions_of_all_securities
     scrip.save
     4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
