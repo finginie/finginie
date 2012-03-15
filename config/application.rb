@@ -19,6 +19,7 @@ module Finginie
   class Application < Rails::Application
 
     config.generators do |g|
+      g.orm :active_record
       g.stylesheets false
       g.helper false
       g.test_framework  :rspec,

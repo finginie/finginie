@@ -43,6 +43,7 @@ class Scheme
   field :product_code
   field :modified_date, :type => DateTime
   field :delete_flag
+  field :objective #from MfObjective.xml
 
   key :securitycode
 
@@ -57,7 +58,6 @@ class Scheme
   delegate *CATEGORY_METHODS, :to => :category_wise_net_asset_value_detail, :allow_nil => true
 
   delegate :company_name, :to => :fund_master, :allow_nil => true
-  delegate :objective, :to => :mf_objective, :allow_nil => true
   delegate :dividend_date, :to => :mf_dividend_detail, :allow_nil => true
 
   def fund_master
@@ -70,10 +70,6 @@ class Scheme
 
   def bench_mark_index
     nav_master.bench_mark_index_name if nav_master
-  end
-
-  def mf_objective
-    MfObjective.where(securitycode: securitycode).first
   end
 
   def mf_dividend_detail

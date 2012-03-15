@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Scheme do
   before(:each) do
-    @scheme = create :scheme
+    @scheme = create :scheme, :objective => "MyObjective"
     @fund_master =  create :fund_master, :company_code => @scheme.company_code, :company_name => "HDFC Mutual Fund"
     @nav_master = create :nav_master, :security_code => @scheme.securitycode, :bench_mark_index_name => "Crisil Liquid Fund Index"
     @navcp = create :navcp, :security_code => @scheme.securitycode
@@ -13,6 +13,7 @@ describe Scheme do
 
   subject { @scheme }
 
+  its(:objective) { should eq @scheme.objective }
   its(:company_name) { should eq @fund_master.company_name }
   its(:bench_mark_index) { should eq @nav_master.bench_mark_index_name }
   its(:dividend_percentage) { should eq @mf_dividend_detail.percentage }

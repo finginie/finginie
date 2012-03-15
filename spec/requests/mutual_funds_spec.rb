@@ -2,11 +2,10 @@ require 'spec_helper'
 
 describe "MutualFunds" do
   before(:each) do
-    @scheme = create :scheme
+    @scheme = create :scheme, :objective => "Objective"
     @fund_master =  create :fund_master, :company_code => @scheme.company_code, :company_name => "HDFC Mutual Fund"
     @nav_master = create :nav_master, :security_code => @scheme.securitycode, :bench_mark_index_name => "Crisil Liquid Fund Index"
     @navcp = create :navcp, :security_code => @scheme.securitycode
-    @mf_objective = create :mf_objective, :securitycode => @scheme.securitycode
     @mf_dividend_detail = create :mf_dividend_detail, :securitycode => @scheme.securitycode
     @nav_category_detail = create :nav_category_detail, :scheme_class_code => @scheme.scheme_class_code
     @mf_scheme_wise_portfolio = create :mf_scheme_wise_portfolio, :security_code => @scheme.securitycode
@@ -24,7 +23,7 @@ describe "MutualFunds" do
     page.should have_content @scheme.scheme_class_description
     page.should have_content @scheme.scheme_plan_description
     page.should have_content @scheme.scheme_type_description
-    page.should have_content @mf_objective.objective
+    page.should have_content @scheme.objective
     page.should have_content @mf_dividend_detail.percentage.round(2)
     page.should have_content @mf_dividend_detail.dividend_date
     page.should have_content @navcp.nav_amount.round(2)
