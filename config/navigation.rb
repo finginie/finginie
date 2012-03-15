@@ -73,7 +73,7 @@ SimpleNavigation::Configuration.run do |navigation|
               tertiary.item :details, 'Details', details_portfolio_path(portfolio)
               tertiary.item :transactions, 'Transactions', transactions_portfolio_path(portfolio)
               tertiary.item :analysis,     'Analysis', analysis_portfolio_path(portfolio)
-              tertiary.item :accumulated_profits, 'profit/Loss Analysis', accumulated_profits_portfolio_path(portfolio)
+              tertiary.item :accumulated_profits, 'Profit/Loss', accumulated_profits_portfolio_path(portfolio)
             end
           end
         end
