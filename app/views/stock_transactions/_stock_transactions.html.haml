@@ -15,6 +15,6 @@
         %td= stock_transaction.stock.name
         %td= stock_transaction.amount
         %td= number_to_indian_currency stock_transaction.price
-        %td= number_to_indian_currency stock_transaction.total_cost
+        %td= number_to_indian_currency stock_transaction.value
 -else
   = t "transactions.no_stock_transactions"

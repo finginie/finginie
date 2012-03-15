@@ -14,8 +14,7 @@ describe "StockPosition" do
   its (:name) { should eq stock.name }
   its (:quantity) { should eq 10 }
   its (:average_cost_price) { should eq 3 }
-  its (:buy_transactions) { should include *portfolio.stock_transactions }
-  its (:total_cost) { should eq 30 }
+  its (:value) { should eq 30 }
   its (:current_value) { should eq 50 }
   its (:unrealised_profit) { should eq 20 }
 
@@ -23,7 +22,7 @@ describe "StockPosition" do
     subject # ensure stock transaction is saved
     create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => -4, :price => 6, :date => Date.today
     subject.average_cost_price.should eq 3
-    subject.total_cost.should eq 18
+    subject.value.should eq 18
     subject.profit_or_loss.should eq 12
     subject.last.profit_or_loss.should eq 12
   end
@@ -33,7 +32,7 @@ describe "StockPosition" do
     create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => -4, :price => 6, :date => Date.today
     create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => 3 , :price => 6, :date => Date.today
     subject.average_cost_price.should eq 4
-    subject.total_cost.should eq 36
+    subject.value.should eq 36
   end
 
 end

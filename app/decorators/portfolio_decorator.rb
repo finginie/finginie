@@ -100,7 +100,7 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def stocks_positions_profit_or_loss
-    stocks.map { |stock| [ stock.name, number_to_indian_currency(stock_transactions.for(stock).sell_transactions.map(&:profit_or_loss).sum.round(2).to_f) ] if !stock_transactions.for(stock).sell_transactions.empty?} - [nil]
+    stocks.map { |stock| [ stock.name, number_to_indian_currency(stock_transactions.for(stock).sells.map(&:profit_or_loss).sum.round(2).to_f) ] if !stock_transactions.for(stock).sells.empty?} - [nil]
   end
 
   def category_wise_mutual_funds_percentage
@@ -108,7 +108,7 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def mutual_fund_positions_profit_or_loss
-    mutual_funds.map(&:name).uniq.map { |mf_name| [ mf_name, number_to_indian_currency(mutual_fund_transactions.for(mf_name).sell_transactions.map(&:profit_or_loss).sum.round(2).to_f) ] if !mutual_fund_transactions.for(mf_name).sell_transactions.empty? } - [nil]
+    mutual_funds.map(&:name).uniq.map { |mf_name| [ mf_name, number_to_indian_currency(mutual_fund_transactions.for(mf_name).sells.map(&:profit_or_loss).sum.round(2).to_f) ] if !mutual_fund_transactions.for(mf_name).sells.empty? } - [nil]
   end
 
   def fixed_deposit_open_positions_rate_of_interests

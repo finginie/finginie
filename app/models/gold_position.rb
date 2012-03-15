@@ -19,19 +19,19 @@ module GoldPosition
     all.select { |t|  t.quantity > 0 }
   end
 
-  def sell_transactions
+  def sells
     all.select { |t| t.quantity < 0 }
   end
 
   def profit_or_loss
-    sell_transactions.map { |t| - t.quantity * (t.price - average_price(t)) }.inject(:+)
+    sells.map { |t| - t.quantity * (t.price - average_price(t)) }.inject(:+)
   end
 
   def average_cost_price
     all.map { |t| average_price(t) * t.quantity }.inject(:+) /quantity
   end
 
-  def total_cost
+  def value
     average_cost_price * quantity
   end
 
@@ -46,6 +46,6 @@ module GoldPosition
   end
 
   def unrealised_profit
-    current_value - total_cost
+    current_value - value
   end
 end

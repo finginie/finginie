@@ -1,7 +1,6 @@
 class Portfolio < ActiveRecord::Base
   belongs_to :user
 
-  has_many :net_positions
   has_many :stock_transactions
   has_many :mutual_fund_transactions
   has_many :gold_transactions, :order => :date, :extend => GoldPosition
@@ -9,11 +8,11 @@ class Portfolio < ActiveRecord::Base
   has_many :fixed_deposit_transactions
   has_many :real_estate_transactions
 
-  has_many :stocks, :through => :stock_transactions, :uniq => true
-  has_many :mutual_funds, :through => :mutual_fund_transactions, :uniq => true
-  has_many :loans, :through => :loan_transactions, :uniq => true
+  has_many :stocks,         :through => :stock_transactions,         :uniq => true
+  has_many :mutual_funds,   :through => :mutual_fund_transactions,   :uniq => true
+  has_many :loans,          :through => :loan_transactions,          :uniq => true
   has_many :fixed_deposits, :through => :fixed_deposit_transactions, :uniq => true
-  has_many :real_estates, :through => :real_estate_transactions, :uniq => true
+  has_many :real_estates,   :through => :real_estate_transactions,   :uniq => true
 
 
   validates :user_id, :presence => true

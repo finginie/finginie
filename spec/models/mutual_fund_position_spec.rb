@@ -17,7 +17,7 @@ describe "MutualFundPosition" do
   its (:quantity) { should eq 10 }
   its (:average_cost_price) { should eq 3 }
   its (:buy_transactions) { should include *portfolio.mutual_fund_transactions }
-  its (:total_cost) { should eq 30 }
+  its (:value) { should eq 30 }
   its (:current_value) { should eq 50 }
   its (:unrealised_profit) { should eq 20 }
 
@@ -25,7 +25,7 @@ describe "MutualFundPosition" do
     subject # ensure mutual transaction is saved
     mutual_fund_transactions = create :mutual_fund_transaction, :mutual_fund => mutual_fund, :portfolio => portfolio, :quantity => -4, :price => 6, :date => Date.today
     subject.average_cost_price.should eq 3
-    subject.total_cost.should eq 18
+    subject.value.should eq 18
     subject.profit_or_loss.should eq 12
     subject.last.profit_or_loss.should eq 12
   end
