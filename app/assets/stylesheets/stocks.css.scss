@@ -169,6 +169,7 @@ body.stocks.show {
         display: block;
         text-align: left;
         font-size: medium;
+        border: none;
         @include aside-links-padding;
       }
     }

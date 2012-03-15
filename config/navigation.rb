@@ -69,11 +69,12 @@ SimpleNavigation::Configuration.run do |navigation|
       if current_user
         current_user.portfolios.each do |portfolio|
           if portfolio.persisted?
-            secondary.item "portfolio_#{portfolio.id}".to_sym, portfolio.name, portfolio_path(portfolio)
-            secondary.item :details, 'Details', details_portfolio_path(portfolio)
-            secondary.item :transactions, 'Transactions', transactions_portfolio_path(portfolio)
-            secondary.item :analysis,     'Analysis', analysis_portfolio_path(portfolio)
-            secondary.item :accumulated_profits, 'Accumulated Profits', accumulated_profits_portfolio_path(portfolio)
+            secondary.item "portfolio_#{portfolio.id}".to_sym, portfolio.name, portfolio_path(portfolio) do |tertiary|
+              tertiary.item :details, 'Details', details_portfolio_path(portfolio)
+              tertiary.item :transactions, 'Transactions', transactions_portfolio_path(portfolio)
+              tertiary.item :analysis,     'Analysis', analysis_portfolio_path(portfolio)
+              tertiary.item :accumulated_profits, 'profit/Loss Analysis', accumulated_profits_portfolio_path(portfolio)
+            end
           end
         end
       end

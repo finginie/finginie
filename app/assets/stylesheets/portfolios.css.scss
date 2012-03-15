@@ -2,37 +2,46 @@
 @import "lists";
 @import "utilities";
 @import "defaults";
+@import "holygrail";
 
 
+body.portfolios {
+  #wrapper {
+    aside {
+      .level_2 {
+        >li {
+          >a {
+            @include button($base-color);
+            @include background-image(linear-gradient($base-color, shade(#022744, 10%)));
+            border-radius: 0;
+            display: block;
+            text-align: left;
+            font-size: medium;
+            color: white;
+            border: none;
+            @include aside-links-padding;
+          }
+        }
+      }
+    }
+  }
+}
 
 body.portfolios.index {
   #wrapper {
     min-height: 600px;
-    @include hide-aside;
     #main {
       h1 {
         margin-bottom: 0;
       }
       form {
         >div {
-          width: 45%;
+          //width: 45%;
           text-align:right;
-        }
-        input[type="submit"] {
-          @include button($base-color);
-          @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
-          font-size: small;
         }
       }
       table {
         margin-top: 3em;
-        td, th {
-          width: 30%;
-          text-align: left;
-          padding: {
-            left: 0;
-          }
-        }
         .actions {
           form {
             float:left;
