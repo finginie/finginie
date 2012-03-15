@@ -20,7 +20,7 @@ class ComprehensiveRiskProfiler < ActiveRecord::Base
   validates :time_horizon,          :numericality => {:greater_than_or_equal_to => 0}, :presence => true
   validates :dependent,             :numericality => {:greater_than_or_equal_to => 0}, :presence => true
   validates :tax_saving_investment, :numericality => {:greater_than_or_equal_to => 0}, :allow_nil => true
-  validates :special_goals_years,   :numericality => {:greater_than_or_equal_to => 0}, :allow_nil => true
+  validates :special_goals_years,   :numericality => {:greater_than => 0}, :allow_nil => true
   validates :special_goals_amount,  :numericality => {:greater_than_or_equal_to => 0}, :allow_nil => true
   validates :preference,           :inclusion => { :in => PREFERENCE_OPTIONS },           :presence => true
   validates :portfolio_investment, :inclusion => { :in => PORTFOLIO_INVESTMENT_OPTIONS }, :presence => true
