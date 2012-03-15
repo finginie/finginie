@@ -1,17 +1,20 @@
-%table
-  %tr
-    %th Date
-    %th Type
-    %th Name
-    %th Quantity
-    %th Price
-    %th Total Amount
-
-  - mutual_fund_transactions.each do |mf_transaction|
+- unless mutual_fund_transactions.empty?
+  %table
     %tr
-      %td= mf_transaction.date
-      %td= mf_transaction.action
-      %td= mf_transaction.mutual_fund.name
-      %td= mf_transaction.amount
-      %td= number_to_indian_currency mf_transaction.price
-      %td= number_to_indian_currency mf_transaction.total_cost
+      %th Date
+      %th Type
+      %th Name
+      %th Quantity
+      %th Price
+      %th Total Amount
+
+    - mutual_fund_transactions.each do |mf_transaction|
+      %tr
+        %td= mf_transaction.date
+        %td= mf_transaction.action
+        %td= mf_transaction.mutual_fund.name
+        %td= mf_transaction.amount
+        %td= number_to_indian_currency mf_transaction.price
+        %td= number_to_indian_currency mf_transaction.total_cost
+-else
+  = t "transactions.no_mutual_fund_transactions"

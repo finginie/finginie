@@ -10,3 +10,15 @@ en:
       no_mutual_fund_transaction: 'No Mutual Funds to analyze'
       no_sell_stock_transaction: 'No Realized Profit/Loss to analyze'
       no_sell_mutual_fund_transaction: 'No Realized Profit/Loss to analyze'
+    details:
+      no_stock_positions: "You have no Stocks in your portfolio"
+      no_mutual_fund_positions: "You have no Mutual funds in your portfolio"
+      no_gold_positions: "You have no Gold in your portfolio"
+    fixed_deposit_positions:
+      no_fixed_deposit_positions: "You have no Fixed Deposits in your portfolio"
+    real_estate_positions:
+      no_real_estate_positions: "You have no Real Estates in your portfolio"
+    loan_positions:
+      no_loan_positions: "You have no Loans in your portfolio"
+    accumulated_profits:
+      no_profit_or_loss: "You have no profits or losses yet"
