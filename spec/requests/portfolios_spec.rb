@@ -145,35 +145,38 @@ describe "Portfolios" do
       visit portfolio_path(new_portfolio)
     end
 
-    it "should show default transaction summary in show page" do
-      expected_table = [
-                         [ 'Asset Class', 'Percentage(%)',      'Amount'],
-                         [ 'Stocks',        "0.00",             "0.00"],
-                         [ 'Mutual Funds',  "0.00",             "0.00"],
-                         [ 'Gold',          "0.00",             "0.00"],
-                         [ 'Fixed Deposits',"0.00",             "0.00"],
-                         [ 'Real Estate',   "0.00",             "0.00"]
-                        ]
-      tableish("table").should eq expected_table
-    end
-
     it "should display default message" do
       page.should have_content I18n.t("portfolios.show.empty_transactions")
     end
 
     it "should display default message for stock when there is no stock transaction" do
-      click_link "Analysis"
+      find("li#navigation-analysis").find("a").click
       page.should have_content I18n.t("portfolios.analysis.no_stock_transaction")
     end
 
     it "should display default message for mutual funds when there is no mutual fund transaction" do
-      click_link "Analysis"
+      find("li#navigation-analysis").find("a").click
       page.should have_content I18n.t("portfolios.analysis.no_mutual_fund_transaction")
     end
 
     it "should display default message for fixed deposit when there is no fixed deposit transaction" do
-      click_link "Analysis"
+      find("li#navigation-analysis").find("a").click
       page.should have_content I18n.t("portfolios.analysis.no_fixed_deposit_transaction")
+    end
+
+    it "should display default messages in Accumulated Profits page" do
+      find("li#navigation-accumulated_profits").find("a").click
+      page.should have_content I18n.t("portfolios.accumulated_profits.no_profit_or_loss")
+    end
+
+    it "should display default messages in Details Page" do
+      find("li#navigation-details").find("a").click
+      page.should have_content I18n.t("portfolios.details.no_stock_positions")
+    end
+
+    it "should display default messages in Transactions page" do
+      find("li#navigation-transactions").find("a").click
+      page.should have_content I18n.t("transactions.no_stock_transactions")
     end
   end
 
@@ -203,7 +206,7 @@ describe "Portfolios" do
     create_sell_position_of_all_securities_type
     visit portfolio_path(portfolio)
 
-    click_link 'Profit/Loss'
+    find("li#navigation-accumulated_profits").find("a").click
     expected_table_profits = [["Test Property", "400.00"], [stock.name, "12.00"], [scheme.scheme_name, "12.00"], ["Foo", "4.64"]]
     expected_table_losses = [["Test Property2", "-400.00"], ["FOO", "-4.00"], ["Foo Scheme Name", "-1.00"]]
 

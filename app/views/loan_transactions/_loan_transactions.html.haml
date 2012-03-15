@@ -1,16 +1,19 @@
-%table
-  %tr
-    %th Date
-    %th Name
-    %th Amount
-    %th Rate of Interest
-    %th Duration
-
-  - loan_transactions.each do |loan_transaction|
+- unless loan_transactions.empty?
+  %table
     %tr
-      %td= loan_transaction.date
-      %td= loan_transaction.name
-      %td= number_to_indian_currency loan_transaction.amount
-      %td= loan_transaction.rate_of_interest
-      %td= loan_transaction.period
+      %th Date
+      %th Name
+      %th Amount
+      %th Rate of Interest
+      %th Duration
+
+    - loan_transactions.each do |loan_transaction|
+      %tr
+        %td= loan_transaction.date
+        %td= loan_transaction.name
+        %td= number_to_indian_currency loan_transaction.amount
+        %td= loan_transaction.rate_of_interest
+        %td= loan_transaction.period
+- else
+  = t "transactions.no_loan_transactions"
 

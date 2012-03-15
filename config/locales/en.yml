@@ -307,3 +307,10 @@ en:
     directors_and_employees_percentage: 'Directors and Employees'
     others_percentage: 'Others'
     public_percentage: 'Public'
+  transactions:
+      no_stock_transactions: "You have no Stock Transactions in your portfolio"
+      no_mutual_fund_transactions: "You have no Mutual fund Transactions in your portfolio"
+      no_gold_transactions: "You have no Gold Transactions in your portfolio"
+      no_fixed_deposit_transactions: "You have no Fixed Deposit Transactions in your portfolio"
+      no_real_estate_transactions: "You have no Real Estate Transactions in your portfolio"
+      no_loan_transactions: "You have no Loan Transactions in your portfolio"

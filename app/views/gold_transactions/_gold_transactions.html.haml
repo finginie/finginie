@@ -1,17 +1,20 @@
-%table
-  %tr
-    %th Date
-    %th Type
-    %th Name
-    %th Quantity
-    %th Price
-    %th Total Amount
-
-  - gold_transactions.each do |gold_transaction|
+- unless gold_transactions.empty?
+  %table
     %tr
-      %td= gold_transaction.date
-      %td= gold_transaction.action
-      %td= gold_transaction.gold.name
-      %td= gold_transaction.amount
-      %td= number_to_indian_currency gold_transaction.price
-      %td= number_to_indian_currency gold_transaction.total_cost
+      %th Date
+      %th Type
+      %th Name
+      %th Quantity
+      %th Price
+      %th Total Amount
+
+    - gold_transactions.each do |gold_transaction|
+      %tr
+        %td= gold_transaction.date
+        %td= gold_transaction.action
+        %td= gold_transaction.gold.name
+        %td= gold_transaction.amount
+        %td= number_to_indian_currency gold_transaction.price
+        %td= number_to_indian_currency gold_transaction.total_cost
+-else
+  = t "transactions.no_gold_transactions"

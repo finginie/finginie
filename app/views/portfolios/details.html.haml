@@ -1,7 +1,7 @@
 - [ 'stock_positions', 'mutual_fund_positions' ].each do |positions|
-  - if resource.send(positions)
+  %h1= positions.gsub(/_positions/,'').titleize
+  - unless resource.send(positions).empty?
     %div{ :id => "#{positions}"}
-      %h1= positions.gsub(/_positions/,'').titleize
       %table
         %tr
           %th Name
@@ -20,10 +20,12 @@
             %td= number_to_indian_currency net_position.total_cost
             %td= number_to_indian_currency net_position.current_value
             %td= number_to_indian_currency net_position.unrealised_profit
+  - else
+    = t ".no_#{positions}"
 
+%h1 Gold Positions
 - unless resource.gold_transactions.empty?
   #gold_positions
-    %h1 Gold
     %table
       %tr
         %th Name
@@ -42,6 +44,9 @@
         %td= number_to_indian_currency resource.gold_transactions.total_cost
         %td= number_to_indian_currency resource.gold_transactions.current_value
         %td= number_to_indian_currency resource.gold_transactions.unrealised_profit
+- else
+  = t ".no_gold_positions"
+
 - %w(Loan FixedDeposit RealEstate).each do |security|
   %section{ :class => security }
     %h1= "#{security.titleize}"
