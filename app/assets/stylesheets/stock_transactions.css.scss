@@ -7,3 +7,7 @@ body.new {
   @include simple-form;
   @include hide-aside;
 }
+
+body.stock_transactions.index {
+  @include hide-aside;
+}

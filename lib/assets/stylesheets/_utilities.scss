@@ -66,16 +66,12 @@
       padding: {
         top: 0.5em;
         bottom: 0.8em;
+        right: 1em;
       }
       font: {
         family: $content-font;
         weight: normal;
         size: medium;
-      }
-    }
-    input, select, textarea {
-      margin: {
-        left: 0.8em;
       }
     }
     textarea, input[type="text"], input[type="number"] {
