@@ -198,12 +198,12 @@ describe "Portfolios" do
     tableish("section.MutualFundTransactions table").should eq expected_table_for_mutual_fund_transactions
   end
 
-  it "should have accumulated profits page "do
+  it "should have Profit/Loss page "do
     create_positions_of_all_securities
     create_sell_position_of_all_securities_type
     visit portfolio_path(portfolio)
 
-    click_link 'Accumulated Profits'
+    click_link 'Profit/Loss'
     expected_table_profits = [["Test Property", "400.00"], [stock.name, "12.00"], [scheme.scheme_name, "12.00"], ["Foo", "4.64"]]
     expected_table_losses = [["Test Property2", "-400.00"], ["FOO", "-4.00"], ["Foo Scheme Name", "-1.00"]]
 
