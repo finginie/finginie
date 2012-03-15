@@ -13,7 +13,7 @@ class MutualFund < Security
   alias :category :scheme_class_description
 
   def scheme_master
-    SchemeMaster.where(:scheme_name => scheme).first
+    Scheme.where(:scheme_name => scheme).first
   end
 
   def navcp

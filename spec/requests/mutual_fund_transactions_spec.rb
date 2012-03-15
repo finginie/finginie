@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "MutualFundTransactions" do
   include_context "logged in user"
   let (:portfolio) { create :portfolio, :user => current_user }
-  let (:scheme) { create :scheme_master }
+  let (:scheme) { create :scheme }
   let (:navcp) { create :navcp, :nav_amount => "10", :security_code => scheme.securitycode }
 
   before(:each) {

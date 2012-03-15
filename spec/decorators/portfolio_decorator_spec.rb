@@ -4,7 +4,7 @@ describe PortfolioDecorator do
   before { ApplicationController.new.set_current_view_context }
   let(:portfolio) { create :portfolio }
   let(:company) { create :company_with_scrip, :industry_name => "FOO" }
-  let(:scheme) { create :scheme_master, :scheme_class_description => "FOO" }
+  let(:scheme) { create :scheme, :scheme_class_description => "FOO" }
   let(:real_estate) { create :real_estate, :name => "Test Property", :location => "Mordor", :current_price => 600 }
   let(:fixed_deposit) { create :fixed_deposit, :name => "Foo", :period => 5, :rate_of_interest => 10.0 }
 
@@ -39,14 +39,14 @@ describe PortfolioDecorator do
 
   it "should have catogorywise mf percentages" do
     subject
-    scheme2 = create :scheme_master_with_navcp, :scheme_class_description => "BAR"
+    scheme2 = create :scheme_with_navcp, :scheme_class_description => "BAR"
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today
     subject.category_wise_mutual_funds_percentage.should include(*[["FOO", 71.43], ["BAR", 28.57]])
   end
 
   it "should have mutual fund sell positions" do
     subject
-    scheme2 = create :scheme_master, :scheme_class_description => "BAR"
+    scheme2 = create :scheme, :scheme_class_description => "BAR"
     create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
@@ -122,7 +122,7 @@ describe PortfolioDecorator do
     create :stock_transaction, :company_code => another_company.company_code, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
 
     create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio, :quantity => 4, :action => 'sell', :price => 6, :date => Date.today
-    scheme2 = create :scheme_master, :scheme_class_description => "BAR", :scheme_name => "Foo Scheme Name"
+    scheme2 = create :scheme, :scheme_class_description => "BAR", :scheme_name => "Foo Scheme Name"
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
 

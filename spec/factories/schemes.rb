@@ -1,7 +1,7 @@
 # Read about factories at http://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :scheme_master do
+  factory :scheme do
     sequence(:securitycode, Time.now.to_i) { |n| n }
     sequence(:scheme_name, Time.now.to_i) { |n| "scheme_#{n}" }
     sequence(:company_code, Time.now.to_i + 3 ) { |n| n }
@@ -20,10 +20,10 @@ FactoryGirl.define do
     fund_manager_name "Chirag Setalvad"
 
     trait :with_navcp do
-      after_create do |scheme_master|
-        FactoryGirl.create :navcp, :security_code => scheme_master.securitycode, :nav_amount => 5
+      after_create do |scheme|
+        FactoryGirl.create :navcp, :security_code => scheme.securitycode, :nav_amount => 5
       end
     end
-    factory :scheme_master_with_navcp, :traits => [:with_navcp]
+    factory :scheme_with_navcp, :traits => [:with_navcp]
   end
 end

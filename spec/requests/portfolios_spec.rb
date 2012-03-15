@@ -5,7 +5,7 @@ describe "Portfolios" do
   let (:portfolio) { create :portfolio, :user => current_user }
 
   let(:company) { create :company_with_scrip, :industry_name => "FOO" }
-  let(:scheme) { create :scheme_master, :scheme_class_description => "FOO"}
+  let(:scheme) { create :scheme, :scheme_class_description => "FOO"}
   let(:navcp) { create :navcp, :nav_amount => "5", :security_code => scheme.securitycode }
   let(:real_estate) { create :real_estate, :name => "Test Property", :location => "Mordor", :current_price => 600 }
   let(:fixed_deposit) { create :fixed_deposit, :name => "Foo", :period => 5, :rate_of_interest => 10.0 }
@@ -249,7 +249,7 @@ describe "Portfolios" do
 
   it "should show mutual funds analysis table" do
     create_positions_of_all_securities
-    scheme2 = create :scheme_master_with_navcp, :scheme_class_description => "BAR"
+    scheme2 = create :scheme_with_navcp, :scheme_class_description => "BAR"
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today
 
     visit mutual_funds_analysis_portfolio_path(portfolio)
@@ -321,7 +321,7 @@ describe "Portfolios" do
 
   it "should display mutual funds profits/losses in mutual funds anyalysis page" do
     create_positions_of_all_securities
-    scheme2 = create :scheme_master, :scheme_class_description => "BAR"
+    scheme2 = create :scheme, :scheme_class_description => "BAR"
     create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
@@ -354,7 +354,7 @@ describe "Portfolios" do
     create :stock_transaction, :company_code => another_company.company_code, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
 
     create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
-    scheme2 = create :scheme_master, :scheme_class_description => "BAR", :scheme_name => "Foo Scheme Name"
+    scheme2 = create :scheme, :scheme_class_description => "BAR", :scheme_name => "Foo Scheme Name"
 
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"

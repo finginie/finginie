@@ -1,6 +1,6 @@
 require 'kaminari/models/mongoid_extension'
 
-class SchemeMaster
+class Scheme
   include Mongoid::Document
   include Mongoid::Search
 

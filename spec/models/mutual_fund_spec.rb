@@ -5,10 +5,10 @@ describe MutualFund do
   subject { mutual_fund }
 
   describe "with scheme master", :mongoid do
-    let(:scheme_master) { create :scheme_master, :scheme_name => mutual_fund.scheme }
+    let(:scheme) { create :scheme, :scheme_name => mutual_fund.scheme }
 
     it "should return nav amount" do
-      create :navcp, :nav_amount => 220, :security_code => scheme_master.securitycode
+      create :navcp, :nav_amount => 220, :security_code => scheme.securitycode
       mutual_fund.nav_amount.should eq 220
       mutual_fund.current_price.should eq 220
     end
