@@ -1,7 +1,7 @@
 - [ 'stock_positions', 'mutual_fund_positions' ].each do |positions|
   - if resource.send(positions)
     %div{ :id => "#{positions}"}
-      %h1= positions.titleize
+      %h1= positions.gsub(/_positions/,'').titleize
       %table
         %tr
           %th Name
@@ -23,7 +23,7 @@
 
 - unless resource.gold_transactions.empty?
   #gold_positions
-    %h1 Gold Positions
+    %h1 Gold
     %table
       %tr
         %th Name
@@ -44,7 +44,7 @@
         %td= number_to_indian_currency resource.gold_transactions.unrealised_profit
 - %w(Loan FixedDeposit RealEstate).each do |security|
   %section{ :class => security }
-    %h1= "#{security.titleize} Positions"
+    %h1= "#{security.titleize}"
     = render "#{security.underscore}_positions", "#{security.underscore}_positions".to_sym => resource.send("#{security.underscore}_positions")
 #add_links
   = link_to 'Add Stock', new_portfolio_stock_transaction_path(resource)

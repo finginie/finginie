@@ -30,7 +30,7 @@ p {
 }
 
 h1 {
-  color: $heading-color;
+  color: $heading-blue;
   font: {
     family: $heading-font;
     weight: normal;
@@ -40,6 +40,12 @@ h1 {
 
 table {
   width: 100%;
+}
+
+label {
+  font-size: medium;
+  color: $base-color;
+  font-weight: normal;
 }
 
 table, td, th {
@@ -279,7 +285,7 @@ footer {
 
 //----------------------------------- Tables ---------------------------------------
 
-tbody tr {
+tr {
   th {
     background-color: $th-color;
     color: white;
