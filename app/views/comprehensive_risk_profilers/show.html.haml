@@ -1,7 +1,7 @@
 %p
   %b Your Risk Appetite is :
   = resource.score
-  out of 10. 10 indicates maximum risk taking ability
+  out of 10. (10 indicates maximum risk taking ability)
   %ul
     = resource.summary
   %h1 Suggested Investment Mix
@@ -22,10 +22,8 @@
     =link_to 'Continue', portfolios_path
   = t ".future_investment"
 -else
-  #sign_up
-    =link_to "Signin",  '/signin'
   = t ".future_investment"
   = t ".sign_up"
-=link_to 'Mutual Funds', mutual_funds_path
-
+  #sign_up
+    =link_to "Signin & Continue",  '/signin'
 
