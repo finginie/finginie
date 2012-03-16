@@ -56,6 +56,16 @@
 
 @mixin simple-form {
   .simple_form {
+    p {
+      font-size: medium;
+      color: $heading-red;
+      margin-bottom: 0;
+    }
+    span {
+      font-size: small;
+      color: darken($base-color, 50%);
+      padding-left: 0.5em;
+    }
     margin-bottom: 1em;
     @include required-field;
     label {

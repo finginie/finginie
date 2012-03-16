@@ -3,7 +3,7 @@
 @import "utilities";
 @import "defaults";
 
-body.new {
+body.new, body.create {
   @include simple-form;
   @include hide-aside;
 }
