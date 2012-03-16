@@ -15,19 +15,14 @@ body.stocks.index {
       padding-bottom: 1em;
         label {
           display: inline-block;
-          width: 170px;
+          width: 200px;
           color: $base-color;
           font: {
             size: medium;
           }
         }
         input, select {
-          width: 300px;
-          border: {
-            width: 2px;
-            style: solid;
-            color: #d6d6d6;
-          }
+          width: 400px;
         }
       }
     }

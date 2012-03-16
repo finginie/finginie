@@ -13,6 +13,9 @@ en:
     # Labels and hints examples
     labels:
       # password: 'Password'
+      portfolio:
+        new:
+          name: 'Portfolio Name'
       emi_calculator:
         cost: 'Cost of Item'
         down_payment: 'Down payment you made'
@@ -117,3 +120,6 @@ en:
         create: 'Calculate Monthly Savings'
       sip_calculator:
         create: 'Calculate Final Amount Received'
+      portfolio:
+        create: 'Create'
+        update: 'Update'
