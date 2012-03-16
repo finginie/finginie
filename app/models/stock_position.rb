@@ -1,22 +1,17 @@
-module GoldPosition
+module StockPosition
+
+  delegate :name, :sector, :current_price, :to => :stock
+
+  def stock
+    first.stock
+  end
+
   def quantity
-    all.sum(&:quantity)
-  end
-
-  def name
-    first.gold.name
-  end
-
-  def current_price
-    all.empty? ? 0.0 : first.gold.current_price
+    sum(:quantity)
   end
 
   def current_value
-    quantity * current_price
-  end
-
-  def sells
-    all.select { |t| t.quantity < 0 }
+    quantity ? ( current_price ? quantity * current_price : 0 ) : 0
   end
 
   def profit_or_loss
@@ -33,7 +28,7 @@ module GoldPosition
 
   def average_price(transaction)
     price = ( transaction.quantity < 0 ) ?
-      (buys.before(transaction.date).map{ |t| t.price * t.quantity }.inject(:+) /buys.before(transaction.date).sum(&:quantity) ) :
+      (buys.before(transaction.date).sum(&:value) /buys.before(transaction.date).sum(:quantity) ) :
         transaction.price
   end
 

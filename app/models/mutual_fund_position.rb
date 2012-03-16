@@ -1,22 +1,22 @@
-module GoldPosition
+module MutualFundPosition
   def quantity
-    all.sum(&:quantity)
+    sum(&:quantity)
   end
 
   def name
-    first.gold.name
+    first.mutual_fund.name
+  end
+
+  def category
+    first.mutual_fund.category
   end
 
   def current_price
-    all.empty? ? 0.0 : first.gold.current_price
+    first.mutual_fund.current_price
   end
 
   def current_value
     quantity * current_price
-  end
-
-  def sells
-    all.select { |t| t.quantity < 0 }
   end
 
   def profit_or_loss
@@ -24,7 +24,7 @@ module GoldPosition
   end
 
   def average_cost_price
-    all.map { |t| average_price(t) * t.quantity }.inject(:+) /quantity
+    (all.map { |t| average_price(t) * t.quantity }.inject(:+) /quantity).round(2) if quantity > 0
   end
 
   def value

@@ -15,6 +15,6 @@
         %td= gold_transaction.gold.name
         %td= gold_transaction.amount
         %td= number_to_indian_currency gold_transaction.price
-        %td= number_to_indian_currency gold_transaction.total_cost
+        %td= number_to_indian_currency gold_transaction.value
 -else
   = t "transactions.no_gold_transactions"

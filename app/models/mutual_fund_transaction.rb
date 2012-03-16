@@ -10,67 +10,19 @@ class MutualFundTransaction < ActiveRecord::Base
 
   validates :mutual_fund_id, :presence => true, :unless => :mutual_fund
 
+  scope :buys, where("quantity >= ?", 0)
+  scope :sells, where("quantity < ?", 0)
+  scope :before, lambda { |date| where('date < ?', date) }
+
   scope :for, lambda { |name| joins(:mutual_fund).where("securities.name = ?", name).order(:date) } do
-    def quantity
-      sum(&:quantity)
-    end
-
-    def name
-      first.mutual_fund.name
-    end
-
-    def category
-      first.mutual_fund.category
-    end
-
-    def current_price
-      first.mutual_fund.current_price
-    end
-
-    def current_value
-      quantity * current_price
-    end
-
-    def buy_transactions
-      all.select { |t|  t.quantity > 0 }
-    end
-
-    def sell_transactions
-      all.select { |t| t.quantity < 0 }
-    end
-
-    def profit_or_loss
-      sell_transactions.map { |t| - t.quantity * (t.price - average_price(t)) }.inject(:+)
-    end
-
-    def average_cost_price
-      (all.map { |t| average_price(t) * t.quantity }.inject(:+) /quantity).round(2) if quantity > 0
-    end
-
-    def total_cost
-      average_cost_price * quantity
-    end
-
-    def prev_buy_transactions(transaction)
-      buy_transactions.select { |t| t.date < transaction.date }
-    end
-
-    def average_price(transaction)
-      price = ( transaction.quantity < 0 ) ?
-        (prev_buy_transactions(transaction).map{ |t| t.price * t.quantity }.inject(:+) /prev_buy_transactions(transaction).sum(&:quantity) ) :
-          transaction.price
-    end
-
-    def unrealised_profit
-      current_value - total_cost
-    end
+    include MutualFundPosition
   end
 
   def profit_or_loss
     ( amount * ( price - MutualFundTransaction.for(mutual_fund.name).average_price(self) ) ) if quantity < 0
   end
 
-  def total_cost
+  def value
     amount * price
   end
 
