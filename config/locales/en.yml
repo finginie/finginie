@@ -4,7 +4,7 @@
 en:
   date:
     formats:
-      default: "%d-%m-%Y"  # 31-03-2011
+      default: "%b %d, %Y"  # 31-03-2011
       yearly_results: "%Y" # 2011
       stock_52w_date: "%b %d %Y"    # March 31 2011
   time:

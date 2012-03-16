@@ -10,7 +10,7 @@
 
     - gold_transactions.each do |gold_transaction|
       %tr
-        %td= gold_transaction.date
+        %td= l gold_transaction.date
         %td= gold_transaction.action
         %td= gold_transaction.gold.name
         %td= gold_transaction.amount

@@ -10,7 +10,7 @@
       %th{:colspan => 2} Profit
     - fixed_deposit_positions.each do |net_position|
       %tr
-        %td= net_position.first.date
+        %td= l net_position.first.date
         %td= net_position.name
         %td= net_position.rate_of_interest
         %td= net_position.period

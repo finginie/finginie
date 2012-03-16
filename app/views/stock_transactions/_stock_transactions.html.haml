@@ -10,7 +10,7 @@
 
     - stock_transactions.each do |stock_transaction|
       %tr
-        %td= stock_transaction.date
+        %td= l stock_transaction.date
         %td= stock_transaction.action
         %td= stock_transaction.stock.name
         %td= stock_transaction.amount
