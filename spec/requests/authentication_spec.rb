@@ -60,16 +60,16 @@ describe "Authentication" do
     def answer_comprehensive_risk_profiler_with(comprehensive_risk_profile)
       visit edit_comprehensive_risk_profiler_path
 
-      fill_in "What is your age?",                             :with => comprehensive_risk_profile.age
-      fill_in "What is your current total household savings?", :with => comprehensive_risk_profile.household_savings
-      fill_in "What is your monthly household income?",        :with => comprehensive_risk_profile.household_income
-      fill_in "How many people are dependent on you?",         :with => comprehensive_risk_profile.dependent
-      fill_in "What is your monthly household expenditure?",   :with => comprehensive_risk_profile.household_expenditure
+      fill_in I18n.t("simple_form.labels.comprehensive_risk_profiler.age"),                   :with => comprehensive_risk_profile.age
+      fill_in I18n.t("simple_form.labels.comprehensive_risk_profiler.household_savings"),     :with => comprehensive_risk_profile.household_savings
+      fill_in I18n.t("simple_form.labels.comprehensive_risk_profiler.household_income"),      :with => comprehensive_risk_profile.household_income
+      fill_in I18n.t("simple_form.labels.comprehensive_risk_profiler.dependent"),             :with => comprehensive_risk_profile.dependent
+      fill_in I18n.t("simple_form.labels.comprehensive_risk_profiler.household_expenditure"), :with => comprehensive_risk_profile.household_expenditure
 
       choose  "comprehensive_risk_profiler_preference_#{comprehensive_risk_profile.preference}"
       choose  "comprehensive_risk_profiler_portfolio_investment_#{comprehensive_risk_profile.portfolio_investment}"
 
-      fill_in "What is the time horizon for your investment? (No. of years)", :with => comprehensive_risk_profile.time_horizon
+      fill_in I18n.t("simple_form.labels.comprehensive_risk_profiler.time_horizon"), :with => comprehensive_risk_profile.time_horizon
 
       click_button 'Submit'
     end

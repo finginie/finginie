@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120307105446) do
+ActiveRecord::Schema.define(:version => 20120316084211) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -36,17 +36,17 @@ ActiveRecord::Schema.define(:version => 20120307105446) do
 
   create_table "comprehensive_risk_profilers", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "age"
-    t.integer  "household_savings"
-    t.integer  "household_income"
+    t.decimal  "age"
+    t.decimal  "household_savings"
+    t.decimal  "household_income"
     t.integer  "dependent"
-    t.integer  "household_expenditure"
-    t.integer  "special_goals_amount"
-    t.integer  "special_goals_years"
-    t.integer  "tax_saving_investment"
+    t.decimal  "household_expenditure"
+    t.decimal  "special_goals_amount"
+    t.decimal  "special_goals_years"
+    t.decimal  "tax_saving_investment"
     t.integer  "preference"
     t.integer  "portfolio_investment"
-    t.integer  "time_horizon"
+    t.decimal  "time_horizon"
     t.decimal  "score_cache"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false

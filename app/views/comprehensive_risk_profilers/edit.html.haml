@@ -4,8 +4,8 @@
     %li= f.input :age
     %li= f.input :household_savings
     %li= f.input :household_income
-    %li= f.input :dependent
     %li= f.input :household_expenditure
+    %li= f.input :dependent
     %li
       %fieldset#special_goals
         = f.input :special_goals, :collection => %w[Yes No], :as => :radio
