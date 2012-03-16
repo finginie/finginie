@@ -5,32 +5,36 @@ class PortfolioDecorator < ApplicationDecorator
 
   #portfolio page asset_class wise percentages
   def stocks_percentage
-    number_to_indian_currency(( stocks_value / total_assets_value * 100).round(2))
+    ( stocks_value / total_assets_value * 100).round(2).to_f
   end
 
   def mutual_funds_percentage
-    number_to_indian_currency(( mutual_funds_value / total_assets_value * 100).round(2))
+    ( mutual_funds_value / total_assets_value * 100).round(2).to_f
   end
 
   def gold_percentage
-    number_to_indian_currency(( gold_value / total_assets_value * 100).round(2))
+    ( gold_value / total_assets_value * 100).round(2).to_f
   end
 
   def fixed_deposits_percentage
-   number_to_indian_currency(( fixed_deposits_value / total_assets_value * 100).round(2))
+   ( fixed_deposits_value / total_assets_value * 100).round(2).to_f
   end
 
   def real_estates_percentage
-   number_to_indian_currency(( real_estates_value / total_assets_value * 100).round(2))
+   ( real_estates_value / total_assets_value * 100).round(2).to_f
   end
 
   def total_assets_distribution
-    [ [ "Stocks", stocks_percentage], ["Mutual Funds", mutual_funds_percentage], ["Gold", gold_percentage], ["Fixed Deposits", fixed_deposits_percentage], ["Real Estates" , real_estates_percentage]]
+    [ [ "Stocks",         stocks_percentage        ],
+      [ "Mutual Funds",   mutual_funds_percentage  ],
+      [ "Gold",           gold_percentage          ],
+      [ "Fixed Deposits", fixed_deposits_percentage],
+      [ "Real Estates" ,  real_estates_percentage  ] ].select { |a| a.last != 0 }
   end
 
   #portfolio page networth calculations
   def assets_and_liabilities
-    [ total_assets_value, total_liabilitites_value, net_worth ]
+    [ total_assets_value.to_f, total_liabilitites_value.to_f, net_worth.to_f ]
   end
 
   def assets_and_liabilities?
@@ -45,24 +49,48 @@ class PortfolioDecorator < ApplicationDecorator
     [
       {
         :asset_type => "Stocks",
-        :percentage => stocks_percentage,
-        :amount     => number_to_indian_currency(stocks_value) },
+        :percentage => number_to_indian_currency(stocks_percentage),
+        :amount     => number_to_indian_currency(stocks_value)
+      },
       {
         :asset_type => "Mutual Funds",
-        :percentage => mutual_funds_percentage,
-        :amount     => number_to_indian_currency(mutual_funds_value) },
+        :percentage => number_to_indian_currency(mutual_funds_percentage),
+        :amount     => number_to_indian_currency(mutual_funds_value)
+      },
       {
         :asset_type => "Gold",
-        :percentage => gold_percentage,
-        :amount     => number_to_indian_currency(gold_value) },
+        :percentage => number_to_indian_currency(gold_percentage),
+        :amount     => number_to_indian_currency(gold_value)
+      },
       {
         :asset_type => "Fixed Deposits",
-        :percentage => fixed_deposits_percentage,
-        :amount     => number_to_indian_currency(fixed_deposits_value)},
+        :percentage => number_to_indian_currency(fixed_deposits_percentage),
+        :amount     => number_to_indian_currency(fixed_deposits_value)
+      },
       {
          :asset_type => "Real Estate" ,
-         :percentage => real_estates_percentage,
-         :amount     => number_to_indian_currency(real_estates_value) }
+         :percentage => number_to_indian_currency(real_estates_percentage),
+         :amount     => number_to_indian_currency(real_estates_value)
+      },
+      {
+        :asset_type => "Total Assets",
+        :percentage => "100",
+        :amount     => total_assets_value
+      },
+      {
+        :asset_type => "Loans",
+        :percentage => h.t('tables_not_available'),
+        :amount     => total_liabilitites_value
+      },
+      {
+        :asset_type => "Total Liabilities",
+        :percentage => h.t('tables_not_available'),
+        :amount     => total_liabilitites_value
+      },
+      {
+        :asset_type => "Net Worth",
+        :percentage => h.t('tables_not_available'),
+        :amount     => net_worth }
       ]
   end
 
