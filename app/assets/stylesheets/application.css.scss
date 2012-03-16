@@ -358,3 +358,10 @@ input, select, textarea {
   }
 }
 
+//------------------------------- Disable chrome webkit spin button--------------------
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+}
+
