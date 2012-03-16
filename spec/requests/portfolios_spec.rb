@@ -61,7 +61,7 @@ describe "Portfolios" do
     visit details_portfolio_path(portfolio)
     expected_table = [
                        [ "Date", "Name", "Rate of Interest", "Duration", "Outstanding Amount"],
-                       [ 8.months.ago.to_date.to_s(:db), "Test Loan", "10.0", "1.0", "25,937.39", ""],
+                       [ I18n.l(8.months.ago.to_date), "Test Loan", "10.0", "1.0", "25,937.39", ""],
                     ]
     tableish("section.Loan table").should eq expected_table
   end
@@ -84,7 +84,7 @@ describe "Portfolios" do
     visit details_portfolio_path(portfolio)
     expected_table = [
                        [ "Date", "Name", "Rate of Interest", "Duration", "Invested Amount", "Current Value", "Profit"],
-                       [ 8.months.ago.to_date.to_s(:db), "Foo", "10.0", "1.0","1,00,000.00", "1,06,578.78", "6,578.78", ""]
+                       [ I18n.l(8.months.ago.to_date), "Foo", "10.0", "1.0","1,00,000.00", "1,06,578.78", "6,578.78", ""]
                     ]
     tableish("section.FixedDeposit table").should eq expected_table
   end
@@ -107,7 +107,7 @@ describe "Portfolios" do
     visit details_portfolio_path(portfolio)
     expected_table = [
                        [ "Date", "Name", "Buy Value", "Current Value", "Profit"],
-                       [ "2011-12-10", "Test Property", "50,000.00", "60,000.00", "10,000.00", ""],
+                       [ I18n.l(Date.civil(2011,12,10)), "Test Property", "50,000.00", "60,000.00", "10,000.00", ""],
                     ]
     tableish("section.RealEstate table").should eq expected_table
   end
@@ -194,11 +194,11 @@ describe "Portfolios" do
 
     expected_table_for_stock_transactions = [
                        [ "Date","Type", "Name", "Quantity", "Price", "Total Amount"],
-                       [ Date.today.to_s(:db), "buy", stock.name, "1", "5.00", "5.00"],
+                       [ I18n.l(Date.today), "buy", stock.name, "1", "5.00", "5.00"],
                     ]
     expected_table_for_mutual_fund_transactions = [
                          [ "Date","Type", "Name", "Quantity", "Price", "Total Amount"],
-                         [ Date.today.to_s(:db), "buy", scheme.scheme_name, "1", "5.00", "5.00"],
+                         [ I18n.l(Date.today), "buy", scheme.scheme_name, "1", "5.00", "5.00"],
                       ]
     tableish("section.StockTransactions table").should eq expected_table_for_stock_transactions
     tableish("section.MutualFundTransactions table").should eq expected_table_for_mutual_fund_transactions

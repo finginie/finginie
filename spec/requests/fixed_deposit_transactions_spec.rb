@@ -23,7 +23,7 @@ describe "FixedDepositTransactions" do
       visit portfolio_fixed_deposit_transactions_path(portfolio)
       expected_table = [
                          [ "Date","Type", "Name", "Rate of Interest", "Duration", "Invested Amount", "Current Value", "Interest"],
-                         [ "2011-12-10", "buy", fixed_deposit.name, "10.0", "5.0", "5,000.00", "5,108.22", "108.22"],
+                         [ I18n.l(Date.civil(2011,12,10)), "buy", fixed_deposit.name, "10.0", "5.0", "5,000.00", "5,108.22", "108.22"],
                       ]
       tableish("table").should eq expected_table
     end

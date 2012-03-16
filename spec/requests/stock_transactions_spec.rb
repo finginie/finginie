@@ -39,10 +39,9 @@ describe "StockTransactions" do
       create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => 1, :price => 5, :date => Date.today
       visit portfolio_stock_transactions_path(portfolio)
       expected_table = [
-                         [ "Date","Type", "Name", "Quantity", "Price", "Total Amount"],
-                         [ Date.today.to_s(:db), "buy", stock.name, "1", "5.00", "5.00"]
+                         [ I18n.l(Date.today), "buy", stock.name, "1", "5.00", "5.00"]
                       ]
-      tableish("table").should eq expected_table
+      tableish("table").should include *expected_table
     end
   end
 end

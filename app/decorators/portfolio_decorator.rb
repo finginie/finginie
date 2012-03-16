@@ -116,11 +116,11 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def fixed_deposit_positions_profit_or_loss
-    fixed_deposits.map(&:name).uniq.map { |fd_name| [fd_name, number_to_indian_currency(fixed_deposit_transactions.for(fd_name).profit_or_loss) ] if fixed_deposit_transactions.for(fd_name).profit_or_loss } - [nil]
+    fixed_deposits.map(&:name).uniq.map { |fd_name| [fd_name, number_to_indian_currency(model.fixed_deposit_transactions.for(fd_name).profit_or_loss) ] if model.fixed_deposit_transactions.for(fd_name).profit_or_loss } - [nil]
   end
 
   def real_estate_positions_profit_or_loss
-    real_estates.map { |re| [ re.name, number_to_indian_currency(real_estate_transactions.for(re.id).profit_or_loss.to_f) ] if real_estate_transactions.for(re.id).profit_or_loss } - [nil]
+    real_estates.map { |re| [ re.name, number_to_indian_currency(model.real_estate_transactions.for(re.id).profit_or_loss.to_f) ] if model.real_estate_transactions.for(re.id).profit_or_loss } - [nil]
   end
 
   def gold_positions_profit_or_loss
