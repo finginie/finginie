@@ -49,7 +49,11 @@ label {
 }
 
 table, td, th {
-  border: 2px solid $border-color;
+  border: {
+    width: 1px;
+    style: solid;
+    color: $border-color;
+  }
 }
 
 nav {
@@ -350,7 +354,7 @@ input, select, textarea {
   clear: both;
   a {
     text-decoration: none;
-    color: $base-color;
+    color: darken($base-color, 50%);
   }
 }
 

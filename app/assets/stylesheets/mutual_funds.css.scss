@@ -160,7 +160,7 @@ body.mutual_funds.index {
   #main {
     div {
       input[type="submit"] {
-        margin: 0.6em 0 1em 12em;
+        margin: 0.6em 0 1em 9em;
       }
       label {
         padding-right: 1em;
@@ -168,7 +168,7 @@ body.mutual_funds.index {
         color: $base-color;
       }
       input[type="text"] {
-        width: 300px;
+        width: 400px;
       }
     }
   }

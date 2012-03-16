@@ -9,10 +9,10 @@ body.personal_financial_tools.index {
   dt {
     margin-top: 1em;
     a, a:visited {
-      color: $link-color;
+      color: $heading-red;
     }
     a:active, a:hover {
-      color: darken($link-color, 20%);
+      color: darken($heading-red, 10%);
     }
   }
 }
