@@ -3,7 +3,7 @@ class LoanTransactionsController < InheritedResources::Base
   custom_actions :resource => [ :clear ]
 
   def create
-    create! { portfolio_path(parent) }
+    create!(:notice => "Loan transaction was successfully added") { details_portfolio_path(parent) }
   end
 
   def clear

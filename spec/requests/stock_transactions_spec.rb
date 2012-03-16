@@ -14,24 +14,24 @@ describe "StockTransactions" do
     it "should add a new stock transaction to a portfolio" do
       stock.save # ensure stock is created
       visit  new_portfolio_stock_transaction_path(portfolio)
-      select stock.name, :from => "Stock"
+      select stock.name, :from => I18n.t("simple_form.labels.stock_transaction.stock")
 
       fill_in "Price", :with => 200
-      select 'buy', :from => "Action"
-      fill_in "Amount", :with => 30
-      click_on "Create"
+      select 'Buy', :from => "Action"
+      fill_in I18n.t("simple_form.labels.stock_transaction.amount"), :with => 30
+      click_on I18n.t("helpers.submit.stock_transaction.create")
       page.should have_content "successfully"
-      current_path.should eq portfolio_path(portfolio)
+      current_path.should eq details_portfolio_path(portfolio)
     end
 
     it "should not add a new sell transaction if the quantity for that stock is not available in the portfolio" do
       stock.save
       visit new_portfolio_stock_transaction_path(portfolio)
-      select stock.name, :from => "Stock"
+      select stock.name, :from => I18n.t("simple_form.labels.stock_transaction.stock")
       fill_in "Price", :with => 200
-      select 'sell', :from => "Action"
-      fill_in "Amount", :with => 30
-      click_on "Create"
+      select 'Sell', :from => "Action"
+      fill_in I18n.t("simple_form.labels.stock_transaction.amount"), :with => 30
+      click_on I18n.t("helpers.submit.stock_transaction.create")
       page.should_not have_content "successfully"
     end
 

@@ -9,20 +9,20 @@ describe "GoldTransactions" do
     visit  new_portfolio_gold_transaction_path(portfolio)
 
     fill_in "Price", :with => 200
-    select 'buy', :from => "Action"
-    fill_in "Amount", :with => 30
-    click_on "Create"
+    select 'Buy', :from => "Action"
+    fill_in I18n.t("simple_form.labels.gold_transaction.amount"), :with => 30
+    click_on I18n.t("helpers.submit.gold_transaction.create")
     page.should have_content "successfully"
-    current_path.should eq portfolio_path(portfolio)
+    current_path.should eq details_portfolio_path(portfolio)
   end
 
   it "should not add a new sell transaction if the quantity for gold is not available in the portfolio" do
     gold.save
     visit new_portfolio_gold_transaction_path(portfolio)
     fill_in "Price", :with => 200
-    select 'sell', :from => "Action"
-    fill_in "Amount", :with => 30
-    click_on "Create"
+    select 'Sell', :from => "Action"
+    fill_in I18n.t("simple_form.labels.gold_transaction.amount"), :with => 30
+    click_on I18n.t("helpers.submit.gold_transaction.create")
     page.should_not have_content "successfully"
   end
 

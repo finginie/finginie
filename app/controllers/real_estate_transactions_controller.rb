@@ -8,7 +8,7 @@ class RealEstateTransactionsController < InheritedResources::Base
   end
 
   def create
-    create! { portfolio_path(parent) }
+    create!(:notice => "Real Estate transaction was successfully added") { details_portfolio_path(parent) }
   end
 
   def create_sell

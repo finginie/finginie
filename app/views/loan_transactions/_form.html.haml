@@ -4,14 +4,17 @@
   .security
     = f.fields_for :loan do |income|
       = income.input :type, :as => :hidden
-      = income.input :name
-      = income.input :period
-      = income.input :rate_of_interest
+      = income.input :name, :hint => "e.g. Home loan from LIC"
 
   .inputs
-    = f.input :action, :collection => [:borrow, :repay], :include_blank => false
+    = f.input :action, :collection => [["Borrow",:borrow]], :include_blank => false
     = f.input :amount
-    = f.input :date
+  .security
+    = f.fields_for :loan do |income|
+      = income.input :period
+      = income.input :rate_of_interest
+  .inputs
+    = f.input :date,:order=> [:day,:month,:year]
     = f.input :comments
 
   .actions

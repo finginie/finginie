@@ -11,6 +11,6 @@ class GoldTransactionsController < InheritedResources::Base
   end
 
   def create
-    create! { portfolio_path(parent) }
+    create!(:notice => "Gold transaction was successfully added") { details_portfolio_path(parent) }
   end
 end
