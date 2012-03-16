@@ -79,16 +79,16 @@ $ ->
   bar_chart('net-worth-chart','data-net-worth','Net Worth',['Assets', 'Liabilities', 'Net Worth' ],'Amount(Rupees)')
 
   if $("#stocks-profit-or-loss-chart").attr("data-categories") != undefined
-    bar_chart('stocks-profit-or-loss-chart','data-stocks-profit-or-loss','Realized Profit/Loss on Stocks', JSON.parse($("#stocks-profit-or-loss-chart").attr("data-categories")), 'Amount')
+    bar_chart('stocks-profit-or-loss-chart','data-stocks-profit-or-loss','Realized Profit/Loss on Stocks', JSON.parse($("#stocks-profit-or-loss-chart").attr("data-categories")), 'Amount(Rupees)')
 
   if $("#mutual-fund-profit-or-loss-chart").attr("data-categories") != undefined
-    bar_chart('mutual-fund-profit-or-loss-chart','data-mutual-fund-profit-or-loss','Realized Profit/Loss on Mutual Funds', JSON.parse($("#mutual-fund-profit-or-loss-chart").attr("data-categories")), 'Amount')
+    bar_chart('mutual-fund-profit-or-loss-chart','data-mutual-fund-profit-or-loss','Realized Profit/Loss on Mutual Funds', JSON.parse($("#mutual-fund-profit-or-loss-chart").attr("data-categories")), 'Amount(Rupees)')
 
   if $("#fixed-deposits-chart").attr("data-categories") != undefined
     bar_chart('fixed-deposits-chart','data-fixed-deposits','Your Fixed Deposits', JSON.parse($("#fixed-deposits-chart").attr("data-categories")), 'Amount Invested')
 
   if $("#accumulated-profits-chart").attr("data-categories") != undefined
-    bar_chart('accumulated-profits-chart','data-accumulated-profits','Your Top 5 Accumulated Profits', JSON.parse($("#accumulated-profits-chart").attr("data-categories")), 'Amount Invested')
+    bar_chart('accumulated-profits-chart','data-accumulated-profits','Your Top 5 Accumulated Profits', JSON.parse($("#accumulated-profits-chart").attr("data-categories")), 'Amount(Rupees)')
 
   if $("#accumulated-losses-chart").attr("data-categories") != undefined
-    bar_chart('accumulated-losses-chart','data-accumulated-losses','Your Top 5 Accumulated Losses', JSON.parse($("#accumulated-losses-chart").attr("data-categories")), 'Amount Invested')
+    bar_chart('accumulated-losses-chart','data-accumulated-losses','Your Top 5 Accumulated Losses', JSON.parse($("#accumulated-losses-chart").attr("data-categories")), 'Amount(Rupees)')

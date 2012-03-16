@@ -134,11 +134,19 @@ class PortfolioDecorator < ApplicationDecorator
         gold_positions_profit_or_loss
   end
 
+  def losses
+    positions.select{ |position| position.last.to_f < 0 }
+  end
+
+  def profits
+    positions.select{ |position| position.last.to_f > 0 }
+  end
+
   def top_five_losses
-    positions.select{ |position| position.last.to_f < 0 }.sort_by(&:last).take(5)
+    losses.sort_by(&:last).take(5)
   end
 
   def top_five_profits
-    positions.select{ |position| position.last.to_f > 0 }.sort_by(&:last).reverse.take(5)
+    profits.sort_by(&:last).reverse.take(5)
   end
 end
