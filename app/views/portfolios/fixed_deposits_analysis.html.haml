@@ -1,0 +1,6 @@
+%h1 Fixed Deposits
+- unless resource.fixed_deposit_open_positions_rate_of_interests.empty?
+  #fixed-deposits-chart{ 'data-fixed-deposits' => resource.fixed_deposit_open_positions_rate_of_interests.map(&:last),
+                                'data-categories' => resource.fixed_deposit_open_positions_rate_of_interests.map(&:first) }
+-else
+  %p= t ".no_fixed_deposit_transaction"

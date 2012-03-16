@@ -80,12 +80,12 @@ class PortfolioDecorator < ApplicationDecorator
       {
         :asset_type => "Loans",
         :percentage => h.t('tables_not_available'),
-        :amount     => total_liabilitites_value
+        :amount     => total_liabilitites_value.abs
       },
       {
         :asset_type => "Total Liabilities",
         :percentage => h.t('tables_not_available'),
-        :amount     => total_liabilitites_value
+        :amount     => total_liabilitites_value.abs
       },
       {
         :asset_type => "Net Worth",

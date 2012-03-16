@@ -1,0 +1,10 @@
+%h1 Mutual Funds
+- unless resource.category_wise_mutual_funds_percentage.empty?
+  #mutual-fund-category-wise-allocation-chart{ 'data-mutual-fund-category-wise-asset-allocation' => resource.category_wise_mutual_funds_percentage }
+  - unless resource.mutual_fund_positions_profit_or_loss.empty?
+    #mutual-fund-profit-or-loss-chart{ 'data-mutual-fund-profit-or-loss' => resource.mutual_fund_positions_profit_or_loss.map(&:last),
+                                     'data-categories' => resource.mutual_fund_positions_profit_or_loss.map(&:first) }
+  -else
+    %p= t ".no_sell_mutual_fund_transaction"
+-else
+  %p= t ".no_mutual_fund_transaction"
