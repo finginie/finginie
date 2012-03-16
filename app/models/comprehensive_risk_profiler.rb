@@ -59,19 +59,19 @@ class ComprehensiveRiskProfiler < ActiveRecord::Base
 private
   def age_score
     return 0 unless age
-    age_value = (10 - (age - 20).to_f/8)
+    age_value = (10 - (age - 20)/8)
     ([[age_value,10].min,1].max).round(2)
   end
 
   def household_savings_score
     return 0 if household_expenditure.nil?  || household_savings.nil?
-    saving_value = ((household_savings.to_f/household_expenditure.to_f) * 1.67)
+    saving_value = ((household_savings/household_expenditure) * 1.67)
     [saving_value,10].min
   end
 
   def household_income_score
     return 0 if household_expenditure.nil? || household_income.nil?
-    saving_value = ((household_income * 5).to_f/household_expenditure.to_f)
+    saving_value = ((household_income * 5)/household_expenditure)
     [saving_value,10].min
   end
 
@@ -88,7 +88,7 @@ private
 
   def special_goal_score
     return 0 unless special_goals?
-    special_goal_value = ((household_savings + ((monthly_savings * special_goals_years * 12) - special_goals_amount)) * 5).to_f/ special_goals_amount
+    special_goal_value = ((household_savings + ((monthly_savings * special_goals_years * 12) - special_goals_amount)) * 5)/ special_goals_amount
     special_goal_value += 5
     [[special_goal_value,10].min,0].max
   end
