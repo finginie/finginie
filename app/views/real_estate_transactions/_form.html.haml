@@ -4,13 +4,16 @@
   .security
     = f.fields_for :real_estate do |real_estate|
       = real_estate.input :type, :as => :hidden
-      = real_estate.input :name
+      = real_estate.input :name, :hint => 'e.g. 3 bhk flat at Marine Drive'
       = real_estate.input :location
-      = real_estate.input :current_price
-
   .inputs
+    = f.input :action, :collection => [["Buy",:buy]], :include_blank => false
     = f.input :price
-    = f.input :date
+  .security
+    = f.fields_for :real_estate do |real_estate|
+      = real_estate.input :current_price
+  .inputs
+    = f.input :date,:order=> [:day,:month,:year]
     = f.input :comments
 
   .actions

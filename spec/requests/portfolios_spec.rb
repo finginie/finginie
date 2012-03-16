@@ -95,7 +95,7 @@ describe "Portfolios" do
 
     visit details_portfolio_path(portfolio)
     click_button "Redeem"
-    fill_in "Rate of interest", :with => 8
+    fill_in I18n.t("simple_form.labels.fixed_deposit_transaction.fixed_deposit.rate_of_interest"), :with => "8"
     click_on "Submit"
     page.should_not have_selector("section.FixedDeposit table")
   end

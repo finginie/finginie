@@ -99,6 +99,35 @@ en:
         time_horizon: 'What is the time horizon for your investment (No. of years)?'
       search:
         sector_contains: 'Sector Contains (optional)'
+      gold_transaction:
+        price: 'Prices (Rs)'
+        amount: 'Quantity (grams)'
+      mutual_fund_transaction:
+        amount: 'Quantity'
+        price: 'Prices (Rs)'
+        mutual_fund:
+          scheme: 'Scheme Name'
+      stock_transaction:
+        amount: 'Quantity'
+        price: 'Prices (Rs)'
+        stock: 'Company Name'
+      real_estate_transaction:
+        real_estate:
+          location: 'Location (City/Town/Village)'
+          current_price: 'Current market value (Rs)'
+        price: 'Purchase price (Rs)'
+      fixed_deposit_transaction:
+        price: 'Amount (Rs)'
+        fixed_deposit:
+          name: 'Name'
+          period: 'Period/Tenure'
+          rate_of_interest: 'Rate of Interest (% p.a.)'
+      loan_transaction:
+        amount: 'Amount (Rs)'
+        loan:
+          name: 'Name'
+          period: 'Period/Tenure'
+          rate_of_interest: 'Rate of Interest (% p.a.)'
 
   helpers:
     submit:
@@ -123,3 +152,15 @@ en:
       portfolio:
         create: 'Create'
         update: 'Update'
+      gold_transaction:
+        create: 'Add'
+      mutual_fund_transaction:
+        create: 'Add'
+      fixed_deposit_transaction:
+        create: 'Add'
+      loan_transaction:
+        create: 'Add'
+      stock_transaction:
+        create: 'Add'
+      real_estate_transaction:
+        create: 'Add'

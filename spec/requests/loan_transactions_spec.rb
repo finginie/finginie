@@ -8,13 +8,13 @@ describe "LoanTransactions" do
     visit  new_portfolio_loan_transaction_path(portfolio)
     fill_in "Name", :with => "Foo"
     fill_in "Period", :with => "5"
-    fill_in "Rate of interest", :with => "10"
+    fill_in I18n.t("simple_form.labels.loan_transaction.loan.rate_of_interest"), :with => "10"
 
     fill_in "Amount", :with => 60000
-    select 'borrow', :from => "Action"
-    click_on "Create"
+    select 'Borrow', :from => "Action"
+    click_on I18n.t("helpers.submit.loan_transaction.create")
     page.should have_content "successfully"
-    current_path.should eq portfolio_path(portfolio)
+    current_path.should eq details_portfolio_path(portfolio)
   end
 
   let (:loan) { create :loan, :period => 5, :rate_of_interest => 10 }

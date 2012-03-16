@@ -7,12 +7,12 @@ describe "FixedDepositTransactions" do
     visit  new_portfolio_fixed_deposit_transaction_path(portfolio)
     fill_in "Name", :with => "Foo"
     fill_in "Period", :with => "5"
-    fill_in "Rate of interest", :with => "10"
+    fill_in I18n.t("simple_form.labels.fixed_deposit_transaction.fixed_deposit.rate_of_interest"), :with => "10"
 
-    fill_in "Price", :with => 200
-    click_on "Create"
+    fill_in I18n.t("simple_form.labels.fixed_deposit_transaction.price"), :with => 200
+    click_on I18n.t("helpers.submit.fixed_deposit_transaction.create")
     page.should have_content "successfully"
-    current_path.should eq portfolio_path(portfolio)
+    current_path.should eq details_portfolio_path(portfolio)
   end
 
   let (:fixed_deposit) { create :fixed_deposit, :period => 5, :rate_of_interest => 10 }
@@ -33,7 +33,7 @@ describe "FixedDepositTransactions" do
     fixed_deposit_transaction = create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 5000, :date => Date.civil(2011,12,10)
     visit  redeem_portfolio_fixed_deposit_transaction_path(portfolio, fixed_deposit_transaction)
 
-    fill_in "Rate of interest", :with => 8
+    fill_in I18n.t("simple_form.labels.fixed_deposit_transaction.fixed_deposit.rate_of_interest"), :with => "8"
     click_on "Submit"
     page.should have_content "Successfully"
     current_path.should eq details_portfolio_path(portfolio)

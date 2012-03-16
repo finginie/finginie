@@ -6,10 +6,10 @@
       = f.fields_for :mutual_fund do |mf|
         = mf.input :scheme do
           = mf.text_field :scheme, data: { autocomplete_source: mutual_funds_path }
-    = f.input :price
-    = f.input :date
+    = f.input :action, :collection => [["Buy", :buy], ["Sell", :sell]]
     = f.input :amount
-    = f.input :action, :collection => [:buy, :sell]
+    = f.input :price
+    = f.input :date, :order => [:day, :month, :year]
     = f.input :comments
 
   .actions

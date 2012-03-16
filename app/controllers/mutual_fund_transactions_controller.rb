@@ -6,6 +6,6 @@ class MutualFundTransactionsController < InheritedResources::Base
   end
 
   def create
-    create! { portfolio_path(parent) }
+    create!(:notice => "Mutual Fund transaction was successfully added") { details_portfolio_path(parent)}
   end
 end

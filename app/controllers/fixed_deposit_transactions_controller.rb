@@ -8,7 +8,7 @@ class FixedDepositTransactionsController < InheritedResources::Base
   end
 
   def create
-    create! { portfolio_path(parent) }
+    create!(:notice => "Fixed Deposit transaction was successfully added") { details_portfolio_path(parent) }
   end
 
   def create_redeem

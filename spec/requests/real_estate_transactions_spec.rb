@@ -3,17 +3,17 @@ require 'spec_helper'
 describe "RealEstateTransactions" do
   include_context "logged in user"
   let (:portfolio) { create :portfolio, :user => current_user }
-  it "should add a new stock transaction to a portfolio" do
+  it "should add a new real estate transaction to a portfolio" do
     visit  new_portfolio_real_estate_transaction_path(portfolio)
     fill_in 'Name', :with => 'Test Property'
     fill_in 'Location', :with => 'Mordor'
-    fill_in 'Current price', :with => 9000000
+    fill_in I18n.t("simple_form.labels.real_estate_transaction.real_estate.current_price"), :with => 9000000
 
-    fill_in "Price", :with => 200
+    fill_in I18n.t("simple_form.labels.real_estate_transaction.price"), :with => 200
 
-    click_on "Create"
+    click_on I18n.t("helpers.submit.real_estate_transaction.create")
     page.should have_content "successfully"
-    current_path.should eq portfolio_path(portfolio)
+    current_path.should eq details_portfolio_path(portfolio)
   end
 
   let (:real_estate) { create :real_estate, :name => "Test Property", :location => "Mordor", :current_price => 60000 }
