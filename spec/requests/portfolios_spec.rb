@@ -135,8 +135,8 @@ describe "Portfolios" do
                        [ 'Fixed Deposits', "12.44",                         "106.58"],
                        [ 'Real Estate',    "70.05",                         "600.00"],
                        ["Total Assets",     "100",                          "856.58"],
-                       ["Loans",            I18n.t("tables_not_available"), "-258.63"],
-                       ["Total Liabilities",I18n.t("tables_not_available"), "-258.63"],
+                       ["Loans",            I18n.t("tables_not_available"), "258.63"],
+                       ["Total Liabilities",I18n.t("tables_not_available"), "258.63"],
                        ["Net Worth",        I18n.t("tables_not_available"),  "597.95"]
                       ]
     tableish("table").should eq expected_table
@@ -153,18 +153,18 @@ describe "Portfolios" do
     end
 
     it "should display default message for stock when there is no stock transaction" do
-      find("li#navigation-analysis").find("a").click
-      page.should have_content I18n.t("portfolios.analysis.no_stock_transaction")
+      find("li#navigation-stocks_analysis").find("a").click
+      page.should have_content I18n.t("portfolios.stocks_analysis.no_stock_transaction")
     end
 
     it "should display default message for mutual funds when there is no mutual fund transaction" do
-      find("li#navigation-analysis").find("a").click
-      page.should have_content I18n.t("portfolios.analysis.no_mutual_fund_transaction")
+      find("li#navigation-mutual_funds_analysis").find("a").click
+      page.should have_content I18n.t("portfolios.mutual_funds_analysis.no_mutual_fund_transaction")
     end
 
     it "should display default message for fixed deposit when there is no fixed deposit transaction" do
-      find("li#navigation-analysis").find("a").click
-      page.should have_content I18n.t("portfolios.analysis.no_fixed_deposit_transaction")
+      find("li#navigation-fixed_deposits_analysis").find("a").click
+      page.should have_content I18n.t("portfolios.fixed_deposits_analysis.no_fixed_deposit_transaction")
     end
 
     it "should display default messages in Accumulated Profits page" do

@@ -40,7 +40,9 @@ Finginie::Application.routes.draw do
     member do
       get 'details'
       get 'transactions'
-      get 'analysis'
+      get 'stocks_analysis'
+      get 'mutual_funds_analysis'
+      get 'fixed_deposits_analysis'
       get 'accumulated_profits'
     end
     resources :loan_transactions do

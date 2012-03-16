@@ -80,12 +80,12 @@ class PortfolioDecorator < ApplicationDecorator
       {
         :asset_type => "Loans",
         :percentage => h.t('tables_not_available'),
-        :amount     => total_liabilitites_value
+        :amount     => total_liabilitites_value.abs
       },
       {
         :asset_type => "Total Liabilities",
         :percentage => h.t('tables_not_available'),
-        :amount     => total_liabilitites_value
+        :amount     => total_liabilitites_value.abs
       },
       {
         :asset_type => "Net Worth",
@@ -134,11 +134,43 @@ class PortfolioDecorator < ApplicationDecorator
         gold_positions_profit_or_loss
   end
 
+  def losses
+    positions.select{ |position| position.last.to_f < 0 }
+  end
+
+  def profits
+    positions.select{ |position| position.last.to_f > 0 }
+  end
+
   def top_five_losses
-    positions.select{ |position| position.last.to_f < 0 }.sort_by(&:last).take(5)
+    losses.sort_by(&:last).take(5)
   end
 
   def top_five_profits
-    positions.select{ |position| position.last.to_f > 0 }.sort_by(&:last).reverse.take(5)
+    profits.sort_by(&:last).reverse.take(5)
+  end
+
+  def stock_transactions
+    model.stock_transactions.reorder("date DESC")
+  end
+
+  def mutual_fund_transactions
+    model.mutual_fund_transactions.reorder("date DESC")
+  end
+
+  def gold_transactions
+    model.gold_transactions.reorder("date DESC")
+  end
+
+  def loan_transactions
+    model.loan_transactions.reorder("date DESC")
+  end
+
+  def fixed_deposit_transactions
+    model.fixed_deposit_transactions.reorder("date DESC")
+  end
+
+  def real_estate_transactions
+    model.real_estate_transactions.reorder("date DESC")
   end
 end

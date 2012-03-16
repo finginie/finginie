@@ -1,0 +1,10 @@
+%h1 Stocks
+- unless resource.sector_wise_stock_percentage.empty?
+  #stock-sectoral-allocation-chart{ 'data-stocks-sectoral-asset-allocation' => resource.sector_wise_stock_percentage }
+  - unless resource.stocks_positions_profit_or_loss.empty?
+    #stocks-profit-or-loss-chart{ 'data-stocks-profit-or-loss' => resource.stocks_positions_profit_or_loss.map(&:last),
+                                  'data-categories' => resource.stocks_positions_profit_or_loss.map(&:first) }
+  -else
+    %p= t ".no_sell_stock_transaction"
+-else
+  %p= t ".no_stock_transaction"

@@ -8,7 +8,7 @@
         %tr
           %th Security
           %th Profit
-        - resource.top_five_profits.each do |security|
+        - resource.profits.each do |security|
           %tr
             %td= security.first
             %td= security.last
@@ -22,7 +22,7 @@
         %tr
           %th Security
           %th Losses
-        - resource.top_five_losses.each do |security|
+        - resource.losses.each do |security|
           %tr
             %td= security.first
             %td= security.last

@@ -39,8 +39,16 @@ describe PortfoliosController do
       get("/portfolios/1/transactions").should route_to("portfolios#transactions", :id => "1")
     end
 
-    it "routes to #analysis" do
-      get("/portfolios/1/analysis").should route_to("portfolios#analysis", :id => "1")
+    it "routes to #stocks_analysis" do
+      get("/portfolios/1/stocks_analysis").should route_to("portfolios#stocks_analysis", :id => "1")
+    end
+
+    it "routes to #mutual_funds_analysis" do
+      get("/portfolios/1/mutual_funds_analysis").should route_to("portfolios#mutual_funds_analysis", :id => "1")
+    end
+
+    it "routes to #fixed_deposits_analysis" do
+      get("/portfolios/1/fixed_deposits_analysis").should route_to("portfolios#fixed_deposits_analysis", :id => "1")
     end
 
     it "routes to #profits" do
