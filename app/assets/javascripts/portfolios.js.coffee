@@ -1,4 +1,13 @@
 $ ->
+  hide_form = (element) ->
+    $(element).hide()
+  hide_form("#type_of_investment form")
+
+  $('#type_of_investment').change -> (
+    hide_form("#type_of_investment form")
+    $("#new_" + $(this).find('option:selected').attr('value')+"_transaction").show()
+  )
+
   pie_chart = (element, data, title) ->
     if ($("##{element}").attr("#{data}") != undefined)
       new Highcharts.Chart({

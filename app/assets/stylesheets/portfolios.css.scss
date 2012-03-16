@@ -118,6 +118,9 @@ body.portfolios.details {
           size: large;
         }
       }
+      section {
+        padding-bottom: 2em;
+      }
       #stock_positions, #mutual_fund_positions, #gold_positions, .Loan, .FixedDeposit, .RealEstate{
         padding: 0 0 2em 0;
       }
@@ -193,4 +196,18 @@ body.portfolios.edit {
     }
   }
   @include hide-aside; // Remove this line once the bug is fixed in navigation.rb
+}
+
+body.portfolios.add_transaction {
+  @include simple-form;
+  #type_of_investment_select {
+    margin-left: 10em;
+    label {
+      color: $base-color;
+      padding-right: 0.7em;
+    }
+    select {
+      margin-bottom: 0.5em;
+    }
+  }
 }
