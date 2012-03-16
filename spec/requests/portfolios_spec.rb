@@ -19,8 +19,7 @@ describe "Portfolios" do
                           :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
     4.times { |n| create :gold_transaction, :gold => gold, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
     visit portfolio_path(portfolio)
-    page.should have_link 'Details'
-    click_link 'Details'
+    find("li#navigation-details").find("a").click
 
     expected_table_for_stocks = [
                                   ["Name", "Quantity", "Average Cost Price", "Market Price", "Amount Invested", "Market Value", "Profit"],
@@ -129,12 +128,16 @@ describe "Portfolios" do
 
     visit portfolio_path(portfolio)
     expected_table = [
-                       [ 'Asset Class', 'Percentage(%)', 'Amount' ],
-                       [ 'Stocks',        "5.84",             "50.00"],
-                       [ 'Mutual Funds',  "5.84",             "50.00"],
-                       [ 'Gold',          "5.84",             "50.00"],
-                       [ 'Fixed Deposits',"12.44",        "106.58"],
-                       [ 'Real Estate',   "70.05",           "600.00"]
+                       [ 'Asset Class',  'Percentage(%)',                  'Amount' ],
+                       [ 'Stocks',         "5.84",                          "50.00"],
+                       [ 'Mutual Funds',   "5.84",                          "50.00"],
+                       [ 'Gold',           "5.84",                          "50.00"],
+                       [ 'Fixed Deposits', "12.44",                         "106.58"],
+                       [ 'Real Estate',    "70.05",                         "600.00"],
+                       ["Total Assets",     "100",                          "856.58"],
+                       ["Loans",            I18n.t("tables_not_available"), "-258.63"],
+                       ["Total Liabilities",I18n.t("tables_not_available"), "-258.63"],
+                       ["Net Worth",        I18n.t("tables_not_available"),  "597.95"]
                       ]
     tableish("table").should eq expected_table
   end
