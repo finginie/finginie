@@ -9,23 +9,42 @@ class StockTransaction < ActiveRecord::Base
 
   scope :buys, where("quantity >= ?", 0)
   scope :sells, where("quantity < ?", 0)
-  scope :before, lambda { |date| where('date < ?', date) }
+  scope :before, lambda { |transaction|
+    where('date < :date or ( date = :date and created_at < :created_at )',
+        :date => transaction.date,
+        :created_at => transaction.created_at
+        ).order('date, created_at')
+  }
 
   scope :for, lambda { |stock| where(:stock_id => stock).order(:date) } do
     include StockPosition
   end
 
   def profit_or_loss
-    (- quantity * ( price - StockTransaction.for(stock).average_price(self) ) ) if quantity < 0
+    @profit_or_loss ||= buy? ? 0 : amount * ( price - adjusted_average_price )
   end
 
   def value
     quantity * price
   end
 
+  def adjusted_average_price
+    transactions = StockTransaction.for(stock).before(self)
+    @average_price ||= buy? ? ((transactions.value + value) / (transactions.quantity + quantity)).round(2) : transactions.average_cost_price
+  end
+
   def action
     (quantity < 0 ? :sell : :buy) if quantity
   end
+
+  def buy?
+    quantity >= 0
+  end
+
+  def sell?
+    quantity < 0
+  end
+
   def action=(action)
     set_quantity(amount, action)
     action

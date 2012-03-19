@@ -231,6 +231,8 @@ ActiveRecord::Schema.define(:version => 20120316084211) do
     t.text     "comments"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "portfolio_id"
+    t.integer  "security_id"
   end
 
   add_index "transactions", ["net_position_id"], :name => "index_transactions_on_net_position_id"
