@@ -25,7 +25,7 @@
       = t ".no_#{positions}"
 
 %section{ :class => "Gold" }
-  %h1 Gold Positions
+  %h1 Gold
   - unless resource.gold_transactions.empty?
     #gold_positions
       %table
@@ -53,10 +53,3 @@
   %section{ :class => security }
     %h1= "#{security.titleize}"
     = render "#{security.underscore}_positions", "#{security.underscore}_positions".to_sym => resource.send("#{security.underscore}_positions")
-#add_links
-  = link_to 'Add Stock', new_portfolio_stock_transaction_path(resource)
-  = link_to 'Add Mutual Fund', new_portfolio_mutual_fund_transaction_path(resource)
-  = link_to 'Add Gold', new_portfolio_gold_transaction_path(resource)
-  = link_to 'Add Fixed Deposit', new_portfolio_fixed_deposit_transaction_path(resource)
-  = link_to 'Add Real Estate', new_portfolio_real_estate_transaction_path(resource)
-  = link_to 'Add Loan', new_portfolio_loan_transaction_path(resource)
