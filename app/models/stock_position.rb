@@ -3,7 +3,7 @@ module StockPosition
   delegate :name, :sector, :current_price, :to => :stock
 
   def stock
-    first.stock
+    last.stock
   end
 
   def quantity
@@ -15,21 +15,15 @@ module StockPosition
   end
 
   def profit_or_loss
-    sells.map { |t| - t.quantity * (t.price - average_price(t)) }.inject(:+)
+    sells.map(&:profit_or_loss).inject(:+)
   end
 
   def average_cost_price
-    all.map { |t| average_price(t) * t.quantity }.inject(:+) /quantity
+    last ? last.adjusted_average_price : 0
   end
 
   def value
     average_cost_price * quantity
-  end
-
-  def average_price(transaction)
-    price = ( transaction.quantity < 0 ) ?
-      (buys.before(transaction.date).sum(&:value) /buys.before(transaction.date).sum(:quantity) ) :
-        transaction.price
   end
 
   def unrealised_profit
