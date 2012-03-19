@@ -7,7 +7,7 @@ test:
   database: finginie_test
 
 # set these environment variables on your prod server
-production:
+production: &production
   uri: <%= ENV['MONGOLAB_URI'] %>
   # host: <%= ENV['MONGOID_HOST'] %>
   # port: <%= ENV['MONGOID_PORT'] %>
@@ -19,3 +19,6 @@ production:
   #     port: 27018
   #   - host: slave2.local
   #     port: 27019
+
+staging:
+  <<: *production

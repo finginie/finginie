@@ -10,11 +10,11 @@ test:
   <<: *defaults
   db: 1
 
-staging:
-  <<: *defaults
-
-production:
+production: &production
   <% uri = URI.parse(ENV['REDISTOGO_URL'] || '') %>
   host: <%= uri.host %>
   port: <%= uri.port %>
   password: <%= uri.password %>
+
+staging:
+  <<: *production

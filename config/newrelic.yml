@@ -1,5 +1,5 @@
 ---
-production:
+production: &production
   error_collector:
     capture_source: true
     enabled: true
@@ -17,3 +17,6 @@ production:
     transaction_threshold: apdex_f
   capture_params: false
   log_level: info
+
+staging:
+  <<: *production
