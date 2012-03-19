@@ -29,7 +29,7 @@ class StockTransaction < ActiveRecord::Base
   end
 
   def adjusted_average_price
-    transactions = StockTransaction.for(stock).before(self)
+    transactions = portfolio.stock_transactions.for(stock).before(self)
     @average_price ||= buy? ? ((transactions.value + value) / (transactions.quantity + quantity)).round(2) : transactions.average_cost_price
   end
 
