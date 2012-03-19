@@ -374,3 +374,18 @@ input::-webkit-inner-spin-button {
 input[type="text"] {
   width: 300px;
 }
+
+//---------------------------- error msg -----------------------------------------------
+.error {
+  font: {
+    size: 12px;
+    family: Arial, Helvetica, sans-serifial;
+  }
+  color: red;
+  padding-left: 4px;
+}
+
+//--------------------------error_notification -----------------------------------------
+.error_notification {
+  color: $heading-red;
+}

@@ -11,7 +11,7 @@
     - stock_transactions.each do |stock_transaction|
       %tr
         %td= l stock_transaction.date
-        %td= stock_transaction.action
+        %td= stock_transaction.action.to_s.titleize
         %td= stock_transaction.stock.name
         %td= stock_transaction.amount
         %td= number_to_indian_currency stock_transaction.price

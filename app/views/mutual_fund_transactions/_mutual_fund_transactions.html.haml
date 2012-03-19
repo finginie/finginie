@@ -11,7 +11,7 @@
     - mutual_fund_transactions.each do |mf_transaction|
       %tr
         %td= l mf_transaction.date
-        %td= mf_transaction.action
+        %td= mf_transaction.action.to_s.titleize
         %td= mf_transaction.mutual_fund.name
         %td= mf_transaction.amount
         %td= number_to_indian_currency mf_transaction.price

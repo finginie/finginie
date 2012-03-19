@@ -45,13 +45,6 @@ describe "Portfolios" do
     within "#gold_positions" do
       tableish("table").should eq expected_table_for_gold
     end
-
-    page.should have_link 'Add Stock'
-    page.should have_link 'Add Mutual Fund'
-    page.should have_link 'Add Gold'
-    page.should have_link 'Add Fixed Deposit'
-    page.should have_link 'Add Real Estate'
-    page.should have_link 'Add Loan'
   end
 
   it "should show loan net position in details page" do
@@ -71,7 +64,7 @@ describe "Portfolios" do
     create :loan_transaction, :loan => loan, :portfolio => portfolio, :price => -100000, :date => 8.months.ago.to_date
 
     visit details_portfolio_path(portfolio)
-    click_button "clear the loan"
+    click_button "Clear Loan"
     page.should have_content "Successfully cleared the loan"
     current_path.should eq details_portfolio_path(portfolio)
     page.should_not have_selector("section.Loan table")
@@ -190,15 +183,15 @@ describe "Portfolios" do
     create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio,:quantity => 1, :price => 5, :date => Date.today
 
     visit portfolio_path(portfolio)
-    click_link 'Transactions'
+    click_link 'Historical Transactions'
 
     expected_table_for_stock_transactions = [
                        [ "Date","Type", "Name", "Quantity", "Price", "Total Amount"],
-                       [ I18n.l(Date.today), "buy", stock.name, "1", "5.00", "5.00"],
+                       [ I18n.l(Date.today), "Buy", stock.name, "1", "5.00", "5.00"],
                     ]
     expected_table_for_mutual_fund_transactions = [
                          [ "Date","Type", "Name", "Quantity", "Price", "Total Amount"],
-                         [ I18n.l(Date.today), "buy", scheme.scheme_name, "1", "5.00", "5.00"],
+                         [ I18n.l(Date.today), "Buy", scheme.scheme_name, "1", "5.00", "5.00"],
                       ]
     tableish("section.StockTransactions table").should eq expected_table_for_stock_transactions
     tableish("section.MutualFundTransactions table").should eq expected_table_for_mutual_fund_transactions
