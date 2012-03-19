@@ -16,7 +16,7 @@ class StockTransaction < ActiveRecord::Base
         ).order('date, created_at')
   }
 
-  scope :for, lambda { |stock| where(:stock_id => stock).order(:date) } do
+  scope :for, lambda { |stock| where(:stock_id => stock).order("date ASC, created_at ASC") } do
     include StockPosition
   end
 
