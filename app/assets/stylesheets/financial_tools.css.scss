@@ -54,7 +54,7 @@ body.personal_financial_tools {
 	weight: normal;
       }
       margin: {
-	bottom: 0.3em;
+        bottom: 0.3em;
       }
     }
     ul {
@@ -62,38 +62,38 @@ body.personal_financial_tools {
       margin: 0;
       padding: 0;
       li {
-	margin: 0;      
-	padding: {
-	  bottom: 0.6em;
-	  left: 1em;
-	}
+	      margin: 0;
+	      padding: {
+	        bottom: 0.6em;
+	        left: 1em;
+	      }
 	font: {
 	  family: $content-font;
 	  weight: normal;
-	  size: medium;
+	  size: 14px;
 	}
       }
     }
     div.inputs {
       label {
-	display: inline-block;
-	color: $base-color;
-	width: 40%;
-	line-height: 1em;
-	text-align: right;
-	padding: {
-	  top: 0.5em;
-	  bottom: 0.4em;
-	}
-	font: {
-	  family: $content-font;
-	  weight: normal;
-	  size: $label-font-size;
-	}
+        display: inline-block;
+	      color: $base-color;
+	      width: 40%;
+	      line-height: 1em;
+	      text-align: right;
+        padding: {
+	        top: 0.5em;
+	        bottom: 0.4em;
+	      }
+	      font: {
+	        family: $content-font;
+	        weight: normal;
+	        size: $label-font-size;
+	      }
       }
       label.collection_radio,  {
-	padding-left: 0.6em;
-	display :inline;
+	      padding-left: 0.6em;
+	      display :inline;
       }
       span {
 	&input {
@@ -110,7 +110,7 @@ body.personal_financial_tools {
     }
     div.actions {
       text-align: center;
-    }  
+    }
   }
 }
 

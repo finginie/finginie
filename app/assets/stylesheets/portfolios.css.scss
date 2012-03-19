@@ -36,15 +36,29 @@ body.portfolios.index {
       }
       form {
         >div {
-          //width: 45%;
+          width: 40%;
           text-align:right;
         }
       }
       table {
+        border: 0;
+        width: 40%;
         margin-top: 3em;
+        td, th {
+          font-size: large;
+          border: 0;
+        }
+        td {
+          color: $base-color;
+        }
+        th {
+          background: white;
+          color: $heading-red;
+          font-weight: normal;
+        }
         .actions {
           form {
-            float:left;
+            float:right;
           }
         }
       }
@@ -71,16 +85,10 @@ body.portfolios.new {
           }
         }
         .actions {
-          width: 23%;
+          width: 19%;
           text-align: right;
-          .button {
-            @include button($base-color);
-            @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
-            font-size: small;
-            margin-top: 0;
-          }
         }
-      }  
+      }
     }
   }
 }
@@ -92,7 +100,8 @@ body.portfolios.show {
       p {
         margin-top: 0;
         b {
-        color: #12179E;
+          color: $heading-red;
+          font-weight: normal;
         }
       }
       #portfolio-total-asset-allocation-chart {
@@ -190,9 +199,6 @@ body.portfolios.edit {
         color: $base-color;
         @include required-field;
       }
-      input[type="text"] {
-        width: 400px;
-      }
     }
   }
   @include hide-aside; // Remove this line once the bug is fixed in navigation.rb
@@ -201,10 +207,10 @@ body.portfolios.edit {
 body.portfolios.add_transaction {
   @include simple-form;
   #type_of_investment_select {
-    margin-left: 10em;
+    margin-left: 10.5em;
     label {
       color: $base-color;
-      padding-right: 0.7em;
+      padding-right: 0.9em;
     }
     select {
       margin-bottom: 0.5em;

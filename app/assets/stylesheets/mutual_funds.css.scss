@@ -11,7 +11,7 @@ body.mutual_funds {
     h1 {
       color: $heading-blue;
       font: {
-        size: x-large;
+        size: large;
       }
     }
   }
@@ -160,15 +160,12 @@ body.mutual_funds.index {
   #main {
     div {
       input[type="submit"] {
-        margin: 0.6em 0 1em 9em;
+        margin: 1em 0 1em 9.8em;
       }
       label {
         padding-right: 1em;
         font-size: medium;
         color: $base-color;
-      }
-      input[type="text"] {
-        width: 400px;
       }
     }
   }
