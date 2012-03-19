@@ -12,7 +12,7 @@ module GoldPosition
   end
 
   def current_value
-    quantity * current_price
+    quantity && current_price ? quantity * current_price : 0
   end
 
   def sells
