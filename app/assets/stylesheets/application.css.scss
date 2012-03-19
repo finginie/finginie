@@ -43,7 +43,7 @@ table {
 }
 
 label {
-  font-size: medium;
+  font-size: 14px;
   color: $base-color;
   font-weight: normal;
 }
@@ -326,7 +326,12 @@ form {
   input[type="submit"] {
     @include button($base-color);
     @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
-    font-size: small;
+    font: {
+      size: 12px;
+      weight: normal;
+      family: helvetica;
+    }
+    padding: 4px 6px;
   }
 }
 
@@ -365,3 +370,7 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
+//----------------------------- width of input , select , --------------------------------
+input[type="text"] {
+  width: 300px;
+}

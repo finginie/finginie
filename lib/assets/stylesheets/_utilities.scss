@@ -81,11 +81,11 @@
       font: {
         family: $content-font;
         weight: normal;
-        size: medium;
+        size: 14px;
       }
     }
     textarea, input[type="text"], input[type="number"] {
-      width: 400px;
+      width: 300px;
       height: 20px;
     }
     textarea {
