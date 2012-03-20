@@ -1,6 +1,6 @@
 module MutualFundPosition
   def quantity
-    sum(&:quantity)
+    sum(&:amount)
   end
 
   def name
@@ -20,11 +20,11 @@ module MutualFundPosition
   end
 
   def profit_or_loss
-    sells.map { |t| - t.quantity * (t.price - average_price(t)) }.inject(:+)
+    sells.map { |t| t.quantity * (t.price - average_price(t)) }.inject(:+)
   end
 
   def average_cost_price
-    (all.map { |t| average_price(t) * t.quantity }.inject(:+) /quantity).round(2) if quantity > 0
+    (all.map { |t| average_price(t) * t.amount }.inject(:+) / quantity).round(2) if quantity > 0
   end
 
   def value
@@ -32,7 +32,7 @@ module MutualFundPosition
   end
 
   def average_price(transaction)
-    price = ( transaction.quantity < 0 ) ?
+    price = ( transaction.amount < 0 ) ?
       (buys.before(transaction.date).map{ |t| t.price * t.quantity }.inject(:+) /buys.before(transaction.date).sum(&:quantity) ) :
         transaction.price
   end

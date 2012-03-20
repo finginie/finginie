@@ -17,7 +17,7 @@ describe "MutualFundTransactions" do
     fill_in I18n.t("simple_form.labels.mutual_fund_transaction.mutual_fund.scheme"), :with => scheme.scheme_name
     fill_in I18n.t("simple_form.labels.mutual_fund_transaction.price"), :with => 1000
     select 'Buy', :from => "Action"
-    fill_in I18n.t("simple_form.labels.mutual_fund_transaction.amount"), :with => 20
+    fill_in I18n.t("simple_form.labels.mutual_fund_transaction.quantity"), :with => 20
     click_on I18n.t("helpers.submit.mutual_fund_transaction.create")
     page.should have_content "successfully"
     current_path.should eq details_portfolio_path(portfolio)
@@ -28,7 +28,7 @@ describe "MutualFundTransactions" do
     fill_in I18n.t("simple_form.labels.mutual_fund_transaction.mutual_fund.scheme"), :with => scheme.scheme_name
     fill_in I18n.t("simple_form.labels.mutual_fund_transaction.price"), :with => 200
     select 'Sell', :from => "Action"
-    fill_in I18n.t("simple_form.labels.mutual_fund_transaction.amount"), :with => 30
+    fill_in I18n.t("simple_form.labels.mutual_fund_transaction.quantity"), :with => 30
     click_on I18n.t("helpers.submit.mutual_fund_transaction.create")
     page.should_not have_content "successfully"
   end

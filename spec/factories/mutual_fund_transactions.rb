@@ -5,6 +5,7 @@ FactoryGirl.define do
         price "9.99"
         date "2012-03-05"
         quantity "10"
+        action "buy"
         #comments "MyText"
         portfolio
         mutual_fund

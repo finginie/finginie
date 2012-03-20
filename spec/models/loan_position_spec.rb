@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "LoanPosition" do
   let(:portfolio) { create :portfolio }
   let(:loan) { create :loan, :name => "Foo Loan", :rate_of_interest => "10", :period => "1"}
-  let(:loan_transaction) { create :loan_transaction, :loan => loan, :price => -100000, :date => 8.months.ago.to_date, :portfolio => portfolio }
+  let(:loan_transaction) { create :loan_transaction, :loan => loan, :price => 100000, :date => 8.months.ago.to_date, :portfolio => portfolio, :action => "borrow" }
 
   subject {
     loan_transaction.save

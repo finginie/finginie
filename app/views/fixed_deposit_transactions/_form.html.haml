@@ -6,6 +6,7 @@
       = deposit.input :type, :as => :hidden
       = deposit.input :name, :hint => "e.g. SBI 3 year FD at 8.5% p.a"
   .inputs
+    = f.input :action, :collection => [["Buy",:buy]], :include_blank => false
     = f.input :price
   .security
     = f.fields_for :fixed_deposit do |deposit|

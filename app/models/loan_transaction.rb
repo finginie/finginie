@@ -2,8 +2,8 @@ class LoanTransaction < ActiveRecord::Base
   belongs_to :portfolio
   belongs_to :loan
 
-  validates_presence_of :price, :date, :portfolio_id
-  validates_numericality_of :price
+  validates_presence_of :date, :portfolio_id
+  validates :price, :numericality => {:greater_than => 0}, :presence => true
 
   validate  :date_should_not_be_in_the_future, :repay_amount_should_be_less_than_or_equal_to_amount
 
@@ -35,26 +35,14 @@ class LoanTransaction < ActiveRecord::Base
 
   def current_value(on_date = Date.today)
     time_period = (on_date.year - date.year) * 12 + (on_date.month - date.month) + 1
-    emi = EmiCalculator.new(:cost => amount, :rate => rate_of_interest, :term => period).calculate_emi
+    emi = EmiCalculator.new(:cost => price, :rate => rate_of_interest, :term => period).calculate_emi
     i = ( 1 + rate_of_interest / 1200)
 
-    (- (amount * i ** time_period - emi.round * ( i ** time_period - 1) / (i - 1))).round(2)
-  end
-
-  def action
-    (price < 0 ? :borrow : :repay) if price
-  end
-  def action=(action)
-    set_price(amount, action)
-    action
+    (- (price * i ** time_period - emi.round * ( i ** time_period - 1) / (i - 1))).round(2)
   end
 
   def amount
-     price && price.abs
-  end
-  def amount=(amount)
-    set_price(amount, action)
-    amount
+    action.to_sym == :repay ? price : (price * -1)
   end
 
   def loan
@@ -62,17 +50,11 @@ class LoanTransaction < ActiveRecord::Base
   end
 
 private
-  def set_price(amount, action)
-    action ||= :borrow
-    amount ||= 1
-    self.price = { :repay => 1, :borrow => -1}[action.to_sym] * amount.to_i
-  end
-
   def date_should_not_be_in_the_future
     errors.add(:date, "can't be in the future") if !date.blank? and date > Date.today
   end
 
   def repay_amount_should_be_less_than_or_equal_to_amount
-    errors.add(:amount, "You only need Rs #{portfolio.loan_transactions.for(loan).outstanding_amount} to clear your loan") if action == :repay && portfolio.loan_transactions.for(loan).outstanding_amount.abs != amount
+    errors.add(:quantity, "You only need Rs #{portfolio.loan_transactions.for(loan).outstanding_amount} to clear your loan") if action == "repay" && portfolio.loan_transactions.for(loan).outstanding_amount.abs != price
   end
 end

@@ -24,7 +24,7 @@ describe "StockPosition" do
 
   pending "should calculate the average cost price after sell transaction" do
     subject # ensure stock transaction is saved
-    create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => -4, :price => 6, :date => Date.today
+    create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => :sell
     subject.average_cost_price.should eq 3
     subject.value.should eq 18
     subject.profit_or_loss.should eq 12
@@ -33,8 +33,8 @@ describe "StockPosition" do
 
   it "should calculate the average cost price after sell tranaction and a buy transaction" do
     subject # ensure stock transaction is saved
-    create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => -4, :price => 6, :date => Date.today
-    create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => 3 , :price => 6, :date => Date.today
+    create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
+    create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => 3 , :price => 6, :date => Date.today, :action => "buy"
     subject.all # force reload all transactions
     subject.average_cost_price.should eq 4
     subject.value.should eq 36

@@ -4,6 +4,7 @@ FactoryGirl.define do
   factory :real_estate_transaction do
       portfolio
       real_estate
+      action "buy"
       price 9.99
       date "2012-03-02"
   end

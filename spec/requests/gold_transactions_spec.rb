@@ -10,7 +10,7 @@ describe "GoldTransactions" do
 
     fill_in "Price", :with => 200
     select 'Buy', :from => "Action"
-    fill_in I18n.t("simple_form.labels.gold_transaction.amount"), :with => 30
+    fill_in I18n.t("simple_form.labels.gold_transaction.quantity"), :with => 30
     click_on I18n.t("helpers.submit.gold_transaction.create")
     page.should have_content "successfully"
     current_path.should eq details_portfolio_path(portfolio)
@@ -21,13 +21,13 @@ describe "GoldTransactions" do
     visit new_portfolio_gold_transaction_path(portfolio)
     fill_in "Price", :with => 200
     select 'Sell', :from => "Action"
-    fill_in I18n.t("simple_form.labels.gold_transaction.amount"), :with => 30
+    fill_in I18n.t("simple_form.labels.gold_transaction.quantity"), :with => 30
     click_on I18n.t("helpers.submit.gold_transaction.create")
     page.should_not have_content "successfully"
   end
 
   it "should show gold transactons index page" do
-    create :gold_transaction, :gold => gold, :portfolio => portfolio, :quantity => 1, :price => 5, :date => Date.today
+    create :gold_transaction, :gold => gold, :portfolio => portfolio, :quantity => 1, :price => 5, :date => Date.today, :action => :buy
     visit portfolio_gold_transactions_path(portfolio)
     expected_table = [
                        [ "Date","Type", "Name", "Quantity", "Price", "Total Amount"],
