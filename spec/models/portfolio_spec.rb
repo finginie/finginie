@@ -34,11 +34,11 @@ describe Portfolio do
   end
 
   it "should have many mutual_fund_positions" do
-    scheme = create :scheme_master
-    4.times { |n| create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    mutual_fund = create :mutual_fund
+    4.times { |n| create :mutual_fund_transaction, :mutual_fund => mutual_fund, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-    portfolio.mutual_fund_transactions.for(scheme.scheme_name).quantity.should eq 10
-    portfolio.mutual_fund_transactions.for(scheme.scheme_name).average_cost_price.should eq 3
+    portfolio.mutual_fund_transactions.for(mutual_fund).quantity.should eq 10
+    portfolio.mutual_fund_transactions.for(mutual_fund).average_cost_price.should eq 3
   end
 
   it "should have a gold position" do

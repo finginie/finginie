@@ -2,18 +2,26 @@ module MarketTradableTransaction
   extend ActiveSupport::Concern
 
   included do
-    scope :buys, where("quantity >= ?", 0)
-    scope :sells, where("quantity < ?", 0)
+    scope :buys, where(:action => ['buy', 'Buy'])
+    scope :sells, where(:action => ['sell', 'Sell'])
     scope :before, lambda { |transaction|
       where('date < :date or ( date = :date and created_at < :created_at )',
           :date => transaction.date,
           :created_at => transaction.created_at
           ).order(:date, :created_at)
     }
+
+    validates_presence_of :date
+    validate  :date_should_not_be_in_the_future, :sell_quantity_should_be_less_than_or_equal_to_quantity
+
+    validates :action,  :presence => true,
+                        :inclusion => {:in => ['buy', 'sell', 'Buy', 'Sell']}
+    validates :price, :numericality => {:greater_than => 0}, :presence => true
+    validates :quantity, :numericality => {:greater_than => 0}, :presence => true
   end
 
   def profit_or_loss
-    @profit_or_loss ||= buy? ? 0 : amount * ( price - adjusted_average_price )
+    @profit_or_loss ||= buy? ? 0 : quantity * ( price - adjusted_average_price )
   end
 
   def value
@@ -21,45 +29,32 @@ module MarketTradableTransaction
   end
 
   def adjusted_average_price
-    transactions = portfolio.send(self.class.name.underscore.pluralize).for(security).before(self)
-    @average_price ||= buy? ? ((transactions.value + value) / (transactions.quantity + quantity)).round(2) : transactions.average_cost_price
-  end
-
-  def action
-    (quantity < 0 ? :sell : :buy) if quantity
+    @average_price ||= buy? ? ((similar_transactions.value + value) / (similar_transactions.quantity + quantity)).round(2) : similar_transactions.average_cost_price
   end
 
   def buy?
-    quantity >= 0
+    action && action.downcase.to_sym == :buy
   end
 
   def sell?
-    quantity < 0
-  end
-
-  def action=(action)
-    set_quantity(amount, action)
-    action
+    action && action.downcase.to_sym == :sell
   end
 
   def amount
-    quantity && quantity.abs
-  end
-  def amount=(amount)
-    set_quantity(amount, action)
-    amount
+    buy? ? quantity : -quantity
   end
 
 private
-  def set_quantity(amount, action)
-    action ||= :buy
-    amount ||= 1
-    self.quantity = { :buy => 1, :sell => -1}[action.to_sym] * amount.to_i
+  def similar_transactions
+    @similar_transactions ||= portfolio.send(self.class.name.underscore.pluralize).for(security).before(self)
   end
 
   def date_should_not_be_in_the_future
     errors.add(:date, "can't be in the future") if !date.blank? and date > Date.today
   end
 
+  def sell_quantity_should_be_less_than_or_equal_to_quantity
+    errors.add(:quantity, "Your portfolio do not have sufficient #{security.class.name.pluralize.underscore.humanize} for this action") if sell? && similar_transactions.quantity < quantity
+  end
 end
 

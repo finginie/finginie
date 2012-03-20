@@ -2,11 +2,12 @@ require 'spec_helper'
 
 describe GoldTransaction do
   let(:gold_transaction) { create :gold_transaction }
+  subject { gold_transaction }
+
   it { should validate_presence_of :price }
   it { should validate_presence_of :date }
   it { should validate_presence_of :quantity }
   it { should validate_presence_of :action }
-  it { should validate_presence_of :gold_id }
   it { should validate_numericality_of :price }
   it { should validate_numericality_of :quantity }
   it { should belong_to :portfolio }

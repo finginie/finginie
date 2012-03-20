@@ -20,7 +20,7 @@ describe "GoldPosition" do
 
   it "should calculate the average cost price after sell transaction" do
     subject # ensure stock transaction is saved
-    create :gold_transaction, :portfolio => portfolio, :quantity => -4, :price => 6, :date => Date.today
+    create :gold_transaction, :portfolio => portfolio, :quantity => 4, :action => 'sell', :price => 6, :date => Date.today
     subject.average_cost_price.should eq 3
     subject.value.should eq 18
     subject.profit_or_loss.should eq 12
@@ -29,8 +29,8 @@ describe "GoldPosition" do
 
   it "should calculate the average cost price after sell tranaction and a buy transaction" do
     subject # ensure stock transaction is saved
-    create :gold_transaction, :portfolio => portfolio, :quantity => -4, :price => 6, :date => Date.today
-    create :gold_transaction, :portfolio => portfolio, :quantity => 3 , :price => 6, :date => Date.today
+    create :gold_transaction, :portfolio => portfolio, :quantity => 4, :action => 'sell', :price => 6, :date => Date.today
+    create :gold_transaction, :portfolio => portfolio, :quantity => 3, :action => 'buy', :price => 6, :date => Date.today
     subject.average_cost_price.should eq 4
     subject.value.should eq 36
   end

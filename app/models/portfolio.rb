@@ -24,7 +24,7 @@ class Portfolio < ActiveRecord::Base
   end
 
   def mutual_fund_positions
-    mutual_funds.map(&:name).uniq.map { |name| mutual_fund_transactions.for(name) }.select{ |position| position.quantity != 0}
+    mutual_funds.map { |mutual_fund| mutual_fund_transactions.for(mutual_fund) }.select{ |position| position.quantity != 0}
   end
 
   def loan_positions

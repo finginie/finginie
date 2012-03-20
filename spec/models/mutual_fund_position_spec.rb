@@ -10,7 +10,7 @@ describe "MutualFundPosition" do
   subject {
     navcp.save
     4.times { |n| create :mutual_fund_transaction, :mutual_fund => mutual_fund, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
-    portfolio.mutual_fund_transactions.for(scheme.scheme_name)
+    portfolio.mutual_fund_transactions.for(mutual_fund)
   }
 
   its (:name) { should eq scheme.scheme_name }
@@ -23,7 +23,7 @@ describe "MutualFundPosition" do
 
   it "should calculate the average cost price after sell transaction" do
     subject # ensure mutual transaction is saved
-    mutual_fund_transactions = create :mutual_fund_transaction, :mutual_fund => mutual_fund, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
+    create :mutual_fund_transaction, :mutual_fund => mutual_fund, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
     subject.average_cost_price.should eq 3
     subject.value.should eq 18
     subject.profit_or_loss.should eq 12

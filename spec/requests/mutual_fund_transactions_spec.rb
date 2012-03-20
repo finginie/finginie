@@ -14,8 +14,8 @@ describe "MutualFundTransactions" do
   it "should add a new mutual fund transaction to a portfolio" do
     visit new_portfolio_mutual_fund_transaction_path(portfolio)
 
-    fill_in I18n.t("simple_form.labels.mutual_fund_transaction.mutual_fund.scheme"), :with => scheme.scheme_name
-    fill_in I18n.t("simple_form.labels.mutual_fund_transaction.price"), :with => 1000
+    fill_in 'mutual_fund_transaction_scheme', :with => scheme.scheme_name
+    fill_in 'mutual_fund_transaction_price', :with => 1000
     select 'Buy', :from => "Action"
     fill_in I18n.t("simple_form.labels.mutual_fund_transaction.quantity"), :with => 20
     click_on I18n.t("helpers.submit.mutual_fund_transaction.create")
@@ -25,7 +25,7 @@ describe "MutualFundTransactions" do
 
   it "should not add a new sell transaction if the quantity for that mutual fund is not available in the portfolio" do
     visit new_portfolio_mutual_fund_transaction_path(portfolio)
-    fill_in I18n.t("simple_form.labels.mutual_fund_transaction.mutual_fund.scheme"), :with => scheme.scheme_name
+    fill_in 'mutual_fund_transaction_scheme', :with => scheme.scheme_name
     fill_in I18n.t("simple_form.labels.mutual_fund_transaction.price"), :with => 200
     select 'Sell', :from => "Action"
     fill_in I18n.t("simple_form.labels.mutual_fund_transaction.quantity"), :with => 30
@@ -35,7 +35,7 @@ describe "MutualFundTransactions" do
 
   it "should autocomplete scheme name when user fill scheme name", :js => true do
     visit new_portfolio_mutual_fund_transaction_path(portfolio)
-    page.execute_script %Q{ $('#mutual_fund_transaction_mutual_fund_attributes_scheme').val("#{scheme.scheme_name[0..5]}").keydown(); }
+    page.execute_script %Q{ $('#mutual_fund_transaction_scheme').val("#{scheme.scheme_name[0..5]}").keydown(); }
 
     wait_until {  page.should have_selector(".ui-menu-item a:contains('#{scheme.scheme_name}')") }
 

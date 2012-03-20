@@ -27,7 +27,7 @@ describe "GoldTransactions" do
 
   it "should show gold transactons index page" do
     Gold.current_price = 2456
-    create :gold_transaction, :portfolio => portfolio, :quantity => 1, :price => 5, :date => Date.today, :action => :buy
+    create :gold_transaction, :portfolio => portfolio, :quantity => 1, :price => 5, :date => Date.today, :action => 'buy'
     visit portfolio_gold_transactions_path(portfolio)
     expected_table = [
                        [ I18n.l(Date.today), "Buy", "Gold", "1", "5.00", "5.00", "-"],

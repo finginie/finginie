@@ -78,7 +78,8 @@ describe PortfolioDecorator do
     4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     navcp  = create :navcp, :nav_amount => "5", :security_code => scheme.securitycode
-    4.times { |n| create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    mutual_fund = create(:mutual_fund, :name => scheme.scheme_name)
+    4.times { |n| create :mutual_fund_transaction, :mutual_fund => mutual_fund, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     4.times { |n| create :gold_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
@@ -97,7 +98,8 @@ describe PortfolioDecorator do
     create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
     create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
 
-    create :mutual_fund_transaction, :mutual_fund => create( :mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
+    mutual_fund = create( :mutual_fund, :name => scheme.scheme_name)
+    create :mutual_fund_transaction, :mutual_fund => mutual_fund, :portfolio => portfolio, :quantity => 4, :action => 'sell', :price => 6, :date => Date.today
     scheme2 = create :scheme_master, :scheme_class_description => "BAR", :scheme_name => "Foo Scheme Name"
     create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme2.scheme_name), :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
     create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme2.scheme_name), :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
