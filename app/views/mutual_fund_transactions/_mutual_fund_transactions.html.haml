@@ -5,16 +5,18 @@
       %th Type
       %th Name
       %th Quantity
-      %th Price
-      %th Total Amount
+      %th Price (Rs)
+      %th Transaction Amount (Rs)
+      %th Comments
 
     - mutual_fund_transactions.each do |mf_transaction|
       %tr
         %td= l mf_transaction.date
-        %td= mf_transaction.action.to_s.titleize
+        %td{:class => mf_transaction.action}= mf_transaction.action.to_s.titleize
         %td= mf_transaction.mutual_fund.name
         %td= mf_transaction.amount
         %td= number_to_indian_currency mf_transaction.price
-        %td= number_to_indian_currency mf_transaction.value
+        %td= number_to_indian_currency mf_transaction.value.abs
+        %td= mf_transaction.comments || t("tables_not_available")
 -else
   = t "transactions.no_mutual_fund_transactions"

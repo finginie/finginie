@@ -15,6 +15,6 @@ class RealEstateTransactionsController < InheritedResources::Base
     params[:real_estate_transaction].delete "id"
     object = build_resource
     create_resource(object)
-    create_sell!{ redirect_to details_portfolio_path(parent), :notice => "Successfully sell your property" and return }
+    create_sell!{ redirect_to details_portfolio_path(parent), :notice => "Successfully sold your property" and return }
   end
 end

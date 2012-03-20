@@ -7,11 +7,11 @@
           %tr
             %th Name
             %th Quantity
-            %th Average Cost Price
-            %th Market Price
-            %th Amount Invested
-            %th Market Value
-            %th Profit
+            %th Average Cost Price (Rs)
+            %th Market Price (Rs)
+            %th Amount Invested (Rs)
+            %th Market Value (Rs)
+            %th Profit (Rs)
           - resource.send(positions).each do |net_position|
             %tr
               %td= net_position.name
@@ -31,12 +31,12 @@
       %table
         %tr
           %th Name
-          %th Quantity
-          %th Average Cost Price
-          %th Market Price
-          %th Amount Invested
-          %th Market Value
-          %th Profit
+          %th Quantity (grams)
+          %th Average Cost Price (Rs)
+          %th Market Price (Rs)
+          %th Amount Invested (Rs)
+          %th Market Value (Rs)
+          %th Profit (Rs)
 
         %tr
           %td= resource.gold_transactions.name

@@ -3,11 +3,11 @@
     %tr
       %th Date
       %th Name
-      %th Rate of Interest
-      %th Duration
-      %th Invested Amount
-      %th Current Value
-      %th{:colspan => 2} Profit
+      %th Rate of Interest (% p.a)
+      %th Duration (years)
+      %th Invested Amount (Rs)
+      %th Current Value (Rs)
+      %th{:colspan => 2} Profit(Rs)
     - fixed_deposit_positions.each do |net_position|
       %tr
         %td= l net_position.first.date

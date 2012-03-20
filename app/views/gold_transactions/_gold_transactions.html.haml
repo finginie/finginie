@@ -4,17 +4,19 @@
       %th Date
       %th Type
       %th Name
-      %th Quantity
-      %th Price
-      %th Total Amount
+      %th Quantity (grams)
+      %th Price (Rs)
+      %th Transaction Amount (Rs)
+      %th Comments
 
     - gold_transactions.each do |gold_transaction|
       %tr
         %td= l gold_transaction.date
-        %td= gold_transaction.action.to_s.titleize
+        %td{:class => gold_transaction.action}= gold_transaction.action.to_s.titleize
         %td= gold_transaction.gold.name
         %td= gold_transaction.amount
         %td= number_to_indian_currency gold_transaction.price
-        %td= number_to_indian_currency gold_transaction.value
+        %td= number_to_indian_currency gold_transaction.value.abs
+        %td= gold_transaction.comments || t("tables_not_available")
 -else
   = t "transactions.no_gold_transactions"

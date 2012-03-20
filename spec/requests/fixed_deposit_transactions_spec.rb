@@ -22,10 +22,9 @@ describe "FixedDepositTransactions" do
     Timecop.freeze (Date.civil(2012, 03, 01)) do
       visit portfolio_fixed_deposit_transactions_path(portfolio)
       expected_table = [
-                         [ "Date","Type", "Name", "Rate of Interest", "Duration", "Invested Amount", "Current Value", "Interest"],
-                         [ I18n.l(Date.civil(2011,12,10)), "Buy", fixed_deposit.name, "10.0", "5.0", "5,000.00", "5,108.22", "108.22"],
+                         [ I18n.l(Date.civil(2011,12,10)), "Buy", fixed_deposit.name, "10.0", "5.0", "5,000.00", "-"],
                       ]
-      tableish("table").should eq expected_table
+      tableish("table").should include *expected_table
     end
   end
 
