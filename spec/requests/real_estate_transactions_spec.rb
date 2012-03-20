@@ -22,10 +22,9 @@ describe "RealEstateTransactions" do
 
     visit portfolio_real_estate_transactions_path(portfolio)
     expected_table = [
-                       [ "Date", "Type", "Name", "Buy Value", "Current Value", "Change (%)"],
-                       [ I18n.l(Date.civil(2011,12,10)), "Buy", "Test Property", "50,000.00", "60,000.00", "20.00"],
+                       [ I18n.l(Date.civil(2011,12,10)), "Buy", "Test Property", "50,000.00", "-"],
                     ]
-    tableish("table").should eq expected_table
+    tableish("table").should include *expected_table
   end
 
   it "user should sell real estate property" do

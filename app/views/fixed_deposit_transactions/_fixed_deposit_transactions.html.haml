@@ -4,11 +4,10 @@
       %th Date
       %th Type
       %th Name
-      %th Rate of Interest
-      %th Duration
-      %th Invested Amount
-      %th Current Value
-      %th Interest
+      %th Rate of Interest (% p.a.)
+      %th Duration (years)
+      %th Transaction Amount (Rs)
+      %th Comments
 
     - fixed_deposit_transactions.each do |transaction|
       %tr
@@ -17,8 +16,7 @@
         %td= transaction.name
         %td= transaction.rate_of_interest
         %td= transaction.period
-        %td= number_to_indian_currency transaction.invested_amount
-        %td= number_to_indian_currency transaction.current_value
-        %td= number_to_indian_currency transaction.interest
+        %td= number_to_indian_currency transaction.invested_amount.abs
+        %td= transaction.comments || t("tables_not_available")
 - else
   = t "transactions.no_fixed_deposit_transactions"

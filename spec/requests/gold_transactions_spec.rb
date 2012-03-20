@@ -30,10 +30,9 @@ describe "GoldTransactions" do
     create :gold_transaction, :gold => gold, :portfolio => portfolio, :quantity => 1, :price => 5, :date => Date.today
     visit portfolio_gold_transactions_path(portfolio)
     expected_table = [
-                       [ "Date","Type", "Name", "Quantity", "Price", "Total Amount"],
-                       [ I18n.l(Date.today), "Buy", "Gold", "1", "5.00", "5.00"],
+                       [ I18n.l(Date.today), "Buy", "Gold", "1", "5.00", "5.00", "-"],
                     ]
-    tableish("table").should eq expected_table
+    tableish("table").should include *expected_table
   end
 
 end

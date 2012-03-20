@@ -22,28 +22,25 @@ describe "Portfolios" do
     find("li#navigation-details").find("a").click
 
     expected_table_for_stocks = [
-                                  ["Name", "Quantity", "Average Cost Price", "Market Price", "Amount Invested", "Market Value", "Profit"],
                                   [stock.name, "10.00", "3.00", "5.00", "30.00", "50.00", "20.00"]
                                 ]
     expected_table_for_mfs =    [
-                                  ["Name", "Quantity", "Average Cost Price", "Market Price", "Amount Invested", "Market Value", "Profit"],
                                   [scheme.scheme_name, "10.00", "3.00", "5.00", "30.00", "50.00", "20.00"]
                                 ]
     expected_table_for_gold =   [
-                                  ["Name", "Quantity", "Average Cost Price", "Market Price", "Amount Invested", "Market Value", "Profit"],
                                   ["Gold", "10.00", "3.00", "5.00", "30.00", "50.00", "20.00"]
                                 ]
 
     within "#stock_positions" do
-      tableish("table").should eq expected_table_for_stocks
+      tableish("table").should include *expected_table_for_stocks
     end
 
     within "#mutual_fund_positions" do
-      tableish("table").should eq expected_table_for_mfs
+      tableish("table").should include *expected_table_for_mfs
     end
 
     within "#gold_positions" do
-      tableish("table").should eq expected_table_for_gold
+      tableish("table").should include *expected_table_for_gold
     end
   end
 
@@ -53,10 +50,9 @@ describe "Portfolios" do
 
     visit details_portfolio_path(portfolio)
     expected_table = [
-                       [ "Date", "Name", "Rate of Interest", "Duration", "Outstanding Amount"],
                        [ I18n.l(8.months.ago.to_date), "Test Loan", "10.0", "1.0", "25,937.39", ""],
                     ]
-    tableish("section.Loan table").should eq expected_table
+    tableish("section.Loan table").should include *expected_table
   end
 
   it "user should able to clear the loan" do
@@ -76,10 +72,9 @@ describe "Portfolios" do
 
     visit details_portfolio_path(portfolio)
     expected_table = [
-                       [ "Date", "Name", "Rate of Interest", "Duration", "Invested Amount", "Current Value", "Profit"],
                        [ I18n.l(8.months.ago.to_date), "Foo", "10.0", "1.0","1,00,000.00", "1,06,578.78", "6,578.78", ""]
                     ]
-    tableish("section.FixedDeposit table").should eq expected_table
+    tableish("section.FixedDeposit table").should include *expected_table
   end
 
   it "user should able to redeem the fixed deposit" do
@@ -99,10 +94,9 @@ describe "Portfolios" do
 
     visit details_portfolio_path(portfolio)
     expected_table = [
-                       [ "Date", "Name", "Buy Value", "Current Value", "Profit"],
                        [ I18n.l(Date.civil(2011,12,10)), "Test Property", "50,000.00", "60,000.00", "10,000.00", ""],
                     ]
-    tableish("section.RealEstate table").should eq expected_table
+    tableish("section.RealEstate table").should include *expected_table
   end
 
    it "user should able to sell real estate property" do
@@ -121,7 +115,6 @@ describe "Portfolios" do
 
     visit portfolio_path(portfolio)
     expected_table = [
-                       [ 'Asset Class',  'Percentage(%)',                  'Amount' ],
                        [ 'Stocks',         "5.84",                          "50.00"],
                        [ 'Mutual Funds',   "5.84",                          "50.00"],
                        [ 'Gold',           "5.84",                          "50.00"],
@@ -132,7 +125,7 @@ describe "Portfolios" do
                        ["Total Liabilities",I18n.t("tables_not_available"), "258.63"],
                        ["Net Worth",        I18n.t("tables_not_available"),  "597.95"]
                       ]
-    tableish("table").should eq expected_table
+    tableish("table").should include *expected_table
   end
 
   context "new portfolio" do
@@ -186,15 +179,13 @@ describe "Portfolios" do
     click_link 'Historical Transactions'
 
     expected_table_for_stock_transactions = [
-                       [ "Date","Type", "Name", "Quantity", "Price", "Total Amount"],
-                       [ I18n.l(Date.today), "Buy", stock.name, "1", "5.00", "5.00"],
+                       [ I18n.l(Date.today), "Buy", stock.name, "1", "5.00", "5.00", "-"],
                     ]
     expected_table_for_mutual_fund_transactions = [
-                         [ "Date","Type", "Name", "Quantity", "Price", "Total Amount"],
-                         [ I18n.l(Date.today), "Buy", scheme.scheme_name, "1", "5.00", "5.00"],
+                         [ I18n.l(Date.today), "Buy", scheme.scheme_name, "1", "5.00", "5.00", "-"],
                       ]
-    tableish("section.StockTransactions table").should eq expected_table_for_stock_transactions
-    tableish("section.MutualFundTransactions table").should eq expected_table_for_mutual_fund_transactions
+    tableish("section.StockTransactions table").should include *expected_table_for_stock_transactions
+    tableish("section.MutualFundTransactions table").should include *expected_table_for_mutual_fund_transactions
   end
 
   it "should have Profit/Loss page "do
