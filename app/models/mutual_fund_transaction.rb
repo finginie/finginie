@@ -41,6 +41,6 @@ private
   end
 
   def sell_quantity_should_be_less_than_or_equal_to_quantity
-    errors.add(:quantity, "Your portfolio do not have sufficient number of mutual funds for this action") if action == "sell" && portfolio.mutual_fund_transactions.for(mutual_fund.name).quantity < quantity
+    errors.add(:quantity, "Insufficient number of units for this action") if action == "sell" && portfolio.mutual_fund_transactions.for(mutual_fund.name).quantity < quantity
   end
 end

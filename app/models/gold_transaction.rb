@@ -29,7 +29,7 @@ private
   end
 
   def sell_quantity_should_be_less_than_or_equal_to_quantity
-    errors.add(:quantity, "Your portfolio do not have sufficient number of stocks for this action") if action == "sell" && portfolio.gold_transactions.quantity <= quantity
+    errors.add(:quantity, "Insufficient number of quantity for this action") if action == "sell" && portfolio.gold_transactions.quantity <= quantity
   end
 
 end
