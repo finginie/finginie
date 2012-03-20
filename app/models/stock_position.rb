@@ -7,7 +7,7 @@ module StockPosition
   end
 
   def quantity
-    sum(:quantity)
+    sum(&:amount)
   end
 
   def current_value

@@ -27,10 +27,10 @@ describe PortfolioDecorator do
 
   it"should have stocks sell positions" do
     subject
-    create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => -4, :price => 6, :date => Date.today
+    create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
     stock1 = create :stock_with_scrip, :sector => "BAR"
     create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
-    create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => :sell
+    create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
 
     subject.stocks_positions_profit_or_loss.should include(*[[stock.name, "12.00" ], [stock1.name, "-4.00"]])
   end
@@ -44,11 +44,10 @@ describe PortfolioDecorator do
 
   it "should have mutual fund sell positions" do
     subject
-    create :mutual_fund_transaction, :mutual_fund => create( :mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio, :quantity => -4, :price => 6, :date => Date.today
+    create :mutual_fund_transaction, :mutual_fund => create( :mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
     scheme2 = create :scheme_master, :scheme_class_description => "BAR"
-    2.times { |n| create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme2.scheme_name),
-                                                   :portfolio => portfolio, :quantity => 1- n * (n +1),
-                                                   :price => -n+5, :date => (-n +2).days.ago }
+    create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme2.scheme_name), :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
+    create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme2.scheme_name), :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
 
     subject.mutual_fund_positions_profit_or_loss.should include(*[[ scheme.scheme_name, "12.00" ],[ scheme2.scheme_name, "-1.00"]] )
   end
@@ -90,27 +89,26 @@ describe PortfolioDecorator do
     fixed_deposit = create :fixed_deposit, :name => "Foo", :period => 5, :rate_of_interest => 10.0
     create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 100, :date => 8.months.ago.to_date
 
-    create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => 500, :date => Date.civil(2011, 12, 01)
+    create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => 500, :date => Date.civil(2011, 12, 01), :action => "buy"
   end
 
   def create_sell_position_of_all_securities_type
-    create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => -4, :price => 6, :date => Date.today
+    create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
     stock1 = create :stock_with_scrip, :sector => "BAR", :name => "FOO"
     create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
-    create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => :sell
+    create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
 
-    create :mutual_fund_transaction, :mutual_fund => create( :mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio, :quantity => -4, :price => 6, :date => Date.today
+    create :mutual_fund_transaction, :mutual_fund => create( :mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
     scheme2 = create :scheme_master, :scheme_class_description => "BAR", :scheme_name => "Foo Scheme Name"
-    2.times { |n| create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme2.scheme_name),
-                                                   :portfolio => portfolio, :quantity => 1- n * (n +1),
-                                                   :price => -n+5, :date => (-n +2).days.ago }
+    create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme2.scheme_name), :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
+    create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme2.scheme_name), :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
 
     fixed_deposit = create :fixed_deposit, :name => "Foo", :period => 5, :rate_of_interest => 8.0
-    create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => -100, :date => 1.months.ago.to_date
+    create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 100, :date => 1.months.ago.to_date, :action => "sell"
 
-    create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => -900, :date => Date.civil(2012, 2, 01)
+    create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => 900, :date => Date.civil(2012, 2, 01), :action => "sell"
     real_estate_2 = create :real_estate, :name => "Test Property2", :location => "Mordor", :current_price => 500
     create :real_estate_transaction, :real_estate => real_estate_2, :portfolio => portfolio, :price => 900, :date => Date.civil(2011, 12, 01)
-    create :real_estate_transaction, :real_estate => real_estate_2, :portfolio => portfolio, :price => -500, :date => Date.civil(2012, 01, 01)
+    create :real_estate_transaction, :real_estate => real_estate_2, :portfolio => portfolio, :price => 500, :date => Date.civil(2012, 01, 01), :action => "sell"
   end
 end

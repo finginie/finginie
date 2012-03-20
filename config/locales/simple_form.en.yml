@@ -101,14 +101,14 @@ en:
         sector_contains: 'Sector Contains (optional)'
       gold_transaction:
         price: 'Prices (Rs)'
-        amount: 'Quantity (grams)'
+        quantity: 'Quantity (grams)'
       mutual_fund_transaction:
-        amount: 'Quantity'
+        quantity: 'Quantity'
         price: 'Prices (Rs)'
         mutual_fund:
           scheme: 'Scheme Name'
       stock_transaction:
-        amount: 'Quantity'
+        quantity: 'Quantity'
         price: 'Prices (Rs)'
         stock: 'Company Name'
       real_estate_transaction:
@@ -116,6 +116,8 @@ en:
           location: 'Location (City/Town/Village)'
           current_price: 'Current market value (Rs)'
         price: 'Purchase price (Rs)'
+        sell:
+          price: 'Sell price (Rs)'
       fixed_deposit_transaction:
         price: 'Amount (Rs)'
         fixed_deposit:
@@ -123,7 +125,7 @@ en:
           period: 'Period/Tenure'
           rate_of_interest: 'Rate of Interest (% p.a.)'
       loan_transaction:
-        amount: 'Amount (Rs)'
+        price: 'Amount (Rs)'
         loan:
           name: 'Name'
           period: 'Period/Tenure'

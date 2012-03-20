@@ -32,7 +32,7 @@ describe "RealEstateTransactions" do
     real_estate_transaction = create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => 5000, :date => Date.civil(2011,12,10)
     visit  sell_portfolio_real_estate_transaction_path(portfolio, real_estate_transaction)
 
-    fill_in "Amount", :with => 5000
+    fill_in I18n.t("simple_form.labels.real_estate_transaction.sell.price"), :with => 120000
     click_on "Submit"
     page.should have_content "Successfully"
     current_path.should eq details_portfolio_path(portfolio)

@@ -19,7 +19,7 @@ describe "LoanTransactions" do
 
   let (:loan) { create :loan, :period => 5, :rate_of_interest => 10 }
   it "should show loan transactons index page" do
-    create :loan_transaction, :loan => loan, :portfolio => portfolio, :price => -5000, :date => Date.civil(2011,12,10)
+    create :loan_transaction, :loan => loan, :portfolio => portfolio, :price => 5000, :date => Date.civil(2011,12,10), :action => "borrow"
 
     Timecop.freeze (Date.civil(2012, 03, 01)) do
       visit portfolio_loan_transactions_path(portfolio)

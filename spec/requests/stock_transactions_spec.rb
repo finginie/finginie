@@ -18,7 +18,7 @@ describe "StockTransactions" do
 
       fill_in "Price", :with => 200
       select 'Buy', :from => "Action"
-      fill_in I18n.t("simple_form.labels.stock_transaction.amount"), :with => 30
+      fill_in I18n.t("simple_form.labels.stock_transaction.quantity"), :with => 30
       click_on I18n.t("helpers.submit.stock_transaction.create")
       page.should have_content "successfully"
       current_path.should eq details_portfolio_path(portfolio)
@@ -30,7 +30,7 @@ describe "StockTransactions" do
       select stock.name, :from => I18n.t("simple_form.labels.stock_transaction.stock")
       fill_in "Price", :with => 200
       select 'Sell', :from => "Action"
-      fill_in I18n.t("simple_form.labels.stock_transaction.amount"), :with => 30
+      fill_in I18n.t("simple_form.labels.stock_transaction.quantity"), :with => 30
       click_on I18n.t("helpers.submit.stock_transaction.create")
       page.should_not have_content "successfully"
     end

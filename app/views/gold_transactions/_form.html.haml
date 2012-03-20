@@ -3,7 +3,7 @@
 
   .inputs
     = f.input :action, :collection => [["Buy",:buy], ["Sell",:sell]], :include_blank => false
-    = f.input :amount
+    = f.input :quantity
     = f.input :price
     = f.input :date,:order=> [:day,:month,:year]
     = f.input :comments

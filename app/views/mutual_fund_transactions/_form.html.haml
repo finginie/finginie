@@ -7,7 +7,7 @@
         = mf.input :scheme do
           = mf.text_field :scheme, data: { autocomplete_source: mutual_funds_path }
     = f.input :action, :collection => [["Buy", :buy], ["Sell", :sell]]
-    = f.input :amount
+    = f.input :quantity
     = f.input :price
     = f.input :date, :order => [:day, :month, :year]
     = f.input :comments

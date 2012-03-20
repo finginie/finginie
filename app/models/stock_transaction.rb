@@ -7,8 +7,8 @@ class StockTransaction < ActiveRecord::Base
   validates_numericality_of :price, :quantity
   validate  :date_should_not_be_in_the_future, :sell_quantity_should_be_less_than_or_equal_to_quantity
 
-  scope :buys, where("quantity >= ?", 0)
-  scope :sells, where("quantity < ?", 0)
+  scope :buys, where("action = ?", "buy")
+  scope :sells, where("action = ?", "sell")
   scope :before, lambda { |transaction|
     where('date < :date or ( date = :date and created_at < :created_at )',
         :date => transaction.date,
@@ -21,7 +21,7 @@ class StockTransaction < ActiveRecord::Base
   end
 
   def profit_or_loss
-    @profit_or_loss ||= buy? ? 0 : amount * ( price - adjusted_average_price )
+    @profit_or_loss ||= buy? ? 0 : quantity * ( price - adjusted_average_price )
   end
 
   def value
@@ -33,43 +33,24 @@ class StockTransaction < ActiveRecord::Base
     @average_price ||= buy? ? ((transactions.value + value) / (transactions.quantity + quantity)).round(2) : transactions.average_cost_price
   end
 
-  def action
-    (quantity < 0 ? :sell : :buy) if quantity
-  end
-
   def buy?
-    quantity >= 0
+    amount >= 0
   end
 
   def sell?
-    quantity < 0
-  end
-
-  def action=(action)
-    set_quantity(amount, action)
-    action
+    amount < 0
   end
 
   def amount
-    quantity && quantity.abs
-  end
-  def amount=(amount)
-    set_quantity(amount, action)
-    amount
+    action.to_sym == :buy ? quantity : (quantity * -1)
   end
 
 private
-  def set_quantity(amount, action)
-    action ||= :buy
-    amount ||= 1
-    self.quantity = { :buy => 1, :sell => -1}[action.to_sym] * amount.to_i
-  end
-
   def date_should_not_be_in_the_future
     errors.add(:date, "can't be in the future") if !date.blank? and date > Date.today
   end
 
   def sell_quantity_should_be_less_than_or_equal_to_quantity
-    errors.add(:amount, "Insufficient number of stocks for this action") if action == :sell && portfolio.stock_transactions.for(stock.id).quantity < amount
+    errors.add(:quantity, "Insufficient number of stocks for this action") if action == "sell" && portfolio.stock_transactions.for(stock.id).quantity < quantity
   end
 end

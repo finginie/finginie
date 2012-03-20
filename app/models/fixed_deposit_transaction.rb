@@ -33,7 +33,7 @@ class FixedDepositTransaction < ActiveRecord::Base
     end
 
     def unrealised_profit
-      (current_value - first.amount).round(2)
+      (current_value - first.price).round(2)
     end
 
     def profit_or_loss
@@ -42,9 +42,9 @@ class FixedDepositTransaction < ActiveRecord::Base
   end
 
   def profit_or_loss
-    if action == :sell
+    if action.to_sym == :sell
      time_period = [ (date - portfolio.fixed_deposit_transactions.for(name).first.date)/365, period ].min
-     (fixed_deposit.send(:value_at_date, amount, time_period) - amount).round(2)
+     (fixed_deposit.send(:value_at_date, price, time_period) - price).round(2)
     end
   end
 
@@ -60,20 +60,8 @@ class FixedDepositTransaction < ActiveRecord::Base
     (current_value - invested_amount).round(2)
   end
 
-  def action
-    (price < 0 ? :sell : :buy) if price
-  end
-  def action=(action)
-    set_price(amount, action)
-    action
-  end
-
   def amount
-    price && price.abs
-  end
-  def amount=(amount)
-    set_price(amount, action)
-    amount
+    action.to_sym == :buy ? price : (price * -1)
   end
 
   def fixed_deposit
@@ -81,12 +69,6 @@ class FixedDepositTransaction < ActiveRecord::Base
   end
 
 private
-  def set_price(amount, action)
-    action ||= :buy
-    amount ||= 1
-    self.price = { :buy => 1, :sell => -1}[action.to_sym] * amount.to_i
-  end
-
   def date_should_not_be_in_the_future
     errors.add(:date, "can't be in the future") if !date.blank? and date > Date.today
   end

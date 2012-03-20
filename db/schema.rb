@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120316084211) do
+ActiveRecord::Schema.define(:version => 20120319085401) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20120316084211) do
     t.integer  "fixed_deposit_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.string   "action"
   end
 
   add_index "fixed_deposit_transactions", ["fixed_deposit_id"], :name => "index_fixed_deposit_transactions_on_fixed_deposit_id"
@@ -76,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20120316084211) do
     t.integer  "gold_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "action"
   end
 
   add_index "gold_transactions", ["gold_id"], :name => "index_gold_transactions_on_gold_id"
@@ -89,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20120316084211) do
     t.integer  "loan_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "action"
   end
 
   add_index "loan_transactions", ["loan_id"], :name => "index_loan_transactions_on_loan_id"
@@ -103,6 +106,7 @@ ActiveRecord::Schema.define(:version => 20120316084211) do
     t.integer  "mutual_fund_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "action"
   end
 
   add_index "mutual_fund_transactions", ["mutual_fund_id"], :name => "index_mutual_fund_transactions_on_mutual_fund_id"
@@ -155,6 +159,7 @@ ActiveRecord::Schema.define(:version => 20120316084211) do
     t.integer  "real_estate_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "action"
   end
 
   add_index "real_estate_transactions", ["portfolio_id"], :name => "index_real_estate_transactions_on_portfolio_id"
@@ -207,6 +212,7 @@ ActiveRecord::Schema.define(:version => 20120316084211) do
     t.integer  "stock_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "action"
   end
 
   add_index "stock_transactions", ["portfolio_id"], :name => "index_stock_transactions_on_portfolio_id"

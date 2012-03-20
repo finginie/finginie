@@ -6,6 +6,7 @@ FactoryGirl.define do
       stock
       quantity 1
       price 9.99
+      action "buy"
       date "2012-03-02"
         #portfolio
         #stock
