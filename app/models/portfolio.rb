@@ -3,7 +3,7 @@ class Portfolio < ActiveRecord::Base
 
   has_many :stock_transactions
   has_many :mutual_fund_transactions
-  has_many :gold_transactions, :order => :date, :extend => GoldPosition
+  has_many :gold_transactions
   has_many :loan_transactions
   has_many :fixed_deposit_transactions
   has_many :real_estate_transactions
@@ -60,7 +60,7 @@ class Portfolio < ActiveRecord::Base
   end
 
   def gold_value
-    gold_transactions.current_value
+    gold_transactions.for(Gold).current_value
   end
 
   def real_estates_value

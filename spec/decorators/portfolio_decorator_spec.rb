@@ -80,8 +80,7 @@ describe PortfolioDecorator do
     navcp  = create :navcp, :nav_amount => "5", :security_code => scheme.securitycode
     4.times { |n| create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-    gold = create :gold, :name => "Gold", :current_price => 5
-    4.times { |n| create :gold_transaction, :gold => gold, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    4.times { |n| create :gold_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     loan =  create :loan, :name => "Foo Loan", :rate_of_interest => "10", :period => "1"
     loan_transaction =  create :loan_transaction, :loan => loan, :price => 1000, :date => 8.months.ago.to_date, :portfolio => portfolio

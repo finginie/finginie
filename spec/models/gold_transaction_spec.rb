@@ -10,7 +10,6 @@ describe GoldTransaction do
   it { should validate_numericality_of :price }
   it { should validate_numericality_of :quantity }
   it { should belong_to :portfolio }
-  it { should belong_to :gold }
   it { should allow_value(1.day.ago).for(:date) }
   it { should allow_value(Date.today).for(:date) }
   it { should_not allow_value(1.day.from_now).for(:date) }

@@ -40,12 +40,12 @@
 
         %tr
           %td= resource.gold_transactions.name
-          %td= number_to_indian_currency resource.gold_transactions.quantity
-          %td= number_to_indian_currency resource.gold_transactions.average_cost_price
-          %td= number_to_indian_currency resource.gold_transactions.current_price
-          %td= number_to_indian_currency resource.gold_transactions.value
-          %td= number_to_indian_currency resource.gold_transactions.current_value
-          %td= number_to_indian_currency resource.gold_transactions.unrealised_profit
+          %td= number_to_indian_currency resource.gold_transactions.for(Gold).quantity
+          %td= number_to_indian_currency resource.gold_transactions.for(Gold).average_cost_price
+          %td= number_to_indian_currency resource.gold_transactions.for(Gold).current_price
+          %td= number_to_indian_currency resource.gold_transactions.for(Gold).value
+          %td= number_to_indian_currency resource.gold_transactions.for(Gold).current_value
+          %td= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
   - else
     = t ".no_gold_positions"
 

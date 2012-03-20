@@ -1,11 +1,4 @@
-module StockPosition
-
-  delegate :name, :sector, :current_price, :to => :stock
-
-  def stock
-    last.stock
-  end
-
+module MarketTradablePosition
   def quantity
     sum(&:amount)
   end

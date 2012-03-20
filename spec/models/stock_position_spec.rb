@@ -13,16 +13,14 @@ describe "StockPosition" do
     4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
   end
 
-  pending {
   its (:name) { should eq stock.name }
   its (:quantity) { should eq 10 }
   its (:average_cost_price) { should eq 3 }
   its (:value) { should eq 30 }
   its (:current_value) { should eq 50 }
   its (:unrealised_profit) { should eq 20 }
-  }
 
-  pending "should calculate the average cost price after sell transaction" do
+  it "should calculate the average cost price after sell transaction" do
     subject # ensure stock transaction is saved
     create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => :sell
     subject.average_cost_price.should eq 3
@@ -38,6 +36,12 @@ describe "StockPosition" do
     subject.all # force reload all transactions
     subject.average_cost_price.should eq 4
     subject.value.should eq 36
+  end
+
+  it "should calculate average cost price based only on the transactions of current portfolio" do
+    create :stock_transaction, :stock => stock, :quantity => 10, :price => 5, :date => 5.days.ago
+    subject.average_cost_price.should_not == 4
+    subject.average_cost_price.should eq 3
   end
 
 end

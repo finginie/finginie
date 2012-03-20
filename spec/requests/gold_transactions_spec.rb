@@ -3,9 +3,8 @@ require 'spec_helper'
 describe "GoldTransactions" do
   include_context "logged in user"
   let (:portfolio) { create :portfolio, :user => current_user }
-  let (:gold) { create :gold, :name => "Gold", :current_price => 2456 }
   it "should add a new gold transaction to a portfolio" do
-    gold.save # ensure gold is created
+    Gold.current_price = 2456
     visit  new_portfolio_gold_transaction_path(portfolio)
 
     fill_in "Price", :with => 200
@@ -17,7 +16,7 @@ describe "GoldTransactions" do
   end
 
   it "should not add a new sell transaction if the quantity for gold is not available in the portfolio" do
-    gold.save
+    Gold.current_price = 2456
     visit new_portfolio_gold_transaction_path(portfolio)
     fill_in "Price", :with => 200
     select 'Sell', :from => "Action"
@@ -27,7 +26,8 @@ describe "GoldTransactions" do
   end
 
   it "should show gold transactons index page" do
-    create :gold_transaction, :gold => gold, :portfolio => portfolio, :quantity => 1, :price => 5, :date => Date.today, :action => :buy
+    Gold.current_price = 2456
+    create :gold_transaction, :portfolio => portfolio, :quantity => 1, :price => 5, :date => Date.today, :action => :buy
     visit portfolio_gold_transactions_path(portfolio)
     expected_table = [
                        [ I18n.l(Date.today), "Buy", "Gold", "1", "5.00", "5.00", "-"],

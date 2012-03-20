@@ -8,7 +8,6 @@ describe "Portfolios" do
   let(:scrip) { create :scrip, :last_traded_price => 5, :id => stock.symbol}
   let(:scheme) { create :scheme_master }
   let(:navcp) { create :navcp, :nav_amount => "5", :security_code => scheme.securitycode }
-  let(:gold) { create :gold, :name => "Gold", :current_price => 5 }
   let(:real_estate) { create :real_estate, :name => "Test Property", :location => "Mordor", :current_price => 600 }
 
   it "should show all net positions in details page" do
@@ -17,7 +16,7 @@ describe "Portfolios" do
     4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
     4.times { |n| create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme.scheme_name),
                           :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
-    4.times { |n| create :gold_transaction, :gold => gold, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    4.times { |n| create :gold_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
     visit portfolio_path(portfolio)
     find("li#navigation-details").find("a").click
 
@@ -208,7 +207,7 @@ describe "Portfolios" do
   end
 
   it "user can able to add transactions after selecting securities type", :js => true do
-    create :gold, :name => "Gold", :current_price => 2456
+    Gold.current_price = 2456
 
     visit portfolio_path(portfolio)
 
@@ -233,7 +232,7 @@ describe "Portfolios" do
     navcp.save
     4.times { |n| create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-    4.times { |n| create :gold_transaction, :gold => gold, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    4.times { |n| create :gold_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     loan =  create :loan, :name => "Foo Loan", :rate_of_interest => "10", :period => "1"
     loan_transaction =  create :loan_transaction, :loan => loan, :price => 1000, :date => 8.months.ago.to_date, :portfolio => portfolio, :action => "borrow"

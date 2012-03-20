@@ -124,7 +124,7 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def gold_positions_profit_or_loss
-    gold_transactions.profit_or_loss ? [[ "Gold", number_to_indian_currency(gold_transactions.profit_or_loss)]] : []
+    gold_transactions.for(Gold).profit_or_loss ? [[ "Gold", number_to_indian_currency(gold_transactions.profit_or_loss)]] : []
   end
 
   def positions

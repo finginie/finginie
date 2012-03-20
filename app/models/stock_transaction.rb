@@ -7,49 +7,18 @@ class StockTransaction < ActiveRecord::Base
   validates :price, :numericality => {:greater_than => 0}, :presence => true
   validates :quantity, :numericality => {:greater_than => 0}, :presence => true
 
-  scope :buys, where("action = ?", "buy")
-  scope :sells, where("action = ?", "sell")
-  scope :before, lambda { |transaction|
-    where('date < :date or ( date = :date and created_at < :created_at )',
-        :date => transaction.date,
-        :created_at => transaction.created_at
-        ).order('date, created_at')
-  }
+  scope :for, lambda { |stock| where(:stock_id => stock).order(:date, :created_at) } do
+    include MarketTradablePosition
 
-  scope :for, lambda { |stock| where(:stock_id => stock).order("date ASC, created_at ASC") } do
-    include StockPosition
+    delegate :stock, :to => :first
+    delegate :name, :sector, :current_price, :to => :stock
   end
 
-  def profit_or_loss
-    @profit_or_loss ||= buy? ? 0 : quantity * ( price - adjusted_average_price )
-  end
+  alias :security :stock
 
-  def value
-    quantity * price
-  end
-
-  def adjusted_average_price
-    transactions = portfolio.stock_transactions.for(stock).before(self)
-    @average_price ||= buy? ? ((transactions.value + value) / (transactions.quantity + quantity)).round(2) : transactions.average_cost_price
-  end
-
-  def buy?
-    amount >= 0
-  end
-
-  def sell?
-    amount < 0
-  end
-
-  def amount
-    action.to_sym == :buy ? quantity : (quantity * -1)
-  end
+  include MarketTradableTransaction
 
 private
-  def date_should_not_be_in_the_future
-    errors.add(:date, "can't be in the future") if !date.blank? and date > Date.today
-  end
-
   def sell_quantity_should_be_less_than_or_equal_to_quantity
     errors.add(:quantity, "Insufficient number of stocks for this action") if action == "sell" && portfolio.stock_transactions.for(stock.id).quantity < quantity
   end

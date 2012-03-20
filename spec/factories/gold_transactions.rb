@@ -8,6 +8,5 @@ FactoryGirl.define do
     action "buy"
     #comments "MyText"
     portfolio
-    gold
   end
 end
