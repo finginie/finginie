@@ -4,12 +4,14 @@ describe RealEstateTransaction do
   let(:real_estate_transaction) { create :real_estate_transaction }
   it { should validate_presence_of :price }
   it { should validate_presence_of :date }
+  it { should validate_presence_of :action }
   it { should validate_presence_of :portfolio_id }
   it { should belong_to :portfolio }
   it { should belong_to :real_estate }
   it { should allow_value(1.day.ago).for(:date) }
   it { should allow_value(Date.today).for(:date) }
   it { should_not allow_value(1.day.from_now).for(:date) }
+  it { should_not allow_value(-1).for(:price) }
 
   it "should get amount" do
     real_estate_transaction.action = "buy"

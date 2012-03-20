@@ -2,8 +2,8 @@ class FixedDepositTransaction < ActiveRecord::Base
   belongs_to :portfolio
   belongs_to :fixed_deposit
 
-  validates_presence_of :price, :date, :portfolio_id
-  validates_numericality_of :price
+  validates_presence_of :date, :portfolio_id
+  validates :price, :numericality => {:greater_than => 0}, :presence => true
   validate  :date_should_not_be_in_the_future
 
   accepts_nested_attributes_for :fixed_deposit

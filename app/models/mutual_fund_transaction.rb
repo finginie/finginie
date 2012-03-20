@@ -4,9 +4,10 @@ class MutualFundTransaction < ActiveRecord::Base
 
   accepts_nested_attributes_for :mutual_fund
 
-  validates_presence_of :price, :quantity, :date
-  validates_numericality_of :price, :quantity
+  validates_presence_of :date, :action
   validate  :date_should_not_be_in_the_future, :sell_quantity_should_be_less_than_or_equal_to_quantity
+  validates :price, :numericality => {:greater_than => 0}, :presence => true
+  validates :quantity, :numericality => {:greater_than => 0}, :presence => true
 
   validates :mutual_fund_id, :presence => true, :unless => :mutual_fund
 
