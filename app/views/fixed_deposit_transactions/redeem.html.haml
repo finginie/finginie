@@ -5,9 +5,8 @@
     = f.fields_for :fixed_deposit do |income|
       = income.input :type, :as => :hidden
       = income.input :name, :as => :hidden
-      = resource.name
+      %h1= resource.name
       = income.input :period, :as => :hidden
-      = resource.period
       = income.input :rate_of_interest
 
   .inputs

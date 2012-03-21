@@ -98,18 +98,18 @@ en:
         portfolio_investment: 'You have invested in a portfolio which is a good mix of stocks, bonds, gold, cash, etc. If the value of that portfolio falls by 25% because of a global recession what would you do?'
         time_horizon: 'What is the time horizon for your investment (No. of years)?'
       search:
-        sector_contains: 'Sector Contains (optional)'
+        sector_contains: 'Sector (optional)'
       gold_transaction:
-        price: 'Prices (Rs)'
+        price: 'Price per gram (Rs)'
         quantity: 'Quantity (grams)'
       mutual_fund_transaction:
         quantity: 'Quantity'
-        price: 'Prices (Rs)'
+        price: 'Price (Rs)'
         mutual_fund:
           scheme: 'Scheme Name'
       stock_transaction:
         quantity: 'Quantity'
-        price: 'Prices (Rs)'
+        price: 'Price (Rs)'
         stock: 'Company Name'
       real_estate_transaction:
         real_estate:
@@ -117,6 +117,7 @@ en:
           current_price: 'Current market value (Rs)'
         price: 'Purchase price (Rs)'
         sell:
+          date: 'Sell Date'
           price: 'Sell price (Rs)'
       fixed_deposit_transaction:
         price: 'Amount (Rs)'
@@ -124,6 +125,8 @@ en:
           name: 'Name'
           period: 'Period/Tenure'
           rate_of_interest: 'Rate of Interest (% p.a.)'
+        redeem:
+          date: 'Redemption Date'
       loan_transaction:
         price: 'Amount (Rs)'
         loan:
