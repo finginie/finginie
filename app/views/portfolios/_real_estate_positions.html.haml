@@ -1,21 +1,18 @@
 - unless real_estate_positions.empty?
   %table
     %tr
-      %th Date
       %th Name
       %th Buy Value (Rs)
-      %th Current Value (Rs)
+      %th Market Value (Rs)
       %th{:colspan => 2} Unrealised Profit(Rs)
     - real_estate_positions.each do |net_position|
       %tr
-        %td= l net_position.first.date
         %td= net_position.name
         %td= number_to_indian_currency net_position.buy_value
         %td= number_to_indian_currency net_position.current_value
         %td= number_to_indian_currency net_position.unrealised_profit
         %td= button_to 'Sell', sell_portfolio_real_estate_transaction_path(net_position.first.portfolio_id, net_position.first), :method => :get
     %tr
-      %td
       %td Total
       %td= number_to_indian_currency real_estate_positions.sum(&:buy_value)
       %td= number_to_indian_currency real_estate_positions.sum(&:current_value)
