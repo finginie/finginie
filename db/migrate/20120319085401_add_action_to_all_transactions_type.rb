@@ -25,11 +25,11 @@ class AddActionToAllTransactionsType < ActiveRecord::Migration
     add_column :loan_transactions, :action, :string
     add_column :real_estate_transactions, :action, :string
 
-    MutualFundTransaction.all.each     { |t| t.quantity >= 0 ? t.update_attributes(:action => "buy", :quantity => t.quantity.abs) : t.update_attributes(:action => "sell", :quantity => t.quantity.abs) }
-    StockTransaction.all.each          { |t| t.quantity >= 0 ? t.update_attributes(:action => "buy", :quantity => t.quantity.abs) : t.update_attributes(:action => "sell", :quantity => t.quantity.abs) }
-    GoldTransaction.all.each           { |t| t.quantity >= 0 ? t.update_attributes(:action => "buy", :quantity => t.quantity.abs) : t.update_attributes(:action => "sell", :quantity => t.quantity.abs) }
-    FixedDepositTransaction.all.each   { |t| t.price >= 0 ? t.update_attributes(:action => "buy", :price => t.price.abs) : t.update_attributes(:action => "sell", :price => t.price.abs) }
-    LoanTransaction.all.each           { |t| t.price >= 0 ? t.update_attributes(:action => "buy", :price => t.price.abs) : t.update_attributes(:action => "sell", :price => t.price.abs) }
-    RealEstateTransaction.all.each     { |t| t.price >= 0 ? t.update_attributes(:action => "buy", :price => t.price.abs) : t.update_attributes(:action => "sell", :price => t.price.abs) }
+    MutualFundTransaction.all.each     { |t| t.quantity >= 0 ? t.update_attributes(:action => "buy") : t.update_attributes(:action => "sell", :quantity => - t.quantity) }
+    StockTransaction.all.each          { |t| t.quantity >= 0 ? t.update_attributes(:action => "buy") : t.update_attributes(:action => "sell", :quantity => - t.quantity) }
+    GoldTransaction.all.each           { |t| t.quantity >= 0 ? t.update_attributes(:action => "buy") : t.update_attributes(:action => "sell", :quantity => - t.quantity) }
+    FixedDepositTransaction.all.each   { |t| t.price >= 0 ? t.update_attributes(:action => "buy") : t.update_attributes(:action => "sell", :price => - t.price) }
+    LoanTransaction.all.each           { |t| t.price >= 0 ? t.update_attributes(:action => "buy") : t.update_attributes(:action => "sell", :price => - t.price) }
+    RealEstateTransaction.all.each     { |t| t.price >= 0 ? t.update_attributes(:action => "buy") : t.update_attributes(:action => "sell", :price => - t.price) }
   end
 end
