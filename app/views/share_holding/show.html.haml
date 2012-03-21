@@ -13,7 +13,7 @@
             %td= item[:name]
             %td= @share_holding.get_element_by_code(item[:code])["Percentage"]
       %tr
-        %td Total
+        %td.total Total
         %td= @share_holding.send(attr)
 - else
   %p No Data Available
