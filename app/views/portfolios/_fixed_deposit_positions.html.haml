@@ -18,8 +18,8 @@
         %td= number_to_indian_currency net_position.current_value
         %td= number_to_indian_currency net_position.unrealised_profit
         %td= button_to 'Redeem', redeem_portfolio_fixed_deposit_transaction_path(net_position.first.portfolio_id, net_position.first), :method => :get
-    %tr
-      %td.total Total
+    %tr.total
+      %td Total
       %td
       %td
       %td
