@@ -8,7 +8,10 @@ class Finginie.Views.Stocks.IndexView extends Backbone.View
     @options.stocks.bind('reset', @render)
 
   addAll: () =>
-    @options.stocks.each(@addOne)
+    if @options.stocks.length == 0
+      @$("tbody").append("<td colspan=5 class=norecords >Your search didnt return any results.Try another word instead.</td>")
+    else
+      @options.stocks.each(@addOne)
 
   addOne: (stock) =>
     view = new Finginie.Views.Stocks.StockView({model : stock})
