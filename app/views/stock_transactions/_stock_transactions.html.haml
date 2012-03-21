@@ -14,7 +14,7 @@
         %td= l stock_transaction.date
         %td{:class => stock_transaction.action}= stock_transaction.action.to_s.titleize
         %td= stock_transaction.stock.name
-        %td= stock_transaction.amount
+        %td= stock_transaction.quantity
         %td= number_to_indian_currency stock_transaction.price
         %td= number_to_indian_currency stock_transaction.value.abs
         %td= stock_transaction.comments || t("tables_not_available")
