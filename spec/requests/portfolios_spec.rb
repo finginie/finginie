@@ -23,10 +23,12 @@ describe "Portfolios" do
     find("li#navigation-details").find("a").click
 
     expected_table_for_stocks = [
-                                  [stock.name, "10.00", "3.00", "5.00", "30.00", "50.00", "20.00"]
+                                  [stock.name, "10.00", "3.00", "5.00",  "30.00", "50.00", "20.00"],
+                                  ["",     "",      "",         "Total", "30.00", "50.00", "20.00"]
                                 ]
     expected_table_for_mfs =    [
-                                  [scheme.scheme_name, "10.00", "3.00", "5.00", "30.00", "50.00", "20.00"]
+                                  [scheme.scheme_name, "10.00", "3.00", "5.00", "30.00", "50.00", "20.00"],
+                                  ["",     "",      "",         "Total", "30.00", "50.00", "20.00"]
                                 ]
     expected_table_for_gold =   [
                                   ["Gold", "10.00", "3.00", "5.00", "30.00", "50.00", "20.00"]
@@ -51,7 +53,8 @@ describe "Portfolios" do
 
     visit details_portfolio_path(portfolio)
     expected_table = [
-                       [ I18n.l(8.months.ago.to_date), "Test Loan", "10.0", "1.0", "25,937.39", ""],
+                       [ I18n.l(8.months.ago.to_date), "Test Loan", "10.0", "1.0",   "25,937.39", ""],
+                       [ "",                           "",          "",     "Total", "25,937.39", ""],
                     ]
     tableish("section.Loan table").should include *expected_table
   end
@@ -73,7 +76,8 @@ describe "Portfolios" do
 
     visit details_portfolio_path(portfolio)
     expected_table = [
-                       [ I18n.l(8.months.ago.to_date), "Foo", "10.0", "1.0","1,00,000.00", "1,06,578.78", "6,578.78", ""]
+                       [ I18n.l(8.months.ago.to_date), "Foo", "10.0", "1.0",   "1,00,000.00", "1,06,578.78", "6,578.78", ""],
+                       [ "",                           "",    "",     "Total", "1,00,000.00", "1,06,578.78", "6,578.78", ""]
                     ]
     tableish("section.FixedDeposit table").should include *expected_table
   end
@@ -96,6 +100,7 @@ describe "Portfolios" do
     visit details_portfolio_path(portfolio)
     expected_table = [
                        [ I18n.l(Date.civil(2011,12,10)), "Test Property", "50,000.00", "60,000.00", "10,000.00", ""],
+                       [ ""                            , "Total",         "50,000.00", "60,000.00", "10,000.00", ""]
                     ]
     tableish("section.RealEstate table").should include *expected_table
   end
