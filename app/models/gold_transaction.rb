@@ -10,5 +10,5 @@ class GoldTransaction < ActiveRecord::Base
   end
   alias :security :gold
 
-  include MarketTradableTransaction
+  include FungibleTransaction
 end

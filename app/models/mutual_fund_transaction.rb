@@ -1,5 +1,5 @@
 class MutualFundTransaction < ActiveRecord::Base
-  include MarketTradableTransaction
+  include FungibleTransaction
 
   belongs_to :portfolio
   belongs_to :mutual_fund
@@ -7,7 +7,7 @@ class MutualFundTransaction < ActiveRecord::Base
   validates_presence_of :mutual_fund_id
 
   scope :for, lambda { |mutual_fund| where(:mutual_fund_id => mutual_fund.id).order(:date, :created_at) } do
-    include MarketTradablePosition
+    include FungiblePosition
 
     delegate :mutual_fund, :to => :first
     delegate :name, :category, :current_price, :to => :mutual_fund

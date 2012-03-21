@@ -1,4 +1,4 @@
-module MarketTradablePosition
+module FungiblePosition
   def quantity
     sum(&:amount)
   end

@@ -1,4 +1,4 @@
-module MarketTradableTransaction
+module FungibleTransaction
   extend ActiveSupport::Concern
 
   included do

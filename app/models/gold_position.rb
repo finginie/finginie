@@ -1,5 +1,5 @@
 module GoldPosition
-  include MarketTradablePosition
+  include FungiblePosition
 
   def name
     first.gold.name

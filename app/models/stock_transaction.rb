@@ -1,5 +1,5 @@
 class StockTransaction < ActiveRecord::Base
-  include MarketTradableTransaction
+  include FungibleTransaction
 
   belongs_to :portfolio
   belongs_to :stock
@@ -7,7 +7,7 @@ class StockTransaction < ActiveRecord::Base
   validates_presence_of :stock_id
 
   scope :for, lambda { |stock| where(:stock_id => stock).order(:date, :created_at) } do
-    include MarketTradablePosition
+    include FungiblePosition
 
     delegate :stock, :to => :first
     delegate :name, :sector, :current_price, :to => :stock
