@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   def self.find_or_create_by_omniauth(auth_hash)
     authentication = Authentication
                         .where(:provider => auth_hash[:provider], :uid => auth_hash[:uid])
-                        .first_or_create(:user => User.create(:email => auth_hash[:info][:email]))
+                        .first_or_create(:user => User.find_or_create_by_email(auth_hash[:info][:email]))
     authentication.user
   end
 
