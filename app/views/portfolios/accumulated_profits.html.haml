@@ -4,6 +4,7 @@
     #accumulated_profits
       #accumulated-profits-chart{ 'data-accumulated-profits' => resource.top_five_profits.map(&:last),
                                     'data-categories' => resource.top_five_profits.map(&:first) }
+      %h1 Profits
       %table
         %tr
           %th Security
@@ -17,7 +18,7 @@
     #accumulated_losses
       #accumulated-losses-chart{ 'data-accumulated-losses' => resource.top_five_losses.map(&:last),
                                     'data-categories' => resource.top_five_losses.map(&:first) }
-
+      %h1 Losses
       %table
         %tr
           %th Security

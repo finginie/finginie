@@ -389,3 +389,9 @@ input[type="text"] {
 .error_notification {
   color: $heading-red;
 }
+
+//---------------------------Highlighing total in current holdings -------------------- 
+.total {
+  font-weight: bold;
+  color: $heading-blue;
+}

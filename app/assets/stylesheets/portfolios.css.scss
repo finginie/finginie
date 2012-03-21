@@ -156,12 +156,15 @@ body.portfolios.transactions {
   }
 }
 
-body.portfolios.accumulated_profits {
+body.portfolios.accumulated_profits, body.portfolios.stocks_analysis, body.portfolios.mutual_funds_analysis {
   table {
     margin: {
       top: 2em;
       bottom: 2em;
     }
+  }
+  h1 {
+    font-size: x-large;
   }
 }
 
@@ -212,3 +215,5 @@ body.portfolios.add_transaction {
     }
   }
 }
+
+
