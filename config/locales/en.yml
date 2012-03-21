@@ -81,6 +81,8 @@ en:
         quantity: 'Quantity (gram)'
 
   stocks:
+    index:
+      no_records: 'Start typing the name of the stock in the text box above. Your results will be updated as you type.'
     show:
       symbol: 'NSE Code'
       asset_class: 'Asset Class'

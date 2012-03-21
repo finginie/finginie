@@ -6,16 +6,8 @@
     Loading...
     = image_tag 'ajax-loader.gif', :class => :loading
 
-#stocks
-  %table
-    %tr
-      %th= sort_link @search, :name
-      %th= sort_link @search, :sector
+#stocks= t '.no_records'
 
-    - @stocks.each do |stock|
-      %tr
-        %td= link_to stock.name, resource_path(stock)
-        %td= stock.sector
 :javascript
   $(function() {
     window.router = new Finginie.Routers.StocksRouter({stocks: #{@stocks.to_json.html_safe}});

@@ -2,6 +2,7 @@ Finginie.Views.Stocks ||= {}
 
 class Finginie.Views.Stocks.IndexView extends Backbone.View
   template: JST["templates/stocks/index"]
+  el: '#stocks'
 
   initialize: () ->
     @options.stocks.bind('reset', @render)
