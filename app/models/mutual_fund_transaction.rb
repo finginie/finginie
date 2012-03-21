@@ -14,7 +14,7 @@ class MutualFundTransaction < ActiveRecord::Base
   end
 
   def scheme
-    @scheme ||= mutual_fund.name
+    @scheme ||= mutual_fund && mutual_fund.name
   end
 
   def scheme=(name)

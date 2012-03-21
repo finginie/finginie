@@ -17,6 +17,8 @@ describe "Portfolios" do
     4.times { |n| create :mutual_fund_transaction, :scheme => scheme.scheme_name,
                           :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
     4.times { |n| create :gold_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    Gold.current_price = 5
+
     visit portfolio_path(portfolio)
     find("li#navigation-details").find("a").click
 

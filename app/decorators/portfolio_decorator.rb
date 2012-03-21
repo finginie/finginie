@@ -159,7 +159,7 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def gold_transactions
-    model.gold_transactions.reorder("date DESC")
+    model.gold_transactions
   end
 
   def loan_transactions

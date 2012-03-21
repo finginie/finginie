@@ -15,7 +15,7 @@
           - resource.send(positions).each do |net_position|
             %tr
               %td= net_position.name
-              %td=  number_to_indian_currency net_position.quantity
+              %td= number_to_indian_currency net_position.quantity
               %td= number_to_indian_currency net_position.average_cost_price
               %td= number_to_indian_currency net_position.current_price
               %td= number_to_indian_currency net_position.value
@@ -39,7 +39,7 @@
           %th Profit (Rs)
 
         %tr
-          %td= resource.gold_transactions.name
+          %td Gold
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).quantity
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).average_cost_price
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).current_price
