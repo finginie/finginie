@@ -4,6 +4,8 @@ class MutualFundTransaction < ActiveRecord::Base
   belongs_to :portfolio
   belongs_to :mutual_fund
 
+  validates_presence_of :mutual_fund_id
+
   scope :for, lambda { |mutual_fund| where(:mutual_fund_id => mutual_fund.id).order(:date, :created_at) } do
     include MarketTradablePosition
 
@@ -16,12 +18,9 @@ class MutualFundTransaction < ActiveRecord::Base
   end
 
   def scheme=(name)
-    mutual_fund = MutualFund.find_or_create_by_name(name)
+    self.mutual_fund = MutualFund.find_or_create_by_name(name)
     @scheme = name
   end
 
-  def mutual_fund
-    super || build_mutual_fund
-  end
   alias :security :mutual_fund
 end

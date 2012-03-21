@@ -44,7 +44,7 @@ describe "MutualFundTransactions" do
   end
 
   it "should show the index page" do
-    create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio,:quantity => 1, :price => 5, :date => Date.today
+    create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio,:quantity => 1, :price => 5, :date => Date.today
     visit portfolio_mutual_fund_transactions_path(portfolio)
 
     expected_table = [

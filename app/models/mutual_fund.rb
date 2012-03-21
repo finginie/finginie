@@ -2,6 +2,9 @@ class MutualFund < Security
   attr_accessible :scheme
   alias_attribute :scheme, :name
 
+  validates :name,  :presence => true,
+                    :uniqueness => true
+
   belongs_to :user
 
   delegate :securitycode, :to => :scheme_master, :allow_nil => true
