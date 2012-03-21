@@ -13,4 +13,9 @@ describe NumberHelper do
     number = 0.0 / 0.0
     helper.number_to_indian_currency(number).should eq "0.00"
   end
+
+  it "should convert 'nil' value to zero" do
+    number = nil
+    helper.number_to_indian_currency(number).should eq "0.00"
+  end
 end

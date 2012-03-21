@@ -14,5 +14,12 @@
         %td= net_position.period
         %td= number_to_indian_currency net_position.outstanding_amount.abs
         %td= button_to 'Clear Loan', clear_portfolio_loan_transaction_path(net_position.first.portfolio_id, net_position.first), :method => :post
+    %tr
+      %td
+      %td
+      %td
+      %td Total
+      %td= number_to_indian_currency loan_positions.sum(&:outstanding_amount).abs
+      %td
 - else
   = t ".no_loan_positions"
