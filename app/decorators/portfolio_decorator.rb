@@ -99,12 +99,24 @@ class PortfolioDecorator < ApplicationDecorator
     stock_positions.group_by(&:sector).map { |sector, positions|  [ sector , ( positions.map(&:current_value).sum / stocks_value * 100).round(2).to_f ] }
   end
 
+  def sector_wise_stock_percentage_table
+    stock_positions.group_by(&:sector).map do |sector, positions|
+      { :sector => sector, :amount_invested => positions.sum(&:current_value), :percentage => (positions.sum(&:current_value) / stocks_value * 100).round(2) }
+    end
+  end
+
   def stocks_positions_profit_or_loss
     stocks.map { |stock| [ stock.name, (stock_transactions.for(stock).sells.map(&:profit_or_loss).sum.round(2).to_f) ] if !stock_transactions.for(stock).sells.empty?} - [nil]
   end
 
   def category_wise_mutual_funds_percentage
     mutual_fund_positions.group_by(&:category).map { |category, positions| [ category, (positions.map(&:current_value).sum / mutual_funds_value * 100).round(2).to_f ] }
+  end
+
+  def category_wise_mutual_funds_percentage_table
+    mutual_fund_positions.group_by(&:category).map do |category, positions|
+      { :category => category, :amount_invested => positions.sum(&:current_value), :percentage => (positions.map(&:current_value).sum / mutual_funds_value * 100).round(2) }
+    end
   end
 
   def mutual_fund_positions_profit_or_loss

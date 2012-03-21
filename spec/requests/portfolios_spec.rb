@@ -4,9 +4,9 @@ describe "Portfolios" do
   include_context "logged in user"
   let (:portfolio) { create :portfolio, :user => current_user }
 
-  let(:stock) { create :stock }
+  let(:stock) { create :stock, :sector => "FOO" }
   let(:scrip) { create :scrip, :last_traded_price => 5, :id => stock.symbol}
-  let(:scheme) { create :scheme_master }
+  let(:scheme) { create :scheme_master, :scheme_class_description => "FOO"}
   let(:navcp) { create :navcp, :nav_amount => "5", :security_code => scheme.securitycode }
   let(:real_estate) { create :real_estate, :name => "Test Property", :location => "Mordor", :current_price => 600 }
 
@@ -192,6 +192,23 @@ describe "Portfolios" do
                       ]
     tableish("section.StockTransactions table").should include *expected_table_for_stock_transactions
     tableish("section.MutualFundTransactions table").should include *expected_table_for_mutual_fund_transactions
+  end
+
+  it "should show stocks analysis table" do
+    create_positions_of_all_securities
+    stock1 = create :stock_with_scrip, :sector => "BAR"
+    create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
+    visit stocks_analysis_portfolio_path(portfolio)
+    tableish("table").should include(*[["FOO", "50.00", "71.43"], ["BAR", "20.00", "28.57"], ["Total", "70.00", "100"]])
+  end
+
+  it "should show mutual funds analysis table" do
+    create_positions_of_all_securities
+    scheme2 = create :scheme_master_with_navcp, :scheme_class_description => "BAR"
+    create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today
+
+    visit mutual_funds_analysis_portfolio_path(portfolio)
+    tableish("table").should include(*[["FOO", "50.00", "71.43"], ["BAR", "20.00", "28.57"], ["Total", "70.00", "100"]])
   end
 
   it "should have Profit/Loss page "do
