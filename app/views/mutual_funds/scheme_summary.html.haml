@@ -39,8 +39,8 @@
 
         %tr
           %td
-            %b= 'Minimum Investment (Rs)'
-          %td= @scheme.minimum_invement_amount
+            %b= 'Minimum Investment Amount (Rs)'
+          %td= number_to_indian_currency @scheme.minimum_invement_amount
 
         %tr
           %td
