@@ -84,6 +84,10 @@ body.mutual_funds.scheme_returns {
         }
         #comparative_returns_data{
           padding-top: 2em;
+          p {
+            color: red;
+            font-size: small;
+          }
         }
       }
     }
@@ -166,6 +170,10 @@ body.mutual_funds.index {
         padding-right: 1em;
         font-size: medium;
         color: $base-color;
+      }
+      p {
+        color: red;
+        font-size: small;
       }
     }
   }

@@ -6,7 +6,7 @@
       #asset_allocation_data
         %table
           %th Asset Class
-          %th Percentage
+          %th Holding (%)
           - @scheme.asset_allocation.each do |name, value|
             %tr
               %td= name
