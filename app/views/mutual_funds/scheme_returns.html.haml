@@ -7,8 +7,8 @@
         %table
           %tr
             %th Time Frame
-            %th Scheme Return
-            %th Category Return
+            %th Scheme Return (%)
+            %th Category Return (%)
 
           %tr
             %td
@@ -63,5 +63,6 @@
               %b= '3 Years'
             %td= "#{@scheme.prev3_year_comp_per} %"
             %td= "#{@scheme.three_year_return} %"
+        %p  *All returns for periods greater than 1year are annualized.
 - else
   %p Data not available

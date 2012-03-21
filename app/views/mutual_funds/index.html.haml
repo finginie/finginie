@@ -7,15 +7,15 @@
   #scheme_masters
     - if @categories
       %table
-        %th Category
+        %th MF Category Name
         %th No. of Schemes
-        %th 1 Week
-        %th 1 Month
-        %th 3 Months
-        %th 6 Months
-        %th 1 Year
-        %th 2 Years
-        %th 3 Years
+        %th 1 Week Return (%)
+        %th 1 Month Return (%)
+        %th 3 Months Return (%)
+        %th 6 Months Return (%)
+        %th 1 Year Return (% p.a.)
+        %th 2 Years Return (% p.a.)
+        %th 3 Years Return(% p.a.)
         - @categories.each do |cat|
           %tr
             %td= cat.scheme_class_description
@@ -27,17 +27,18 @@
             %td= cat.one_year_return.round(2)
             %td= cat.two_year_return.round(2)
             %td= cat.three_year_return.round(2)
+      %p *All returns for periods greater than 1 year are annualized.
 
     - if @scheme_masters && @scheme_masters.count > 0
       = paginate @scheme_masters
       %table
         %th Scheme
-        %th Minimum Investment Amount
+        %th Minimum Investment Amount (Rs)
         - @scheme_masters.each do |scheme|
           %tr
             %td
               =link_to scheme.scheme_name, scheme_summary_mutual_fund_path(scheme.scheme_name)
-            %td= scheme.minimum_invement_amount
+            %td= number_to_indian_currency scheme.minimum_invement_amount
 
     - if !(@categories || @scheme_masters || @scheme_masters.count > 0)
       %p= "Your search did not match any Mutual Fund names. Please try another keyword."
