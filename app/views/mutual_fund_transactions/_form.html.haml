@@ -3,9 +3,8 @@
 
   .inputs
     .security
-      = f.fields_for :mutual_fund do |mf|
-        = mf.input :scheme do
-          = mf.text_field :scheme, data: { autocomplete_source: mutual_funds_path }
+      = f.input :scheme do
+        = f.text_field :scheme, data: { autocomplete_source: mutual_funds_path }
     = f.input :action, :collection => [["Buy", :buy], ["Sell", :sell]], :include_blank => false
     = f.input :quantity
     = f.input :price

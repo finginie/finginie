@@ -8,16 +8,17 @@ describe "Portfolios" do
   let(:scrip) { create :scrip, :last_traded_price => 5, :id => stock.symbol}
   let(:scheme) { create :scheme_master }
   let(:navcp) { create :navcp, :nav_amount => "5", :security_code => scheme.securitycode }
-  let(:gold) { create :gold, :name => "Gold", :current_price => 5 }
   let(:real_estate) { create :real_estate, :name => "Test Property", :location => "Mordor", :current_price => 600 }
 
   it "should show all net positions in details page" do
     scrip.save
     navcp.save
     4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
-    4.times { |n| create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme.scheme_name),
+    4.times { |n| create :mutual_fund_transaction, :scheme => scheme.scheme_name,
                           :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
-    4.times { |n| create :gold_transaction, :gold => gold, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    4.times { |n| create :gold_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    Gold.current_price = 5
+
     visit portfolio_path(portfolio)
     find("li#navigation-details").find("a").click
 
@@ -173,7 +174,7 @@ describe "Portfolios" do
     scrip.save
     navcp.save
     create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => 1, :price => 5, :date => Date.today
-    create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio,:quantity => 1, :price => 5, :date => Date.today
+    create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio,:quantity => 1, :price => 5, :date => Date.today
 
     visit portfolio_path(portfolio)
     click_link 'Historical Transactions'
@@ -208,7 +209,7 @@ describe "Portfolios" do
   end
 
   it "user can able to add transactions after selecting securities type", :js => true do
-    create :gold, :name => "Gold", :current_price => 2456
+    Gold.current_price = 2456
 
     visit portfolio_path(portfolio)
 
@@ -231,9 +232,9 @@ describe "Portfolios" do
     4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     navcp.save
-    4.times { |n| create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    4.times { |n| create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-    4.times { |n| create :gold_transaction, :gold => gold, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    4.times { |n| create :gold_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     loan =  create :loan, :name => "Foo Loan", :rate_of_interest => "10", :period => "1"
     loan_transaction =  create :loan_transaction, :loan => loan, :price => 1000, :date => 8.months.ago.to_date, :portfolio => portfolio, :action => "borrow"
@@ -250,11 +251,11 @@ describe "Portfolios" do
     create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
     create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
 
-    create :mutual_fund_transaction, :mutual_fund => create( :mutual_fund, :name => scheme.scheme_name), :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
+    create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
     scheme2 = create :scheme_master, :scheme_class_description => "BAR", :scheme_name => "Foo Scheme Name"
 
-    create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme2.scheme_name), :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
-    create :mutual_fund_transaction, :mutual_fund => create(:mutual_fund, :name => scheme2.scheme_name), :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
+    create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
+    create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
 
     fixed_deposit = create :fixed_deposit, :name => "Foo", :period => 5, :rate_of_interest => 8.0
     create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 100, :date => 1.months.ago.to_date, :action => "sell"

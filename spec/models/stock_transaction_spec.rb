@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe StockTransaction do
   let(:stock_transaction) { create :stock_transaction }
+  subject { stock_transaction }
+
   it { should validate_presence_of :price }
   it { should validate_presence_of :date }
   it { should validate_presence_of :quantity }

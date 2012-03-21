@@ -10,7 +10,12 @@ describe "MutualFunds" do
     @mf_dividend_detail = create :mf_dividend_detail, :securitycode => @scheme_master.securitycode
     @nav_category_detail = create :nav_category_detail, :scheme_class_code => @scheme_master.scheme_class_code
     @mf_scheme_wise_portfolio = create :mf_scheme_wise_portfolio, :security_code => @scheme_master.securitycode
+    create :mutual_fund
   end
+  let(:mutual_fund) { create :mutual_fund }
+  subject { mutual_fund }
+
+  it { should validate_uniqueness_of :name }
 
   it "should display all the required fields for a mutual fund summary" do
     visit scheme_summary_mutual_fund_path(@scheme_master.scheme_name)

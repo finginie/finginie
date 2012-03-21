@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe MutualFundTransaction do
   let(:mutual_fund_transaction) { create :mutual_fund_transaction }
+  subject { mutual_fund_transaction }
+
   it { should validate_presence_of :price }
   it { should validate_presence_of :date }
   it { should validate_presence_of :quantity }
