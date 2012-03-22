@@ -3,6 +3,13 @@ require 'spec_helper'
 describe Loan do
   it { should validate_presence_of :period }
   it { should validate_presence_of :rate_of_interest }
+  it { should validate_numericality_of :period }
+  it { should validate_numericality_of :rate_of_interest }
+  it { should_not allow_value(-1).for(:period) }
+  it { should allow_value(1).for(:rate_of_interest) }
+  it { should allow_value(12.75).for(:rate_of_interest) }
+  it { should_not allow_value(12751).for(:rate_of_interest) }
+  it { should_not allow_value(-1).for(:rate_of_interest) }
   it { should have_many :loan_transactions }
 
   it "should allow repay transaction for a borrowed transaction" do

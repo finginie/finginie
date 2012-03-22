@@ -12,6 +12,8 @@ describe LoanTransaction do
   it { should allow_value(Date.today).for(:date) }
   it { should_not allow_value(1.day.from_now).for(:date) }
   it { should_not allow_value(-1).for(:price) }
+  it { should_not allow_value("sell").for(:action) }
+  it { should_not allow_value("buy").for(:action) }
 
   it "should get amount" do
     loan_transaction.action = "repay"

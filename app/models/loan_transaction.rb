@@ -4,6 +4,8 @@ class LoanTransaction < ActiveRecord::Base
 
   validates_presence_of :date, :portfolio_id
   validates :price, :numericality => {:greater_than => 0}, :presence => true
+  validates :action,  :presence => true,
+                      :inclusion => {:in => ['borrow', 'repay', 'Borrow', 'Repay']}
 
   validate  :date_should_not_be_in_the_future, :repay_amount_should_be_less_than_or_equal_to_amount
 
@@ -33,6 +35,14 @@ class LoanTransaction < ActiveRecord::Base
     end
   end
 
+  def borrow?
+    action && action.downcase.to_sym == :borrow
+  end
+
+  def repay?
+    action && action.downcase.to_sym == :repay
+  end
+
   def current_value(on_date = Date.today)
     time_period = (on_date.year - date.year) * 12 + (on_date.month - date.month) + 1
     emi = EmiCalculator.new(:cost => price, :rate => rate_of_interest, :term => period).calculate_emi
@@ -42,7 +52,7 @@ class LoanTransaction < ActiveRecord::Base
   end
 
   def amount
-    action.to_sym == :repay ? price : (price * -1)
+    repay? ? price : (price * -1)
   end
 
   def loan
@@ -55,6 +65,6 @@ private
   end
 
   def repay_amount_should_be_less_than_or_equal_to_amount
-    errors.add(:quantity, "You only need Rs #{portfolio.loan_transactions.for(loan).outstanding_amount} to clear your loan") if action == "repay" && portfolio.loan_transactions.for(loan).outstanding_amount.abs != price
+    errors.add(:quantity, "You only need Rs #{portfolio.loan_transactions.for(loan).outstanding_amount} to clear your loan") if repay? && portfolio.loan_transactions.for(loan).outstanding_amount.abs != price
   end
 end
