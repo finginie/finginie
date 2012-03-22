@@ -33,4 +33,11 @@ describe StockTransaction do
     stock_transaction.quantity = 20
     stock_transaction.valid?.should be_false
   end
+
+  it "should allow selling stocks on the same day" do
+    sell_transaction = subject.dup
+    sell_transaction.action = 'sell'
+    sleep 1 # sleep a little so that the created_at stamp isn't the same
+    sell_transaction.save.should be_true
+  end
 end
