@@ -33,7 +33,7 @@ class RealEstateTransaction < ActiveRecord::Base
     end
 
     def profit_or_loss_percentage
-      profit_or_loss * 100 / buy_value
+      ( profit_or_loss * 100 / buy_value ).round(2)
     end
   end
 

@@ -106,7 +106,9 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def stocks_positions_profit_or_loss
-    stocks.map { |stock| [ stock.name, (stock_transactions.for(stock).sells.map(&:profit_or_loss).sum.round(2).to_f) ] if !stock_transactions.for(stock).sells.empty?} - [nil]
+    stocks.map { |stock| Hashie::Mash.new({ :name => stock.name, 
+                                            :profit_or_loss => (stock_transactions.for(stock).profit_or_loss.round(2).to_f),
+                                            :percentage => (stock_transactions.for(stock).profit_or_loss_percentage.to_f)}) if !stock_transactions.for(stock).sells.empty?}.compact
   end
 
   def category_wise_mutual_funds_percentage
@@ -120,7 +122,9 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def mutual_fund_positions_profit_or_loss
-    mutual_funds.map { |mf| [ mf.name, (mutual_fund_transactions.for(mf).sells.map(&:profit_or_loss).sum.round(2).to_f) ] if !mutual_fund_transactions.for(mf).sells.empty? } - [nil]
+    mutual_funds.map { |mf| Hashie::Mash.new({ :name => mf.name,
+                              :profit_or_loss => (mutual_fund_transactions.for(mf).profit_or_loss.round(2).to_f),
+                              :percentage => (mutual_fund_transactions.for(mf).profit_or_loss_percentage.round(2).to_f) })  if !mutual_fund_transactions.for(mf).sells.empty? }.compact
   end
 
   def fixed_deposit_open_positions_rate_of_interests
@@ -128,15 +132,21 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def fixed_deposit_positions_profit_or_loss
-    fixed_deposits.map { |fd| [fd.name, model.fixed_deposit_transactions.for(fd).profit_or_loss.to_f ] if model.fixed_deposit_transactions.for(fd).profit_or_loss } - [nil]
+    fixed_deposits.map { |fd| Hashie::Mash.new({ :name => fd.name,
+                                                 :profit_or_loss => model.fixed_deposit_transactions.for(fd).profit_or_loss.to_f,
+                                                 :percentage => model.fixed_deposit_transactions.for(fd).profit_or_loss_percentage.to_f }) if model.fixed_deposit_transactions.for(fd).profit_or_loss }.compact
   end
 
   def real_estate_positions_profit_or_loss
-    real_estates.map { |re| [ re.name, (model.real_estate_transactions.for(re.id).profit_or_loss.to_f) ] if model.real_estate_transactions.for(re.id).profit_or_loss } - [nil]
+    real_estates.map { |re| Hashie::Mash.new( { :name => re.name,
+                                                :profit_or_loss => (model.real_estate_transactions.for(re.id).profit_or_loss.to_f),
+                                                :percentage => model.real_estate_transactions.for(re.id).profit_or_loss_percentage.to_f} ) if model.real_estate_transactions.for(re.id).profit_or_loss }.compact
   end
 
   def gold_positions_profit_or_loss
-    gold_transactions.for(Gold).profit_or_loss ? [[ "Gold", (gold_transactions.for(Gold).profit_or_loss)]] : []
+    gold_transactions.for(Gold).profit_or_loss ? [Hashie::Mash.new( { :name => "Gold",
+                                                                      :profit_or_loss => (gold_transactions.for(Gold).profit_or_loss.to_f),
+                                                                      :percentage => gold_transactions.for(Gold).profit_or_loss_percentage.to_f } )] : []
   end
 
   def positions
@@ -147,19 +157,19 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def losses
-    positions.select{ |position| position.last.to_f < 0 }
+    positions.select{ |position| position.profit_or_loss < 0 }
   end
 
   def profits
-    positions.select{ |position| position.last.to_f > 0 }
+    positions.select{ |position| position.profit_or_loss > 0 }
   end
 
   def top_five_losses
-    losses.sort_by(&:last).take(5)
+    losses.sort_by(&:profit_or_loss).take(5)
   end
 
   def top_five_profits
-    profits.sort_by(&:last).reverse.take(5)
+    profits.sort_by(&:profit_or_loss).reverse.take(5)
   end
 
   def stock_transactions
