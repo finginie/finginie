@@ -7,7 +7,7 @@ module FungibleTransaction
     scope :before, lambda { |transaction|
       where('date < :date or ( date = :date and created_at < :created_at )',
           :date => transaction.date,
-          :created_at => transaction.created_at
+          :created_at => transaction.created_at || DateTime.now
           ).order(:date, :created_at)
     }
 
