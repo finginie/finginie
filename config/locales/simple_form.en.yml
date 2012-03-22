@@ -123,7 +123,7 @@ en:
         price: 'Amount (Rs)'
         fixed_deposit:
           name: 'Name'
-          period: 'Period/Tenure'
+          period: 'Period/Tenure (years)'
           rate_of_interest: 'Rate of Interest (% p.a.)'
         redeem:
           date: 'Redemption Date'
@@ -131,7 +131,7 @@ en:
         price: 'Amount (Rs)'
         loan:
           name: 'Name'
-          period: 'Period/Tenure'
+          period: 'Period/Tenure (years)'
           rate_of_interest: 'Rate of Interest (% p.a.)'
 
   helpers:

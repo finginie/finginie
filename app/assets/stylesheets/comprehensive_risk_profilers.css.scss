@@ -69,12 +69,12 @@ body.comprehensive_risk_profilers.show {
         padding-bottom: 1em;
         color: $text-color;
         font: {
-          size: medium;
+          size: 14px;
           weight: normal;
         }
       }
     }
-    #sign_up {
+    #continue {
       margin-bottom: 2em;
       text-align: center;
       a {
@@ -84,9 +84,11 @@ body.comprehensive_risk_profilers.show {
         font-size: medium;
       }
     }
-    .highcharts-container, table {
-      margin: 0 auto;
+    #asset-allocation-chart {
+      margin-top: 2em;
     }
-    
+    p {
+      font-size: 14px;
+    }
   }
 }
