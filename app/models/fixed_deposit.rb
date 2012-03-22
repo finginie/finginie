@@ -3,7 +3,11 @@ class FixedDeposit < Security
   belongs_to :user
 
   validates :period, :numericality => {:greater_than => 0}, :presence => true
-  validates :rate_of_interest, :numericality => {:greater_than => 0}, :presence => true
+  validates :rate_of_interest,  :presence => true,
+                                :numericality => {
+                                  :greater_than => 0,
+                                  :less_than => 37
+                                }
 
   def current_value(transaction)
     value_at_date(transaction.price, [(Date.today - transaction.date) / 365, period].min)
