@@ -32,7 +32,7 @@ class Portfolio < ActiveRecord::Base
   end
 
   def fixed_deposit_positions
-    fixed_deposits.map(&:name).uniq.map { |name|  fixed_deposit_transactions.for(name) if FixedDeposit.where(:name => name).count == 1 } - [ nil ]
+    fixed_deposits.map { |fixed_deposit|  fixed_deposit_transactions.for(fixed_deposit) if fixed_deposit.fixed_deposit_transactions.count == 1 } - [ nil ]
   end
 
   def real_estate_positions

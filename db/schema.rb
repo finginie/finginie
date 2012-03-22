@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120319085401) do
+ActiveRecord::Schema.define(:version => 20120321113420) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -199,6 +199,7 @@ ActiveRecord::Schema.define(:version => 20120319085401) do
     t.decimal  "fifty_two_week_low_price"
     t.date     "fifty_two_week_high_date"
     t.date     "fifty_two_week_low_date"
+    t.decimal  "rate_of_redemption"
   end
 
   add_index "securities", ["user_id"], :name => "index_securities_on_user_id"
@@ -237,8 +238,6 @@ ActiveRecord::Schema.define(:version => 20120319085401) do
     t.text     "comments"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-    t.integer  "portfolio_id"
-    t.integer  "security_id"
   end
 
   add_index "transactions", ["net_position_id"], :name => "index_transactions_on_net_position_id"

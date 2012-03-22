@@ -124,11 +124,11 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def fixed_deposit_open_positions_rate_of_interests
-    fixed_deposit_positions.map{ |fd| [ fd.rate_of_interest.to_f, fd.invested_amount.to_f ] }
+    fixed_deposit_positions.map{ |fd| { :rate => fd.rate_of_interest.to_f, :name => fd.name, :amount => fd.invested_amount.to_f } }
   end
 
   def fixed_deposit_positions_profit_or_loss
-    fixed_deposits.map(&:name).uniq.map { |fd_name| [fd_name, (model.fixed_deposit_transactions.for(fd_name).profit_or_loss) ] if model.fixed_deposit_transactions.for(fd_name).profit_or_loss } - [nil]
+    fixed_deposits.map { |fd| [fd.name, model.fixed_deposit_transactions.for(fd).profit_or_loss.to_f ] if model.fixed_deposit_transactions.for(fd).profit_or_loss } - [nil]
   end
 
   def real_estate_positions_profit_or_loss

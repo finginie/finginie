@@ -56,7 +56,7 @@ describe PortfolioDecorator do
     subject
     fixed_deposit2 = create :fixed_deposit, :name => "BAR", :period => 5, :rate_of_interest => 12.0
     create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit2, :portfolio => portfolio, :price => 1000, :date => 5.months.ago.to_date
-    subject.fixed_deposit_open_positions_rate_of_interests.should include(*[[10.0, 100], [12.0, 1000]])
+    subject.fixed_deposit_open_positions_rate_of_interests.should include(*[{:rate=>10.0, :name=>"Foo", :amount=>100.0}, {:rate=>12.0, :name=>"BAR", :amount=>1000.0}])
   end
 
   it "should give top five profits" do
@@ -79,7 +79,6 @@ describe PortfolioDecorator do
 
     navcp  = create :navcp, :nav_amount => "5", :security_code => scheme.securitycode
     4.times { |n| 
-      Rails.logger.debug "Mutual Scheme_name is #{scheme.scheme_name}"
       create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     4.times { |n| create :gold_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
@@ -105,8 +104,8 @@ describe PortfolioDecorator do
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
 
-    fixed_deposit = create :fixed_deposit, :name => "Foo", :period => 5, :rate_of_interest => 8.0
-    create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 100, :date => 1.months.ago.to_date, :action => "sell"
+    FixedDeposit.find_by_name("Foo").update_attributes(:rate_of_redemption => 8.0)
+    create :fixed_deposit_transaction, :fixed_deposit => FixedDeposit.find_by_name("Foo"), :portfolio => portfolio, :price => 100, :date => 1.months.ago.to_date, :action => "sell"
 
     create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => 900, :date => Date.civil(2012, 2, 01), :action => "sell"
     real_estate_2 = create :real_estate, :name => "Test Property2", :location => "Mordor", :current_price => 500

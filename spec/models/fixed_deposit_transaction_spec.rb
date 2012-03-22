@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe FixedDepositTransaction do
   let(:fixed_deposit_transaction) { create :fixed_deposit_transaction }
+  subject { fixed_deposit_transaction }
+
   it { should validate_presence_of :price }
   it { should validate_presence_of :date }
   it { should validate_presence_of :portfolio_id }
@@ -27,8 +29,16 @@ describe FixedDepositTransaction do
     fixed_deposit_1 = create :fixed_deposit, :period => 1, :rate_of_interest => 10, :name => "Test Fixed Deposit"
     fixed_deposit_transaction_1 = create :fixed_deposit_transaction, :date => 8.months.ago.to_date, :price => 100000, :fixed_deposit => fixed_deposit_1, :portfolio => portfolio
 
-    fixed_deposit_2 = create :fixed_deposit, :period => 1, :name => fixed_deposit_1.name, :rate_of_interest => 8
-    fixed_deposit_transaction_2 = create :fixed_deposit_transaction, :date => 1.months.ago.to_date, :price => 100000, :fixed_deposit => fixed_deposit_2, :portfolio => portfolio, :action => "sell"
+    fixed_deposit_1.update_attributes(:rate_of_redemption => 8)
+    fixed_deposit_transaction_2 = create :fixed_deposit_transaction, :date => 1.months.ago.to_date, :price => 100000, :fixed_deposit => fixed_deposit_1, :portfolio => portfolio, :action => "sell"
     fixed_deposit_transaction_2.profit_or_loss.should eq 4637.65
+  end
+
+  it "should validate redemption date" do
+    portfolio = create :portfolio
+    fixed_deposit_1 = create :fixed_deposit, :period => 1, :rate_of_interest => 10, :name => "Test Fixed Deposit"
+    fixed_deposit_transaction_1 = create :fixed_deposit_transaction, :date => 8.months.ago.to_date, :price => 100000, :fixed_deposit => fixed_deposit_1, :portfolio => portfolio
+    fixed_deposit_transaction_2 = build :fixed_deposit_transaction, :date => 9.months.ago.to_date, :price => 100000, :fixed_deposit => fixed_deposit_1, :portfolio => portfolio, :action => "sell"
+    fixed_deposit_transaction_2.valid?.should be_false
   end
 end

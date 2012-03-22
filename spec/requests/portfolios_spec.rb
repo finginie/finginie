@@ -73,11 +73,14 @@ describe "Portfolios" do
   it "should show fixed deposit net position in details page" do
     fixed_deposit = create :fixed_deposit, :period => 1, :rate_of_interest => 10, :name => "Foo"
     create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 100000, :date => 8.months.ago.to_date
+    create :fixed_deposit_transaction, :fixed_deposit => create(:fixed_deposit, :period => 1, :rate_of_interest => 10, :name => "Foo"),
+                                       :portfolio => portfolio, :price => 100000, :date => 8.months.ago.to_date
 
     visit details_portfolio_path(portfolio)
     expected_table = [
                        [ "Foo",   I18n.l(8.months.ago.to_date), "10.0",  "1.0",   "1,00,000.00", "1,06,578.78", "6,578.78", ""],
-                       [ "Total", "",    "", "",                                  "1,00,000.00", "1,06,578.78", "6,578.78", ""]
+                       [ "Foo",   I18n.l(8.months.ago.to_date), "10.0",  "1.0",   "1,00,000.00", "1,06,578.78", "6,578.78", ""],
+                       [ "Total", "",    "", "",                                  "2,00,000.00", "2,13,157.56", "13,157.56", ""]
                     ]
     tableish("section.FixedDeposit table").should include *expected_table
   end
@@ -88,7 +91,7 @@ describe "Portfolios" do
 
     visit details_portfolio_path(portfolio)
     click_button "Redeem"
-    fill_in I18n.t("simple_form.labels.fixed_deposit_transaction.fixed_deposit.rate_of_interest"), :with => "8"
+    fill_in "fixed_deposit_transaction_rate_of_redemption", :with => "8"
     click_on "Submit"
     page.should_not have_selector("section.FixedDeposit table")
   end
@@ -279,8 +282,8 @@ describe "Portfolios" do
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
 
-    fixed_deposit = create :fixed_deposit, :name => "Foo", :period => 5, :rate_of_interest => 8.0
-    create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 100, :date => 1.months.ago.to_date, :action => "sell"
+    FixedDeposit.find_by_name("Foo").update_attributes(:rate_of_redemption => 8.0)
+    create :fixed_deposit_transaction, :fixed_deposit => FixedDeposit.find_by_name("Foo"), :portfolio => portfolio, :price => 100, :date => 1.months.ago.to_date, :action => "sell"
 
     create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => 900, :date => Date.civil(2012, 2, 01), :action => "sell"
     real_estate_2 = create :real_estate, :name => "Test Property2", :location => "Mordor", :current_price => 500
