@@ -25,5 +25,5 @@
           %tr
             %td= security.first
             %td= security.last
-  - if resource.top_five_losses.empty? || resource.top_five_profits.empty?
+  - if resource.top_five_losses.empty? && resource.top_five_profits.empty?
     = t ".no_profit_or_loss"

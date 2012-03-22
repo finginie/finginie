@@ -31,6 +31,10 @@ class RealEstateTransaction < ActiveRecord::Base
     def profit_or_loss
       last.profit_or_loss if all.count == 2
     end
+
+    def profit_or_loss_percentage
+      profit_or_loss * 100 / buy_value
+    end
   end
 
   def profit_or_loss

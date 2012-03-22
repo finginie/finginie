@@ -13,4 +13,11 @@ describe "RealEstatePosition" do
   its(:current_value) {  should eq 60000 }
   its(:buy_value) {  should eq 50000 }
   its(:unrealised_profit) {  should eq 10000 }
+
+  it "should calculate profit or loss percentage" do
+    subject
+    create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => 55000, :action => "sell", :date => Date.civil(2011, 12, 01)
+    subject.profit_or_loss.should eq 5000
+    subject.profit_or_loss_percentage.should eq 10
+  end
 end

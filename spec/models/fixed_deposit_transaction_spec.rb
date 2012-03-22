@@ -32,6 +32,7 @@ describe FixedDepositTransaction do
     fixed_deposit_1.update_attributes(:rate_of_redemption => 8)
     fixed_deposit_transaction_2 = create :fixed_deposit_transaction, :date => 1.months.ago.to_date, :price => 100000, :fixed_deposit => fixed_deposit_1, :portfolio => portfolio, :action => "sell"
     fixed_deposit_transaction_2.profit_or_loss.should eq 4637.65
+
   end
 
   it "should validate redemption date" do
