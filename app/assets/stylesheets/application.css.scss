@@ -347,10 +347,10 @@ input, select, textarea {
   -o-box-shadow     : 0 2px 1px rgba(0,0,0,.10);
   box-shadow        : 0 2px 1px rgba(0,0,0,.10);
 }
-.red, .sell{
+.red, .sell, .borrow{
   color: red;
 }
-.green, .buy {
+.green, .buy, .repay {
   color: green;
 }
 //------------------------------- Back Button --------------------
