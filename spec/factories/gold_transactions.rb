@@ -6,7 +6,7 @@ FactoryGirl.define do
     date "2012-03-06"
     quantity 1
     action "buy"
-    #comments "MyText"
+    comments ""
     portfolio
   end
 end

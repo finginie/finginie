@@ -37,7 +37,7 @@ describe "StockTransactions" do
 
     it "should show stock transactons index page" do
       create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => 1, :price => 5, :date => Date.today
-      visit portfolio_stock_transactions_path(portfolio)
+      visit transactions_portfolio_path(portfolio)
       expected_table = [
                          [ I18n.l(Date.today), "Buy", stock.name, "1", "5.00", "5.00", "-"]
                       ]
