@@ -17,14 +17,19 @@ describe "Portfolios" do
     4.times { |n| create :mutual_fund_transaction, :scheme => scheme.scheme_name,
                           :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
     4.times { |n| create :gold_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+
+    stock_without_current_price = create :stock
+    create :stock_transaction, :stock => stock_without_current_price, :quantity => 10, :price => 5, :date => 5.days.ago, :portfolio => portfolio
+
     Gold.current_price = 5
 
     visit portfolio_path(portfolio)
     find("li#navigation-details").find("a").click
 
     expected_table_for_stocks = [
-                                  [stock.name, "10.00", "3.00", "5.00",  "30.00", "50.00", "20.00"],
-                                  ["Total",    "",      "",     "",      "30.00", "50.00", "20.00"]
+                                  [stock.name,                       "10.00", "3.00", "5.00",  "30.00", "50.00", "20.00"],
+                                  [stock_without_current_price.name, "10.00", "5.00", "-",  "50.00", "-",  "-" ],
+                                  ["Total",                           "",      "",     "",     "80.00", "50.00", "20.00"]
                                 ]
     expected_table_for_mfs =    [
                                   [scheme.scheme_name, "10.00", "3.00", "5.00", "30.00", "50.00", "20.00"],

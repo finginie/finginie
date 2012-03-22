@@ -17,10 +17,19 @@
               %td= net_position.name
               %td= number_to_indian_currency net_position.quantity
               %td= number_to_indian_currency net_position.average_cost_price
-              %td= number_to_indian_currency net_position.current_price
+              - if net_position.current_price
+                %td= number_to_indian_currency net_position.current_price
+              - else
+                %td -
               %td= number_to_indian_currency net_position.value
-              %td= number_to_indian_currency net_position.current_value
-              %td= number_to_indian_currency net_position.unrealised_profit
+              - if net_position.current_price
+                %td= number_to_indian_currency net_position.current_value
+              - else
+                %td -
+              - if net_position.unrealised_profit
+                %td= number_to_indian_currency net_position.unrealised_profit
+              - else
+                %td -
           %tr.total
             %td Total
             %td
@@ -28,7 +37,7 @@
             %td
             %td= number_to_indian_currency resource.send(positions).sum(&:value)
             %td= number_to_indian_currency resource.send(positions).sum(&:current_value)
-            %td= number_to_indian_currency resource.send(positions).sum(&:unrealised_profit)
+            %td= number_to_indian_currency resource.send(positions).map(&:unrealised_profit).compact.inject(:+)
     - else
       = t ".no_#{positions}"
 

@@ -45,4 +45,10 @@ describe "StockPosition" do
     subject.average_cost_price.should eq 3
   end
 
+  it "should return nil unrealised profit when there is no current price" do
+    stock_without_current_price = create :stock
+    create :stock_transaction, :stock => stock_without_current_price, :quantity => 10, :price => 5, :date => 5.days.ago, :portfolio => portfolio
+    stock_position = portfolio.stock_transactions.for(stock_without_current_price)
+    stock_position.unrealised_profit.should eq nil
+  end
 end
