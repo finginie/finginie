@@ -13,7 +13,7 @@
         %td{:class => real_estate_transaction.action}= real_estate_transaction.action.to_s.titleize
         %td= real_estate_transaction.name
         %td= number_to_indian_currency real_estate_transaction.price.abs
-        %td= real_estate_transaction.comments || t("tables_not_available")
+        %td= real_estate_transaction.comments && real_estate_transaction.comments.strip.empty? ? t("tables_not_available") : real_estate_transaction.comments
 - else
   = t "transactions.no_real_estate_transactions"
 

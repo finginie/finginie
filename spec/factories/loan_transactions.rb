@@ -7,5 +7,6 @@ FactoryGirl.define do
     action "borrow"
     price 10.99
     date "2012-03-02"
+    comments ""
   end
 end

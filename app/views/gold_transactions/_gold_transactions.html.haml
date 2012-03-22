@@ -17,6 +17,6 @@
         %td= gold_transaction.quantity
         %td= number_to_indian_currency gold_transaction.price
         %td= number_to_indian_currency gold_transaction.value.abs
-        %td= gold_transaction.comments || t("tables_not_available")
+        %td= gold_transaction.comments && gold_transaction.comments.strip.empty?  ? t("tables_not_available") : gold_transaction.comments
 -else
   = t "transactions.no_gold_transactions"

@@ -17,6 +17,6 @@
         %td= mf_transaction.quantity
         %td= number_to_indian_currency mf_transaction.price
         %td= number_to_indian_currency mf_transaction.value.abs
-        %td= mf_transaction.comments || t("tables_not_available")
+        %td= mf_transaction.comments && mf_transaction.comments.strip.empty?  ? t("tables_not_available") : mf_transaction.comments
 -else
   = t "transactions.no_mutual_fund_transactions"

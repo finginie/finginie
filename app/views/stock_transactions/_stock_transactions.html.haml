@@ -17,6 +17,6 @@
         %td= stock_transaction.quantity
         %td= number_to_indian_currency stock_transaction.price
         %td= number_to_indian_currency stock_transaction.value.abs
-        %td= stock_transaction.comments || t("tables_not_available")
+        %td= stock_transaction.comments && stock_transaction.comments.strip.empty? ? t("tables_not_available") : stock_transaction.comments
 -else
   = t "transactions.no_stock_transactions"

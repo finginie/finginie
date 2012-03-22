@@ -7,5 +7,6 @@ FactoryGirl.define do
       price 9.99
       action "buy"
       date "2012-03-02"
+      comments ""
     end
 end

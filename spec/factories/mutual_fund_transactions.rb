@@ -6,7 +6,7 @@ FactoryGirl.define do
     date "2012-03-05"
     quantity "10"
     action "buy"
-    #comments "MyText"
+    comments ""
     portfolio
     scheme { mutual_fund ? mutual_fund.name : Factory.attributes_for(:mutual_fund)[:name] }
   end

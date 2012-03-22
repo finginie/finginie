@@ -17,7 +17,7 @@
         %td= number_to_indian_currency loan_transaction.price
         %td= loan_transaction.rate_of_interest
         %td= loan_transaction.period
-        %td= loan_transaction.comments || t("tables_not_available")
+        %td= loan_transaction.comments && loan_transaction.comments.strip.empty?  ? t("tables_not_available") : loan_transaction.comments
 - else
   = t "transactions.no_loan_transactions"
 
