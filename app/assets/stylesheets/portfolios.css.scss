@@ -220,11 +220,7 @@ body.portfolios.accumulated_profits {
   h1 {
     font-size: x-large;
   }
-  #accumulated-profits-chart {
-    margin-bottom: 2em;
-  }
-  #accumulated-losses-chart {
-    margin-top: 2em;
+  #accumulated-profits-chart, #accumulated_profits {
     margin-bottom: 2em;
   }
 }
