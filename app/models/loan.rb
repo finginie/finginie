@@ -2,8 +2,8 @@ class Loan < Security
   attr_accessible :period, :rate_of_interest
   belongs_to :user
 
-  validates :period, :presence => true
-  validates :rate_of_interest, :presence => true
+  validates :period, :numericality => {:greater_than => 0}, :presence => true
+  validates :rate_of_interest, :numericality => {:greater_than => 0}, :presence => true
 
   has_many :loan_transactions
 
