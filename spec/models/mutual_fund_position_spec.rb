@@ -37,4 +37,12 @@ describe "MutualFundPosition" do
     subject.profit_or_loss.should eq 1
     subject.profit_or_loss_percentage.should eq 4.76
   end
+
+  it "should return nil unrealised profit when there is no current price" do
+    scheme_without_nav_amount = create :scheme_master
+    mutual_fund_without_current_price = create :mutual_fund, :name => scheme_without_nav_amount.scheme_name
+    create :mutual_fund_transaction, :scheme => scheme_without_nav_amount.scheme_name, :quantity => 10, :price => 5, :date => 5.days.ago, :portfolio => portfolio
+    mutual_fund_position = portfolio.mutual_fund_transactions.for(mutual_fund_without_current_price)
+    mutual_fund_position.unrealised_profit.should eq nil
+  end
 end

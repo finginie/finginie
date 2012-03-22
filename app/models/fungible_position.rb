@@ -24,6 +24,6 @@ module FungiblePosition
   end
 
   def unrealised_profit
-    current_value - value
+    current_price ? (current_value - value) : nil
   end
 end
