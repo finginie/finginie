@@ -100,7 +100,7 @@ $ ->
     bar_chart('fixed-deposits-chart','data-fixed-deposits','Your Fixed Deposits', JSON.parse($("#fixed-deposits-chart").attr("data-categories")), 'Amount Invested')
 
   if $("#accumulated-profits-chart").attr("data-categories") != undefined
-    bar_chart('accumulated-profits-chart','data-accumulated-profits','Your Top 5 Accumulated Profits', JSON.parse($("#accumulated-profits-chart").attr("data-categories")), 'Amount(Rupees)')
+    bar_chart('accumulated-profits-chart','data-accumulated-profits','Your Top 5 Accumulated Profits and Losses', JSON.parse($("#accumulated-profits-chart").attr("data-categories")), 'Amount(Rupees)')
 
   if $("#accumulated-losses-chart").attr("data-categories") != undefined
     bar_chart('accumulated-losses-chart','data-accumulated-losses','Your Top 5 Accumulated Losses', JSON.parse($("#accumulated-losses-chart").attr("data-categories")), 'Amount(Rupees)')

@@ -2,8 +2,8 @@
   %h1 Your Accumulated Profits or Losses
   - unless resource.top_five_profits.empty?
     #accumulated_profits
-      #accumulated-profits-chart{ 'data-accumulated-profits' => resource.top_five_profits.map(&:last),
-                                    'data-categories' => resource.top_five_profits.map(&:first) }
+      #accumulated-profits-chart{ 'data-accumulated-profits' => resource.top_five_profits.map(&:last) + resource.top_five_losses.map(&:last),
+                                    'data-categories' => resource.top_five_profits.map(&:first) + resource.top_five_losses.map(&:first) }
       %h1 Profits
       %table
         %tr
@@ -16,8 +16,6 @@
 
   - unless resource.top_five_losses.empty?
     #accumulated_losses
-      #accumulated-losses-chart{ 'data-accumulated-losses' => resource.top_five_losses.map(&:last),
-                                    'data-categories' => resource.top_five_losses.map(&:first) }
       %h1 Losses
       %table
         %tr
