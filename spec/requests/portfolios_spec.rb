@@ -220,8 +220,8 @@ describe "Portfolios" do
     visit portfolio_path(portfolio)
 
     find("li#navigation-accumulated_profits").find("a").click
-    expected_table_profits = [["Test Property", "400.0"], [stock.name, "12.0"], [scheme.scheme_name, "12.0"], ["Foo", "4.64"]]
-    expected_table_losses = [["Test Property2", "-400.0"], ["FOO", "-4.0"], ["Foo Scheme Name", "-1.0"]]
+    expected_table_profits = [ ["Test Property", "400.0", "80.0"], [stock.name, "12.0", "100.0"], [scheme.scheme_name, "12.0", "100.0"], ["Foo", "4.64", "4.64"] ]
+    expected_table_losses = [["Test Property2", "-400.0", "-44.44"], ["FOO", "-4.0", "-16.67"], ["Foo Scheme Name", "-1.0", "-20.0"]]
 
     tableish("#accumulated_profits table").should include *expected_table_profits
     tableish("#accumulated_losses table").should include *expected_table_losses
@@ -250,6 +250,32 @@ describe "Portfolios" do
     click_on I18n.t("helpers.submit.gold_transaction.create")
     page.should have_content "successfully"
     current_path.should eq details_portfolio_path(portfolio)
+  end
+
+  it "should display stocks profits/losses in stocks analysis page" do
+    create_positions_of_all_securities
+    create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
+    stock1 = create :stock_with_scrip, :sector => "BAR"
+    create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
+    create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
+
+    visit stocks_analysis_portfolio_path(portfolio)
+    expected_table = [ [ stock.name, "12.00" , "100.00" ],
+                     [ stock1.name, "-4.00", "-16.67" ] ]
+
+    tableish("#stocks_profit_or_loss_analysis table").should include *expected_table
+  end
+
+  it "should display mutual funds profits/losses in mutual funds anyalysis page" do
+    create_positions_of_all_securities
+    scheme2 = create :scheme_master, :scheme_class_description => "BAR"
+    create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
+    create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
+    create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
+
+    visit mutual_funds_analysis_portfolio_path(portfolio)
+    expected_table = [ [ scheme.scheme_name, "12.00", "100.00" ], [ scheme2.scheme_name, "-1.00", "-20.00"] ]
+    tableish("#mfs_profit_or_loss_analysis table").should include *expected_table
   end
 
   def create_positions_of_all_securities

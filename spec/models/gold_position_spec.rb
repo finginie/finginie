@@ -35,4 +35,12 @@ describe "GoldPosition" do
     subject.value.should eq 36
   end
 
+  it "should calculate profit/loss percentage for Gold" do
+    subject # ensure stock transaction is saved
+    create :gold_transaction, :portfolio => portfolio, :quantity => 4, :action => 'sell', :price => 6, :date => Date.today
+    create :gold_transaction, :portfolio => portfolio, :quantity => 3, :action => 'sell', :price => 2, :date => Date.today
+    subject.profit_or_loss.should eq 9
+    subject.profit_or_loss_percentage.should eq 42.86
+  end
+
 end

@@ -29,4 +29,12 @@ describe "MutualFundPosition" do
     subject.profit_or_loss.should eq 12
     subject.last.profit_or_loss.should eq 12
   end
+
+  it "should calcualte the profit_or_loss_percentage for a position" do
+    subject # ensure mutual transaction is saved
+    create :mutual_fund_transaction, :mutual_fund => mutual_fund, :portfolio => portfolio, :quantity => 3, :price => 6, :date => Date.today, :action => "sell"
+    create :mutual_fund_transaction, :mutual_fund => mutual_fund, :portfolio => portfolio, :quantity => 4, :price => 1, :date => Date.today, :action => "sell"
+    subject.profit_or_loss.should eq 1
+    subject.profit_or_loss_percentage.should eq 4.76
+  end
 end

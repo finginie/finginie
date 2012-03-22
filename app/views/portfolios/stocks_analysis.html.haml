@@ -16,10 +16,22 @@
       %td= number_to_indian_currency resource.stocks_value
       %td 100
 
-  - unless resource.stocks_positions_profit_or_loss.empty?
-    #stocks-profit-or-loss-chart{ 'data-stocks-profit-or-loss' => resource.stocks_positions_profit_or_loss.map(&:last),
-                                  'data-categories' => resource.stocks_positions_profit_or_loss.map(&:first) }
-  -else
-    %p= t ".no_sell_stock_transaction"
+  #stocks_profit_or_loss_analysis
+    - unless resource.stocks_positions_profit_or_loss.empty?
+      #stocks-profit-or-loss-chart{ 'data-stocks-profit-or-loss' => resource.stocks_positions_profit_or_loss.map(&:percentage),
+                                    'data-categories' => resource.stocks_positions_profit_or_loss.map(&:name) }
+      %table
+        %tr
+          %th Stock Name
+          %th Profit/Loss (Rs.)
+          %th % Profit/Loss
+        - resource.stocks_positions_profit_or_loss.each do |position|
+          %tr
+            %td= position.name
+            %td= number_to_indian_currency position.profit_or_loss
+            %td= number_to_indian_currency position.percentage
+
+    -else
+      %p= t ".no_sell_stock_transaction"
 -else
   %p= t ".no_stock_transaction"

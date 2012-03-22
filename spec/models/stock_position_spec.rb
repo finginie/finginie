@@ -27,6 +27,7 @@ describe "StockPosition" do
     subject.value.should eq 18
     subject.profit_or_loss.should eq 12
     subject.last.profit_or_loss.should eq 12
+    subject.profit_or_loss_percentage.should eq 100
   end
 
   it "should calculate the average cost price after sell tranaction and a buy transaction" do

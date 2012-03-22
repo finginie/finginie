@@ -32,7 +32,8 @@ describe PortfolioDecorator do
     create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
     create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
 
-    subject.stocks_positions_profit_or_loss.should include(*[[stock.name, 12.0 ], [stock1.name, -4.0]])
+    subject.stocks_positions_profit_or_loss.should include(*[{ "name" => stock.name, "profit_or_loss" => 12.0 , "percentage" => 100.0},
+                                                             {"name" => stock1.name, "profit_or_loss" => -4.0, "percentage" => -16.67} ])
   end
 
   it "should have catogorywise mf percentages" do
@@ -49,7 +50,8 @@ describe PortfolioDecorator do
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
 
-    subject.mutual_fund_positions_profit_or_loss.should include(*[[ scheme.scheme_name, 12.0 ],[ scheme2.scheme_name, -1.0]] )
+    subject.mutual_fund_positions_profit_or_loss.should include(*[ { "name" => scheme.scheme_name, "profit_or_loss" => 12.0, "percentage" => 100.0},
+                                                                   { "name" => scheme2.scheme_name, "profit_or_loss" => -1.0, "percentage" => -20.0}] )
   end
 
   it "should have fixed deposit open positions rate of interests" do
@@ -62,14 +64,20 @@ describe PortfolioDecorator do
   it "should give top five profits" do
     subject
     create_sell_position_of_all_securities_type
-    expected = [["Test Property", 400.0], [stock.name, 12.0], [scheme.scheme_name, 12.0], ["Foo", 4.64]]
+    expected = [ { "name" => "Test Property",   "profit_or_loss" => 400.0, "percentage" => 80.0 },
+                 { "name" => stock.name     ,   "profit_or_loss" => 12.0,  "percentage" => 100.0 },
+                 { "name" => scheme.scheme_name,"profit_or_loss" => 12.0, "percentage" => 100 },
+                 { "name" => "Foo",             "profit_or_loss" => 4.64,  "percentage" => 4.64 } ]
+
     subject.top_five_profits.should include *expected
   end
 
   it "should give top five losses" do
     subject
     create_sell_position_of_all_securities_type
-    expected = [["Test Property2", -400.0], ["FOO", -4.0], ["Foo Scheme Name", -1.0]]
+    expected = [ { "name" => "Test Property2",   "profit_or_loss" => -400.0, "percentage" => -44.44 },
+                 { "name" => "Foo Scheme Name",  "profit_or_loss" => -1.0,   "percentage" => -20 },
+                 { "name" => "FOO",              "profit_or_loss" => -4.0,   "percentage" => -16.67 } ]
     subject.top_five_losses.should include *expected
   end
 

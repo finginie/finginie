@@ -2,17 +2,19 @@
   %h1 Your Accumulated Profits or Losses
   - unless resource.top_five_profits.empty?
     #accumulated_profits
-      #accumulated-profits-chart{ 'data-accumulated-profits' => resource.top_five_profits.map(&:last) + resource.top_five_losses.map(&:last),
-                                    'data-categories' => resource.top_five_profits.map(&:first) + resource.top_five_losses.map(&:first) }
+      #accumulated-profits-chart{ 'data-accumulated-profits' => resource.top_five_profits.map(&:percentage) + resource.top_five_losses.map(&:percentage),
+                                    'data-categories' => resource.top_five_profits.map(&:name) + resource.top_five_losses.map(&:name) }
       %h1 Profits
       %table
         %tr
           %th Security
-          %th Profit
+          %th Profit (Rs)
+          %th Percentage (%)
         - resource.profits.each do |security|
           %tr
-            %td= security.first
-            %td= security.last
+            %td= security.name
+            %td= security.profit_or_loss
+            %td= security.percentage
 
   - unless resource.top_five_losses.empty?
     #accumulated_losses
@@ -20,10 +22,12 @@
       %table
         %tr
           %th Security
-          %th Losses
+          %th Loss (Rs)
+          %th Percentage (%)
         - resource.losses.each do |security|
           %tr
-            %td= security.first
-            %td= security.last
-  - if resource.top_five_losses.empty? || resource.top_five_profits.empty?
+            %td= security.name
+            %td= security.profit_or_loss
+            %td= security.percentage
+  - if resource.top_five_losses.empty? && resource.top_five_profits.empty?
     = t ".no_profit_or_loss"
