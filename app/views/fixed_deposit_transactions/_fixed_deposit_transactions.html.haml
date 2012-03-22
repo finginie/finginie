@@ -12,7 +12,7 @@
     - fixed_deposit_transactions.each do |transaction|
       %tr
         %td= l transaction.date
-        %td= transaction.action.to_s.titleize
+        %td{:class => transaction.action}= transaction.display_action
         %td= transaction.name
         %td= transaction.rate_of_interest
         %td= transaction.period

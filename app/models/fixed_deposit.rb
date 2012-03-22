@@ -1,6 +1,7 @@
 class FixedDeposit < Security
-  attr_accessible :period, :rate_of_interest
+  attr_accessible :period, :rate_of_interest, :rate_of_redemption
   belongs_to :user
+  has_many :fixed_deposit_transactions
 
   validates :period, :numericality => {:greater_than => 0}, :presence => true
   validates :rate_of_interest,  :presence => true,
@@ -18,7 +19,7 @@ class FixedDeposit < Security
   end
 
 private
-  def value_at_date(principal, period)
+  def value_at_date(principal, period, rate_of_interest = rate_of_interest)
     principal * Math.exp(Math.log( 1 + rate_of_interest/100) * period)
   end
 end

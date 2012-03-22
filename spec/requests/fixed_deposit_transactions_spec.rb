@@ -17,12 +17,12 @@ describe "FixedDepositTransactions" do
 
   let (:fixed_deposit) { create :fixed_deposit, :period => 5, :rate_of_interest => 10 }
   it "should show Fixed deposit transactons index page" do
-    create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 5000, :date => Date.civil(2011,12,10)
+    fd_transaction = create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 5000, :date => Date.civil(2011,12,10)
 
     Timecop.freeze (Date.civil(2012, 03, 01)) do
       visit portfolio_fixed_deposit_transactions_path(portfolio)
       expected_table = [
-                         [ I18n.l(Date.civil(2011,12,10)), "Buy", fixed_deposit.name, "10.0", "5.0", "5,000.00", "-"],
+                         [ I18n.l(Date.civil(2011,12,10)), fd_transaction.display_action, fixed_deposit.name, "10.0", "5.0", "5,000.00", "-"],
                       ]
       tableish("table").should include *expected_table
     end
@@ -32,7 +32,7 @@ describe "FixedDepositTransactions" do
     fixed_deposit_transaction = create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 5000, :date => Date.civil(2011,12,10)
     visit  redeem_portfolio_fixed_deposit_transaction_path(portfolio, fixed_deposit_transaction)
 
-    fill_in I18n.t("simple_form.labels.fixed_deposit_transaction.fixed_deposit.rate_of_interest"), :with => "8"
+    fill_in "fixed_deposit_transaction_rate_of_redemption", :with => "8"
     click_on "Submit"
     page.should have_content "Successfully"
     current_path.should eq details_portfolio_path(portfolio)

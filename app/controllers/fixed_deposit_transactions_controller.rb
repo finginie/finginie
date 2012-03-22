@@ -12,7 +12,8 @@ class FixedDepositTransactionsController < InheritedResources::Base
   end
 
   def create_redeem
-    params[:fixed_deposit_transaction]["fixed_deposit_attributes"].delete "id"
+    FixedDeposit.find(params[:fixed_deposit_transaction][:fixed_deposit_id]).update_attributes(:rate_of_redemption => params[:fixed_deposit_transaction][:rate_of_redemption])
+    params[:fixed_deposit_transaction].delete(:rate_of_redemption)
     object = build_resource
     create_resource(object)
     create_redeem!{ redirect_to details_portfolio_path(parent), :notice => "Successfully redeemed your deposit" and return }

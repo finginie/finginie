@@ -1,6 +1,15 @@
 %h1 Fixed Deposits
 - unless resource.fixed_deposit_open_positions_rate_of_interests.empty?
-  #fixed-deposits-chart{ 'data-fixed-deposits' => resource.fixed_deposit_open_positions_rate_of_interests.map(&:last),
-                                'data-categories' => resource.fixed_deposit_open_positions_rate_of_interests.map(&:first) }
+  #fixed-deposits-chart{ 'data-fixed-deposits' => resource.fixed_deposit_open_positions_rate_of_interests.map{ |hsh| hsh[:rate]},
+                                'data-categories' => resource.fixed_deposit_open_positions_rate_of_interests.map{ |hsh| hsh[:amount]} }
+  %table
+    %th Name
+    %th Rate Of Interest
+    %th Invested Amount
+    - resource.fixed_deposit_open_positions_rate_of_interests.each do |hsh|
+      %tr
+        %td= hsh[:name]
+        %td= hsh[:rate]
+        %td= number_to_indian_currency hsh[:amount]
 -else
   %p= t ".no_fixed_deposit_transaction"
