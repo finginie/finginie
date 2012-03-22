@@ -126,6 +126,7 @@ en:
           period: 'Period/Tenure (years)'
           rate_of_interest: 'Rate of Interest (% p.a.)'
         redeem:
+          rate_of_redemption: 'Interest Rate at Redemption (% p.a.)'
           date: 'Redemption Date'
       loan_transaction:
         price: 'Amount (Rs)'
