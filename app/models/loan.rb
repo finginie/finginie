@@ -16,6 +16,6 @@ class Loan < Security
   end
 
   def repay(transaction)
-    LoanTransaction.new(:portfolio_id => transaction.portfolio_id, :loan_id => transaction.loan_id).update_attributes(:price => transaction.current_value.abs, :date => Date.today, :action => "sell")
+    LoanTransaction.new(:portfolio_id => transaction.portfolio_id, :loan_id => transaction.loan_id).update_attributes(:price => transaction.current_value.abs, :date => Date.today, :action => "repay")
   end
 end
