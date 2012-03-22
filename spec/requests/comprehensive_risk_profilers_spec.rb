@@ -15,7 +15,7 @@ describe "ComprehensiveRiskProfilers" do
       end
 
       it "should show the login link on page" do
-        within "#sign_up" do
+        within "#continue" do
           page.should have_link('Signin')
         end
       end
