@@ -18,7 +18,9 @@ $ ->
   if ($("#asset-allocation-chart").attr("data-asset-allocation") != undefined)
     new Highcharts.Chart({
       chart: {
-        renderTo: 'asset-allocation-chart'
+        renderTo: 'asset-allocation-chart',
+        borderColor: '#4572A7',
+        borderWidth: 2,
       },
       title: {
         text: 'Suggested Asset Allocation'

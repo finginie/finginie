@@ -4,26 +4,28 @@
   out of 10. (10 indicates maximum risk taking ability)
   %ul
     = resource.summary
-  %h1 Suggested Investment Mix
-  %p
-    = t ".suggestion"
-  - if resource.score
-    %table
+%h1 Suggested Investment Mix
+%p
+  = t ".suggestion"
+- if resource.score
+  %table
+    %tr
+      %th Asset Class
+      %th Percentage
+    - FinancialPlanner.ideal_asset_allocation(resource).each do |asset_class,percentage|
       %tr
-        %th Asset Class
-        %th Percentage
-      - FinancialPlanner.ideal_asset_allocation(resource).each do |asset_class,percentage|
-        %tr
-          %td= asset_class
-          %td= "#{percentage}%"
-    #asset-allocation-chart{ 'data-asset-allocation' => FinancialPlanner.ideal_asset_allocation(resource).to_a }
+        %td= asset_class
+        %td= "#{percentage}%"
+  #asset-allocation-chart{ 'data-asset-allocation' => FinancialPlanner.ideal_asset_allocation(resource).to_a }
 -if current_user
-  #sign_up
+  %p
+    = t ".future_investment"
+  #continue
     =link_to 'Continue', portfolios_path
-  = t ".future_investment"
 -else
-  = t ".future_investment"
-  = t ".sign_up"
+  %p
+    = t ".future_investment"
+    = t ".sign_up"
   #sign_up
     =link_to "Signin & Continue",  '/signin'
 
