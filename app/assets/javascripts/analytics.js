@@ -1,6 +1,6 @@
 if (window.location.host.match('finginie.com') || window.location.hostname.match('finginie.com')) {
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-25402280-1']);
+  _gaq.push(['_setAccount', 'UA-3028253-1']);
   _gaq.push(['_trackPageview']);
 
   (function() {
