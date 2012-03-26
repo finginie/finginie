@@ -8,6 +8,7 @@
 #= require jquery-ui
 #= require jquery_ujs
 #
+#= require html5
 #= require nested_form
 #= require highcharts
 #= require chosen.jquery.min

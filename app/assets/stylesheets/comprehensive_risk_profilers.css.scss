@@ -80,7 +80,7 @@ body.comprehensive_risk_profilers.show {
       a {
         text-decoration: none;
         @include button($base-color);
-        @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
+        @include linear-gradient($base-color, shade($base-color, 60%));
         font-size: medium;
       }
     }

@@ -14,6 +14,8 @@
 @import "holygrail";
 @import "utilities";
 
+header, nav, hgroup, section, article, footer { display: block; }
+
 body {
   font-family: $content-font;
   color: $text-color;
@@ -71,7 +73,7 @@ nav {
 
 header {
   width: 100%;
-  @include background-image(linear-gradient(#438DF2, shade(#0F3F7A, 10%)));
+  @include linear-gradient(#438DF2, shade(#0F3F7A, 10%));
   @include box-shadow(0 2px 5px hsla(0, 0%, 0%, 0.65));
   @include horizontal-list-container;
   nav, hgroup {
@@ -134,7 +136,7 @@ header {
         form {
           input[type="submit"] {
             @include button($base-color);
-            @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
+            @include linear-gradient($base-color, shade($base-color, 60%));
             margin: 0;
           }
         }
@@ -190,7 +192,7 @@ aside{
   //border: 2px solid $base-color;
   //border-radius: 4px 4px 0 0;
   &>h1 {
-    @include background-image(linear-gradient(#A1D004, shade(#6B9A00, 30%)));
+    @include linear-gradient(#A1D004, shade(#6B9A00, 30%));
     //border: 1px solid #A1D004;
     border-radius: 4px 4px 0 0;
     //text-align: center;
@@ -207,7 +209,7 @@ aside{
       @include no-bullet;
       span {
         @include button($base-color);
-        @include background-image(linear-gradient($base-color, shade(#022744, 10%)));
+        @include linear-gradient($base-color, shade(#022744, 10%));
         border-radius: 0;
         color: white;
         display: block;
@@ -325,7 +327,7 @@ tr {
 form {
   input[type="submit"] {
     @include button($base-color);
-    @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
+    @include linear-gradient($base-color, shade($base-color, 60%));
     font: {
       size: 12px;
       weight: normal;

@@ -60,7 +60,7 @@ body.home {
 
     a.get_started {
       @include button($base-color);
-      @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
+      @include linear-gradient($base-color, shade($base-color, 60%));
       font-size: xx-large;
       @include unstyled_link;
       cursor: pointer;

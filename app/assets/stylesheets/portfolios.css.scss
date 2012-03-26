@@ -12,7 +12,7 @@ body.portfolios {
         >li {
           >a {
             @include button($base-color);
-            @include background-image(linear-gradient($base-color, shade(#022744, 10%)));
+            @include linear-gradient($base-color, shade(#022744, 10%));
             border-radius: 0;
             display: block;
             text-align: left;

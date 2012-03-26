@@ -24,7 +24,7 @@ body.sessions.new {
               input[type="submit"] {
                 width: 300px;
                 @include button($base-color);
-                @include background-image(linear-gradient($base-color, shade($base-color, 60%)));
+                @include linear-gradient($base-color, shade($base-color, 60%));
                 background-repeat:no-repeat;
                 background-postion: left top;
                 font: {

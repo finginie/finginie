@@ -161,7 +161,7 @@ body.stocks.show {
     #navigation-stock {
       >a {
         @include button($base-color);
-        @include background-image(linear-gradient($base-color, shade(#022744, 10%)));
+        @include linear-gradient($base-color, shade(#022744, 10%));
         border-radius: 0;
         display: block;
         text-align: left;
@@ -178,7 +178,7 @@ body.balance_sheet, body.profit_loss, body.cash_flow, body.ratios, body.share_ho
     #navigation-stock {
       >a {
         @include button($base-color);
-        @include background-image(linear-gradient($base-color, shade(#022744, 10%)));
+        @include linear-gradient($base-color, shade(#022744, 10%));
         border-radius: 0;
         display: block;
         text-align: left;
