@@ -4,13 +4,13 @@ class RealEstateTransaction < ActiveRecord::Base
 
   validates_presence_of :date, :portfolio_id, :action
   validates :price, :numericality => {:greater_than => 0}, :presence => true
-  validate  :date_should_not_be_in_the_future
+  validate  :date_should_not_be_in_the_future, :sell_date_should_be_greater_than_buy_date
 
   accepts_nested_attributes_for :real_estate
 
   delegate :name, :to => :real_estate
 
-  scope :for, lambda { |real_estate| where(:real_estate_id => real_estate).order(:date) } do
+  scope :for, lambda { |real_estate| where(:real_estate_id => real_estate).order(:date, :created_at) } do
 
     def name
       first.name
@@ -63,4 +63,11 @@ private
   def date_should_not_be_in_the_future
     errors.add(:date, "can't be in the future") if !date.blank? and date > Date.today
   end
+
+  def sell_date_should_be_greater_than_buy_date
+    if action && action.to_sym == :sell
+      errors.add(:date, "can't sell before the buy date") if date < portfolio.real_estate_transactions.for(real_estate).first.date
+    end
+  end
+
 end

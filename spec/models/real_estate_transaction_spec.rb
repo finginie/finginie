@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe RealEstateTransaction do
   let(:real_estate_transaction) { create :real_estate_transaction }
+
+  subject { real_estate_transaction }
   it { should validate_presence_of :price }
   it { should validate_presence_of :date }
   it { should validate_presence_of :action }
@@ -38,5 +40,14 @@ describe RealEstateTransaction do
     transaction.profit_or_loss.should eq 20000
 
   end
+
+  it "should validate sell date < buy date" do
+    portfolio = create :portfolio
+    real_estate = create :real_estate,:name => "Test Property", :location => "Mordor", :current_price => 100000
+    create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => 100000, :date => 8.months.ago.to_date
+    sell_transaction = build :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => 100000, :date => 9.months.ago.to_date, :action => "sell"
+    sell_transaction.valid?.should be_false
+  end
+
 
 end
