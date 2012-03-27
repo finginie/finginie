@@ -1,8 +1,7 @@
 .mf_container
   %h1 MutualFunds
   = simple_form_for @search, :url => collection_path, :method => :get, :html => {:novalidate => true} do |f|
-    = f.input :scheme_name
-    = f.submit 'Search'
+    = f.text_field :scheme_name, data: { autocomplete_source: mutual_funds_path }
 
   #scheme_masters
     - if @categories

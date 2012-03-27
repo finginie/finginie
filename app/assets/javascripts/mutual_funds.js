@@ -1,4 +1,14 @@
 $(document).ready(function() {
+  $(function() {
+    return $('#scheme_master_scheme_name').autocomplete({
+      source: $('#scheme_master_scheme_name').data('autocomplete-source'),
+      select: function (event, ui) {
+				$(event.target).val(ui.item.label);
+				window.location = "/mutual_funds/" + ui.item.value +"/scheme_summary";
+				return false;
+			}
+    });
+  });
   if ($("#mf-sectoral-allocation-chart").attr("mf-data-sectoral-allocation") != undefined) {
     new Highcharts.Chart({
       chart: {
