@@ -11,6 +11,8 @@
     %h1= @stock.last_traded_price
     %strong.net_change= @stock.net_change
     %span.percent_change= "(#{@stock.percent_change}%)"
+    - if @stock.time
+      %p= l @stock.time, :format => :short_date_and_time
 
   - %w(close_price open_price volume high_price low_price).each do |attr|
     %div{:class => attr}

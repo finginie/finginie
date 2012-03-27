@@ -25,7 +25,8 @@ class Stock < Security
   validates :name, :uniqueness => true
   validates :symbol, :uniqueness => true
 
-  SCRIP_METHODS = [:last_traded_price, :percent_change, :net_change, :volume, :open_price, :high_price, :low_price, :close_price, :best_buy_price, :best_buy_quantity, :best_sell_price, :best_sell_quantity]
+  SCRIP_METHODS = [ :last_traded_price, :percent_change, :net_change, :volume, :open_price, :high_price, :low_price, :close_price,
+                    :best_buy_price, :best_buy_quantity, :best_sell_price, :best_sell_quantity, :time ]
   delegate *SCRIP_METHODS, :to => :scrip, :allow_nil => true
   delegate :company_code, :to => :company, :allow_nil => true
 
