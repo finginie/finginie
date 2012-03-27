@@ -123,6 +123,6 @@ describe 'PersonalFinancialTools' do
     fill_in      "retirement_corpus_calculator[inflation]",         :with => 6
     fill_in      "retirement_corpus_calculator[expected_return]",   :with => 9
     click_button "Calculate Monthly Savings"
-    page.should have_content("14948.55")
+    page.should have_content("14776.67")
   end
 end
