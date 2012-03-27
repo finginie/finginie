@@ -106,7 +106,7 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def stocks_positions_profit_or_loss
-    stocks.map { |stock| Hashie::Mash.new({ :name => stock.name, 
+    stocks.map { |stock| Hashie::Mash.new({ :name => stock.name, :type => 'Stock',
                                             :profit_or_loss => (stock_transactions.for(stock).profit_or_loss.round(2).to_f),
                                             :percentage => (stock_transactions.for(stock).profit_or_loss_percentage.to_f)}) if !stock_transactions.for(stock).sells.empty?}.compact
   end
@@ -122,7 +122,7 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def mutual_fund_positions_profit_or_loss
-    mutual_funds.map { |mf| Hashie::Mash.new({ :name => mf.name,
+    mutual_funds.map { |mf| Hashie::Mash.new({ :name => mf.name, :type => 'Mutual Fund',
                               :profit_or_loss => (mutual_fund_transactions.for(mf).profit_or_loss.round(2).to_f),
                               :percentage => (mutual_fund_transactions.for(mf).profit_or_loss_percentage.round(2).to_f) })  if !mutual_fund_transactions.for(mf).sells.empty? }.compact
   end
@@ -132,19 +132,19 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def fixed_deposit_positions_profit_or_loss
-    fixed_deposits.map { |fd| Hashie::Mash.new({ :name => fd.name,
+    fixed_deposits.map { |fd| Hashie::Mash.new({ :name => fd.name, :type => 'Fixed Deposit',
                                                  :profit_or_loss => model.fixed_deposit_transactions.for(fd).profit_or_loss.to_f,
                                                  :percentage => model.fixed_deposit_transactions.for(fd).profit_or_loss_percentage.to_f }) if model.fixed_deposit_transactions.for(fd).profit_or_loss }.compact
   end
 
   def real_estate_positions_profit_or_loss
-    real_estates.map { |re| Hashie::Mash.new( { :name => re.name,
+    real_estates.map { |re| Hashie::Mash.new( { :name => re.name, :type => 'Real Estate',
                                                 :profit_or_loss => (model.real_estate_transactions.for(re.id).profit_or_loss.to_f),
                                                 :percentage => model.real_estate_transactions.for(re.id).profit_or_loss_percentage.to_f} ) if model.real_estate_transactions.for(re.id).profit_or_loss }.compact
   end
 
   def gold_positions_profit_or_loss
-    gold_transactions.for(Gold).profit_or_loss ? [Hashie::Mash.new( { :name => "Gold",
+    gold_transactions.for(Gold).profit_or_loss ? [Hashie::Mash.new( { :name => "Gold", :type => 'Gold',
                                                                       :profit_or_loss => (gold_transactions.for(Gold).profit_or_loss.to_f),
                                                                       :percentage => gold_transactions.for(Gold).profit_or_loss_percentage.to_f } )] : []
   end
