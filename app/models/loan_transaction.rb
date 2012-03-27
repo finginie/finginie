@@ -13,7 +13,7 @@ class LoanTransaction < ActiveRecord::Base
 
   delegate *[:rate_of_interest, :period, :name], :to => :loan
 
-  scope :for, lambda { |loan| where(:loan_id => loan).order(:date) } do
+  scope :for, lambda { |loan| where(:loan_id => loan).order(:date, :created_at) } do
     def name
       first.name
     end

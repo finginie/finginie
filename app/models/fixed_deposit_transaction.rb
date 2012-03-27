@@ -10,7 +10,7 @@ class FixedDepositTransaction < ActiveRecord::Base
 
   delegate *[:rate_of_interest, :period, :name, :rate_of_redemption], :to => :fixed_deposit
 
-  scope :for, lambda { |fixed_deposit| where(:fixed_deposit_id => fixed_deposit).order(:date) } do
+  scope :for, lambda { |fixed_deposit| where(:fixed_deposit_id => fixed_deposit).order(:date, :created_at) } do
 
     def name
       first.name

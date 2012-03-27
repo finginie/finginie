@@ -33,11 +33,13 @@
       = paginate @scheme_masters
       %table
         %th Scheme Name
+        %th Category
         %th Minimum Investment Amount (Rs)
         - @scheme_masters.each do |scheme|
           %tr
             %td
               =link_to scheme.scheme_name, scheme_summary_mutual_fund_path(scheme.scheme_name)
+            %td= scheme.scheme_class_description
             %td= number_to_indian_currency scheme.minimum_invement_amount
 
     - if !(@categories || @scheme_masters || @scheme_masters.count > 0)
