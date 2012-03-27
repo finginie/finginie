@@ -5,6 +5,7 @@ class FixedDepositTransaction < ActiveRecord::Base
   validates_presence_of :date, :portfolio_id
   validates :price, :numericality => {:greater_than => 0}, :presence => true
   validate  :date_should_not_be_in_the_future, :redemption_date_should_be_greater_than_deposit_date
+  validates :comments, :length => { :maximum => 75 }
 
   accepts_nested_attributes_for :fixed_deposit
 

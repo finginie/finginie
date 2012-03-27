@@ -18,6 +18,7 @@ module FungibleTransaction
                         :inclusion => {:in => ['buy', 'sell', 'Buy', 'Sell']}
     validates :price, :numericality => {:greater_than => 0}, :presence => true
     validates :quantity, :numericality => {:greater_than => 0}, :presence => true
+    validates :comments, :length => { :maximum => 75 }
   end
 
   def profit_or_loss
