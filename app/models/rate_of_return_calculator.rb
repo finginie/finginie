@@ -1,29 +1,18 @@
 class RateOfReturnCalculator
-  include ActiveModel::Validations
-  include ActiveModel::Conversion
-  extend ActiveModel::Naming
+  include ActiveAttr::Model
 
-  attr_accessor :initial_investment, :received_amount, :no_years
+  attribute :initial_investment,  :type => Float
+  attribute :received_amount,     :type => Float
+  attribute :no_years,            :type => Integer
 
-  def initialize(attributes)
-    attributes = {
-      :initial_investment => 0,
-      :received_amount => 0,
-      :no_years => 0,
-
-    }.merge ( attributes || {})
-    attributes.each do |name, value|
-      send("#{name}=", value.to_f)
-    end
-  end
-
-  def persisted?
-    false
-  end
+  validates :initial_investment,  :presence => true,
+                                  :numericality => { :greater_than => 0 }
+  validates :received_amount,     :presence => true,
+                                  :numericality => { :greater_than => 0 }
+  validates :no_years,            :presence => true,
+                                  :numericality => { :greater_than => 0, :only_integer => true }
 
   def calculate_rate_of_return
-    rate_of_return = ( ( ( received_amount/initial_investment ) ** ( 1/no_years ) ) -1 ) * 100
-    rate_of_return > 0 ? rate_of_return.round(2) : 0
+    (( ( ( received_amount/initial_investment ) ** ( 1/no_years.to_f ) ) - 1 ) * 100).round(2)
   end
 end
-

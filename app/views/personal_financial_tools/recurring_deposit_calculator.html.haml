@@ -10,7 +10,7 @@
     = f.input :amount_deposit
     = f.input :rate_of_return
     = f.input :no_months
-    = f.input :interest_compound ,:collection => %w[Monthly Quarterly HalfYearly Yearly], :include_blank => false
+    = f.input :compounding_frequency ,:collection => RecurringDepositCalculator::COMPOUNDING_FREQUENCY_OPTIONS, :include_blank => false
   .actions
     = f.button :submit
 

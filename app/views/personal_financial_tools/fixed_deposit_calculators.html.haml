@@ -10,10 +10,10 @@
     = f.input :amount_invested
     = f.input :rate_of_return
     = f.input :no_months
-    = f.input :interest_compound ,:collection => %w[Monthly Quarterly HalfYearly Yearly], :include_blank => false
+    = f.input :compounding_frequency ,:collection => FixedDepositCalculator::COMPOUNDING_FREQUENCY_OPTIONS, :include_blank => false
   .actions
     = f.button :submit
 
-  = content_tag :div, flash[:result], :id => 'result' if flash[:result].is_a?(String)
+  = content_tag :div, flash[:result], :id => 'result' if flash[:result]
 
 

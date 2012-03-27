@@ -1,6 +1,16 @@
 require 'spec_helper'
 
 describe RateOfReturnCalculator do
+  it { should validate_presence_of      :initial_investment }
+  it { should validate_presence_of      :received_amount    }
+  it { should validate_presence_of      :no_years           }
+  it { should validate_numericality_of  :initial_investment }
+  it { should validate_numericality_of  :received_amount    }
+  it { should validate_numericality_of  :no_years           }
+  it { should_not allow_value(0).for    :initial_investment }
+  it { should_not allow_value(0).for    :received_amount    }
+  it { should_not allow_value(0).for    :no_years           }
+
   it "should calculate the right rate of return " do
     RateOfReturnCalculator.new(
       :initial_investment       => 20000,
