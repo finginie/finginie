@@ -11,7 +11,7 @@
         %td= position[:sector]
         %td= number_to_indian_currency position[:amount_invested]
         %td= number_to_indian_currency position[:percentage]
-    %tr
+    %tr.total
       %td Total
       %td= number_to_indian_currency resource.stocks_value
       %td 100
@@ -30,6 +30,10 @@
             %td= position.name
             %td= number_to_indian_currency position.profit_or_loss
             %td= number_to_indian_currency position.percentage
+        %tr.total
+          %td Total
+          %td= number_to_indian_currency resource.stocks_positions_profit_or_loss.map(&:profit_or_loss).sum
+          %td 100
 
     -else
       %p= t ".no_sell_stock_transaction"
