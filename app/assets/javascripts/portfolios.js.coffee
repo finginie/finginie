@@ -95,12 +95,9 @@ $ ->
 
   if $("#mutual-fund-profit-or-loss-chart").attr("data-categories") != undefined
     bar_chart('mutual-fund-profit-or-loss-chart','data-mutual-fund-profit-or-loss','Realized Profit/Loss on Mutual Funds', JSON.parse($("#mutual-fund-profit-or-loss-chart").attr("data-categories")), 'Percentage (%)')
- 
+
   if $("#fixed-deposits-chart").attr("data-categories") != undefined
-    bar_chart('fixed-deposits-chart','data-fixed-deposits','Your Fixed Deposits', JSON.parse($("#fixed-deposits-chart").attr("data-categories")), 'Amount Invested')
+    bar_chart('fixed-deposits-chart','data-fixed-deposits','Your Fixed Deposits', JSON.parse($("#fixed-deposits-chart").attr("data-categories")), 'Amount Invested (Rupees)')
 
   if $("#accumulated-profits-chart").attr("data-categories") != undefined
-    bar_chart('accumulated-profits-chart','data-accumulated-profits','Your Top 5 Accumulated Profits and Losses', JSON.parse($("#accumulated-profits-chart").attr("data-categories")), 'Amount(Rupees)')
-
-  if $("#accumulated-losses-chart").attr("data-categories") != undefined
-    bar_chart('accumulated-losses-chart','data-accumulated-losses','Your Top 5 Accumulated Losses', JSON.parse($("#accumulated-losses-chart").attr("data-categories")), 'Amount(Rupees)')
+    bar_chart('accumulated-profits-chart','data-accumulated-profits','Your Top 5 Accumulated Profits and Losses', JSON.parse($("#accumulated-profits-chart").attr("data-categories")), 'Percentage (%)')
