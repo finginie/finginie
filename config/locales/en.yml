@@ -4,12 +4,13 @@
 en:
   date:
     formats:
-      default: "%b %d, %Y"  # 31-03-2011
+      default: "%b %d, %Y"  # Mar 31,2011
       yearly_results: "%Y" # 2011
-      stock_52w_date: "%b %d %Y"    # March 31 2011
+      stock_52w_date: "%b %d %Y"    # Mar 31 2011
   time:
     formats:
-      short_date: "%B %d, %Y"
+      short_date: "%B %d, %Y"     # March 31, 2011
+      short_date_and_time: "%b %d, %H:%M"  # Mar 31, 13:53
   not_available: "N/A"
   tables_not_available: "-"
   personal_financial_tools:
