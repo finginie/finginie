@@ -17,6 +17,7 @@ describe StockTransaction do
   it { should_not allow_value(1.day.from_now).for(:date) }
   it { should_not allow_value(-1).for(:price) }
   it { should_not allow_value(-1).for(:quantity) }
+  it { should ensure_length_of(:comments).is_at_most(75) }
 
   it "should get amount" do
     stock_transaction.action = "buy"

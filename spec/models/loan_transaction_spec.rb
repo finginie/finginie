@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe LoanTransaction do
   let(:loan_transaction) { create :loan_transaction }
+  subject { loan_transaction }
   it { should belong_to :portfolio }
   it { should belong_to :loan }
   it { should validate_presence_of :portfolio_id }
@@ -14,6 +15,7 @@ describe LoanTransaction do
   it { should_not allow_value(-1).for(:price) }
   it { should_not allow_value("sell").for(:action) }
   it { should_not allow_value("buy").for(:action) }
+  it { should ensure_length_of(:comments).is_at_most(75) }
 
   it "should get amount" do
     loan_transaction.action = "repay"

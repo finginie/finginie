@@ -8,6 +8,7 @@ class LoanTransaction < ActiveRecord::Base
                       :inclusion => {:in => ['borrow', 'repay', 'Borrow', 'Repay']}
 
   validate  :date_should_not_be_in_the_future, :repay_amount_should_be_less_than_or_equal_to_amount
+  validates :comments, :length => { :maximum => 75 }
 
   accepts_nested_attributes_for :loan
 

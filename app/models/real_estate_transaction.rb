@@ -5,6 +5,7 @@ class RealEstateTransaction < ActiveRecord::Base
   validates_presence_of :date, :portfolio_id, :action
   validates :price, :numericality => {:greater_than => 0}, :presence => true
   validate  :date_should_not_be_in_the_future, :sell_date_should_be_greater_than_buy_date
+  validates :comments, :length => { :maximum => 75 }
 
   accepts_nested_attributes_for :real_estate
 
