@@ -1,25 +1,18 @@
 class SipCalculator
-  include ActiveModel::Validations
-  include ActiveModel::Conversion
-  extend ActiveModel::Naming
+  include ActiveAttr::Model
 
-  attr_accessor :initial_investment, :monthly_amount, :no_months, :rate_of_return
+  attribute :initial_investment, :type => Float, :default => 0
+  attribute :monthly_amount,     :type => Float
+  attribute :no_months,          :type => Integer
+  attribute :rate_of_return,     :type => Float
 
-  def initialize(attributes)
-    attributes = {
-      :initial_investment => 0,
-      :monthly_amount => 0,
-      :no_months => 0,
-      :rate_of_return => 0
-    }.merge ( attributes || {})
-    attributes.each do |name, value|
-      send("#{name}=", value.to_f)
-    end
-  end
-
-  def persisted?
-    false
-  end
+  validates :initial_investment,  :numericality => { :greater_than => 0 }
+  validates :monthly_amount,      :presence => true,
+                                  :numericality => { :greater_than => 0 }
+  validates :rate_of_return,      :presence => true,
+                                  :numericality => { :greater_than => 0 }
+  validates :no_months,           :presence => true,
+                                  :numericality => { :greater_than => 0, :only_integer => true }
 
   def calculate_sip
     rate_of_return_monthly = (rate_of_return/1200) +1

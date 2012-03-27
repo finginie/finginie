@@ -1,56 +1,33 @@
 class RecurringDepositCalculator
-  include ActiveModel::Validations
-  include ActiveModel::Conversion
-  extend ActiveModel::Naming
+  include ActiveAttr::Model
 
-  attr_accessor :amount_deposit, :rate_of_return, :no_months, :interest_compound
+  COMPOUNDING_FREQUENCY_OPTIONS = {
+    'Monthly'    => 1,
+    'Quarterly'  => 3,
+    'HalfYearly' => 6,
+    'Yearly'     => 12
+    }
 
-  def self.float(attr, default_value)
-    define_method(attr) do
-      instance_variable_set "@#{attr}", instance_variable_get("@#{attr}") || default_value
-    end
+  attribute :amount_deposit,        :type => Float
+  attribute :rate_of_return,        :type => Float
+  attribute :no_months,             :type => Integer
+  attribute :compounding_frequency, :type => Integer, :default => 3
 
-    define_method("#{attr}=") do |value|
-      instance_variable_set "@#{attr}", value.to_f
-    end
-  end
-
-   [:amount_deposit, :rate_of_return, :no_months
-   ].each { |attr| float(attr, 0) }
-
-  def initialize(attributes)
-    attributes = {
-      :amount_deposit => 0,
-      :rate_of_return => 0,
-      :no_months => 0,
-      :interest_compound => 'Quarterly'
-
-    }.merge ( attributes || {})
-    attributes.each do |name, value|
-      send("#{name}=", value)
-    end
-  end
-
-  def persisted?
-    false
-  end
+  validates :amount_deposit,         :presence => true,
+                                      :numericality => { :greater_than => 0 }
+  validates :rate_of_return,          :presence => true,
+                                      :numericality => { :greater_than => 0 }
+  validates :no_months,               :presence => true,
+                                      :numericality => { :greater_than => 0 }
+  validates :compounding_frequency,   :presence => true,
+                                      :inclusion => COMPOUNDING_FREQUENCY_OPTIONS.values
 
   def maturity_amount
-    monthly_rate_of_return = (monthly_rate/100) +1
-    maturity_amount =  ( amount_deposit * monthly_rate_of_return * ( ( monthly_rate_of_return ** no_months ) - 1) )/( monthly_rate_of_return -1)
+    maturity_amount =  ( amount_deposit * monthly_rate_of_return * ( ( monthly_rate_of_return ** no_months ) - 1) )/( monthly_rate_of_return - 1)
     maturity_amount > 0 ? maturity_amount.round(2) : 0.0
   end
 
-  def monthly_rate
-    case interest_compound
-      when "Monthly"
-        rate_of_return / 12
-      when "Quarterly"
-        ((Math.exp((Math.log(1 + (rate_of_return / 400))) / 3)) - 1) *100
-      when "HalfYearly"
-        (Math.exp((Math.log(1 + (rate_of_return / 200))) / 6) -1 )*100
-      when "Yearly"
-        (Math.exp((Math.log(1 + (rate_of_return / 100))) / 12)-1) * 100
-    end
+  def monthly_rate_of_return
+    Math.exp((Math.log(1 + (rate_of_return * compounding_frequency / 1200.0))) / compounding_frequency.to_f)
   end
 end

@@ -1,25 +1,18 @@
 class EmiCalculator
-  include ActiveModel::Validations
-  include ActiveModel::Conversion
-  extend ActiveModel::Naming
+  include ActiveAttr::Model
 
-  attr_accessor :cost, :down_payment, :rate, :term
+  attribute :cost,         :type => Float
+  attribute :rate,         :type => Float
+  attribute :term,         :type => Float
+  attribute :down_payment, :type => Float, :default => 0
 
-  def initialize(attributes)
-    attributes = {
-      :cost => 0,
-      :down_payment => 0,
-      :rate => 0,
-      :term => 0
-    }.merge ( attributes || {})
-    attributes.each do |name, value|
-      send("#{name}=", value.to_f)
-    end
-  end
-
-  def persisted?
-    false
-  end
+  validates :cost,          :presence => true,
+                            :numericality => { :greater_than => 0 }
+  validates :rate,          :presence => true,
+                            :numericality => { :greater_than => 0 }
+  validates :term,          :presence => true,
+                            :numericality => { :greater_than => 0 }
+  validates :down_payment,  :numericality => { :greater_than_or_equal_to => 0 }
 
   def calculate_emi
     monthly_emi = (cost - down_payment) * ( (1 + rate/1200) ** (term * 12) ) * ( ( 1 + rate/1200 ) - 1) / ( ( 1 + rate/1200 ) ** ( term * 12 ) - 1 )

@@ -1,32 +1,23 @@
 class MonthlySipCalculator
-  include ActiveModel::Validations
-  include ActiveModel::Conversion
-  extend ActiveModel::Naming
+  include ActiveAttr::Model
 
-  attr_accessor :financial_goal, :rate_of_return, :no_months
+  attribute :financial_goal,  :type => Float
+  attribute :rate_of_return,  :type => Float
+  attribute :no_months,       :type => Integer
 
-  def initialize(attributes)
-    attributes = {
-      :financial_goal => 0,
-      :rate_of_return => 0,
-      :no_months => 0,
-
-    }.merge ( attributes || {})
-    attributes.each do |name, value|
-      send("#{name}=", value.to_f)
-    end
-  end
-
-  def persisted?
-    false
-  end
+  validates :financial_goal,  :presence => true,
+                              :numericality => { :greater_than => 0 }
+  validates :rate_of_return,  :presence => true,
+                              :numericality => { :greater_than => 0 }
+  validates :no_months,       :presence => true,
+                              :numericality => { :greater_than => 0, :only_integer => true }
 
   def monthly_sip
-    monthly_sip = ( financial_goal * rate_of_return_monthly )/( ( 1 + rate_of_return_monthly ) * ( ( ( 1 + rate_of_return_monthly ) ** no_months ) - 1 ) )
+    monthly_sip = ( financial_goal * monthly_rate_of_return )/( ( 1 + monthly_rate_of_return ) * ( ( ( 1 + monthly_rate_of_return ) ** no_months ) - 1 ) )
     monthly_sip > 0 ? monthly_sip.round(2) : 0
   end
 
-  def rate_of_return_monthly
+  def monthly_rate_of_return
     rate_of_return/1200
   end
 end

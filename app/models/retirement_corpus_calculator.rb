@@ -1,54 +1,55 @@
 class RetirementCorpusCalculator
-  include ActiveModel::Validations
-  include ActiveModel::Conversion
-  extend ActiveModel::Naming
+  include ActiveAttr::Model
 
-  attr_accessor :current_age, :retirement_age, :monthly_expenses, :inflation, :expected_return
+  attribute :current_age,      :type => Integer
+  attribute :retirement_age,   :type => Integer
+  attribute :monthly_expenses, :type => Float
+  attribute :inflation,        :type => Float
+  attribute :expected_return,  :type => Float
 
-  def initialize(attributes)
-    attributes = {
-      :current_age => 0,
-      :retirement_age => 0,
-      :monthly_expenses => 0,
-      :inflation => 0,
-      :expected_return => 0
+  validates :current_age,       :presence => true,
+                                :numericality => { :greater_than => 0, :only_integer =>true }
+  validates :retirement_age,    :presence => true,
+                                :numericality => { :greater_than => 0, :only_integer =>true }
+  validates :monthly_expenses,  :presence => true,
+                                :numericality => { :greater_than => 0 }
+  validates :inflation,         :presence => true,
+                                :numericality => { :greater_than => 0 }
+  validates :expected_return,   :presence => true,
+                                :numericality => { :greater_than => 0 }
 
-    }.merge ( attributes || {})
-    attributes.each do |name, value|
-      send("#{name}=", value.to_f)
-    end
-  end
-
-  def persisted?
-    false
-  end
   AGE_OF_DEATH = 80
 
-  def monthly_return
-    retirement_corpus = 0.0
+  def retirement_corpus
+    retirement_year_expenses * (appreciation_factor ** retirement_life_span - 1) / (appreciation_factor - 1)
+  end
 
-    for i in 1..retirement_life_span
-      retirement_corpus += (( 1 + (inflation/100) ) ** i ) * retirement_year_expenses / (( 1+ (expected_return/100) ) ** i )
-    end
-
-    monthly_return = ( retirement_corpus * (rate_of_return - 1) )/ ( rate_of_return * ( ( rate_of_return ** months_to_retirement )-1))
-    monthly_return > 0 ? monthly_return.round(2) : 0
+  def monthly_savings
+    MonthlySipCalculator.new(:financial_goal => retirement_corpus, :rate_of_return => expected_return, :no_months => months_to_retirement).monthly_sip
   end
 
   def retirement_year_expenses
-     monthly_expenses * 12 * (((1 + (inflation / 100))**(retirement_age - current_age)))
+     monthly_expenses * 12 * (inflation_factor ** (retirement_age - current_age))
   end
 
   def months_to_retirement
     (retirement_age - current_age) * 12
   end
 
-  def rate_of_return
-    ((((Math.exp((Math.log(1 + expected_return / 100)) / 12)) - 1) *100)/100)+1
+  def retirement_life_span
+    AGE_OF_DEATH - retirement_age
   end
 
-  def retirement_life_span
-    (AGE_OF_DEATH - retirement_age).ceil
+  def inflation_factor
+    1 + inflation / 100
+  end
+
+  def expected_return_factor
+    1 + expected_return / 100
+  end
+
+  def appreciation_factor
+    inflation_factor / expected_return_factor
   end
 
 end

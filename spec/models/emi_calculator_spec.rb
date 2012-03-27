@@ -1,6 +1,18 @@
 require 'spec_helper'
 
 describe EmiCalculator do
+  it { should validate_presence_of :cost }
+  it { should validate_numericality_of :cost }
+  it { should_not allow_value(0).for :cost }
+  it { should validate_presence_of :rate }
+  it { should validate_numericality_of :rate }
+  it { should_not allow_value(0).for :rate }
+  it { should validate_presence_of :term }
+  it { should validate_numericality_of :term }
+  it { should_not allow_value(0).for :term }
+  it { should validate_numericality_of :down_payment }
+  it { should_not allow_value(-1).for :down_payment }
+
   it "should calculate the right emi" do
     EmiCalculator.new(
       :cost         => 400000,

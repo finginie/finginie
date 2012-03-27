@@ -10,6 +10,7 @@ group :assets do
   gem 'uglifier'
 end
 
+gem 'active_attr'
 gem 'airbrake'
 gem 'bourbon', :git => "git://github.com/FinGinie/bourbon.git"
 gem 'bson_ext'
@@ -52,6 +53,7 @@ group :test, :development do
     gem 'libnotify'
     gem 'rb-inotify', :require => false
     gem 'rb-fsevent', :require => false
+  gem 'guard-bundler'
   gem 'guard-livereload'
   gem 'guard-rspec'
   gem 'guard-spork'

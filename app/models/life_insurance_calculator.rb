@@ -1,62 +1,42 @@
 class LifeInsuranceCalculator
-  include ActiveModel::Validations
-  include ActiveModel::Conversion
-  extend ActiveModel::Naming
-
   class Dependent
-    include ActiveModel::Validations
-    include ActiveModel::Conversion
-    extend ActiveModel::Naming
+    include ActiveAttr::Model
 
-    attr_accessor :years, :expense, :_destroy
+    attribute :years, :type => Integer
+    attribute :expense, :type => Float
+    attribute :_destroy, :type => Boolean
 
-    def initialize(attributes={})
-      @years = (attributes[:years] || 0).to_i
-      @expense = (attributes[:expense] || 0.0).to_f
-    end
-
-    def persisted?
-      false
-    end
+    validates :years,   :presence     => true,
+                        :numericality => { :greater_than => 0 }
+    validates :expense, :presence     => true,
+                        :numericality => { :greater_than => 0 }
   end
 
-  def self.float(attr, default_value)
-    define_method(attr) do
-      instance_variable_set "@#{attr}", instance_variable_get("@#{attr}") || default_value
-    end
+  include ActiveAttr::Model
 
-    define_method("#{attr}=") do |value|
-      instance_variable_set "@#{attr}", value.to_f
-    end
-  end
+  attribute :existing_life_insurance,            :type => Float, :default => 0
+  attribute :existing_provident_fund,            :type => Float, :default => 0
+  attribute :total_outstanding_liabilities,      :type => Float, :default => 0
+  attribute :total_assets,                       :type => Float, :default => 0
+  attribute :desired_value_of_bequeathed_estate, :type => Float
+  attribute :family_income,                      :type => Float
 
+  validates :existing_life_insurance,             :numericality => { :greater_than_or_equal_to => 0 }
+  validates :existing_provident_fund,             :numericality => { :greater_than_or_equal_to => 0 }
+  validates :total_outstanding_liabilities,       :numericality => { :greater_than_or_equal_to => 0 }
+  validates :total_assets,                        :numericality => { :greater_than_or_equal_to => 0 }
+  validates :desired_value_of_bequeathed_estate,  :presence     => true,
+                                                  :numericality => { :greater_than => 0 }
+  validates :family_income,                       :presence     => true,
+                                                  :numericality => { :greater_than => 0 }
+  validate :each_dependent
 
-  [:existing_life_insurance, :existing_provident_fund, :total_outstanding_liabilities,
-    :total_assets, :desired_value_of_bequeathed_estate, :family_income
-  ].each { |attr| float(attr, 0) }
-  attr_accessor :dependents
-
-  def initialize(attributes)
-    attributes = {
-      :existing_life_insurance => 0,
-      :existing_provident_fund => 0,
-      :total_outstanding_liabilities => 0,
-      :total_assets => 0,
-      :desired_value_of_bequeathed_estate => 0,
-      :family_income => 0,
-      :dependents => []
-    }.merge ( attributes || {})
-    attributes.each do |name, value|
-      send("#{name}=", value)
-    end
+  def dependents
+    @dependents ||= []
   end
 
   def dependents_attributes=(attributes)
     attributes.each { |k,v| dependents << Dependent.new(v) unless v[:_destroy] == "1" }
-  end
-
-  def persisted?
-    false
   end
 
   DISCOUNT_RATE = 1 + 10.0/100
@@ -85,4 +65,8 @@ class LifeInsuranceCalculator
     dependents.map{|d| d.years }.max || 0
   end
 
+private
+  def each_dependent
+    dependents.each &:valid?
+  end
 end
