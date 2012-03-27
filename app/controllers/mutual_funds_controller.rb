@@ -16,6 +16,7 @@ class MutualFundsController < InheritedResources::Base
   end
 
   def resource
+    @search = SchemeMaster.new
     @scheme = SchemeMaster.where( scheme_name: params[:id] ).first
     @scheme = SchemeMasterDecorator.decorate(@scheme)
   end

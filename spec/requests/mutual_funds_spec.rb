@@ -41,4 +41,15 @@ describe "MutualFunds" do
     page.execute_script %Q{ $('.ui-menu-item a:contains("#{@scheme_master.scheme_name}")').trigger('mouseenter').click(); }
     page.current_path.should eq scheme_summary_mutual_fund_path(@scheme_master.scheme_name)
   end
+
+  it "should have search in the scheme page", :js => true do
+    visit scheme_summary_mutual_fund_path(@scheme_master.scheme_name)
+    page.execute_script %Q{ $('#scheme_master_scheme_name').val("#{@scheme_master.scheme_name[0..5]}").keydown(); }
+
+    wait_until {  page.should have_selector(".ui-menu-item a:contains('#{@scheme_master.scheme_name}')") }
+
+    page.execute_script %Q{ $('.ui-menu-item a:contains("#{@scheme_master.scheme_name}")').trigger('mouseenter').click(); }
+    page.current_path.should eq scheme_summary_mutual_fund_path(@scheme_master.scheme_name)
+
+  end
 end
