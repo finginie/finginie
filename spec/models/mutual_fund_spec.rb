@@ -8,7 +8,7 @@ describe MutualFund do
     let(:scheme) { create :scheme, :scheme_name => mutual_fund.scheme }
 
     it "should return nav amount" do
-      create :navcp, :nav_amount => 220, :security_code => scheme.securitycode
+      scheme.update_attributes(:nav_amount => 220)
       mutual_fund.nav_amount.should eq 220
       mutual_fund.current_price.should eq 220
     end

@@ -3,12 +3,10 @@ require 'spec_helper'
 describe "MutualFundPosition" do
 
   let(:portfolio) { create :portfolio }
-  let(:scheme) { create :scheme }
-  let(:navcp) { create :navcp, :nav_amount => "5", :security_code => scheme.securitycode }
+  let(:scheme) { create :scheme, :nav_amount => "5" }
   let(:mutual_fund) { create :mutual_fund, :name => scheme.scheme_name }
 
   subject {
-    navcp.save
     4.times { |n| create :mutual_fund_transaction, :mutual_fund => mutual_fund, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
     portfolio.mutual_fund_transactions.for(mutual_fund)
   }

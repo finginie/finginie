@@ -19,11 +19,5 @@ FactoryGirl.define do
     fund_manager_prefix "Mr."
     fund_manager_name "Chirag Setalvad"
 
-    trait :with_navcp do
-      after_create do |scheme|
-        FactoryGirl.create :navcp, :security_code => scheme.securitycode, :nav_amount => 5
-      end
-    end
-    factory :scheme_with_navcp, :traits => [:with_navcp]
-  end
+   end
 end

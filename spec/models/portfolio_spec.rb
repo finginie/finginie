@@ -87,8 +87,7 @@ describe Portfolio do
     scrip = create :scrip, :last_traded_price => 5, :id => company.nse_code
     4.times { |n| create :stock_transaction, :company_code => company.company_code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-    scheme = create :scheme
-    navcp  = create :navcp, :nav_amount => "5", :security_code => scheme.securitycode
+    scheme = create :scheme, :nav_amount => "5"
     4.times { |n| create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     Gold.current_price = 5

@@ -4,7 +4,6 @@ describe Scheme do
   before(:each) do
     @scheme = create :scheme, :objective => "MyObjective",:bench_mark_index_name => "Crisil Liquid Fund Index"
     @amc =  create :asset_management_company, :company_code => @scheme.company_code, :company_name => "HDFC Mutual Fund"
-    @navcp = create :navcp, :security_code => @scheme.securitycode
     @mf_dividend_detail = create :mf_dividend_detail, :securitycode => @scheme.securitycode
     @nav_category_detail = create :nav_category_detail, :scheme_class_code => @scheme.scheme_class_code
     @mf_scheme_wise_portfolio = create :mf_scheme_wise_portfolio, :security_code => @scheme.securitycode
@@ -19,10 +18,6 @@ describe Scheme do
   its(:dividend_date) { should eq @mf_dividend_detail.dividend_date }
   its(:one_day_return) { should eq @nav_category_detail.one_day_return }
   its(:one_year_return) { should eq @nav_category_detail.one_year_return }
-  its(:prev1_week_per) { should eq @navcp.prev1_week_per }
-  its(:prev3_months_per) { should eq @navcp.prev3_months_per }
-  its(:prev9_months_per) { should eq @navcp.prev9_months_per }
-  its(:prev3_year_comp_per) { should eq @navcp.prev3_year_comp_per }
   it "should have portfolio_holdings" do
     subject.portfolio_holdings.should include ({"PortfolioUOM"=>"838",
       "PortfolioUOMDescription"=>"Crores",

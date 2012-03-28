@@ -4,7 +4,6 @@ describe "MutualFunds" do
   before(:each) do
     @scheme = create :scheme, :objective => "Objective", :bench_mark_index_name => "Crisil Liquid Fund Index"
     @amc =  create :asset_management_company, :company_code => @scheme.company_code, :company_name => "HDFC Mutual Fund"
-    @navcp = create :navcp, :security_code => @scheme.securitycode
     @mf_dividend_detail = create :mf_dividend_detail, :securitycode => @scheme.securitycode
     @nav_category_detail = create :nav_category_detail, :scheme_class_code => @scheme.scheme_class_code
     @mf_scheme_wise_portfolio = create :mf_scheme_wise_portfolio, :security_code => @scheme.securitycode
@@ -25,8 +24,6 @@ describe "MutualFunds" do
     page.should have_content @scheme.objective
     page.should have_content @mf_dividend_detail.percentage.round(2)
     page.should have_content @mf_dividend_detail.dividend_date
-    page.should have_content @navcp.nav_amount.round(2)
-    page.should have_content @navcp.percentage_change.round(2)
   end
 
   it "should autocomplete scheme name when user fill scheme name", :js => true do

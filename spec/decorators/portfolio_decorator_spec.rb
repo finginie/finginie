@@ -4,7 +4,7 @@ describe PortfolioDecorator do
   before { ApplicationController.new.set_current_view_context }
   let(:portfolio) { create :portfolio }
   let(:company) { create :company_with_scrip, :industry_name => "FOO" }
-  let(:scheme) { create :scheme, :scheme_class_description => "FOO" }
+  let(:scheme) { create :scheme, :scheme_class_description => "FOO", :nav_amount => "5" }
   let(:real_estate) { create :real_estate, :name => "Test Property", :location => "Mordor", :current_price => 600 }
   let(:fixed_deposit) { create :fixed_deposit, :name => "Foo", :period => 5, :rate_of_interest => 10.0 }
 
@@ -39,7 +39,7 @@ describe PortfolioDecorator do
 
   it "should have catogorywise mf percentages" do
     subject
-    scheme2 = create :scheme_with_navcp, :scheme_class_description => "BAR"
+    scheme2 = create :scheme, :nav_amount => "5", :scheme_class_description => "BAR"
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today
     subject.category_wise_mutual_funds_percentage.should include(*[["FOO", 71.43], ["BAR", 28.57]])
   end
@@ -100,7 +100,6 @@ describe PortfolioDecorator do
   def create_securities(portfolio = portfolio)
     4.times { |n| create :stock_transaction, :company_code => company.company_code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-    navcp  = create :navcp, :nav_amount => "5", :security_code => scheme.securitycode
     4.times { |n|
       create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
