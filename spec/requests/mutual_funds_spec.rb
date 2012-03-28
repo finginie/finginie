@@ -2,9 +2,8 @@ require 'spec_helper'
 
 describe "MutualFunds" do
   before(:each) do
-    @scheme = create :scheme, :objective => "Objective"
+    @scheme = create :scheme, :objective => "Objective", :bench_mark_index_name => "Crisil Liquid Fund Index"
     @amc =  create :asset_management_company, :company_code => @scheme.company_code, :company_name => "HDFC Mutual Fund"
-    @nav_master = create :nav_master, :security_code => @scheme.securitycode, :bench_mark_index_name => "Crisil Liquid Fund Index"
     @navcp = create :navcp, :security_code => @scheme.securitycode
     @mf_dividend_detail = create :mf_dividend_detail, :securitycode => @scheme.securitycode
     @nav_category_detail = create :nav_category_detail, :scheme_class_code => @scheme.scheme_class_code
@@ -19,7 +18,7 @@ describe "MutualFunds" do
     visit scheme_summary_mutual_fund_path(@scheme.scheme_name)
     page.should have_content @scheme.scheme_name
     page.should have_content @amc.company_name
-    page.should have_content @nav_master.bench_mark_index_name
+    page.should have_content @scheme.bench_mark_index_name
     page.should have_content @scheme.scheme_class_description
     page.should have_content @scheme.scheme_plan_description
     page.should have_content @scheme.scheme_type_description

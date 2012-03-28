@@ -9,6 +9,7 @@ class Scheme
   extend MongoidHelpers
 
   field :securitycode, :type => BigDecimal
+  field :scheme_code, :type => Float # from NavMaster.xml
   field :scheme_name
   field :company_code, :type => BigDecimal
   field :amc_code, :type => BigDecimal
@@ -43,6 +44,20 @@ class Scheme
   field :product_code
   field :modified_date, :type => DateTime
   field :delete_flag
+  ###### from NavMaster.xml
+  field :ticker_name
+  field :mapping_code
+  field :map_name
+  field :issue_price, :type => Float
+  field :description
+  field :issue_date, :type => DateTime
+  field :expiry_date, :type => DateTime
+  field :face_value, :type => Float
+  field :market_lot, :type => Float
+  field :isin_code
+  field :bench_mark_index
+  field :bench_mark_index_name
+
   field :objective #from MfObjective.xml
 
   key :securitycode
@@ -62,14 +77,6 @@ class Scheme
 
   def asset_management_company
     AssetManagementCompany.where(company_code: company_code).first
-  end
-
-  def nav_master
-    NavMaster.where( security_code: securitycode ).first
-  end
-
-  def bench_mark_index
-    nav_master.bench_mark_index_name if nav_master
   end
 
   def mf_dividend_detail

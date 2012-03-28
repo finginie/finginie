@@ -13,7 +13,7 @@ class SchemeDecorator < ApplicationDecorator
     end
   end
 
-  [ :company_name, :objective, :bench_mark_index, :dividend_percentage, :dividend_date, :entry_load, :exit_load ].each do |attr|
+  [ :company_name, :objective, :bench_mark_index_name, :dividend_percentage, :dividend_date, :entry_load, :exit_load ].each do |attr|
     define_method "#{attr}" do                            # def attr
       model.send(attr) || "-"                            #   model.attr || "NA"
     end                                                   # end
