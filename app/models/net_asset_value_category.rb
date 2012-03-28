@@ -1,4 +1,4 @@
-class NavCategoryDetail
+class NetAssetValueCategory
   include Mongoid::Document
   extend MongoidHelpers
 

@@ -5,7 +5,7 @@ describe "MutualFunds" do
     @scheme = create :scheme, :objective => "Objective", :bench_mark_index_name => "Crisil Liquid Fund Index"
     @amc =  create :asset_management_company, :company_code => @scheme.company_code, :company_name => "HDFC Mutual Fund"
     @mf_dividend_detail = create :mf_dividend_detail, :securitycode => @scheme.securitycode
-    @nav_category_detail = create :nav_category_detail, :scheme_class_code => @scheme.scheme_class_code
+    @nav_category_detail = create :net_asset_value_category, :scheme_class_code => @scheme.scheme_class_code
     @mf_scheme_wise_portfolio = create :mf_scheme_wise_portfolio, :security_code => @scheme.securitycode
   end
   let(:mutual_fund) { create :mutual_fund }

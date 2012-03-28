@@ -11,7 +11,7 @@ class MutualFundsController < InheritedResources::Base
       @search_records = Scheme.search(params[:term], :allow_empty_search => true)
       @search_records.all.map(&:scheme_name)
     else
-      @categories = NavCategoryDetail.all( sort: [[:scheme_class_description, :asc]])
+      @categories = NetAssetValueCategory.all( sort: [[:scheme_class_description, :asc]])
     end
   end
 

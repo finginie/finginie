@@ -122,7 +122,7 @@ class Scheme
   end
 
   def category_wise_net_asset_value_detail
-    NavCategoryDetail.all(conditions: { scheme_class_code: scheme_class_code }, sort: [[ :modified_date, :desc ]]).first
+    NetAssetValueCategory.all(conditions: { scheme_class_code: scheme_class_code }, sort: [[ :modified_date, :desc ]]).first
   end
 
   def scheme_portfolio

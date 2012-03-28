@@ -1,7 +1,7 @@
 # Read about factories at http://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :nav_category_detail do
+  factory :net_asset_value_category do
     one_day_return "0.0227"
     one_week_return "0.1384"
     two_weeks_return "0.303"
