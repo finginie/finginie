@@ -49,6 +49,6 @@
           = link_to headline, stock_news_path(:stock_id => @stock.id, :id => headline), :target => "_blank"
 
 %section
-%iframe{:src => @chart_url, :style => "width:800px; height:600px"}
+%iframe{:src => @chart_url, :style => "width:750px; height:600px"}
 
 .back= link_to 'Back', stocks_path

@@ -6,6 +6,9 @@
 // ---------------------index page-------------------
 
 body.personal_financial_tools.index {
+  h1 {
+    font-size: x-large;
+  }
   dt {
     margin-top: 1em;
     a, a:visited {
@@ -78,7 +81,7 @@ body.personal_financial_tools {
       label {
         display: inline-block;
 	      color: $base-color;
-	      width: 40%;
+	      width: 45%;
 	      line-height: 1em;
 	      text-align: right;
         padding: {

@@ -112,13 +112,13 @@ $bottom-grey: #c5c4c4;
 //--------------------------------------------------------------
 
 #main .container>.wrapper {
-  @include holy-grail-wrapper(200px, 10px, right);
+  @include holy-grail-wrapper(180px, 10px, right);
   article {
-    @include holy-grail-main(200px, 10px, right);
+    @include holy-grail-main(180px, 10px, right);
     //padding-bottom: 1em;
   }
   .extracontent {
-    @include holy-grail-aside(200px, 0, right);
+    @include holy-grail-aside(180px, 0, right);
     h1 {
       font: {
         family: heading-font;
