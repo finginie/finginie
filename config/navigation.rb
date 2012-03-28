@@ -65,7 +65,7 @@ SimpleNavigation::Configuration.run do |navigation|
       secondary.item :comprehensive_risk_profilers, 'Ideal Asset Allocation', comprehensive_risk_profiler_path
     end
 
-    primary.item :portfolios, 'My Investments', portfolios_path do |secondary|
+    primary.item :portfolios, 'My Investments', portfolios_path, :highlights_on => :subpath do |secondary|
       if current_user
         current_user.portfolios.each do |portfolio|
           if portfolio.persisted?
@@ -84,9 +84,9 @@ SimpleNavigation::Configuration.run do |navigation|
       end
     end
 
-    primary.item :stocks, 'Stocks', stocks_path do |secondary|
+    primary.item :stocks, 'Stocks', stocks_path, :highlights_on => :subpath do |secondary|
       if @stock
-        secondary.item :stock,           "#{@stock.name}",        stock_path(@stock) do |tertiary|
+        secondary.item :stock,           "#{@stock.name}",        stock_path(@stock), :highlights_on => :subpath do |tertiary|
           tertiary.item :balance_sheet,  'Balance Sheet',         stock_balance_sheet_path(@stock)
           tertiary.item :profit_loss,    'Income Statement',      stock_profit_loss_path(@stock)
           tertiary.item :cash_flow,      'Cash Flow',             stock_cash_flow_path(@stock)
@@ -96,7 +96,7 @@ SimpleNavigation::Configuration.run do |navigation|
       end
     end
 
-    primary.item :mutual_funds, 'Mutual Funds', mutual_funds_path do |secondary|
+    primary.item :mutual_funds, 'Mutual Funds', mutual_funds_path, :highlights_on => :subpath do |secondary|
       if @scheme.try(:scheme_name)
         secondary.item :scheme_summary, 'Scheme Summary', scheme_summary_mutual_fund_path(@scheme.scheme_name)
         secondary.item :scheme_returns, 'Scheme Returns', scheme_returns_mutual_fund_path(@scheme.scheme_name)
