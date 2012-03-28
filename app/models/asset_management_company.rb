@@ -1,4 +1,4 @@
-class FundMaster
+class AssetManagementCompany
   include Mongoid::Document
   extend MongoidHelpers
 

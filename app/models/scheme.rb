@@ -57,11 +57,11 @@ class Scheme
     :two_year_return, :three_year_return ]
   delegate *CATEGORY_METHODS, :to => :category_wise_net_asset_value_detail, :allow_nil => true
 
-  delegate :company_name, :to => :fund_master, :allow_nil => true
+  delegate :company_name, :to => :asset_management_company, :allow_nil => true
   delegate :dividend_date, :to => :mf_dividend_detail, :allow_nil => true
 
-  def fund_master
-    FundMaster.where(company_code: company_code).first
+  def asset_management_company
+    AssetManagementCompany.where(company_code: company_code).first
   end
 
   def nav_master

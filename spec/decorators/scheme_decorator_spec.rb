@@ -5,7 +5,7 @@ describe SchemeDecorator do
 
   before(:each) do
     @scheme = create :scheme
-    @fund_master =  create :fund_master, :company_code => @scheme.company_code, :company_name => "HDFC Mutual Fund"
+    @amc =  create :asset_management_company, :company_code => @scheme.company_code, :company_name => "HDFC Mutual Fund"
     @nav_master = create :nav_master, :security_code => @scheme.securitycode, :bench_mark_index_name => "Crisil Liquid Fund Index"
     @navcp = create :navcp, :security_code => @scheme.securitycode
     @mf_dividend_detail = create :mf_dividend_detail, :securitycode => @scheme.securitycode
