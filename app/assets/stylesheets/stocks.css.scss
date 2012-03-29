@@ -9,19 +9,31 @@ $quote-border: 2px solid lightgray;
 
 body.stocks.index {
   #main {
+
+    abbr[title] {
+      color: red;
+      border: none;
+    }
     #stock_search {
-      div {
-      width: 100%;
-      padding-bottom: 1em;
-        label {
-          display: inline-block;
-          width: 20%;
-          color: $base-color;
-          font: {
-            size: medium;
-          }
+      label {
+        display: inline-block;
+        width: 20%;
+        color: $base-color;
+        font: {
+          size: medium;
         }
+        padding-bottom: 0.5em;
+      }
+      div.loading {
+        float: right;
+        width: 30%;
+      }
+      div {
+        width: 70%;
+        display: inline-block;
+        padding-bottom: 1em;
         select {
+          margin-left: 0.3em;
           width: 300px;
         }
       }

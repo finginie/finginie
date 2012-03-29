@@ -1,9 +1,13 @@
 $ ->
+  $('#search_name_contains').focus ->
+      $('.loading').css 'visibility', 'visible'
   $('#search_name_contains').autocomplete
     source: ( request, response ) ->
       $.getJSON( $('#search_name_contains').data('autocomplete-source'), { search: { name_contains: request.term } }, response );
     select: ( event, ui ) ->
 		    window.location = "/stocks/#{ui.item.id}";
+    open: (event, ui ) ->
+        $('.loading').css 'visibility', 'hidden'
 
   net_change = parseFloat($(".daily_price_change > .net_change").text())
   percentage_change = parseFloat($(".daily_price_change > .percent_change").text().slice(1,-2))
