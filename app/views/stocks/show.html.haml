@@ -1,3 +1,8 @@
+%h1 Stock Search
+= simple_form_for @search, :url => collection_path, :html => {:novalidate => true} do |f|
+  = f.label :name_contains
+  = f.text_field :name_contains, data: { autocomplete_source: stocks_path }
+
 %h1= @stock.name
 
 %section

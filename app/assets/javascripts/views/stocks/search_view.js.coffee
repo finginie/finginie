@@ -4,7 +4,6 @@ class Finginie.Views.Stocks.SearchView extends Backbone.View
   el: '#stock_search'
 
   initialize: () ->
-    @$('input').bind('keyup', @search)
     @$('select').bind('change', @search)
     @$('.loading').css 'visibility', 'hidden'
 
