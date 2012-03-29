@@ -10,11 +10,11 @@ FactoryGirl.define do
     scheme_class_description "Special Fund"
     launch_date "02/03/2001"
     scheme_plan_description "Growth"
-    minimum_invement_amount "5000"
+    minimum_investment_amount "5000"
     size "296.38"
     entry_load nil
     exit_load nil
-    redemption_ferq "Daily"
+    redemption_frequency "Daily"
     sip "True"
     fund_manager_prefix "Mr."
     fund_manager_name "Chirag Setalvad"

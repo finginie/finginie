@@ -7,9 +7,9 @@ class AssetManagementCompany
   field :sponser_name
   field :trustee_company_name
   field :mf_set_up_date, :type => Date
-  field :amc_code, :type => BigDecimal
-  field :amc_name
-  field :amc_inc_date, :type => Date
+  field :asset_management_company_code, :type => BigDecimal
+  field :asset_management_company_name
+  field :asset_management_company_incorporation_date, :type => Date
   field :ceo_name
   field :cio_name
   field :fund_manager_name

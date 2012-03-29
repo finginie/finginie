@@ -12,7 +12,7 @@ class Scheme
   field :scheme_code, :type => Float # from NavMaster.xml
   field :scheme_name
   field :company_code, :type => BigDecimal
-  field :amc_code, :type => BigDecimal
+  field :asset_management_company_code, :type => BigDecimal
   field :scheme_type, :type => Integer
   field :scheme_type_description
   field :launch_date, :type => DateTime
@@ -23,7 +23,7 @@ class Scheme
   field :open_date, :type => DateTime
   field :close_date, :type => DateTime
   field :redemption_date, :type => DateTime
-  field :minimum_invement_amount, :type => Integer
+  field :minimum_investment_amount, :type => Integer
   field :initial_price, :type => BigDecimal
   field :initial_price_uom, :type => Integer
   field :initial_price_uom_description
@@ -39,7 +39,7 @@ class Scheme
   field :listing_information
   field :entry_load
   field :exit_load
-  field :redemption_ferq
+  field :redemption_frequency
   field :sip
   field :product_code
   field :modified_date, :type => DateTime
@@ -69,26 +69,26 @@ class Scheme
   field :prev_sale_price, :type => BigDecimal
   field :percentage_change, :type => Float
   field :prev1_week_amount, :type => BigDecimal
-  field :prev1_week_per, :type => Float
+  field :prev1_week_percent, :type => Float
   field :prev1_month_amount, :type => BigDecimal
-  field :prev1_month_per, :type => Float
+  field :prev1_month_percent, :type => Float
   field :prev3_months_amount, :type => BigDecimal
-  field :prev3_months_per, :type => Float
+  field :prev3_months_percent, :type => Float
   field :prev6_months_amount, :type => BigDecimal
-  field :prev6_months_per, :type => Float
+  field :prev6_months_percent, :type => Float
   field :prev9_months_amount, :type => BigDecimal
-  field :prev9_months_per, :type => Float
+  field :prev9_months_percent, :type => Float
   field :prev_year_amount, :type => BigDecimal
-  field :prev_year_per, :type => Float
+  field :prev_year_percent, :type => Float
   field :prev2_year_amount, :type => BigDecimal
-  field :prev2_year_per, :type => Float
-  field :prev2_year_comp_per, :type => Float
+  field :prev2_year_percent, :type => Float
+  field :prev2_year_comp_percent, :type => Float
   field :prev3_year_amount, :type => BigDecimal
-  field :prev3_year_per, :type => Float
-  field :prev3_year_comp_per, :type => BigDecimal
+  field :prev3_year_percent, :type => Float
+  field :prev3_year_comp_percent, :type => BigDecimal
   field :list_date, :type => DateTime
   field :list_amount, :type => BigDecimal
-  field :list_per, :type => Float
+  field :list_percent, :type => Float
   field :rank, :type => Integer
 
   field :objective #from MfObjective.xml
