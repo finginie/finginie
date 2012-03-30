@@ -70,11 +70,11 @@ body.personal_financial_tools {
 	        bottom: 0.6em;
 	        left: 1em;
 	      }
-	font: {
-	  family: $content-font;
-	  weight: normal;
-	  size: 14px;
-	}
+	      font: {
+	        family: $content-font;
+	        weight: normal;
+	        size: 14px;
+	      }
       }
     }
     div.inputs {
@@ -112,7 +112,7 @@ body.personal_financial_tools {
       }
     }
     div.actions {
-      text-align: center;
+      margin-left: 45%;
     }
   }
 }
