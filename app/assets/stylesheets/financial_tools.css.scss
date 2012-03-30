@@ -7,7 +7,7 @@
 
 body.personal_financial_tools.index {
   h1 {
-    font-size: x-large;
+    font-size: 18px;
   }
   dt {
     margin-top: 1em;
@@ -52,9 +52,9 @@ body.personal_financial_tools {
     h4 {
       color: $heading-blue;
       font: {
-	family: $heading-font;
-	size: x-large;
-	weight: normal;
+	      family: $heading-font;
+	      size: x-large;
+	      weight: normal;
       }
       margin: {
         bottom: 0.3em;
@@ -84,6 +84,7 @@ body.personal_financial_tools {
 	      width: 45%;
 	      line-height: 1em;
 	      text-align: right;
+        @include required-field;
         padding: {
 	        top: 0.5em;
 	        bottom: 0.4em;
