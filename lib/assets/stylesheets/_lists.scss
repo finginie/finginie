@@ -11,7 +11,7 @@
   padding-left: 0;
 }
 
-@mixin horizontal-list-item($padding: 4px, $direction: left, $snip-endings: true) {
+@mixin horizontal-list-item($padding: 0px, $direction: left, $snip-endings: true) {
   @include no-bullet;
   white-space: nowrap;
   @include float($direction);
