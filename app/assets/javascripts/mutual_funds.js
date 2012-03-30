@@ -13,7 +13,7 @@ $(document).ready(function() {
     new Highcharts.Chart({
       chart: {
         renderTo: 'mf-sectoral-allocation-chart',
-        width: 950,
+        width: 750,
         borderColor: '#CE5A5A',
         borderWidth: 2
       },
@@ -59,7 +59,7 @@ $(document).ready(function() {
     new Highcharts.Chart({
       chart: {
         renderTo: 'mf-asset-allocation-chart',
-        width: 950,
+        width: 750,
         borderColor: '#CE5A5A',
         borderWidth: 2
       },
@@ -105,7 +105,7 @@ $(document).ready(function() {
     new Highcharts.Chart({
       chart: {
         renderTo: 'top-holdings-chart',
-        width: 950,
+        width: 750,
         borderColor: '#CE5A5A',
         borderWidth: 2
       },
@@ -152,7 +152,7 @@ $(document).ready(function() {
       chart: {
         renderTo: 'mf-comparative-returns-chart',
         defaultSeriesType: 'column',
-        width: 950,
+        width: 750,
         borderColor: '#CE5A5A',
         borderWidth: 2
       },

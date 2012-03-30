@@ -6,12 +6,13 @@
 
 body.sessions.new {
   #wrapper {
+    width: 980px;
     padding-left: 0;
     @include hide-aside;
     #main {
       .container {
         padding: 1em;
-        width: 948px;  
+        width: 948px;
         margin: 5em auto;
         background: #fff;
         .connect_container {

@@ -75,7 +75,7 @@ body.portfolios.new {
           @include required-field;
           div {
             label {
-              width: 12%;
+              width: 14%;
             }
             #portfolio_name {
               margin: {
@@ -164,7 +164,7 @@ body.portfolios.stocks_analysis, body.portfolios.mutual_funds_analysis {
     }
   }
   h1 {
-    font-size: x-large;
+    font-size: 18px;
   }
 }
 
@@ -205,10 +205,10 @@ body.portfolios.edit {
 body.portfolios.add_transaction {
   @include simple-form;
   #type_of_investment_select {
-    margin-left: 10.5em;
+    margin-left: 7em;
     label {
       color: $base-color;
-      padding-right: 0.9em;
+      padding-right: 0.5em;
     }
     select {
       margin-bottom: 0.5em;

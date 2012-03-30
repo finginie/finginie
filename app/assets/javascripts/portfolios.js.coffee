@@ -18,7 +18,7 @@ $ ->
           renderTo: element,
           borderColor: '#CE5A5A',
           borderWidth: 2,
-          width: 950
+          width: 750
         },
         title: {
           text: title,
