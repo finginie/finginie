@@ -2,12 +2,15 @@ module RedisRecord::Base
   extend ActiveSupport::Concern
 
   def save
+    Rails.logger.debug "Saving #{key} to Redis: #{attributes}"
+
     success = REDIS.multi do
       REDIS.mapped_hmset(key, attributes)
       sorted_indices.each do |attr|
         REDIS.zadd self.class.meta_key(attr), attributes[attr.to_s], id
       end
     end
+    Rails.logger.debug "Status: #{success}"
     self.persisted = (success.first == "OK")
   end
 
