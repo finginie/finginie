@@ -99,6 +99,7 @@ en:
         time_horizon: 'What is the time horizon for your investment (No. of years)?'
       search:
         sector_contains: 'Sector (optional)'
+        name_contains: 'Search by Name'
       gold_transaction:
         price: 'Price per gram (Rs)'
         quantity: 'Quantity (grams)'
