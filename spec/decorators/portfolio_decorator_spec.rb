@@ -2,10 +2,11 @@ require 'spec_helper'
 
 describe PortfolioDecorator do
   before { ApplicationController.new.set_current_view_context }
-  let (:portfolio) { create :portfolio }
+  let(:portfolio) { create :portfolio }
   let(:stock) { create :stock, :sector => "FOO" }
   let(:scheme) { create :scheme_master, :scheme_class_description => "FOO" }
   let(:real_estate) { create :real_estate, :name => "Test Property", :location => "Mordor", :current_price => 600 }
+  let(:fixed_deposit) { create :fixed_deposit, :name => "Foo", :period => 5, :rate_of_interest => 10.0 }
 
   subject {
     create_securities
@@ -62,14 +63,19 @@ describe PortfolioDecorator do
   end
 
   it "should give top five profits" do
-    subject
-    create_sell_position_of_all_securities_type
-    expected = [ { "name" => "Test Property",   "type" => "Real Estate",   "profit_or_loss" => 400.0, "percentage" => 80.0 },
-                 { "name" => stock.name     ,   "type" => "Stock",         "profit_or_loss" => 12.0,  "percentage" => 100.0 },
-                 { "name" => scheme.scheme_name,"type" => "Mutual Fund",   "profit_or_loss" => 12.0, "percentage" => 100 },
-                 { "name" => "Foo",             "type" => "Fixed Deposit", "profit_or_loss" => 4.64,  "percentage" => 4.64 } ]
+    Timecop.freeze(Date.civil(2012,03,22)) do
+      another_portfolio = create :portfolio
+      create_securities(another_portfolio)
 
-    subject.top_five_profits.should include *expected
+      create_sell_position_of_all_securities_type(another_portfolio)
+
+      expected = [ { "name" => "Test Property",   "type" => "Real Estate",   "profit_or_loss" => 400.0, "percentage" => 80.0 },
+                  { "name" => stock.name     ,   "type" => "Stock",         "profit_or_loss" => 12.0,  "percentage" => 100.0 },
+                  { "name" => scheme.scheme_name,"type" => "Mutual Fund",   "profit_or_loss" => 12.0, "percentage" => 100 },
+                  { "name" => "Foo",             "type" => "Fixed Deposit", "profit_or_loss" => 4.64,  "percentage" => 4.64 } ]
+
+      PortfolioDecorator.decorate(another_portfolio).top_five_profits.should include *expected
+    end
   end
 
   it "should give top five losses" do
@@ -81,7 +87,7 @@ describe PortfolioDecorator do
     subject.top_five_losses.should include *expected
   end
 
-  def create_securities
+  def create_securities(portfolio = portfolio)
     scrip = create :scrip, :last_traded_price => 5, :id => stock.symbol
     4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
@@ -95,13 +101,12 @@ describe PortfolioDecorator do
     loan =  create :loan, :name => "Foo Loan", :rate_of_interest => "10", :period => "1"
     loan_transaction =  create :loan_transaction, :loan => loan, :price => 1000, :date => 8.months.ago.to_date, :portfolio => portfolio
 
-    fixed_deposit = create :fixed_deposit, :name => "Foo", :period => 5, :rate_of_interest => 10.0
     create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 100, :date => 8.months.ago.to_date
 
     create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => 500, :date => Date.civil(2011, 12, 01), :action => "buy"
   end
 
-  def create_sell_position_of_all_securities_type
+  def create_sell_position_of_all_securities_type(portfolio = portfolio)
     create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
     stock1 = create :stock_with_scrip, :sector => "BAR", :name => "FOO"
     create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
@@ -112,8 +117,8 @@ describe PortfolioDecorator do
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
 
-    FixedDeposit.find_by_name("Foo").update_attributes(:rate_of_redemption => 8.0)
-    create :fixed_deposit_transaction, :fixed_deposit => FixedDeposit.find_by_name("Foo"), :portfolio => portfolio, :price => 100, :date => 1.months.ago.to_date, :action => "sell"
+    fixed_deposit.update_attributes(:rate_of_redemption => 8.0)
+    create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 100, :date => 1.months.ago.to_date, :action => "sell"
 
     create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => 900, :date => Date.civil(2012, 2, 01), :action => "sell"
     real_estate_2 = create :real_estate, :name => "Test Property2", :location => "Mordor", :current_price => 500

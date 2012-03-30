@@ -26,14 +26,15 @@ describe FixedDepositTransaction do
   end
 
   it "should give correct porfit or loss for redeemed deposit" do
-    portfolio = create :portfolio
-    fixed_deposit_1 = create :fixed_deposit, :period => 1, :rate_of_interest => 10, :name => "Test Fixed Deposit"
-    fixed_deposit_transaction_1 = create :fixed_deposit_transaction, :date => 8.months.ago.to_date, :price => 100000, :fixed_deposit => fixed_deposit_1, :portfolio => portfolio
+    Timecop.freeze(Date.civil(2012,03,22)) do
+      portfolio = create :portfolio
+      fixed_deposit_1 = create :fixed_deposit, :period => 1, :rate_of_interest => 10, :name => "Test Fixed Deposit"
+      fixed_deposit_transaction_1 = create :fixed_deposit_transaction, :date => 8.months.ago.to_date, :price => 100000, :fixed_deposit => fixed_deposit_1, :portfolio => portfolio
 
-    fixed_deposit_1.update_attributes(:rate_of_redemption => 8)
-    fixed_deposit_transaction_2 = create :fixed_deposit_transaction, :date => 1.months.ago.to_date, :price => 100000, :fixed_deposit => fixed_deposit_1, :portfolio => portfolio, :action => "sell"
-    fixed_deposit_transaction_2.profit_or_loss.should eq 4637.65
-
+      fixed_deposit_1.update_attributes(:rate_of_redemption => 8)
+      fixed_deposit_transaction_2 = create :fixed_deposit_transaction, :date => 1.months.ago.to_date, :price => 100000, :fixed_deposit => fixed_deposit_1, :portfolio => portfolio, :action => "sell"
+      fixed_deposit_transaction_2.profit_or_loss.should eq 4637.65
+    end
   end
 
   it "should validate redemption date" do
