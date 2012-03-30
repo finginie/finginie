@@ -102,8 +102,7 @@ header {
         a {
           font: {
             size: 13px;
-            weight: bold;
-            family: helvetica,arial,sans-serif; 
+            weight: bold; 
           }
           color: #EEE;
           &.selected {
@@ -409,3 +408,4 @@ input[type="text"] {
   font-weight: bold;
   color: $heading-blue;
 }
+
