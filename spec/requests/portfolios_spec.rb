@@ -9,6 +9,7 @@ describe "Portfolios" do
   let(:scheme) { create :scheme_master, :scheme_class_description => "FOO"}
   let(:navcp) { create :navcp, :nav_amount => "5", :security_code => scheme.securitycode }
   let(:real_estate) { create :real_estate, :name => "Test Property", :location => "Mordor", :current_price => 600 }
+  let(:fixed_deposit) { create :fixed_deposit, :name => "Foo", :period => 5, :rate_of_interest => 10.0 }
 
   it "should show all net positions in details page" do
     scrip.save
@@ -220,21 +221,25 @@ describe "Portfolios" do
   end
 
   it "should have Profit/Loss page "do
-    create_positions_of_all_securities
-    create_sell_position_of_all_securities_type
-    visit portfolio_path(portfolio)
+    Timecop.freeze(Date.civil(2012,03,22)) do
+      another_portfolio = create :portfolio, :user => current_user
+      create_positions_of_all_securities(another_portfolio)
+      create_sell_position_of_all_securities_type(another_portfolio)
 
-    find("li#navigation-accumulated_profits").find("a").click
-    expected_table_profits = [ ["Test Property", "Real Estate", "400.0", "80.0"],
-                               [stock.name, "Stock", "12.0", "100.0"],
-                               [scheme.scheme_name, "Mutual Fund","12.0", "100.0"],
-                               ["Foo", "Fixed Deposit", "4.64", "4.64"] ]
-    expected_table_losses = [ ["Test Property2", "Real Estate","-400.0", "-44.44"],
-                              ["FOO", "Stock", "-4.0", "-16.67"],
-                              ["Foo Scheme Name", "Mutual Fund", "-1.0", "-20.0"]]
+      visit portfolio_path(another_portfolio)
 
-    tableish("#accumulated_profits table").should include *expected_table_profits
-    tableish("#accumulated_losses table").should include *expected_table_losses
+      find("li#navigation-accumulated_profits").find("a").click
+      expected_table_profits = [ ["Test Property", "Real Estate", "400.0", "80.0"],
+                                 [stock.name, "Stock", "12.0", "100.0"],
+                                 [scheme.scheme_name, "Mutual Fund","12.0", "100.0"],
+                                 ["Foo", "Fixed Deposit", "4.64", "4.64"] ]
+      expected_table_losses = [ ["Test Property2", "Real Estate","-400.0", "-44.44"],
+                                ["FOO", "Stock", "-4.0", "-16.67"],
+                                ["Foo Scheme Name", "Mutual Fund", "-1.0", "-20.0"]]
+
+      tableish("#accumulated_profits table").should include *expected_table_profits
+      tableish("#accumulated_losses table").should include *expected_table_losses
+    end
   end
 
   it "should display flash message where there is no portfolio" do
@@ -289,7 +294,7 @@ describe "Portfolios" do
     tableish("#mfs_profit_or_loss_analysis table").should include *expected_table
   end
 
-  def create_positions_of_all_securities
+  def create_positions_of_all_securities(portfolio = portfolio)
     scrip.save
     4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
@@ -301,13 +306,12 @@ describe "Portfolios" do
     loan =  create :loan, :name => "Foo Loan", :rate_of_interest => "10", :period => "1"
     loan_transaction =  create :loan_transaction, :loan => loan, :price => 1000, :date => 8.months.ago.to_date, :portfolio => portfolio, :action => "borrow"
 
-    fixed_deposit = create :fixed_deposit, :name => "Foo", :period => 5, :rate_of_interest => 10.0
     create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 100, :date => 8.months.ago.to_date
 
     create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => 500, :date => Date.civil(2011, 12, 01)
   end
 
-  def create_sell_position_of_all_securities_type
+  def create_sell_position_of_all_securities_type(portfolio = portfolio)
     create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
     stock1 = create :stock_with_scrip, :sector => "BAR", :name => "FOO"
     create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
@@ -319,8 +323,8 @@ describe "Portfolios" do
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
 
-    FixedDeposit.find_by_name("Foo").update_attributes(:rate_of_redemption => 8.0)
-    create :fixed_deposit_transaction, :fixed_deposit => FixedDeposit.find_by_name("Foo"), :portfolio => portfolio, :price => 100, :date => 1.months.ago.to_date, :action => "sell"
+    fixed_deposit.update_attributes(:rate_of_redemption => 8.0)
+    create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 100, :date => 1.months.ago.to_date, :action => "sell"
 
     create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => 900, :date => Date.civil(2012, 2, 01), :action => "sell"
     real_estate_2 = create :real_estate, :name => "Test Property2", :location => "Mordor", :current_price => 500
