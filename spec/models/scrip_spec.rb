@@ -19,6 +19,8 @@ describe Scrip, :redis do
                            :close_price => "421.90" }
   subject { scrip }
 
+  its(:volume) { should eq 87942 }
+
   it "should be persisted" do
     scrip.save.should be_true
     scrip.persisted.should be_true

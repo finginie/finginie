@@ -1,5 +1,5 @@
-class RedisRecord < Valuable
-  extend ActiveModel::Naming
+class RedisRecord
+  include ActiveAttr::Model
   include DataTypes
   include Base
 

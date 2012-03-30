@@ -7,17 +7,18 @@ module RedisRecord::DataTypes
           list << opts
           opts = {}
         end
-        opts[:klass] ||= klass
+        opts[:type] ||= klass
 
         list.each do |attr|
-          has_value attr, defaults.merge(opts)
+          attribute attr, defaults.merge(opts)
         end
       end
     end
   end
 
   included do
-    [ :integer, :decimal, :boolean, :string ].each { |klass| create_initializer klass, klass }
-    create_initializer(:datetime, DateTime, :formatter => :parse)
+    [ :integer, :boolean, :string ].each { |klass| create_initializer klass, klass.to_s.classify.constantize }
+    create_initializer(:datetime, DateTime)
+    create_initializer(:decimal, BigDecimal)
   end
 end
