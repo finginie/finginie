@@ -45,8 +45,8 @@ body.personal_financial_tools {
   form {
     input, select {
       margin: {
-	left: 0.8em;
-	bottom: 1em;
+	      left: 0.8em;
+	      bottom: 1em;
       }
     }
     h4 {
@@ -100,20 +100,23 @@ body.personal_financial_tools {
 	      display :inline;
       }
       span {
-	&input {
-	  padding-left: 0;
-	}
+	      &input {
+	        padding-left: 0;
+	      }
       }
       .dependents {
-	border: none;
-	a {
-	  color: $base-color;
-	  padding: 0.5em 0;
-	}
+	      border: none;
+	      a {
+	        color: $base-color;
+	        padding: 0.5em 0;
+	      }
       }
     }
     div.actions {
       margin-left: 45%;
+      input[type="submit"]{
+        margin-left: 1em;
+      }
     }
   }
 }
