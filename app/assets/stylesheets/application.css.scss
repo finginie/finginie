@@ -403,3 +403,30 @@ input[type="text"] {
   font-weight: bold;
   color: $heading-blue;
 }
+
+.name {
+  width: 200px;
+}
+.dates, .rate {
+  width: 80px;
+  text-align: left;
+}
+.type {
+  width: 40px;
+}
+.quantity {
+  width: 50px;
+}
+.amount {
+  width: 100px;
+  text-align: right;
+}
+.center {
+  text-align: center;
+}
+.comment {
+  width: 200px;
+}
+.price {
+  width: 80px;
+}
