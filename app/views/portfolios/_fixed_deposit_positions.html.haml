@@ -1,16 +1,26 @@
 - unless fixed_deposit_positions.empty?
   %table
     %tr
-      %th Name
+      %th.name Name
       %th Deposit Date
-      %th Rate of Interest (% p.a)
-      %th Duration (years)
-      %th Amount Invested (Rs)
-      %th Current Value (Rs)
-      %th{:colspan => 2} Interest Earned(Rs)
+      %th Interest
+      %th Duration
+      %th Amt Invested
+      %th Current Value
+      %th Interest Earned
+      %th
+    %tr
+      %td.name
+      %td
+      %td (%p.a)
+      %td (years)
+      %td (Rs)
+      %td (Rs)
+      %td (Rs)
+      %td
     - fixed_deposit_positions.each do |net_position|
       %tr
-        %td= net_position.name
+        %td.name= net_position.name
         %td= l net_position.first.date
         %td= net_position.rate_of_interest
         %td= net_position.period
@@ -19,7 +29,7 @@
         %td.green= number_to_indian_currency net_position.unrealised_profit
         %td= button_to 'Redeem', redeem_portfolio_fixed_deposit_transaction_path(net_position.first.portfolio_id, net_position.first), :method => :get
     %tr.total
-      %td Total
+      %td.name Total
       %td
       %td
       %td

@@ -7,16 +7,25 @@
       %div{ :id => "#{positions}"}
         %table
           %tr
-            %th Name
+            %th.name Name
             %th Quantity
-            %th Average Cost Price (Rs)
-            %th Amount Invested (Rs)
-            %th Market Price (Rs)
-            %th Market Value (Rs)
-            %th Unrealised Profit (Rs)
+            %th Avg Cost Price
+            %th Mkt Price
+            %th Amt Invested
+            %th Mkt Value
+            %th Unrealised Profit
+          %tr
+            %td.name
+            %td
+            %td (Rs)
+            %td (Rs)
+            %td (Rs)
+            %td (Rs)
+            %td (Rs)
+
           - resource.send(positions).each do |net_position|
             %tr
-              %td= net_position.name
+              %td.name= net_position.name
               %td= number_to_indian_currency net_position.quantity
               %td= number_to_indian_currency net_position.average_cost_price
               %td= number_to_indian_currency net_position.value
@@ -36,7 +45,7 @@
               - else
                 %td -
           %tr.total
-            %td Total
+            %td.name Total
             %td
             %td
             %td= number_to_indian_currency resource.send(positions).sum(&:value)
@@ -52,26 +61,28 @@
     #gold_positions
       %table
         %tr
-          %th Name
-          %th Quantity (grams)
-          %th Average Cost Price (Rs)
-          %th Amount Invested (Rs)
-          %th Market Price (Rs)
-          %th Market Value (Rs)
-          %th Unrealised Profit (Rs)
-
+          %th.name Name
+          %th Quantity
+          %th Avg Cost price
+          %th Mkt Price
+          %th Amt Invested
+          %th Mkt Value
+          %th Unrealised Profit
         %tr
-          %td Gold
-          %td= number_to_indian_currency resource.gold_transactions.for(Gold).quantity
-          %td= number_to_indian_currency resource.gold_transactions.for(Gold).average_cost_price
-          %td= number_to_indian_currency resource.gold_transactions.for(Gold).value
-          %td= number_to_indian_currency resource.gold_transactions.for(Gold).current_price
-          %td= number_to_indian_currency resource.gold_transactions.for(Gold).current_value
+          %td.name
+          %td (grams)
+          %td (Rs)
+          %td (Rs)
+          %td (Rs)
+          %td (Rs)
+          %td (Rs)
           - if resource.gold_transactions.for(Gold).unrealised_profit < 0
             %td.red= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
           - else
             %td.green= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
-  - else
+          %td= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
+        %tr.total
+          - else
     = t ".no_gold_positions"
 
 - %w(Loan FixedDeposit RealEstate).each do |security|

@@ -135,6 +135,13 @@ body.portfolios.details {
       }
       #stock_positions, #mutual_fund_positions, #gold_positions, .Loan, .FixedDeposit, .RealEstate{
         padding: 0 0 1em 0;
+        td, th {
+          text-align: right;
+        }
+        td.name, th.name {
+          width: 150px;
+          text-align: left;
+        }
       }
     }
   }

@@ -310,13 +310,8 @@ tr {
   }
 
   th, td {
-    padding: {
-      top: 0.4em;
-      bottom: 0.4em;
-      left: 0.6em;
-      right: 0.6em;
-    }
-  font-size: small;	  
+    padding: 0.4em;
+    font-size: 12px;	
   }
 }
 
@@ -408,4 +403,3 @@ input[type="text"] {
   font-weight: bold;
   color: $heading-blue;
 }
-
