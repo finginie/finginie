@@ -16,7 +16,7 @@
 
 header, nav, hgroup, section, article, footer { display: block; }
 
-body {
+body, button, input, select, textarea {
   font-family: $content-font;
   color: $text-color;
 }
