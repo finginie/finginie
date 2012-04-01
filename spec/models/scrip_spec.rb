@@ -86,8 +86,5 @@ describe Scrip, :redis do
       Scrip.find_ids_by_last_traded_price( destroyed_scrip.last_traded_price, destroyed_scrip.last_traded_price ).should eq []
       Scrip.find_ids_by_percent_change( destroyed_scrip.percent_change, destroyed_scrip.percent_change ).should eq []
     end
-
-
-
   end
 end

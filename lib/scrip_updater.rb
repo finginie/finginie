@@ -6,16 +6,6 @@ require 'date'
 # Typecasts an Object to a DateTime
 # Override the default for DION
 #
-module ActiveAttr
-  module Typecasting
-    class DateTimeTypecaster
-      def call(value)
-        DateTime.strptime value, "%m/%e/%Y %r"
-      end
-    end
-  end
-end
-
 
 class ScripUpdater
   DATA_SOURCES = {
@@ -41,8 +31,10 @@ class ScripUpdater
     records.shift # ignore the header
     records.each do |attributes|
       begin
-        item = Scrip.find_or_initialize_by_id attributes.delete :id
-        item.update_attributes(attributes)
+        with_modified_datecaster do
+          item = Scrip.find_or_initialize_by_id attributes.delete :id
+          item.update_attributes(attributes)
+        end
       rescue => ex
         Airbrake.notify ex
       end
@@ -64,6 +56,21 @@ class ScripUpdater
   end
 
 private
+
+  def with_modified_datecaster
+    ActiveAttr::Typecasting::DateTimeTypecaster.class_eval do
+      alias :old_call :call
+      def call(value)
+        DateTime.strptime value, "%m/%e/%Y %r"
+      end
+    end
+
+    yield
+
+    ActiveAttr::Typecasting::DateTimeTypecaster.class_eval do
+      alias :call :old_call
+    end
+  end
 
   def self.attributes_hash(row)
     Hash[ DATA_ATTRIBUTES.map { |key, value| [key, row[value]] } ]

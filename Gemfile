@@ -27,7 +27,7 @@ gem 'mongoid'
   gem 'bson_ext'
 gem 'mongoid_search'
 gem 'nested_form', :git => "git://github.com/TMaYaD/nested_form.git"
-gem 'newrelic_rpm'
+# gem 'newrelic_rpm' # Removed temporarily
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'paper_trail'
