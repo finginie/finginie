@@ -1,4 +1,6 @@
 class Subscription < ActiveRecord::Base
+  attr_accessible :subscribable, :subscribable_id, :subscribable_type
+
   belongs_to :user
   belongs_to :subscribable, :polymorphic => true
 

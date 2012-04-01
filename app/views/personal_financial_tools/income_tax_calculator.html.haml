@@ -7,8 +7,8 @@
 
   .inputs
     = f.input :age
-    = f.input :sex, :collection => %w[Male FeMale], :as => :radio
-    = f.input :metro, :collection => %w[true false], :as => :radio
+    = f.input :sex, :collection => %w[Male FeMale], :as => :radio_buttons
+    = f.input :metro, :collection => %w[true false], :as => :radio_buttons
     = f.input :basic_salary
     = f.input :house_rent_allowance
     = f.input :rent

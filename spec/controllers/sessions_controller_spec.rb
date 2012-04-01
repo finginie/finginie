@@ -6,7 +6,7 @@ describe SessionsController do
   }
 
   describe "POST 'create'" do
-    let (:authentication) { Factory.create :authentication }
+    let (:authentication) { create :authentication }
 
     before(:each) do
       omniauth = {

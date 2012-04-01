@@ -1,5 +1,6 @@
 class StockTransaction < ActiveRecord::Base
   include FungibleTransaction
+  attr_accessible :stock_id
 
   belongs_to :portfolio
   belongs_to :stock

@@ -2,6 +2,8 @@ module FungibleTransaction
   extend ActiveSupport::Concern
 
   included do
+    attr_accessible :action, :quantity, :price, :date, :comments
+
     scope :buys, where(:action => ['buy', 'Buy'])
     scope :sells, where(:action => ['sell', 'Sell'])
     scope :before, lambda { |transaction|

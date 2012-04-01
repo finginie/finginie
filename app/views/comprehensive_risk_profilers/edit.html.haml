@@ -8,17 +8,17 @@
     %li= f.input :dependent
     %li
       %fieldset#special_goals
-        = f.input :special_goals, :collection => %w[Yes No], :as => :radio
+        = f.input :special_goals, :collection => %w[Yes No], :as => :radio_buttons
         #special_goals_field
           = f.input :special_goals_amount
           = f.input :special_goals_years
     %li
       %fieldset#tax_saving_investment
-        = f.input :investment_check, :collection => %w[Yes No], :as => :radio
+        = f.input :investment_check, :collection => %w[Yes No], :as => :radio_buttons
         #tax_saving_investment_field
           = f.input :tax_saving_investment
     %li= f.input :time_horizon
-    %li= f.input :preference, :collection => t("comprehensive_risk_profiler.preference").invert, :as => :radio, :collection_wrapper_tag => :ul, :item_wrapper_tag => :li
-    %li= f.input :portfolio_investment, :collection => t("comprehensive_risk_profiler.portfolio_investment").invert, :as => :radio, :collection_wrapper_tag => :ul, :item_wrapper_tag => :li
+    %li= f.input :preference, :collection => t("comprehensive_risk_profiler.preference").invert, :as => :radio_buttons, :collection_wrapper_tag => :ul, :item_wrapper_tag => :li
+    %li= f.input :portfolio_investment, :collection => t("comprehensive_risk_profiler.portfolio_investment").invert, :as => :radio_buttons, :collection_wrapper_tag => :ul, :item_wrapper_tag => :li
     .actions
       = f.submit 'Submit'

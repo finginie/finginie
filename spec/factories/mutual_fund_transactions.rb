@@ -8,6 +8,6 @@ FactoryGirl.define do
     action "buy"
     comments ""
     portfolio
-    scheme { mutual_fund ? mutual_fund.name : Factory.attributes_for(:mutual_fund)[:name] }
+    scheme { mutual_fund ? mutual_fund.name : FactoryGirl.attributes_for(:mutual_fund)[:name] }
   end
 end

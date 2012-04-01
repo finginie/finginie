@@ -1,5 +1,6 @@
 class MutualFundTransaction < ActiveRecord::Base
   include FungibleTransaction
+  attr_accessible :scheme
 
   belongs_to :portfolio
   belongs_to :mutual_fund

@@ -1,6 +1,11 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.0'
+gem 'rails', '3.2.3'
+
+# Unbuilt gems from the project modules
+#
+# gem 'calculators', :path => 'lib/calculators'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
