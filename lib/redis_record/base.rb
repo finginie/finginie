@@ -1,17 +1,16 @@
 module RedisRecord::Base
   extend ActiveSupport::Concern
 
-  def ==(another)
-    self.attributes == another.attributes
-  end
-
   def save
+    Rails.logger.debug "Saving #{key} to Redis: #{attributes}"
+
     success = REDIS.multi do
-      REDIS.set(key, to_json)
+      REDIS.mapped_hmset(key, attributes)
       sorted_indices.each do |attr|
-        REDIS.zadd self.class.meta_key(attr), attributes[attr], id
+        REDIS.zadd self.class.meta_key(attr), attributes[attr.to_s], id
       end
     end
+    Rails.logger.debug "Status: #{success}"
     self.persisted = (success.first == "OK")
   end
 
@@ -22,7 +21,7 @@ module RedisRecord::Base
   end
 
   def update_attributes(attrs)
-    super(attrs)
+    assign_attributes attrs
     save
   end
 
@@ -42,8 +41,8 @@ module RedisRecord::Base
     end
 
     def find_by_key(key)
-      return nil unless json = REDIS.get(key)
-      self.new(ActiveSupport::JSON.decode(json)['attributes']).tap { |r| r.persisted = true }
+      attributes = REDIS.mapped_hmget(key, *attribute_names)
+      attributes['id'] && self.new(attributes).tap { |r| r.persisted = true }
     end
 
     def all
@@ -57,7 +56,7 @@ module RedisRecord::Base
     def search_by_range_on(attr)
       self.sorted_indices += [attr]
       define_singleton_method "find_ids_by_#{attr}" do |min, max|
-        REDIS.zrangebyscore(meta_key(attr), min, max).map { |id| Valuable::Utils.format(:id, id, _attributes) }
+        REDIS.zrangebyscore(meta_key(attr), min, max)
       end
     end
 
@@ -71,6 +70,6 @@ module RedisRecord::Base
   end
 
   included do
-    boolean :persisted, :default => false
+    attr_accessor :persisted
   end
 end

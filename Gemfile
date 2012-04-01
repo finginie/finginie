@@ -37,7 +37,7 @@ gem 'redis'
 gem 'simple_form'
 gem 'simple-navigation'
 gem 'thin'
-gem 'valuable', :git => "git://github.com/LoonyBin/valuable.git"
+# gem 'valuable', :git => "git://github.com/LoonyBin/valuable.git" # Depricated in favour of activeattr
 gem 'zipruby'
 
 group :test, :development do
