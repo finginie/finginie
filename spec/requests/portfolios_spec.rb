@@ -275,9 +275,9 @@ describe "Portfolios" do
     create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
 
     visit stocks_analysis_portfolio_path(portfolio)
-    expected_table = [ [ stock.name , "12.00", "100.00" ],
-                       [ stock1.name, "-4.00", "-16.67" ],
-                       [ "Total",     "8.00", "100" ] ]
+    expected_table = [ [ stock.name , "FOO", "12.00", "100.00" ],
+                       [ stock1.name, "BAR", "-4.00", "-16.67" ],
+                       [ "Total",            "8.00", "100" ] ]
 
     tableish("#stocks_profit_or_loss_analysis table").should include *expected_table
   end
@@ -290,7 +290,7 @@ describe "Portfolios" do
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
 
     visit mutual_funds_analysis_portfolio_path(portfolio)
-    expected_table = [ [ scheme.scheme_name, "12.00", "100.00" ], [ scheme2.scheme_name, "-1.00", "-20.00"], [ "Total", "11.00", "100"] ]
+    expected_table = [ [ scheme.scheme_name, "FOO", "12.00", "100.00" ], [ scheme2.scheme_name, "BAR", "-1.00", "-20.00"], [ "Total", "11.00", "100"] ]
     tableish("#mfs_profit_or_loss_analysis table").should include *expected_table
   end
 
