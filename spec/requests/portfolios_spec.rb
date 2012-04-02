@@ -182,6 +182,41 @@ describe "Portfolios" do
       find("li#navigation-transactions").find("a").click
       page.should have_content I18n.t("transactions.no_stock_transactions")
     end
+
+     it "should display current portfolio in stock analysis page" do
+      find("li#navigation-stocks_analysis").find("a").click
+      page.should have_selector("#current_portfolio")
+    end
+
+    it "should display current portfolio in mutual funds analysis page" do
+      find("li#navigation-mutual_funds_analysis").find("a").click
+      page.should have_selector("#current_portfolio")
+    end
+
+    it "should display current portfolio in fixed deposit analysis page" do
+      find("li#navigation-fixed_deposits_analysis").find("a").click
+      page.should have_selector("#current_portfolio")
+    end
+
+    it "should display current portfolio in Accumulated Profits page" do
+      find("li#navigation-accumulated_profits").find("a").click
+      page.should have_selector("#current_portfolio")
+    end
+
+    it "should display current portfolio in Details Page" do
+      find("li#navigation-details").find("a").click
+      page.should have_selector("#current_portfolio")
+    end
+
+    it "should display current portfolio in Transactions page" do
+      find("li#navigation-transactions").find("a").click
+      page.should have_selector("#current_portfolio")
+    end
+
+    it "should display current portfolio in add transaction page" do
+      find("li#navigation-add_transaction").find("a").click
+      page.should have_selector("#current_portfolio")
+    end
   end
 
   it "should show all transactions in transactions page" do

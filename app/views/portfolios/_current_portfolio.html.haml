@@ -1,0 +1,5 @@
+- if @portfolio
+  #current_portfolio
+    %b Current Portfolio:
+    = @portfolio.name
+    = "As on #{l Time.now, :format => :date_time_IST}"

@@ -1,3 +1,5 @@
+= render 'current_portfolio'
+
 - [ 'stock_positions', 'mutual_fund_positions' ].each do |positions|
   %section{ :class => positions }
     %h1= positions.gsub(/_positions/,'').titleize

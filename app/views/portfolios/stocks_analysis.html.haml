@@ -1,3 +1,5 @@
+= render 'current_portfolio'
+
 %h1 Stocks
 - unless resource.sector_wise_stock_percentage.empty?
   #stock-sectoral-allocation-chart{ 'data-stocks-sectoral-asset-allocation' => resource.sector_wise_stock_percentage }
