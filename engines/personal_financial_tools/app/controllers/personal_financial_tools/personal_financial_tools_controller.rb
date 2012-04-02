@@ -1,4 +1,4 @@
-class PersonalFinancialToolsController < ApplicationController
+class PersonalFinancialTools::PersonalFinancialToolsController < ApplicationController
   def emi_calculators
     @emi_calculator = EmiCalculator.new(params[:emi_calculator])
     flash.now[:result] ="The equated monthly installment is Rs. #{@emi_calculator.calculate_emi}" if params[:commit] && @emi_calculator.valid?

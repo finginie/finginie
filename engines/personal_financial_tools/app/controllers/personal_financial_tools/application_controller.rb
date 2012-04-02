@@ -1,4 +1,2 @@
-module PersonalFinancialTools
-  class ApplicationController < ActionController::Base
-  end
+class PersonalFinancialTools::ApplicationController < ApplicationController
 end
