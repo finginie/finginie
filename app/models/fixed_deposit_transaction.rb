@@ -43,7 +43,7 @@ class FixedDepositTransaction < ActiveRecord::Base
     end
 
     def profit_or_loss_percentage
-      profit_or_loss * 100/ invested_amount
+      (profit_or_loss * 100/ invested_amount).round(2).to_f
     end
   end
 

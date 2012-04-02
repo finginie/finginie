@@ -29,7 +29,10 @@
               - else
                 %td -
               - if net_position.unrealised_profit
-                %td= number_to_indian_currency net_position.unrealised_profit
+                - if net_position.unrealised_profit < 0
+                  %td.red= number_to_indian_currency net_position.unrealised_profit
+                - else
+                  %td.green= number_to_indian_currency net_position.unrealised_profit
               - else
                 %td -
           %tr.total
@@ -64,7 +67,10 @@
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).value
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).current_price
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).current_value
-          %td= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
+          - if resource.gold_transactions.for(Gold).unrealised_profit < 0
+            %td.red= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
+          - else
+            %td.green= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
   - else
     = t ".no_gold_positions"
 

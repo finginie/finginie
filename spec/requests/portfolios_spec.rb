@@ -264,13 +264,13 @@ describe "Portfolios" do
       visit portfolio_path(another_portfolio)
 
       find("li#navigation-accumulated_profits").find("a").click
-      expected_table_profits = [ ["Test Property", "Real Estate", "400.0", "80.0"],
-                                 [stock.name, "Stock", "12.0", "100.0"],
-                                 [scheme.scheme_name, "Mutual Fund","12.0", "100.0"],
+      expected_table_profits = [ ["Test Property", "Real Estate", "400.00", "80.00"],
+                                 [stock.name, "Stock", "12.00", "100.00"],
+                                 [scheme.scheme_name, "Mutual Fund","12.00", "100.00"],
                                  ["Foo", "Fixed Deposit", "4.64", "4.64"] ]
-      expected_table_losses = [ ["Test Property2", "Real Estate","-400.0", "-44.44"],
-                                ["FOO", "Stock", "-4.0", "-16.67"],
-                                ["Foo Scheme Name", "Mutual Fund", "-1.0", "-20.0"]]
+      expected_table_losses = [ ["Test Property2", "Real Estate","-400.00", "-44.44"],
+                                ["FOO", "Stock", "-4.00", "-16.67"],
+                                ["Foo Scheme Name", "Mutual Fund", "-1.00", "-20.00"]]
 
       tableish("#accumulated_profits table").should include *expected_table_profits
       tableish("#accumulated_losses table").should include *expected_table_losses

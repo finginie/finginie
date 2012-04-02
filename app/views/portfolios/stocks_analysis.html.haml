@@ -34,8 +34,13 @@
         %tr
           %td= position.name
           %td= position.sector
-          %td= number_to_indian_currency position.profit_or_loss
-          %td= number_to_indian_currency position.percentage
+          - if position.profit_or_loss < 0
+            %td.red= number_to_indian_currency position.profit_or_loss
+            %td.red= number_to_indian_currency position.percentage
+          - else
+            %td.green= number_to_indian_currency position.profit_or_loss
+            %td.green= number_to_indian_currency position.percentage
+
       %tr.total
         %td{:colspan => 2} Total
         %td= number_to_indian_currency resource.stocks_positions_profit_or_loss.map(&:profit_or_loss).sum
