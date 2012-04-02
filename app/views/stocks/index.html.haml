@@ -4,7 +4,7 @@
     Loading...
     = image_tag 'ajax-loader.gif', :class => :loading
   .string
-    = f.label :name_contains
+    = f.label :name_contains, :required => false
     = f.text_field :name_contains, data: { autocomplete_source: stocks_path }
   = f.input :sector_contains, :collection => Stock::SECTOR_NAMES, :prompt => "Any", :required => false
 

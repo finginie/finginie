@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "Ratios", :mongoid do
   let(:stock) { create :stock }
+  let (:scrip) { create :scrip, :id => stock.symbol, :last_traded_price => 24.22 }
   before :each do
     @company = create :company_master, :nse_code => stock.symbol, :major_sector => 2
     @banking_ratio = create :banking_ratio, :company_code => @company.company_code, :year_ending => '31/03/2011',
@@ -45,5 +46,12 @@ describe "Ratios", :mongoid do
     page.should have_content @ratio.reported_cash_eps.round(2)
     page.should have_content @ratio.net_profit_margin.round(2)
     page.should have_content @ratio.asset_turnover_ratio.round(2)
+  end
+
+  it "should have stock search in the stock ratio page" do
+    scrip.save
+    visit stock_path stock
+    click_link "Ratios"
+    page.should have_selector("#stock_search")
   end
 end

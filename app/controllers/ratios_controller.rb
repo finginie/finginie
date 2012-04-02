@@ -3,6 +3,7 @@ class RatiosController < InheritedResources::Base
   actions :show
 
   def resource
+    @search = Stock.search
     if parent.company
       if parent.company.major_sector == 2
         @ratio = BankingRatio.all( conditions: { company_code: parent.company_code }, sort: [[ :year_ending, :desc ]] ).first
