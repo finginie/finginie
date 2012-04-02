@@ -28,16 +28,16 @@ describe "Portfolios" do
     find("li#navigation-details").find("a").click
 
     expected_table_for_stocks = [
-                                  [stock.name,                       "10.00", "3.00", "5.00",  "30.00", "50.00", "20.00"],
-                                  [stock_without_current_price.name, "10.00", "5.00", "-",  "50.00", "-",  "-" ],
-                                  ["Total",                           "",      "",     "",     "80.00", "50.00", "20.00"]
+                                  [stock.name,                       "10.00", "3.00",  "30.00", "5.00", "50.00", "20.00"],
+                                  [stock_without_current_price.name, "10.00", "5.00",  "50.00", "-",  "-",  "-" ],
+                                  ["Total",                           "",      "",     "80.00", "",  "50.00", "20.00"]
                                 ]
     expected_table_for_mfs =    [
-                                  [scheme.scheme_name, "10.00", "3.00", "5.00", "30.00", "50.00", "20.00"],
-                                  ["Total",            "",      "",     "",     "30.00", "50.00", "20.00"]
+                                  [scheme.scheme_name, "10.00", "3.00", "30.00", "5.00", "50.00", "20.00"],
+                                  ["Total",            "",      "",     "30.00", "",     "50.00", "20.00"]
                                 ]
     expected_table_for_gold =   [
-                                  ["Gold", "10.00", "3.00", "5.00", "30.00", "50.00", "20.00"]
+                                  ["Gold", "10.00", "3.00", "30.00", "5.00", "50.00", "20.00"]
                                 ]
 
     within "#stock_positions" do
@@ -275,9 +275,9 @@ describe "Portfolios" do
     create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
 
     visit stocks_analysis_portfolio_path(portfolio)
-    expected_table = [ [ stock.name, "12.00" , "100.00" ],
-                     [ stock1.name, "-4.00", "-16.67" ],
-                     [ "Total", "8.00", "100" ] ]
+    expected_table = [ [ stock.name , "12.00", "100.00" ],
+                       [ stock1.name, "-4.00", "-16.67" ],
+                       [ "Total",     "8.00", "100" ] ]
 
     tableish("#stocks_profit_or_loss_analysis table").should include *expected_table
   end
