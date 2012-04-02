@@ -201,7 +201,7 @@ aside{
     border-radius: 4px 4px 0 0;
     color: #fff;
     font: {
-      size: 18px;
+      size: 16px;
       weight: bold;
       family: verdana;
     }
@@ -409,13 +409,15 @@ input[type="text"] {
 }
 .dates, .rate {
   width: 80px;
-  text-align: left;
+  text-align: center;
 }
 .type {
   width: 40px;
+  text-align: center;
 }
 .quantity {
   width: 50px;
+  text-align: right;
 }
 .amount {
   width: 100px;
@@ -429,4 +431,10 @@ input[type="text"] {
 }
 .price {
   width: 80px;
+  text-align: right;
 }
+.duration {
+  width: 50px;
+  text-align: center;
+}
+

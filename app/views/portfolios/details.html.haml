@@ -2,7 +2,7 @@
 
 - [ 'stock_positions', 'mutual_fund_positions' ].each do |positions|
   %section{ :class => positions }
-    %h1= positions.gsub(/_positions/,'').titleize
+    %h1= positions.gsub(/_positions/,'').titleize.pluralize
     - unless resource.send(positions).empty?
       %div{ :id => "#{positions}"}
         %table
@@ -10,9 +10,9 @@
             %th.name Name
             %th Quantity
             %th Avg Cost Price
-            %th Mkt Price
+            %th Current Price
             %th Amt Invested
-            %th Mkt Value
+            %th Current Value
             %th Unrealised Profit
           %tr
             %td.name
@@ -64,9 +64,9 @@
           %th.name Name
           %th Quantity
           %th Avg Cost price
-          %th Mkt Price
+          %th Current Price
           %th Amt Invested
-          %th Mkt Value
+          %th Current Value
           %th Unrealised Profit
         %tr
           %td.name
@@ -85,7 +85,11 @@
           - else
     = t ".no_gold_positions"
 
-- %w(Loan FixedDeposit RealEstate).each do |security|
+- %w(FixedDeposit Loan).each do |security|
   %section{ :class => security }
-    %h1= "#{security.titleize}"
+    %h1= "#{security.titleize.pluralize}"
     = render "#{security.underscore}_positions", "#{security.underscore}_positions".to_sym => resource.send("#{security.underscore}_positions")
+
+%section{ :class => "RealEstate" }
+  %h1= "Real Estate"
+  = render "real_estate_positions", "real_estate_positions".to_sym => resource.real_estate_positions

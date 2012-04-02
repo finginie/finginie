@@ -4,17 +4,17 @@
       %th Date
       %th Type
       %th Name
-      %th Amount
-      %th Interest Rate
       %th Duration
+      %th Interest Rate
+      %th Amount
       %th Comments
     %tr
       %td
       %td
       %td
-      %td.center (Rs)
-      %td.center (% p.a.)
       %td.center (years)
+      %td.center (% p.a.)
+      %td.center (Rs)
       %td
 
     - loan_transactions.each do |loan_transaction|
@@ -22,9 +22,9 @@
         %td.dates= l loan_transaction.date
         %td.type{:class => loan_transaction.action}= loan_transaction.action.to_s.titleize
         %td.name= loan_transaction.name
-        %td.amount= number_to_indian_currency loan_transaction.price
-        %td.rate= loan_transaction.rate_of_interest
         %td.duration= loan_transaction.period
+        %td.rate= loan_transaction.rate_of_interest
+        %td.amount= number_to_indian_currency loan_transaction.price
         %td.comment= loan_transaction.comments && loan_transaction.comments.strip.empty?  ? t("tables_not_available") : loan_transaction.comments
 - else
   = t "transactions.no_loan_transactions"
