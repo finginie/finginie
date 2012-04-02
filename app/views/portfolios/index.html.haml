@@ -1,5 +1,4 @@
 %h1 My Portfolios
-= button_to 'Create New Portfolio', new_portfolio_path, :method => :get
 - unless collection.empty?
   %table
     %thead
@@ -9,8 +8,13 @@
     %tbody
       - @portfolios.each do |portfolio|
         %tr
-          %td= link_to portfolio.name, portfolio
-          %td.actions= button_to 'Rename', edit_portfolio_path(portfolio), :method => :get
-          %td.actions= button_to 'Delete', portfolio, :confirm => 'Are you sure?', :method => :delete
+          %td.name= portfolio.name
+          %td.actions= link_to 'View', details_portfolio_path(portfolio), :method => :get
+          %td.actions= link_to 'Add Transaction', add_transaction_portfolio_path(portfolio), :method => :get
+          %td.actions= link_to 'Rename', edit_portfolio_path(portfolio), :method => :get
+          %td.actions= link_to 'Delete', portfolio, :confirm => 'Are you sure?', :method => :delete
 -else
   %p= t(".empty_portfolio")
+
+= link_to 'Create New Portfolio', new_portfolio_path, :method => :get, :class => "create_new_portfolio"
+
