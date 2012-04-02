@@ -13,8 +13,13 @@
           %td.actions= link_to 'Add Transaction', add_transaction_portfolio_path(portfolio), :method => :get
           %td.actions= link_to 'Rename', edit_portfolio_path(portfolio), :method => :get
           %td.actions= link_to 'Delete', portfolio, :confirm => 'Are you sure?', :method => :delete
--else
-  %p= t(".empty_portfolio")
+  = link_to 'Create New Portfolio', new_portfolio_path, :method => :get, :class => "create_new_portfolio"
 
-= link_to 'Create New Portfolio', new_portfolio_path, :method => :get, :class => "create_new_portfolio"
+-else
+  #no_portfolios
+    %p
+      You do not have any portfolios.
+    %p
+      = t(".empty_portfolio")
+      = link_to 'click here.', new_portfolio_path, :method => :get 
 
