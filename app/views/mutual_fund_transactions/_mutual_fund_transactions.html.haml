@@ -26,4 +26,5 @@
         %td.amount= number_to_indian_currency mf_transaction.value.abs
         %td.comment= mf_transaction.comments && mf_transaction.comments.strip.empty?  ? t("tables_not_available") : mf_transaction.comments
 -else
-  = t "transactions.no_mutual_fund_transactions"
+  %p
+    = t "transactions.no_mutual_fund_transactions"

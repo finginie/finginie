@@ -27,5 +27,6 @@
         %td.amount= number_to_indian_currency loan_transaction.price
         %td.comment= loan_transaction.comments && loan_transaction.comments.strip.empty?  ? t("tables_not_available") : loan_transaction.comments
 - else
-  = t "transactions.no_loan_transactions"
+  %p
+    = t "transactions.no_loan_transactions"
 

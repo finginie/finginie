@@ -29,4 +29,5 @@
       %td= number_to_indian_currency real_estate_positions.sum(&:unrealised_profit)
       %td
 - else
-  = t ".no_real_estate_positions"
+  %p
+    = t ".no_real_estate_positions"

@@ -26,4 +26,5 @@
         %td.amount= number_to_indian_currency transaction.invested_amount.abs
         %td.comment= transaction.comments && transaction.comments.strip.empty?  ? t("tables_not_available") : transaction.comments
 - else
-  = t "transactions.no_fixed_deposit_transactions"
+  %p
+    = t "transactions.no_fixed_deposit_transactions"

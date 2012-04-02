@@ -53,7 +53,8 @@
             %td= number_to_indian_currency resource.send(positions).sum(&:current_value)
             %td= number_to_indian_currency resource.send(positions).map(&:unrealised_profit).compact.inject(:+)
     - else
-      = t ".no_#{positions}"
+      %p
+        = t ".no_#{positions}"
 
 %section{ :class => "Gold" }
   %h1 Gold
@@ -82,8 +83,16 @@
             %td.green= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
         %tr.total
-          - else
-    = t ".no_gold_positions"
+          %td.name Total
+          %td
+          %td
+          %td
+          %td= number_to_indian_currency resource.gold_transactions.for(Gold).value
+          %td= number_to_indian_currency resource.gold_transactions.for(Gold).current_value
+          %td= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
+  - else
+    %p
+      = t ".no_gold_positions"
 
 - %w(FixedDeposit Loan).each do |security|
   %section{ :class => security }

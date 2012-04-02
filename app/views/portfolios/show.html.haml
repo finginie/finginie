@@ -2,7 +2,8 @@
   %b Portfolio Name:
   = @portfolio.name
 - if resource.empty_transactions?
-  = t ".empty_transactions"
+  %p
+    = t ".empty_transactions"
   = button_to 'Add Transactions', add_transaction_portfolio_path(resource), :method => :get
 - else
   #portfolio-total-asset-allocation-chart{ 'data-portfolio-total-asset-allocation' => resource.total_assets_distribution }

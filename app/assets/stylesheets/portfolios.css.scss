@@ -33,18 +33,15 @@ body.portfolios.index {
     #main {
       #no_portfolios {
         text-align: center;
+        margin-top: 60px;
       }
       p {
-        font-size: 14px;
         margin: 0;
       }
       a.create_new_portfolio {
         font-size: 14px;
         color: $base-color;
         margin-left: 374px;
-      }
-      h1 {
-        margin-bottom: 5em;
       }
       form {
         >div {
@@ -54,7 +51,6 @@ body.portfolios.index {
       }
       table {
         border: 0;
-        margin-top: 3em;
         margin-bottom: 2em;
         td, th {
           font-size: 14px;
@@ -86,6 +82,7 @@ body.portfolios.new {
     min-height: 600px;
     #main {
       #new_portfolio {
+        margin-top: 30px;
         .inputs {
           @include required-field;
           div {
@@ -100,8 +97,7 @@ body.portfolios.new {
           }
         }
         .actions {
-          width: 19%;
-          text-align: right;
+          margin-left: 122px;
         }
       }
     }
@@ -139,6 +135,10 @@ body.portfolios.show {
 body.portfolios.details {
   #main {
     .container {
+      p {
+        margin: 0;
+        font-size: 14px;
+      }
       h1 {
         color: $heading-red;
         font: {
@@ -242,7 +242,7 @@ body.portfolios.add_transaction {
 
 body.portfolios.accumulated_profits {
   h1 {
-    font-size: x-large;
+    font-size: large;
   }
   #accumulated-profits-chart, #accumulated_profits {
     margin-bottom: 2em;

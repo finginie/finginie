@@ -30,4 +30,5 @@
       %td= number_to_indian_currency loan_positions.sum(&:outstanding_amount).abs
       %td
 - else
-  = t ".no_loan_positions"
+  %p
+    = t ".no_loan_positions"

@@ -20,5 +20,6 @@
         %td.amount= number_to_indian_currency real_estate_transaction.price.abs
         %td.comment= real_estate_transaction.comments && real_estate_transaction.comments.strip.empty? ? t("tables_not_available") : real_estate_transaction.comments
 - else
-  = t "transactions.no_real_estate_transactions"
+  %p
+    = t "transactions.no_real_estate_transactions"
 
