@@ -1,4 +1,6 @@
 class RealEstateTransaction < ActiveRecord::Base
+  attr_accessible :date, :price, :comments, :action, :portfolio_id, :real_estate_id, :real_estate_attributes
+
   belongs_to :portfolio
   belongs_to :real_estate
 

@@ -1,4 +1,5 @@
 class FixedDepositTransaction < ActiveRecord::Base
+  attr_accessible :date, :comments, :price, :action, :portfolio_id, :fixed_deposit_id, :fixed_deposit_attributes
   belongs_to :portfolio
   belongs_to :fixed_deposit
 

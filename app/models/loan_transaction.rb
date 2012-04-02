@@ -1,4 +1,6 @@
 class LoanTransaction < ActiveRecord::Base
+  attr_accessible :portfolio_id, :loan_id, :price, :date, :action, :loan_attributes, :comments
+
   belongs_to :portfolio
   belongs_to :loan
 
