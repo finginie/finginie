@@ -4,7 +4,7 @@ gem 'rails', '3.2.3'
 
 # Unbuilt gems from the project modules
 #
-# gem 'calculators', :path => 'lib/calculators'
+gem 'personal_financial_tools', :path => 'engines/personal_financial_tools'
 
 
 # Gems used only for assets and not required

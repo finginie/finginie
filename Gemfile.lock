@@ -48,6 +48,12 @@ GIT
       fast-stemmer (~> 1.0.0)
       mongoid (>= 2.0.0)
 
+PATH
+  remote: engines/personal_financial_tools
+  specs:
+    personal_financial_tools (0.0.1)
+      rails (~> 3.2.3)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -398,6 +404,7 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-google-oauth2
   paper_trail
+  personal_financial_tools!
   pg
   pinch
   pry
