@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "BalanceSheet" do
   let(:stock) { create :stock }
+  let (:scrip) { create :scrip, :id => stock.symbol, :last_traded_price => 24.22 }
   let(:company_master) { create :company_master, :nse_code => stock.symbol }
 
   before (:each) do
@@ -37,5 +38,12 @@ describe "BalanceSheet" do
      page.should have_content "Advances"
      page.should have_content "756719.45"
      page.should have_content "6349.99"
+  end
+
+  it "should have stock search in the balance sheet page" do
+    scrip.save
+    visit stock_path stock
+    click_link "Balance Sheet"
+    page.should have_selector("#stock_search")
   end
 end

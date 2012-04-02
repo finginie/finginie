@@ -1,0 +1,3 @@
+= simple_form_for @search, :url => collection_path, :html => {:novalidate => true} do |f|
+  = f.label :name_contains, :required => false
+  = f.text_field :name_contains, data: { autocomplete_source: stocks_path }

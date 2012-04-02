@@ -1,5 +1,6 @@
 %h1= "Ratios - #{@stock.name}"
 
+= render 'stocks/search_form'
 - if @ratio.model && @stock.company
   %table
     - if @stock.company.major_sector == 2
