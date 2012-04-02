@@ -33,8 +33,8 @@ describe PortfolioDecorator do
     create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
     create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
 
-    subject.stocks_positions_profit_or_loss.should include(*[{ "name" => stock.name, "type" => "Stock", "profit_or_loss" => 12.0 , "percentage" => 100.0},
-                                                             {"name" => stock1.name, "type" => "Stock", "profit_or_loss" => -4.0, "percentage" => -16.67} ])
+    subject.stocks_positions_profit_or_loss.should include(*[{ "name" => stock.name, "type" => "Stock", "sector" => "FOO", "profit_or_loss" => 12.0 , "percentage" => 100.0},
+                                                             {"name" => stock1.name, "type" => "Stock", "sector" => "BAR", "profit_or_loss" => -4.0, "percentage" => -16.67} ])
   end
 
   it "should have catogorywise mf percentages" do
@@ -51,8 +51,8 @@ describe PortfolioDecorator do
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
 
-    subject.mutual_fund_positions_profit_or_loss.should include(*[ { "name" => scheme.scheme_name, "type" => "Mutual Fund", "profit_or_loss" => 12.0, "percentage" => 100.0},
-                                                                   { "name" => scheme2.scheme_name, "type" => "Mutual Fund", "profit_or_loss" => -1.0, "percentage" => -20.0}] )
+    subject.mutual_fund_positions_profit_or_loss.should include(*[ { "name" => scheme.scheme_name, "type" => "Mutual Fund", "category" => "FOO", "profit_or_loss" => 12.0, "percentage" => 100.0},
+                                                                   { "name" => scheme2.scheme_name, "type" => "Mutual Fund", "category" => "BAR", "profit_or_loss" => -1.0, "percentage" => -20.0}] )
   end
 
   it "should have fixed deposit open positions rate of interests" do
@@ -70,9 +70,9 @@ describe PortfolioDecorator do
       create_sell_position_of_all_securities_type(another_portfolio)
 
       expected = [ { "name" => "Test Property",   "type" => "Real Estate",   "profit_or_loss" => 400.0, "percentage" => 80.0 },
-                  { "name" => stock.name     ,   "type" => "Stock",         "profit_or_loss" => 12.0,  "percentage" => 100.0 },
-                  { "name" => scheme.scheme_name,"type" => "Mutual Fund",   "profit_or_loss" => 12.0, "percentage" => 100 },
-                  { "name" => "Foo",             "type" => "Fixed Deposit", "profit_or_loss" => 4.64,  "percentage" => 4.64 } ]
+                  { "name" => stock.name     ,    "type" => "Stock",         "sector" => "FOO", "profit_or_loss" => 12.0,  "percentage" => 100.0 },
+                  { "name" => scheme.scheme_name, "type" => "Mutual Fund",   "category" => "FOO", "profit_or_loss" => 12.0, "percentage" => 100 },
+                  { "name" => "Foo",              "type" => "Fixed Deposit", "profit_or_loss" => 4.64,  "percentage" => 4.64 } ]
 
       PortfolioDecorator.decorate(another_portfolio).top_five_profits.should include *expected
     end
@@ -82,8 +82,8 @@ describe PortfolioDecorator do
     subject
     create_sell_position_of_all_securities_type
     expected = [ { "name" => "Test Property2",   "type" => "Real Estate", "profit_or_loss" => -400.0, "percentage" => -44.44 },
-                 { "name" => "Foo Scheme Name",  "type" => "Mutual Fund", "profit_or_loss" => -1.0,   "percentage" => -20 },
-                 { "name" => "FOO",              "type" => "Stock",       "profit_or_loss" => -4.0,   "percentage" => -16.67 } ]
+                 { "name" => "Foo Scheme Name",  "type" => "Mutual Fund", "category" => "BAR", "profit_or_loss" => -1.0,   "percentage" => -20 },
+                 { "name" => "FOO",              "type" => "Stock",       "sector" => "BAR", "profit_or_loss" => -4.0,   "percentage" => -16.67 } ]
     subject.top_five_losses.should include *expected
   end
 

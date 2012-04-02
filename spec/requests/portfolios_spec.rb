@@ -28,16 +28,16 @@ describe "Portfolios" do
     find("li#navigation-details").find("a").click
 
     expected_table_for_stocks = [
-                                  [stock.name,                       "10.00", "3.00", "5.00",  "30.00", "50.00", "20.00"],
-                                  [stock_without_current_price.name, "10.00", "5.00", "-",  "50.00", "-",  "-" ],
-                                  ["Total",                           "",      "",     "",     "80.00", "50.00", "20.00"]
+                                  [stock.name,                       "10.00", "3.00",  "30.00", "5.00", "50.00", "20.00"],
+                                  [stock_without_current_price.name, "10.00", "5.00",  "50.00", "-",  "-",  "-" ],
+                                  ["Total",                           "",      "",     "80.00", "",  "50.00", "20.00"]
                                 ]
     expected_table_for_mfs =    [
-                                  [scheme.scheme_name, "10.00", "3.00", "5.00", "30.00", "50.00", "20.00"],
-                                  ["Total",            "",      "",     "",     "30.00", "50.00", "20.00"]
+                                  [scheme.scheme_name, "10.00", "3.00", "30.00", "5.00", "50.00", "20.00"],
+                                  ["Total",            "",      "",     "30.00", "",     "50.00", "20.00"]
                                 ]
     expected_table_for_gold =   [
-                                  ["Gold", "10.00", "3.00", "5.00", "30.00", "50.00", "20.00"]
+                                  ["Gold", "10.00", "3.00", "30.00", "5.00", "50.00", "20.00"]
                                 ]
 
     within "#stock_positions" do
@@ -182,6 +182,41 @@ describe "Portfolios" do
       find("li#navigation-transactions").find("a").click
       page.should have_content I18n.t("transactions.no_stock_transactions")
     end
+
+     it "should display current portfolio in stock analysis page" do
+      find("li#navigation-stocks_analysis").find("a").click
+      page.should have_selector("#current_portfolio")
+    end
+
+    it "should display current portfolio in mutual funds analysis page" do
+      find("li#navigation-mutual_funds_analysis").find("a").click
+      page.should have_selector("#current_portfolio")
+    end
+
+    it "should display current portfolio in fixed deposit analysis page" do
+      find("li#navigation-fixed_deposits_analysis").find("a").click
+      page.should have_selector("#current_portfolio")
+    end
+
+    it "should display current portfolio in Accumulated Profits page" do
+      find("li#navigation-accumulated_profits").find("a").click
+      page.should have_selector("#current_portfolio")
+    end
+
+    it "should display current portfolio in Details Page" do
+      find("li#navigation-details").find("a").click
+      page.should have_selector("#current_portfolio")
+    end
+
+    it "should display current portfolio in Transactions page" do
+      find("li#navigation-transactions").find("a").click
+      page.should have_selector("#current_portfolio")
+    end
+
+    it "should display current portfolio in add transaction page" do
+      find("li#navigation-add_transaction").find("a").click
+      page.should have_selector("#current_portfolio")
+    end
   end
 
   it "should show all transactions in transactions page" do
@@ -229,13 +264,13 @@ describe "Portfolios" do
       visit portfolio_path(another_portfolio)
 
       find("li#navigation-accumulated_profits").find("a").click
-      expected_table_profits = [ ["Test Property", "Real Estate", "400.0", "80.0"],
-                                 [stock.name, "Stock", "12.0", "100.0"],
-                                 [scheme.scheme_name, "Mutual Fund","12.0", "100.0"],
+      expected_table_profits = [ ["Test Property", "Real Estate", "400.00", "80.00"],
+                                 [stock.name, "Stock", "12.00", "100.00"],
+                                 [scheme.scheme_name, "Mutual Fund","12.00", "100.00"],
                                  ["Foo", "Fixed Deposit", "4.64", "4.64"] ]
-      expected_table_losses = [ ["Test Property2", "Real Estate","-400.0", "-44.44"],
-                                ["FOO", "Stock", "-4.0", "-16.67"],
-                                ["Foo Scheme Name", "Mutual Fund", "-1.0", "-20.0"]]
+      expected_table_losses = [ ["Test Property2", "Real Estate","-400.00", "-44.44"],
+                                ["FOO", "Stock", "-4.00", "-16.67"],
+                                ["Foo Scheme Name", "Mutual Fund", "-1.00", "-20.00"]]
 
       tableish("#accumulated_profits table").should include *expected_table_profits
       tableish("#accumulated_losses table").should include *expected_table_losses
@@ -275,9 +310,9 @@ describe "Portfolios" do
     create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
 
     visit stocks_analysis_portfolio_path(portfolio)
-    expected_table = [ [ stock.name, "12.00" , "100.00" ],
-                     [ stock1.name, "-4.00", "-16.67" ],
-                     [ "Total", "8.00", "100" ] ]
+    expected_table = [ [ stock.name , "FOO", "12.00", "100.00" ],
+                       [ stock1.name, "BAR", "-4.00", "-16.67" ],
+                       [ "Total",            "8.00", "100" ] ]
 
     tableish("#stocks_profit_or_loss_analysis table").should include *expected_table
   end
@@ -290,7 +325,7 @@ describe "Portfolios" do
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
 
     visit mutual_funds_analysis_portfolio_path(portfolio)
-    expected_table = [ [ scheme.scheme_name, "12.00", "100.00" ], [ scheme2.scheme_name, "-1.00", "-20.00"], [ "Total", "11.00", "100"] ]
+    expected_table = [ [ scheme.scheme_name, "FOO", "12.00", "100.00" ], [ scheme2.scheme_name, "BAR", "-1.00", "-20.00"], [ "Total", "11.00", "100"] ]
     tableish("#mfs_profit_or_loss_analysis table").should include *expected_table
   end
 

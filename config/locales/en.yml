@@ -11,6 +11,7 @@ en:
     formats:
       short_date: "%B %d, %Y"     # March 31, 2011
       short_date_and_time: "%b %d, %H:%M"  # Mar 31, 13:53
+      date_time_IST: "%d-%B-%Y %H:%M IST" #31-March-2011 13:53 IST
   not_available: "N/A"
   tables_not_available: "-"
   personal_financial_tools:

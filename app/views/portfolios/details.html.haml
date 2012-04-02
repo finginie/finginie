@@ -1,3 +1,5 @@
+= render 'current_portfolio'
+
 - [ 'stock_positions', 'mutual_fund_positions' ].each do |positions|
   %section{ :class => positions }
     %h1= positions.gsub(/_positions/,'').titleize
@@ -8,8 +10,8 @@
             %th Name
             %th Quantity
             %th Average Cost Price (Rs)
-            %th Market Price (Rs)
             %th Amount Invested (Rs)
+            %th Market Price (Rs)
             %th Market Value (Rs)
             %th Unrealised Profit (Rs)
           - resource.send(positions).each do |net_position|
@@ -17,25 +19,28 @@
               %td= net_position.name
               %td= number_to_indian_currency net_position.quantity
               %td= number_to_indian_currency net_position.average_cost_price
+              %td= number_to_indian_currency net_position.value
               - if net_position.current_price
                 %td= number_to_indian_currency net_position.current_price
               - else
                 %td -
-              %td= number_to_indian_currency net_position.value
               - if net_position.current_price
                 %td= number_to_indian_currency net_position.current_value
               - else
                 %td -
               - if net_position.unrealised_profit
-                %td= number_to_indian_currency net_position.unrealised_profit
+                - if net_position.unrealised_profit < 0
+                  %td.red= number_to_indian_currency net_position.unrealised_profit
+                - else
+                  %td.green= number_to_indian_currency net_position.unrealised_profit
               - else
                 %td -
           %tr.total
             %td Total
             %td
             %td
-            %td
             %td= number_to_indian_currency resource.send(positions).sum(&:value)
+            %td
             %td= number_to_indian_currency resource.send(positions).sum(&:current_value)
             %td= number_to_indian_currency resource.send(positions).map(&:unrealised_profit).compact.inject(:+)
     - else
@@ -50,8 +55,8 @@
           %th Name
           %th Quantity (grams)
           %th Average Cost Price (Rs)
-          %th Market Price (Rs)
           %th Amount Invested (Rs)
+          %th Market Price (Rs)
           %th Market Value (Rs)
           %th Unrealised Profit (Rs)
 
@@ -59,10 +64,13 @@
           %td Gold
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).quantity
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).average_cost_price
-          %td= number_to_indian_currency resource.gold_transactions.for(Gold).current_price
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).value
+          %td= number_to_indian_currency resource.gold_transactions.for(Gold).current_price
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).current_value
-          %td= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
+          - if resource.gold_transactions.for(Gold).unrealised_profit < 0
+            %td.red= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
+          - else
+            %td.green= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
   - else
     = t ".no_gold_positions"
 

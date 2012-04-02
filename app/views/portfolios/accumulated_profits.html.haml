@@ -1,3 +1,5 @@
+= render 'current_portfolio'
+
 #accumulated_profits_or_losses
   %h1 Your Accumulated Profits or Losses
   - unless resource.top_five_profits.empty?
@@ -15,12 +17,11 @@
           %tr
             %td= security.name
             %td= security.type
-            %td= security.profit_or_loss
-            %td= security.percentage
+            %td.green= number_to_indian_currency security.profit_or_loss
+            %td.green= number_to_indian_currency security.percentage
         %tr.total
-          %td Total
-          %td
-          %td= resource.profits.map(&:profit_or_loss).sum
+          %td{:colspan => 2} Total
+          %td= number_to_indian_currency resource.profits.map(&:profit_or_loss).sum.round(2)
           %td 100
 
   - unless resource.top_five_losses.empty?
@@ -36,12 +37,11 @@
           %tr
             %td= security.name
             %td= security.type
-            %td= security.profit_or_loss
-            %td= security.percentage
+            %td.red= number_to_indian_currency security.profit_or_loss
+            %td.red= number_to_indian_currency security.percentage
         %tr.total
-          %td Total
-          %td
-          %td= resource.losses.map(&:profit_or_loss).sum
+          %td{:colspan => 2} Total
+          %td= number_to_indian_currency resource.losses.map(&:profit_or_loss).sum.round(2)
           %td 100
   - if resource.top_five_losses.empty? && resource.top_five_profits.empty?
     = t ".no_profit_or_loss"

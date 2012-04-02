@@ -1,3 +1,5 @@
+= render 'current_portfolio'
+
 %h1 Mutual Funds
 - unless resource.category_wise_mutual_funds_percentage.empty?
   #mutual-fund-category-wise-allocation-chart{ 'data-mutual-fund-category-wise-asset-allocation' => resource.category_wise_mutual_funds_percentage }
@@ -25,14 +27,20 @@
     %table
       %tr
         %th Scheme Name
+        %th Category
         %th Profit/Loss (Rs.)
         %th % Profit/Loss
       - resource.mutual_fund_positions_profit_or_loss.each do |position|
         %tr
           %td= position.name
-          %td= number_to_indian_currency position.profit_or_loss
-          %td= number_to_indian_currency position.percentage
+          %td= position.category
+          - if position.profit_or_loss < 0
+            %td.red= number_to_indian_currency position.profit_or_loss
+            %td.red= number_to_indian_currency position.percentage
+          - else position.profit_or_loss < 0
+            %td.green= number_to_indian_currency position.profit_or_loss
+            %td.green= number_to_indian_currency position.percentage
       %tr.total
-        %td Total
+        %td{:colspan => 2} Total
         %td= number_to_indian_currency resource.mutual_fund_positions_profit_or_loss.map(&:profit_or_loss).sum
         %td 100
