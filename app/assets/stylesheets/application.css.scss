@@ -16,7 +16,7 @@
 
 header, nav, hgroup, section, article, footer { display: block; }
 
-body {
+body, button, input, select, textarea {
   font-family: $content-font;
   color: $text-color;
 }
@@ -29,6 +29,7 @@ ul {
 
 p {
   line-height: 1.5em;
+  font-size: 14px;
 }
 
 h1 {
@@ -101,7 +102,7 @@ header {
 	      }
         a {
           font: {
-            size: 13px;
+            size: 15px;
             weight: bold; 
           }
           color: #EEE;
@@ -185,7 +186,7 @@ header {
     }
     >h1 {
       font: {
-        size: x-large;
+        size: large;
       }
       color: $heading-blue;
     }
@@ -201,7 +202,7 @@ aside{
     border-radius: 4px 4px 0 0;
     color: #fff;
     font: {
-      size: 18px;
+      size: 16px;
       weight: bold;
       family: verdana;
     }
@@ -310,13 +311,8 @@ tr {
   }
 
   th, td {
-    padding: {
-      top: 0.4em;
-      bottom: 0.4em;
-      left: 0.6em;
-      right: 0.6em;
-    }
-  font-size: small;	  
+    padding: 0.4em;
+    font-size: 12px;	
   }
 }
 
@@ -342,7 +338,6 @@ form {
     font: {
       size: 12px;
       weight: normal;
-      family: helvetica;
     }
     padding: 4px 6px;
   }
@@ -407,5 +402,40 @@ input[type="text"] {
 .total {
   font-weight: bold;
   color: $heading-blue;
+}
+
+.name {
+  width: 200px;
+  text-align: left;
+}
+.dates, .rate {
+  width: 80px;
+  text-align: center;
+}
+.type {
+  width: 40px;
+  text-align: center;
+}
+.quantity {
+  width: 50px;
+  text-align: right;
+}
+.amount {
+  width: 100px;
+  text-align: right;
+}
+.center {
+  text-align: center;
+}
+.comment {
+  width: 200px;
+}
+.price {
+  width: 80px;
+  text-align: right;
+}
+.duration {
+  width: 50px;
+  text-align: center;
 }
 

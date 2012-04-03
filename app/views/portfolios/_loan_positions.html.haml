@@ -1,25 +1,34 @@
 - unless loan_positions.empty?
   %table
     %tr
-      %th Name
+      %th.name Name
       %th Borrow Date
-      %th Rate of Interest (% p.a.)
-      %th Duration (years)
-      %th{:colspan => 2} Outstanding Amount (Rs)
+      %th Interest
+      %th Duration
+      %th Outstanding Amt
+      %th
+    %tr
+      %td.name
+      %td
+      %td (%p.a.)
+      %td (years)
+      %td (Rs)
+      %td
     - loan_positions.each do |net_position|
       %tr
-        %td= net_position.name
-        %td= l net_position.date
+        %td.name= net_position.name
+        %td.date= l net_position.date
         %td= net_position.rate_of_interest
         %td= net_position.period
         %td= number_to_indian_currency net_position.outstanding_amount.abs
         %td= button_to 'Clear Loan', clear_portfolio_loan_transaction_path(net_position.first.portfolio_id, net_position.first), :method => :post
     %tr.total
-      %td Total
+      %td.name Total
       %td
       %td
       %td
       %td= number_to_indian_currency loan_positions.sum(&:outstanding_amount).abs
       %td
 - else
-  = t ".no_loan_positions"
+  %p
+    = t ".no_loan_positions"

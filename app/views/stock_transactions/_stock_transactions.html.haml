@@ -5,18 +5,26 @@
       %th Type
       %th Name
       %th Quantity
-      %th Price (Rs)
-      %th Transaction Amount (Rs)
+      %th Price
+      %th Amount
       %th Comments
-
+    %tr
+      %td
+      %td
+      %td
+      %td
+      %td.center (Rs)
+      %td.center (Rs)
+      %td
     - stock_transactions.each do |stock_transaction|
       %tr
-        %td= l stock_transaction.date
-        %td{:class => stock_transaction.action}= stock_transaction.action.to_s.titleize
-        %td= stock_transaction.stock.name
-        %td= stock_transaction.quantity
-        %td= number_to_indian_currency stock_transaction.price
-        %td= number_to_indian_currency stock_transaction.value.abs
-        %td= stock_transaction.comments && stock_transaction.comments.strip.empty? ? t("tables_not_available") : stock_transaction.comments
+        %td.dates= l stock_transaction.date
+        %td.type{:class => stock_transaction.action}= stock_transaction.action.to_s.titleize
+        %td.name= stock_transaction.stock.name
+        %td.quantity= stock_transaction.quantity
+        %td.price= number_to_indian_currency stock_transaction.price
+        %td.amount= number_to_indian_currency stock_transaction.value.abs
+        %td.comment= stock_transaction.comments && stock_transaction.comments.strip.empty? ? t("tables_not_available") : stock_transaction.comments
 -else
-  = t "transactions.no_stock_transactions"
+  %p
+    = t "transactions.no_stock_transactions"

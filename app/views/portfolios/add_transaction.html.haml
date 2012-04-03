@@ -1,7 +1,7 @@
 = render 'current_portfolio'
 
 #type_of_investment_select
-  - securities = ["gold", "stock", "mutual_fund", "fixed_deposit", "real_estate", "loan"]
+  - securities = ["stock", "mutual_fund", "gold", "loan", "fixed_deposit", "real_estate"]
   = label_tag :type_of_investment
   = select_tag(:type_of_investment, options_for_select(securities.collect {|security| [security.titleize, security]}), { :include_blank => true })
 

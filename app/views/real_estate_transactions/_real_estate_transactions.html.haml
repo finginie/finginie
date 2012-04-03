@@ -4,16 +4,22 @@
       %th Date
       %th Type
       %th Name
-      %th Transaction Value (Rs)
+      %th Amount
       %th Comments
-
+    %tr
+      %td
+      %td
+      %td
+      %td.center (Rs)
+      %td
     - real_estate_transactions.each do |real_estate_transaction|
       %tr
-        %td= l real_estate_transaction.date
-        %td{:class => real_estate_transaction.action}= real_estate_transaction.action.to_s.titleize
-        %td= real_estate_transaction.name
-        %td= number_to_indian_currency real_estate_transaction.price.abs
-        %td= real_estate_transaction.comments && real_estate_transaction.comments.strip.empty? ? t("tables_not_available") : real_estate_transaction.comments
+        %td.dates= l real_estate_transaction.date
+        %td.type{:class => real_estate_transaction.action}= real_estate_transaction.action.to_s.titleize
+        %td.name= real_estate_transaction.name
+        %td.amount= number_to_indian_currency real_estate_transaction.price.abs
+        %td.comment= real_estate_transaction.comments && real_estate_transaction.comments.strip.empty? ? t("tables_not_available") : real_estate_transaction.comments
 - else
-  = t "transactions.no_real_estate_transactions"
+  %p
+    = t "transactions.no_real_estate_transactions"
 

@@ -31,8 +31,17 @@ body.portfolios.index {
   #wrapper {
     min-height: 600px;
     #main {
-      h1 {
-        margin-bottom: 0;
+      #no_portfolios {
+        text-align: center;
+        margin-top: 60px;
+      }
+      p {
+        margin: 0;
+      }
+      a.create_new_portfolio {
+        font-size: 14px;
+        color: $base-color;
+        margin-left: 374px;
       }
       form {
         >div {
@@ -42,14 +51,17 @@ body.portfolios.index {
       }
       table {
         border: 0;
-        width: 40%;
-        margin-top: 3em;
+        margin-bottom: 2em;
         td, th {
-          font-size: large;
+          font-size: 14px;
           border: 0;
         }
         td {
           color: $base-color;
+          font-weight: normal;
+          a {
+            color: $base-color;
+          }
         }
         th {
           background: white;
@@ -57,9 +69,8 @@ body.portfolios.index {
           font-weight: normal;
         }
         .actions {
-          form {
-            float:right;
-          }
+          text-align: center;
+          width: 130px;
         }
       }
     }
@@ -71,6 +82,7 @@ body.portfolios.new {
     min-height: 600px;
     #main {
       #new_portfolio {
+        margin-top: 30px;
         .inputs {
           @include required-field;
           div {
@@ -85,8 +97,7 @@ body.portfolios.new {
           }
         }
         .actions {
-          width: 19%;
-          text-align: right;
+          margin-left: 122px;
         }
       }
     }
@@ -124,10 +135,14 @@ body.portfolios.show {
 body.portfolios.details {
   #main {
     .container {
+      p {
+        margin: 0;
+        font-size: 14px;
+      }
       h1 {
         color: $heading-red;
         font: {
-          size: large;
+          size: 14px;
         }
       }
       section {
@@ -135,6 +150,13 @@ body.portfolios.details {
       }
       #stock_positions, #mutual_fund_positions, #gold_positions, .Loan, .FixedDeposit, .RealEstate{
         padding: 0 0 1em 0;
+        td, th {
+          text-align: right;
+        }
+        td.name, th.name {
+          width: 150px;
+          text-align: left;
+        }
       }
     }
   }
@@ -146,11 +168,14 @@ body.portfolios.transactions {
       h1 {
         color: $heading-red;
         font: {
-          size: large;
+          size: 14px;
         }
       }
       section {
         padding-bottom: 1em;
+      }
+      th {
+        text-align: center;
       }
     }
   }
@@ -204,7 +229,7 @@ body.portfolios.edit {
 body.portfolios.add_transaction {
   @include simple-form;
   #type_of_investment_select {
-    margin-left: 7em;
+    margin-left: 77px;
     label {
       color: $base-color;
       padding-right: 0.5em;
@@ -217,7 +242,7 @@ body.portfolios.add_transaction {
 
 body.portfolios.accumulated_profits {
   h1 {
-    font-size: x-large;
+    font-size: large;
   }
   #accumulated-profits-chart, #accumulated_profits {
     margin-bottom: 2em;

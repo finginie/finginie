@@ -2,21 +2,30 @@
 
 - [ 'stock_positions', 'mutual_fund_positions' ].each do |positions|
   %section{ :class => positions }
-    %h1= positions.gsub(/_positions/,'').titleize
+    %h1= positions.gsub(/_positions/,'').titleize.pluralize
     - unless resource.send(positions).empty?
       %div{ :id => "#{positions}"}
         %table
           %tr
-            %th Name
+            %th.name Name
             %th Quantity
-            %th Average Cost Price (Rs)
-            %th Amount Invested (Rs)
-            %th Market Price (Rs)
-            %th Market Value (Rs)
-            %th Unrealised Profit (Rs)
+            %th Avg Cost Price
+            %th Amt Invested
+            %th Current Price
+            %th Current Value
+            %th Unrealised Profit
+          %tr
+            %td.name
+            %td
+            %td (Rs)
+            %td (Rs)
+            %td (Rs)
+            %td (Rs)
+            %td (Rs)
+
           - resource.send(positions).each do |net_position|
             %tr
-              %td= net_position.name
+              %td.name= net_position.name
               %td= number_to_indian_currency net_position.quantity
               %td= number_to_indian_currency net_position.average_cost_price
               %td= number_to_indian_currency net_position.value
@@ -36,7 +45,7 @@
               - else
                 %td -
           %tr.total
-            %td Total
+            %td.name Total
             %td
             %td
             %td= number_to_indian_currency resource.send(positions).sum(&:value)
@@ -44,7 +53,8 @@
             %td= number_to_indian_currency resource.send(positions).sum(&:current_value)
             %td= number_to_indian_currency resource.send(positions).map(&:unrealised_profit).compact.inject(:+)
     - else
-      = t ".no_#{positions}"
+      %p
+        = t ".no_#{positions}"
 
 %section{ :class => "Gold" }
   %h1 Gold
@@ -52,14 +62,21 @@
     #gold_positions
       %table
         %tr
-          %th Name
-          %th Quantity (grams)
-          %th Average Cost Price (Rs)
-          %th Amount Invested (Rs)
-          %th Market Price (Rs)
-          %th Market Value (Rs)
-          %th Unrealised Profit (Rs)
-
+          %th.name Name
+          %th Quantity
+          %th Avg Cost price
+          %th Current Price
+          %th Amt Invested
+          %th Current Value
+          %th Unrealised Profit
+        %tr
+          %td.name
+          %td (grams)
+          %td (Rs)
+          %td (Rs)
+          %td (Rs)
+          %td (Rs)
+          %td (Rs)
         %tr
           %td Gold
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).quantity
@@ -71,10 +88,21 @@
             %td.red= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
           - else
             %td.green= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
+        %tr.total
+          %td.name{:colspan => 3} Total
+          %td= number_to_indian_currency resource.gold_transactions.for(Gold).value
+          %td
+          %td= number_to_indian_currency resource.gold_transactions.for(Gold).current_value
+          %td= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
   - else
-    = t ".no_gold_positions"
+    %p
+      = t ".no_gold_positions"
 
-- %w(Loan FixedDeposit RealEstate).each do |security|
+- %w(FixedDeposit Loan).each do |security|
   %section{ :class => security }
-    %h1= "#{security.titleize}"
+    %h1= "#{security.titleize.pluralize}"
     = render "#{security.underscore}_positions", "#{security.underscore}_positions".to_sym => resource.send("#{security.underscore}_positions")
+
+%section{ :class => "RealEstate" }
+  %h1= "Real Estate"
+  = render "real_estate_positions", "real_estate_positions".to_sym => resource.real_estate_positions
