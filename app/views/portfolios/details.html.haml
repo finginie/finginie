@@ -10,8 +10,8 @@
             %th.name Name
             %th Quantity
             %th Avg Cost Price
-            %th Current Price
             %th Amt Invested
+            %th Current Price
             %th Current Value
             %th Unrealised Profit
           %tr
@@ -77,17 +77,21 @@
           %td (Rs)
           %td (Rs)
           %td (Rs)
+        %tr
+          %td Gold
+          %td= number_to_indian_currency resource.gold_transactions.for(Gold).quantity
+          %td= number_to_indian_currency resource.gold_transactions.for(Gold).average_cost_price
+          %td= number_to_indian_currency resource.gold_transactions.for(Gold).value
+          %td= number_to_indian_currency resource.gold_transactions.for(Gold).current_price
+          %td= number_to_indian_currency resource.gold_transactions.for(Gold).current_value
           - if resource.gold_transactions.for(Gold).unrealised_profit < 0
             %td.red= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
           - else
             %td.green= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
-          %td= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
         %tr.total
-          %td.name Total
-          %td
-          %td
-          %td
+          %td.name{:colspan => 3} Total
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).value
+          %td
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).current_value
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
   - else
