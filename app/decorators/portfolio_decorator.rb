@@ -42,7 +42,9 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def empty_transactions?
-    stocks_value == 0 && mutual_funds_value == 0 && gold_value == 0 && real_estates_value == 0 && fixed_deposits_value == 0
+    stock_transactions.empty? && mutual_fund_transactions.empty? &&
+      gold_transactions.empty? && real_estate_transactions.empty? &&
+      fixed_deposit_transactions.empty? && loan_transactions.empty?
   end
 
   def empty_positions?

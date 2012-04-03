@@ -1,30 +1,29 @@
 - unless fixed_deposit_transactions.empty?
-  %table
-    %tr
-      %th Date
-      %th Type
-      %th Name
-      %th Duration
-      %th Interest Rate
-      %th Amount
-      %th Comments
-    %tr
-      %td
-      %td
-      %td
-      %td.center (years)
-      %td.center (% p.a.)
-      %td.center (Rs)
-      %td
-    - fixed_deposit_transactions.each do |transaction|
+  %section{ :class => "FixedDepositTransactions" }
+    %h1= "Fixed Deposit Transactions"
+    %table
       %tr
-        %td.dates= l transaction.date
-        %td.type{:class => transaction.action}= transaction.display_action
-        %td.name= transaction.name
-        %td.duration= transaction.period
-        %td.rate= transaction.rate_of_interest
-        %td.amount= number_to_indian_currency transaction.invested_amount.abs
-        %td.comment= transaction.comments && transaction.comments.strip.empty?  ? t("tables_not_available") : transaction.comments
-- else
-  %p
-    = t "transactions.no_fixed_deposit_transactions"
+        %th.dates Date
+        %th.type Type
+        %th.name Name
+        %th.duration Duration
+        %th.rate Interest Rate
+        %th.amount Amount
+        %th.comment Comments
+      %tr
+        %td
+        %td
+        %td
+        %td.right (years)
+        %td.right (% p.a.)
+        %td.right (Rs)
+        %td
+      - fixed_deposit_transactions.each do |transaction|
+        %tr
+          %td.dates= l transaction.date
+          %td.type{:class => transaction.action}= transaction.display_action
+          %td.name= transaction.name
+          %td.duration= transaction.period
+          %td.rate=   number_to_indian_currency transaction.rate_of_interest
+          %td.amount= number_to_indian_currency transaction.invested_amount.abs
+          %td.comment= transaction.comments && transaction.comments.strip.empty?  ? t("tables_not_available") : transaction.comments

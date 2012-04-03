@@ -1,30 +1,29 @@
 - unless gold_transactions.empty?
-  %table
-    %tr
-      %th Date
-      %th Type
-      %th Name
-      %th Quantity
-      %th Price
-      %th Amount
-      %th Comments
-    %tr
-      %td
-      %td
-      %td
-      %td.center (grams)
-      %td.center (Rs)
-      %td.center (Rs)
-      %td
-    - gold_transactions.each do |gold_transaction|
+  %section{ :class => "GoldTransactions" }
+    %h1= "Gold Transactions"
+    %table
       %tr
-        %td.dates= l gold_transaction.date
-        %td.type{:class => gold_transaction.action}= gold_transaction.action.to_s.titleize
-        %td.name= gold_transaction.gold.name
-        %td.quantity= gold_transaction.quantity
-        %td.price= number_to_indian_currency gold_transaction.price
-        %td.amount= number_to_indian_currency gold_transaction.value.abs
-        %td.comment= gold_transaction.comments && gold_transaction.comments.strip.empty?  ? t("tables_not_available") : gold_transaction.comments
--else
-  %p
-    = t "transactions.no_gold_transactions"
+        %th.dates Date
+        %th.type Type
+        %th.name Name
+        %th.quantity Quantity
+        %th.price Price
+        %th.amount Amount
+        %th.comment Comments
+      %tr
+        %td
+        %td
+        %td
+        %td.right (grams)
+        %td.right (Rs)
+        %td.right (Rs)
+        %td
+      - gold_transactions.each do |gold_transaction|
+        %tr
+          %td.dates= l gold_transaction.date
+          %td.type{:class => gold_transaction.action}= gold_transaction.action.to_s.titleize
+          %td.name= gold_transaction.gold.name
+          %td.quantity= gold_transaction.quantity
+          %td.price= number_to_indian_currency gold_transaction.price
+          %td.amount= number_to_indian_currency gold_transaction.value.abs
+          %td.comment= gold_transaction.comments && gold_transaction.comments.strip.empty?  ? t("tables_not_available") : gold_transaction.comments

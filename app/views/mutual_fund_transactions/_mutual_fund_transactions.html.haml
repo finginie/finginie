@@ -1,30 +1,29 @@
 - unless mutual_fund_transactions.empty?
-  %table
-    %tr
-      %th Date
-      %th Type
-      %th Name
-      %th Quantity
-      %th Price
-      %th Amount
-      %th Comments
-    %tr
-      %td
-      %td
-      %td
-      %td
-      %td.center (Rs)
-      %td.center (Rs)
-      %td
-    - mutual_fund_transactions.each do |mf_transaction|
+  %section{ :class => "MutualFundTransactions" }
+    %h1= "Mutual Fund Transactions"
+    %table
       %tr
-        %td.dates= l mf_transaction.date
-        %td.type{:class => mf_transaction.action}= mf_transaction.action.to_s.titleize
-        %td.name= mf_transaction.mutual_fund.name
-        %td.quantity= mf_transaction.quantity
-        %td.price= number_to_indian_currency mf_transaction.price
-        %td.amount= number_to_indian_currency mf_transaction.value.abs
-        %td.comment= mf_transaction.comments && mf_transaction.comments.strip.empty?  ? t("tables_not_available") : mf_transaction.comments
--else
-  %p
-    = t "transactions.no_mutual_fund_transactions"
+        %th.dates Date
+        %th.type Type
+        %th.name Name
+        %th.quantity Quantity
+        %th.price Price
+        %th.amount Amount
+        %th.comment Comments
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td.right (Rs)
+        %td.right (Rs)
+        %td
+      - mutual_fund_transactions.each do |mf_transaction|
+        %tr
+          %td.dates= l mf_transaction.date
+          %td.type{:class => mf_transaction.action}= mf_transaction.action.to_s.titleize
+          %td.name= mf_transaction.mutual_fund.name
+          %td.quantity= mf_transaction.quantity
+          %td.price= number_to_indian_currency mf_transaction.price
+          %td.amount= number_to_indian_currency mf_transaction.value.abs
+          %td.comment= mf_transaction.comments && mf_transaction.comments.strip.empty?  ? t("tables_not_available") : mf_transaction.comments

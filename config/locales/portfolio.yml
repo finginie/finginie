@@ -15,4 +15,8 @@ en:
     details:
       empty_positions: 'You have no investments in this portfolio.'
     accumulated_profits:
+      no_profit: "You do not have any profits yet."
+      no_loss: "You do not have any losses yet."
       no_profit_or_loss: "You do not have any profits or losses yet."
+    transactions:
+      empty_transactions: 'You have no transactions in this portfolio.'

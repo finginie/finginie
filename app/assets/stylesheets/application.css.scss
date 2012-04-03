@@ -409,8 +409,8 @@ input[type="text"] {
   width: 200px;
   text-align: left;
 }
-.dates, .rate {
-  width: 80px;
+.dates {
+  width: 82px;
   text-align: center;
 }
 .type {
@@ -425,8 +425,8 @@ input[type="text"] {
   width: 100px;
   text-align: right;
 }
-.center {
-  text-align: center;
+.right {
+  text-align: right;
 }
 .comment {
   width: 200px;
@@ -437,6 +437,9 @@ input[type="text"] {
 }
 .duration {
   width: 50px;
-  text-align: center;
+  text-align: right;
 }
-
+.rate {
+  width: 80px;
+  text-align: right;
+}

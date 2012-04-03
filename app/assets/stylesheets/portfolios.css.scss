@@ -199,6 +199,10 @@ body.portfolios.details {
 body.portfolios.transactions {
   #main {
     .container {
+      p {
+        margin: 0;
+        font-size: 14px;
+      }
       h1 {
         color: $heading-red;
         font: {
@@ -207,9 +211,6 @@ body.portfolios.transactions {
       }
       section {
         padding-bottom: 1em;
-      }
-      th {
-        text-align: center;
       }
     }
   }
