@@ -30,7 +30,7 @@ gem 'kaminari'
 gem 'meta_search'
 gem 'mongoid'
   gem 'bson_ext'
-gem 'mongoid_search'
+gem 'mongoid_search', :git => "git://github.com/mauriciozaffari/mongoid_search.git"
 gem 'nested_form', :git => "git://github.com/TMaYaD/nested_form.git"
 # gem 'newrelic_rpm' # Removed temporarily
 gem 'omniauth-facebook'
