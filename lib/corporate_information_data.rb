@@ -12,7 +12,7 @@ class CorporateInformationData
 
   attr_accessor :file_list
 
-  DATA_URL = 'http://download.dionglobal.in//portals//'
+  DATA_URL = 'http://download.dionglobal.in/portals/'
 
   FILE_NAMES = [
     'AccountingPolicy.xml',
