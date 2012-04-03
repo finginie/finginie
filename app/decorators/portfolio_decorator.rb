@@ -45,6 +45,12 @@ class PortfolioDecorator < ApplicationDecorator
     stocks_value == 0 && mutual_funds_value == 0 && gold_value == 0 && real_estates_value == 0 && fixed_deposits_value == 0
   end
 
+  def empty_positions?
+    stock_positions.empty? && mutual_fund_positions.empty? &&
+        gold_transactions.empty? && real_estate_positions.empty? &&
+        fixed_deposit_positions.empty? && loan_positions.empty?
+  end
+
   def total_assets_distribution_table
     [
       {

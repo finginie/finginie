@@ -7,6 +7,32 @@
 
 body.portfolios {
   #wrapper {
+    input[type="submit"]{
+      width: 70px;
+    }
+    #no_portfolios {
+        text-align: center;
+        margin-top: 60px;
+    }
+    #current_portfolio {
+      margin: {
+        bottom: 20px;
+      }
+      b {
+        color: $heading-red;
+        font-size: 14px;
+      }
+      span {
+        color: $base-color;
+        font-size: 14px;
+      }
+      p {
+        float: right;
+        margin: 0;
+        font-size: 12px;
+        color: red;
+      }
+    }
     aside {
       .level_2 {
         >li {
@@ -31,10 +57,6 @@ body.portfolios.index {
   #wrapper {
     min-height: 600px;
     #main {
-      #no_portfolios {
-        text-align: center;
-        margin-top: 60px;
-      }
       p {
         margin: 0;
       }
@@ -52,6 +74,7 @@ body.portfolios.index {
       table {
         border: 0;
         margin-bottom: 2em;
+        margin-top: 1em;
         td, th {
           font-size: 14px;
           border: 0;
@@ -98,6 +121,17 @@ body.portfolios.new {
         }
         .actions {
           margin-left: 122px;
+          padding-top: 10px;
+          width: 80px;
+          float: left;
+          input [type="submit"] {
+            margin-top: 0;
+          }
+        }
+        #back {
+          float: left;
+          width: 100px;
+          padding-top: 22px;
         }
       }
     }
@@ -212,12 +246,24 @@ body.portfolios.analysis {
 
 body.portfolios.edit {
   #main {
+    .edit_portfolio {
+      margin-top: 30px;
+    }
+    .actions {
+      width: 80px;
+      float: left;
+      padding-left: 66px;
+      padding-top: 30px;
+    }
+    #back {
+      float: left;
+      width: 100px;
+      padding-top: 30px;
+    }
     div {
-      input[type="submit"] {
-        margin: 0.6em 0 1em 5em;
-      }
       label {
         padding-right: 1em;
+        padding-bottom: 0.8em;
         font-size: medium;
         color: $base-color;
         @include required-field;
@@ -246,5 +292,8 @@ body.portfolios.accumulated_profits {
   }
   #accumulated-profits-chart, #accumulated_profits {
     margin-bottom: 2em;
+  }
+  p {
+    text-align: center;
   }
 }

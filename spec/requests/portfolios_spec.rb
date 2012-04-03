@@ -173,7 +173,7 @@ describe "Portfolios" do
 
     it "should display default messages in Details Page" do
       find("li#navigation-details").find("a").click
-      page.should have_content I18n.t("portfolios.details.no_stock_positions")
+      page.should have_content I18n.t("portfolios.details.empty_positions")
     end
 
     it "should display default messages in Transactions page" do

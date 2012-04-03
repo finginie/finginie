@@ -1,42 +1,41 @@
 - unless fixed_deposit_positions.empty?
-  %table
-    %tr
-      %th.name Name
-      %th Deposit Date
-      %th Interest
-      %th Duration
-      %th Amt Invested
-      %th Current Value
-      %th Interest Earned
-      %th
-    %tr
-      %td.name
-      %td
-      %td (%p.a)
-      %td (years)
-      %td (Rs)
-      %td (Rs)
-      %td (Rs)
-      %td
-    - fixed_deposit_positions.each do |net_position|
+  %section{ :class => "FixedDeposit" }
+    %h1 "Fixed Deposits"
+    %table
       %tr
-        %td.name= net_position.name
-        %td= l net_position.first.date
-        %td= net_position.rate_of_interest
-        %td= net_position.period
-        %td= number_to_indian_currency net_position.invested_amount
-        %td= number_to_indian_currency net_position.current_value
-        %td.green= number_to_indian_currency net_position.unrealised_profit
-        %td= button_to 'Redeem', redeem_portfolio_fixed_deposit_transaction_path(net_position.first.portfolio_id, net_position.first), :method => :get
-    %tr.total
-      %td.name Total
-      %td
-      %td
-      %td
-      %td= number_to_indian_currency fixed_deposit_positions.sum(&:invested_amount)
-      %td= number_to_indian_currency fixed_deposit_positions.sum(&:current_value)
-      %td= number_to_indian_currency fixed_deposit_positions.sum(&:unrealised_profit)
-      %td
-- else
-  %p
-    = t ".no_fixed_deposit_positions"
+        %th.name Name
+        %th Deposit Date
+        %th Interest
+        %th Duration
+        %th Amt Invested
+        %th Current Value
+        %th Interest Earned
+        %th
+      %tr
+        %td.name
+        %td
+        %td (%p.a)
+        %td (years)
+        %td (Rs)
+        %td (Rs)
+        %td (Rs)
+        %td
+      - fixed_deposit_positions.each do |net_position|
+        %tr
+          %td.name= net_position.name
+          %td= l net_position.first.date
+          %td= net_position.rate_of_interest
+          %td= net_position.period
+          %td= number_to_indian_currency net_position.invested_amount
+          %td= number_to_indian_currency net_position.current_value
+          %td.green= number_to_indian_currency net_position.unrealised_profit
+          %td= button_to 'Redeem', redeem_portfolio_fixed_deposit_transaction_path(net_position.first.portfolio_id, net_position.first), :method => :get
+      %tr.total
+        %td.name Total
+        %td
+        %td
+        %td
+        %td= number_to_indian_currency fixed_deposit_positions.sum(&:invested_amount)
+        %td= number_to_indian_currency fixed_deposit_positions.sum(&:current_value)
+        %td= number_to_indian_currency fixed_deposit_positions.sum(&:unrealised_profit)
+        %td
