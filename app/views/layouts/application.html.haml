@@ -7,20 +7,20 @@
     = raw airbrake_javascript_notifier
     = csrf_meta_tags
 
-  %body{:class => [params[:controller], params[:action]] + (params[:id] || '').split('/')}
+  %body{ :class => auto_page_class_names }
     - if ENV['PRODUCTION_INSTANCE']
       %webengage{license: '76aa3c4'}
     %header
       #header_resize
         %hgroup.title
-          = link_to root_path do
+          = link_to main_app.root_path do
             //%h1 Finginie
             = image_tag 'logo.png'
         %nav.user
           %ul
             - if current_user
-              -#%li= link_to current_user.email, edit_user_registration_path
-              %li= button_to 'Sign out', signout_path, :method => :delete
+              -#%li= link_to current_user.email, edit_user_main_app.registration_path
+              %li= button_to 'Sign out', main_app.signout_path, :method => :delete
             - else
               %li Login with
               %li
@@ -29,7 +29,7 @@
               %li
                 = link_to '/auth/google_oauth2' do
                   = image_tag 'google_32.png'
-              -#%li= link_to 'Sign up', new_user_registration_path
+              -#%li= link_to 'Sign up', new_user_main_app.registration_path
         %nav.main
           = render_navigation :level => 1
           = yield :header
