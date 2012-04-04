@@ -30,6 +30,7 @@ gem 'kaminari'
 gem 'meta_search'
 gem 'mongoid'
   gem 'bson_ext'
+gem 'mongoid_rails_migrations', :git => "git://github.com/anitha-t/mongoid_rails_migrations.git"
 gem 'mongoid_search', :git => "git://github.com/mauriciozaffari/mongoid_search.git"
 gem 'nested_form', :git => "git://github.com/TMaYaD/nested_form.git"
 # gem 'newrelic_rpm' # Removed temporarily

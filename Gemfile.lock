@@ -33,6 +33,16 @@ GIT
     nested_form (0.1.1)
 
 GIT
+  remote: git://github.com/anitha-t/mongoid_rails_migrations.git
+  revision: 47dc9239e73aa05a3baaefe4c85e1a03ec478e2f
+  specs:
+    mongoid_rails_migrations (0.0.14)
+      activesupport (>= 3.0.0)
+      bundler (>= 1.0.0)
+      rails (>= 3.0.0)
+      railties (>= 3.0.0)
+
+GIT
   remote: git://github.com/jcasimir/draper.git
   revision: 43ce3e1895110eace75a57e47a0bdbadfe467af1
   specs:
@@ -393,6 +403,7 @@ DEPENDENCIES
   libnotify
   meta_search
   mongoid
+  mongoid_rails_migrations!
   mongoid_search!
   nested_form!
   omniauth-facebook
