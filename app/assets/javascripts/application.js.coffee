@@ -9,7 +9,7 @@
 #= require jquery_ujs
 #
 #= require html5
-#= require nested_form
+#= require personal_financial_tools
 #= require highcharts
 #= require chosen.jquery.min
 #

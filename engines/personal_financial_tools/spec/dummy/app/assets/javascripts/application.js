@@ -12,4 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require personal_financial_tools
 //= require_tree .

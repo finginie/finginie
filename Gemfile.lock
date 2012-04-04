@@ -52,7 +52,11 @@ PATH
   remote: engines/personal_financial_tools
   specs:
     personal_financial_tools (0.0.1)
+      active_attr
+      haml-rails
+      nested_form
       rails (~> 3.2.3)
+      simple_form
 
 GEM
   remote: http://rubygems.org/

@@ -7,7 +7,7 @@ describe 'PersonalFinancialTools' do
     fill_in      "emi_calculator[down_payment]",  :with => 100000
     fill_in      "emi_calculator[rate]",          :with => 12.5
     fill_in      "emi_calculator[term]",          :with => 5
-    click_button "Calculate EMI"
+    click_button "Create Emi calculator"
     page.should have_content("6749.38")
   end
 
@@ -37,7 +37,7 @@ describe 'PersonalFinancialTools' do
       fill_in "income_tax_calculator[interest_on_a_housing_loan]", :with => 250000
       fill_in "income_tax_calculator[health_insurance_premium]", :with => 10000
       fill_in "income_tax_calculator[interest_repayment_on_education_loan]", :with => 60000
-      click_button 'Calculate Income Tax Payable'
+      click_button 'Create Income tax calculator'
 
       page.should have_content 249466
 
@@ -55,15 +55,15 @@ describe 'PersonalFinancialTools' do
 
     2.times { click_link   "Add Dependent" }
     within ".fields:nth-child(1)" do
-      fill_in "years",    :with => 10
-      fill_in "Expenses", :with => 800000
+      fill_in "Years",    :with => 10
+      fill_in "Expense", :with => 800000
     end
     within ".fields:nth-child(2)" do
-      fill_in "years",    :with => 15
-      fill_in "Expenses", :with => 300000
+      fill_in "Years",    :with => 15
+      fill_in "Expense", :with => 300000
     end
 
-    click_button "Calculate Additional Insurance Needed"
+    click_button "Create Life insurance calculator"
     page.should have_content("14352006")
   end
 
@@ -73,7 +73,7 @@ describe 'PersonalFinancialTools' do
     fill_in      "fixed_deposit_calculator[rate_of_return]",  :with => 8.75
     fill_in      "fixed_deposit_calculator[no_months]",       :with => 12
     select       "Quarterly"
-    click_button "Find Maturity Amount Received"
+    click_button "Create Fixed deposit calculator"
     page.should have_content("10904.13")
   end
 
@@ -83,7 +83,7 @@ describe 'PersonalFinancialTools' do
     fill_in      "sip_calculator[monthly_amount]",            :with => 2000
     fill_in      "sip_calculator[no_months]",                 :with => 12
     fill_in      "sip_calculator[rate_of_return]",            :with => 10
-    click_button "Calculate Final Amount Received"
+    click_button "Create Sip calculator"
     page.should have_content("25341.67")
   end
 
@@ -92,7 +92,7 @@ describe 'PersonalFinancialTools' do
     fill_in      "monthly_sip_calculator[financial_goal]", :with => 1000000
     fill_in      "monthly_sip_calculator[rate_of_return]", :with => 11
     fill_in      "monthly_sip_calculator[no_months]",      :with => 24
-    click_button "Calculate Monthly Investment"
+    click_button "Create Monthly sip calculator"
     page.should have_content("37101.08")
   end
 
@@ -101,7 +101,7 @@ describe 'PersonalFinancialTools' do
     fill_in      "rate_of_return_calculator[initial_investment]", :with => 200000
     fill_in      "rate_of_return_calculator[received_amount]",    :with => 400000
     fill_in      "rate_of_return_calculator[no_years]",           :with => 5
-    click_button "Find Rate of Return on the Investment"
+    click_button "Create Rate of return calculator"
     page.should have_content("14.87")
   end
 
@@ -111,7 +111,7 @@ describe 'PersonalFinancialTools' do
     fill_in      "recurring_deposit_calculator[rate_of_return]", :with => 9.25
     fill_in      "recurring_deposit_calculator[no_months]",      :with => 12
     select       "Quarterly"
-    click_button "Calculate Maturity Amount Received"
+    click_button "Create Recurring deposit calculator"
     page.should have_content("252274.69")
   end
 
@@ -122,7 +122,7 @@ describe 'PersonalFinancialTools' do
     fill_in      "retirement_corpus_calculator[monthly_expenses]",   :with => 15000
     fill_in      "retirement_corpus_calculator[inflation]",         :with => 6
     fill_in      "retirement_corpus_calculator[expected_return]",   :with => 9
-    click_button "Calculate Monthly Savings"
+    click_button "Create Retirement corpus calculator"
     page.should have_content("14776.67")
   end
 end

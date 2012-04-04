@@ -68,7 +68,7 @@ Finginie::Application.routes.draw do
     resources :gold_transactions
   end
 
-  mount PersonalFinancialTools::Engine => "/"
+  mount PersonalFinancialTools::Engine => "/personal_financial_tools"
 
   root :to => 'pages#show', :id => 'home'
 

@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe PersonalFinancialToolsController do
+describe PersonalFinancialTools::PersonalFinancialToolsController do
 
 end

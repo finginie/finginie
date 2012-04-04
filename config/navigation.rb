@@ -107,7 +107,7 @@ SimpleNavigation::Configuration.run do |navigation|
       end
     end
 
-    primary.item :personal_financial_tools, 'Financial Tools', main_app.personal_financial_tools_path do |secondary|
+    primary.item :personal_financial_tools, 'Financial Tools', personal_financial_tools.personal_financial_tools_path do |secondary|
       secondary.item :emi_calculators, 'EMI Calculator', personal_financial_tools.emi_calculators_path
       secondary.item :fixed_deposit_calculators,'Fixed Deposit Calculators', personal_financial_tools.fixed_deposit_calculators_path
       secondary.item :recurring_deposit_calculator, 'Recurring Deposit Calculator', personal_financial_tools.recurring_deposit_calculator_path
