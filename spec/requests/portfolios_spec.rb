@@ -127,18 +127,22 @@ describe "Portfolios" do
     create_positions_of_all_securities
 
     visit portfolio_path(portfolio)
-    expected_table = [
-                       [ 'Stocks',           "50.00" ,                         "5.84"],
-                       [ 'Mutual Funds',     "50.00" ,                         "5.84"],
-                       [ 'Gold',             "50.00" ,                         "5.84"],
-                       [ 'Fixed Deposits',   "106.58",                        "12.44"],
-                       [ 'Real Estate',      "600.00",                        "70.05"],
-                       ["Total Assets",      "856.58",                       "100.00"],
-                       ["Loans",             "258.63", I18n.t("tables_not_available")],
-                       ["Total Liabilities", "258.63", I18n.t("tables_not_available")],
-                       ["Net Worth",         "597.95", I18n.t("tables_not_available")]
-                      ]
-    tableish("table").should include *expected_table
+    expected_asset_table = [
+                             [ 'Stocks',           "50" ,  "5.84"],
+                             [ 'Mutual Funds',     "50" ,  "5.84"],
+                             [ 'Gold',             "50" ,  "5.84"],
+                             [ 'Fixed Deposits',   "107", "12.44"],
+                             [ 'Real Estate',      "600", "70.05"],
+                             [ "Total",            "857",      ""]
+                          ]
+
+    expected_liabilities_table = [
+                                   ["Loans",     "259", "100.00"],
+                                   ["Total",     "259",       ""],
+                                   ["Net Worth", "598",       ""]
+                                  ]
+    tableish("table.assets").should include *expected_asset_table
+    tableish("table.liabilities").should include *expected_liabilities_table
   end
 
   context "new portfolio" do

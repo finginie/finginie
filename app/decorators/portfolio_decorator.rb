@@ -24,6 +24,10 @@ class PortfolioDecorator < ApplicationDecorator
    ( real_estates_value / total_assets_value * 100).round(2).to_f
   end
 
+  def total_liabilitites_percentage
+    total_liabilitites_value < 0 ? 100 : 0
+  end
+
   def total_assets_distribution
     [ [ "Stocks",         stocks_percentage        ],
       [ "Mutual Funds",   mutual_funds_percentage  ],
@@ -81,25 +85,29 @@ class PortfolioDecorator < ApplicationDecorator
          :amount     => number_to_indian_currency(real_estates_value,0)
       },
       {
-        :asset_type => "Total Assets",
-        :percentage => number_to_indian_currency("100"),
-        :amount     => number_to_indian_currency(total_assets_value,0)
-      },
+        :asset_type => "Total",
+        :class      => "total",
+        :amount     => number_to_indian_currency(total_assets_value,0)}
+      ]
+  end
+
+  def total_liabilities_distribution_table
+    [
       {
         :asset_type => "Loans",
-        :percentage => h.t('tables_not_available'),
+        :percentage => number_to_indian_currency(total_liabilitites_percentage),
         :amount     => number_to_indian_currency(total_liabilitites_value.abs,0)
       },
       {
-        :asset_type => "Total Liabilities",
-        :percentage => h.t('tables_not_available'),
+        :asset_type => "Total",
+        :class      => "total",
         :amount     => number_to_indian_currency(total_liabilitites_value.abs,0)
       },
       {
         :asset_type => "Net Worth",
-        :percentage => h.t('tables_not_available'),
+        :class      => "total",
         :amount     => number_to_indian_currency(net_worth,0)}
-      ]
+    ]
   end
 
   #Analysis page items
@@ -138,7 +146,7 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def fixed_deposit_open_positions_rate_of_interests
-    fixed_deposit_positions.map{ |fd| { :rate => fd.rate_of_interest.to_f, :name => fd.name, :amount => fd.invested_amount.to_f } }
+    fixed_deposit_positions.map{ |fd| Hashie::Mash.new({ :rate => fd.rate_of_interest.to_f, :name => fd.name, :amount => fd.invested_amount.to_f }) }
   end
 
   def fixed_deposit_positions_profit_or_loss

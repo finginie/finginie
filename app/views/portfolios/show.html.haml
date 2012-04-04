@@ -3,9 +3,9 @@
   = render 'empty_transaction'
 - else
   #portfolio-total-asset-allocation-chart{ 'data-portfolio-total-asset-allocation' => resource.total_assets_distribution }
-  %table
+  %table{:class => "assets"}
     %tr
-      %th Asset Class
+      %th.name Assets
       %th.right Amount
       %th.right Percentage
     %tr
@@ -13,7 +13,22 @@
       %td.right (Rs)
       %td.right (%)
     -resource.total_assets_distribution_table.each do |asset|
-      %tr
+      %tr{:class => asset[:class]}
+        %td= asset[:asset_type]
+        %td.right= asset[:amount]
+        %td.right= asset[:percentage]
+
+  %table{:class => "liabilities"}
+    %tr
+      %th.name Liabilities
+      %th.right Amount
+      %th.right Percentage
+    %tr
+      %td
+      %td.right (Rs)
+      %td.right (%)
+    -resource.total_liabilities_distribution_table.each do |asset|
+      %tr{:class => asset[:class]}
         %td= asset[:asset_type]
         %td.right= asset[:amount]
         %td.right= asset[:percentage]
