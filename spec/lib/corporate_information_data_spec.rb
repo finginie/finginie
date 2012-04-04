@@ -57,7 +57,7 @@ describe CorporateInformationData, :mongoid, :vcr do
 
   it "should have a CompanyMaster record" do
     subject.parse_and_update("CompanyMaster.xml")
-    CompanyMaster.exists?( conditions: { company_code: "11550030", product_status_code: "1753" } ).should be_true
+    Company.exists?( conditions: { company_code: "11550030", product_status_code: "1753" } ).should be_true
   end
 
   it "should have a CorpGovernancereport record" do

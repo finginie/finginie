@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe AuditedResultDecorator do
   before { ApplicationController.new.set_current_view_context }
-  let(:company_master) { create :company_master }
-  let(:audited_result) { create :audited_result, :companycode            => company_master.company_code,
+  let(:company) { create :company }
+  let(:audited_result) { create :audited_result, :companycode            => company.company_code,
                                                  :investments            => "2956005690000",
                                                  :equity_capital         => "6349990000",
                                                  :long_term_loan         => "111111111",
@@ -36,7 +36,7 @@ describe AuditedResultDecorator do
   end
 
   describe "for banking sector" do
-    before(:each) { company_master.update_attribute(:major_sector, 2) }
+    before(:each) { company.update_attribute(:major_sector, 2) }
 
     it "should get the correct balance_sheet view_items" do
       audited_result_decorator.balance_sheet_view_items.map { |item| item[:field_name] }.should include( "advances", "borrowings_by_bank", "unsecured_loans", "savings_deposits_un_secured", "dep_of_ind_branches" )
@@ -48,6 +48,6 @@ describe AuditedResultDecorator do
   end
 
   it "should get the company name" do
-    audited_result_decorator.company_name.should eq company_master.company_name
+    audited_result_decorator.company_name.should eq company.company_name
   end
 end

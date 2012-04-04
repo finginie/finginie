@@ -243,7 +243,7 @@ class AuditedResultDecorator < ApplicationDecorator
   end
 
   def company_name
-    CompanyMaster.where( company_code: model.companycode ).first.company_name
+    Company.where( company_code: model.companycode ).first.company_name
   end
 
   def profit_loss_view_items

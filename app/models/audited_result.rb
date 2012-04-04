@@ -141,7 +141,7 @@ class AuditedResult
     end                                                       ##
 
   def banking_company?
-    @company ||= CompanyMaster.where( company_code: companycode).first
+    @company ||= Company.where( company_code: companycode).first
     @company.major_sector == 2
   end
   def net_worth

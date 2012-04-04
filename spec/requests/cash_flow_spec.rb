@@ -4,16 +4,16 @@ require 'spec_helper'
 describe "BalanceSheet" do
   let(:stock) { create :stock }
   let (:scrip) { create :scrip, :id => stock.symbol, :last_traded_price => 24.22 }
-  let(:company_master) { create :company_master, :nse_code => stock.symbol }
+  let(:company) { create :company, :nse_code => stock.symbol }
   before(:each) {
-    5.times { |i| create :cash_flow, :company_code => company_master.company_code,
+    5.times { |i| create :cash_flow, :company_code => company.company_code,
                                      :year_ending => "31/03/#{2006 + i}",
                                      :pl_sale_asst =>	"104562000"
     }
   }
 
   it "should show the correct view for cash flow" do
-    create :cash_flow, :company_code => company_master.company_code, :year_ending => "31/03/2011", :adv_tax_paid => "212342343"
+    create :cash_flow, :company_code => company.company_code, :year_ending => "31/03/2011", :adv_tax_paid => "212342343"
     visit stock_cash_flow_path(stock.id)
     page.should have_content stock.name
     page.should have_content "Profit/Loss On Sale Of Assets"

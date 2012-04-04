@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe ShareHoldingDecorator do
   before { ApplicationController.new.set_current_view_context }
-  let(:company_master) { create :company_master }
-  let(:share_holding) { create :share_holding, :company_code => company_master.company_code }
+  let(:company) { create :company }
+  let(:share_holding) { create :share_holding, :company_code => company.company_code }
   let(:share_holding_decorator) { ShareHoldingDecorator.decorate(share_holding) }
 
   subject { share_holding_decorator }

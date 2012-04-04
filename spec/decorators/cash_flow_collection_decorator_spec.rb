@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe CashFlowCollectionDecorator do
   before { ApplicationController.new.set_current_view_context }
-  let(:company_master) { create :company_master }
-  let(:cash_flows) { 5.times.map { |i| create :cash_flow, :company_code => company_master.company_code,
+  let(:company) { create :company }
+  let(:cash_flows) { 5.times.map { |i| create :cash_flow, :company_code => company.company_code,
                                                           :year_ending  => "31/03/#{2006 + i}",
                                                           :pbt          => "139260961000",
                                                           :depreciatn	  => "9326637000",
