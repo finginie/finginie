@@ -3,11 +3,11 @@ require 'spec_helper'
 describe "BalanceSheet" do
   let(:stock) { create :stock }
   let (:scrip) { create :scrip, :id => stock.symbol, :last_traded_price => 24.22 }
-  let(:company_master) { create :company_master, :nse_code => stock.symbol }
+  let(:company) { create :company, :nse_code => stock.symbol }
 
   before (:each) do
-    company_master.save
-    5.times { |i| create :audited_result, :companycode            => company_master.company_code,
+    company.save
+    5.times { |i| create :audited_result, :companycode            => company.company_code,
                                           :year_ending            => "31/03/#{2011 -i}",
                                           :investments            => "2956005690000",
                                           :long_term_loan         => "111111111",
@@ -21,7 +21,7 @@ describe "BalanceSheet" do
 
   it "should show the correct fields for non-banking sector" do
     visit stock_balance_sheet_path(stock.id)
-    page.should have_content company_master.company_name
+    page.should have_content company.company_name
     page.should have_content "Investments"
     page.should have_content "295600.57"
     page.should have_content "Total Debt"
@@ -31,7 +31,7 @@ describe "BalanceSheet" do
   end
 
   it "should show the correct fields for banking-sector" do
-     company_master.update_attribute(:major_sector, 2)
+     company.update_attribute(:major_sector, 2)
      visit stock_balance_sheet_path( stock.id)
      page.should have_content "Investments"
      page.should have_content "295600.57"

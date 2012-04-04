@@ -4,7 +4,7 @@ describe "ShareHolding", :mongoid do
   let(:stock) { create :stock }
   let (:scrip) { create :scrip, :id => stock.symbol, :last_traded_price => 24.22 }
   before :each do
-    @company = create :company_master, :nse_code => stock.symbol
+    @company = create :company, :nse_code => stock.symbol
     @share_holding = create :share_holding, :company_code => @company.company_code
   end
 

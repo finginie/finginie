@@ -12,7 +12,7 @@ class CorporateInformationData
 
   attr_accessor :file_list
 
-  DATA_URL = 'http://download.dionglobal.in//portals//'
+  DATA_URL = 'http://download.dionglobal.in/portals/'
 
   FILE_NAMES = [
     'AccountingPolicy.xml',
@@ -54,9 +54,25 @@ class CorporateInformationData
     'SchemeMaster.xml',
     'ShareHolding.xml',
     'Splits.xml',
-    'Subsidiaries.xml'
+    'Subsidiaries.xml',
+    'CurrDetails.xml'
   ]
 
+  FILE_NAME_AND_MODEL = {
+    "CurrDetails" => Company,
+    "CompanyMaster" => Company
+  }
+
+  FIELDS_FOR_EXTRACTION = {
+    "CurrDetails" => [ :company_code, :pe_ratio, :fifty_twoweek_high, :fifty_twoweek_low, :eps ]
+  }
+
+  FIELDS_FOR_RENAME = {
+    "CurrDetails" => {
+      :pe_ratio           => :pe,
+      :fifty_twoweek_high => :fifty_two_week_high_price,
+      :fifty_twoweek_low  => :fifty_two_week_low_price }
+  }
   def self.update_data
     parser = new
     parser.file_list.each do |file|
@@ -84,9 +100,10 @@ class CorporateInformationData
     data_hash = Hash.from_xml(@remote_archive.get file_name)
 
     data_hash.each do |key, value|
-      model = key.underscore.classify.constantize
+      model = FILE_NAME_AND_MODEL[key] || key.underscore.classify.constantize
       [value["Item"]].flatten.each do |attributes|
         attributes.underscore_keys!.symbolize_keys!
+        attributes = modify_attributes(key, attributes)
         model.find_and_update_attributes attributes
       end
     end
@@ -103,4 +120,14 @@ class CorporateInformationData
       "04"
     end
   end
+
+private
+  def modify_attributes(key, attributes)
+    attributes = attributes.extract!(*FIELDS_FOR_EXTRACTION[key]) if FIELDS_FOR_EXTRACTION[key] #extract the required fields
+    FIELDS_FOR_RENAME[key] && FIELDS_FOR_RENAME[key].each do |key, value|
+      attributes[value] = attributes.delete(key)         # rename the required fields
+    end
+    attributes
+  end
+
 end

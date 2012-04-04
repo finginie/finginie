@@ -4,7 +4,7 @@ describe "Ratios", :mongoid do
   let(:stock) { create :stock }
   let (:scrip) { create :scrip, :id => stock.symbol, :last_traded_price => 24.22 }
   before :each do
-    @company = create :company_master, :nse_code => stock.symbol, :major_sector => 2
+    @company = create :company, :nse_code => stock.symbol, :major_sector => 2
     @banking_ratio = create :banking_ratio, :company_code => @company.company_code, :year_ending => '31/03/2011',
                                             :capital_adequacy_ratio => "13.64",
                                             :fund_based_income_as_a_per_of_op_income => "92.73",

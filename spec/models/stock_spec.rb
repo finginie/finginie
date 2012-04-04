@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe Stock do
   let (:stock) { create :stock }
-  let (:company_master) { create :company_master, :nse_code => stock.symbol }
+  let (:company) { create :company, :nse_code => stock.symbol }
   subject { stock }
 
   it { should validate_uniqueness_of :name }
   it { should validate_uniqueness_of :symbol }
-  its(:company_code) { should eq company_master.company_code }
+  its(:company_code) { should eq company.company_code }
 
   it "should mass assign attributes" do
     Stock.find_or_initialize_by_id(1).update_attributes({
@@ -52,7 +52,7 @@ describe Stock do
 
   describe "with news", :mongoid do
     before :each do
-      @company = create :company_master, :company_code => "123234", :nse_code => stock.symbol
+      @company = create :company, :company_code => "123234", :nse_code => stock.symbol
       6.times { |i| create :news, :company_code => @company.company_code, :headlines => "headlines #{i}", :modify_on => Time.now - i }
     end
     it "should get all the news for a company" do

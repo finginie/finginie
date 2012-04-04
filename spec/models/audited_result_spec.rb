@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe AuditedResult, :mongoid do
-  let(:company_master) { create :company_master }
-  let(:audited_result) { create :audited_result, :companycode => company_master.company_code,
+  let(:company) { create :company }
+  let(:audited_result) { create :audited_result, :companycode => company.company_code,
                                 :equity_capital             => "6349990000",
                                 :share_appl_money           => "233333",
                                 :pref_capital               => "2444444",
@@ -44,7 +44,7 @@ describe AuditedResult, :mongoid do
   }
   subject { audited_result }
   before (:each) do
-    company_master.save
+    company.save
     audited_result.save
   end
 
@@ -99,7 +99,7 @@ describe AuditedResult, :mongoid do
   end
 
   describe "for banking sector" do
-    before(:all) { company_master.update_attribute(:major_sector, 2) }
+    before(:all) { company.update_attribute(:major_sector, 2) }
 
     it "should calculate the networth for banking sector" do
       audited_result.net_worth.to_i.should eq 649863109777

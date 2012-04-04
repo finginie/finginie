@@ -1,4 +1,4 @@
-class CompanyMaster
+class Company
   include Mongoid::Document
   extend MongoidHelpers
 
@@ -21,6 +21,11 @@ class CompanyMaster
     field :product_status_code
     field :modified_date, :type => DateTime
     field :delete_flag
+    # from CurrDetails.xml
+    field :pe, :type => Float
+    field :fifty_two_week_high_price, :type => Float
+    field :fifty_two_week_low_price, :type => Float
+    field :eps, :type => Float
 
     key :company_code
 

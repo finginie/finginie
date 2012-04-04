@@ -3,11 +3,11 @@ require 'spec_helper'
 describe "Profit Loss" do
   let(:stock) { create :stock }
   let (:scrip) { create :scrip, :id => stock.symbol, :last_traded_price => 24.22 }
-  let(:company_master) { create :company_master, :nse_code => stock.symbol }
+  let(:company) { create :company, :nse_code => stock.symbol }
 
   before (:each) do
-    company_master.save
-    5.times { |i| create :audited_result, :companycode          => company_master.company_code, 
+    company.save
+    5.times { |i| create :audited_result, :companycode          => company.company_code,
                                           :year_ending          => "31/03/#{2011 -i}",
                                           :operating_income     => "955255776000",
                                           :excise               => "9347100000",
@@ -34,7 +34,7 @@ describe "Profit Loss" do
   end
 
   it "should show the correct fields for banking-sector" do
-    company_master.update_attribute(:major_sector, 2)
+    company.update_attribute(:major_sector, 2)
     visit stock_profit_loss_path(stock.id)
     page.should have_content stock.name
     page.should have_content "Income"
