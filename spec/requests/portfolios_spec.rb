@@ -274,6 +274,7 @@ describe "Portfolios" do
 
       tableish("#accumulated_profits table").should include *expected_table_profits
       tableish("#accumulated_losses table").should include *expected_table_losses
+      page.should have_content 23.64
     end
   end
 

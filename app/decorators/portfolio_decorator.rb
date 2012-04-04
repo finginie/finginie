@@ -174,6 +174,10 @@ class PortfolioDecorator < ApplicationDecorator
     profits.sort_by(&:profit_or_loss).reverse.take(5)
   end
 
+  def net_profit_or_loss
+    positions.map(&:profit_or_loss).sum.round(2)
+  end
+
   def stock_transactions
     model.stock_transactions.reorder("date DESC")
   end

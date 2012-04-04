@@ -87,6 +87,16 @@ describe PortfolioDecorator do
     subject.top_five_losses.should include *expected
   end
 
+  it "should have net profit/loss" do
+    Timecop.freeze(Date.civil(2012,03,22)) do
+      another_portfolio = create :portfolio
+      create_securities(another_portfolio)
+
+      create_sell_position_of_all_securities_type(another_portfolio)
+      PortfolioDecorator.decorate(another_portfolio).net_profit_or_loss.should eq 23.64
+    end
+  end
+
   def create_securities(portfolio = portfolio)
     scrip = create :scrip, :last_traded_price => 5, :id => stock.symbol
     4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
