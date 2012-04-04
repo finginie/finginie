@@ -221,16 +221,23 @@ body.portfolios.transactions {
 }
 
 body.portfolios.stocks_analysis, body.portfolios.mutual_funds_analysis, body.portfolios.fixed_deposits_analysis {
+  h2 {
+    font-size: 14px;
+    color: $heading-red;
+    font-weight: normal;
+    margin: {
+      bottom: 10px;
+      top: 20px;
+    }
+  }
   table {
     margin: {
-      top: 2em;
       bottom: 2em;
     }
   }
-  h1 {
-    font-size: 18px;
-  }
 }
+
+body
 
 body.portfolios.analysis {
   #main {

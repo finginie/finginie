@@ -414,11 +414,11 @@ input[type="text"] {
   text-align: center;
 }
 .type {
-  width: 40px;
+  width: 50px;
   text-align: center;
 }
 .quantity {
-  width: 50px;
+  width: 54px;
   text-align: right;
 }
 .amount {
@@ -429,14 +429,14 @@ input[type="text"] {
   text-align: right;
 }
 .comment {
-  width: 200px;
+  width: 190px;
 }
 .price {
   width: 80px;
   text-align: right;
 }
 .duration {
-  width: 50px;
+  width: 54px;
   text-align: right;
 }
 .rate {
@@ -450,3 +450,12 @@ input[type="text"] {
   width: 150px;
   text-align: right;
 }
+.security_type {
+  widht: 100px;
+  text-align: center;
+}
+.percentage {
+  width: 200px;
+  text-align: right;
+}
+

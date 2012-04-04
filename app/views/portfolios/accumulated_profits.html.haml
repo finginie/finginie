@@ -9,15 +9,15 @@
   - else
     #accumulated-profits-chart{ 'data-accumulated-profits' => resource.top_five_profits.map(&:percentage) + resource.top_five_losses.map(&:percentage),
                                   'data-categories' => resource.top_five_profits.map(&:name) + resource.top_five_losses.map(&:name) }
-    %h1 Profits
+    %h2 Realized Profits
     - unless resource.top_five_profits.empty?
       #accumulated_profits
         %table
           %tr
             %th.name Security
-            %th.center Security Type
+            %th.security_type Security Type
             %th.profit Profit
-            %th.right Profit Percentage
+            %th.percentage Profit Percentage
           %tr
             %td
             %td
@@ -38,15 +38,15 @@
       %p
         = t(".no_profit")
 
-    %h1 Losses
+    %h2 Realized Losses
     - unless resource.top_five_losses.empty?
       #accumulated_losses
         %table
           %tr
             %th.name Security
-            %th.center Security Type
+            %th.security_type Security Type
             %th.loss Loss (Rs)
-            %th.right Loss Percentage
+            %th.percentage Loss Percentage
           %tr
             %td
             %td
@@ -65,7 +65,7 @@
             %td
     - else
       %p
-        = t(".no_profit")
+        = t(".no_loss")
     - unless resource.positions.empty?
       %h1 Net Profit/Loss
       %table

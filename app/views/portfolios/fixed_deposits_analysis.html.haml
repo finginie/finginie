@@ -4,9 +4,10 @@
 - unless resource.fixed_deposit_open_positions_rate_of_interests.empty?
   #fixed-deposits-chart{ 'data-fixed-deposits' => resource.fixed_deposit_open_positions_rate_of_interests.map(&:rate),
                                 'data-categories' => resource.fixed_deposit_open_positions_rate_of_interests.map(&:amount) }
+  %h2 Interest rate wise Analysis
   %table
     %tr
-      %th Name
+      %th.name Name
       %th.right Interest Rate
       %th.right Invested Amount
     %tr

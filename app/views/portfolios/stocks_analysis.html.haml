@@ -3,9 +3,10 @@
 %h1 Stocks Analysis
 - unless resource.sector_wise_stock_percentage.empty?
   #stock-sectoral-allocation-chart{ 'data-stocks-sectoral-asset-allocation' => resource.sector_wise_stock_percentage }
+  %h2 Sector wise Analysis
   %table
     %tr
-      %th Sector
+      %th.name Sector
       %th.right Invested Amount
       %th.right Percentage Holding
     %tr
@@ -32,12 +33,13 @@
   - unless resource.stocks_positions_profit_or_loss.empty?
     #stocks-profit-or-loss-chart{ 'data-stocks-profit-or-loss' => resource.stocks_positions_profit_or_loss.map(&:percentage),
                                   'data-categories' => resource.stocks_positions_profit_or_loss.map(&:name) }
+    %h2 Realized Profits/Losses
     %table
       %tr
         %th Stock Name
         %th Sector
         %th.right Profit/Loss
-        %th.right Profit/Loss
+        %th.right Percentage Profit/Loss
       %tr
         %td
         %td
@@ -55,6 +57,7 @@
             %td.green= number_to_indian_currency position.percentage
 
       %tr.total
-        %td{:colspan => 2} Total
+        %td.name Total
+        %td
         %td.right= number_to_indian_currency resource.stocks_positions_profit_or_loss.map(&:profit_or_loss).sum
         %td.right 100

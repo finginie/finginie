@@ -97,7 +97,7 @@ $ ->
     bar_chart('mutual-fund-profit-or-loss-chart','data-mutual-fund-profit-or-loss','Realized Profit/Loss on Mutual Funds', JSON.parse($("#mutual-fund-profit-or-loss-chart").attr("data-categories")), 'Percentage (%)')
 
   if $("#fixed-deposits-chart").attr("data-categories") != undefined
-    bar_chart('fixed-deposits-chart','data-fixed-deposits','Your Fixed Deposits', JSON.parse($("#fixed-deposits-chart").attr("data-categories")), 'Amount Invested (Rupees)')
+    bar_chart('fixed-deposits-chart','data-fixed-deposits','Your Fixed Deposits', JSON.parse($("#fixed-deposits-chart").attr("data-categories")), 'Interest Rate (%)')
 
   if $("#accumulated-profits-chart").attr("data-categories") != undefined
     bar_chart('accumulated-profits-chart','data-accumulated-profits','Your Top 5 Accumulated Profits and Losses By Percentage', JSON.parse($("#accumulated-profits-chart").attr("data-categories")), 'Percentage (%)')
