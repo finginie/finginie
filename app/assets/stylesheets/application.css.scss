@@ -39,7 +39,7 @@ h1 {
     family: $heading-font;
     weight: normal;
   }
-  margin-bottom: 0.3em;
+  margin-bottom: 10px;
 }
 
 table {
@@ -425,7 +425,7 @@ input[type="text"] {
   width: 100px;
   text-align: right;
 }
-.right {
+.right, .green, .red {
   text-align: right;
 }
 .comment {
@@ -441,5 +441,12 @@ input[type="text"] {
 }
 .rate {
   width: 80px;
+  text-align: right;
+}
+.center {
+  text-align: center;
+}
+.profit, .loss {
+  width: 150px;
   text-align: right;
 }

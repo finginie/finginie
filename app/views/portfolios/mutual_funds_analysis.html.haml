@@ -1,24 +1,32 @@
 = render 'current_portfolio'
 
-%h1 Mutual Funds
+%h1 Mutual Funds Analysis
 - unless resource.category_wise_mutual_funds_percentage.empty?
   #mutual-fund-category-wise-allocation-chart{ 'data-mutual-fund-category-wise-asset-allocation' => resource.category_wise_mutual_funds_percentage }
   %table
     %tr
       %th Category
-      %th Invested Amount (Rs)
-      %th Percentage Holding (%)
+      %th.right Invested Amount
+      %th.right Percentage Holding
+    %tr
+      %td
+      %td.right (Rs)
+      %td.right (%)
     - resource.category_wise_mutual_funds_percentage_table.each do |position|
       %tr
         %td= position[:category]
-        %td= number_to_indian_currency position[:amount_invested]
-        %td= number_to_indian_currency position[:percentage]
+        %td.right= number_to_indian_currency position[:amount_invested]
+        %td.right= number_to_indian_currency position[:percentage]
     %tr.total
       %td Total
-      %td= number_to_indian_currency resource.mutual_funds_value
-      %td 100
+      %td.right= number_to_indian_currency resource.mutual_funds_value
+      %td.right 100
 -else
-  %p= t ".no_mutual_fund_transaction"
+  #no_portfolios
+    %p= t ".no_mutual_fund_transaction"
+    %p
+      = link_to "Click here", new_portfolio_mutual_fund_transaction_path(resource)
+      = "to add some."
 
 #mfs_profit_or_loss_analysis
   - unless resource.mutual_fund_positions_profit_or_loss.empty?

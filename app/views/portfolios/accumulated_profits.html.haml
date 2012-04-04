@@ -14,19 +14,25 @@
       #accumulated_profits
         %table
           %tr
-            %th Security
-            %th Security Type
-            %th Profit (Rs)
-            %th Profit Percentage (%)
+            %th.name Security
+            %th.center Security Type
+            %th.profit Profit
+            %th.right Profit Percentage
+          %tr
+            %td
+            %td
+            %td.right (Rs)
+            %td.right (%)
           - resource.profits.each do |security|
             %tr
               %td= security.name
-              %td= security.type
+              %td.center= security.type
               %td.green= number_to_indian_currency security.profit_or_loss
               %td.green= number_to_indian_currency security.percentage
           %tr.total
-            %td{:colspan => 2} Total
-            %td= number_to_indian_currency resource.profits.map(&:profit_or_loss).sum.round(2)
+            %td Total
+            %td
+            %td.right= number_to_indian_currency resource.profits.map(&:profit_or_loss).sum.round(2)
             %td
     - else
       %p
@@ -37,19 +43,25 @@
       #accumulated_losses
         %table
           %tr
-            %th Security
-            %th Security Type
-            %th Loss (Rs)
-            %th Loss Percentage (%)
-          - resource.losses.each do |security|
+            %th.name Security
+            %th.center Security Type
+            %th.loss Loss (Rs)
+            %th.right Loss Percentage
+          %tr
+            %td
+            %td
+            %td.right (Rs)
+            %td.right (%)
+          -resource.losses.each do |security|
             %tr
               %td= security.name
-              %td= security.type
+              %td.center= security.type
               %td.red= number_to_indian_currency security.profit_or_loss
               %td.red= number_to_indian_currency security.percentage
           %tr.total
-            %td{:colspan => 2} Total
-            %td= number_to_indian_currency resource.losses.map(&:profit_or_loss).sum.round(2)
+            %td Total
+            %td
+            %td.right= number_to_indian_currency resource.losses.map(&:profit_or_loss).sum.round(2)
             %td
     - else
       %p

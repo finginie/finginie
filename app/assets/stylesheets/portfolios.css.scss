@@ -13,6 +13,9 @@ body.portfolios {
     #no_portfolios {
         text-align: center;
         margin-top: 60px;
+        p {
+          margin: 0;
+        }
     }
     #current_portfolio {
       margin: {
@@ -144,6 +147,7 @@ body.portfolios.show {
     .container {
       p {
         margin-top: 0;
+        margin-bottom: 0;
         b {
           color: $heading-red;
           font-weight: normal;
@@ -216,7 +220,7 @@ body.portfolios.transactions {
   }
 }
 
-body.portfolios.stocks_analysis, body.portfolios.mutual_funds_analysis {
+body.portfolios.stocks_analysis, body.portfolios.mutual_funds_analysis, body.portfolios.fixed_deposits_analysis {
   table {
     margin: {
       top: 2em;

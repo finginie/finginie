@@ -18,7 +18,7 @@ $ ->
           renderTo: element,
           borderColor: '#CE5A5A',
           borderWidth: 2,
-          width: 750
+          width: 770
         },
         title: {
           text: title,
@@ -100,4 +100,4 @@ $ ->
     bar_chart('fixed-deposits-chart','data-fixed-deposits','Your Fixed Deposits', JSON.parse($("#fixed-deposits-chart").attr("data-categories")), 'Amount Invested (Rupees)')
 
   if $("#accumulated-profits-chart").attr("data-categories") != undefined
-    bar_chart('accumulated-profits-chart','data-accumulated-profits','Your Top 5 Accumulated Profits and Losses by percentage', JSON.parse($("#accumulated-profits-chart").attr("data-categories")), 'Percentage (%)')
+    bar_chart('accumulated-profits-chart','data-accumulated-profits','Your Top 5 Accumulated Profits and Losses By Percentage', JSON.parse($("#accumulated-profits-chart").attr("data-categories")), 'Percentage (%)')

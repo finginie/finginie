@@ -128,15 +128,15 @@ describe "Portfolios" do
 
     visit portfolio_path(portfolio)
     expected_table = [
-                       [ 'Stocks',         "5.84",                          "50.00"],
-                       [ 'Mutual Funds',   "5.84",                          "50.00"],
-                       [ 'Gold',           "5.84",                          "50.00"],
-                       [ 'Fixed Deposits', "12.44",                         "106.58"],
-                       [ 'Real Estate',    "70.05",                         "600.00"],
-                       ["Total Assets",     "100",                          "856.58"],
-                       ["Loans",            I18n.t("tables_not_available"), "258.63"],
-                       ["Total Liabilities",I18n.t("tables_not_available"), "258.63"],
-                       ["Net Worth",        I18n.t("tables_not_available"),  "597.95"]
+                       [ 'Stocks',           "50.00" ,                         "5.84"],
+                       [ 'Mutual Funds',     "50.00" ,                         "5.84"],
+                       [ 'Gold',             "50.00" ,                         "5.84"],
+                       [ 'Fixed Deposits',   "106.58",                        "12.44"],
+                       [ 'Real Estate',      "600.00",                        "70.05"],
+                       ["Total Assets",      "856.58",                       "100.00"],
+                       ["Loans",             "258.63", I18n.t("tables_not_available")],
+                       ["Total Liabilities", "258.63", I18n.t("tables_not_available")],
+                       ["Net Worth",         "597.95", I18n.t("tables_not_available")]
                       ]
     tableish("table").should include *expected_table
   end
@@ -148,7 +148,7 @@ describe "Portfolios" do
     end
 
     it "should display default message" do
-      page.should have_content I18n.t("portfolios.show.empty_transactions")
+      page.should have_content I18n.t("portfolios.empty_transaction.message")
     end
 
     it "should display default message for stock when there is no stock transaction" do
@@ -173,12 +173,12 @@ describe "Portfolios" do
 
     it "should display default messages in Details Page" do
       find("li#navigation-details").find("a").click
-      page.should have_content I18n.t("portfolios.details.empty_positions")
+      page.should have_content I18n.t("portfolios.empty_transaction.message")
     end
 
     it "should display default messages in Transactions page" do
       find("li#navigation-transactions").find("a").click
-      page.should have_content I18n.t("transactions.no_stock_transactions")
+      page.should have_content I18n.t("portfolios.transactions.empty_transactions")
     end
 
      it "should display current portfolio in stock analysis page" do

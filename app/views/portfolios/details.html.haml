@@ -96,9 +96,4 @@
   = render "#{security.underscore}_positions", "#{security.underscore}_positions".to_sym => resource.send("#{security.underscore}_positions")
 
 -if resource.empty_positions?
-  #no_portfolios
-    %p
-      = t(".empty_positions")
-    %p
-      = link_to("Click here", add_transaction_portfolio_path)
-      = "to add some."
+  = render 'empty_transaction'

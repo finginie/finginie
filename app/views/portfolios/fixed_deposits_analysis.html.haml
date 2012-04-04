@@ -1,17 +1,26 @@
 = render 'current_portfolio'
 
-%h1 Fixed Deposits
+%h1 Fixed Deposits Analysis
 - unless resource.fixed_deposit_open_positions_rate_of_interests.empty?
   #fixed-deposits-chart{ 'data-fixed-deposits' => resource.fixed_deposit_open_positions_rate_of_interests.map{ |hsh| hsh[:rate]},
                                 'data-categories' => resource.fixed_deposit_open_positions_rate_of_interests.map{ |hsh| hsh[:amount]} }
   %table
-    %th Name
-    %th Rate Of Interest
-    %th Invested Amount
+    %tr
+      %th Name
+      %th.right Interest Rate
+      %th.right Invested Amount
+    %tr
+      %td
+      %td.right (%)
+      %td.right (Rs)
     - resource.fixed_deposit_open_positions_rate_of_interests.each do |hsh|
       %tr
         %td= hsh[:name]
-        %td= hsh[:rate]
-        %td= number_to_indian_currency hsh[:amount]
+        %td.right= hsh[:rate]
+        %td.right= number_to_indian_currency hsh[:amount]
 -else
-  %p= t ".no_fixed_deposit_transaction"
+  #no_portfolios
+    %p= t ".no_fixed_deposit_transaction"
+    %p
+      = link_to "Click here", new_portfolio_fixed_deposit_transaction_path(resource)
+      = "to add some."

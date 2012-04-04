@@ -1,24 +1,32 @@
 = render 'current_portfolio'
 
-%h1 Stocks
+%h1 Stocks Analysis
 - unless resource.sector_wise_stock_percentage.empty?
   #stock-sectoral-allocation-chart{ 'data-stocks-sectoral-asset-allocation' => resource.sector_wise_stock_percentage }
   %table
     %tr
       %th Sector
-      %th Invested Amount (Rs)
-      %th Percentage Holding (%)
+      %th.right Invested Amount
+      %th.right Percentage Holding
+    %tr
+      %td
+      %td.right (Rs)
+      %td.right (%)
     - resource.sector_wise_stock_percentage_table.each do |position|
       %tr
         %td= position[:sector]
-        %td= number_to_indian_currency position[:amount_invested]
-        %td= number_to_indian_currency position[:percentage]
+        %td.right= number_to_indian_currency position[:amount_invested]
+        %td.right= number_to_indian_currency position[:percentage]
     %tr.total
       %td Total
-      %td= number_to_indian_currency resource.stocks_value
-      %td 100
+      %td.right= number_to_indian_currency resource.stocks_value
+      %td.right 100
 -else
-  %p= t ".no_stock_transaction"
+  #no_portfolios
+    %p= t ".no_stock_transaction"
+    %p
+      = link_to "Click here", new_portfolio_stock_transaction_path(resource)
+      = "to add some."
 
 #stocks_profit_or_loss_analysis
   - unless resource.stocks_positions_profit_or_loss.empty?
@@ -28,9 +36,14 @@
       %tr
         %th Stock Name
         %th Sector
-        %th Profit/Loss (Rs.)
-        %th % Profit/Loss
-      - resource.stocks_positions_profit_or_loss.each do |position|
+        %th.right Profit/Loss
+        %th.right Profit/Loss
+      %tr
+        %td
+        %td
+        %td.right (Rs.)
+        %td.right (%)
+      -resource.stocks_positions_profit_or_loss.each do |position|
         %tr
           %td= position.name
           %td= position.sector
@@ -43,5 +56,5 @@
 
       %tr.total
         %td{:colspan => 2} Total
-        %td= number_to_indian_currency resource.stocks_positions_profit_or_loss.map(&:profit_or_loss).sum
-        %td 100
+        %td.right= number_to_indian_currency resource.stocks_positions_profit_or_loss.map(&:profit_or_loss).sum
+        %td.right 100

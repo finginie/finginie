@@ -29,7 +29,7 @@ class PortfolioDecorator < ApplicationDecorator
       [ "Mutual Funds",   mutual_funds_percentage  ],
       [ "Gold",           gold_percentage          ],
       [ "Fixed Deposits", fixed_deposits_percentage],
-      [ "Real Estates" ,  real_estates_percentage  ] ].select { |a| a.last != 0 }
+      [ "Real Estate" ,   real_estates_percentage  ] ].select { |a| a.last != 0 }
   end
 
   #portfolio page networth calculations
@@ -58,47 +58,47 @@ class PortfolioDecorator < ApplicationDecorator
       {
         :asset_type => "Stocks",
         :percentage => number_to_indian_currency(stocks_percentage),
-        :amount     => number_to_indian_currency(stocks_value)
+        :amount     => number_to_indian_currency(stocks_value,0)
       },
       {
         :asset_type => "Mutual Funds",
         :percentage => number_to_indian_currency(mutual_funds_percentage),
-        :amount     => number_to_indian_currency(mutual_funds_value)
+        :amount     => number_to_indian_currency(mutual_funds_value,0)
       },
       {
         :asset_type => "Gold",
         :percentage => number_to_indian_currency(gold_percentage),
-        :amount     => number_to_indian_currency(gold_value)
+        :amount     => number_to_indian_currency(gold_value,0)
       },
       {
         :asset_type => "Fixed Deposits",
         :percentage => number_to_indian_currency(fixed_deposits_percentage),
-        :amount     => number_to_indian_currency(fixed_deposits_value)
+        :amount     => number_to_indian_currency(fixed_deposits_value,0)
       },
       {
          :asset_type => "Real Estate" ,
          :percentage => number_to_indian_currency(real_estates_percentage),
-         :amount     => number_to_indian_currency(real_estates_value)
+         :amount     => number_to_indian_currency(real_estates_value,0)
       },
       {
         :asset_type => "Total Assets",
-        :percentage => "100",
-        :amount     => total_assets_value
+        :percentage => number_to_indian_currency("100"),
+        :amount     => number_to_indian_currency(total_assets_value,0)
       },
       {
         :asset_type => "Loans",
         :percentage => h.t('tables_not_available'),
-        :amount     => total_liabilitites_value.abs
+        :amount     => number_to_indian_currency(total_liabilitites_value.abs,0)
       },
       {
         :asset_type => "Total Liabilities",
         :percentage => h.t('tables_not_available'),
-        :amount     => total_liabilitites_value.abs
+        :amount     => number_to_indian_currency(total_liabilitites_value.abs,0)
       },
       {
         :asset_type => "Net Worth",
         :percentage => h.t('tables_not_available'),
-        :amount     => net_worth }
+        :amount     => number_to_indian_currency(net_worth,0)}
       ]
   end
 
