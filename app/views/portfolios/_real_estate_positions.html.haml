@@ -23,7 +23,7 @@
             %td.red= number_to_indian_currency net_position.unrealised_profit
           - else
             %td.green= number_to_indian_currency net_position.unrealised_profit
-          %td= button_to 'Sell', sell_portfolio_real_estate_transaction_path(net_position.first.portfolio_id, net_position.first), :method => :get
+          %td.btn_sell= button_to 'Sell', sell_portfolio_real_estate_transaction_path(net_position.first.portfolio_id, net_position.first), :method => :get
       %tr.total
         %td.name Total
         %td= number_to_indian_currency real_estate_positions.sum(&:buy_value)

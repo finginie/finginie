@@ -3,7 +3,7 @@
 %h1 Stocks Analysis
 - unless resource.sector_wise_stock_percentage.empty?
   #stock-sectoral-allocation-chart{ 'data-stocks-sectoral-asset-allocation' => resource.sector_wise_stock_percentage }
-  %h2 Sector wise Analysis
+  %h2 Current Holdings:Sector wise Analysis
   %table
     %tr
       %th.name Sector
@@ -21,7 +21,7 @@
     %tr.total
       %td Total
       %td.right= number_to_indian_currency resource.stocks_value
-      %td.right 100
+      %td
 -else
   #no_portfolios
     %p= t ".no_stock_transaction"
@@ -60,4 +60,4 @@
         %td.name Total
         %td
         %td.right= number_to_indian_currency resource.stocks_positions_profit_or_loss.map(&:profit_or_loss).sum
-        %td.right 100
+        %td

@@ -21,7 +21,7 @@
     %tr.total
       %td Total
       %td.right= number_to_indian_currency resource.mutual_funds_value
-      %td.right 100
+      %td
 -else
   #no_portfolios
     %p= t ".no_mutual_fund_transaction"
@@ -59,4 +59,4 @@
         %td Total
         %td
         %td.right= number_to_indian_currency resource.mutual_fund_positions_profit_or_loss.map(&:profit_or_loss).sum
-        %td.right 100
+        %td

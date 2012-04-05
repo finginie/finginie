@@ -88,7 +88,7 @@ $ ->
   pie_chart('stock-sectoral-allocation-chart', 'data-stocks-sectoral-asset-allocation', 'Sector Wise Stocks Allocation')
   pie_chart('mutual-fund-category-wise-allocation-chart', 'data-mutual-fund-category-wise-asset-allocation', 'Category Wise Mutual Funds Allocation')
 
-  bar_chart('net-worth-chart','data-net-worth','Net Worth',['Assets', 'Liabilities', 'Net Worth' ],'Amount(Rupees)')
+  bar_chart('net-worth-chart','data-net-worth','Portfolio Summary',['Assets', 'Liabilities', 'Net Worth' ],'Amount(Rupees)')
 
   if $("#stocks-profit-or-loss-chart").attr("data-categories") != undefined
     bar_chart('stocks-profit-or-loss-chart','data-stocks-profit-or-loss','Realized Profit/Loss on Stocks', JSON.parse($("#stocks-profit-or-loss-chart").attr("data-categories")), 'Percentage (%)')

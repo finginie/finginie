@@ -145,6 +145,11 @@ body.portfolios.new {
 body.portfolios.show {
   #main {
     .container {
+      table {
+        margin: {
+          top: 1em;
+        }
+      }
       p {
         margin-top: 0;
         margin-bottom: 0;
@@ -156,15 +161,8 @@ body.portfolios.show {
       input[value="Add Transactions"] {
         margin-top: 1em;
       }
-      #portfolio-total-asset-allocation-chart {
-        float: left;
-        margin: {
-          bottom: 2em;
-          right: 4em;
-        }
-      }
       #net-worth-chart {
-        margin-top: 2em;
+        margin-top: 1em;
       }
     }
   }
@@ -302,10 +300,13 @@ body.portfolios.accumulated_profits {
   h1 {
     font-size: large;
   }
-  #accumulated-profits-chart, #accumulated_profits {
-    margin-bottom: 2em;
-  }
-  p {
-    text-align: center;
+  h2 {
+    font-size: 14px;
+    color: $heading-red;
+    font-weight: normal;
+    margin: {
+      bottom: 10px;
+      top: 20px;
+    }
   }
 }

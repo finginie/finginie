@@ -86,7 +86,9 @@
           - else
             %td.green= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
         %tr.total
-          %td.name{:colspan => 3} Total
+          %td.name Total
+          %td
+          %td
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).value
           %td
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).current_value
