@@ -20,7 +20,7 @@ class RemoveStockIdAndAddCompanyCodeToStockTransaction < ActiveRecord::Migration
       s.update_attributes( :company_code => company.company_code ) if company
     end
 
-    remove_column :stock_transactions, :stock_id, :integer
+    remove_column :stock_transactions, :stock_id
   end
 
   def self.down
@@ -33,7 +33,7 @@ class RemoveStockIdAndAddCompanyCodeToStockTransaction < ActiveRecord::Migration
       end
     end
 
-    remove_column :stock_transactions, :company_code, :decimal
+    remove_column :stock_transactions, :company_code
   end
 
 end
