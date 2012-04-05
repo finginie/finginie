@@ -1,5 +1,5 @@
-class StockDecorator < ApplicationDecorator
-  decorates :Stock
+class CompanyDecorator < ApplicationDecorator
+  decorates :company
 
   FIELDS_TO_ROUND = [ 'last_traded_price', 'net_change', 'percent_change', 'close_price',
                       'open_price', 'volume', 'high_price', 'low_price', 'eps', 'pe', 'beta',

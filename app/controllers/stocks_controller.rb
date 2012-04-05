@@ -2,17 +2,19 @@ class StocksController < InheritedResources::Base
   actions :index, :show
 
   def resource
-    @search = end_of_association_chain.search
-    @chart_url =  "http://www.cs4w.in/Forska/TechnicalChart.aspx?Code=" + super.symbol + "&width=800" + "&height=600"
-    @stock = StockDecorator.decorate(super)
+    @search = Company.new
+    @stock = Company.find_by_company_code(params[:id])
+    @chart_url =  "http://www.cs4w.in/Forska/TechnicalChart.aspx?Code=" + @stock.nse_code + "&width=800" + "&height=600"
+    @stock = CompanyDecorator.decorate(@stock)
   end
 
   def collection
-    @search = end_of_association_chain.search(params[:search])
-    if params[:search] && !params[:search][:sector_contains]
-      @search.all.map{ |stock| {:value => stock.name, :id => stock.id}}
-    else
-      @stocks = @search.page params[:page]
+    @search = Company.new
+    if params[:company]
+      @search_records = Company.stocks.csearch(params[:company].values.join(" "))
+      @companies = @search_records.page(params[:page]).per(10)
+      @search_records.all.map {|stock| {:value => stock.company_name, :id => stock.company_code}}
     end
   end
+
 end

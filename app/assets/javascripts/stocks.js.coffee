@@ -1,9 +1,9 @@
 $ ->
-  $('#search_name_contains').focus ->
+  $('#company_company_name').focus ->
       $('.loading').css 'visibility', 'visible'
-  $('#search_name_contains').autocomplete
+  $('#company_company_name').autocomplete
     source: ( request, response ) ->
-      $.getJSON( $('#search_name_contains').data('autocomplete-source'), { search: { name_contains: request.term } }, response );
+      $.getJSON( $('#company_company_name').data('autocomplete-source'), { company: { company_name: request.term } }, response );
     select: ( event, ui ) ->
 		    window.location = "/stocks/#{ui.item.id}";
     open: (event, ui ) ->

@@ -1,12 +1,10 @@
 require 'spec_helper'
 
 describe "BalanceSheet" do
-  let(:stock) { create :stock }
-  let (:scrip) { create :scrip, :id => stock.symbol, :last_traded_price => 24.22 }
-  let(:company) { create :company, :nse_code => stock.symbol }
+  let(:company) { create :company }
+  let (:scrip) { create :scrip, :id => company.nse_code, :last_traded_price => 24.22 }
 
   before (:each) do
-    company.save
     5.times { |i| create :audited_result, :companycode            => company.company_code,
                                           :year_ending            => "31/03/#{2011 -i}",
                                           :investments            => "2956005690000",
@@ -20,7 +18,7 @@ describe "BalanceSheet" do
   end
 
   it "should show the correct fields for non-banking sector" do
-    visit stock_balance_sheet_path(stock.id)
+    visit stock_balance_sheet_path(company.company_code)
     page.should have_content company.company_name
     page.should have_content "Investments"
     page.should have_content "295600.57"
@@ -32,7 +30,7 @@ describe "BalanceSheet" do
 
   it "should show the correct fields for banking-sector" do
      company.update_attribute(:major_sector, 2)
-     visit stock_balance_sheet_path( stock.id)
+     visit stock_balance_sheet_path( company.company_code)
      page.should have_content "Investments"
      page.should have_content "295600.57"
      page.should have_content "Advances"
@@ -42,8 +40,8 @@ describe "BalanceSheet" do
 
   it "should have stock search in the balance sheet page" do
     scrip.save
-    visit stock_path stock
+    visit stock_path company.company_code
     click_link "Balance Sheet"
-    page.should have_selector("#stock_search")
+    page.should have_selector("#new_company")
   end
 end

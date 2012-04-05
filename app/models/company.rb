@@ -1,5 +1,11 @@
+require 'kaminari/models/mongoid_extension'
+
 class Company
   include Mongoid::Document
+  include Mongoid::Search
+
+  include Kaminari::MongoidExtension::Criteria
+  include Kaminari::MongoidExtension::Document
   extend MongoidHelpers
 
   field :company_code, :type => Float
@@ -29,8 +35,12 @@ class Company
 
   key :company_code
 
+  search_in :company_name, :industry_name, :bse_code1, :bse_code2, :nse_code, { :match => :all }
+
   validates_presence_of :company_code, :company_name
   validates_uniqueness_of :company_code, :company_name
+
+  scope :stocks, where(:product_status_code.ne => "2161")
 
   SCRIP_METHODS = [ :last_traded_price, :percent_change, :net_change, :volume, :open_price, :high_price, :low_price, :close_price,
                     :best_buy_price, :best_buy_quantity, :best_sell_price, :best_sell_quantity, :time ]
@@ -44,4 +54,15 @@ class Company
     last_traded_price
   end
 
+  def self.find_by_company_code(code)
+    where(company_code: code).first
+  end
+
+  def self.find_by_company_name(name)
+    where(company_name: name ).first
+  end
+
+  def news_headlines
+    News.for_company(company_code).latest(5).map { |news| news.headlines }
+  end
 end

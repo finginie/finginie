@@ -1,9 +1,9 @@
-= render 'search_form'
+=render 'search_form'
 
-%h1= @stock.name
+%h1= @stock.company_name
 
 %section
-  - %w( symbol asset_class sector).each do |attr|
+  - %w( nse_code industry_name).each do |attr|
     %div{:class => attr}
       %dt= t ".#{attr}"
       %dd= @stock.send(attr)
@@ -22,20 +22,16 @@
       %strong= @stock.send(attr)
 
 %section.fundamentals
-  - %w(eps pe beta).each do |attr|
+  - %w(eps pe).each do |attr|
     %div{:class => attr}
       %p= t ".#{attr}"
       %strong= @stock.send(attr)
   .week_high_price
     %p= t ".fifty_two_week_high_price"
     %strong= @stock.fifty_two_week_high_price
-    - if @stock.fifty_two_week_high_date
-      %span= "(#{l(@stock.fifty_two_week_high_date.change(:year => @stock.fifty_two_week_high_date.year + 2000), :format => :stock_52w_date)})"
   .week_low_price
     %p= t ".fifty_two_week_low_price"
     %strong= @stock.fifty_two_week_low_price
-    - if @stock.fifty_two_week_low_date
-      %span= "(#{l(@stock.fifty_two_week_low_date.change(:year => @stock.fifty_two_week_low_date.year + 2000), :format => :stock_52w_date)})"
 
 %section.news
   %h1 News
