@@ -10,18 +10,15 @@ class StockTransaction < ActiveRecord::Base
     include FungiblePosition
 
     delegate :company, :to => :first
-    delegate :company_name, :industry_name, :current_price, :to => :company
-    alias :name :company_name
-    alias :sector :industry_name
+    delegate :name, :sector, :current_price, :to => :company
   end
 
   def company
     @company || (company_code && Company.where( company_code: company_code).first)
   end
 
-  def company=(company_code)
-    self.company_code = company_code
-    @company = Company.where( company_code: company_code ).first
+  def company=(company)
+    self.company_code = company.company_code
   end
 
   alias :security :company

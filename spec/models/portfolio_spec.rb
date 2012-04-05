@@ -18,6 +18,17 @@ describe Portfolio do
   it { should have_many :fixed_deposit_transactions }
   it { should have_many :real_estate_transactions }
 
+  it { should have_many :mutual_funds }
+  it { should have_many :loans }
+  it { should have_many :fixed_deposits }
+  it { should have_many :real_estates }
+
+  it "should have_many companies" do
+    company = create :company
+    4.times { |n| create :stock_transaction, :company_code =>company.company_code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    subject.companies.should include company
+  end
+
   its(:net_worth) { should eq 0 }
   its(:total_assets_value) { should eq 0 }
   its(:total_liabilitites_value) { should eq 0 }

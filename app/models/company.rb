@@ -45,6 +45,8 @@ class Company
   SCRIP_METHODS = [ :last_traded_price, :percent_change, :net_change, :volume, :open_price, :high_price, :low_price, :close_price,
                     :best_buy_price, :best_buy_quantity, :best_sell_price, :best_sell_quantity, :time ]
   delegate *SCRIP_METHODS, :to => :scrip, :allow_nil => true
+  alias :name :company_name
+  alias :sector :industry_name
 
   def scrip
     Scrip.find(nse_code)
@@ -65,4 +67,5 @@ class Company
   def news_headlines
     News.for_company(company_code).latest(5).map { |news| news.headlines }
   end
+
 end

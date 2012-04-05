@@ -14,7 +14,7 @@ describe "StockTransactions" do
     it "should add a new stock transaction to a portfolio" do
       company.save # ensure stock is created
       visit  new_portfolio_stock_transaction_path(portfolio)
-      select company.company_name, :from => "stock_transaction_company"
+      select company.company_name, :from => "stock_transaction_company_code"
 
       fill_in "Price", :with => 200
       select 'Buy', :from => "Action"
@@ -27,7 +27,7 @@ describe "StockTransactions" do
     it "should not add a new sell transaction if the quantity for that stock is not available in the portfolio" do
       company.save
       visit new_portfolio_stock_transaction_path(portfolio)
-      select company.company_name, :from => "stock_transaction_company"
+      select company.company_name, :from => "stock_transaction_company_code"
       fill_in "Price", :with => 200
       select 'Sell', :from => "Action"
       fill_in I18n.t("simple_form.labels.stock_transaction.quantity"), :with => 30

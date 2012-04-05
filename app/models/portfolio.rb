@@ -19,7 +19,7 @@ class Portfolio < ActiveRecord::Base
                   :uniqueness => { :scope => :user_id }
 
   def companies
-    stock_transactions.map(&:company_code).uniq.map { |code| Company.where(company_code: code).first }.compact
+    stock_transactions.map(&:company).uniq.compact
   end
 
   def stock_positions

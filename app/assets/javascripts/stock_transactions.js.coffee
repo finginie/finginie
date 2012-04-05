@@ -1,2 +1,2 @@
 $ ->
-  $("#stock_transaction_stock_id").chosen();
+  $("#stock_transaction_company_code").chosen();
