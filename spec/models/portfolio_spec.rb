@@ -18,19 +18,28 @@ describe Portfolio do
   it { should have_many :fixed_deposit_transactions }
   it { should have_many :real_estate_transactions }
 
-  it { should have_many :stocks }
+  it { should have_many :mutual_funds }
+  it { should have_many :loans }
+  it { should have_many :fixed_deposits }
+  it { should have_many :real_estates }
+
+  it "should have_many companies" do
+    company = create :company
+    4.times { |n| create :stock_transaction, :company_code =>company.company_code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    subject.companies.should include company
+  end
 
   its(:net_worth) { should eq 0 }
   its(:total_assets_value) { should eq 0 }
   its(:total_liabilitites_value) { should eq 0 }
 
   it "should have many stock_positions" do
-    stock = create :stock
-    4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
-    4.times { |n| create :stock_transaction, :stock => create( :stock), :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    company = create :company
+    4.times { |n| create :stock_transaction, :company_code =>company.company_code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    4.times { |n| create :stock_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-    portfolio.stock_transactions.for(stock).quantity.should eq 10
-    portfolio.stock_transactions.for(stock).average_cost_price.should eq 3
+    portfolio.stock_transactions.for(company).quantity.should eq 10
+    portfolio.stock_transactions.for(company).average_cost_price.should eq 3
   end
 
   it "should have many mutual_fund_positions" do
@@ -74,9 +83,9 @@ describe Portfolio do
   end
 
   def create_positions_of_all_securities
-    stock = create :stock, :sector => "FOO"
-    scrip = create :scrip, :last_traded_price => 5, :id => stock.symbol
-    4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    company = create :company, :industry_name => "FOO"
+    scrip = create :scrip, :last_traded_price => 5, :id => company.nse_code
+    4.times { |n| create :stock_transaction, :company_code => company.company_code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     scheme = create :scheme_master
     navcp  = create :navcp, :nav_amount => "5", :security_code => scheme.securitycode

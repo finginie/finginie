@@ -1,9 +1,8 @@
 require 'spec_helper'
 
 describe "Profit Loss" do
-  let(:stock) { create :stock }
-  let (:scrip) { create :scrip, :id => stock.symbol, :last_traded_price => 24.22 }
-  let(:company) { create :company, :nse_code => stock.symbol }
+  let(:company) { create :company }
+  let (:scrip) { create :scrip, :id => company.nse_code, :last_traded_price => 24.22 }
 
   before (:each) do
     company.save
@@ -21,8 +20,8 @@ describe "Profit Loss" do
   end
 
   it "should show thw correct fields for non-banking sector" do
-    visit stock_profit_loss_path(stock.id)
-    page.should have_content stock.name
+    visit stock_profit_loss_path(company.company_code)
+    page.should have_content company.company_name
     page.should have_content "Sales"
     page.should have_content "96460.29"
     page.should have_content "Earning Per Share (Rs)"
@@ -35,8 +34,8 @@ describe "Profit Loss" do
 
   it "should show the correct fields for banking-sector" do
     company.update_attribute(:major_sector, 2)
-    visit stock_profit_loss_path(stock.id)
-    page.should have_content stock.name
+    visit stock_profit_loss_path(company.company_code)
+    page.should have_content company.company_name
     page.should have_content "Income"
     page.should have_content "Operating Income"
     page.should have_content "95525.58"
@@ -50,8 +49,8 @@ describe "Profit Loss" do
 
   it "should have stock search in the stock profit loss page" do
     scrip.save
-    visit stock_path stock
+    visit stock_path company.company_code
     click_link "Income Statement"
-    page.should have_selector("#stock_search")
+    page.should have_selector("#new_company")
   end
 end

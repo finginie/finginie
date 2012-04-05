@@ -8,7 +8,7 @@ describe StocksController do
     end
 
     it "routes to #show" do
-      get("/stocks/1").should route_to("stocks#show", :id => "1")
+      get("/stocks/134567.01").should route_to("stocks#show", :id => "134567.01")
     end
 
   end

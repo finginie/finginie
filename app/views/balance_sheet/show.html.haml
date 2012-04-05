@@ -1,5 +1,5 @@
 = render 'stocks/search_form'
-- if @stock.company_code && @audited_results[0].model
+- if @audited_results[0].model
   %h1= "#{@audited_results[0].company_name} - Balance Sheet"
   %p *All Numbers are in crores of rupees unless specified otherwise
   %table

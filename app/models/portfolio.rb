@@ -8,7 +8,6 @@ class Portfolio < ActiveRecord::Base
   has_many :fixed_deposit_transactions
   has_many :real_estate_transactions
 
-  has_many :stocks,         :through => :stock_transactions,         :uniq => true
   has_many :mutual_funds,   :through => :mutual_fund_transactions,   :uniq => true
   has_many :loans,          :through => :loan_transactions,          :uniq => true
   has_many :fixed_deposits, :through => :fixed_deposit_transactions, :uniq => true
@@ -19,8 +18,12 @@ class Portfolio < ActiveRecord::Base
   validates :name, :presence => true,
                   :uniqueness => { :scope => :user_id }
 
+  def companies
+    stock_transactions.map(&:company).uniq.compact
+  end
+
   def stock_positions
-    stocks.map { |stock|  stock_transactions.for(stock) }.select{ |position| position.quantity != 0}
+    companies.map { |company|  stock_transactions.for(company) }.select{ |position| position.quantity != 0}
   end
 
   def mutual_fund_positions

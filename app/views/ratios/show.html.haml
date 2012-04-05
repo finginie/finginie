@@ -1,9 +1,10 @@
-%h1= "Ratios - #{@stock.name}"
+- if @company
+  %h1= "Ratios - #{@company.company_name}"
 
 = render 'stocks/search_form'
-- if @ratio.model && @stock.company
+- if @ratio.model && @company
   %table
-    - if @stock.company.major_sector == 2
+    - if @company.major_sector == 2
       %tr
         %td= t "ratios.capital_adequacy_ratio"
         %td= @ratio.send(:capital_adequacy_ratio)

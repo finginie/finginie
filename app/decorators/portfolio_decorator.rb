@@ -106,10 +106,10 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def stocks_positions_profit_or_loss
-    stocks.map { |stock| Hashie::Mash.new({ :name => stock.name, :type => 'Stock',
-                                            :sector => stock.sector,
-                                            :profit_or_loss => (stock_transactions.for(stock).profit_or_loss.round(2).to_f),
-                                            :percentage => (stock_transactions.for(stock).profit_or_loss_percentage.to_f)}) if !stock_transactions.for(stock).sells.empty?}.compact
+    companies.map { |company| Hashie::Mash.new({ :name => company.company_name, :type => 'Stock',
+                                            :sector => company.industry_name,
+                                            :profit_or_loss => (stock_transactions.for(company).profit_or_loss.round(2).to_f),
+                                            :percentage => (stock_transactions.for(company).profit_or_loss_percentage.to_f)}) if !stock_transactions.for(company).sells.empty?}.compact
   end
 
   def category_wise_mutual_funds_percentage

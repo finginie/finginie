@@ -3,7 +3,7 @@ require 'spec_helper'
 describe PortfolioDecorator do
   before { ApplicationController.new.set_current_view_context }
   let(:portfolio) { create :portfolio }
-  let(:stock) { create :stock, :sector => "FOO" }
+  let(:company) { create :company_with_scrip, :industry_name => "FOO" }
   let(:scheme) { create :scheme_master, :scheme_class_description => "FOO" }
   let(:real_estate) { create :real_estate, :name => "Test Property", :location => "Mordor", :current_price => 600 }
   let(:fixed_deposit) { create :fixed_deposit, :name => "Foo", :period => 5, :rate_of_interest => 10.0 }
@@ -20,21 +20,21 @@ describe PortfolioDecorator do
   its(:real_estates_percentage) { should eq 70.05 }
 
   it"should have sector_wise_stock_percentage" do
-    stock1 = create :stock_with_scrip, :sector => "BAR"
-    create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
+    another_company = create :company_with_scrip, :industry_name => "BAR"
+    create :stock_transaction, :company_code => another_company.company_code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
 
     subject.sector_wise_stock_percentage.should include(*[["FOO", 71.43], ["BAR", 28.57]])
   end
 
   it"should have stocks sell positions" do
     subject
-    create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
-    stock1 = create :stock_with_scrip, :sector => "BAR"
-    create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
-    create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
+    create :stock_transaction, :company_code => company.company_code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
+    another_company = create :company_with_scrip, :industry_name => "BAR"
+    create :stock_transaction, :company_code => another_company.company_code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
+    create :stock_transaction, :company_code => another_company.company_code, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
 
-    subject.stocks_positions_profit_or_loss.should include(*[{ "name" => stock.name, "type" => "Stock", "sector" => "FOO", "profit_or_loss" => 12.0 , "percentage" => 100.0},
-                                                             {"name" => stock1.name, "type" => "Stock", "sector" => "BAR", "profit_or_loss" => -4.0, "percentage" => -16.67} ])
+    subject.stocks_positions_profit_or_loss.should include(*[{ "name" => company.company_name, "type" => "Stock", "sector" => "FOO", "profit_or_loss" => 12.0 , "percentage" => 100.0},
+                                                             {"name" => another_company.company_name, "type" => "Stock", "sector" => "BAR", "profit_or_loss" => -4.0, "percentage" => -16.67}])
   end
 
   it "should have catogorywise mf percentages" do
@@ -62,7 +62,7 @@ describe PortfolioDecorator do
     subject.fixed_deposit_open_positions_rate_of_interests.should include(*[{:rate=>10.0, :name=>"Foo", :amount=>100.0}, {:rate=>12.0, :name=>"BAR", :amount=>1000.0}])
   end
 
-  it "should give top five profits" do
+  it "should give top five profits", :mongoid do
     Timecop.freeze(Date.civil(2012,03,22)) do
       another_portfolio = create :portfolio
       create_securities(another_portfolio)
@@ -70,7 +70,7 @@ describe PortfolioDecorator do
       create_sell_position_of_all_securities_type(another_portfolio)
 
       expected = [ { "name" => "Test Property",   "type" => "Real Estate",   "profit_or_loss" => 400.0, "percentage" => 80.0 },
-                  { "name" => stock.name     ,    "type" => "Stock",         "sector" => "FOO", "profit_or_loss" => 12.0,  "percentage" => 100.0 },
+                  { "name" => company.company_name, "type" => "Stock",  "sector" => "FOO", "profit_or_loss" => 12.0,  "percentage" => 100.0 },
                   { "name" => scheme.scheme_name, "type" => "Mutual Fund",   "category" => "FOO", "profit_or_loss" => 12.0, "percentage" => 100 },
                   { "name" => "Foo",              "type" => "Fixed Deposit", "profit_or_loss" => 4.64,  "percentage" => 4.64 } ]
 
@@ -78,7 +78,7 @@ describe PortfolioDecorator do
     end
   end
 
-  it "should give top five losses" do
+  it "should give top five losses", :mongoid do
     subject
     create_sell_position_of_all_securities_type
     expected = [ { "name" => "Test Property2",   "type" => "Real Estate", "profit_or_loss" => -400.0, "percentage" => -44.44 },
@@ -88,11 +88,10 @@ describe PortfolioDecorator do
   end
 
   def create_securities(portfolio = portfolio)
-    scrip = create :scrip, :last_traded_price => 5, :id => stock.symbol
-    4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    4.times { |n| create :stock_transaction, :company_code => company.company_code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     navcp  = create :navcp, :nav_amount => "5", :security_code => scheme.securitycode
-    4.times { |n| 
+    4.times { |n|
       create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     4.times { |n| create :gold_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
@@ -107,10 +106,10 @@ describe PortfolioDecorator do
   end
 
   def create_sell_position_of_all_securities_type(portfolio = portfolio)
-    create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
-    stock1 = create :stock_with_scrip, :sector => "BAR", :name => "FOO"
-    create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
-    create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
+    create :stock_transaction, :company_code => company.company_code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
+    another_company = create :company_with_scrip, :industry_name => "BAR", :company_name => "FOO"
+    create :stock_transaction, :company_code => another_company.company_code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
+    create :stock_transaction, :company_code => another_company.company_code, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
 
     create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio, :quantity => 4, :action => 'sell', :price => 6, :date => Date.today
     scheme2 = create :scheme_master, :scheme_class_description => "BAR", :scheme_name => "Foo Scheme Name"

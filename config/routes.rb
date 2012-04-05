@@ -1,5 +1,7 @@
 Finginie::Application.routes.draw do
 
+  
+
   match "/signin" => "sessions#new", :as => :signin
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
@@ -25,7 +27,7 @@ Finginie::Application.routes.draw do
   resources :loans
   resources :fixed_incomes
   resources :real_estates
-  resources :stocks, :only => [:index, :show] do
+  resources :stocks, :only => [:index, :show], :constraints => { :id => /.*/ } do
     resource :balance_sheet, :only => [:show], :controller => :balance_sheet
     resource :profit_loss, :only => [:show], :controller => :profit_loss
     resource :cash_flow, :only => [:show], :controller => :cash_flow

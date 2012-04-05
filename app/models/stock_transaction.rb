@@ -1,18 +1,25 @@
 class StockTransaction < ActiveRecord::Base
   include FungibleTransaction
-  attr_accessible :stock_id
+  attr_accessible :company_code, :company
 
   belongs_to :portfolio
-  belongs_to :stock
 
-  validates_presence_of :stock_id
+  validates_presence_of :company_code
 
-  scope :for, lambda { |stock| where(:stock_id => stock).order(:date, :created_at) } do
+  scope :for, lambda { |company| where(:company_code => company.company_code).order(:date, :created_at) } do
     include FungiblePosition
 
-    delegate :stock, :to => :first
-    delegate :name, :sector, :current_price, :to => :stock
+    delegate :company, :to => :first
+    delegate :name, :sector, :current_price, :to => :company
   end
 
-  alias :security :stock
+  def company
+    @company || (company_code && Company.where( company_code: company_code).first)
+  end
+
+  def company=(company)
+    self.company_code = company.company_code
+  end
+
+  alias :security :company
 end
