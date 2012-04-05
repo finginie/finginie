@@ -4,23 +4,21 @@ describe "Portfolios" do
   include_context "logged in user"
   let (:portfolio) { create :portfolio, :user => current_user }
 
-  let(:stock) { create :stock, :sector => "FOO" }
-  let(:scrip) { create :scrip, :last_traded_price => 5, :id => stock.symbol}
+  let(:company) { create :company_with_scrip, :industry_name => "FOO" }
   let(:scheme) { create :scheme_master, :scheme_class_description => "FOO"}
   let(:navcp) { create :navcp, :nav_amount => "5", :security_code => scheme.securitycode }
   let(:real_estate) { create :real_estate, :name => "Test Property", :location => "Mordor", :current_price => 600 }
   let(:fixed_deposit) { create :fixed_deposit, :name => "Foo", :period => 5, :rate_of_interest => 10.0 }
 
   it "should show all net positions in details page" do
-    scrip.save
     navcp.save
-    4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    4.times { |n| create :stock_transaction, :company_code => company.company_code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
     4.times { |n| create :mutual_fund_transaction, :scheme => scheme.scheme_name,
                           :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
     4.times { |n| create :gold_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-    stock_without_current_price = create :stock
-    create :stock_transaction, :stock => stock_without_current_price, :quantity => 10, :price => 5, :date => 5.days.ago, :portfolio => portfolio
+    company_without_current_price = create :company
+    create :stock_transaction, :company_code => company_without_current_price.company_code, :quantity => 10, :price => 5, :date => 5.days.ago, :portfolio => portfolio
 
     Gold.current_price = 5
 
@@ -28,8 +26,8 @@ describe "Portfolios" do
     find("li#navigation-details").find("a").click
 
     expected_table_for_stocks = [
-                                  [stock.name,                       "10.00", "3.00",  "30.00", "5.00", "50.00", "20.00"],
-                                  [stock_without_current_price.name, "10.00", "5.00",  "50.00", "-",  "-",  "-" ],
+                                  [company.company_name,                       "10.00", "3.00",  "30.00", "5.00", "50.00", "20.00"],
+                                  [company_without_current_price.company_name, "10.00", "5.00",  "50.00", "-",  "-",  "-" ],
                                   ["Total",                           "",      "",     "80.00", "",  "50.00", "20.00"]
                                 ]
     expected_table_for_mfs =    [
@@ -220,16 +218,15 @@ describe "Portfolios" do
   end
 
   it "should show all transactions in transactions page" do
-    scrip.save
     navcp.save
-    create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => 1, :price => 5, :date => Date.today
+    create :stock_transaction, :company_code => company.company_code, :portfolio => portfolio, :quantity => 1, :price => 5, :date => Date.today
     create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio,:quantity => 1, :price => 5, :date => Date.today
 
     visit portfolio_path(portfolio)
     click_link 'Historical Transactions'
 
     expected_table_for_stock_transactions = [
-                       [ I18n.l(Date.today), "Buy", stock.name, "1", "5.00", "5.00", "-"],
+                       [ I18n.l(Date.today), "Buy", company.company_name, "1", "5.00", "5.00", "-"],
                     ]
     expected_table_for_mutual_fund_transactions = [
                          [ I18n.l(Date.today), "Buy", scheme.scheme_name, "1", "5.00", "5.00", "-"],
@@ -240,8 +237,8 @@ describe "Portfolios" do
 
   it "should show stocks analysis table" do
     create_positions_of_all_securities
-    stock1 = create :stock_with_scrip, :sector => "BAR"
-    create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
+    another_company = create :company_with_scrip, :industry_name => "BAR"
+    create :stock_transaction, :company_code => another_company.company_code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
     visit stocks_analysis_portfolio_path(portfolio)
     tableish("table").should include(*[["FOO", "50.00", "71.43"], ["BAR", "20.00", "28.57"], ["Total", "70.00", "100"]])
   end
@@ -265,7 +262,7 @@ describe "Portfolios" do
 
       find("li#navigation-accumulated_profits").find("a").click
       expected_table_profits = [ ["Test Property", "Real Estate", "400.00", "80.00"],
-                                 [stock.name, "Stock", "12.00", "100.00"],
+                                 [company.company_name, "Stock", "12.00", "100.00"],
                                  [scheme.scheme_name, "Mutual Fund","12.00", "100.00"],
                                  ["Foo", "Fixed Deposit", "4.64", "4.64"] ]
       expected_table_losses = [ ["Test Property2", "Real Estate","-400.00", "-44.44"],
@@ -304,14 +301,14 @@ describe "Portfolios" do
 
   it "should display stocks profits/losses in stocks analysis page" do
     create_positions_of_all_securities
-    create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
-    stock1 = create :stock_with_scrip, :sector => "BAR"
-    create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
-    create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
+    create :stock_transaction, :company_code => company.company_code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
+    another_company = create :company_with_scrip, :industry_name => "BAR"
+    create :stock_transaction, :company_code => another_company.company_code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
+    create :stock_transaction, :company_code => another_company.company_code, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
 
     visit stocks_analysis_portfolio_path(portfolio)
-    expected_table = [ [ stock.name , "FOO", "12.00", "100.00" ],
-                       [ stock1.name, "BAR", "-4.00", "-16.67" ],
+    expected_table = [ [ company.company_name , "FOO", "12.00", "100.00" ],
+                       [ another_company.company_name, "BAR", "-4.00", "-16.67" ],
                        [ "Total",            "8.00", "100" ] ]
 
     tableish("#stocks_profit_or_loss_analysis table").should include *expected_table
@@ -330,8 +327,7 @@ describe "Portfolios" do
   end
 
   def create_positions_of_all_securities(portfolio = portfolio)
-    scrip.save
-    4.times { |n| create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    4.times { |n| create :stock_transaction, :company_code => company.company_code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     navcp.save
     4.times { |n| create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
@@ -347,10 +343,10 @@ describe "Portfolios" do
   end
 
   def create_sell_position_of_all_securities_type(portfolio = portfolio)
-    create :stock_transaction, :stock => stock, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
-    stock1 = create :stock_with_scrip, :sector => "BAR", :name => "FOO"
-    create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
-    create :stock_transaction, :stock => stock1, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
+    create :stock_transaction, :company_code => company.company_code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
+    another_company = create :company_with_scrip, :industry_name => "BAR", :company_name => "FOO"
+    create :stock_transaction, :company_code => another_company.company_code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
+    create :stock_transaction, :company_code => another_company.company_code, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
 
     create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
     scheme2 = create :scheme_master, :scheme_class_description => "BAR", :scheme_name => "Foo Scheme Name"
