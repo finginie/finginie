@@ -1,8 +1,11 @@
+class Security < ActiveRecord::Base
+end
+
+class Stock < Security
+end
+
 class RemoveStockIdAndAddCompanyCodeToStockTransaction < ActiveRecord::Migration
   class StockTransaction < ActiveRecord::Base
-  end
-
-  class Security < ActiveRecord::Base
   end
 
   class Company
