@@ -1,12 +1,13 @@
 =render 'search_form'
+%br
 
 %h1= @stock.company_name
 
-%section
-  - %w( nse_code industry_name).each do |attr|
-    %div{:class => attr}
-      %dt= t ".#{attr}"
-      %dd= @stock.send(attr)
+=#%section
+=#  - %w( nse_code industry_name).each do |attr|
+=#    %div{:class => attr}
+=#      %dt= t ".#{attr}"
+=#      %dd= @stock.send(attr)
 
 %section.daily_prices
   .daily_price_change
