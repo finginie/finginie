@@ -58,6 +58,14 @@ GIT
       fast-stemmer (~> 1.0.0)
       mongoid (>= 2.0.0)
 
+GIT
+  remote: git://github.com/plataformatec/simple_form.git
+  revision: 51f680a9a2233748669655d81c82f96bef775298
+  specs:
+    simple_form (2.0.2.dev)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
+
 PATH
   remote: engines/personal_financial_tools
   specs:
@@ -339,9 +347,6 @@ GEM
     shoulda-matchers (1.0.0)
     simple-navigation (3.7.0)
       activesupport (>= 2.3.2)
-    simple_form (2.0.1)
-      actionpack (~> 3.0)
-      activemodel (~> 3.0)
     slop (2.4.4)
     spork (0.9.0)
     sprockets (2.1.2)
@@ -435,7 +440,7 @@ DEPENDENCIES
   sass-rails
   shoulda-matchers
   simple-navigation
-  simple_form
+  simple_form!
   spork
   sqlite3
   tddium

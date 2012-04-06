@@ -40,7 +40,7 @@ gem 'paper_trail'
 gem 'pinch'
 gem 'rails-backbone', :git => "git://github.com/TMaYaD/backbone-rails.git"
 gem 'redis'
-gem 'simple_form'
+gem 'simple_form', :git => "git://github.com/plataformatec/simple_form.git"
 gem 'simple-navigation'
 gem 'thin'
 # gem 'valuable', :git => "git://github.com/LoonyBin/valuable.git" # Depricated in favour of activeattr
