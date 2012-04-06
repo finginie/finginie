@@ -10,12 +10,12 @@
         %th 1 Month Return (%)
         %th 3 Months Return (%)
         %th 6 Months Return (%)
-        %th 1 Year Return (% p.a.)
-        %th 2 Years Return (% p.a.)
-        %th 3 Years Return(% p.a.)
+        %th 1 Year Return (%)
+        %th 2 Years Return (%)
+        %th 3 Years Return (%)
         - @categories.each do |cat|
           %tr
-            %td= cat.scheme_class_description
+            %td= link_to cat.scheme_class_description, mutual_fund_category_path(cat.scheme_class_code.round) if cat.scheme_class_description
             %td= cat.no_of_schemes
             %td= cat.one_week_return.round(2)
             %td= cat.one_month_return.round(2)
@@ -24,7 +24,6 @@
             %td= cat.one_year_return.round(2)
             %td= cat.two_year_return.round(2)
             %td= cat.three_year_return.round(2)
-      %p *All returns for periods greater than 1 year are annualized.
 
     - if @scheme_masters && @scheme_masters.count > 0
       = paginate @scheme_masters

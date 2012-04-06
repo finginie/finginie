@@ -1,0 +1,37 @@
+= render 'mutual_funds/search', :search => @search
+%h1= @nav_category_detail.scheme_class_description
+
+%p= t ".#{@nav_category_detail.scheme_class_description.gsub(/[^\w]/,"").underscore}"
+
+
+- if @schemes && @schemes.count > 0
+  = paginate @schemes
+  %table
+    %tr
+      %th{:rowspan => 2} Scheme Name
+      %th{:rowspan => 2} Crisil Rank
+      %th{:rowspan => 2} NAV (Rs)
+      %th{:rowspan => 2} Minimum Investment Amount (Rs)
+      %th{:colspan => 7} Returns (%)
+    %tr
+      %th 1 Week
+      %th 1 Month
+      %th 3 Months
+      %th 6 Months
+      %th 1 Year Return
+      %th 2 Years Return
+      %th 3 Years Return
+    - resource.each do |scheme|
+      %tr
+        %td= link_to scheme.scheme_name, scheme_summary_mutual_fund_path(scheme.scheme_name)
+        %td= scheme.rank
+        %td= number_to_indian_currency scheme.nav_amount
+        %td= number_to_indian_currency scheme.minimum_investment_amount
+        %td= number_to_indian_currency scheme.prev1_week_percent
+        %td= number_to_indian_currency scheme.prev1_month_percent
+        %td= number_to_indian_currency scheme.prev3_months_percent
+        %td= number_to_indian_currency scheme.prev6_months_percent
+        %td= number_to_indian_currency scheme.prev_year_percent
+        %td= number_to_indian_currency scheme.prev2_year_comp_percent
+        %td= number_to_indian_currency scheme.prev3_year_comp_percent
+

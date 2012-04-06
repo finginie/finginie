@@ -48,7 +48,7 @@ describe "MutualFundTransactions" do
     expected_table = [
                          [ I18n.l(Date.today), "Buy", scheme.scheme_name, "1", "5.00", "5.00", "-"]
                       ]
-      tableish("table").should include *expected_table
+    tableish("table").should include *expected_table
   end
 
 end
