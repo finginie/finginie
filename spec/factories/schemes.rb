@@ -1,7 +1,7 @@
 # Read about factories at http://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :scheme_master do
+  factory :scheme do
     sequence(:securitycode, Time.now.to_i) { |n| n }
     sequence(:scheme_name, Time.now.to_i) { |n| "scheme_#{n}" }
     sequence(:company_code, Time.now.to_i + 3 ) { |n| n }
@@ -10,20 +10,14 @@ FactoryGirl.define do
     scheme_class_description "Special Fund"
     launch_date "02/03/2001"
     scheme_plan_description "Growth"
-    minimum_invement_amount "5000"
+    minimum_investment_amount "5000"
     size "296.38"
     entry_load nil
     exit_load nil
-    redemption_ferq "Daily"
+    redemption_frequency "Daily"
     sip "True"
     fund_manager_prefix "Mr."
     fund_manager_name "Chirag Setalvad"
 
-    trait :with_navcp do
-      after_create do |scheme_master|
-        FactoryGirl.create :navcp, :security_code => scheme_master.securitycode, :nav_amount => 5
-      end
-    end
-    factory :scheme_master_with_navcp, :traits => [:with_navcp]
-  end
+   end
 end

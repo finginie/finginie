@@ -1,5 +1,5 @@
-class SchemeMasterDecorator < ApplicationDecorator
-  decorates :scheme_master
+class SchemeDecorator < ApplicationDecorator
+  decorates :scheme
 
   FIELDS_TO_ROUND = [ 'percentage', 'nav_amount', 'percentage_change', 'dividend_percentage', 'day_change', 'prev1_week_per',
                       'prev1_month_per', 'prev3_months_per', 'prev6_months_per', 'prev9_months_per', 'prev_year_per', 'prev2_year_comp_per', 'prev3_year_comp_per',
@@ -13,7 +13,7 @@ class SchemeMasterDecorator < ApplicationDecorator
     end
   end
 
-  [ :company_name, :objective, :bench_mark_index, :dividend_percentage, :dividend_date, :entry_load, :exit_load ].each do |attr|
+  [ :company_name, :objective, :bench_mark_index_name, :dividend_percentage, :dividend_date, :entry_load, :exit_load ].each do |attr|
     define_method "#{attr}" do                            # def attr
       model.send(attr) || "-"                            #   model.attr || "NA"
     end                                                   # end
