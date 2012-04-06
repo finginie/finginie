@@ -14,6 +14,7 @@
             %th Current Price
             %th Current Value
             %th Unrealised Profit
+            %th Sell
           %tr
             %td.name
             %td
@@ -22,6 +23,7 @@
             %td (Rs)
             %td (Rs)
             %td (Rs)
+            %td
 
           - resource.send(positions).each do |net_position|
             %tr
@@ -44,6 +46,12 @@
                   %td.green= number_to_indian_currency net_position.unrealised_profit
               - else
                 %td -
+              -transaction = positions.gsub(/_positions/,'_transaction')
+              -if positions == "mutual_fund_positions"
+                -sell_transaction_params = {:quantity => net_position.quantity, :action => :sell, :scheme => net_position.name}
+              -else
+                -sell_transaction_params = {:quantity => net_position.quantity, :action => :sell, :company_code => net_position.company.company_code}
+              %td= link_to "Sell", send("new_portfolio_#{transaction}_path",resource, transaction.to_sym => sell_transaction_params)
           %tr.total
             %td.name Total
             %td
@@ -52,6 +60,7 @@
             %td
             %td= number_to_indian_currency resource.send(positions).sum(&:current_value)
             %td= number_to_indian_currency resource.send(positions).map(&:unrealised_profit).compact.inject(:+)
+            %td
 
 - unless resource.gold_transactions.empty?
   %section{ :class => "Gold" }
@@ -66,6 +75,7 @@
           %th Current Price
           %th Current Value
           %th Unrealised Profit
+          %th Sell
         %tr
           %td.name
           %td (grams)
@@ -85,6 +95,7 @@
             %td.red= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
           - else
             %td.green= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
+          %td= link_to "Sell", new_portfolio_gold_transaction_path(resource, gold_transaction: {quantity: resource.gold_transactions.for(Gold).quantity, action: :sell})
         %tr.total
           %td.name Total
           %td
@@ -93,6 +104,7 @@
           %td
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).current_value
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
+          %td
 
 - %w(FixedDeposit Loan RealEstate).each do |security|
   = render "#{security.underscore}_positions", "#{security.underscore}_positions".to_sym => resource.send("#{security.underscore}_positions")

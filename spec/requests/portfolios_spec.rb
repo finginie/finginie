@@ -24,16 +24,16 @@ describe "Portfolios" do
     find("li#navigation-details").find("a").click
 
     expected_table_for_stocks = [
-                                  [company.company_name,                       "10.00", "3.00",  "30.00", "5.00", "50.00", "20.00"],
-                                  [company_without_current_price.company_name, "10.00", "5.00",  "50.00", "-",  "-",  "-" ],
-                                  ["Total",                           "",      "",     "80.00", "",  "50.00", "20.00"]
+                                  [company.company_name,                       "10.00", "3.00",  "30.00", "5.00", "50.00", "20.00","Sell"],
+                                  [company_without_current_price.company_name, "10.00", "5.00",  "50.00", "-",  "-",  "-" ,"Sell"],
+                                  ["Total",                           "",      "",     "80.00", "",  "50.00", "20.00", ""]
                                 ]
     expected_table_for_mfs =    [
-                                  [scheme.scheme_name, "10.00", "3.00", "30.00", "5.00", "50.00", "20.00"],
-                                  ["Total",            "",      "",     "30.00", "",     "50.00", "20.00"]
+                                  [scheme.scheme_name, "10.00", "3.00", "30.00", "5.00", "50.00", "20.00", "Sell"],
+                                  ["Total",            "",      "",     "30.00", "",     "50.00", "20.00", ""]
                                 ]
     expected_table_for_gold =   [
-                                  ["Gold", "10.00", "3.00", "30.00", "5.00", "50.00", "20.00"]
+                                  ["Gold", "10.00", "3.00", "30.00", "5.00", "50.00", "20.00", "Sell"]
                                 ]
 
     within "#stock_positions" do
@@ -326,6 +326,43 @@ describe "Portfolios" do
     visit mutual_funds_analysis_portfolio_path(portfolio)
     expected_table = [ [ scheme.scheme_name, "FOO", "12.00", "100.00" ], [ scheme2.scheme_name, "BAR", "-1.00", "-20.00"], [ "Total", "", "11.00", ""] ]
     tableish("#mfs_profit_or_loss_analysis table").should include *expected_table
+  end
+
+  it "should allow user to sell stocks in current holding page" do
+    company.save
+    4.times { |n| create :stock_transaction, :company_code => company.company_code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    visit details_portfolio_path(portfolio)
+
+    click_link "Sell"
+
+    page.should have_field('stock_transaction_quantity',     :with => '10'    )
+    page.should have_field('stock_transaction_action',       :with => 'sell'  )
+    page.should have_field('stock_transaction_company_code', :with => company.company_code.to_s)
+  end
+
+  it "should allow user to sell mutual fund in current holding page" do
+    navcp.save
+    4.times { |n| create :mutual_fund_transaction, :scheme => scheme.scheme_name,
+                          :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+
+    visit details_portfolio_path(portfolio)
+
+    click_link "Sell"
+
+    page.should have_field('mutual_fund_transaction_scheme',    :with => scheme.scheme_name)
+    page.should have_field('mutual_fund_transaction_quantity',  :with => '10')
+    page.should have_field('mutual_fund_transaction_action',    :with => 'sell')
+  end
+
+  it "should allow user to sell gold in current holding page" do
+    4.times { |n| create :gold_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+
+    visit details_portfolio_path(portfolio)
+
+    click_link "Sell"
+
+    page.should have_field('gold_transaction_quantity',  :with => '10')
+    page.should have_field('gold_transaction_action',    :with => 'sell')
   end
 
   def create_positions_of_all_securities(portfolio = portfolio)
