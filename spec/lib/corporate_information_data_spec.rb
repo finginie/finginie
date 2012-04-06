@@ -60,6 +60,12 @@ describe CorporateInformationData, :mongoid, :vcr do
     Company.exists?( conditions: { company_code: "11550030", product_status_code: "1753" } ).should be_true
   end
 
+  it "should add CurrDetails to Company" do
+    create :company, company_code: "13520030"
+    subject.parse_and_update("CurrDetails.xml")
+    Company.find_by_company_code("13520030").pe.should eq 34.44
+  end
+
   it "should have a CorpGovernancereport record" do
     subject.parse_and_update("CorpGovernancereport.xml")
     CorpGovernancereport.exists?( conditions: { company_code: "11610052", year_ending: "31/03/2011" } ).should be_true
@@ -91,108 +97,16 @@ describe CorporateInformationData, :mongoid, :vcr do
                                              share_holding_date: "31/12/2011" } ).should be_true
   end
 
-  # it "should have a IndustryMaster record" do
-  #    subject.parse_and_update("IndustryMaster.xml")
-  #    IndustryMaster.exists?( conditions: { industry_code: 162, broad_industry_code: 21, major_sector_code: 390, major_sector_name: "General" } ).should be_true
-  #  end
+  it "should have a IndustryMaster record" do
+    subject.parse_and_update("IndustryMaster.xml")
+    IndustryMaster.exists?( conditions: { industry_code: 103, broad_industry_code: 56, major_sector_code: 390, major_sector_name: "General" } ).should be_true
+  end
 
   it "should have a KeyExecutive record" do
     subject.parse_and_update("KeyExecutives.xml")
     KeyExecutive.exists?( conditions: { company_code: "11020009",
                                         modifyon: "10/02/2012 11:21" } ).should be_true
 
-  end
-
-  it "should have a MFdividendDetail record" do
-    subject.parse_and_update("MFDividendDetails.xml")
-    MfDividendDetail.exists?( conditions: { securitycode: "14050439.002067",
-                                            dividend_date: "15/02/2012",
-                                            dividend_type: "2073",
-                                            percentage: "30" } ).should be_true
-  end
-
-  it "should have a MFNAVDetail record" do
-    subject.parse_and_update("MFNAVDetails.xml")
-    MfnavDetail.exists?( conditions: { security_code: "14050079.002066",
-                                       nav_date: "09/02/2012",
-                                       nav_amount: "256.6661",
-                                       repurchase_price: "256.6661" } ).should be_true
-  end
-
-  it "should have a MFObjective record" do
-    subject.parse_and_update("MFObjectives.xml")
-    record = MfObjective.where( securitycode: "14051233.002199" ).first
-    record.objective.should eq "An open-ended equity scheme with the objective to generate long-term capital growth from investment in a diversified portfolio of equity and equity related securities."
-  end
-
-  it "should have a MFRollingReturn Record" do
-    subject.parse_and_update("MFRollingReturn.xml")
-    MfRollingReturn.exists?( conditions: { security_code: "14050001.052066",
-                                           nav_amount: "52.4",
-                                           two_weeks_return: "3.8241",
-                                           sale_price: "52.4" } ).should be_true
-  end
-
-  it "should have a MFSchemewisePortfolio record" do
-    subject.parse_and_update("MFSchemeWisePortfolio.xml")
-    record = MfSchemeWisePortfolio.where( security_code: "14050284.002066", holding_date: "31/01/2012" )
-    record.first.element.first["PortfolioUOM"].to_f.should eq 838
-    record.first.element.first["InvestedCompanyName"].should eq "Cash and other assets"
-    record.first.element.first["MarketValue"].to_f.should eq 56.529
-  end
-
-  it "should have a NavCategoryDetail record" do
-    subject.parse_and_update("NAVCategoryDetails.xml")
-    NavCategoryDetail.exists?( conditions: { scheme_class_code: "2120",
-                                             scheme_class_description: "Equity - Diversified",
-                                             no_of_schemes: 288 ,
-                                             one_month_return: "6.1578",
-                                             three_year_return: "61.448" } ).should be_true
-  end
-
-  it "should have a Navcp record" do
-    subject.parse_and_update("NAVCP.xml")
-    Navcp.exists?( conditions: { security_code: "14051233.002199",
-                                 ticker: "Sahara Tax Gain (D)",
-                                 nav_amount: "13.6985",
-                                 prev1_week_amount: "13.5208",
-                                 prev3_year_per: "44.2554759898905",
-                                 prev9_months_amount: "13.7376",
-                                 prev3_months_per: "3.85046927357361" } ).should be_true
-  end
-
-  it "should have a NavMaster record" do
-    subject.parse_and_update("NavMaster.xml")
-    NavMaster.exists?( conditions: { security_code: "14051233.002199",
-                                     scheme_code: "14051233",
-                                     bench_mark_index_name: "NSE Index" } ).should be_true
-  end
-
-  it "should have a NavMonthlyDetail record " do
-    subject.parse_and_update("NAVMonthlyDetails.xml")
-    NavMonthlyDetail.exists?( conditions: { security_code: "14050001.032066",
-                                            nav_date: "09/02/2012",
-                                            open_nav: 52.46,
-                                            high_nav: 54.35,
-                                            low_date: "01/02/2012",
-                                            close_date: "09/02/2012" } ).should be_true
-  end
-
-  it "should have a NavQuarterlyDetail record" do
-    subject.parse_and_update("NAVQuarterlyDetails.xml")
-    NavQuarterlyDetail.exists?( conditions: { security_code: "017023928.00026005004",
-                                              year_end: "2012",
-                                              q1_open_nav: 15534.67,
-                                              ann_close_nav: 17830.75 } ).should be_true
-  end
-
-  it "should have a NavWeeklyDetail record" do
-    subject.parse_and_update("NAVWeeklyDetails.xml")
-    NavWeeklyDetail.exists?( conditions: { security_code: "14050001.032066",
-                                           nav_date: "09/02/2012",
-                                           open_nav: "53.93",
-                                           close_nav: "54.35",
-                                           high_date: "09/02/2012" } ).should be_true
   end
 
   it "should have a News record" do
@@ -267,16 +181,6 @@ describe CorporateInformationData, :mongoid, :vcr do
     raw_material.first.element["ProdMix"].to_f.should eq 100
   end
 
-  it "should have a SchemeMaster record" do
-    subject.parse_and_update("SchemeMaster.xml")
-    SchemeMaster.exists?( conditions: { securitycode: "14051233.002199",
-                                        company_code: "14051231",
-                                        scheme_type_description: "Open Ended",
-                                        initial_price_uom: 763,
-                                        fund_manager_name: "Aniket Inamdar",
-                                        sip: "True" } ).should be_true
-  end
-
   it "should have a ShareHolding record" do
     subject.parse_and_update("ShareHolding.xml")
     share_holding = ShareHolding.where( company_code: "10560013", share_holding_date: "31/12/2011" )
@@ -293,6 +197,79 @@ describe CorporateInformationData, :mongoid, :vcr do
   it "should have a Subsidiary record" do
     subject.parse_and_update("Subsidiaries.xml")
     Subsidiary.exists?( conditions: { company_code: "13191258", company_name: "Kautilya Infotech Ltd.", parent_company_code: "16030148" } ).should be_true
+  end
+
+  # Mutual fund data specs
+  it "should have a Scheme record" do
+    subject.parse_and_update("SchemeMaster.xml")
+    Scheme.exists?( conditions: { securitycode: "14051233.002199",
+                                  company_code: "14051231",
+                                  scheme_type_description: "Open Ended",
+                                  initial_price_uom: 763,
+                                  fund_manager_name: "Aniket Inamdar",
+                                  minimum_investment_amount: "5000",
+                                  sip: "True" } ).should be_true
+
+  end
+
+  it "should have a MFObjective record" do
+    create :scheme, :securitycode => "14051233.002199"
+    subject.parse_and_update("MFObjectives.xml")
+    record = Scheme.where( securitycode: "14051233.002199" ).first
+    record.objective.should eq "An open-ended equity scheme with the objective to generate long-term capital growth from investment in a diversified portfolio of equity and equity related securities."
+  end
+
+  it "should have a NavMaster fields in Scheme" do
+    create :scheme, :securitycode => "14051233.002199"
+    subject.parse_and_update("NavMaster.xml")
+    record = Scheme.where( securitycode: "14051233.002199" ).first
+    record.scheme_code.should eq 14051233.0
+    record.bench_mark_index_name.should eq "NSE Index"
+  end
+
+  it "should have a Navcp record" do
+    create :scheme, :securitycode => "14051233.002199"
+    subject.parse_and_update("NAVCP.xml")
+    Scheme.exists?( conditions: { securitycode: "14051233.002199",
+                                  ticker_name: "Sahara Tax Gain (D)",
+                                  nav_amount: "13.6985",
+                                  prev1_week_amount: "13.5208",
+                                  prev3_year_percent: "44.2554759898905",
+                                  prev9_months_amount: "13.7376",
+                                  prev3_months_percent: "3.85046927357361" } ).should be_true
+  end
+
+  it "should have a NavCategoryDetail record" do
+    subject.parse_and_update("NAVCategoryDetails.xml")
+    NetAssetValueCategory.exists?( conditions: { scheme_class_code: "2120",
+                                                 scheme_class_description: "Equity - Diversified",
+                                                 no_of_schemes: 288,
+                                                 one_month_return: "6.1578",
+                                                 three_year_return: "61.448" } ).should be_true
+  end
+
+  it "should have a MFdividendDetail record" do
+    subject.parse_and_update("MFDividendDetails.xml")
+    MfDividendDetail.exists?( conditions: { securitycode: "14050439.002067",
+                                            dividend_date: "15/02/2012",
+                                            dividend_type: "2073",
+                                            percentage: "30" } ).should be_true
+  end
+
+  it "should have a MFSchemewisePortfolio record" do
+    subject.parse_and_update("MFSchemeWisePortfolio.xml")
+    record = MfSchemeWisePortfolio.where( security_code: "14050284.002066", holding_date: "31/01/2012" )
+    record.first.element.first["PortfolioUOM"].to_f.should eq 838
+    record.first.element.first["InvestedCompanyName"].should eq "Cash and other assets"
+    record.first.element.first["MarketValue"].to_f.should eq 56.529
+  end
+
+  it "should have a MFBonusDetail record" do
+    subject.parse_and_update("MFBonusDetails.xml")
+    MfBonusDetail.exists?( conditions: { securitycode: "14051233.002199",
+                                         bonus_date: "28/09/2007",
+                                         ratio_offered: 1.4,
+                                         ratio_existing: 1000 } ).should be_true
   end
 
 end
