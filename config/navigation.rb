@@ -86,7 +86,7 @@ SimpleNavigation::Configuration.run do |navigation|
 
     primary.item :stocks, 'Stocks', main_app.stocks_path, :highlights_on => :subpath do |secondary|
       if @stock
-        secondary.item :stock,           "#{@stock.company_name}",main_app.stock_path(@stock), :highlights_on => :subpath do |tertiary|
+        secondary.item :stock,           "#{@stock.company_name}",main_app.stock_path(@stock.company_code), :highlights_on => :subpath do |tertiary|
           tertiary.item :balance_sheet,  'Balance Sheet',         main_app.stock_balance_sheet_path(@stock.company_code)
           tertiary.item :profit_loss,    'Income Statement',      main_app.stock_profit_loss_path(@stock.company_code)
           tertiary.item :cash_flow,      'Cash Flow',             main_app.stock_cash_flow_path(@stock.company_code)
@@ -97,6 +97,9 @@ SimpleNavigation::Configuration.run do |navigation|
     end
 
     primary.item :mutual_funds, 'Mutual Funds', main_app.mutual_funds_path, :highlights_on => :subpath do |secondary|
+      if @nav_category_detail.try(:scheme_class_description)
+        secondary.item :mutual_fund_category, @nav_category_detail.scheme_class_description, main_app.mutual_fund_category_path(params[:id])
+      end
       if @scheme.try(:scheme_name)
         secondary.item :scheme_summary, 'Scheme Summary', main_app.scheme_summary_mutual_fund_path(@scheme.scheme_name)
         secondary.item :scheme_returns, 'Scheme Returns', main_app.scheme_returns_mutual_fund_path(@scheme.scheme_name)

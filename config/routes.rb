@@ -22,6 +22,7 @@ Finginie::Application.routes.draw do
     end
   end
 
+  resources :mutual_fund_categories, :only => [:show]
   resources :other_assets
   resources :other_liabilities
   resources :loans

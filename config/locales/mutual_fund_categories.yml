@@ -1,0 +1,4 @@
+en:
+  mutual_fund_categories:
+    show:
+      equity_balanced_fund: 'Equity Mutual Funds that invest more than 75% in CRISIL-defined Large Cap Stocks for a minimum of four out of six months in each period over the last 2 years.'
