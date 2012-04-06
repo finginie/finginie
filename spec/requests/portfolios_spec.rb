@@ -127,18 +127,22 @@ describe "Portfolios" do
     create_positions_of_all_securities
 
     visit portfolio_path(portfolio)
-    expected_table = [
-                       [ 'Stocks',         "5.84",                          "50.00"],
-                       [ 'Mutual Funds',   "5.84",                          "50.00"],
-                       [ 'Gold',           "5.84",                          "50.00"],
-                       [ 'Fixed Deposits', "12.44",                         "106.58"],
-                       [ 'Real Estate',    "70.05",                         "600.00"],
-                       ["Total Assets",     "100",                          "856.58"],
-                       ["Loans",            I18n.t("tables_not_available"), "258.63"],
-                       ["Total Liabilities",I18n.t("tables_not_available"), "258.63"],
-                       ["Net Worth",        I18n.t("tables_not_available"),  "597.95"]
-                      ]
-    tableish("table").should include *expected_table
+    expected_asset_table = [
+                             [ 'Stocks',           "50" ,  "5.84"],
+                             [ 'Mutual Funds',     "50" ,  "5.84"],
+                             [ 'Gold',             "50" ,  "5.84"],
+                             [ 'Fixed Deposits',   "107", "12.44"],
+                             [ 'Real Estate',      "600", "70.05"],
+                             [ "Total",            "857",      ""]
+                          ]
+
+    expected_liabilities_table = [
+                                   ["Loans",     "259", "100.00"],
+                                   ["Total",     "259",       ""],
+                                   ["Net Worth", "598",       ""]
+                                  ]
+    tableish("table.assets").should include *expected_asset_table
+    tableish("table.liabilities").should include *expected_liabilities_table
   end
 
   context "new portfolio" do
@@ -148,7 +152,7 @@ describe "Portfolios" do
     end
 
     it "should display default message" do
-      page.should have_content I18n.t("portfolios.show.empty_transactions")
+      page.should have_content I18n.t("portfolios.empty_transaction.message")
     end
 
     it "should display default message for stock when there is no stock transaction" do
@@ -173,12 +177,12 @@ describe "Portfolios" do
 
     it "should display default messages in Details Page" do
       find("li#navigation-details").find("a").click
-      page.should have_content I18n.t("portfolios.details.no_stock_positions")
+      page.should have_content I18n.t("portfolios.empty_transaction.message")
     end
 
     it "should display default messages in Transactions page" do
       find("li#navigation-transactions").find("a").click
-      page.should have_content I18n.t("transactions.no_stock_transactions")
+      page.should have_content I18n.t("portfolios.transactions.empty_transactions")
     end
 
      it "should display current portfolio in stock analysis page" do
@@ -240,7 +244,7 @@ describe "Portfolios" do
     another_company = create :company_with_scrip, :industry_name => "BAR"
     create :stock_transaction, :company_code => another_company.company_code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
     visit stocks_analysis_portfolio_path(portfolio)
-    tableish("table").should include(*[["FOO", "50.00", "71.43"], ["BAR", "20.00", "28.57"], ["Total", "70.00", "100"]])
+    tableish("table").should include(*[["FOO", "50.00", "71.43"], ["BAR", "20.00", "28.57"], ["Total", "70.00", ""]])
   end
 
   it "should show mutual funds analysis table" do
@@ -249,10 +253,10 @@ describe "Portfolios" do
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today
 
     visit mutual_funds_analysis_portfolio_path(portfolio)
-    tableish("table").should include(*[["FOO", "50.00", "71.43"], ["BAR", "20.00", "28.57"], ["Total", "70.00", "100"]])
+    tableish("table").should include(*[["FOO", "50.00", "71.43"], ["BAR", "20.00", "28.57"], ["Total", "70.00", ""]])
   end
 
-  it "should have Profit/Loss page "do
+  it "should have Profit/Loss page", :mongoid do
     Timecop.freeze(Date.civil(2012,03,22)) do
       another_portfolio = create :portfolio, :user => current_user
       create_positions_of_all_securities(another_portfolio)
@@ -308,9 +312,9 @@ describe "Portfolios" do
     create :stock_transaction, :company_code => another_company.company_code, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
 
     visit stocks_analysis_portfolio_path(portfolio)
-    expected_table = [ [ company.company_name , "FOO", "12.00", "100.00" ],
+    expected_table = [ [ company.company_name,         "FOO", "12.00", "100.00" ],
                        [ another_company.company_name, "BAR", "-4.00", "-16.67" ],
-                       [ "Total",            "8.00", "100" ] ]
+                       [ "Total",                      "",    "8.00",  ""       ] ]
 
     tableish("#stocks_profit_or_loss_analysis table").should include *expected_table
   end
@@ -323,7 +327,7 @@ describe "Portfolios" do
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
 
     visit mutual_funds_analysis_portfolio_path(portfolio)
-    expected_table = [ [ scheme.scheme_name, "FOO", "12.00", "100.00" ], [ scheme2.scheme_name, "BAR", "-1.00", "-20.00"], [ "Total", "11.00", "100"] ]
+    expected_table = [ [ scheme.scheme_name, "FOO", "12.00", "100.00" ], [ scheme2.scheme_name, "BAR", "-1.00", "-20.00"], [ "Total", "", "11.00", ""] ]
     tableish("#mfs_profit_or_loss_analysis table").should include *expected_table
   end
 

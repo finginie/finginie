@@ -24,7 +24,7 @@ describe "LoanTransactions" do
     Timecop.freeze (Date.civil(2012, 03, 01)) do
       visit portfolio_loan_transactions_path(portfolio)
       expected_table = [
-                         [ I18n.l( Date.civil(2011,12,10)), "Borrow", loan.name, "5.0", "10.0", "5,000.00","-"]
+                         [ I18n.l( Date.civil(2011,12,10)), "Borrow", loan.name, "5.0", "10.00", "5,000.00","-"]
                       ]
       tableish("table").should include *expected_table
     end

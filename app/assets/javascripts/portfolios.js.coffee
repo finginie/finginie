@@ -18,7 +18,7 @@ $ ->
           renderTo: element,
           borderColor: '#CE5A5A',
           borderWidth: 2,
-          width: 750
+          width: 770
         },
         title: {
           text: title,
@@ -88,7 +88,7 @@ $ ->
   pie_chart('stock-sectoral-allocation-chart', 'data-stocks-sectoral-asset-allocation', 'Sector Wise Stocks Allocation')
   pie_chart('mutual-fund-category-wise-allocation-chart', 'data-mutual-fund-category-wise-asset-allocation', 'Category Wise Mutual Funds Allocation')
 
-  bar_chart('net-worth-chart','data-net-worth','Net Worth',['Assets', 'Liabilities', 'Net Worth' ],'Amount(Rupees)')
+  bar_chart('net-worth-chart','data-net-worth','Portfolio Summary',['Assets', 'Liabilities', 'Net Worth' ],'Amount(Rupees)')
 
   if $("#stocks-profit-or-loss-chart").attr("data-categories") != undefined
     bar_chart('stocks-profit-or-loss-chart','data-stocks-profit-or-loss','Realized Profit/Loss on Stocks', JSON.parse($("#stocks-profit-or-loss-chart").attr("data-categories")), 'Percentage (%)')
@@ -97,7 +97,7 @@ $ ->
     bar_chart('mutual-fund-profit-or-loss-chart','data-mutual-fund-profit-or-loss','Realized Profit/Loss on Mutual Funds', JSON.parse($("#mutual-fund-profit-or-loss-chart").attr("data-categories")), 'Percentage (%)')
 
   if $("#fixed-deposits-chart").attr("data-categories") != undefined
-    bar_chart('fixed-deposits-chart','data-fixed-deposits','Your Fixed Deposits', JSON.parse($("#fixed-deposits-chart").attr("data-categories")), 'Amount Invested (Rupees)')
+    bar_chart('fixed-deposits-chart','data-fixed-deposits','Your Fixed Deposits', JSON.parse($("#fixed-deposits-chart").attr("data-categories")), 'Interest Rate (%)')
 
   if $("#accumulated-profits-chart").attr("data-categories") != undefined
-    bar_chart('accumulated-profits-chart','data-accumulated-profits','Your Top 5 Accumulated Profits and Losses', JSON.parse($("#accumulated-profits-chart").attr("data-categories")), 'Percentage (%)')
+    bar_chart('accumulated-profits-chart','data-accumulated-profits','Your Top 5 Accumulated Profits and Losses By Percentage', JSON.parse($("#accumulated-profits-chart").attr("data-categories")), 'Percentage (%)')

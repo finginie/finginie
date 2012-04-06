@@ -1,35 +1,50 @@
 = render 'current_portfolio'
 
-%h1 Mutual Funds
+%h1 Mutual Funds Analysis
 - unless resource.category_wise_mutual_funds_percentage.empty?
   #mutual-fund-category-wise-allocation-chart{ 'data-mutual-fund-category-wise-asset-allocation' => resource.category_wise_mutual_funds_percentage }
+  %h2 Category wise Analysis
   %table
     %tr
-      %th Category
-      %th Invested Amount (Rs)
-      %th Percentage Holding (%)
+      %th.name Category
+      %th.right Invested Amount
+      %th.right Percentage Holding
+    %tr
+      %td
+      %td.right (Rs)
+      %td.right (%)
     - resource.category_wise_mutual_funds_percentage_table.each do |position|
       %tr
         %td= position[:category]
-        %td= number_to_indian_currency position[:amount_invested]
-        %td= number_to_indian_currency position[:percentage]
+        %td.right= number_to_indian_currency position[:amount_invested]
+        %td.right= number_to_indian_currency position[:percentage]
     %tr.total
       %td Total
-      %td= number_to_indian_currency resource.mutual_funds_value
-      %td 100
+      %td.right= number_to_indian_currency resource.mutual_funds_value
+      %td
 -else
-  %p= t ".no_mutual_fund_transaction"
+  #no_portfolios
+    %p= t ".no_mutual_fund_transaction"
+    %p
+      = link_to "Click here", new_portfolio_mutual_fund_transaction_path(resource)
+      = "to add some."
 
 #mfs_profit_or_loss_analysis
   - unless resource.mutual_fund_positions_profit_or_loss.empty?
     #mutual-fund-profit-or-loss-chart{ 'data-mutual-fund-profit-or-loss' => resource.mutual_fund_positions_profit_or_loss.map(&:percentage),
                                      'data-categories' => resource.mutual_fund_positions_profit_or_loss.map(&:name) }
+    %h2 Realized Profits/Losses
     %table
       %tr
-        %th Scheme Name
+        %th.name Scheme Name
         %th Category
-        %th Profit/Loss (Rs.)
-        %th % Profit/Loss
+        %th.right Profit/Loss
+        %th.right Percentage Profit/Loss
+      %tr
+        %td
+        %td
+        %td.right (Rs.)
+        %td.right (%)
       - resource.mutual_fund_positions_profit_or_loss.each do |position|
         %tr
           %td= position.name
@@ -41,6 +56,7 @@
             %td.green= number_to_indian_currency position.profit_or_loss
             %td.green= number_to_indian_currency position.percentage
       %tr.total
-        %td{:colspan => 2} Total
-        %td= number_to_indian_currency resource.mutual_fund_positions_profit_or_loss.map(&:profit_or_loss).sum
-        %td 100
+        %td Total
+        %td
+        %td.right= number_to_indian_currency resource.mutual_fund_positions_profit_or_loss.map(&:profit_or_loss).sum
+        %td

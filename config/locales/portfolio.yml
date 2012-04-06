@@ -1,26 +1,20 @@
 en:
   portfolios:
-    show:
-      empty_transactions: 'You do not have any investments in this portfolio. Please add investments to your portfolio.'
     index:
       empty_portfolio: 'To create a new portfolio, '
     stocks_analysis:
-      no_stock_transaction: 'You do not have any stocks in this portfolio to analyze.'
+      no_stock_transaction: 'You do not have any stocks in this portfolio.'
       no_sell_stock_transaction: 'You do not have any realized profits/losses in this portfolio to analyze.'
     fixed_deposits_analysis:
-      no_fixed_deposit_transaction: 'You do not have any fixed deposits in this portfolio to analyze.'
+      no_fixed_deposit_transaction: 'You do not have any fixed deposits in this portfolio.'
     mutual_funds_analysis:
-      no_mutual_fund_transaction: 'You do not have any mutual funds in this portfolio to analyze.'
+      no_mutual_fund_transaction: 'You do not have any mutual funds in this portfolio.'
       no_sell_mutual_fund_transaction: 'You do not have any Realized Profits/Losses to analyze.'
-    details:
-      no_stock_positions: "You do not have any stocks in your portfolio."
-      no_mutual_fund_positions: "You have no mutual funds in your portfolio."
-      no_gold_positions: "You do not have any gold in your portfolio."
-    fixed_deposit_positions:
-      no_fixed_deposit_positions: "You do not have any fixed deposits in your portfolio."
-    real_estate_positions:
-      no_real_estate_positions: "You do not have any real estate in your portfolio."
-    loan_positions:
-      no_loan_positions: "You do not have any loans in your portfolio."
     accumulated_profits:
+      no_profit: "You do not have any profits yet."
+      no_loss: "You do not have any losses yet."
       no_profit_or_loss: "You do not have any profits or losses yet."
+    transactions:
+      empty_transactions: 'You do not have any transactions in this portfolio.'
+    empty_transaction:
+      message: 'You do not have any investments in this portfolio.'

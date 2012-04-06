@@ -24,12 +24,16 @@ class PortfolioDecorator < ApplicationDecorator
    ( real_estates_value / total_assets_value * 100).round(2).to_f
   end
 
+  def total_liabilitites_percentage
+    total_liabilitites_value < 0 ? 100 : 0
+  end
+
   def total_assets_distribution
     [ [ "Stocks",         stocks_percentage        ],
       [ "Mutual Funds",   mutual_funds_percentage  ],
       [ "Gold",           gold_percentage          ],
       [ "Fixed Deposits", fixed_deposits_percentage],
-      [ "Real Estates" ,  real_estates_percentage  ] ].select { |a| a.last != 0 }
+      [ "Real Estate" ,   real_estates_percentage  ] ].select { |a| a.last != 0 }
   end
 
   #portfolio page networth calculations
@@ -42,7 +46,15 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def empty_transactions?
-    stocks_value == 0 && mutual_funds_value == 0 && gold_value == 0 && real_estates_value == 0 && fixed_deposits_value == 0
+    stock_transactions.empty? && mutual_fund_transactions.empty? &&
+      gold_transactions.empty? && real_estate_transactions.empty? &&
+      fixed_deposit_transactions.empty? && loan_transactions.empty?
+  end
+
+  def empty_positions?
+    stock_positions.empty? && mutual_fund_positions.empty? &&
+        gold_transactions.empty? && real_estate_positions.empty? &&
+        fixed_deposit_positions.empty? && loan_positions.empty?
   end
 
   def total_assets_distribution_table
@@ -50,48 +62,52 @@ class PortfolioDecorator < ApplicationDecorator
       {
         :asset_type => "Stocks",
         :percentage => number_to_indian_currency(stocks_percentage),
-        :amount     => number_to_indian_currency(stocks_value)
+        :amount     => number_to_indian_currency(stocks_value,0)
       },
       {
         :asset_type => "Mutual Funds",
         :percentage => number_to_indian_currency(mutual_funds_percentage),
-        :amount     => number_to_indian_currency(mutual_funds_value)
+        :amount     => number_to_indian_currency(mutual_funds_value,0)
       },
       {
         :asset_type => "Gold",
         :percentage => number_to_indian_currency(gold_percentage),
-        :amount     => number_to_indian_currency(gold_value)
+        :amount     => number_to_indian_currency(gold_value,0)
       },
       {
         :asset_type => "Fixed Deposits",
         :percentage => number_to_indian_currency(fixed_deposits_percentage),
-        :amount     => number_to_indian_currency(fixed_deposits_value)
+        :amount     => number_to_indian_currency(fixed_deposits_value,0)
       },
       {
          :asset_type => "Real Estate" ,
          :percentage => number_to_indian_currency(real_estates_percentage),
-         :amount     => number_to_indian_currency(real_estates_value)
+         :amount     => number_to_indian_currency(real_estates_value,0)
       },
       {
-        :asset_type => "Total Assets",
-        :percentage => "100",
-        :amount     => total_assets_value
-      },
+        :asset_type => "Total",
+        :class      => "total",
+        :amount     => number_to_indian_currency(total_assets_value,0)}
+      ]
+  end
+
+  def total_liabilities_distribution_table
+    [
       {
         :asset_type => "Loans",
-        :percentage => h.t('tables_not_available'),
-        :amount     => total_liabilitites_value.abs
+        :percentage => number_to_indian_currency(total_liabilitites_percentage),
+        :amount     => number_to_indian_currency(total_liabilitites_value.abs,0)
       },
       {
-        :asset_type => "Total Liabilities",
-        :percentage => h.t('tables_not_available'),
-        :amount     => total_liabilitites_value.abs
+        :asset_type => "Total",
+        :class      => "total",
+        :amount     => number_to_indian_currency(total_liabilitites_value.abs,0)
       },
       {
         :asset_type => "Net Worth",
-        :percentage => h.t('tables_not_available'),
-        :amount     => net_worth }
-      ]
+        :class      => "total",
+        :amount     => number_to_indian_currency(net_worth,0)}
+    ]
   end
 
   #Analysis page items
@@ -130,7 +146,7 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def fixed_deposit_open_positions_rate_of_interests
-    fixed_deposit_positions.map{ |fd| { :rate => fd.rate_of_interest.to_f, :name => fd.name, :amount => fd.invested_amount.to_f } }
+    fixed_deposit_positions.map{ |fd| Hashie::Mash.new({ :rate => fd.rate_of_interest.to_f, :name => fd.name, :amount => fd.invested_amount.to_f }) }
   end
 
   def fixed_deposit_positions_profit_or_loss

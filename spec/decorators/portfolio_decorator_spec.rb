@@ -59,7 +59,7 @@ describe PortfolioDecorator do
     subject
     fixed_deposit2 = create :fixed_deposit, :name => "BAR", :period => 5, :rate_of_interest => 12.0
     create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit2, :portfolio => portfolio, :price => 1000, :date => 5.months.ago.to_date
-    subject.fixed_deposit_open_positions_rate_of_interests.should include(*[{:rate=>10.0, :name=>"Foo", :amount=>100.0}, {:rate=>12.0, :name=>"BAR", :amount=>1000.0}])
+    subject.fixed_deposit_open_positions_rate_of_interests.should include(*[{"rate"=>10.0, "name"=>"Foo", "amount"=>100.0}, {"rate"=>12.0, "name"=>"BAR", "amount"=>1000.0}])
   end
 
   it "should give top five profits", :mongoid do

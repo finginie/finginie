@@ -1,9 +1,9 @@
 = render 'current_portfolio'
 
 - [ 'stock_positions', 'mutual_fund_positions' ].each do |positions|
-  %section{ :class => positions }
-    %h1= positions.gsub(/_positions/,'').titleize.pluralize
-    - unless resource.send(positions).empty?
+  - unless resource.send(positions).empty?
+    %section{ :class => positions }
+      %h1= positions.gsub(/_positions/,'').titleize.pluralize
       %div{ :id => "#{positions}"}
         %table
           %tr
@@ -52,21 +52,18 @@
             %td
             %td= number_to_indian_currency resource.send(positions).sum(&:current_value)
             %td= number_to_indian_currency resource.send(positions).map(&:unrealised_profit).compact.inject(:+)
-    - else
-      %p
-        = t ".no_#{positions}"
 
-%section{ :class => "Gold" }
-  %h1 Gold
-  - unless resource.gold_transactions.empty?
+- unless resource.gold_transactions.empty?
+  %section{ :class => "Gold" }
+    %h1 Gold
     #gold_positions
       %table
         %tr
           %th.name Name
           %th Quantity
           %th Avg Cost price
-          %th Current Price
           %th Amt Invested
+          %th Current Price
           %th Current Value
           %th Unrealised Profit
         %tr
@@ -78,7 +75,7 @@
           %td (Rs)
           %td (Rs)
         %tr
-          %td Gold
+          %td.name Gold
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).quantity
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).average_cost_price
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).value
@@ -89,20 +86,16 @@
           - else
             %td.green= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
         %tr.total
-          %td.name{:colspan => 3} Total
+          %td.name Total
+          %td
+          %td
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).value
           %td
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).current_value
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
-  - else
-    %p
-      = t ".no_gold_positions"
 
-- %w(FixedDeposit Loan).each do |security|
-  %section{ :class => security }
-    %h1= "#{security.titleize.pluralize}"
-    = render "#{security.underscore}_positions", "#{security.underscore}_positions".to_sym => resource.send("#{security.underscore}_positions")
+- %w(FixedDeposit Loan RealEstate).each do |security|
+  = render "#{security.underscore}_positions", "#{security.underscore}_positions".to_sym => resource.send("#{security.underscore}_positions")
 
-%section{ :class => "RealEstate" }
-  %h1= "Real Estate"
-  = render "real_estate_positions", "real_estate_positions".to_sym => resource.real_estate_positions
+-if resource.empty_positions?
+  = render 'empty_transaction'

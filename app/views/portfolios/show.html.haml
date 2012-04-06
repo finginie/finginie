@@ -1,22 +1,37 @@
-%p
-  %b Portfolio Name:
-  = @portfolio.name
+= render 'current_portfolio'
 - if resource.empty_transactions?
-  %p
-    = t ".empty_transactions"
-  = button_to 'Add Transactions', add_transaction_portfolio_path(resource), :method => :get
+  = render 'empty_transaction'
 - else
   #portfolio-total-asset-allocation-chart{ 'data-portfolio-total-asset-allocation' => resource.total_assets_distribution }
-  %table
+  %table{:class => "assets"}
     %tr
-      %th Asset Class
-      %th Percentage (%)
-      %th Amount (Rs)
+      %th.name Assets
+      %th.right Amount
+      %th.right Percentage
+    %tr
+      %td
+      %td.right (Rs)
+      %td.right (%)
     -resource.total_assets_distribution_table.each do |asset|
-      %tr
+      %tr{:class => asset[:class]}
         %td= asset[:asset_type]
-        %td= asset[:percentage]
-        %td= asset[:amount]
+        %td.right= asset[:amount]
+        %td.right= asset[:percentage]
+
+  %table{:class => "liabilities"}
+    %tr
+      %th.name Liabilities
+      %th.right Amount
+      %th.right Percentage
+    %tr
+      %td
+      %td.right (Rs)
+      %td.right (%)
+    -resource.total_liabilities_distribution_table.each do |asset|
+      %tr{:class => asset[:class]}
+        %td= asset[:asset_type]
+        %td.right= asset[:amount]
+        %td.right= asset[:percentage]
 
 - if resource.assets_and_liabilities?
   #net-worth-chart{ 'data-net-worth' => resource.assets_and_liabilities }

@@ -2,53 +2,74 @@
 
 #accumulated_profits_or_losses
   %h1 Your Accumulated Profits or Losses
-  - unless resource.top_five_profits.empty?
-    #accumulated_profits
-      #accumulated-profits-chart{ 'data-accumulated-profits' => resource.top_five_profits.map(&:percentage) + resource.top_five_losses.map(&:percentage),
-                                    'data-categories' => resource.top_five_profits.map(&:name) + resource.top_five_losses.map(&:name) }
-      %h1 Profits
-      %table
-        %tr
-          %th Security
-          %th Security Type
-          %th Profit (Rs)
-          %th Profit Percentage (%)
-        - resource.profits.each do |security|
-          %tr
-            %td= security.name
-            %td= security.type
-            %td.green= number_to_indian_currency security.profit_or_loss
-            %td.green= number_to_indian_currency security.percentage
-        %tr.total
-          %td{:colspan => 2} Total
-          %td= number_to_indian_currency resource.profits.map(&:profit_or_loss).sum.round(2)
-          %td 100
-
-  - unless resource.top_five_losses.empty?
-    #accumulated_losses
-      %h1 Losses
-      %table
-        %tr
-          %th Security
-          %th Security Type
-          %th Loss (Rs)
-          %th Loss Percentage (%)
-        - resource.losses.each do |security|
-          %tr
-            %td= security.name
-            %td= security.type
-            %td.red= number_to_indian_currency security.profit_or_loss
-            %td.red= number_to_indian_currency security.percentage
-        %tr.total
-          %td{:colspan => 2} Total
-          %td= number_to_indian_currency resource.losses.map(&:profit_or_loss).sum.round(2)
-          %td 100
-  - unless resource.positions.empty?
-    %h1 Net Profit/Loss
-    %table
-      %tr
-        %td Net Profit/Loss
-        = table_content_with_red_or_green_class resource.net_profit_or_loss
   - if resource.top_five_losses.empty? && resource.top_five_profits.empty?
-    %p
-      = t ".no_profit_or_loss"
+    #no_portfolios
+      %p
+        = t ".no_profit_or_loss"
+  - else
+    #accumulated-profits-chart{ 'data-accumulated-profits' => resource.top_five_profits.map(&:percentage) + resource.top_five_losses.map(&:percentage),
+                                  'data-categories' => resource.top_five_profits.map(&:name) + resource.top_five_losses.map(&:name) }
+    %h2 Realized Profits
+    - unless resource.top_five_profits.empty?
+      #accumulated_profits
+        %table
+          %tr
+            %th.name Security
+            %th.security_type Security Type
+            %th.profit Profit
+            %th.percentage Profit Percentage
+          %tr
+            %td
+            %td
+            %td.right (Rs)
+            %td.right (%)
+          - resource.profits.each do |security|
+            %tr
+              %td= security.name
+              %td.center= security.type
+              %td.green= number_to_indian_currency security.profit_or_loss
+              %td.green= number_to_indian_currency security.percentage
+          %tr.total
+            %td Total
+            %td
+            %td.right= number_to_indian_currency resource.profits.map(&:profit_or_loss).sum.round(2)
+            %td
+    - else
+      %p
+        = t(".no_profit")
+
+    %h2 Realized Losses
+    - unless resource.top_five_losses.empty?
+      #accumulated_losses
+        %table
+          %tr
+            %th.name Security
+            %th.security_type Security Type
+            %th.loss Loss
+            %th.percentage Loss Percentage
+          %tr
+            %td
+            %td
+            %td.right (Rs)
+            %td.right (%)
+          -resource.losses.each do |security|
+            %tr
+              %td= security.name
+              %td.center= security.type
+              %td.red= number_to_indian_currency security.profit_or_loss
+              %td.red= number_to_indian_currency security.percentage
+          %tr.total
+            %td Total
+            %td
+            %td.right= number_to_indian_currency resource.losses.map(&:profit_or_loss).sum.round(2)
+            %td
+    - else
+      %p
+        = t(".no_loss")
+    - unless resource.positions.empty?
+      %h1 Net Profit/Loss
+      %table
+        %tr
+          %td Net Profit/Loss
+          = table_content_with_red_or_green_class resource.net_profit_or_loss
+

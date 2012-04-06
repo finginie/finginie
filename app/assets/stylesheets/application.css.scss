@@ -39,7 +39,7 @@ h1 {
     family: $heading-font;
     weight: normal;
   }
-  margin-bottom: 0.3em;
+  margin-bottom: 10px;
 }
 
 table {
@@ -112,8 +112,6 @@ header {
           }
         }
         &.selected {
-          //background-color: #DCEDFC;
-          @include border-radius(4px);
           border: {
             bottom: {
               width: 2px;
@@ -279,7 +277,7 @@ footer {
 
       li {
         color: #FFD02A;
-	font-size: medium;
+	      font-size: 14px;
       }
       line-height: 1.5em;
 
@@ -289,7 +287,7 @@ footer {
         li {
           color: #96B1D2;
           font: {
-            size: small;
+            size: 12px;
             weight: bold;
           }
         }
@@ -409,34 +407,61 @@ input[type="text"] {
   width: 200px;
   text-align: left;
 }
-.dates, .rate {
-  width: 80px;
+.dates {
+  width: 82px;
   text-align: center;
 }
 .type {
-  width: 40px;
+  width: 50px;
   text-align: center;
 }
 .quantity {
-  width: 50px;
+  width: 54px;
   text-align: right;
 }
 .amount {
   width: 100px;
   text-align: right;
 }
-.center {
-  text-align: center;
+.right, .green, .red {
+  text-align: right;
 }
 .comment {
-  width: 200px;
+  width: 190px;
 }
 .price {
   width: 80px;
   text-align: right;
 }
 .duration {
-  width: 50px;
+  width: 54px;
+  text-align: right;
+}
+.rate {
+  width: 80px;
+  text-align: right;
+}
+.center {
   text-align: center;
 }
+.profit, .loss {
+  width: 150px;
+  text-align: right;
+}
+.security_type {
+  widht: 100px;
+  text-align: center;
+}
+.percentage {
+  width: 200px;
+  text-align: right;
+}
 
+.real_amount {
+  width: 270px;
+  text-align: right;
+}
+
+.btn_sell, .btn_redeem {
+  width: 80px;
+}

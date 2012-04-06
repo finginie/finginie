@@ -1,32 +1,31 @@
 - unless loan_transactions.empty?
-  %table
-    %tr
-      %th Date
-      %th Type
-      %th Name
-      %th Duration
-      %th Interest Rate
-      %th Amount
-      %th Comments
-    %tr
-      %td
-      %td
-      %td
-      %td.center (years)
-      %td.center (% p.a.)
-      %td.center (Rs)
-      %td
-
-    - loan_transactions.each do |loan_transaction|
+  %section{ :class => "LoanTransactions" }
+    %h1= "Loan Transactions"
+    %table
       %tr
-        %td.dates= l loan_transaction.date
-        %td.type{:class => loan_transaction.action}= loan_transaction.action.to_s.titleize
-        %td.name= loan_transaction.name
-        %td.duration= loan_transaction.period
-        %td.rate= loan_transaction.rate_of_interest
-        %td.amount= number_to_indian_currency loan_transaction.price
-        %td.comment= loan_transaction.comments && loan_transaction.comments.strip.empty?  ? t("tables_not_available") : loan_transaction.comments
-- else
-  %p
-    = t "transactions.no_loan_transactions"
+        %th.dates Date
+        %th.type Type
+        %th.name Name
+        %th.duration Duration
+        %th.rate Interest Rate
+        %th.amount Amount
+        %th.comment Comments
+      %tr
+        %td
+        %td
+        %td
+        %td.right (years)
+        %td.right (% p.a.)
+        %td.right (Rs)
+        %td
+
+      - loan_transactions.each do |loan_transaction|
+        %tr
+          %td.dates= l loan_transaction.date
+          %td.type{:class => loan_transaction.action}= loan_transaction.action.to_s.titleize
+          %td.name= loan_transaction.name
+          %td.duration= loan_transaction.period
+          %td.rate=   number_to_indian_currency loan_transaction.rate_of_interest
+          %td.amount= number_to_indian_currency loan_transaction.price
+          %td.comment= loan_transaction.comments && loan_transaction.comments.strip.empty?  ? t("tables_not_available") : loan_transaction.comments
 
