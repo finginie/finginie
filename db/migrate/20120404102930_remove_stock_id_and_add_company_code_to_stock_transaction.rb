@@ -16,8 +16,10 @@ class RemoveStockIdAndAddCompanyCodeToStockTransaction < ActiveRecord::Migration
     add_column :stock_transactions, :company_code, :decimal
 
     StockTransaction.all.each do |s|
-      company = Company.where( nse_code: Security.find(s.stock_id).symbol ).first
-      s.update_attributes( :company_code => company.company_code ) if company
+      if s.stock_id
+        company = Company.where( nse_code: Security.find(s.stock_id).symbol ).first
+        s.update_attributes( :company_code => company.company_code ) if company
+      end
     end
 
     remove_column :stock_transactions, :stock_id
