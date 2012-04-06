@@ -341,7 +341,6 @@ describe "Portfolios" do
   end
 
   it "should allow user to sell mutual fund in current holding page" do
-    navcp.save
     4.times { |n| create :mutual_fund_transaction, :scheme => scheme.scheme_name,
                           :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
