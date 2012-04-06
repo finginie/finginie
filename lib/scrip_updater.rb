@@ -57,7 +57,7 @@ class ScripUpdater
 
 private
 
-  def with_modified_datecaster
+  def self.with_modified_datecaster
     ActiveAttr::Typecasting::DateTimeTypecaster.class_eval do
       alias :old_call :call
       def call(value)
@@ -73,6 +73,6 @@ private
   end
 
   def self.attributes_hash(row)
-    Hash[ DATA_ATTRIBUTES.map { |key, value| [key, row[value]] } ]
+    Hash[ DATA_ATTRIBUTES.map { |key, value| [key, row[value].strip] } ]
   end
 end
