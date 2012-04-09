@@ -7,20 +7,41 @@
   %table
     %tr
       %th.name Category
+      %th Quantity
+      %th Average Cost Price
       %th.right Invested Amount
+      %th.right Current Price
+      %th.right Current Value
+      %th.right Unrealised Profit
       %th.right Percentage Holding
     %tr
       %td
+      %td
+      %td.right (Rs)
+      %td.right (Rs)
+      %td.right (Rs)
+      %td.right (Rs)
       %td.right (Rs)
       %td.right (%)
-    - resource.category_wise_mutual_funds_percentage_table.each do |position|
-      %tr
-        %td= position[:category]
-        %td.right= number_to_indian_currency position[:amount_invested]
-        %td.right= number_to_indian_currency position[:percentage]
+    - resource.category_wise_mutual_funds_percentage_table.each do |category|
+      - category.each do |position|
+        %tr
+          %td{:class => position.class_name }= position.name
+          %td= position.quantity
+          %td.right= position.average_cost_price ? number_to_indian_currency(position.average_cost_price) : "-"
+          %td.right= position.amount_invested ? number_to_indian_currency(position.amount_invested) : "-"
+          %td.right= position.current_price ? number_to_indian_currency(position.current_price) : "-"
+          %td.right= position.current_value ? number_to_indian_currency(position.current_value) : "-"
+          %td.right= position.unrealised_profit ? number_to_indian_currency(position.unrealised_profit) : "-"
+          %td.right= position.percentage ? number_to_indian_currency(position.percentage) : "-"
     %tr.total
       %td Total
+      %td
+      %td
+      %td
+      %td
       %td.right= number_to_indian_currency resource.mutual_funds_value
+      %td
       %td
 -else
   #no_portfolios

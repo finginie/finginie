@@ -116,9 +116,7 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def sector_wise_stock_percentage_table
-    stock_positions.group_by(&:sector).map do |sector, positions|
-      { :sector => sector, :amount_invested => positions.sum(&:current_value), :percentage => (positions.sum(&:current_value) / stocks_value * 100).round(2) }
-    end
+    category_wise_fungible_position_table(stock_positions.group_by(&:sector), stocks_value)
   end
 
   def stocks_positions_profit_or_loss
@@ -133,9 +131,7 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def category_wise_mutual_funds_percentage_table
-    mutual_fund_positions.group_by(&:category).map do |category, positions|
-      { :category => category, :amount_invested => positions.sum(&:current_value), :percentage => (positions.map(&:current_value).sum / mutual_funds_value * 100).round(2) }
-    end
+    category_wise_fungible_position_table(mutual_fund_positions.group_by(&:category), mutual_funds_value)
   end
 
   def mutual_fund_positions_profit_or_loss
@@ -216,5 +212,23 @@ class PortfolioDecorator < ApplicationDecorator
 
   def real_estate_transactions
     model.real_estate_transactions.reorder("date DESC")
+  end
+
+private
+  def category_wise_fungible_position_table(fungible_position, fungible_value)
+    fungible_position.map do |category, positions|
+      fungible_position_under_each_category = [
+                                          Hashie::Mash.new({ name: category, current_value: positions.sum(&:current_value),
+                                                             percentage: (positions.map(&:current_value).sum / fungible_value * 100).round(2),
+                                                             class_name: "name"
+                                                           })
+                                        ]
+      fungible_position_under_each_category << positions.map do |position|
+        Hashie::Mash.new({ name: position.name, quantity: position.quantity, average_cost_price: position.average_cost_price,
+                           amount_invested: position.value, current_price: position.current_price, current_value: position.current_value,
+                           unrealised_profit: position.unrealised_profit, percentage: (position.current_value / fungible_value * 100).round(2)})
+      end
+      fungible_position_under_each_category.flatten
+    end
   end
 end

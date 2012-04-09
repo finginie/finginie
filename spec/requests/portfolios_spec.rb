@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Portfolios" do
+describe "Portfolios", :mongoid do
   include_context "logged in user"
   let (:portfolio) { create :portfolio, :user => current_user }
 
@@ -241,7 +241,15 @@ describe "Portfolios" do
     another_company = create :company_with_scrip, :industry_name => "BAR"
     create :stock_transaction, :company_code => another_company.company_code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
     visit stocks_analysis_portfolio_path(portfolio)
-    tableish("table").should include(*[["FOO", "50.00", "71.43"], ["BAR", "20.00", "28.57"], ["Total", "70.00", ""]])
+
+    expected_table = [
+                        ["FOO",                        "",     "-",    "-",     "-",    "50.00",  "-",     "71.43"],
+                        [company.company_name,         "10", "3.00", "30.00", "5.00", "50.00",  "20.00", "71.43"],
+                        ["BAR",                        "",     "-",    "-",     "-",    "20.00",  "-",     "28.57"],
+                        [another_company.company_name, "4",  "6.00", "24.00", "5.00", "20.00",  "-4.00", "28.57"],
+                        ["Total",                      "",     "",     "",      "",     "70.00",  ""      , ""     ]
+                     ]
+    tableish("table").should include *expected_table
   end
 
   it "should show mutual funds analysis table" do
@@ -250,10 +258,17 @@ describe "Portfolios" do
     create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today
 
     visit mutual_funds_analysis_portfolio_path(portfolio)
-    tableish("table").should include(*[["FOO", "50.00", "71.43"], ["BAR", "20.00", "28.57"], ["Total", "70.00", ""]])
+    expected_table = [
+                        ["FOO",               "",     "-",    "-",     "-",    "50.00",  "-",     "71.43"],
+                        [scheme.scheme_name,  "10", "3.00", "30.00", "5.00", "50.00",  "20.00", "71.43"],
+                        ["BAR",               "",     "-",    "-",     "-",    "20.00",  "-",     "28.57"],
+                        [scheme2.scheme_name, "4",  "6.00", "24.00", "5.00", "20.00",  "-4.00", "28.57"],
+                        ["Total",             "",     "",     "",      "",     "70.00",  ""      , ""     ]
+                     ]
+    tableish("table").should include(*expected_table)
   end
 
-  it "should have Profit/Loss page", :mongoid do
+  it "should have Profit/Loss page" do
     Timecop.freeze(Date.civil(2012,03,22)) do
       another_portfolio = create :portfolio, :user => current_user
       create_positions_of_all_securities(another_portfolio)
