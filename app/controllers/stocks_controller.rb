@@ -3,9 +3,9 @@ class StocksController < InheritedResources::Base
 
   def resource
     @search = Company.new
-    @stock = Company.find_by_company_code(params[:id])
-    @chart_url =  "http://www.cs4w.in/Forska/TechnicalChart.aspx?Code=#{@stock.nse_code}&width=800" + "&height=600"
-    @stock = CompanyDecorator.decorate(@stock)
+    @company = Company.find_by_company_code(params[:id])
+    @chart_url =  "http://www.cs4w.in/Forska/TechnicalChart.aspx?Code=#{@company.nse_code}&width=800" + "&height=600"
+    @company = CompanyDecorator.decorate(@company)
   end
 
   def collection

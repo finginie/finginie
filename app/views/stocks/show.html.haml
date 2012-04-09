@@ -1,46 +1,46 @@
 =render 'search_form'
 %br
 
-%h1= @stock.company_name
+%h1= @company.company_name
 
 =#%section
 =#  - %w( nse_code industry_name).each do |attr|
 =#    %div{:class => attr}
 =#      %dt= t ".#{attr}"
-=#      %dd= @stock.send(attr)
+=#      %dd= @company.send(attr)
 
 %section.daily_prices
   .daily_price_change
-    %h1= @stock.last_traded_price
-    %strong.net_change= @stock.net_change
-    %span.percent_change= "(#{@stock.percent_change}%)"
-    - if @stock.time
-      %p= l @stock.time, :format => :short_date_and_time
+    %h1= @company.last_traded_price
+    %strong.net_change= @company.net_change
+    %span.percent_change= "(#{@company.percent_change}%)"
+    - if @company.time
+      %p= l @company.time, :format => :short_date_and_time
 
   - %w(close_price open_price volume high_price low_price).each do |attr|
     %div{:class => attr}
       %p= t ".#{attr}"
-      %strong= @stock.send(attr)
+      %strong= @company.send(attr)
 
 %section.fundamentals
   - %w(eps pe).each do |attr|
     %div{:class => attr}
       %p= t ".#{attr}"
-      %strong= @stock.send(attr)
+      %strong= @company.send(attr)
   .week_high_price
     %p= t ".fifty_two_week_high_price"
-    %strong= @stock.fifty_two_week_high_price
+    %strong= @company.fifty_two_week_high_price
   .week_low_price
     %p= t ".fifty_two_week_low_price"
-    %strong= @stock.fifty_two_week_low_price
+    %strong= @company.fifty_two_week_low_price
 
 %section.news
   %h1 News
   %ul
-    - if @stock.news_headlines
-      - @stock.news_headlines.each do |headline|
+    - if @company.news_headlines
+      - @company.news_headlines.each do |headline|
         %li
-          = link_to headline, stock_news_path(:stock_id => @stock.id, :id => headline), :target => "_blank"
+          = link_to headline, stock_news_path(:stock_id => @company.company_code, :id => headline), :target => "_blank"
 
 %section
 %iframe{:src => @chart_url, :style => "width:750px; height:600px"}
