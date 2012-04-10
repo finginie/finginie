@@ -25,11 +25,13 @@ body {
 
 body.mutual_funds.scheme_summary {
   #main {
-    #scheme_container {
-      padding: {
-        left:  0;
-        bottom: 4em;
+    #new_scheme {
+      text-align: right;
+      margin : {
+        bottom: 20px;
       }
+    }
+    #scheme_container {
       #titlebar {
         .nav_amount, .day_change, .percentage_change {
           display: inline-block;
@@ -57,14 +59,9 @@ body.mutual_funds.scheme_summary {
       }
       #content {
         clear: both;
-        margin-top: 1em;
-        tbody {
-          tr {
-            padding-left: 0.5em;
-            td {
-              border: 2px solid $border-color;
-            }
-          }
+        margin-top: 20px;
+        td {
+          border: 1px solid $border-color;
         }
       }
     }
@@ -78,7 +75,6 @@ body.mutual_funds.scheme_returns {
   #main {
     .mf_container {
       #comparative_returns {
-        padding-top: 1em;
         #mf-comparative-returns-chart {
           width: 70%;
         }
@@ -102,12 +98,11 @@ body.mutual_funds.top_holdings {
   #main {
     .mf_container {
       #top_holdings {
-        padding-top: 1em;
         #top-holdings-chart {
           width: 70%;
         }
         #top_holdings_data {
-          padding-top: 2em;
+          padding-top: 20px;
         } 
       }
     }
@@ -115,22 +110,10 @@ body.mutual_funds.top_holdings {
 }
 
 
-
-body.mutual_funds.detailed_holdings {
-  #main {
-    .mf_container {
-      #detailed_holdings_data {
-        padding-top: 1em;
-      }
-    }
-  }
-}
-
 body.mutual_funds.asset_allocation {
   #main {
     .mf_container {
       #asset_allocation {
-        padding-top: 1em;
         #mf-asset-allocation-chart {
           width: 70%;
         }
@@ -147,12 +130,11 @@ body.mutual_funds.sectoral_allocation {
   #main {
     .mf_container {
       #sectoral_allocation {
-        padding-top: 1em;
         #mf-asset-allocation-chart {
           width: 70%;
         }
         #sectoral_allocation_data {
-          padding-top: 2em;
+          padding-top: 20px;
         }
       }
     }
@@ -163,8 +145,11 @@ body.mutual_funds.sectoral_allocation {
 body.mutual_funds.index {
   #main {
     div {
-      input[type="submit"] {
-        margin: 1em 0 1em 9.8em;
+      #new_scheme {
+        margin: {
+          top: 10px;
+          bottom: 20px;
+        }
       }
       label {
         padding-right: 1em;
