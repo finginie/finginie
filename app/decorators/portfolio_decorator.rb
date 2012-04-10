@@ -120,10 +120,15 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def stocks_positions_profit_or_loss
-    companies.map { |company| Hashie::Mash.new({ :name => company.company_name, :type => 'Stock',
+    companies.map { |company|
+                              stock_positions = stock_transactions.for(company)
+                              Hashie::Mash.new({ :name => company.company_name, :type => 'Stock',
                                             :sector => company.industry_name,
-                                            :profit_or_loss => (stock_transactions.for(company).profit_or_loss.round(2).to_f),
-                                            :percentage => (stock_transactions.for(company).profit_or_loss_percentage.to_f)}) if !stock_transactions.for(company).sells.empty?}.compact
+                                            :average_sell_price => stock_positions.average_sell_price,
+                                            :average_cost_price => stock_positions.average_cost_price,
+                                            :quantity => stock_positions.sells.quantity.abs,
+                                            :profit_or_loss => (stock_positions.profit_or_loss.round(2).to_f),
+                                            :percentage => (stock_positions.profit_or_loss_percentage.to_f)}) if !stock_positions.sells.empty?}.compact
   end
 
   def category_wise_mutual_funds_percentage
@@ -135,10 +140,15 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def mutual_fund_positions_profit_or_loss
-    mutual_funds.map { |mf| Hashie::Mash.new({ :name => mf.name, :type => 'Mutual Fund',
+    mutual_funds.map { |mf|
+                            mutual_fund_positions = mutual_fund_transactions.for(mf)
+                            Hashie::Mash.new({ :name => mf.name, :type => 'Mutual Fund',
                                                :category => mf.category,
-                              :profit_or_loss => (mutual_fund_transactions.for(mf).profit_or_loss.round(2).to_f),
-                              :percentage => (mutual_fund_transactions.for(mf).profit_or_loss_percentage.round(2).to_f) })  if !mutual_fund_transactions.for(mf).sells.empty? }.compact
+                                               :average_sell_price => mutual_fund_positions.average_sell_price,
+                                               :average_cost_price => mutual_fund_positions.average_cost_price,
+                                               :quantity => mutual_fund_positions.sells.quantity.abs,
+                              :profit_or_loss => (mutual_fund_positions.profit_or_loss.round(2).to_f),
+                              :percentage => (mutual_fund_positions.profit_or_loss_percentage.round(2).to_f) })  if !mutual_fund_positions.sells.empty? }.compact
   end
 
   def fixed_deposit_open_positions_rate_of_interests
@@ -159,8 +169,11 @@ class PortfolioDecorator < ApplicationDecorator
 
   def gold_positions_profit_or_loss
     gold_transactions.for(Gold).profit_or_loss ? [Hashie::Mash.new( { :name => "Gold", :type => 'Gold',
-                                                                      :profit_or_loss => (gold_transactions.for(Gold).profit_or_loss.to_f),
-                                                                      :percentage => gold_transactions.for(Gold).profit_or_loss_percentage.to_f } )] : []
+                                                                      :average_sell_price => gold_transactions.for(Gold).average_sell_price,
+                                                                      :average_cost_price => gold_transactions.for(Gold).average_cost_price,
+                                                                      :quantity           => gold_transactions.for(Gold).sells.quantity.abs,
+                                                                      :profit_or_loss     => (gold_transactions.for(Gold).profit_or_loss.to_f),
+                                                                      :percentage         => gold_transactions.for(Gold).profit_or_loss_percentage.to_f } )] : []
   end
 
   def positions
