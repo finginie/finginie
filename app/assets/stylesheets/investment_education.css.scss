@@ -15,51 +15,51 @@ body.investment_education {
 	        top: 0;
 	        left: 1em;
 	      }
-	li {
-	  padding: 0;
-	  @include horizontal-list;
-	  display: inline-block;
-	  height: 300px;
-	  span {
-	    display: block;
-	    color: $heading-color;
-	    font: { 
-	      family:$heading-font;
-	      size: large;
-	    }
-	    &:before {
-	      display: block;
-	      width: 100%;
-	      text-align: center;
-	    }
-	  }
-	  //margin-left: 1em;
-	  a {
-	    text-decoration: none;
-	  }
-	  p {
-	    display: inline;
-	    padding-left: 0;
-	  }
-	  ul {
-	    display: inline;
-	    padding-left: 0;
-	    padding-right: 1em;
-	  }
-	  li {
-	    display: inline;
-	    &:before {
-	      content: ', ';
-	    }
-	    &:last-child:before {
-	      content: ' and ';
-	    }
-	    &:first-child:before {
-	      content: ' ';
-	    }
-	  }
-	  // background images for article sections
-	}
+        li {
+          padding: 0;
+          @include horizontal-list;
+          display: inline-block;
+          height: 300px;
+          span {
+            display: block;
+            color: $heading-color;
+            font: { 
+              family:$heading-font;
+              size: large;
+            }
+            &:before {
+              display: block;
+              width: 100%;
+              text-align: center;
+            }
+          }
+          //margin-left: 1em;
+          a {
+            text-decoration: none;
+          }
+          p {
+            display: inline;
+            padding-left: 0;
+          }
+          ul {
+            display: inline;
+            padding-left: 0;
+            padding-right: 1em;
+          }
+          li {
+            display: inline;
+            &:before {
+              content: ', ';
+            }
+            &:last-child:before {
+              content: ' and ';
+            }
+            &:first-child:before {
+              content: ' ';
+            }
+          }
+          // background images for article sections
+        }
       }
       #navigation-investment_concepts span:before {
 	content: url('investment_education/InvestmentConcepts_1.png');
@@ -81,7 +81,7 @@ body.investment_education {
       }
       ul>li {
 	padding: 0;
-	margin-left: 15px;
+	margin-left: 50px;
       }
     }
   }
