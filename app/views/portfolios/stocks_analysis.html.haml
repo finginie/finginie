@@ -59,17 +59,26 @@
       %tr
         %th Stock Name
         %th Sector
+        %th Quantity
+        %th Avg cost Price
+        %th Avg Sell Price
         %th.right Profit/Loss
         %th.right Percentage Profit/Loss
       %tr
         %td
         %td
+        %td
+        %td.right (Rs.)
+        %td.right (Rs.)
         %td.right (Rs.)
         %td.right (%)
       -resource.stocks_positions_profit_or_loss.each do |position|
         %tr
           %td= position.name
           %td= position.sector
+          %td.center= position.quantity
+          %td.center= position.average_cost_price
+          %td.center= position.average_sell_price
           - if position.profit_or_loss < 0
             %td.red= number_to_indian_currency position.profit_or_loss
             %td.red= number_to_indian_currency position.percentage
@@ -79,6 +88,9 @@
 
       %tr.total
         %td.name Total
+        %td
+        %td
+        %td
         %td
         %td.right= number_to_indian_currency resource.stocks_positions_profit_or_loss.map(&:profit_or_loss).sum
         %td
