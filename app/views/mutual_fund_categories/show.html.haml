@@ -8,22 +8,24 @@
   = paginate @schemes
   %table
     %tr
-      %th{:rowspan => 2} Scheme Name
-      %th{:rowspan => 2} Crisil Rank
-      %th{:rowspan => 2} NAV (Rs)
-      %th{:rowspan => 2} Minimum Investment Amount (Rs)
-      %th{:colspan => 7} Returns (%)
+      %th.name{:rowspan => 2} Scheme Name
+      %th.center{:rowspan => 2} Crisil Rank
+      %th.nav NAV
+      %th.invest_amount Min Investment Amt
+      %th.center{:colspan => 7} Returns (%)
     %tr
-      %th 1 Week
-      %th 1 Month
-      %th 3 Months
-      %th 6 Months
-      %th 1 Year Return
-      %th 2 Years Return
-      %th 3 Years Return
+      %th.right (Rs)
+      %th.right (Rs)
+      %th.center 1 W
+      %th.center 1 M
+      %th.center 3 M
+      %th.center 6 M
+      %th.center 1 Y
+      %th.center 2 Y
+      %th.center 3 Y
     - resource.each do |scheme|
-      %tr
-        %td= link_to scheme.scheme_name, scheme_summary_mutual_fund_path(scheme.scheme_name)
+      %tr.right
+        %td.name= link_to scheme.scheme_name, scheme_summary_mutual_fund_path(scheme.scheme_name)
         %td= scheme.rank
         %td= number_to_indian_currency scheme.nav_amount
         %td= number_to_indian_currency scheme.minimum_investment_amount

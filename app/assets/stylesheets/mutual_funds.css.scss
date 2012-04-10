@@ -17,11 +17,6 @@ body.mutual_funds {
   }
 }
 
-body {
-  .pagination a {
-    color: #0000EE
-}
-}
 
 body.mutual_funds.scheme_summary {
   #main {
@@ -30,6 +25,9 @@ body.mutual_funds.scheme_summary {
       margin : {
         bottom: 20px;
       }
+    }
+    td b {
+      color: $base-color;
     }
     #scheme_container {
       #titlebar {
@@ -160,7 +158,11 @@ body.mutual_funds.index {
         color: red;
         font-size: small;
       }
+      td a {
+        color: $base-color;
+      }
     }
   }
 }
+
 
