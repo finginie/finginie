@@ -19,6 +19,10 @@ module FungiblePosition
     last ? last.adjusted_average_price : 0
   end
 
+  def average_sell_price
+    sells.empty? ? 0 : (sells.sum("price * quantity").to_f / sells.sum(:quantity)).round(2)
+  end
+
   def value
     average_cost_price * quantity
   end

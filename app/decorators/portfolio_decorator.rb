@@ -116,16 +116,19 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def sector_wise_stock_percentage_table
-    stock_positions.group_by(&:sector).map do |sector, positions|
-      { :sector => sector, :amount_invested => positions.sum(&:current_value), :percentage => (positions.sum(&:current_value) / stocks_value * 100).round(2) }
-    end
+    category_wise_fungible_position_table(stock_positions.group_by(&:sector), stocks_value)
   end
 
   def stocks_positions_profit_or_loss
-    companies.map { |company| Hashie::Mash.new({ :name => company.company_name, :type => 'Stock',
+    companies.map { |company|
+                              stock_positions = stock_transactions.for(company)
+                              Hashie::Mash.new({ :name => company.company_name, :type => 'Stock',
                                             :sector => company.industry_name,
-                                            :profit_or_loss => (stock_transactions.for(company).profit_or_loss.round(2).to_f),
-                                            :percentage => (stock_transactions.for(company).profit_or_loss_percentage.to_f)}) if !stock_transactions.for(company).sells.empty?}.compact
+                                            :average_sell_price => stock_positions.average_sell_price,
+                                            :average_cost_price => stock_positions.average_cost_price,
+                                            :quantity => stock_positions.sells.quantity.abs,
+                                            :profit_or_loss => (stock_positions.profit_or_loss.round(2).to_f),
+                                            :percentage => (stock_positions.profit_or_loss_percentage.to_f)}) if !stock_positions.sells.empty?}.compact
   end
 
   def category_wise_mutual_funds_percentage
@@ -133,16 +136,19 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def category_wise_mutual_funds_percentage_table
-    mutual_fund_positions.group_by(&:category).map do |category, positions|
-      { :category => category, :amount_invested => positions.sum(&:current_value), :percentage => (positions.map(&:current_value).sum / mutual_funds_value * 100).round(2) }
-    end
+    category_wise_fungible_position_table(mutual_fund_positions.group_by(&:category), mutual_funds_value)
   end
 
   def mutual_fund_positions_profit_or_loss
-    mutual_funds.map { |mf| Hashie::Mash.new({ :name => mf.name, :type => 'Mutual Fund',
+    mutual_funds.map { |mf|
+                            mutual_fund_positions = mutual_fund_transactions.for(mf)
+                            Hashie::Mash.new({ :name => mf.name, :type => 'Mutual Fund',
                                                :category => mf.category,
-                              :profit_or_loss => (mutual_fund_transactions.for(mf).profit_or_loss.round(2).to_f),
-                              :percentage => (mutual_fund_transactions.for(mf).profit_or_loss_percentage.round(2).to_f) })  if !mutual_fund_transactions.for(mf).sells.empty? }.compact
+                                               :average_sell_price => mutual_fund_positions.average_sell_price,
+                                               :average_cost_price => mutual_fund_positions.average_cost_price,
+                                               :quantity => mutual_fund_positions.sells.quantity.abs,
+                              :profit_or_loss => (mutual_fund_positions.profit_or_loss.round(2).to_f),
+                              :percentage => (mutual_fund_positions.profit_or_loss_percentage.round(2).to_f) })  if !mutual_fund_positions.sells.empty? }.compact
   end
 
   def fixed_deposit_open_positions_rate_of_interests
@@ -163,8 +169,11 @@ class PortfolioDecorator < ApplicationDecorator
 
   def gold_positions_profit_or_loss
     gold_transactions.for(Gold).profit_or_loss ? [Hashie::Mash.new( { :name => "Gold", :type => 'Gold',
-                                                                      :profit_or_loss => (gold_transactions.for(Gold).profit_or_loss.to_f),
-                                                                      :percentage => gold_transactions.for(Gold).profit_or_loss_percentage.to_f } )] : []
+                                                                      :average_sell_price => gold_transactions.for(Gold).average_sell_price,
+                                                                      :average_cost_price => gold_transactions.for(Gold).average_cost_price,
+                                                                      :quantity           => gold_transactions.for(Gold).sells.quantity.abs,
+                                                                      :profit_or_loss     => (gold_transactions.for(Gold).profit_or_loss.to_f),
+                                                                      :percentage         => gold_transactions.for(Gold).profit_or_loss_percentage.to_f } )] : []
   end
 
   def positions
@@ -216,5 +225,23 @@ class PortfolioDecorator < ApplicationDecorator
 
   def real_estate_transactions
     model.real_estate_transactions.reorder("date DESC")
+  end
+
+private
+  def category_wise_fungible_position_table(fungible_position, fungible_value)
+    fungible_position.map do |category, positions|
+      fungible_position_under_each_category = [
+                                          Hashie::Mash.new({ name: category, current_value: positions.sum(&:current_value),
+                                                             percentage: (positions.map(&:current_value).sum / fungible_value * 100).round(2),
+                                                             class_name: "name"
+                                                           })
+                                        ]
+      fungible_position_under_each_category << positions.map do |position|
+        Hashie::Mash.new({ name: position.name, quantity: position.quantity, average_cost_price: position.average_cost_price,
+                           amount_invested: position.value, current_price: position.current_price, current_value: position.current_value,
+                           unrealised_profit: position.unrealised_profit, percentage: (position.current_value / fungible_value * 100).round(2)})
+      end
+      fungible_position_under_each_category.flatten
+    end
   end
 end
