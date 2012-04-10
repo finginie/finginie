@@ -18,21 +18,32 @@ describe "GoldPosition" do
   its (:current_value) { should eq 50 }
   its (:unrealised_profit) { should eq 20 }
 
-  it "should calculate the average cost price after sell transaction" do
-    subject # ensure stock transaction is saved
-    create :gold_transaction, :portfolio => portfolio, :quantity => 4, :action => 'sell', :price => 6, :date => Date.today
-    subject.average_cost_price.should eq 3
-    subject.value.should eq 18
-    subject.profit_or_loss.should eq 12
-    subject.last.profit_or_loss.should eq 12
+  context "should calculate after sell transaction" do
+    before(:each) do
+      subject # ensure stock transaction is saved
+      create :gold_transaction, :portfolio => portfolio, :quantity => 4, :action => 'sell', :price => 6, :date => Date.today
+    end
+    its (:average_cost_price) { should eq 3 }
+    its (:value)  { should eq 18 }
+    its (:profit_or_loss) { should eq 12 }
+
+    it "should return sell transaction profit or loss" do
+      subject.last.profit_or_loss.should eq 12
+    end
+
+    its(:average_sell_price) { should eq 6 }
   end
 
-  it "should calculate the average cost price after sell tranaction and a buy transaction" do
-    subject # ensure stock transaction is saved
-    create :gold_transaction, :portfolio => portfolio, :quantity => 4, :action => 'sell', :price => 6, :date => Date.today
-    create :gold_transaction, :portfolio => portfolio, :quantity => 3, :action => 'buy', :price => 6, :date => Date.today
-    subject.average_cost_price.should eq 4
-    subject.value.should eq 36
+  context "should calculate after sell transaction and a buy transaction" do
+    before(:each) do
+      subject # ensure stock transaction is saved
+      create :gold_transaction, :portfolio => portfolio, :quantity => 4, :action => 'sell', :price => 6, :date => Date.today
+      create :gold_transaction, :portfolio => portfolio, :quantity => 3, :action => 'buy', :price => 6, :date => Date.today
+      create :gold_transaction, :portfolio => portfolio, :quantity => 4, :action => 'sell', :price => 7, :date => Date.today
+    end
+    its (:average_cost_price) { should eq 4 }
+    its (:value) { should eq 20}
+    its(:average_sell_price) { should eq 6.5 }
   end
 
   it "should calculate profit/loss percentage for Gold" do
