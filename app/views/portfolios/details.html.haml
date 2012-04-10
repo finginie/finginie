@@ -40,10 +40,7 @@
               - else
                 %td -
               - if net_position.unrealised_profit
-                - if net_position.unrealised_profit < 0
-                  %td.red= number_to_indian_currency net_position.unrealised_profit
-                - else
-                  %td.green= number_to_indian_currency net_position.unrealised_profit
+                = table_content_with_red_or_green_class net_position.unrealised_profit
               - else
                 %td -
               -transaction = positions.gsub(/_positions/,'_transaction')
@@ -59,7 +56,7 @@
             %td= number_to_indian_currency resource.send(positions).sum(&:value)
             %td
             %td= number_to_indian_currency resource.send(positions).sum(&:current_value)
-            %td= number_to_indian_currency resource.send(positions).map(&:unrealised_profit).compact.inject(:+)
+            = table_content_with_red_or_green_class resource.send(positions).map(&:unrealised_profit).compact.inject(:+)
             %td
 
 - unless resource.gold_transactions.empty?
@@ -91,10 +88,7 @@
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).value
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).current_price
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).current_value
-          - if resource.gold_transactions.for(Gold).unrealised_profit < 0
-            %td.red= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
-          - else
-            %td.green= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
+          = table_content_with_red_or_green_class resource.gold_transactions.for(Gold).unrealised_profit
           %td= link_to "Sell", new_portfolio_gold_transaction_path(resource, gold_transaction: {quantity: resource.gold_transactions.for(Gold).quantity, action: :sell})
         %tr.total
           %td.name Total
@@ -103,7 +97,7 @@
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).value
           %td
           %td= number_to_indian_currency resource.gold_transactions.for(Gold).current_value
-          %td= number_to_indian_currency resource.gold_transactions.for(Gold).unrealised_profit
+          = table_content_with_red_or_green_class resource.gold_transactions.for(Gold).unrealised_profit
           %td
 
 - %w(FixedDeposit Loan RealEstate).each do |security|
