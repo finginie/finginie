@@ -11,8 +11,6 @@ describe Scrip, :redis do
                            :best_sell_price => "0",
                            :last_traded_price => "426.45",
                            :volume => "87942",
-                           :net_change => "4.55",
-                           :percent_change => "1.08",
                            :open_price => "425.40",
                            :high_price => "432.5",
                            :low_price => "419.15",
@@ -20,6 +18,8 @@ describe Scrip, :redis do
   subject { scrip }
 
   its(:volume) { should eq 87942 }
+  its(:net_change) { should eq 4.55 }
+  its(:percent_change) { should eq 1.08 }
 
   it "should be persisted" do
     scrip.save.should be_true
@@ -70,21 +70,10 @@ describe Scrip, :redis do
       Scrip.find_ids_by_last_traded_price( 426.25, 430 ).should eq ["AANJANEYA"]
     end
 
-    it "should find a scrip by percent change range" do
-      Scrip.find_ids_by_percent_change( 4, 5 ).should eq []
-      Scrip.find_ids_by_percent_change( 1, 2 ).should eq ["AANJANEYA"]
-    end
-
     it "should be destroyable" do
       destroyed_scrip = scrip.destroy
       destroyed_scrip.should eq scrip
       Scrip.find(destroyed_scrip.id).should be_nil
-    end
-
-    it "should clear indices on destroyed scrips" do
-      destroyed_scrip = scrip.destroy
-      Scrip.find_ids_by_last_traded_price( destroyed_scrip.last_traded_price, destroyed_scrip.last_traded_price ).should eq []
-      Scrip.find_ids_by_percent_change( destroyed_scrip.percent_change, destroyed_scrip.percent_change ).should eq []
     end
   end
 end

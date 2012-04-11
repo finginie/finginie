@@ -50,7 +50,7 @@ class Company
                     :best_buy_price, :best_buy_quantity, :best_sell_price, :best_sell_quantity, :time ]
   delegate *SCRIP_METHODS, :to => :scrip, :allow_nil => true
 
-  SCRIP_BSE_METHODS = [ :bse_last_traded_price, :bse_open_price,
+  SCRIP_BSE_METHODS = [ :bse_last_traded_price, :bse_net_change, :bse_percent_change, :bse_open_price,
                         :bse_high_price, :bse_low_price, :bse_close_price, :bse_volume, :bse_time ]
   delegate *SCRIP_BSE_METHODS, :to => :scrip_bse, :allow_nil => true
   alias :name :company_name

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Company do
-  let(:company) { create :company }
+  let(:company) { create :company, :ticker_name => 'TICK' }
   let(:share_holding) { create :share_holding, :company_code => company.company_code }
 
   subject { company }
@@ -21,12 +21,24 @@ describe Company do
 
    describe "with scrip", :redis do
     before :each do
-      create :scrip, :id => company.nse_code, :last_traded_price => 24, :percent_change => 50
+      create :scrip, :id => company.nse_code, :last_traded_price => 24, :close_price => 23
     end
 
-    its(:last_traded_price) { should eq 24 }
-    its(:current_price)     { should eq 24 }
-    its(:percent_change) { should eq 50 }
+    its(:last_traded_price) { should eq 24   }
+    its(:current_price)     { should eq 24   }
+    its(:net_change)        { should eq 1    }
+    its(:percent_change)    { should eq 4.35 }
+  end
+
+  describe "with scrip_bse", :redis do
+    before :each do
+      create :scrip_bse, :id => company.ticker_name, :bse_last_traded_price => 15, :bse_close_price => 14.5
+    end
+
+    its(:bse_last_traded_price) { should eq 15   }
+    its(:bse_close_price)        { should eq 14.5 }
+    its(:bse_net_change)        { should eq 0.5  }
+    its(:bse_percent_change)    { should eq 3.45 }
   end
 
   describe "with news" do

@@ -8,31 +8,42 @@
 =#    %div{:class => attr}
 =#      %dt= t ".#{attr}"
 =#      %dd= @company.send(attr)
-
-%section.daily_prices
-  .daily_price_change
-    %h1= @company.last_traded_price
-    %strong.net_change= @company.net_change
-    %span.percent_change= "(#{@company.percent_change}%)"
-    - if @company.time
-      %p= l @company.time, :format => :short_date_and_time
-
-  - %w(close_price open_price volume high_price low_price).each do |attr|
-    %div{:class => attr}
-      %p= t ".#{attr}"
-      %strong= @company.send(attr)
+.nse_quotes
+  %section.daily_prices
+    %h1 NSE
+    .daily_price_change
+      %h1= @company.last_traded_price
+      %strong.net_change= @company.net_change
+      %span.percent_change= "(#{@company.percent_change}%)"
+      - if @company.time
+        %p= l @company.time, :format => :short_date_and_time
+    %table
+      - %w(close_price open_price volume high_price low_price).each do |attr|
+        %tr
+          %td= t ".#{attr}"
+          %td
+            %strong= @company.send(attr)
+.bse_quotes
+  %section.daily_prices
+    %h1 BSE
+    .daily_price_change
+      %h1= @company.bse_last_traded_price
+      %strong.net_change= @company.bse_net_change
+      %span.percent_change= "(#{@company.bse_percent_change}%)"
+      - if @company.bse_time
+        %p= l @company.bse_time, :format => :short_date_and_time
+    %table
+      - %w(bse_close_price bse_open_price bse_volume bse_high_price bse_low_price).each do |attr|
+        %tr
+          %td= t ".#{attr}"
+          %td
+            %strong= @company.send(attr)
 
 %section.fundamentals
-  - %w(eps pe).each do |attr|
+  - %w(eps pe price_to_book_value book_value face_value market_capitalization dividend_yield).each do |attr|
     %div{:class => attr}
       %p= t ".#{attr}"
       %strong= @company.send(attr)
-  .week_high_price
-    %p= t ".fifty_two_week_high_price"
-    %strong= @company.fifty_two_week_high_price
-  .week_low_price
-    %p= t ".fifty_two_week_low_price"
-    %strong= @company.fifty_two_week_low_price
 
 %section.news
   %h1 News

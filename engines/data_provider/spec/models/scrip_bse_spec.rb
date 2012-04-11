@@ -13,6 +13,8 @@ describe ScripBse, :redis do
   subject { scrip }
 
   its(:bse_volume) { should eq 87942 }
+  its(:bse_net_change) { should eq 4.55 }
+  its(:bse_percent_change) { should eq 1.08 }
 
   it "should be persisted" do
     scrip.save.should be_true
