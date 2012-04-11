@@ -1,5 +1,4 @@
 require 'net/ftp'
-require 'zipruby'
 require 'csv'
 require 'date'
 
