@@ -21,6 +21,7 @@ class CorporateInformationData
     'AnnouncementsBoardMeeting.xml',
     'AuditorsReport.xml',
     'AuditedResults.xml',
+    'BankingRatios.xml',
     'Bonus.xml',
     'BSEPrice.xml',
     'Capitalstructure.xml',

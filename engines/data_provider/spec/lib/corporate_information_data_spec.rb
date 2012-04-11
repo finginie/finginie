@@ -40,6 +40,14 @@ describe CorporateInformationData, :mongoid, :vcr do
                                         cash_and_bank_balance: "86741000" } ).should be_true
   end
 
+  it "should have a banking ratio record" do
+    subject.parse_and_update("BankingRatios.xml")
+    BankingRatio.exists?( conditions: { company_code: "14030018",
+                                        year_ending: "31/03/2011",
+                                        months: 12,
+                                        net_profit_per_branch: "0.6906" } ).should be_true
+  end
+
   it "should have a BsePrice record" do
     subject.parse_and_update("BSEPrice.xml")
     BsePrice.exists?( conditions: { security_code: "017023928.00026005001", price_date: "10/02/2012", close_price: 9304.31 } ).should be_true
