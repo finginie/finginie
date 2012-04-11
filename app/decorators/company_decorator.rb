@@ -11,4 +11,7 @@ class CompanyDecorator < ApplicationDecorator
     end                                                                       # end
   end                                                                         ##
 
+  def share_holding
+    ShareHoldingDecorator.decorate(model.share_holding) if model.share_holding
+  end
 end

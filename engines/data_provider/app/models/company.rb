@@ -69,4 +69,8 @@ class Company
     News.for_company(company_code).latest(5).map { |news| news.headlines }
   end
 
+  def share_holding
+    ShareHolding.all(conditions: { company_code: company_code }, sort: [[ :share_holding_date, :desc ]], limit: 1).first
+  end
+
 end

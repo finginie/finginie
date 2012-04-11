@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Company do
   let(:company) { create :company }
+  let(:share_holding) { create :share_holding, :company_code => company.company_code }
 
   subject { company }
   it { should validate_presence_of :company_code }
@@ -11,6 +12,11 @@ describe Company do
 
   it "should get the company record" do
     Company.find_or_initialize_by( company_code: company.company_code ).should eq company
+  end
+
+  it "should have a share holding" do
+    share_holding.save
+    subject.share_holding.should eq share_holding
   end
 
    describe "with scrip", :redis do
