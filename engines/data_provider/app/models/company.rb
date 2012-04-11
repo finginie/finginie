@@ -49,11 +49,19 @@ class Company
   SCRIP_METHODS = [ :last_traded_price, :percent_change, :net_change, :volume, :open_price, :high_price, :low_price, :close_price,
                     :best_buy_price, :best_buy_quantity, :best_sell_price, :best_sell_quantity, :time ]
   delegate *SCRIP_METHODS, :to => :scrip, :allow_nil => true
+
+  SCRIP_BSE_METHODS = [ :bse_last_traded_price, :bse_open_price,
+                        :bse_high_price, :bse_low_price, :bse_close_price, :bse_volume, :bse_time ]
+  delegate *SCRIP_BSE_METHODS, :to => :scrip_bse, :allow_nil => true
   alias :name :company_name
   alias :sector :industry_name
 
   def scrip
     Scrip.find(nse_code)
+  end
+
+  def scrip_bse
+    ScripBse.find(ticker_name)
   end
 
   def current_price
