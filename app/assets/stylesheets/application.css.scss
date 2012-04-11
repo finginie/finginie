@@ -419,7 +419,7 @@ input[type="text"] {
   width: 54px;
   text-align: right;
 }
-.amount {
+.amount, .nav, .scheme {
   width: 100px;
   text-align: right;
 }
@@ -457,6 +457,11 @@ input[type="text"] {
   text-align: right;
 }
 
+.invest_amount {
+  width: 120px;
+  text-align: right;
+}
+
 .real_amount {
   width: 270px;
   text-align: right;
@@ -475,3 +480,30 @@ input[type="text"] {
   width: 200px;
   text-align: right;
 }
+
+//---------------------------Autocomplete styling for mutual funds and stocks --------------------
+
+ul.ui-autocomplete {
+  position: absolute;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: solid 1px #AAA;
+  cursor: default;
+  li {
+    background-color: #FFF;
+    border-top: solid 1px #DDD;
+    margin: 0;
+    padding: 0;
+    a {
+      color: #3872C2;
+      display: block;
+      padding: 4px;
+      font-size: 12px;
+    }
+    a.ui-state-hover, a.ui-state-active {
+      background-color: #FFFCB2;
+    }
+  }
+}
+

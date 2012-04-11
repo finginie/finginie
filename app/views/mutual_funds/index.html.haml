@@ -4,18 +4,21 @@
   #scheme_masters
     - if @categories
       %table
-        %th MF Category Name
-        %th No. of Schemes
-        %th 1 Week Return (%)
-        %th 1 Month Return (%)
-        %th 3 Months Return (%)
-        %th 6 Months Return (%)
-        %th 1 Year Return (%)
-        %th 2 Years Return (%)
-        %th 3 Years Return (%)
+        %tr
+          %th.name{:rowspan => 2} Mutual Fund Category Name
+          %th.scheme{:rowspan => 2} No. of Schemes
+          %th.center{:colspan => 7} Return (%)
+        %tr
+          %th.right 1 W
+          %th.right 1 M
+          %th.right 3 M
+          %th.right 6 M
+          %th.right 1 Y
+          %th.right 2 Y
+          %th.right 3 Y
         - @categories.each do |cat|
-          %tr
-            %td= link_to cat.scheme_class_description, mutual_fund_category_path(cat.scheme_class_code.round) if cat.scheme_class_description
+          %tr.right
+            %td.name= link_to cat.scheme_class_description, mutual_fund_category_path(cat.scheme_class_code.round) if cat.scheme_class_description
             %td= cat.no_of_schemes
             %td= cat.one_week_return.round(2)
             %td= cat.one_month_return.round(2)
