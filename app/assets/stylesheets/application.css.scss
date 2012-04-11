@@ -17,7 +17,7 @@
 
 header, nav, hgroup, section, article, footer { display: block; }
 body {
-  background: #2F2F2F;
+  background: #8E8E8E;
 }
 body, button, input, select, textarea {
   font-family: $content-font;
@@ -107,7 +107,7 @@ header {
 	      }
         a {
           font: {
-            size: 15px;
+            size: 14px;
             weight: bold; 
           }
           color: #EEE;
@@ -169,6 +169,7 @@ header {
   min-height: 800px;
   padding-top: 4px;
   padding-bottom: 2em;
+  padding-left: 204px;
   width: 780px;
   margin: 10px auto;
   overflow: hidden;

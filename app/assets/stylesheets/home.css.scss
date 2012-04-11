@@ -11,7 +11,7 @@ body.home {
   #wrapper {
     padding: 0;
     width: $column_width * 4 + $gutter_width * 3 + $margin_width * 2;
-    margin: 0 auto;
+    margin: 10px auto;
     #main {
       .container {
         header {
@@ -19,7 +19,7 @@ body.home {
             margin: 0;
           }
         }
-        padding: 0;
+        padding: 0 4px;
         float: none;
         @include center;
         //width: $column_width * 4 + $gutter_width * 3 + $margin_width * 2;
@@ -60,7 +60,7 @@ body.home {
       padding: 0;
       margin: 0 0 2em 0;
       li {
-        width: $column_width;
+        width: $column_width - 2;
       }
     }
 
@@ -106,9 +106,6 @@ body.home {
   }
 
   aside {
-    display: none;
-  }
-  .title {
     display: none;
   }
   nav.main {
