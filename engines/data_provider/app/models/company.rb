@@ -1,3 +1,4 @@
+require 'kaminari'
 require 'kaminari/models/mongoid_extension'
 
 class Company

@@ -5,6 +5,7 @@ gem 'rails', '3.2.3'
 # Unbuilt gems from the project modules
 #
 gem 'personal_financial_tools', :path => 'engines/personal_financial_tools'
+gem 'data_provider',            :path => 'engines/data_provider'
 
 
 # Gems used only for assets and not required
@@ -15,43 +16,34 @@ group :assets do
   gem 'uglifier'
 end
 
-gem 'active_attr'
 gem 'airbrake'
 gem 'bourbon', :git => "git://github.com/FinGinie/bourbon.git"
-gem 'bson_ext'
 gem 'cancan'
 gem 'draper', :git => "git://github.com/jcasimir/draper.git"
-gem 'feedzirra'
 gem 'haml-rails'
 gem 'high_voltage'
 gem 'inherited_resources'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'meta_search'
-gem 'mongoid'
-  gem 'bson_ext'
-gem 'mongoid_rails_migrations', :git => "git://github.com/anitha-t/mongoid_rails_migrations.git"
+gem 'mongoid' # Required by mongoid search
 gem 'mongoid_search', :git => "git://github.com/mauriciozaffari/mongoid_search.git"
 gem 'nested_form', :git => "git://github.com/TMaYaD/nested_form.git"
 # gem 'newrelic_rpm' # Removed temporarily
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'paper_trail'
-gem 'pinch'
+gem 'pg'
 gem 'rails-backbone', :git => "git://github.com/TMaYaD/backbone-rails.git"
-gem 'redis'
 gem 'simple_form', :git => "git://github.com/plataformatec/simple_form.git"
 gem 'simple-navigation'
 gem 'thin'
 # gem 'valuable', :git => "git://github.com/LoonyBin/valuable.git" # Depricated in favour of activeattr
-gem 'zipruby'
 
 group :test, :development do
   gem 'capybara'
-    gem 'rubyzip', :git => "git://github.com/FinGinie/rubyzip.git" # Fix scoping issues
   gem 'capybara-webkit'
     gem 'headless', :git => "git://github.com/LoonyBin/headless.git" # https://github.com/leonid-shevtsov/headless/pull/22
-  gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'foreman'
   gem 'guard'
@@ -68,7 +60,6 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'spork'
-  gem 'sqlite3'
   gem 'tddium'
   gem 'timecop'
 end
@@ -78,12 +69,3 @@ group :development do
   gem 'rails_best_practices'
 end
 
-group :test do
-  gem 'vcr', '~>2.0.0.rc1'
-    gem 'webmock'
-end
-
-group :production do
-  gem 'pg'
-  gem 'thin'
-end
