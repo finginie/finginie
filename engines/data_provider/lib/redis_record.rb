@@ -1,3 +1,5 @@
+require 'active_attr'
+
 class RedisRecord
   include ActiveAttr::Model
   include DataTypes

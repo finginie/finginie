@@ -69,8 +69,3 @@ group :development do
   gem 'rails_best_practices'
 end
 
-group :test do
-  gem 'vcr', '~>2.0.0.rc1'
-    gem 'webmock'
-end
-

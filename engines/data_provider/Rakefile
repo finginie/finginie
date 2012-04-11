@@ -20,8 +20,19 @@ RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
+begin
+  require 'rspec/core'
+  require 'rspec/core/rake_task'
+rescue LoadError
+  puts 'You must `gem install rspec-rails` and add that to your gemspec to run rake tasks'
+end
 
+RSpec::Core::RakeTask.new(:spec) do |spec|
+  spec.pattern = FileList['spec/**/*_spec.rb']
+end
 
+desc 'Default: Run all specs.'
+task :default => :spec
 
 Bundler::GemHelper.install_tasks
 
