@@ -45,4 +45,14 @@
 %section
 %iframe{:src => @chart_url, :style => "width:750px; height:600px"}
 
+- if @company.share_holding
+  %section.share_holding
+    %h1 Share Holding Pattern
+    %table
+      %th Investor Type
+      %th Percentage(%)
+      - @company.share_holding.non_zero_groups.each do |attr|
+        %tr
+          %td= t "share_holding.#{attr}"
+          %td= @company.share_holding.send(attr)
 .back= link_to 'Back', stocks_path
