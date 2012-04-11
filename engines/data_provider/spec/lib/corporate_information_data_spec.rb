@@ -71,7 +71,10 @@ describe CorporateInformationData, :mongoid, :vcr do
   it "should add CurrDetails to Company" do
     create :company, company_code: "13520030"
     subject.parse_and_update("CurrDetails.xml")
-    Company.find_by_company_code("13520030").pe.should eq 34.44
+    company = Company.find_by_company_code("13520030")
+    company.pe.should eq 34.44
+    company.dividend_yield.should eq 0.91
+    company.eps.should eq 6.22
   end
 
   it "should have a CorpGovernancereport record" do

@@ -30,9 +30,12 @@ class Company
   field :delete_flag
   # from CurrDetails.xml
   field :pe, :type => Float
-  field :fifty_two_week_high_price, :type => Float
-  field :fifty_two_week_low_price, :type => Float
   field :eps, :type => Float
+  field :price_to_book_value, :type => Float
+  field :book_value, :type => Float
+  field :face_value, :type => Float
+  field :market_capitalization, :type => BigDecimal
+  field :dividend_yield, :type => Float
 
   key :company_code
 

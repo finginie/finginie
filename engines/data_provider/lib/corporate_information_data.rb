@@ -75,7 +75,7 @@ class CorporateInformationData
   }
 
   FIELDS_FOR_EXTRACTION = {
-    "CurrDetails"  => [ :company_code, :pe_ratio, :fifty_twoweek_high, :fifty_twoweek_low, :eps ],
+    "CurrDetails"  => [ :company_code, :market_cap, :pe_ratio, :eps, :p_bv, :book_value, :face_value, :div_yield ],
     "MFObjectives" => [ :securitycode, :objective ],
     "NAVCP"        => [ :security_code,
                         :ticker,
@@ -130,8 +130,9 @@ class CorporateInformationData
   FIELDS_FOR_RENAME = {
     "CurrDetails" => {
       :pe_ratio           => :pe,
-      :fifty_twoweek_high => :fifty_two_week_high_price,
-      :fifty_twoweek_low  => :fifty_two_week_low_price
+      :p_bv               => :price_to_book_value,
+      :div_yield          => :dividend_yield,
+      :market_cap         => :market_capitalization
     },
     "SchemeMaster" => {
       :minimum_invement_amount => :minimum_investment_amount,
