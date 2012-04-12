@@ -88,6 +88,20 @@ header {
   }
   #header_resize {
     //width: 980px;
+    .global_social {
+      @include float(right);
+    #divtwitter {
+      @include float(left);
+    }
+    #divfacebook {
+      @include float(left);
+      width: 87px;
+    }
+    }
+    margin: {
+      top: 5px;
+      right: 5px;
+    }
   }
   nav {
     &>ul {
@@ -99,7 +113,7 @@ header {
       #navigation-about_us {
         display: none;
       }
-      margin: 5.8em 0 0 0;
+      margin: 4em 0 0 0;
       li {
 	      padding: {
 	        bottom: 0.2em;
@@ -121,19 +135,16 @@ header {
     }
 
     &.user {
-      @include float(right);
       //border-left: thin solid shade($base-color, 35%);
-
+      @include float(left);
       li {
         padding: 0 0.1em;
         color: #A2BEE6;
         &:first-child {
-          padding-top: 1em;
           font-size: 12px;
         }
         img {
-          height: 24px;
-          padding-top: 0.5em;
+          height: 20px;
         }
         form {
           input[type="submit"] {
