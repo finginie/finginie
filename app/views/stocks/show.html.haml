@@ -8,6 +8,12 @@
 =#    %div{:class => attr}
 =#      %dt= t ".#{attr}"
 =#      %dd= @company.send(attr)
+%section.fundamentals
+  - %w(eps pe price_to_book_value book_value face_value market_capitalization dividend_yield).each do |attr|
+    %div{:class => attr}
+      %dt= t ".#{attr}"
+      %dd= @company.send(attr)
+
 .nse_quotes
   %section.daily_prices
     %h1 NSE
@@ -18,11 +24,14 @@
       - if @company.time
         %p= l @company.time, :format => :short_date_and_time
     %table
-      - %w(close_price open_price volume high_price low_price).each do |attr|
+      - %w(close_price open_price volume high_price low_price fifty_two_week_high fifty_two_week_low high_date low_date).each do |attr|
         %tr
           %td= t ".#{attr}"
           %td
-            %strong= @company.send(attr)
+            - if [ "high_date", "low_date" ].include?(attr) && @company.send(attr)
+              = l @company.send(attr), :format => :stock_52w_date
+            - else
+              = @company.send(attr)
 .bse_quotes
   %section.daily_prices
     %h1 BSE
@@ -33,17 +42,14 @@
       - if @company.bse_time
         %p= l @company.bse_time, :format => :short_date_and_time
     %table
-      - %w(bse_close_price bse_open_price bse_volume bse_high_price bse_low_price).each do |attr|
+      - %w(bse_close_price bse_open_price bse_volume bse_high_price bse_low_price bse_fifty_two_week_high bse_fifty_two_week_low bse_high_date bse_low_date).each do |attr|
         %tr
           %td= t ".#{attr}"
           %td
-            %strong= @company.send(attr)
-
-%section.fundamentals
-  - %w(eps pe price_to_book_value book_value face_value market_capitalization dividend_yield).each do |attr|
-    %div{:class => attr}
-      %p= t ".#{attr}"
-      %strong= @company.send(attr)
+            - if ["bse_high_date", "bse_low_date" ].include?(attr) && @company.send(attr)
+              = l @company.send(attr), :format => :stock_52w_date
+            - else
+              =@company.send(attr)
 
 %section.news
   %h1 News

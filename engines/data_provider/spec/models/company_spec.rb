@@ -19,6 +19,20 @@ describe Company do
     subject.share_holding.should eq share_holding
   end
 
+  it "should have 52w high/low price for NSE", :mongoid do
+    create :listing, :exchange_code => 50, :scrip_code1_given_by_exchange => "#{company.nse_code}EQ", :fifty_two_week_high => 100.24, :low_date => "31/01/2012"
+    company.fifty_two_week_high.should eq 100.24
+    company.low_date.should eq Date.parse("31/01/2012")
+  end
+
+  it "should have 52w high/low price for BSE", :mongoid do
+    company.update_attributes( bse_code1: "5124234")
+    create :listing, :exchange_code => 47, :scrip_code1_given_by_exchange => company.bse_code1, :fifty_two_week_low => 98.62, :high_date => "31/01/2012"
+
+    company.bse_fifty_two_week_low.should eq 98.62
+    company.bse_high_date.should eq Date.parse("31/01/2012")
+  end
+
    describe "with scrip", :redis do
     before :each do
       create :scrip, :id => company.nse_code, :last_traded_price => 24, :close_price => 23

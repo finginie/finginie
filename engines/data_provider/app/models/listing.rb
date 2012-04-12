@@ -24,4 +24,7 @@ class Listing
   field :delete_flag
 
   key :security_code
+
+  scope :nse, where( :exchange_code => "50")
+  scope :bse, where( :exchange_code => "47")
 end
