@@ -78,7 +78,7 @@ nav {
 header {
   width: 980px;
   margin: 0 auto;
-  height: 120px;
+  //height: 120px;
   @include linear-gradient(#438DF2, shade(#0F3F7A, 10%));
   @include box-shadow(0 2px 4px hsla(0, 0%, 0%, 0.65));
   @include horizontal-list-container;
@@ -101,6 +101,7 @@ header {
     margin: {
       top: 5px;
       right: 5px;
+      left: 5px;
     }
   }
   nav {
@@ -110,26 +111,29 @@ header {
       padding: 0;
     }
     &.main {
+      @include float(right);
       #navigation-about_us {
         display: none;
       }
       margin: 4em 0 0 0;
       li {
 	      padding: {
-	        bottom: 0.2em;
-	        top: 0.2em;
+	        bottom: 3px;
+	        top: 3px;
 	      }
         a {
           font: {
             size: 14px;
-            weight: bold; 
+            weight: normal;
           }
-          color: #EEE;
+          color: #D9DCFF;
           &.selected {
-            //color: $base-color;
+            color: #141414;
           }
         }
         &.selected {
+          background: #D9D9D9;
+          @include border-radius(4px);
         }
       }
     }
@@ -157,10 +161,9 @@ header {
     }
   }
   hgroup.title {
-    width: 160px;
-
+    //width: 160px;
     img {
-      height: 32px;
+      //height: 32px;
       padding-top: 0.4em;
       //padding-left: 0.2em;
     }
@@ -286,11 +289,12 @@ footer {
 
   nav.sitemap {
     &>ul {
-      @include horizontal-list(1.5em);
+      @include horizontal-list(20px);
 
       li {
-        color: #FFD02A;
+        color: #D9DCFF;
 	      font-size: 14px;
+        font-weight: normal;
       }
       line-height: 1.5em;
 
@@ -301,7 +305,7 @@ footer {
           color: #96B1D2;
           font: {
             size: 12px;
-            weight: bold;
+            weight: normal;
           }
         }
       }

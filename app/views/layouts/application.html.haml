@@ -21,7 +21,9 @@
             %ul
               - if current_user
                 -#%li= link_to current_user.email, edit_user_main_app.registration_path
-                %li= link_to 'Sign out', main_app.signout_path, :method => :delete
+                %li
+                  = link_to main_app.signout_path, :method => :delete do
+                    = image_tag 'signout_button.png'
               - else
                 %li
                   = image_tag 'loginwith_button.png'
@@ -36,7 +38,7 @@
         %hgroup.title
           = link_to main_app.root_path do
             //%h1 Finginie
-            = image_tag 'logo.png'
+            = image_tag 'logo_new.png'
             //=image_tag  "logoBlueGreen.png"
         %nav.main
           = render_navigation :level => 1
