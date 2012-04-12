@@ -40,6 +40,14 @@ describe CorporateInformationData, :mongoid, :vcr do
                                         cash_and_bank_balance: "86741000" } ).should be_true
   end
 
+  it "should have a banking ratio record" do
+    subject.parse_and_update("BankingRatios.xml")
+    BankingRatio.exists?( conditions: { company_code: "14030018",
+                                        year_ending: "31/03/2011",
+                                        months: 12,
+                                        net_profit_per_branch: "0.6906" } ).should be_true
+  end
+
   it "should have a BsePrice record" do
     subject.parse_and_update("BSEPrice.xml")
     BsePrice.exists?( conditions: { security_code: "017023928.00026005001", price_date: "10/02/2012", close_price: 9304.31 } ).should be_true
@@ -63,7 +71,10 @@ describe CorporateInformationData, :mongoid, :vcr do
   it "should add CurrDetails to Company" do
     create :company, company_code: "13520030"
     subject.parse_and_update("CurrDetails.xml")
-    Company.find_by_company_code("13520030").pe.should eq 34.44
+    company = Company.find_by_company_code("13520030")
+    company.pe.should eq 34.44
+    company.dividend_yield.should eq 0.91
+    company.eps.should eq 6.22
   end
 
   it "should have a CorpGovernancereport record" do
@@ -107,6 +118,14 @@ describe CorporateInformationData, :mongoid, :vcr do
     KeyExecutive.exists?( conditions: { company_code: "11020009",
                                         modifyon: "10/02/2012 11:21" } ).should be_true
 
+  end
+
+  it "should have a listing master record" do
+    subject.parse_and_update("ListingMaster.xml")
+    Listing.exists?(conditions: { security_code: "014070078.00005001001",
+                                  scrip_code1_given_by_exchange: "532117",
+                                  fifty_two_week_high: 0.43,
+                                  low_date: "23/01/2012" } ).should be_true
   end
 
   it "should have a News record" do

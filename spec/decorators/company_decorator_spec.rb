@@ -8,7 +8,6 @@ describe CompanyDecorator do
   subject { company_decorator }
 
   its(:eps) { should eq 1424.32 }
-  its(:fifty_two_week_high_price) { should eq "N/A" }
 
   it "should have all share_holding percentages", :mongoid do
     share_holding.save
