@@ -117,6 +117,14 @@ describe CorporateInformationData, :mongoid, :vcr do
 
   end
 
+  it "should have a listing master record" do
+    subject.parse_and_update("ListingMaster.xml")
+    Listing.exists?(conditions: { security_code: "014070078.00005001001",
+                                  scrip_code1_given_by_exchange: "532117",
+                                  fifty_two_week_high: 0.43,
+                                  low_date: "23/01/2012" } ).should be_true
+  end
+
   it "should have a News record" do
     subject.parse_and_update("News.xml")
     News.exists?( conditions: { company_code: "230",

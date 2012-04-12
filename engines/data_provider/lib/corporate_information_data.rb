@@ -34,6 +34,7 @@ class CorporateInformationData
     'IndividualHolding.xml',
     'IndustryMaster.xml',
     'KeyExecutives.xml',
+    'ListingMaster.xml',
     'News.xml',
     'NinemonthsResults.xml',
     'NotesToAccount.xml',
@@ -61,6 +62,7 @@ class CorporateInformationData
   FILE_NAME_AND_MODEL = {
     "CurrDetails"           => Company,
     "CompanyMaster"         => Company,
+    "ListingMaster"         => Listing,
     "NAVCategoryDetails"    => NetAssetValueCategory,
     "SchemeMaster"          => Scheme,
     "MFDividendDetails"     => MfDividendDetail,
