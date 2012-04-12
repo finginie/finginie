@@ -135,6 +135,8 @@ en:
           name: 'Name'
           period: 'Period/Tenure (years)'
           rate_of_interest: 'Rate of Interest (% p.a.)'
+      scheme:
+        scheme_name: 'Search Mutual Fund'
 
   helpers:
     submit:

@@ -92,10 +92,11 @@ header {
       @include float(right);
     #divtwitter {
       @include float(left);
+      margin-right: 12px;
     }
     #divfacebook {
       @include float(left);
-      width: 87px;
+      //width: 87px;
     }
     }
     margin: {
@@ -306,6 +307,9 @@ footer {
           font: {
             size: 12px;
             weight: normal;
+          }
+          a:hover {
+            color: #FFF;
           }
         }
       }
