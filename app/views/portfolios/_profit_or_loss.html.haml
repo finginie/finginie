@@ -1,10 +1,10 @@
 %table
   %tr
     %th.name Security
-    %th.security_type Security Type
-    %th.name Quantity
-    %th.name Avg Cost Price
-    %th.name Avg Sell Price
+    %th.type Security Type
+    %th.quantity Quantity
+    %th.avg_price Avg Cost Price
+    %th.avg_price Avg Sell Price
     - profit_or_loss = net_income.sum(&:profit_or_loss) > 0 ? "profit" : "loss"
     %th{ :class => profit_or_loss}= profit_or_loss.titleize
     %th.percentage= "#{profit_or_loss.titleize} Percentage"
@@ -20,9 +20,9 @@
     %tr
       %td= security.name
       %td.center= security.type
-      %td.center= security.quantity ? security.quantity : ""
-      %td.center= security.average_cost_price ? number_to_indian_currency(security.average_cost_price) : ""
-      %td.center= security.average_sell_price ? number_to_indian_currency(security.average_sell_price) : ""
+      %td.right= security.quantity ? security.quantity : ""
+      %td.right= security.average_cost_price ? number_to_indian_currency(security.average_cost_price) : ""
+      %td.right= security.average_sell_price ? number_to_indian_currency(security.average_sell_price) : ""
       = table_content_with_red_or_green_class security.profit_or_loss
       = table_content_with_red_or_green_class security.percentage
   %tr.total
