@@ -1,0 +1,3 @@
+[submodule "engines/data_provider"]
+	path = engines/data_provider
+	url = git@github.com:InvestoPresto/data_provider.git
