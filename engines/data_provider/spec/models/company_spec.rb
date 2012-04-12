@@ -36,7 +36,8 @@ describe Company do
     end
 
     its(:bse_last_traded_price) { should eq 15   }
-    its(:bse_close_price)        { should eq 14.5 }
+    its(:current_price)         { should eq 15   }
+    its(:bse_close_price)       { should eq 14.5 }
     its(:bse_net_change)        { should eq 0.5  }
     its(:bse_percent_change)    { should eq 3.45 }
   end

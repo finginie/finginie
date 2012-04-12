@@ -44,7 +44,8 @@ class Company
   validates_presence_of :company_code, :company_name
   validates_uniqueness_of :company_code, :company_name
 
-  scope :stocks, where(:product_status_code.ne => "2161")
+  scope :stocks, where(:product_status_code.ne => "2161").any_of( { :nse_code.nin => [nil, ""]}, { :bse_code1.nin => [ nil, ""] } )
+  scope :nse_stocks, where(:product_status_code.ne => "2161", :nse_code.nin => [nil, ""])
 
   SCRIP_METHODS = [ :last_traded_price, :percent_change, :net_change, :volume, :open_price, :high_price, :low_price, :close_price,
                     :best_buy_price, :best_buy_quantity, :best_sell_price, :best_sell_quantity, :time ]
@@ -65,7 +66,7 @@ class Company
   end
 
   def current_price
-    last_traded_price
+    last_traded_price || bse_last_traded_price
   end
 
   def self.find_by_company_code(code)
