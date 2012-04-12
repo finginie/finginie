@@ -1,4 +1,4 @@
-sclass FinancialPlanner
+class FinancialPlanner
 
   IDEAL_ASSET_ALLOCATION = {
     1 => { 'Fixed Deposits' => 100,  'Large Cap Stocks' => 0,   'Mid Cap Stocks' => 0,  'Gold' => 0  },
