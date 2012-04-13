@@ -16,10 +16,10 @@ group :assets do
   gem 'uglifier'
 end
 
-gem 'airbrake'
 gem 'bourbon', :git => "git://github.com/FinGinie/bourbon.git"
 gem 'cancan'
 gem 'draper', :git => "git://github.com/jcasimir/draper.git"
+gem 'exceptional'
 gem 'haml-rails'
 gem 'high_voltage'
 gem 'inherited_resources'

@@ -26,6 +26,8 @@
 #
 #= require_tree .
 
+Exceptional.setKey('82363b82eb75251b81ffdd8246eedc066481f756')
+
 window.Finginie =
   Models: {}
   Collections: {}
