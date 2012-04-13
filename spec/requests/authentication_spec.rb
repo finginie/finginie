@@ -16,7 +16,7 @@ describe "Authentication" do
 
     it "should logout and go to homepage when the user signed out" do
       visit root_path
-      click_button 'Sign out'
+      click_link 'Sign out'
       current_path.should eq root_path
       page.should have_content 'Successfully signed out'
     end
