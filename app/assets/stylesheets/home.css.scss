@@ -50,7 +50,7 @@ body.home {
     @include border-radius(8px);
     background: lighten($base-color, 45%);
     border: 1px solid $border-color;
-    padding: $gutter_width + 1;
+    padding: $gutter_width;
     text-align: center;
     margin:  {
       top: 0.5em;

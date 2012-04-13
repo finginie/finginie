@@ -143,13 +143,21 @@ header {
       //border-left: thin solid shade($base-color, 35%);
       @include float(left);
       li {
-        padding: 0 0.1em;
+        padding: 0;
         color: #A2BEE6;
         &:first-child {
           font-size: 12px;
         }
         img {
+          padding-right: 4px;
           height: 20px;
+        }
+        a.btnsignout {
+          width: 90px;
+          height: 20px;
+          display: block;
+          background: url("signout_button.png") no-repeat;
+          text-indent: -9999px;
         }
         form {
           input[type="submit"] {
@@ -290,12 +298,12 @@ footer {
 
   nav.sitemap {
     &>ul {
-      @include horizontal-list(20px);
-
+      @include horizontal-list(16px);
+      padding: 0;
       li {
         color: #D9DCFF;
 	      font-size: 14px;
-        font-weight: normal;
+        font-weight: bold;
       }
       line-height: 1.5em;
 
@@ -306,7 +314,7 @@ footer {
           color: #96B1D2;
           font: {
             size: 12px;
-            weight: normal;
+            weight: bold;
           }
           a:hover {
             color: #FFF;
