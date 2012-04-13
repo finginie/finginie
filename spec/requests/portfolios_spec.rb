@@ -18,7 +18,7 @@ describe "Portfolios", :mongoid, :redis do
     company_without_current_price = create :company
     create :stock_transaction, :company_code => company_without_current_price.company_code, :quantity => 10, :price => 5, :date => 5.days.ago, :portfolio => portfolio
 
-    Scrip.find_or_initialize_by_id("GOLDBEES").update_attributes(:last_traded_price => 5)
+    create :scrip, :id => "GOLDBEES", :last_traded_price => 5
 
     visit portfolio_path(portfolio)
     find("li#navigation-details").find("a").click
@@ -298,7 +298,7 @@ describe "Portfolios", :mongoid, :redis do
   end
 
   it "user can able to add transactions after selecting securities type", :js => true do
-    Scrip.find_or_initialize_by_id("GOLDBEES").update_attributes(:last_traded_price => 2456)
+    create :scrip, :id => "GOLDBEES", :last_traded_price => 2456
 
     visit portfolio_path(portfolio)
 

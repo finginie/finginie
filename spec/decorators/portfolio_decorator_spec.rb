@@ -111,8 +111,8 @@ describe PortfolioDecorator, :redis do
     4.times { |n|
       create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
+    create :scrip, :id => "GOLDBEES", :last_traded_price => 5
     4.times { |n| create :gold_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
-    Scrip.find_or_initialize_by_id("GOLDBEES").update_attributes(:last_traded_price => 5)
 
     loan =  create :loan, :name => "Foo Loan", :rate_of_interest => "10", :period => "1"
     loan_transaction =  create :loan_transaction, :loan => loan, :price => 1000, :date => 8.months.ago.to_date, :portfolio => portfolio

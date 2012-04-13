@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "GoldPosition", :redis do
   let(:portfolio) { create :portfolio }
   before :all do
-    Scrip.find_or_initialize_by_id("GOLDBEES").update_attributes(:last_traded_price => 5)
+    create :scrip, :id => "GOLDBEES", :last_traded_price => 5
   end
 
   subject {
