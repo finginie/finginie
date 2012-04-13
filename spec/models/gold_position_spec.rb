@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe "GoldPosition" do
+describe "GoldPosition", :redis do
   let(:portfolio) { create :portfolio }
   before :all do
-    Gold.current_price = 5
+    create :scrip, :id => "GOLDBEES", :last_traded_price => 5
   end
 
   subject {

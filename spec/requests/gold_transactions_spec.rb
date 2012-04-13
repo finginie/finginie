@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe "GoldTransactions" do
+describe "GoldTransactions", :redis do
   include_context "logged in user"
   let (:portfolio) { create :portfolio, :user => current_user }
+  before(:each) { create :scrip, :id => "GOLDBEES", :last_traded_price => 2456 }
   it "should add a new gold transaction to a portfolio" do
-    Gold.current_price = 2456
     visit  new_portfolio_gold_transaction_path(portfolio)
 
     fill_in "Price", :with => 200
@@ -16,7 +16,6 @@ describe "GoldTransactions" do
   end
 
   it "should not add a new sell transaction if the quantity for gold is not available in the portfolio" do
-    Gold.current_price = 2456
     visit new_portfolio_gold_transaction_path(portfolio)
     fill_in "Price", :with => 200
     select 'Sell', :from => "Action"
@@ -26,7 +25,6 @@ describe "GoldTransactions" do
   end
 
   it "should show gold transactons index page" do
-    Gold.current_price = 2456
     create :gold_transaction, :portfolio => portfolio, :quantity => 1, :price => 5, :date => Date.today, :action => 'buy'
     visit portfolio_gold_transactions_path(portfolio)
     expected_table = [
