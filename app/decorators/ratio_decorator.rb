@@ -63,4 +63,8 @@ class RatioDecorator < ApplicationDecorator
     end
   end
 
+  def company_view_items
+    [ 'long_term_debt_equity','current_ratio', 'price_to_sales', 'roe_per', 'net_profit_margin', 'operating_margin' ]
+  end
+
 end

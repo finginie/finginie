@@ -17,4 +17,16 @@ class CompanyDecorator < ApplicationDecorator
   def share_holding
     ShareHoldingDecorator.decorate(model.share_holding) if model.share_holding
   end
+
+  def ratio
+    if major_sector == 2
+      @ratio = BankingRatio.all( conditions: { company_code: company_code }, sort: [[ :year_ending, :desc ]] ).first
+      @ratio = BankingRatioDecorator.decorate(@ratio) if @ratio
+    else
+      @ratio = Ratio.all( conditions: { company_code: company_code }, sort: [[ :year_ending, :desc ]] ).first
+      @ratio = RatioDecorator.decorate(@ratio) if @ratio
+    end
+
+  end
+
 end
