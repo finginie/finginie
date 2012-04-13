@@ -45,4 +45,7 @@ class BankingRatioDecorator < ApplicationDecorator
     end
   end
 
+  def company_view_items
+    [ 'capital_adequacy_ratio', 'net_profit_margin', 'yield_on_fund_advances', 'cost_of_funds_ratio' ]
+  end
 end

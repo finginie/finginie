@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "Stocks" do
-  let (:company) { create :company, :ticker_name => 'TICK', :face_value => 8.24 }
+  let (:company) { create :company, :ticker_name => 'TICK', :face_value => 8.24, :major_sector => 2 }
   let (:scrip) { create :scrip, :id => company.nse_code, :last_traded_price => 24.22 }
   let (:scrip_bse) { create :scrip_bse, :id => company.ticker_name, :bse_last_traded_price => 23.26, :bse_close_price => 22 }
 
@@ -22,6 +22,31 @@ describe "Stocks" do
     visit stock_path(company.company_code)
     page.should have_content 100.24
     page.should have_content 98.62
+  end
+
+  it "should have ratios section for banking company" do
+    @banking_ratio = create :banking_ratio, :company_code => company.company_code, :year_ending => '31/03/2011',
+                                            :capital_adequacy_ratio => "13.64",
+                                            :net_profit_margin      => "123.32",
+                                            :yield_on_fund_advances => "462",
+                                            :cost_of_funds_ratio    => "12.343"
+    visit stock_path(company.company_code)
+    page.should have_content 13.64
+    page.should have_content 123.32
+    page.should have_content 462
+    page.should have_content 12.34
+
+  end
+
+  it "should have ratios section for non-banking company" do
+    company.update_attribute( :major_sector, 1)
+    @ratio = create :ratio, :company_code => company.company_code, :year_ending => '31/03/2011',
+                                            :net_profit_margin => "241.23",
+                                            :current_ratio     => "321.21"
+    visit stock_path(company.company_code)
+    page.should have_content 241.23
+    page.should have_content 321.21
+
   end
 
   it "should autocomplete stock name when user fill stock name", :js => true do
