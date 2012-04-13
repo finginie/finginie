@@ -22,8 +22,7 @@
               - if current_user
                 -#%li= link_to current_user.email, edit_user_main_app.registration_path
                 %li
-                  = link_to main_app.signout_path, :method => :delete do
-                    = image_tag 'signout_button.png'
+                  = button_to 'Sign out', main_app.signout_path, :method => :delete
               - else
                 %li
                   = image_tag 'loginwith_button.png'
