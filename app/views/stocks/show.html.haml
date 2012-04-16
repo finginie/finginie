@@ -62,12 +62,12 @@
                 =resource.send(attr)
 
   %section.news
-    - unless resource.news_headlines.empty?
+    - if resource.news.count > 0
       %h1 News
       %ul
-        - resource.news_headlines.each do |headline|
+        - resource.news.each do |news|
           %li
-            = link_to headline, stock_news_path(:stock_id => resource.company_code, :id => headline), :target => "_blank"
+            = link_to news.headlines, stock_news_path(:stock_id => resource.company_code, :id => news._id), :target => "_blank"
 
   %iframe{:src => @chart_url, :style => "width:760px; height:600px"}
 

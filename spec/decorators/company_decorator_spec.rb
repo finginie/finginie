@@ -27,4 +27,14 @@ describe CompanyDecorator, :redis do
     share_holding.save
     subject.share_holding.foreign_institutional_investors_percentage.should eq 8.52
   end
+
+  describe "with news" do
+    before :each do
+      6.times { |i| create :news, :company_code => company.company_code, :headlines => "headlines #{i}", :modify_on => Time.now - i }
+    end
+    it "should get all the news for a company" do
+      CompanyDecorator.decorate(company).news.map(&:headlines).should include( "headlines 0", "headlines 1", "headlines 2", "headlines 3", "headlines 4" )
+    end
+  end
+
 end
