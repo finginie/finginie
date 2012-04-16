@@ -54,7 +54,7 @@ describe "Ratios", :mongoid do
     page.should have_selector("#new_company")
   end
 
-  it "show page shouldn't throw any error when there is no company exists" do
+  it "show page shouldn't throw any error when company not exists" do
     visit stock_ratios_path 18
     page.status_code.should eq 200
   end

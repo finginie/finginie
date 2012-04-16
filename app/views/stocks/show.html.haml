@@ -1,92 +1,93 @@
 =render 'search_form'
 
-%h1= @company.company_name
+- if resource.model
+  %h1= resource.company_name
 
-%section
-  - %w( nse_code industry_name ).each do |attr|
-    %div{:class => attr}
-      %dt= t ".#{attr}"
-      %dd= @company.send(attr)
-%section.fundamentals
-  %table
-    %tr.center
-      - %w(eps pe price_to_book_value book_value face_value market_capitalization dividend_yield).each do |attr|
-        %td
-          %span= t ".#{attr}"
-    %tr
-      - %w(eps pe price_to_book_value book_value face_value market_capitalization dividend_yield).each do |attr|
-        %td.center= @company.send(attr)
-
-.nse_quotes
-  %section.daily_prices
-    %h1 NSE
-    .daily_price_change
-      %h1= @company.last_traded_price
-      %strong.net_change= @company.net_change
-      %span.percent_change= "(#{@company.percent_change}%)"
-      - unless @company.time.kind_of?(String)
-        %p= l @company.time, :format => :short_date_and_time
-      - else
-        %p= @company.time
+  %section
+    - %w( nse_code industry_name ).each do |attr|
+      %div{:class => attr}
+        %dt= t ".#{attr}"
+        %dd= resource.send(attr)
+  %section.fundamentals
     %table
-      - %w(close_price open_price volume high_price low_price fifty_two_week_high fifty_two_week_low high_date low_date).each do |attr|
-        %tr
-          %td.name
-            %span= t ".#{attr}"
+      %tr.center
+        - %w(eps pe price_to_book_value book_value face_value market_capitalization dividend_yield).each do |attr|
           %td
-            - if [ "high_date", "low_date" ].include?(attr) && @company.send(attr)
-              = l @company.send(attr), :format => :stock_52w_date
-            - else
-              = @company.send(attr)
-.bse_quotes
-  %section.daily_prices
-    %h1 BSE
-    .daily_price_change
-      %h1= @company.bse_last_traded_price
-      %strong.net_change= @company.bse_net_change
-      %span.percent_change= "(#{@company.bse_percent_change}%)"
-      - unless @company.bse_time.kind_of?(String)
-        %p= l @company.bse_time, :format => :short_date_and_time
-      - else
-        %p= @company.bse_time
-    %table
-      - %w(bse_close_price bse_open_price bse_volume bse_high_price bse_low_price bse_fifty_two_week_high bse_fifty_two_week_low bse_high_date bse_low_date).each do |attr|
-        %tr
-          %td.name
             %span= t ".#{attr}"
-          %td
-            - if ["bse_high_date", "bse_low_date" ].include?(attr) && @company.send(attr)
-              = l @company.send(attr), :format => :stock_52w_date
-            - else
-              =@company.send(attr)
+      %tr
+        - %w(eps pe price_to_book_value book_value face_value market_capitalization dividend_yield).each do |attr|
+          %td.center= resource.send(attr)
 
-%section.news
-  - unless @company.news_headlines.empty?
-    %h1 News
-    %ul
-      - @company.news_headlines.each do |headline|
-        %li
-          = link_to headline, stock_news_path(:stock_id => @company.company_code, :id => headline), :target => "_blank"
+  .nse_quotes
+    %section.daily_prices
+      %h1 NSE
+      .daily_price_change
+        %h1= resource.last_traded_price
+        %strong.net_change= resource.net_change
+        %span.percent_change= "(#{resource.percent_change}%)"
+        - unless resource.time.kind_of?(String)
+          %p= l resource.time, :format => :short_date_and_time
+        - else
+          %p= resource.time
+      %table
+        - %w(close_price open_price volume high_price low_price fifty_two_week_high fifty_two_week_low high_date low_date).each do |attr|
+          %tr
+            %td.name
+              %span= t ".#{attr}"
+            %td
+              - if [ "high_date", "low_date" ].include?(attr) && resource.send(attr)
+                = l resource.send(attr), :format => :stock_52w_date
+              - else
+                = resource.send(attr)
+  .bse_quotes
+    %section.daily_prices
+      %h1 BSE
+      .daily_price_change
+        %h1= resource.bse_last_traded_price
+        %strong.net_change= resource.bse_net_change
+        %span.percent_change= "(#{resource.bse_percent_change}%)"
+        - unless resource.bse_time.kind_of?(String)
+          %p= l resource.bse_time, :format => :short_date_and_time
+        - else
+          %p= resource.bse_time
+      %table
+        - %w(bse_close_price bse_open_price bse_volume bse_high_price bse_low_price bse_fifty_two_week_high bse_fifty_two_week_low bse_high_date bse_low_date).each do |attr|
+          %tr
+            %td.name
+              %span= t ".#{attr}"
+            %td
+              - if ["bse_high_date", "bse_low_date" ].include?(attr) && resource.send(attr)
+                = l resource.send(attr), :format => :stock_52w_date
+              - else
+                =resource.send(attr)
 
-%iframe{:src => @chart_url, :style => "width:760px; height:600px"}
+  %section.news
+    - unless resource.news_headlines.empty?
+      %h1 News
+      %ul
+        - resource.news_headlines.each do |headline|
+          %li
+            = link_to headline, stock_news_path(:stock_id => resource.company_code, :id => headline), :target => "_blank"
 
-- if @company.share_holding
-  %section.share_holding
-    %h1 Share Holding Pattern
-    %table
-      %th Investor Type
-      %th.percentage Percentage(%)
-      - @company.share_holding.non_zero_groups.each do |attr|
-        %tr
-          %td= t "share_holding.#{attr}"
-          %td.right= @company.share_holding.send(attr)
-- if @company.ratio
-  %section.ratios
-    %h1 Ratios
-    %table
-      %th Ratio
-      %th.percentage Value
-      - @company.ratio.company_view_items.each do |attr|
-        %tr
-          %td= t "ratio.#{attr}"
-          %td.right= @company.ratio.send(attr)
+  %iframe{:src => @chart_url, :style => "width:760px; height:600px"}
+
+  - if resource.share_holding
+    %section.share_holding
+      %h1 Share Holding Pattern
+      %table
+        %th Investor Type
+        %th.percentage Percentage(%)
+        - resource.share_holding.non_zero_groups.each do |attr|
+          %tr
+            %td= t "share_holding.#{attr}"
+            %td.right= resource.share_holding.send(attr)
+  - if resource.ratio
+    %section.ratios
+      %h1 Ratios
+      %table
+        %th Ratio
+        %th.percentage Value
+        - resource.ratio.company_view_items.each do |attr|
+          %tr
+            %td= t "ratio.#{attr}"
+            %td.right= resource.ratio.send(attr)

@@ -70,4 +70,9 @@ describe "Stocks" do
     page.execute_script %Q{ $('.ui-menu-item a:contains("#{company.company_name}")').trigger('mouseenter').click(); }
     page.current_path.should eq stock_path company.company_code.to_i
   end
+
+  it "show page shouldn't throw any error when company not exists" do
+    visit stock_path 25
+    page.status_code.should eq 200
+  end
 end
