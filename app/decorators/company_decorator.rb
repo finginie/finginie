@@ -29,4 +29,8 @@ class CompanyDecorator < ApplicationDecorator
 
   end
 
+  def news
+    News.for_company(company_code).latest(5)
+  end
+
 end
