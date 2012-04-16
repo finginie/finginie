@@ -63,4 +63,20 @@ describe "Stocks" do
     visit stock_path 25
     page.status_code.should eq 200
   end
+
+  context "index page" do
+    it "should have indices" do
+      create :bse_scrip, :id => "Sensex",    :last_traded_price => 10, :close_price => 9
+      create :nse_scrip, :id => "NSE Index", :last_traded_price => 10, :close_price => 9
+      create :nse_scrip, :id => "GOLDBEES",  :last_traded_price => 10, :close_price => 9
+
+      visit stocks_path
+
+      expected_table = [
+                        ["10.0 1.0 ( 11.11 % )", "10.0 1.0 ( 11.11 % )", "10.0 1.0 ( 11.11 % )"]
+                      ]
+
+      tableish("table").should include *expected_table
+    end
+  end
 end

@@ -1,3 +1,17 @@
+%table
+  %tr
+    %th Nifty
+    %th Sensex
+    %th Gold
+  %tr
+    -%w(Nifty Sensex Gold).each do |index|
+      %td
+        %b= index.constantize.current_price
+        - red_or_green_class(index.constantize.net_change, "span")
+        = "("
+        - red_or_green_class(index.constantize.percent_change, "span")
+        = " % )"
+
 %h1 Stocks
 %table{ :id => 'stocks_table', :data => { :source => stocks_path(format: 'json') } }
   %thead
