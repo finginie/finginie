@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ShareHoldingDecorator do
+describe ShareHoldingDecorator, :mongoid do
   before { ApplicationController.new.set_current_view_context }
   let(:company) { create :company }
   let(:share_holding) { create :share_holding, :company_code => company.company_code }
