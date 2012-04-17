@@ -1,7 +1,7 @@
+= render 'stocks/search_form'
 - if @company
   %h1= "Ratios - #{@company.company_name}"
 
-= render 'stocks/search_form'
 - if @company && @ratio.model
   %table
     - if @company.major_sector == 2
