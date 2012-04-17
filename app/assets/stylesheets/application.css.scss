@@ -286,6 +286,7 @@ aside{
 //------------------------  Footer ----------------------------------
 
 footer {
+  border-top: 2px solid #2D2D2D;
   clear: both;
   background: $footer-color;
 
@@ -300,6 +301,10 @@ footer {
     &>ul {
       @include horizontal-list(16px);
       padding: 0;
+      margin: {
+        bottom: 0;
+        top: 1em;
+      }
       li {
         color: #D9DCFF;
 	      font-size: 14px;
@@ -327,6 +332,44 @@ footer {
   p {
     clear: both;
   }
+}
+
+//------------------ Disclaimer ----------------------------------------------
+.disclaimer {
+  margin: 0 auto;
+  width: 980px;
+  text-align: left;
+  color: $base-color;
+  font: {
+    size: 12px;
+  }
+  padding: {
+    bottom: 20px;
+    left: 10px;
+    right: 10px;
+  }
+}
+//------------------ copyright ----------------------------------------------
+.copyright {
+  color: black;
+  width: 980px;
+  margin: 0 auto;
+  text-align: right;
+  font: {
+    size: 12px;
+  }
+  padding: {
+    top: 10px;
+  }
+}
+
+.legal {
+  background-color: #FFF;
+  padding: {
+    top: 30px;
+    bottom: 20px;
+  }
+  border-top: 2px solid #2D2D2D;
 }
 
 //----------------------------------- Tables ---------------------------------------

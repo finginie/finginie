@@ -7,6 +7,7 @@
 $quote-border: 2px solid lightgray;
 
 
+
 body.stocks.index {
   #main {
 
@@ -190,7 +191,7 @@ body.stocks.show {
 }
 
 body.balance_sheet, body.profit_loss, body.cash_flow, body.ratios, body.share_holding {
-    aside {
+  aside {
     #navigation-stock {
       >a {
         @include button($base-color);
@@ -202,6 +203,10 @@ body.balance_sheet, body.profit_loss, body.cash_flow, body.ratios, body.share_ho
         @include aside-links-padding;
       }
     }
+  }
+  #new_company {
+    text-align: right;
+    margin-bottom: 20px;
   }
 }
 
