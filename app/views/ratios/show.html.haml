@@ -2,18 +2,18 @@
 - if @company
   %h1= "Ratios - #{@company.company_name}"
 
-- if @company && @ratio.model
+- if @company && @ratios.first && @ratios.first.model
   %table
+    %tr
+      %th Ratio
+      - @ratios.each do|ratio|
+        %th= ratio.year_ending
     - if @company.major_sector == 2
+      - row_for('ratios','capital_adequacy_ratio', @ratios)
+    - @ratios.first.view_items.each do |group, items|
       %tr
-        %td= t "ratios.capital_adequacy_ratio"
-        %td= @ratio.send(:capital_adequacy_ratio)
-    - @ratio.view_items.each do |group, items|
-      %tr
-        %th.group{:colspan => 2}= group
+        %th.group{:colspan => 6}= group
       - items.each do |item|
-        %tr
-          %td= t "ratios.#{item}"
-          %td= @ratio.send(item.to_sym)
+        - row_for('ratios',item, @ratios)
 - else
   %p No Data Available

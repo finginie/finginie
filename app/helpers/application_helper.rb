@@ -5,4 +5,12 @@ module ApplicationHelper
     end
   end
 
+  def row_for(translate_label, field, objects)
+    haml_tag :tr do
+      haml_tag(:td, t("#{translate_label}.#{field}"))
+      objects.each do |object|
+        haml_tag(:td, object.send(field))
+      end
+    end
+  end
 end
