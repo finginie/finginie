@@ -18,6 +18,9 @@
 #= require backbone_rails_sync
 #= require backbone_datalink
 #
+#= require analytics
+#= require disqus
+#
 #= require_self
 #= require_tree ./templates
 #= require_tree ./models

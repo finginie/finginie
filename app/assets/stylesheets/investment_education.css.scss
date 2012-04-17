@@ -233,15 +233,11 @@ div.wrapper {
  }
 }
 
-articlefooter {
+article>footer {
   font-size: small;
   display: block;
-  center {
-    a {
-      display: none;
-    }
-  }
+  background-color: transparent;
 }
-rightalign {
+.right {
   float: right;
 }
