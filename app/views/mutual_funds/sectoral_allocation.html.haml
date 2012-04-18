@@ -2,7 +2,8 @@
   .mf_container
     %h1= "#{@scheme.scheme_name}'s Sectoral Allocation"
     #sectoral_allocation
-      #mf-sectoral-allocation-chart{ 'mf-data-sectoral-allocation' => [['','']] + @scheme.sectoral_allocation.to_a }
+      #mf-sectoral-allocation-chart.chart{ data: { elements: [['','']] + @scheme.sectoral_allocation.to_a,
+                                                   title: 'Sectoral Allocation', chartType: 'Pie' } }
       #sectoral_allocation_data
         %table
           %th Sector
