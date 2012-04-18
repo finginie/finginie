@@ -10,7 +10,6 @@
 #
 #= require html5
 #= require personal_financial_tools
-#= require highcharts
 #= require chosen.jquery.min
 #= require google_charts
 #
