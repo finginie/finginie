@@ -16,7 +16,8 @@
       %tr
         %td= asset_class
         %td= "#{percentage}%"
-  #asset-allocation-chart{ 'data-asset-allocation' => FinancialPlanner.ideal_asset_allocation(resource).to_a }
+  #asset-allocation-chart.chart{ data: { elements: [['','']] + FinancialPlanner.ideal_asset_allocation(resource).to_a,
+                                         title: 'Suggested Asset Allocation', chartType: 'Pie'} }
   %p
     = t ".future_investment"
     -unless current_user
