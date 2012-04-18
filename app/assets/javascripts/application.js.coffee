@@ -33,3 +33,5 @@ window.Finginie =
   Collections: {}
   Routers: {}
   Views: {}
+
+google.load('visualization', '1');

@@ -9,195 +9,56 @@ $(document).ready(function() {
 			}
     });
   });
-  if ($("#mf-sectoral-allocation-chart").attr("mf-data-sectoral-allocation") != undefined) {
-    new Highcharts.Chart({
-      chart: {
-        renderTo: 'mf-sectoral-allocation-chart',
-        width: 765,
-        borderColor: '#CE5A5A',
-        borderWidth: 2
-      },
-      title: {
-        text: 'Sectoral Allocation',
-        style: {
-          color: '#000',
-          fontWeight: 'bold',
-          fontSize: '16px'
-        }
-      },
-      series: [{
-        type: 'pie',
-        data: JSON.parse($("#mf-sectoral-allocation-chart").attr("mf-data-sectoral-allocation"))
-      }],
-      legend: {
-        labelFormatter: function() {
-          return this.name + ': ' + this.y + '%';
-        }
-      },
-      tooltip: {
-        formatter: function() {
-          return '' + this.point.name +': '+ (Math.round(this.y*10) / 10) + '%';
-          }
-      },
-      plotOptions: {
-        pie: {
-          allowPointSelect: true,
-          cursor: 'pointer',
-          dataLabels: {
-            enabled: true,
-            formatter: function() {
-            return '' + this.point.name +': '+ (Math.round(this.y*10) / 10) + '%';
-            }
-          },
-          showInLegend: false
-        }
-      }
-    });
-  };
 
-  if ($("#mf-asset-allocation-chart").attr("mf-data-asset-allocation") != undefined) {
-    new Highcharts.Chart({
-      chart: {
-        renderTo: 'mf-asset-allocation-chart',
-        width: 765,
-        borderColor: '#CE5A5A',
-        borderWidth: 2
-      },
-      title: {
-        text: 'Asset Allocation',
-        style: {
-          color: '#000',
-          fontWeight: 'bold',
-          fontSize: '16px'
-        }
-      },
-      series: [{
-        type: 'pie',
-        data: JSON.parse($("#mf-asset-allocation-chart").attr("mf-data-asset-allocation"))
-      }],
-      legend: {
-        labelFormatter: function() {
-          return this.name + ': ' + this.y + '%';
-        }
-      },
-      tooltip: {
-        formatter: function() {
-          return '' + this.point.name +': '+ (Math.round(this.y*10) / 10) + '%';
-          }
-      },
-      plotOptions: {
-        pie: {
-          allowPointSelect: true,
-          cursor: 'pointer',
-          dataLabels: {
-            enabled: true,
-            formatter: function() {
-            return '' + this.point.name +': '+ (Math.round(this.y*10) / 10) + '%';
-            }
+  function drawColumnChart(container, dataAttrs, title, vAxisTitle) {
+    if($("#"+container).attr(dataAttrs) != undefined) {
+      var wrapper = new google.visualization.ChartWrapper({
+        chartType: 'ColumnChart',
+        dataTable: JSON.parse($("#"+container).attr(dataAttrs)),
+        options: {
+          'title': title,
+          'width': 750,
+          'height': 400,
+          'vAxis': { 'title': vAxisTitle },
+          'chartArea': { 'width': '80%' },
+          'backgroundColor': { 'strokeWidth':3, 'stroke': '#CE5A5A' },
+          'legend': { 'position': 'bottom' },
+          'series': [{'color': '#CE5A5A'}, {'color': '#908080'}, {'color': '#fff'}]
           },
-          showInLegend: false
-        }
-      }
-    });
-  };
+        containerId: container
+      });
+      wrapper.draw();
+    }
+  }
 
-  if ($("#top-holdings-chart").attr("data-percentages") != undefined) {
-    new Highcharts.Chart({
-      chart: {
-        renderTo: 'top-holdings-chart',
-        width: 765,
-        borderColor: '#CE5A5A',
-        borderWidth: 2
-      },
-      title: {
-        text: 'Top 10 Holdings Distribution',
-        style: {
-          color: '#000',
-          fontWeight: 'bold',
-          fontSize: '16px'
-        }
-      },
-      series: [{
-        type: 'pie',
-        data: JSON.parse($("#top-holdings-chart").attr("data-percentages"))
-      }],
-      legend: {
-        labelFormatter: function() {
-          return this.name + ': ' + this.y + '%';
-        }
-      },
-      tooltip: {
-        formatter: function() {
-          return '' + this.point.name +': '+ (Math.round(this.y*10) / 10) + '%';
-          }
-      },
-      plotOptions: {
-        pie: {
-          allowPointSelect: true,
-          cursor: 'pointer',
-          dataLabels: {
-            enabled: true,
-            formatter: function() {
-            return '' + this.point.name +': '+ (Math.round(this.y*10) / 10) + '%';
-            }
+  function drawPieChart(container, dataAttrs, title) {
+    if($("#"+container).attr(dataAttrs) != undefined) {
+      var wrapper = new google.visualization.ChartWrapper({
+        chartType: 'PieChart',
+        dataTable: JSON.parse($("#"+container).attr(dataAttrs)),
+        options: {
+          'title': title,
+          'width': 750,
+          'height': 400,
+          'chartArea': { 'width': '80%' },
+          'backgroundColor': { 'strokeWidth':3, 'stroke': '#CE5A5A' },
+          'legend': { 'position': 'right' },
+          'series': [{'color': '#CE5A5A'}, {'color': '#908080'}, {'color': '#fff'}],
+          'is3D': true
           },
-          showInLegend: false
-        }
-      }
-    });
-  };
+        containerId: container
+      });
+      wrapper.draw();
+    }
+  }
 
-  if ($("#mf-comparative-returns-chart").attr("data-scheme-returns") != undefined) {
-    new Highcharts.Chart({
-      chart: {
-        renderTo: 'mf-comparative-returns-chart',
-        defaultSeriesType: 'column',
-        width: 765,
-        borderColor: '#CE5A5A',
-        borderWidth: 2
-      },
-      title: {
-        text: 'Comparative Returns',
-        style: {
-          color: '#000',
-          fontWeight: 'bold',
-          fontSize: '16px'
-        }
-      },
-      xAxis: {
-        categories: ['1 week', '1 month', '3 months', '6 months', '9 months', '1 year', '2 years', '3 years']
-      },
-      yAxis: {
-        title: {
-          text: 'Percentage Returns'
-          }
-      },
-      legend: {
-        layout: 'vertical',
-        backgroundColor: '#FFFFFF',
-        align: 'left',
-        verticalAlign: 'top',
-        x: 200,
-        y: 70,
-        floating: true,
-        shadow: true
-		  },
-      tooltip: {
-        formatter: function() {
-          return '' + this.series.name + ': ' + this.y + '';
-          }
-      },
-      series: [{
-        name: 'Scheme Returns',
-        data: JSON.parse($("#mf-comparative-returns-chart").attr("data-scheme-returns"))
-        },
-        {
-        name: 'Category Returns',
-        data: JSON.parse($("#mf-comparative-returns-chart").attr("data-category-returns"))
-        }
-      ]
-    });
-  };
+  google.setOnLoadCallback(drawColumnChart('mf-comparative-returns-chart', 'data-comparative-returns', 'Comparative Returns', 'Return(%)'));
+
+  google.setOnLoadCallback(drawPieChart('mf-asset-allocation-chart', 'mf-data-asset-allocation', 'Asset Allocation'));
+
+  google.setOnLoadCallback(drawPieChart('mf-sectoral-allocation-chart', 'mf-data-sectoral-allocation', 'Sectoral Allocation'));
+
+  google.setOnLoadCallback(drawPieChart('top-holdings-chart', 'data-percentages', 'Top 10 Holdings Distribution'));
 
   var change = parseFloat($(".day_change").text().trim())
   var percentage_change = parseFloat($(".percentage_change").text().trim().slice(1,-2))
