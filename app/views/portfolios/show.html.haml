@@ -2,7 +2,8 @@
 - if resource.empty_transactions?
   = render 'empty_transaction'
 - else
-  #portfolio-total-asset-allocation-chart{ 'data-portfolio-total-asset-allocation' => resource.total_assets_distribution }
+  #portfolio-total-asset-allocation-chart.chart{ data: { elements: [['Asset Class','Percenatge']]+resource.total_assets_distribution,
+                                                         chartType: 'Pie', title: 'Portfolio Assets Composition'} }
   %table{:class => "assets"}
     %tr
       %th.name Assets
@@ -34,4 +35,5 @@
         %td.right= asset[:percentage]
 
 - if resource.assets_and_liabilities?
-  #net-worth-chart{ 'data-net-worth' => resource.assets_and_liabilities }
+  #net-worth-chart.chart{ data: { elements: resource.assets_and_liabilities, title: 'Portfolio Summary',
+                                  yAxisTitle: 'Amount(Rupees)', chartType: 'Column' } }
