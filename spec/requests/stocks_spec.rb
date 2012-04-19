@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Stocks" do
+describe "Stocks", :mongoid do
   let (:company) { create :company, :ticker_name => 'TICK', :face_value => 8.24, :major_sector => 2 }
   let (:nse_scrip) { create :nse_scrip, :id => company.nse_code, :last_traded_price => 24.22 }
   let (:bse_scrip) { create :bse_scrip, :id => company.ticker_name, :last_traded_price => 23.26, :close_price => 22 }
@@ -65,7 +65,7 @@ describe "Stocks" do
   end
 
   context "index page" do
-    it "should have indices" do
+    it "should have market indices" do
       create :bse_scrip, :id => "Sensex",    :last_traded_price => 10, :close_price => 9
       create :nse_scrip, :id => "NSE Index", :last_traded_price => 10, :close_price => 9
       create :nse_scrip, :id => "GOLDBEES",  :last_traded_price => 10, :close_price => 9
@@ -77,6 +77,30 @@ describe "Stocks" do
                       ]
 
       tableish("table").should include *expected_table
+    end
+
+    it "should list top five gainers" do
+      5.times do |i|
+        top_gainer_company = create :company, :company_name => "GAINER#{i}", :ticker_name => 'Gain #{i}', :nse_code => "GAIN#{i}"
+        create :nse_scrip, :id => top_gainer_company.nse_code, :last_traded_price => i+2, :close_price => i+1
+      end
+
+      visit stocks_path
+
+      expected_content = ["GAINER0 1.0 ( 100.0 % )", "GAINER1 1.0 ( 50.0 % )", "GAINER2 1.0 ( 33.33 % )", "GAINER3 1.0 ( 25.0 % )", "GAINER4 1.0 ( 20.0 % )"]
+      selector("#gainer", "li").should include *expected_content
+    end
+
+    it "should list top five loser" do
+      5.times do |i|
+        top_loser_company = create :company, :company_name => "LOSER#{i}", :ticker_name => 'Lose #{i}', :nse_code => "LOSE#{i}"
+        create :nse_scrip, :id => top_loser_company.nse_code, :last_traded_price => i+1, :close_price => i+2
+      end
+
+      visit stocks_path
+
+      expected_content = ["LOSER0 -1.0 ( -50.0 % )", "LOSER1 -1.0 ( -33.33 % )", "LOSER2 -1.0 ( -25.0 % )", "LOSER3 -1.0 ( -20.0 % )", "LOSER4 -1.0 ( -16.67 % )"]
+      selector("#loser", "li").should include *expected_content
     end
   end
 end

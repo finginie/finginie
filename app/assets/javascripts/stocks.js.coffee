@@ -1,4 +1,6 @@
 $ ->
+  $("div#tabs").tabs();
+
   $('#company_company_name').autocomplete
     source: ( request, response ) ->
       $.getJSON( $('#company_company_name').data('autocomplete-source'), { company: { company_name: request.term } }, response );
@@ -16,6 +18,7 @@ $ ->
     $("body.stocks.show .daily_price_change > .percent_change").removeClass('green').addClass('red')
   else
     $("body.stocks.show .daily_price_change > .percent_change").removeClass('red').addClass('green')
+
 jQuery ->
   $('#stocks_table').dataTable
     sPaginationType: "full_numbers"

@@ -1,0 +1,15 @@
+#tabs
+  %ul
+    %li= link_to t(".top_gainer"), "#gainer"
+    %li= link_to t(".top_loser"), "#loser"
+
+  - %w(gainer loser).each do |performance|
+    %div{ :id => performance }
+      %ul
+        - Company.send("top_five_#{performance}").each do |company|
+          %li
+            = link_to company.name, stock_path(company.company_code)
+            - red_or_green_class(company.nse.net_change, "span")
+            = "("
+            - red_or_green_class(company.nse.percent_change, "span")
+            = "% )"
