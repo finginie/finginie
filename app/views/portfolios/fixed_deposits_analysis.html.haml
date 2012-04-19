@@ -8,21 +8,21 @@
   %table
     %tr
       %th.name Name
-      %th.right Interest Rate
-      %th.right Invested Amount
+      %th Interest Rate
+      %th Invested Amount
     %tr
       %td
-      %td.right (%)
-      %td.right (Rs)
+      %td (%)
+      %td (Rs)
     - resource.fixed_deposit_open_positions_rate_of_interests.each do |hsh|
       %tr
-        %td= hsh.name
-        %td.right= hsh.rate
-        %td.right= number_to_indian_currency hsh.amount
+        %td.name= hsh.name
+        %td= hsh.rate
+        %td= number_to_indian_currency hsh.amount
     %tr.total
-      %td Total
+      %td.name Total
       %td
-      %td.right= number_to_indian_currency resource.fixed_deposit_open_positions_rate_of_interests.sum(&:amount)
+      %td= number_to_indian_currency resource.fixed_deposit_open_positions_rate_of_interests.sum(&:amount)
 -else
   #no_portfolios
     %p= t ".no_fixed_deposit_transaction"

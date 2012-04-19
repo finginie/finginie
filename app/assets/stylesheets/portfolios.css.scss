@@ -5,6 +5,8 @@
 @import "holygrail";
 
 
+// ================================= Portfolios Common CSS Starts==============================
+
 body.portfolios {
   #wrapper {
     input[type="submit"]{
@@ -36,48 +38,24 @@ body.portfolios {
         color: red;
       }
     }
-    aside {
-      .level_2 {
-        >li {
-          >a {
-            @include button($base-color);
-            @include linear-gradient($base-color, shade(#022744, 10%));
-            border-radius: 0;
-            display: block;
-            text-align: left;
-            font-size: medium;
-            color: white;
-            border: none;
-            @include aside-links-padding;
-          }
-        }
-      }
-    }
   }
 }
 
+
+// ================================= Portfolios Index Page Starts==============================
+
 body.portfolios.index {
   #wrapper {
-    min-height: 600px;
     #main {
-      p {
-        margin: 0;
-      }
       a.create_new_portfolio {
         font-size: 14px;
         color: $base-color;
-        margin-left: 374px;
-      }
-      form {
-        >div {
-          width: 40%;
-          text-align:right;
-        }
+        margin-left: 350px;
       }
       table {
         border: 0;
-        margin-bottom: 2em;
-        margin-top: 1em;
+        margin-bottom: 24px;
+        margin-top: 14px;
         td, th {
           font-size: 14px;
           border: 0;
@@ -103,78 +81,58 @@ body.portfolios.index {
   }
 }
 
+// ================================= Portfolios New Page Starts==============================
+
 body.portfolios.new {
   #wrapper {
-    min-height: 600px;
     #main {
+      @include simple-form;
       #new_portfolio {
         margin-top: 30px;
         .inputs {
           @include required-field;
-          div {
-            label {
-              width: 14%;
-            }
-            #portfolio_name {
-              margin: {
-                top: 0.1em;
-              }
-            }
+          label {
+            width: 100px;
           }
         }
         .actions {
-          margin-left: 122px;
-          padding-top: 10px;
+          margin-left: 115px;
           width: 80px;
           float: left;
-          input [type="submit"] {
-            margin-top: 0;
-          }
         }
         #back {
           float: left;
           width: 100px;
-          padding-top: 22px;
+          padding-top: 12px;
         }
       }
     }
   }
 }
 
+
+// ================================= Portfolios Show Page Starts==============================
 
 body.portfolios.show {
   #main {
     .container {
       table {
         margin: {
-          top: 1em;
+          top: 15px;
         }
-      }
-      p {
-        margin-top: 0;
-        margin-bottom: 0;
-        b {
-          color: $heading-red;
-          font-weight: normal;
-        }
-      }
-      input[value="Add Transactions"] {
-        margin-top: 1em;
       }
       #net-worth-chart {
-        margin-top: 1em;
+        margin-top: 15px;
       }
     }
   }
 }
+
+// ================================= Portfolios Details Page Starts==============================
 
 body.portfolios.details {
   #main {
     .container {
-      p {
-        margin: 0;
-        font-size: 14px;
-      }
       h1 {
         color: $heading-red;
         font: {
@@ -182,29 +140,30 @@ body.portfolios.details {
         }
       }
       section {
-        padding-bottom: 1em;
-      }
-      #stock_positions, #mutual_fund_positions, #gold_positions, .Loan, .FixedDeposit, .RealEstate{
-        padding: 0 0 1em 0;
-        td, th {
-          text-align: right;
-        }
-        td.name, th.name {
-          width: 150px;
-          text-align: left;
+        padding-bottom: 20px;
+        table {
+          th, td {
+            text-align: right;
+          }
+          th.name, td.name {
+            width: 150px;
+            text-align: left;
+          }
+          th.center_align, td.center_align {
+            text-align: center;
+          }
         }
       }
     }
   }
 }
 
+
+// ================================= Portfolios Transactions Page Starts==============================
+
 body.portfolios.transactions {
   #main {
     .container {
-      p {
-        margin: 0;
-        font-size: 14px;
-      }
       h1 {
         color: $heading-red;
         font: {
@@ -212,11 +171,14 @@ body.portfolios.transactions {
         }
       }
       section {
-        padding-bottom: 1em;
+        padding-bottom: 24px;
       }
     }
   }
 }
+
+
+// ================================= Portfolios Analysis Page Starts==============================
 
 body.portfolios.stocks_analysis, body.portfolios.mutual_funds_analysis, body.portfolios.fixed_deposits_analysis {
   h2 {
@@ -229,30 +191,20 @@ body.portfolios.stocks_analysis, body.portfolios.mutual_funds_analysis, body.por
     }
   }
   table {
+    th, td {
+      text-align: right;
+    }
+    th.name, td.name, th.sector, td.sector {
+      text-align: left;
+    }
     margin: {
-      bottom: 2em;
+      bottom: 24px;
     }
   }
 }
 
-body
 
-body.portfolios.analysis {
-  #main {
-    .container {
-      h1 {
-        color: $heading-red;
-        font-size: large;
-      }
-      #stocks-profit-or-loss-chart, #mutual-fund-profit-or-loss-chart {
-        margin: {
-          top: 1em;
-          bottom: 1em;
-        }
-      }
-    }
-  }
-}
+// ================================= Portfolios Edit Page Starts==============================
 
 body.portfolios.edit {
   #main {
@@ -262,25 +214,25 @@ body.portfolios.edit {
     .actions {
       width: 80px;
       float: left;
-      padding-left: 66px;
-      padding-top: 30px;
+      padding-left: 60px;
+      padding-top: 20px;
     }
     #back {
       float: left;
       width: 100px;
-      padding-top: 30px;
+      padding-top: 20px;
     }
-    div {
+    .inputs {
       label {
-        padding-right: 1em;
+        padding-right: 16px;
         padding-bottom: 0.8em;
-        font-size: medium;
-        color: $base-color;
         @include required-field;
       }
     }
   }
 }
+
+// ================================= Portfolios Add-Transaction Page Starts==============================
 
 body.portfolios.add_transaction {
   @include simple-form;
@@ -288,13 +240,15 @@ body.portfolios.add_transaction {
     margin-left: 77px;
     label {
       color: $base-color;
-      padding-right: 0.5em;
+      padding-right: 7px;
     }
     select {
-      margin-bottom: 0.5em;
+      margin-bottom: 10px;
     }
   }
 }
+
+// ================================= Portfolios Profit and loss  Page Starts==============================
 
 body.portfolios.accumulated_profits {
   h1 {
@@ -305,7 +259,7 @@ body.portfolios.accumulated_profits {
     color: $heading-red;
     font-weight: normal;
     margin: {
-      bottom: 10px;
+      bottom: 6px;
       top: 20px;
     }
   }

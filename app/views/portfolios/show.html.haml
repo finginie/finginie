@@ -7,31 +7,31 @@
     %tr
       %th.name Assets
       %th.asset_amount Amount
-      %th.right Percentage
-    %tr
+      %th.right_align Percentage
+    %tr.right_align
       %td
-      %td.right (Rs)
-      %td.right (%)
+      %td (Rs)
+      %td (%)
     -resource.total_assets_distribution_table.each do |asset|
       %tr{:class => asset[:class]}
-        %td= asset[:asset_type]
-        %td.right= asset[:amount]
-        %td.right= asset[:percentage]
+        %td.name= asset[:asset_type]
+        %td.asset_amount= asset[:amount]
+        %td.right_align= asset[:percentage]
 
   %table{:class => "liabilities"}
     %tr
       %th.name Liabilities
       %th.asset_amount Amount
-      %th.right Percentage
-    %tr
+      %th.right_align Percentage
+    %tr.right_align
       %td
-      %td.right (Rs)
-      %td.right (%)
+      %td (Rs)
+      %td (%)
     -resource.total_liabilities_distribution_table.each do |asset|
       %tr{:class => asset[:class]}
         %td= asset[:asset_type]
-        %td.right= asset[:amount]
-        %td.right= asset[:percentage]
+        %td.asset_amount= asset[:amount]
+        %td.right_align= asset[:percentage]
 
 - if resource.assets_and_liabilities?
   #net-worth-chart{ 'data-net-worth' => resource.assets_and_liabilities }

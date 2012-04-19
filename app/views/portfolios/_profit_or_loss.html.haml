@@ -12,17 +12,17 @@
     %td
     %td
     %td
-    %td.right (Rs)
-    %td.right (Rs)
-    %td.right (Rs)
-    %td.right (%)
+    %td.right_align (Rs)
+    %td.right_align (Rs)
+    %td.right_align (Rs)
+    %td.right_align (%)
   - net_income.each do |security|
     %tr
       %td= security.name
-      %td.center= security.type
-      %td.right= security.quantity ? security.quantity : ""
-      %td.right= security.average_cost_price ? number_to_indian_currency(security.average_cost_price) : ""
-      %td.right= security.average_sell_price ? number_to_indian_currency(security.average_sell_price) : ""
+      %td.center_align= security.type
+      %td.right_align= security.quantity ? security.quantity : ""
+      %td.right_align= security.average_cost_price ? number_to_indian_currency(security.average_cost_price) : ""
+      %td.right_align= security.average_sell_price ? number_to_indian_currency(security.average_sell_price) : ""
       = table_content_with_red_or_green_class security.profit_or_loss
       = table_content_with_red_or_green_class security.percentage
   %tr.total
@@ -31,5 +31,5 @@
     %td
     %td
     %td
-    %td.right= number_to_indian_currency net_income.sum(&:profit_or_loss).round(2)
+    %td.right_align= number_to_indian_currency net_income.sum(&:profit_or_loss).round(2)
     %td
