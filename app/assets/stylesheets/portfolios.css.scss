@@ -11,6 +11,7 @@ body.portfolios {
   #wrapper {
     input[type="submit"]{
       width: 70px;
+      margin-top: 10px;
     }
     #no_portfolios {
         text-align: center;
@@ -92,18 +93,16 @@ body.portfolios.new {
         .inputs {
           @include required-field;
           label {
-            width: 100px;
+            width: 110px;
           }
         }
         .actions {
-          margin-left: 115px;
+          margin-left: 125px;
           width: 80px;
           float: left;
         }
         #back {
           float: left;
-          width: 100px;
-          padding-top: 12px;
         }
       }
     }
@@ -151,6 +150,7 @@ body.portfolios.details {
           }
           th.center_align, td.center_align {
             text-align: center;
+            width: 50px;
           }
         }
       }
@@ -215,12 +215,12 @@ body.portfolios.edit {
       width: 80px;
       float: left;
       padding-left: 60px;
-      padding-top: 20px;
+      padding-top: 10px;
     }
     #back {
       float: left;
       width: 100px;
-      padding-top: 20px;
+      padding-top: 10px;
     }
     .inputs {
       label {

@@ -7,7 +7,7 @@
         %th Buy Value
         %th Current Value
         %th Unrealised Profit
-        %th
+        %th.center_align Sell
       %tr
         %td.name
         %td (Rs)
@@ -20,7 +20,7 @@
           %td= number_to_indian_currency net_position.buy_value
           %td= number_to_indian_currency net_position.current_value
           = table_content_with_red_or_green_class net_position.unrealised_profit
-          %td.btn_sell= link_to 'Sell', sell_portfolio_real_estate_transaction_path(net_position.first.portfolio_id, net_position.first), :method => :get
+          %td.center_align= link_to 'Sell', sell_portfolio_real_estate_transaction_path(net_position.first.portfolio_id, net_position.first), :method => :get
       %tr.total
         %td.name Total
         %td= number_to_indian_currency real_estate_positions.sum(&:buy_value)

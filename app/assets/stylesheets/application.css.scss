@@ -459,15 +459,20 @@ input[type="text"] {
 .error {
   font: {
     size: 12px;
-    family: Arial, Helvetica, sans-serifial;
   }
+  width: 250px;
+  float: right;
   color: red;
   padding-left: 4px;
 }
 
 //--------------------------error_notification -----------------------------------------
-.error_notification {
+.alert-error {
   color: $heading-red;
+  margin: 10px 0;
+  font {
+    size: 14px;
+  }
 }
 
 //---------------------------Highlighing total in current holdings -------------------- 

@@ -18,7 +18,7 @@
     %td.right_align (%)
   - net_income.each do |security|
     %tr
-      %td= security.name
+      %td.name= security.name
       %td.center_align= security.type
       %td.right_align= security.quantity ? security.quantity : ""
       %td.right_align= security.average_cost_price ? number_to_indian_currency(security.average_cost_price) : ""
