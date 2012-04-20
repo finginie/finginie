@@ -1,0 +1,2 @@
+$('#stocks').html('<%= escape_javascript(render('companies', :companies => collection)) %>');
+$('#paginator').html('<%= escape_javascript(paginate(collection, :remote => true).to_s) %>');

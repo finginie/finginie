@@ -26,3 +26,15 @@ jQuery ->
     bProcessing: true
     bServerSide: true
     sAjaxSource: $('#stocks_table').data('source')
+
+  $("div#slider-range").each ->
+    $(this).slider({
+		  orientation: "horizontal",
+		  range: true,
+		  min: $(this).data("min-values"),
+		  max: $(this).data("max-values"),
+		  values: [$(this).data("min-values"), $(this).data("max-values")]
+		  slide: ( event, ui ) ->
+			  $( "##{$(this).data("min-field")}" ).val( ui.values[ 0 ])
+			  $( "##{$(this).data("max-field")}" ).val( ui.values[ 1 ])
+		  });

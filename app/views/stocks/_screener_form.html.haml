@@ -1,0 +1,38 @@
+= form_tag screener_stocks_path, :method => :get, :remote => true, :update =>"stocks" do
+  = label_tag "screener_industry_name"
+  = select_tag("screener[industry_name]", options_for_select(IndustryMaster.all.map{|i| [i.industry_name, i.industry_name]}))
+  #screener-slider
+    %table
+      %tr
+        %th Criteria
+        %th Min
+        %th
+        %th Max
+      %tr
+        %td P/E
+        %td= text_field_tag "screener[pe_gt]"
+        %td
+          %div{ data: { "min-field" => 'screener_pe_gt',  "min-values" => 0 , "max-field" => 'screener_pe_lt',  "max-values" => 200     }, id: "slider-range"}
+        %td= text_field_tag "screener[pe_lt]"
+      %tr
+        %td EPS
+        %td= text_field_tag "screener[eps_gt]"
+        %td
+          %div{ data: { "min-field" => 'screener_eps_gt', "min-values" => 0 , "max-field" => 'screener_eps_lt', "max-values" => 1600     }, id: "slider-range"}
+        %td= text_field_tag "screener[eps_lt]"
+      %tr
+        %td P/BV
+        %td= text_field_tag "screener[price_to_book_value_gt]"
+        %td
+          %div{ data: { "min-field" => 'screener_price_to_book_value_gt', "min-values" => 0 , "max-field" => 'screener_price_to_book_value_lt', "max-values" => 8000    }, id: "slider-range"}
+        %td= text_field_tag "screener[price_to_book_value_lt]"
+      %tr
+        %td P/BV
+        %td= text_field_tag "screener[book_value_gt]"
+        %td
+          %div{ data: { "min-field" => 'screener_book_value_gt', "min-values" => 0 , "max-field" => 'screener_book_value_lt',  "max-values" => 25000   }, id: "slider-range"}
+        %td= text_field_tag "screener[book_value_lt]"
+
+  .actions
+    = submit_tag 'Search'
+

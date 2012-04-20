@@ -9,46 +9,33 @@ $quote-border: 2px solid lightgray;
 
 
 body.stocks.index {
-  #main {
-
-    abbr[title] {
-      color: red;
-      border: none;
+  #wrapper {
+    width: 980px;
+    aside {
+      display: none;
     }
-    #new_company {
-      div {
-      width: 100%;
-      padding-bottom: 1em;
-        label {
-          display: inline-block;
-          width: 20%;
-          color: $base-color;
-          font: {
-            size: 14px;
+    padding-left: 0;
+    #main {
+      .container {
+        padding-left: 4px;
+        table {
+          th, td {
+            text-align: center;
+            font: {
+              size: 16px;
+              weight: normal;
+            }
           }
         }
-        padding-bottom: 0.5em;
-      }
-      div.loading {
-        float: right;
-        width: 30%;
-      }
-      div {
-        width: 70%;
-        display: inline-block;
-        padding-bottom: 1em;
-        select {
-          margin-left: 0.3em;
-          width: 300px;
+        #slider-range {
+          width:260px;
+          margin:15px;
         }
       }
-    }
-    #stocks {
-      margin-left: 0;
-      font-size: 14px;
     }
   }
 }
+
 
 body.stocks.show {
   #main {
@@ -213,5 +200,19 @@ body.balance_sheet, body.profit_loss, body.cash_flow, body.ratios, body.share_ho
 body.share_holding{
   #share-holding-chart {
     margin-bottom: 1em;
+  }
+}
+
+body.stocks.screener {
+  #wrapper {
+    width: 980px;
+    aside {
+      display: none;
+    }
+    padding-left: 0;
+    #slider-range {
+      width:260px;
+      margin:15px;
+    }
   }
 }

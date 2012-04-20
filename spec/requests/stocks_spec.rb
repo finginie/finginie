@@ -64,7 +64,7 @@ describe "Stocks", :mongoid do
     page.status_code.should eq 200
   end
 
-  context "index page" do
+  context "#index" do
     it "should have market indices" do
       create :bse_scrip, :id => "Sensex",    :last_traded_price => 10, :close_price => 9
       create :nse_scrip, :id => "NSE Index", :last_traded_price => 10, :close_price => 9
@@ -101,6 +101,38 @@ describe "Stocks", :mongoid do
 
       expected_content = ["LOSER0 -1.0 ( -50.0 % )", "LOSER1 -1.0 ( -33.33 % )", "LOSER2 -1.0 ( -25.0 % )", "LOSER3 -1.0 ( -20.0 % )", "LOSER4 -1.0 ( -16.67 % )"]
       selector("#loser", "li").should include *expected_content
+    end
+  end
+
+  context "#screener" do
+    it "should have stock screener search", :js => true do
+      company1 = create :company, pe: 1,  eps: 1,  price_to_book_value: 1,  book_value: 1,  :industry_name => "FOO"
+      company2 = create :company, pe: 2,  eps: 2,  price_to_book_value: 2,  book_value: 2,  :industry_name => "BAR"
+
+      visit screener_stocks_path
+
+      fill_in "screener_pe_gt", :with => "1"
+      fill_in "screener_pe_lt", :with => "2"
+
+      fill_in "screener_eps_gt", :with => "1"
+      fill_in "screener_eps_lt", :with => "2"
+
+      fill_in "screener_book_value_gt", :with => "1"
+      fill_in "screener_book_value_lt", :with => "2"
+
+      fill_in "screener_price_to_book_value_gt", :with => "1"
+      fill_in "screener_price_to_book_value_lt", :with => "2"
+
+      click_button "Search"
+
+      wait_until {  page.should have_selector("#stocks table") }
+
+      expected_table = [
+                           [ company1.company_name, "FOO", "", "", "1.0"],
+                           [ company2.company_name, "BAR", "", "", "2.0"]
+                        ]
+
+      tableish("#stocks table").should include *expected_table
     end
   end
 end

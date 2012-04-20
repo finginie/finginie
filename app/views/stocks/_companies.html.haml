@@ -1,0 +1,14 @@
+%table
+  %tr
+    %th Name
+    %th Sector
+    %th Price
+    %th % Change
+    %th P/E
+  - companies.each do |company|
+    %tr
+      %td= link_to company.name, stock_path(company.company_code)
+      %td= company.industry_name
+      %td= company.current_price
+      %td= company.nse.net_change || company.bse.net_change
+      %td= company.pe
