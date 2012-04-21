@@ -184,12 +184,12 @@ div.wrapper {
       padding: {
         left: 6px;
         bottom: 10px;
-	right: 14px;
+        right: 14px;
       }
       font: {
         family: $content-font;
-	weight: normal;
-	size: 14px;
+        weight: normal;
+        size: 14px;
       }
     }
     h1 {
@@ -199,9 +199,14 @@ div.wrapper {
       color: $heading-red;
       font: {
         family: $heading-font;
-	weight: normal;
-	size: medium;
+        weight: normal;
+        size: medium;
       }
+    }
+    ol {
+      margin-top: 0;
+      text-align: justify;
+      padding-right: 14px;
     }
     ul {
       list-style: none;
