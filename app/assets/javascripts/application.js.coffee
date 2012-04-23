@@ -37,12 +37,10 @@ window.Finginie =
 google.load('visualization', '1');
 
 $ ->
-  divs = $(".chart")
-  i = 0
 
-  while i < divs.length
-    if $(divs[i]).attr("data-chartType") is "Column"
-      google.setOnLoadCallback drawColumnChart(divs[i])
+  $("div.chart").each ->
+    if $(this).attr("data-chartType") is "Column"
+      google.setOnLoadCallback drawColumnChart(this)
     else
-      google.setOnLoadCallback drawPieChart(divs[i])
-    ++i
+      google.setOnLoadCallback drawPieChart(this)
+
