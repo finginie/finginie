@@ -19,3 +19,5 @@
           %td= audited_result.send(item[:field_name].to_sym) if item[:field_name]
 - else
   %p Data not available for this company
+
+#disqus_thread{data: {disqus_identifier: "stocks_#{@company.company_code}"}}
