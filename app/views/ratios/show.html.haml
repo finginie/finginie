@@ -17,5 +17,5 @@
         - row_for('ratios',item, @ratios)
 - else
   %p No Data Available
-
-#disqus_thread{data: {disqus_identifier: "stocks_#{@company.company_code}"}}
+- if @company
+  #disqus_thread{data: {disqus_identifier: "stocks_#{@company.company_code}"}}
