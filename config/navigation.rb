@@ -34,6 +34,7 @@ SimpleNavigation::Configuration.run do |navigation|
         tertiary.item :technical_analysis, 'Technical Analysis', main_app.page_path('investment_education/technical_analysis')
       end
       secondary.item :investment_types, 'Types of Investments' do |tertiary|
+        tertiary.item :overview, 'Overview', main_app.page_path('investment_education/overview')
         tertiary.item :cash_equivalents, 'Cash Equivalents', main_app.page_path('investment_education/cash_equivalents')
         tertiary.item :bonds, 'Bonds', main_app.page_path('investment_education/bonds')
         tertiary.item :stocks1, 'Stocks', main_app.page_path('investment_education/stocks1')
