@@ -38,7 +38,10 @@ class PortfolioDecorator < ApplicationDecorator
 
   #portfolio page networth calculations
   def assets_and_liabilities
-    [ total_assets_value.to_f, total_liabilitites_value.to_f, net_worth.to_f ]
+    [ [ 'Type',        'Value'                       ],
+      [ 'Assets',      total_assets_value.to_f       ],
+      [ 'Liabilities', total_liabilitites_value.to_f ],
+      [ 'NetWorth',    net_worth.to_f                ] ]
   end
 
   def assets_and_liabilities?

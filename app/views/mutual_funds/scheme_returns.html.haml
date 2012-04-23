@@ -2,7 +2,8 @@
   .mf_container
     %h1= "Comparative returns - #{@scheme.scheme_name}"
     #comparative_returns
-      #mf-comparative-returns-chart{ 'data-scheme-returns' => @scheme.scheme_returns, 'data-category-returns' => @scheme.category_returns  }
+      #mf-comparative-returns-chart.chart{data: { elements: @scheme.comparative_returns_data_table, title: 'Comparative Returns',
+                                                  yAxisTitle: 'Return(%)', chartType: 'Column', legend: 'bottom' } }
       #comparative_returns_data
         %table
           %tr

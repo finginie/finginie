@@ -2,7 +2,8 @@
   .mf_container
     %h1= "#{@scheme.scheme_name}'s Asset Allocation"
     #asset_allocation
-      #mf-asset-allocation-chart{ 'mf-data-asset-allocation' => @scheme.asset_allocation.to_a }
+      #mf-asset-allocation-chart.chart{ data: { elements: [['','']] + @scheme.asset_allocation.to_a,
+                                                title: 'Asset Allocation', chartType: 'Pie' } }
       #asset_allocation_data
         %table
           %th Asset Class

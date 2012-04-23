@@ -10,8 +10,8 @@
 #
 #= require html5
 #= require personal_financial_tools
-#= require highcharts
 #= require chosen.jquery.min
+#= require google_charts
 #
 #= require underscore
 #= require backbone
@@ -36,3 +36,14 @@ window.Finginie =
   Collections: {}
   Routers: {}
   Views: {}
+
+google.load('visualization', '1');
+
+$ ->
+
+  $("div.chart").each ->
+    if $(this).attr("data-chartType") is "Column"
+      google.setOnLoadCallback drawColumnChart(this)
+    else
+      google.setOnLoadCallback drawPieChart(this)
+

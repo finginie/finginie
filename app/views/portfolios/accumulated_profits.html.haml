@@ -7,8 +7,8 @@
       %p
         = t ".no_profit_or_loss"
   - else
-    #accumulated-profits-chart{ 'data-accumulated-profits' => resource.top_five_profits.map(&:percentage) + resource.top_five_losses.map(&:percentage),
-                                  'data-categories' => resource.top_five_profits.map(&:name) + resource.top_five_losses.map(&:name) }
+    #accumulated-profits-chart.chart{ data: { elements: [['','']] + (resource.top_five_profits + resource.top_five_losses).map{ |r| [ r.name, r.percentage ] },
+                                              chartType: 'Column', yAxisTitle: 'Percentage (%)', title: 'Your Top Realised Profit/Losses by Percentage' } }
     %h2 Realized Profits
     - unless resource.top_five_profits.empty?
       #accumulated_profits
