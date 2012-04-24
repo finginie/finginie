@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe "BalanceSheet" do
   let(:company) { create :company }
-  let (:scrip) { create :scrip, :id => company.nse_code, :last_traded_price => 24.22 }
 
   before (:each) do
     5.times { |i| create :audited_result, :companycode            => company.company_code,
@@ -39,7 +38,6 @@ describe "BalanceSheet" do
   end
 
   it "should have stock search in the balance sheet page" do
-    scrip.save
     visit stock_path company.company_code
     click_link "Balance Sheet"
     page.should have_selector("#new_company")

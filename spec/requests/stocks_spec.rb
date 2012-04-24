@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe "Stocks" do
   let (:company) { create :company, :ticker_name => 'TICK', :face_value => 8.24, :major_sector => 2 }
-  let (:scrip) { create :scrip, :id => company.nse_code, :last_traded_price => 24.22 }
-  let (:scrip_bse) { create :scrip_bse, :id => company.ticker_name, :bse_last_traded_price => 23.26, :bse_close_price => 22 }
+  let (:nse_scrip) { create :nse_scrip, :id => company.nse_code, :last_traded_price => 24.22 }
+  let (:bse_scrip) { create :bse_scrip, :id => company.ticker_name, :last_traded_price => 23.26, :close_price => 22 }
 
   it "shows the stock details" do
-    scrip.save
-    scrip_bse.save
+    nse_scrip.save
+    bse_scrip.save
 
     visit stock_path(company.company_code)
     page.should have_content 24.22
@@ -50,7 +50,6 @@ describe "Stocks" do
   end
 
   it "should autocomplete stock name when user fill stock name", :js => true do
-    scrip.save
     visit stocks_path
 
     page.execute_script %Q{ $('#company_company_name').val("#{company.company_name[0..5]}").keydown(); }
@@ -61,7 +60,6 @@ describe "Stocks" do
   end
 
   it "should have search in the stock page", :js => true do
-    scrip.save
     visit stock_path company.company_code
 
     page.execute_script %Q{ $('#company_company_name').val("#{company.company_name[0..5]}").keydown(); }
