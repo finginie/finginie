@@ -55,8 +55,8 @@ describe "Portfolios", :mongoid, :redis do
 
     visit details_portfolio_path(portfolio)
     expected_table = [
-                       [ "Test Loan", I18n.l(8.months.ago.to_date), "10.0", "1.0",   "25,937.39", ""],
-                       [ "Total",     "",                           "",     "",      "25,937.39", ""]
+                       [ "Test Loan", I18n.l(8.months.ago.to_date), "10.0", "1.0",   "25,937.39", "Clear Loan"],
+                       [ "Total",     "",                           "",     "",      "25,937.39", ""          ]
                     ]
     tableish("section.Loan table").should include *expected_table
   end
@@ -66,7 +66,7 @@ describe "Portfolios", :mongoid, :redis do
     create :loan_transaction, :loan => loan, :portfolio => portfolio, :price => 100000, :date => 8.months.ago.to_date, :action => "borrow"
 
     visit details_portfolio_path(portfolio)
-    click_button "Clear Loan"
+    click_on "Clear Loan"
     page.should have_content "Successfully cleared the loan"
     current_path.should eq details_portfolio_path(portfolio)
     page.should_not have_selector("section.Loan table")
@@ -80,9 +80,9 @@ describe "Portfolios", :mongoid, :redis do
 
     visit details_portfolio_path(portfolio)
     expected_table = [
-                       [ "Foo",   I18n.l(8.months.ago.to_date), "10.0",  "1.0",   "1,00,000.00", "1,06,578.78", "6,578.78", ""],
-                       [ "Foo",   I18n.l(8.months.ago.to_date), "10.0",  "1.0",   "1,00,000.00", "1,06,578.78", "6,578.78", ""],
-                       [ "Total", "",    "", "",                                  "2,00,000.00", "2,13,157.56", "13,157.56", ""]
+                       [ "Foo",   I18n.l(8.months.ago.to_date), "10.0",  "1.0",   "1,00,000.00", "1,06,578.78", "6,578.78", "Redeem"],
+                       [ "Foo",   I18n.l(8.months.ago.to_date), "10.0",  "1.0",   "1,00,000.00", "1,06,578.78", "6,578.78", "Redeem"],
+                       [ "Total", "",    "", "",                                  "2,00,000.00", "2,13,157.56", "13,157.56", ""     ]
                     ]
     tableish("section.FixedDeposit table").should include *expected_table
   end
@@ -92,7 +92,7 @@ describe "Portfolios", :mongoid, :redis do
     create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 100000, :date => 8.months.ago.to_date
 
     visit details_portfolio_path(portfolio)
-    click_button "Redeem"
+    click_on "Redeem"
     fill_in "fixed_deposit_transaction_rate_of_redemption", :with => "8"
     click_on "Submit"
     page.should_not have_selector("section.FixedDeposit table")
@@ -104,8 +104,8 @@ describe "Portfolios", :mongoid, :redis do
 
     visit details_portfolio_path(portfolio)
     expected_table = [
-                       [ "Test Property", "50,000.00", "60,000.00", "10,000.00", ""],
-                       [ "Total",         "50,000.00", "60,000.00", "10,000.00", ""]
+                       [ "Test Property", "50,000.00", "60,000.00", "10,000.00", "Sell"],
+                       [ "Total",         "50,000.00", "60,000.00", "10,000.00", ""    ]
                     ]
     tableish("section.RealEstate table").should include *expected_table
   end
@@ -115,7 +115,7 @@ describe "Portfolios", :mongoid, :redis do
     create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => 100000, :date => 8.months.ago.to_date, :action => "buy"
 
     visit details_portfolio_path(portfolio)
-    click_button "Sell"
+    click_on "Sell"
     fill_in I18n.t("simple_form.labels.real_estate_transaction.sell.price"), :with => 120000
     click_on "Submit"
     page.should_not have_selector("section.RealEstate table")

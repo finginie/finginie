@@ -4,11 +4,11 @@
     %table
       %tr
         %th.name Name
-        %th Borrow Date
+        %th.center_align Borrow Date
         %th Interest
         %th Duration
         %th Outstanding Amt
-        %th
+        %th.center_align Clear Loan
       %tr
         %td.name
         %td
@@ -19,11 +19,11 @@
       - loan_positions.each do |net_position|
         %tr
           %td.name= net_position.name
-          %td.date= l net_position.date
+          %td.center_align= l net_position.date
           %td= net_position.rate_of_interest
           %td= net_position.period
           %td= number_to_indian_currency net_position.outstanding_amount.abs
-          %td= button_to 'Clear Loan', clear_portfolio_loan_transaction_path(net_position.first.portfolio_id, net_position.first), :method => :post
+          %td.center_align= link_to 'Clear Loan', clear_portfolio_loan_transaction_path(net_position.first.portfolio_id, net_position.first), :method => :post
       %tr.total
         %td.name Total
         %td

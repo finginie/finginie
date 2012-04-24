@@ -4,13 +4,13 @@
     %table
       %tr
         %th.name Name
-        %th Deposit Date
+        %th.center_align Deposit Date
         %th Interest Rate
         %th Duration
         %th Amt Invested
         %th Current Value
         %th Interest Earned
-        %th
+        %th.center_align Redeem
       %tr
         %td.name
         %td
@@ -23,13 +23,13 @@
       - fixed_deposit_positions.each do |net_position|
         %tr
           %td.name= net_position.name
-          %td= l net_position.first.date
+          %td.center_align= l net_position.first.date
           %td= net_position.rate_of_interest
           %td= net_position.period
           %td= number_to_indian_currency net_position.invested_amount
           %td= number_to_indian_currency net_position.current_value
           = table_content_with_red_or_green_class net_position.unrealised_profit
-          %td.btn_redeem= button_to 'Redeem', redeem_portfolio_fixed_deposit_transaction_path(net_position.first.portfolio_id, net_position.first), :method => :get
+          %td.center_align= link_to 'Redeem', redeem_portfolio_fixed_deposit_transaction_path(net_position.first.portfolio_id, net_position.first), :method => :get
       %tr.total
         %td.name Total
         %td

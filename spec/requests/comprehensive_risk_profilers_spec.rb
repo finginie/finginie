@@ -50,7 +50,7 @@ describe "ComprehensiveRiskProfilers" do
       fill_in I18n.t("simple_form.labels.comprehensive_risk_profiler.age"), :with => "abc"
       click_button 'Submit'
 
-      page.should have_selector('#comprehensive_risk_profiler_age+span.error')
+      page.should have_selector('#comprehensive_risk_profiler_age+div.error')
     end
   end
 
