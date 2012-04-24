@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe "Profit Loss" do
   let(:company) { create :company }
-  let (:scrip) { create :scrip, :id => company.nse_code, :last_traded_price => 24.22 }
 
   before (:each) do
     company.save
@@ -48,7 +47,6 @@ describe "Profit Loss" do
   end
 
   it "should have stock search in the stock profit loss page" do
-    scrip.save
     visit stock_path company.company_code
     click_link "Income Statement"
     page.should have_selector("#new_company")

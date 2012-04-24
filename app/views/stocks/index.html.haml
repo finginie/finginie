@@ -21,5 +21,5 @@
           %td= link_to company.company_name, stock_path(company.company_code)
           %td= company.industry_name
           %td= company.current_price
-          %td= company.net_change
+          %td= company.nse.net_change || company.bse.net_change
           %td= company.pe

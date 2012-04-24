@@ -18,48 +18,7 @@
         - %w(eps pe price_to_book_value book_value face_value market_capitalization dividend_yield).each do |attr|
           %td.center= resource.send(attr)
 
-  .nse_quotes
-    %section.daily_prices
-      %h1 NSE
-      .daily_price_change
-        %h1= resource.last_traded_price
-        %strong.net_change= resource.net_change
-        %span.percent_change= "(#{resource.percent_change}%)"
-        - unless resource.time.kind_of?(String)
-          %p= l resource.time, :format => :short_date_and_time
-        - else
-          %p= resource.time
-      %table
-        - %w(close_price open_price volume high_price low_price fifty_two_week_high fifty_two_week_low high_date low_date).each do |attr|
-          %tr
-            %td.name
-              %span= t ".#{attr}"
-            %td
-              - if [ "high_date", "low_date" ].include?(attr) && resource.send(attr)
-                = l resource.send(attr), :format => :stock_52w_date
-              - else
-                = resource.send(attr)
-  .bse_quotes
-    %section.daily_prices
-      %h1 BSE
-      .daily_price_change
-        %h1= resource.bse_last_traded_price
-        %strong.net_change= resource.bse_net_change
-        %span.percent_change= "(#{resource.bse_percent_change}%)"
-        - unless resource.bse_time.kind_of?(String)
-          %p= l resource.bse_time, :format => :short_date_and_time
-        - else
-          %p= resource.bse_time
-      %table
-        - %w(bse_close_price bse_open_price bse_volume bse_high_price bse_low_price bse_fifty_two_week_high bse_fifty_two_week_low bse_high_date bse_low_date).each do |attr|
-          %tr
-            %td.name
-              %span= t ".#{attr}"
-            %td
-              - if ["bse_high_date", "bse_low_date" ].include?(attr) && resource.send(attr)
-                = l resource.send(attr), :format => :stock_52w_date
-              - else
-                =resource.send(attr)
+  = render 'quotes'
 
   %section.news
     - if resource.news.count > 0
