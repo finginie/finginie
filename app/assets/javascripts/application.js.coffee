@@ -20,6 +20,8 @@
 #
 #= require analytics
 #= require disqus
+#= require twitter
+#= require facebook
 #
 #= require_self
 #= require_tree ./templates
