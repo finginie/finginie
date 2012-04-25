@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "GoldPosition", :redis do
+describe "GoldPosition" do
   let(:portfolio) { create :portfolio }
   before :all do
     create :nse_scrip, :id => "GOLDBEES", :last_traded_price => 5

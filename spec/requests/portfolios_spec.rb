@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Portfolios", :mongoid, :redis do
+describe "Portfolios", :mongoid do
   include_context "logged in user"
   let (:portfolio) { create :portfolio, :user => current_user }
 
