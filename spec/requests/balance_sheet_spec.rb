@@ -20,9 +20,9 @@ describe "BalanceSheet" do
     visit stock_balance_sheet_path(company.company_code)
     page.should have_content company.company_name
     page.should have_content "Investments"
-    page.should have_content "295600.57"
+    page.should have_content "295601"
     page.should have_content "Total Debt"
-    page.should have_content "23.23"
+    page.should have_content "23"
     page.should have_content "2011"
 
   end
@@ -31,10 +31,10 @@ describe "BalanceSheet" do
      company.update_attribute(:major_sector, 2)
      visit stock_balance_sheet_path( company.company_code)
      page.should have_content "Investments"
-     page.should have_content "295600.57"
+     page.should have_content "295601"
      page.should have_content "Advances"
-     page.should have_content "756719.45"
-     page.should have_content "6349.99"
+     page.should have_content "756719"
+     page.should have_content "6350"
   end
 
   it "should have stock search in the balance sheet page" do

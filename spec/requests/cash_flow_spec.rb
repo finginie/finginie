@@ -1,7 +1,7 @@
 
 require 'spec_helper'
 
-describe "BalanceSheet" do
+describe "CashFlow", :mongoid do
   let(:company) { create :company }
 
   it "should show the correct view for cash flow" do
@@ -12,9 +12,9 @@ describe "BalanceSheet" do
     visit stock_cash_flow_path(company.company_code)
     page.should have_content company.company_name
     page.should have_content "Profit/Loss On Sale Of Assets"
-    page.should have_content "10.46"
+    page.should have_content "10"
     page.should have_content "Advance Tax Paid"
-    page.should have_content "21.23"
+    page.should have_content "21"
     page.should_not have_content "Loan And Advances"
   end
 
