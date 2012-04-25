@@ -3,21 +3,14 @@ en:
     show:
       nse_code: 'NSE CODE'
       industry_name: 'SECTOR'
-      bse_close_price: 'Previous Close'
-      bse_open_price: 'Open Price'
-      bse_volume: 'Volume'
-      bse_high_price: "Today's High Price"
-      bse_low_price: "Today's Low Price"
-      bse_fifty_two_week_high: '52 week High Price'
-      bse_fifty_two_week_low: '52 week Low Price'
-      bse_high_date: '52 week High Date'
-      bse_low_date: '52 week Low Date'
+      market_capitalization: 'Market Capitalization( Crores)'
+    quotes:
+      close_price: 'Previous Close'
+      open_price: 'Open Price'
+      volume: 'Volume'
       high_price: "Today's High Price"
       low_price: "Today's Low Price"
       fifty_two_week_high: '52 week High Price'
       fifty_two_week_low: '52 week Low Price'
       high_date: '52 week High Date'
       low_date: '52 week Low Date'
-
-
-

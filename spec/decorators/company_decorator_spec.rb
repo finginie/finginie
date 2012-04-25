@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe CompanyDecorator, :redis, :mongoid do
   before { ApplicationController.new.set_current_view_context }
-  let(:company) {create :company, :eps => '1424.32001', :ticker_name => "TIMSK" }
+  let(:company) {create :company, :eps => '1424.32001', :ticker_name => "TIMSK", :market_capitalization => '2234567890' }
   let(:nse_scrip) { create :nse_scrip, :id => company.nse_code, :time => Time.now }
   let(:bse_scrip) { create :bse_scrip, :id => company.ticker_name, :last_traded_price => 123.45 }
   let(:share_holding) { create :share_holding, :company_code => company.company_code }
@@ -11,6 +11,7 @@ describe CompanyDecorator, :redis, :mongoid do
 
   its(:eps)      { should eq 1424.32 }
   its(:pe)       { should eq "N/A" }
+  its(:market_capitalization) { should eq 223 }
 
   it "should have time for nse" do
     nse_scrip.save
