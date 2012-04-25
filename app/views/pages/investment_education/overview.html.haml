@@ -1,6 +1,20 @@
 
 .wrapper
   %article
+    %h1 Overview
+    %section
+      %ul
+        %li
+          %a{:href => "#fixed"} Fixed Deposits
+        %li
+          %a{:href => "#bonds"} Bonds
+        %li
+          %a{:href => "#gold"} Gold
+        %li
+          %a{:href => "#mutual funds"} Mutual Funds
+        %li
+          %a{:href => "#stocks"} Stocks
+    %a{:name => "fixed"}
     %h1 Fixed Deposits
     %section
       %h1 What is a fixed deposit?
@@ -64,6 +78,7 @@
         of investors losing a lot of money when such banks closed down. Therefore, we advise you to stick
         to nationalized banks and large private banks.
 
+    %a{:name => "bonds"}
     %h1 Bonds:
     %section
       %h1 What is a bond?
@@ -95,7 +110,7 @@
         you invest in anything below BBB grade-bonds.
     %section
       %h1 How can I invest in bonds?
-      %ol
+      %ul
         %li
           Many bonds can be bought online via your demat account, directly by applying to the issuer.
         %li
@@ -121,6 +136,7 @@
         As a small investor, we think that you should invest in bonds mainly for tax benefits (infrastructure
         bonds/NHAI bonds etc.) and should avoid investing in bonds below A grade.
 
+    %a{:name => "gold"}
     %h1 Gold:
     %section
       %h1 What is gold?
@@ -153,7 +169,7 @@
         asset.
     %section
       %h1 How can you invest in gold?
-      %ol
+      %ul
         %li
           You can buy physical gold in the form of coins or bars from banks/post offices.
         %li
@@ -179,6 +195,7 @@
         serious investor’s portfolio. We advise gold ETFs and gold Mutual funds as opposed to physical gold
         as it is much safer(cannot be stolen).
 
+    %a{:name => "mutual funds"}
     %h1 Mutual Funds:
     %section
       %h1 What is a mutual fund?
@@ -207,7 +224,7 @@
     %section
       %h1 How can I invest in mutual funds?
       %p You can buy mutual fund units directly from the fund manager or on the secondary market. This can be done via:
-      %ol
+      %ul
         %li
           Your demat account.
         %li
@@ -235,6 +252,7 @@
         diversification benefits and good returns. Watch out for hidden charges such as entry/exit loads
         and management fees.
 
+    %a{:name => "stocks"}
     %h1 Stocks(shares):
     %section
       %h1 What is a share / stock?
@@ -274,7 +292,7 @@
     %section
       %h1 How can I invest in shares / stocks
       %p Stocks can be bought/sold on stock exchanges via your demat account, though a stock broker.
-      %ol
+      %ul
         %li
           Your demat account.
         %li
@@ -295,11 +313,13 @@
         Don’t get discouraged by the riskiness of stocks. Over a short period of time you might
         feel that you are a victim of the volatility but if you diversify your portfolio and invest in the right
         companies, you will definitely enjoy high returns.
-    %articlefooter
-      %rightAlign
+    %footer
+      .previous
+        Prev:
+        =link_to t('investment_education.technical_analysis'), page_path('investment_education/technical_analysis')
+      .next
         Next:-
-        =link_to t('investment_education.time_value_of_money'), page_path('investment_education/time_value_of_money')
-      %center=link_to t('investment_education.home'), page_path('investment_education')
+        =link_to t('investment_education.cash_equivalents'), page_path('investment_education/cash_equivalents')
   .extracontent
     .takeaway
       %h1 Take Away
