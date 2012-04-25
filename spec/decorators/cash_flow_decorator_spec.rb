@@ -13,10 +13,10 @@ describe CashFlowDecorator do
   subject { cash_flow_decorator }
 
   describe "should divide all bigdecimals by a crore" do
-    its(:pbt)           { should eq 13926.1 }
-    its(:int_paid_net)  { should eq 2538.67 }
-    its(:prov_dim_inv)  { should eq -968.6}
-    its(:prov_bdnpa)    { should eq 5147.85 }
+    its(:pbt)           { should eq 13926 }
+    its(:int_paid_net)  { should eq 2539 }
+    its(:prov_dim_inv)  { should eq -969 }
+    its(:prov_bdnpa)    { should eq 5148 }
 
   end
 end

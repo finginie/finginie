@@ -22,13 +22,13 @@ describe "Profit Loss" do
     visit stock_profit_loss_path(company.company_code)
     page.should have_content company.company_name
     page.should have_content "Sales"
-    page.should have_content "96460.29"
+    page.should have_content "96460"
     page.should have_content "Earning Per Share (Rs)"
-    page.should have_content "130.15"
+    page.should have_content "130"
     page.should have_content "Total Material Consumed"
-    page.should have_content "11882.51"
+    page.should have_content "11883"
     page.should have_content "Cost of Sales"
-    page.should have_content "79308.33"
+    page.should have_content "79308"
   end
 
   it "should show the correct fields for banking-sector" do
@@ -37,13 +37,13 @@ describe "Profit Loss" do
     page.should have_content company.company_name
     page.should have_content "Income"
     page.should have_content "Operating Income"
-    page.should have_content "95525.58"
+    page.should have_content "95526"
     page.should have_content "Reported Net Profit"
-    page.should have_content "8264.52"
+    page.should have_content "8265"
     page.should have_content "Non Recurring Items"
-    page.should have_content "91.27"
+    page.should have_content "91"
     page.should have_content "Depreciation"
-    page.should have_content "990.5"
+    page.should have_content "990"
   end
 
   it "should have stock search in the stock profit loss page" do
