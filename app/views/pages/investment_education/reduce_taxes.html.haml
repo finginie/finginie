@@ -429,9 +429,10 @@
         Also consider tax-exempt #{link_to 'bonds', page_path('investment_education/bonds')} issued by your local government (e.g. some RBI bonds in India, certain Municipal
         bonds in USA)
     %footer
-      Prev:
-      =link_to t('investment_education.risk_management'), page_path('investment_education/risk_management')
-      .right
+      .previous
+        Prev:
+        =link_to t('investment_education.risk_management'), page_path('investment_education/risk_management')
+      .next
         Next:
         =link_to t('investment_education.fundamental_analysis1'), page_path('investment_education/fundamental_analysis1')
       #disqus_thread

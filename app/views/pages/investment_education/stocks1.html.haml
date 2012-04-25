@@ -73,19 +73,20 @@
           %td
             %h1
               New York Stock Exchange
-            =image_tag "investment_education/NYSE.png", :height => "200px", :weight => "300px"
+            =image_tag "investment_education/NYSE.png", :height => "120px", :weight => "150px"
           %td
             %h1
               Hong Kong Stock Exchange
-            =image_tag "investment_education/HKSE.png", :height => "200px", :weight => "300px"
+            =image_tag "investment_education/HKSE.png", :height => "120px", :weight => "150px"
           %td
             %h1
               Bombay Stock Exchange
-            =image_tag "investment_education/BSE.png", :height => "200px", :weight => "300px"
+            =image_tag "investment_education/BSE.png", :height => "120px", :weight => "150px"
     %footer
-      Prev:
-      =link_to t('investment_education.cash_equivalents'), page_path('investment_education/cash_equivalents')
-      .right
+      .previous
+        Prev:
+        =link_to t('investment_education.bonds'), page_path('investment_education/bonds')
+      .next
         Next:
         =link_to t('investment_education.stocks2'), page_path('investment_education/stocks2')
       #disqus_thread
