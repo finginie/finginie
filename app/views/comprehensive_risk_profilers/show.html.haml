@@ -1,9 +1,10 @@
 %p
   %b Your Risk Appetite is :
-  = resource.score
-  out of 10. (10 indicates maximum risk taking ability)
-  %ul
-    = resource.summary
+  %span
+    = resource.score
+    out of 10. (10 indicates maximum risk taking ability)
+%ul
+  = resource.summary
 %h1 Suggested Investment Mix
 %p
   = t ".suggestion"
@@ -18,9 +19,9 @@
         %td= "#{percentage}%"
   #asset-allocation-chart.chart{ data: { elements: [['','']] + FinancialPlanner.ideal_asset_allocation(resource).to_a,
                                          title: 'Suggested Asset Allocation', chartType: 'Pie'} }
-  %p
-    = t ".future_investment"
-    -unless current_user
-      = t ".sign_up"
-  #continue
-    =link_to "#{'Signin & ' unless current_user}Continue", portfolios_path
+%p
+  = t ".future_investment"
+  -unless current_user
+    = t ".sign_up"
+#continue
+  =link_to "#{'Signin & ' unless current_user}Continue", portfolios_path
