@@ -31,6 +31,10 @@ class RealEstateTransaction < ActiveRecord::Base
       (current_value - buy_value)
     end
 
+    def unrealised_profit_percentage
+      (unrealised_profit / buy_value * 100).round(2)
+    end
+
     def profit_or_loss
       last.profit_or_loss if all.count == 2
     end
