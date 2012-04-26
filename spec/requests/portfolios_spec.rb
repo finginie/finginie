@@ -97,9 +97,9 @@ describe "Portfolios", :mongoid do
 
       visit details_portfolio_path(portfolio)
       expected_table = [
-                         [ "Foo",   I18n.l(8.months.ago.to_date), "10.0",  "1.0",   "1,00,000.00", "1,06,578.78", "6,578.78", "Redeem"],
-                         [ "Foo",   I18n.l(8.months.ago.to_date), "10.0",  "1.0",   "1,00,000.00", "1,06,578.78", "6,578.78", "Redeem"],
-                         [ "Total", "",    "", "",                                  "2,00,000.00", "2,13,157.56", "13,157.56", ""     ]
+                         [ "Foo",   I18n.l(8.months.ago.to_date), "10.0",  "1.0",   "1,00,000.00", "1,06,578.78", "6,578.78",  "6.58", "Redeem"],
+                         [ "Foo",   I18n.l(8.months.ago.to_date), "10.0",  "1.0",   "1,00,000.00", "1,06,578.78", "6,578.78",  "6.58", "Redeem"],
+                         [ "Total", "",    "", "",                                  "2,00,000.00", "2,13,157.56", "13,157.56", "",     ""      ]
                       ]
       tableish("section.FixedDeposit table").should include *expected_table
     end
@@ -122,8 +122,8 @@ describe "Portfolios", :mongoid do
 
     visit details_portfolio_path(portfolio)
     expected_table = [
-                       [ "Test Property", "50,000.00", "60,000.00", "10,000.00", "Sell"],
-                       [ "Total",         "50,000.00", "60,000.00", "10,000.00", ""    ]
+                       [ "Test Property", "50,000.00", "60,000.00", "10,000.00", "20.00", "Sell"],
+                       [ "Total",         "50,000.00", "60,000.00", "10,000.00", ""     , ""    ]
                     ]
     tableish("section.RealEstate table").should include *expected_table
   end
