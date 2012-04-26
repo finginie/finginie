@@ -10,7 +10,7 @@ describe CompanyDecorator, :redis, :mongoid do
   subject { company_decorator }
 
   its(:eps)      { should eq 1424.32 }
-  its(:pe)       { should eq "N/A" }
+  its(:pe)       { should eq "-" }
   its(:market_capitalization) { should eq 223 }
 
   it "should have time for nse" do
@@ -20,7 +20,7 @@ describe CompanyDecorator, :redis, :mongoid do
 
   it "should have time for bse" do
     bse_scrip.save
-    subject.bse.time.should eq "N/A"
+    subject.bse.time.should eq "-"
     subject.current_price.should eq 123.45
   end
 
