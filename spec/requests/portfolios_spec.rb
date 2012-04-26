@@ -24,16 +24,16 @@ describe "Portfolios", :mongoid do
     find("li#navigation-details").find("a").click
 
     expected_table_for_stocks = [
-                                  [company.company_name,                       "10.00", "3.00",  "30.00", "5.00", "50.00", "20.00","Sell"],
-                                  [company_without_current_price.company_name, "10.00", "5.00",  "50.00", "-",  "-",  "-" ,"Sell"],
-                                  ["Total",                           "",      "",     "80.00", "",  "50.00", "20.00", ""]
+                                  [company.company_name,                       "10.00", "3.00",  "30.00", "5.00", "50.00", "20.00", "66.67","Sell"],
+                                  [company_without_current_price.company_name, "10.00", "5.00",  "50.00", "-",    "-",     "-" ,    "-",    "Sell"],
+                                  ["Total",                                    "",      "",      "80.00", "",     "50.00", "20.00", "" ,    ""    ]
                                 ]
     expected_table_for_mfs =    [
-                                  [scheme.scheme_name, "10.00", "3.00", "30.00", "5.00", "50.00", "20.00", "Sell"],
-                                  ["Total",            "",      "",     "30.00", "",     "50.00", "20.00", ""]
+                                  [scheme.scheme_name, "10.00", "3.00", "30.00", "5.00", "50.00", "20.00", "66.67", "Sell"],
+                                  ["Total",            "",      "",     "30.00", "",     "50.00", "20.00", "",      ""]
                                 ]
     expected_table_for_gold =   [
-                                  ["Gold", "10.00", "3.00", "30.00", "5.00", "50.00", "20.00", "Sell"]
+                                  ["Gold", "10.00", "3.00", "30.00", "5.00", "50.00", "20.00", "66.67", "Sell"]
                                 ]
 
     within "#stock_positions" do

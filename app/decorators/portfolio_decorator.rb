@@ -3,6 +3,18 @@ class PortfolioDecorator < ApplicationDecorator
   include Draper::LazyHelpers
   include NumberHelper
 
+  def stock_positions
+    model.stock_positions.map { |position| FungiblePositionDecorator.custom_decorate(position) }
+  end
+
+  def mutual_fund_positions
+    model.mutual_fund_positions.map { |position| FungiblePositionDecorator.custom_decorate(position) }
+  end
+
+  def gold_position
+    FungiblePositionDecorator.custom_decorate(resource.gold_transactions.for(Gold))
+  end
+
   #portfolio page asset_class wise percentages
   def stocks_percentage
     ( stocks_value / total_assets_value * 100).round(2).to_f
