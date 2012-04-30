@@ -13,11 +13,15 @@ SimpleNavigation::Configuration.run do |navigation|
       secondary.item :disclaimer, 'Disclaimer', main_app.page_path('disclaimer')
     end
     primary.item :investment_education, 'Learn Investing',main_app.page_path('investment_education') do |secondary|
+      secondary.item :Developing_an_investors_mindset, 'Developing an investor\'s mindset' do |tertiary|
+        tertiary.item :How_to_invest_successfully, 'How to invest successfully', main_app.page_path('investment_education/invest_successfully')
+        tertiary.item :An_overview, 'An overview', main_app.page_path('investment_education/overview')
+        tertiary.item :investment_trading, 'Investing vs Trading', main_app.page_path('investment_education/investment_trading')
+      end
       secondary.item :investment_concepts, 'Investment Concepts' do |tertiary|
         tertiary.item :risk_and_return, 'Risk and Return', main_app.page_path('investment_education/risk_and_return')
         tertiary.item :time_value_of_money, 'Time Value of Money', main_app.page_path('investment_education/time_value_of_money')
         tertiary.item :diversification, 'Diversification', main_app.page_path('investment_education/diversification')
-        tertiary.item :investment_trading, 'Investing vs Trading', main_app.page_path('investment_education/investment_trading')
       end
       secondary.item :investment_process, 'Investment Process' do |tertiary|
         tertiary.item :analyzing_needs, 'Analyzing your needs', main_app.page_path('investment_education/analyzing_needs')
@@ -35,7 +39,6 @@ SimpleNavigation::Configuration.run do |navigation|
         tertiary.item :technical_analysis, 'Technical Analysis', main_app.page_path('investment_education/technical_analysis')
       end
       secondary.item :investment_types, 'Types of Investments' do |tertiary|
-        tertiary.item :overview, 'Overview', main_app.page_path('investment_education/overview')
         tertiary.item :cash_equivalents, 'Cash Equivalents', main_app.page_path('investment_education/cash_equivalents')
         tertiary.item :bonds, 'Bonds', main_app.page_path('investment_education/bonds')
         tertiary.item :stocks1, 'Stocks', main_app.page_path('investment_education/stocks1')
