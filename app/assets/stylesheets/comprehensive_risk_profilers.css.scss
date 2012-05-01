@@ -56,20 +56,30 @@ body.comprehensive_risk_profilers {
     }
   }
   .benefits {
+    margin: {
+      top: 20px;
+    }
     p {
       margin-top: 0;
-      padding-left: 6px;
+      text-align: justify;
+      padding: {
+        right: 26px;
+        left: 10px;
+      }
     }
     h1 {
+      padding-left: 10px;
+      color: $heading-red;
       font: {
         size: large;
       }
     }
     .personalize, .good_balance, .safety, .wisdom  {
       width: 340px;
+      height: 120px;
       float: left;
       margin: {
-        bottom: 30px;
+        bottom: 15px;
       }
     }
     .personalize, .safety {
@@ -85,6 +95,10 @@ body.comprehensive_risk_profilers {
       float: left;
       margin-left: 15px;
     }
+  }
+  form {
+    clear: both;
+    padding-top: 30px;
   }
 }
 
