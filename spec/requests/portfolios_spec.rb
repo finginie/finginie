@@ -73,18 +73,20 @@ describe "Portfolios", :mongoid do
   end
 
   it "should show fixed deposit net position in details page" do
-    fixed_deposit = create :fixed_deposit, :period => 1, :rate_of_interest => 10, :name => "Foo"
-    create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 100000, :date => 8.months.ago.to_date
-    create :fixed_deposit_transaction, :fixed_deposit => create(:fixed_deposit, :period => 1, :rate_of_interest => 10, :name => "Foo"),
-                                       :portfolio => portfolio, :price => 100000, :date => 8.months.ago.to_date
+    Timecop.freeze(Date.civil(2012,03,22)) do
+      fixed_deposit = create :fixed_deposit, :period => 1, :rate_of_interest => 10, :name => "Foo"
+      create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 100000, :date => 8.months.ago.to_date
+      create :fixed_deposit_transaction, :fixed_deposit => create(:fixed_deposit, :period => 1, :rate_of_interest => 10, :name => "Foo"),
+                                         :portfolio => portfolio, :price => 100000, :date => 8.months.ago.to_date
 
-    visit details_portfolio_path(portfolio)
-    expected_table = [
-                       [ "Foo",   I18n.l(8.months.ago.to_date), "10.0",  "1.0",   "1,00,000.00", "1,06,578.78", "6,578.78", "Redeem"],
-                       [ "Foo",   I18n.l(8.months.ago.to_date), "10.0",  "1.0",   "1,00,000.00", "1,06,578.78", "6,578.78", "Redeem"],
-                       [ "Total", "",    "", "",                                  "2,00,000.00", "2,13,157.56", "13,157.56", ""     ]
-                    ]
-    tableish("section.FixedDeposit table").should include *expected_table
+      visit details_portfolio_path(portfolio)
+      expected_table = [
+                         [ "Foo",   I18n.l(8.months.ago.to_date), "10.0",  "1.0",   "1,00,000.00", "1,06,578.78", "6,578.78", "Redeem"],
+                         [ "Foo",   I18n.l(8.months.ago.to_date), "10.0",  "1.0",   "1,00,000.00", "1,06,578.78", "6,578.78", "Redeem"],
+                         [ "Total", "",    "", "",                                  "2,00,000.00", "2,13,157.56", "13,157.56", ""     ]
+                      ]
+      tableish("section.FixedDeposit table").should include *expected_table
+    end
   end
 
   it "user should able to redeem the fixed deposit" do
