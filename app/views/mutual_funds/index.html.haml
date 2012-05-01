@@ -1,46 +1,36 @@
 .mf_container
-  %h1 MutualFunds
-  = render 'search', :search => @search
-  #scheme_masters
-    - if @categories
-      %table
-        %tr
-          %th.name{:rowspan => 2} Mutual Fund Category Name
-          %th.scheme{:rowspan => 2} No. of Schemes
-          %th.center{:colspan => 7} Return (%)
-        %tr
-          %th.right 1 W
-          %th.right 1 M
-          %th.right 3 M
-          %th.right 6 M
-          %th.right 1 Y
-          %th.right 2 Y
-          %th.right 3 Y
-        - @categories.each do |cat|
-          %tr.right
-            %td.name= link_to cat.scheme_class_description, mutual_fund_category_path(cat.scheme_class_code.round) if cat.scheme_class_description
-            %td= cat.no_of_schemes
-            %td= cat.one_week_return.round(2)
-            %td= cat.one_month_return.round(2)
-            %td= cat.three_months_return.round(2)
-            %td= cat.six_months_return.round(2)
-            %td= cat.one_year_return.round(2)
-            %td= cat.two_year_return.round(2)
-            %td= cat.three_year_return.round(2)
+  %h1 Mutual Fund Schemes Search
 
-    - if @scheme_masters && @scheme_masters.count > 0
-      = paginate @scheme_masters
-      %table
-        %th Scheme Name
-        %th Category
-        %th Minimum Investment Amount (Rs)
-        - @scheme_masters.each do |scheme|
-          %tr
-            %td
-              =link_to scheme.scheme_name, scheme_summary_mutual_fund_path(scheme.scheme_name)
-            %td= scheme.scheme_class_description
-            %td= number_to_indian_currency scheme.minimum_invement_amount
+  %table{ :id => 'schemes_table', :data => { :source => mutual_funds_path(format: 'json') } }
+    %thead
+      %tr
+        %td Scheme Name
+        %td Category
+        %td Minimum Investment Amount (Rs)
 
-    - if !(@categories || @scheme_masters || @scheme_masters.count > 0)
-      %p= "Your search did not match any Mutual Fund names. Please try another keyword."
-
+  #categories_table
+    %h1 Mutual Fund Categories & Returns
+    %table
+      %tr
+        %th.name{:rowspan => 2} Mutual Fund Category Name
+        %th.scheme{:rowspan => 2} No. of Schemes
+        %th.center{:colspan => 7} Return (%)
+      %tr
+        %th.right 1 W
+        %th.right 1 M
+        %th.right 3 M
+        %th.right 6 M
+        %th.right 1 Y
+        %th.right 2 Y
+        %th.right 3 Y
+      - @categories.each do |cat|
+        %tr.right
+          %td.name= link_to cat.scheme_class_description, mutual_fund_category_path(cat.scheme_class_code.round) if cat.scheme_class_description
+          %td= cat.no_of_schemes
+          %td= cat.one_week_return.round(2)
+          %td= cat.one_month_return.round(2)
+          %td= cat.three_months_return.round(2)
+          %td= cat.six_months_return.round(2)
+          %td= cat.one_year_return.round(2)
+          %td= cat.two_year_return.round(2)
+          %td= cat.three_year_return.round(2)
