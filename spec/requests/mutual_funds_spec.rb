@@ -26,16 +26,6 @@ describe "MutualFunds" do
     page.should have_content @mf_dividend_detail.dividend_date
   end
 
-  it "should autocomplete scheme name when user fill scheme name", :js => true do
-    visit mutual_funds_path
-    page.execute_script %Q{ $('#scheme_scheme_name').val("#{@scheme.scheme_name[0..5]}").keydown(); }
-
-    wait_until {  page.should have_selector(".ui-menu-item a:contains('#{@scheme.scheme_name}')") }
-
-    page.execute_script %Q{ $('.ui-menu-item a:contains("#{@scheme.scheme_name}")').trigger('mouseenter').click(); }
-    page.current_path.should eq scheme_summary_mutual_fund_path(@scheme.scheme_name)
-  end
-
   it "should have search in the scheme page", :js => true do
     visit scheme_summary_mutual_fund_path(@scheme.scheme_name)
     page.execute_script %Q{ $('#scheme_scheme_name').val("#{@scheme.scheme_name[0..5]}").keydown(); }
