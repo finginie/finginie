@@ -61,11 +61,6 @@ body.comprehensive_risk_profilers {
     }
     p {
       margin-top: 0;
-      text-align: justify;
-      padding: {
-        right: 26px;
-        left: 10px;
-      }
     }
     h1 {
       padding-left: 10px;
@@ -75,11 +70,15 @@ body.comprehensive_risk_profilers {
       }
     }
     .personalize, .good_balance, .safety, .wisdom  {
-      width: 340px;
+      width: 350px;
       height: 120px;
       float: left;
       margin: {
         bottom: 15px;
+      }
+      padding: {
+        left: 20px;
+        right: 10px;
       }
     }
     .personalize, .safety {
@@ -93,7 +92,9 @@ body.comprehensive_risk_profilers {
     }
     img {
       float: left;
-      margin-left: 15px;
+      margin: {
+        right:6px;
+      }
     }
   }
   form {
