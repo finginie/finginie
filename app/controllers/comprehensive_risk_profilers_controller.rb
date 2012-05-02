@@ -31,6 +31,7 @@ class ComprehensiveRiskProfilersController < InheritedResources::Base
 
 private
   def first_time?
-    !(current_user && current_user.comprehensive_risk_profiler.valid? || session[:comprehensive_risk_profiler])
+    current_user ? current_user.comprehensive_risk_profiler.update_attribute(:score_cache, params[:score]) : session[:comprehensive_risk_profiler] = {score_cache: params[:score]} if params[:score]
+    !(current_user && current_user.comprehensive_risk_profiler.persisted? || session[:comprehensive_risk_profiler])
   end
 end

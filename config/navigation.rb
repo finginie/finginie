@@ -61,7 +61,7 @@ SimpleNavigation::Configuration.run do |navigation|
       end
     end
 
-    primary.item :financial_planner, 'Financial Profile', main_app.edit_comprehensive_risk_profiler_path do |secondary|
+    primary.item :financial_planner, 'Financial Profile', main_app.comprehensive_risk_profiler_path do |secondary|
       secondary.item :edit_comprehensive_risk_profilers, 'Personalized Financial Plan', main_app.edit_comprehensive_risk_profiler_path
       secondary.item :comprehensive_risk_profilers, 'Ideal Asset Allocation', main_app.comprehensive_risk_profiler_path
     end

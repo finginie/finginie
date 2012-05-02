@@ -21,7 +21,8 @@ class User < ActiveRecord::Base
   end
 
   def merge_comprehensive_risk_profiler(attributes)
-    create_comprehensive_risk_profiler(attributes) unless comprehensive_risk_profiler.persisted?
+    attributes[:score_cache] ? comprehensive_risk_profiler.update_attribute(:score_cache, attributes[:score_cache])
+                                 : create_comprehensive_risk_profiler(attributes) unless comprehensive_risk_profiler.persisted?
     self
   end
 
