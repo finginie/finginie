@@ -49,6 +49,22 @@ describe "Portfolios", :mongoid do
     end
   end
 
+  it "should go to stock page when a stock in details page is clicked" do
+    4.times { |n| create :stock_transaction, :company_code => company.company_code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    visit details_portfolio_path(portfolio)
+    click_link company.company_name
+    page.current_path.should eq stock_path(company.company_code)
+  end
+
+  it "should go to mutual fund page when a mutual fund in details page is clicked" do
+    4.times { |n| create :mutual_fund_transaction, :scheme => scheme.scheme_name,
+                          :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+
+    visit details_portfolio_path(portfolio)
+    click_link scheme.scheme_name
+    page.current_path.should eq scheme_summary_mutual_fund_path(scheme.scheme_name)
+  end
+
   it "should show loan net position in details page" do
     loan = create :loan, :period => 1, :rate_of_interest => 10, :name => "Test Loan"
     create :loan_transaction, :loan => loan, :portfolio => portfolio, :price => 100000, :date => 8.months.ago.to_date, :action => "borrow"

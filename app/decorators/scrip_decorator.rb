@@ -2,7 +2,7 @@ class ScripDecorator < ApplicationDecorator
   decorates :nse_scrip
   decorates :bse_scrip
 
-  FIELDS_TO_ROUND = [ :last_traded_price, :open_price, :high_price, :close_price, :low_price, :volume, :net_change, :percent_change ]
+  FIELDS_TO_ROUND = [ :last_traded_price, :open_price, :high_price, :close_price, :low_price, :net_change, :percent_change ]
 
   FIELDS_TO_NA = [ :time ]
 
@@ -13,5 +13,7 @@ class ScripDecorator < ApplicationDecorator
     end                                                                                                       # end
   end                                                                                                         ##
 
-
+  def volume
+    model.volume ? h.number_to_indian_currency(model.volume.round, 0) : h.t('not_available')
+  end
 end
