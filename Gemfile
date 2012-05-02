@@ -23,7 +23,7 @@ gem 'exceptional'
 gem 'haml-rails'
 gem 'high_voltage'
 gem 'inherited_resources'
-gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+gem 'jquery-datatables-rails', git: "git://github.com/rweng/jquery-datatables-rails.git"
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'kaminari'
