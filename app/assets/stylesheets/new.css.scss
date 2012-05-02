@@ -11,9 +11,8 @@ body.sessions.new {
     @include hide-aside;
     #main {
       .container {
-        padding: 1em;
-        width: 948px;
-        margin: 5em auto;
+        padding: 10px;
+        margin: 0 auto 5em;
         background: #fff;
         .connect_container {
           .facebook, .google {
@@ -33,7 +32,7 @@ body.sessions.new {
                 }
                  padding: 9px 20px 14px 60px;
               }
-              input[value="Login with Facebook"] {  
+              input[value="Login with Facebook"] {
                 background-image: url('social_facebook.png');
                 &:hover {
                   background-image: url('social_facebook.png');
@@ -47,9 +46,60 @@ body.sessions.new {
               }
             }
           }
-          
         }
-      }  
-    }  
+        .benefits {
+          p {
+            margin-top: 0;
+            //text-align: justify;
+          }
+          h1 {
+            color: $heading-red;
+            padding-left: 10px;
+            font: {
+              size: large;
+            }
+          }
+          img {
+            float: left;
+            margin-right: 6px;
+          }
+          .snapshot, .transaction, .sectoral, .profit_loss, .asset_class, .features  {
+            width: 300px;
+            height: 120px;
+            float: left;
+            margin: {
+              bottom: 15px;
+            }
+            padding: {
+              left: 10px;
+              right: 6px;
+            }
+          }
+          .snapshot, .transaction, .profit_loss, .asset_class {
+            border: {
+              right: {
+                width: 1px;
+                style: solid;
+                color: $border-color;
+              }
+            }
+          }
+        }
+        .access {
+          clear: both;
+          text-align: center;
+          padding: 20px 0;
+          p {
+            background-color: #FFF6BF;
+            color: #000;
+            font: {
+              size: 16px;
+            }
+            padding: 8px;
+            border: 1px solid #333;
+          }
+        }
+      }
+    }
   }
-}  
+}
