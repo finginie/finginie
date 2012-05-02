@@ -55,7 +55,54 @@ body.comprehensive_risk_profilers {
       }
     }
   }
+  .benefits {
+    margin: {
+      top: 20px;
+    }
+    p {
+      margin-top: 0;
+    }
+    h1 {
+      padding-left: 10px;
+      color: $heading-red;
+      font: {
+        size: large;
+      }
+    }
+    .personalize, .good_balance, .safety, .wisdom  {
+      width: 350px;
+      height: 120px;
+      float: left;
+      margin: {
+        bottom: 15px;
+      }
+      padding: {
+        left: 20px;
+        right: 10px;
+      }
+    }
+    .personalize, .safety {
+      border: {
+        right: {
+          width: 1px;
+          style: solid;
+          color: $border-color;
+        }
+      }
+    }
+    img {
+      float: left;
+      margin: {
+        right:6px;
+      }
+    }
+  }
+  form {
+    clear: both;
+    padding-top: 30px;
+  }
 }
+
 
 body.comprehensive_risk_profilers.show {
   #main {
