@@ -5,6 +5,9 @@
  *= require normalize
  *= require chosen
  *= require_self
+ *= require jquery.ui.core
+ *= require jquery.ui.theme
+ *= require dataTables/src/demo_table_jui
  *= require_directory .
  *= require personal_financial_tools
 */

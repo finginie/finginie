@@ -4,10 +4,7 @@ class MutualFundsController < InheritedResources::Base
 
   def collection
     @search = Scheme.new
-    if params[:scheme]
-      @search_records = Scheme.search(params[:scheme][:scheme_name], :allow_empty_search => true)
-      @scheme_masters = @search_records.page(params[:page]).per(10)
-    elsif params[:term]
+    if params[:term]
       @search_records = Scheme.search(params[:term], :allow_empty_search => true)
       @search_records.all.map(&:scheme_name)
     else
@@ -19,6 +16,17 @@ class MutualFundsController < InheritedResources::Base
     @search = Scheme.new
     @scheme = Scheme.where( scheme_name: params[:id] ).first
     @scheme = SchemeDecorator.decorate(@scheme)
+  end
+
+  def index
+    index! do |format|
+      format.html
+      if params[:term]
+        format.json { render json: collection }
+      else
+        format.json { render json: SchemesDecorator.new(view_context) }
+      end
+    end
   end
 
 end

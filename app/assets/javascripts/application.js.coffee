@@ -7,6 +7,7 @@
 #= require jquery
 #= require jquery-ui
 #= require jquery_ujs
+#= require dataTables/jquery.dataTables
 #
 #= require html5
 #= require personal_financial_tools

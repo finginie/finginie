@@ -16,3 +16,10 @@ $ ->
     $("body.stocks.show .daily_price_change > .percent_change").removeClass('green').addClass('red')
   else
     $("body.stocks.show .daily_price_change > .percent_change").removeClass('red').addClass('green')
+jQuery ->
+  $('#stocks_table').dataTable
+    sPaginationType: "full_numbers"
+    bJQueryUI: true
+    bProcessing: true
+    bServerSide: true
+    sAjaxSource: $('#stocks_table').data('source')

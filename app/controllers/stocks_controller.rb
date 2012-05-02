@@ -12,8 +12,18 @@ class StocksController < InheritedResources::Base
     @search = Company.new
     if params[:company]
       @search_records = Company.stocks.csearch(params[:company].values.join(" "))
-      @companies = @search_records.page(params[:page]).per(10)
       @search_records.all.map {|stock| {:value => stock.company_name, :id => stock.company_code}}
+    end
+  end
+
+  def index
+    index! do |format|
+      format.html
+      if params[:company]
+        format.json { render json: collection }
+      else
+        format.json { render json: CompaniesDecorator.new(view_context) }
+      end
     end
   end
 

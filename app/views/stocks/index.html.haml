@@ -1,25 +1,10 @@
-%h1 Stock Search
-= simple_form_for @search, :url => collection_path, :method => :get, :html => {:novalidate => true} do |f|
-  .string
-    = f.label :company_name, :required => false
-    = f.text_field :company_name, data: { autocomplete_source: stocks_path }
-  = f.input :industry_name, :collection => IndustryMaster.all.map(&:industry_name), :prompt => "Any", :required => false
-  .actions
-    = f.submit 'Search'
-
-#stocks
-  - if @companies && !@companies.empty?
-    %table
-      %tr
-        %th Name
-        %th Sector
-        %th Price
-        %th % Change
-        %th P/E
-      - @companies.each do |company|
-        %tr
-          %td= link_to company.company_name, stock_path(company.company_code)
-          %td= company.industry_name
-          %td= company.current_price
-          %td= company.nse.net_change || company.bse.net_change
-          %td= company.pe
+%h1 Stocks
+%table{ :id => 'stocks_table', :data => { :source => stocks_path(format: 'json') } }
+  %thead
+    %tr
+      %th Name
+      %th Sector
+      %th Price
+      %th % Change
+      %th P/E
+  %tbody
