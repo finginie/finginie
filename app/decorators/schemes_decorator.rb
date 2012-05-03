@@ -1,10 +1,5 @@
 class SchemesDecorator
-
-  delegate :params, :h, :link_to, to: :@view
-
-  def initialize(view)
-    @view = view
-  end
+  include DatatablesDecorator
 
   def as_json(options = {})
     {
@@ -40,21 +35,9 @@ private
     schemes
   end
 
-  def page
-    params[:iDisplayStart].to_i/per_page + 1
-  end
-
-  def per_page
-    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : 10
-  end
-
   def sort_column
     columns = %w[scheme_name industry_name minimum_investment_amount]
     columns[params[:iSortCol_0].to_i]
-  end
-
-  def sort_direction
-    params[:sSortDir_0] == "desc" ? "desc" : "asc"
   end
 
 end
