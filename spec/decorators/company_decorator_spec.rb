@@ -16,12 +16,10 @@ describe CompanyDecorator, :redis, :mongoid do
   describe "with Nse" do
     before(:each) { nse_scrip.save }
     it "should have time for nse" do
-      nse_scrip.save
       subject.nse.time.to_s.should eq nse_scrip.time.to_s
     end
 
     it "should have volumes as comma seperated" do
-      nse_scrip.save
       subject.nse.volume.should eq '54,26,32,788'
     end
   end
@@ -30,13 +28,11 @@ describe CompanyDecorator, :redis, :mongoid do
     before(:each) { bse_scrip.save }
 
     it "should have time for bse" do
-      bse_scrip.save
       subject.bse.time.should eq "-"
       subject.current_price.should eq 123.45
     end
 
     it "should have volume comma seperated" do
-      bse_scrip.save
       subject.bse.volume.should eq '23,45,67,84,523'
     end
   end
