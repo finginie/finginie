@@ -348,11 +348,18 @@ footer {
   float: left;
 }
 //------------------ Disclaimer ----------------------------------------------
-.disclaimer {
+.disc_text {
   margin: 0 auto;
   width: 980px;
   text-align: left;
-  color: $base-color;
+  p {
+    font-size: 12px;
+    color: #000;
+  }
+  a {
+    color: #CFCFCF;
+    font-size: 12px;
+  }
   font: {
     size: 12px;
   }
@@ -364,7 +371,7 @@ footer {
 }
 //------------------ copyright ----------------------------------------------
 .copyright {
-  color: black;
+  color: #FFF;
   width: 980px;
   margin: 0 auto;
   text-align: right;
@@ -377,12 +384,7 @@ footer {
 }
 
 .legal {
-  background-color: #FFF;
-  padding: {
-    top: 30px;
-    bottom: 20px;
-  }
-  border-top: 2px solid #2D2D2D;
+  background-color: #274F87;
 }
 
 //----------------------------------- Tables ---------------------------------------
@@ -537,7 +539,7 @@ input[type="text"] {
   text-align: right;
 }
 .security_type {
-  widht: 100px;
+  width: 100px;
   text-align: center;
 }
 .percentage {
