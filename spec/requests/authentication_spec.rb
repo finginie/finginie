@@ -35,26 +35,47 @@ describe "Authentication" do
     current_path.should eq portfolios_path
   end
 
-  context "New user with existing comprehensive risk profiler" do
-    let(:comprehensive_risk_profile) { build :comprehensive_risk_profiler }
-    before(:each) { answer_comprehensive_risk_profiler_with(comprehensive_risk_profile) }
-
+  context "New user" do
     let(:user) { build :user }
     let(:authentication) { build :authentication, :user => user}
 
-    it "should save the risk profiler after signing in" do
+    context "with existing comprehensive risk profiler" do
+      let(:comprehensive_risk_profile) { build :comprehensive_risk_profiler }
+      before(:each) { answer_comprehensive_risk_profiler_with(comprehensive_risk_profile) }
 
-      OmniAuth.config.add_mock authentication.provider, { :uid => authentication.uid }
+      it "should save the risk profiler after signing in" do
 
-      within "#continue" do
-        click_link "Continue"
+        OmniAuth.config.add_mock authentication.provider, { :uid => authentication.uid }
+
+        within "#continue" do
+          click_link "Continue"
+        end
+
+        click_button "Facebook"
+        page.should have_content 'Successfully signed in'
+
+        visit comprehensive_risk_profiler_path
+        page.should have_content "Your Risk Appetite is : #{comprehensive_risk_profile.score.round}"
       end
+    end
 
-      click_button "Facebook"
-      page.should have_content 'Successfully signed in'
+    context "skipped comprehensive risk profiler quiz" do
+      it "should save the default score after signing in" do
+        OmniAuth.config.add_mock authentication.provider, { :uid => authentication.uid }
 
-      visit comprehensive_risk_profiler_path
-      page.should have_content "Your Risk Appetite is : #{comprehensive_risk_profile.score.round}"
+        visit edit_comprehensive_risk_profiler_path
+        find("a#skip_quiz").click
+
+        within "#continue" do
+          click_link "Continue"
+        end
+
+        click_button "Facebook"
+        page.should have_content 'Successfully signed in'
+
+        visit comprehensive_risk_profiler_path
+        page.should have_content "Your Risk Appetite is : 6"
+      end
     end
 
     def answer_comprehensive_risk_profiler_with(comprehensive_risk_profile)

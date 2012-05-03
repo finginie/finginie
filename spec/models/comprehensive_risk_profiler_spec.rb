@@ -71,4 +71,10 @@ describe ComprehensiveRiskProfiler do
                               :household_expenditure => 20000, :special_goals_amount  => 3000000, :special_goals_years => 10)
     subject.score.should eq 7.47
   end
+
+  it "should save score without validation" do
+    c = ComprehensiveRiskProfiler.new(score_cache: 6)
+    c.save(validate: false)
+    c.score.should eq 6
+  end
 end

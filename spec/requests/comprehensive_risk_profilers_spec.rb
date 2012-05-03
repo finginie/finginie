@@ -52,6 +52,12 @@ describe "ComprehensiveRiskProfilers" do
 
       page.should have_selector('#comprehensive_risk_profiler_age+div.error')
     end
+
+    it "allow user to skip quiz and can see default asset allocation" do
+      find("a#skip_quiz").click
+
+      page.should have_content "Your Risk Appetite is : 6"
+    end
   end
 
   context "A user irrespective of registration status " do
@@ -99,6 +105,14 @@ describe "ComprehensiveRiskProfilers" do
       current_path.should eq edit_comprehensive_risk_profiler_path
 
       page.should have_content I18n.t('.comprehensive_risk_profilers.message')
+    end
+
+    it "can skip quiz and can see default asset allocation" do
+      visit comprehensive_risk_profiler_url
+
+      find("a#skip_quiz").click
+
+      page.should have_content "Your Risk Appetite is : 6"
     end
 
     let(:comprehensive_risk_profiler) { build :comprehensive_risk_profiler }

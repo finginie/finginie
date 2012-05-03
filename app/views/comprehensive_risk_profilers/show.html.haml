@@ -4,7 +4,8 @@
     = resource.score
     out of 10. (10 indicates maximum risk taking ability)
 %ul
-  = resource.summary
+  -if resource.valid?
+    = resource.summary
 %h1 Suggested Investment Mix
 %p
   = t ".suggestion"

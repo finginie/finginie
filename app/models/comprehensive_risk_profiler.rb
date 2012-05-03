@@ -1,7 +1,7 @@
 class ComprehensiveRiskProfiler < ActiveRecord::Base
   attr_accessible :age, :dependent, :household_expenditure, :household_income, :household_savings,
                   :portfolio_investment, :preference, :special_goals_amount, :special_goals_years,
-                  :tax_saving_investment, :time_horizon
+                  :tax_saving_investment, :time_horizon, :score_cache
 
   belongs_to :user
 
@@ -30,7 +30,7 @@ class ComprehensiveRiskProfiler < ActiveRecord::Base
   before_save { score(true) }
 
   def score(recalculate = false)
-    if recalculate
+    if recalculate && self.valid?
       self.score_cache = total_score
     else
       self.score_cache ||= total_score

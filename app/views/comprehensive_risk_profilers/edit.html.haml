@@ -24,6 +24,10 @@
     %p
       Completely free of cost and doesn’t require a credit card or email address. Takes less than a
       minute to finish and requires no prior knowledge of investing.
+
+-unless resource.persisted?
+  = link_to "Skip", comprehensive_risk_profiler_path(score: 6), html_options = { id: "skip_quiz"}
+
 = simple_form_for resource, :url => comprehensive_risk_profiler_path, :method => :put do |f|
   %ol
     %li= f.input :age
