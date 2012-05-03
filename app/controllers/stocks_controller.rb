@@ -19,11 +19,7 @@ class StocksController < InheritedResources::Base
   def index
     index! do |format|
       format.html
-      if params[:company]
-        format.json { render json: collection }
-      else
-        format.json { render json: CompaniesDecorator.new(view_context) }
-      end
+      format.json { render json: (params[:company] ? collection : CompaniesDecorator.new(view_context)) }
     end
   end
 

@@ -21,11 +21,7 @@ class MutualFundsController < InheritedResources::Base
   def index
     index! do |format|
       format.html
-      if params[:term]
-        format.json { render json: collection }
-      else
-        format.json { render json: SchemesDecorator.new(view_context) }
-      end
+      format.json { render json: (params[:term] ? collection : SchemesDecorator.new(view_context) ) }
     end
   end
 
