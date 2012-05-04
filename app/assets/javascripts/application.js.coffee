@@ -19,10 +19,10 @@
 #= require backbone_rails_sync
 #= require backbone_datalink
 #
-#= require analytics
 #= require disqus
 #= require twitter
 #= require facebook
+#= require analytics
 #
 #= require_self
 #= require_tree ./templates
