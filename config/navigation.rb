@@ -10,6 +10,7 @@ SimpleNavigation::Configuration.run do |navigation|
       secondary.item :team, 'Team', main_app.page_path('team')
       secondary.item :careers, 'Careers', main_app.page_path('careers')
       secondary.item :contact_us, 'Contact us', main_app.page_path('contact_us')
+      secondary.item :disclaimer, 'Disclaimer', main_app.page_path('disclaimer')
     end
     primary.item :investment_education, 'Learn Investing',main_app.page_path('investment_education') do |secondary|
       secondary.item :investment_concepts, 'Investment Concepts' do |tertiary|
@@ -66,7 +67,7 @@ SimpleNavigation::Configuration.run do |navigation|
       secondary.item :comprehensive_risk_profilers, 'Ideal Asset Allocation', main_app.comprehensive_risk_profiler_path
     end
 
-    primary.item :portfolios, 'My Investments', main_app.portfolios_path, :highlights_on => :subpath do |secondary|
+    primary.item :portfolios, 'Portfolio Tracker', main_app.portfolios_path, :highlights_on => :subpath do |secondary|
       if current_user
         current_user.portfolios.each do |portfolio|
           if portfolio.persisted?
