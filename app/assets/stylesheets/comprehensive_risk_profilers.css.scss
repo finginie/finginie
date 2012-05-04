@@ -45,14 +45,16 @@ body.comprehensive_risk_profilers {
     }
   }
   .radio_buttons {
-    margin: {
-      right: 6px;
-    }
     ul {
       margin: 0;
       padding: {
         left: 10px;
       }
+    }
+  }
+  .radio {
+    input {
+      margin-right: 6px;
     }
   }
   .benefits {
