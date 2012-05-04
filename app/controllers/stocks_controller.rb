@@ -11,7 +11,7 @@ class StocksController < InheritedResources::Base
   def collection
     @search = Company.new
     if params[:company]
-      @search_records = Company.stocks.csearch(params[:company].values.join(" "))
+      @search_records = Company.stocks.csearch(params[:company].values.join(" ")).order_by([[:company_name, :asc]])
       @search_records.all.map {|stock| {:value => stock.company_name, :id => stock.company_code}}
     end
   end

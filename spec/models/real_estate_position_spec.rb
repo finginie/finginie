@@ -9,10 +9,11 @@ describe "RealEstatePosition" do
     portfolio.real_estate_positions.first
   }
 
-  its(:name) { should eq "Test Property" }
-  its(:current_value) {  should eq 60000 }
-  its(:buy_value) {  should eq 50000 }
-  its(:unrealised_profit) {  should eq 10000 }
+  its(:name)                          { should eq "Test Property" }
+  its(:current_value)                 { should eq  60000          }
+  its(:buy_value)                     { should eq  50000          }
+  its(:unrealised_profit)             { should eq  10000          }
+  its(:unrealised_profit_percentage)  { should eq  20             }
 
   it "should calculate profit or loss percentage" do
     subject

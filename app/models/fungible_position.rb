@@ -30,4 +30,8 @@ module FungiblePosition
   def unrealised_profit
     current_price ? (current_value - value) : nil
   end
+
+  def unrealised_profit_percentage
+    unrealised_profit ? (unrealised_profit / value * 100).round(2) : nil
+  end
 end

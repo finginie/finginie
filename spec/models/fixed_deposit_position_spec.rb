@@ -12,11 +12,15 @@ describe "FixedDepositPosition" do
   its (:name) { should eq fixed_deposit.name }
   its (:invested_amount) { should eq 100 }
 
-  it "should calculate the profit or loss percentage" do
-    Timecop.freeze(Date.civil(2012,03,22)) do
+  describe "Net Worth" do
+    before(:all) { Timecop.freeze(Date.civil(2012, 03, 22)) }
+    after(:all) { Timecop.return }
+    its(:current_value) { should eq 106.58 }
+    its(:unrealised_profit) { should eq 6.58 }
+    its(:unrealised_profit_percentage) { should eq 6.58 }
+
+    it "should calculate the profit or loss percentage" do
       subject
-      subject.current_value.should eq 106.58
-      subject.unrealised_profit.should eq 6.58
       fixed_deposit.update_attributes(:rate_of_redemption => 8)
       create :fixed_deposit_transaction, :date => 1.months.ago.to_date, :price => 100, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :action => "sell"
       subject.all # reload all the transactions

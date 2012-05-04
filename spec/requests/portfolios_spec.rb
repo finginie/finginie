@@ -24,16 +24,16 @@ describe "Portfolios", :mongoid do
     find("li#navigation-details").find("a").click
 
     expected_table_for_stocks = [
-                                  [company.company_name,                       "10.00", "3.00",  "30.00", "5.00", "50.00", "20.00","Sell"],
-                                  [company_without_current_price.company_name, "10.00", "5.00",  "50.00", "-",  "-",  "-" ,"Sell"],
-                                  ["Total",                           "",      "",     "80.00", "",  "50.00", "20.00", ""]
+                                  [company.company_name,                       "10.00", "3.00",  "30.00", "5.00", "50.00", "20.00", "66.67","Sell"],
+                                  [company_without_current_price.company_name, "10.00", "5.00",  "50.00", "-",    "-",     "-" ,    "-",    "Sell"],
+                                  ["Total",                                    "",      "",      "80.00", "",     "50.00", "20.00", "" ,    ""    ]
                                 ]
     expected_table_for_mfs =    [
-                                  [scheme.scheme_name, "10.00", "3.00", "30.00", "5.00", "50.00", "20.00", "Sell"],
-                                  ["Total",            "",      "",     "30.00", "",     "50.00", "20.00", ""]
+                                  [scheme.scheme_name, "10.00", "3.00", "30.00", "5.00", "50.00", "20.00", "66.67", "Sell"],
+                                  ["Total",            "",      "",     "30.00", "",     "50.00", "20.00", "",      ""]
                                 ]
     expected_table_for_gold =   [
-                                  ["Gold", "10.00", "3.00", "30.00", "5.00", "50.00", "20.00", "Sell"]
+                                  ["Gold", "10.00", "3.00", "30.00", "5.00", "50.00", "20.00", "66.67", "Sell"]
                                 ]
 
     within "#stock_positions" do
@@ -97,9 +97,9 @@ describe "Portfolios", :mongoid do
 
       visit details_portfolio_path(portfolio)
       expected_table = [
-                         [ "Foo",   I18n.l(8.months.ago.to_date), "10.0",  "1.0",   "1,00,000.00", "1,06,578.78", "6,578.78", "Redeem"],
-                         [ "Foo",   I18n.l(8.months.ago.to_date), "10.0",  "1.0",   "1,00,000.00", "1,06,578.78", "6,578.78", "Redeem"],
-                         [ "Total", "",    "", "",                                  "2,00,000.00", "2,13,157.56", "13,157.56", ""     ]
+                         [ "Foo",   I18n.l(8.months.ago.to_date), "10.0",  "1.0",   "1,00,000.00", "1,06,578.78", "6,578.78",  "6.58", "Redeem"],
+                         [ "Foo",   I18n.l(8.months.ago.to_date), "10.0",  "1.0",   "1,00,000.00", "1,06,578.78", "6,578.78",  "6.58", "Redeem"],
+                         [ "Total", "",    "", "",                                  "2,00,000.00", "2,13,157.56", "13,157.56", "",     ""      ]
                       ]
       tableish("section.FixedDeposit table").should include *expected_table
     end
@@ -122,8 +122,8 @@ describe "Portfolios", :mongoid do
 
     visit details_portfolio_path(portfolio)
     expected_table = [
-                       [ "Test Property", "50,000.00", "60,000.00", "10,000.00", "Sell"],
-                       [ "Total",         "50,000.00", "60,000.00", "10,000.00", ""    ]
+                       [ "Test Property", "50,000.00", "60,000.00", "10,000.00", "20.00", "Sell"],
+                       [ "Total",         "50,000.00", "60,000.00", "10,000.00", ""     , ""    ]
                     ]
     tableish("section.RealEstate table").should include *expected_table
   end

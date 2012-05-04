@@ -19,6 +19,7 @@ describe "StockPosition",:redis, :mongoid do
   its (:value) { should eq 30 }
   its (:current_value) { should eq 50 }
   its (:unrealised_profit) { should eq 20 }
+  its (:unrealised_profit_percentage) { should eq 66.67 }
 
   context "should calculate after sell transaction" do
     before(:each) do
