@@ -66,6 +66,7 @@
           %th Current Price
           %th Current Value
           %th Unrealised Profit
+          %th Profit/Loss Percentage
           %th.center_align Sell
         %tr
           %td.name
@@ -75,6 +76,8 @@
           %td (Rs)
           %td (Rs)
           %td (Rs)
+          %td (%)
+          %td
         %tr
           %td.name Gold
           %td= number_to_indian_currency resource.gold_position.quantity
@@ -93,6 +96,7 @@
           %td
           %td= number_to_indian_currency resource.gold_position.current_value
           = table_content_with_red_or_green_class resource.gold_position.unrealised_profit
+          %td
           %td
 
 - %w(FixedDeposit Loan RealEstate).each do |security|
