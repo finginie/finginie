@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title= auto_page_head_content('title')
+    %title= auto_page_title
     = stylesheet_link_tag :application
     = javascript_include_tag 'https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization","version":"1.1"}]}'
     = javascript_include_tag 'http://js.exceptional.io/exceptional.js'
@@ -59,7 +59,7 @@
       =yield :footer
       .legal
         .disc_text
-          %P Disclaimer: By accessing Finginie.com or any of its associate/group sites, you have read, understood and agree to be legally bound by the terms of the following disclaimer and end user agreement. #{link_to 'read more', page_path('disclaimer')}
+          %P Disclaimer: By accessing Finginie.com or any of its associate/group sites, you have read, understood and agree to be legally bound by the terms of the following disclaimer and end user agreement. #{link_to 'read more', main_app.page_path('disclaimer')}
         .copyright
           Copyright © 2012 Finginie.com. All rights reserved.
 
