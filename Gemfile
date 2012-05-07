@@ -14,6 +14,7 @@ group :assets do
   gem 'coffee-rails'
   gem 'sass-rails'
   gem 'uglifier'
+  gem 'jquery-ui-rails'
 end
 
 gem 'bourbon', :git => "git://github.com/FinGinie/bourbon.git"
@@ -25,7 +26,6 @@ gem 'high_voltage'
 gem 'inherited_resources'
 gem 'jquery-datatables-rails', git: "git://github.com/rweng/jquery-datatables-rails.git"
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
 gem 'kaminari'
 gem 'meta_search'
 gem 'mongoid' # Required by mongoid search
