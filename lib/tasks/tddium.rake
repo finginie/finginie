@@ -1,1 +1,3 @@
-alias_task 'tddium:post_build_hook' => :migrate
+namespace :tddium do
+  task :post_build_hook => :migrate
+end
