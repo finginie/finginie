@@ -11,3 +11,4 @@ tmp/
 .tddium*
 .tddium
 public/assets
+coverage
