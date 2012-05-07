@@ -21,15 +21,23 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
   helper_method :auto_page_class_names
-  helper_method :auto_page_titles
+  helper_method :auto_page_head_content
 
 private
   def auto_page_class_names
     [params[:controller], params[:action], params[:id]].compact.map{ |n| n.split('/') }.flatten
   end
 
-  def auto_page_titles
-    ["high_voltage/pages", "pages" ].include?(params[:controller]) ? t("head_content.pages.#{params[:id].gsub('/', '.')}.title" ) : t("head_content.#{params[:controller].gsub('/', '.')}.#{params[:action]}.title")
+  def auto_page_head_content(translation)
+    head_content = 'head_content.'
+    controller_params = params[:controller].gsub('/','.') + '.'
+    action_params = params[:action] + '.'
+    id_params  = params[:id] ? (params[:id].gsub('/', '.') + '.') : ''
+    translation = translation
+    I18n.t (head_content + controller_params + action_params +id_params + translation).to_sym, :default => [(head_content + controller_params + action_params + translation).to_sym,
+                                                                                                            (head_content + controller_params +translation ).to_sym,
+                                                                                                            (head_content + translation).to_sym, translation ]
+
   end
 
   def current_user

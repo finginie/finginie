@@ -390,76 +390,79 @@ en:
     pages:
       home:
         title: 'FinGinie'
-      investment_education:
-        title: 'Investemnt Education'
-        risk_and_return:
-          title: 'Risk And Return'
-        diversification:
-          title: 'Diversification'
-        time_value_of_money:
-          title: 'Time Value Of Money'
-        investment_trading:
-          title: 'Investment vs Trading'
-        analyzing_needs:
-          title: 'Analyzing Needs'
-        investment_plan:
-          title: 'Investment Plan'
-        asset_allocation:
-          title: 'Asset Allocation'
-        choosing_investments:
-          title: 'Choosing Investments'
-        start_investing:
-          title: 'Start Investing'
-        track_investment:
-          title: 'Track Investments'
-        risk_management:
-          title: 'Risk Management'
-        reduce_taxes:
-          title: 'Reduce Taxes'
-        fundamental_analysis1:
-          title: 'Fundamental Analysis'
-        fundamental_analysis2:
-          title: 'Fundamental Analysis'
-        technical_analysis:
-          title: 'Technical Analysis'
-        overview:
-          title: 'Overview'
-        cash_equivalents:
-          title: 'Cash Equivalents'
-        overview:
-          title: 'Overview'
-        cash_equivalents:
-          title: 'Cash Equivalents'
-        bonds:
-          title: 'Bonds'
-        stocks1:
-          title: 'Stocks'
-        stocks2:
-          title: 'Stocks II'
-        mutual_funds:
-          title: 'Mutual Funds'
-        exchange_traded:
-          title: 'Exchange Traded Funds'
-        commodities:
-          title: 'Commodities'
-        insurance_products:
-          title: 'Insurance Products'
-        real_estate_investment:
-          title: 'Real estate Investments'
-        foreign_exchange1:
-          title: 'Foreign Exchange'
-        foreign_exchange2:
-          title: 'Foreign Exchange II'
-        forwards:
-          title: 'Forwards'
-        futures1:
-          title: 'Futures'
-        futures2:
-          title: 'Futures II'
-        options1:
-          title: 'Options'
-        options2:
-          title: 'Options II'
-        glossary:
-          title: 'Glossary'
+    high_voltage:
+      pages:
+        show:
+          investment_education:
+            title: 'Investemnt Education'
+            risk_and_return:
+              title: 'Risk And Return'
+            diversification:
+              title: 'Diversification'
+            time_value_of_money:
+              title: 'Time Value Of Money'
+            investment_trading:
+              title: 'Investment vs Trading'
+            analyzing_needs:
+              title: 'Analyzing Needs'
+            investment_plan:
+              title: 'Investment Plan'
+            asset_allocation:
+              title: 'Asset Allocation'
+            choosing_investments:
+              title: 'Choosing Investments'
+            start_investing:
+              title: 'Start Investing'
+            track_investment:
+              title: 'Track Investments'
+            risk_management:
+              title: 'Risk Management'
+            reduce_taxes:
+              title: 'Reduce Taxes'
+            fundamental_analysis1:
+              title: 'Fundamental Analysis'
+            fundamental_analysis2:
+              title: 'Fundamental Analysis'
+            technical_analysis:
+              title: 'Technical Analysis'
+            overview:
+              title: 'Overview'
+            cash_equivalents:
+              title: 'Cash Equivalents'
+            overview:
+              title: 'Overview'
+            cash_equivalents:
+              title: 'Cash Equivalents'
+            bonds:
+              title: 'Bonds'
+            stocks1:
+              title: 'Stocks'
+            stocks2:
+              title: 'Stocks II'
+            mutual_funds:
+              title: 'Mutual Funds'
+            exchange_traded:
+              title: 'Exchange Traded Funds'
+            commodities:
+              title: 'Commodities'
+            insurance_products:
+              title: 'Insurance Products'
+            real_estate_investment:
+              title: 'Real estate Investments'
+            foreign_exchange1:
+              title: 'Foreign Exchange'
+            foreign_exchange2:
+              title: 'Foreign Exchange II'
+            forwards:
+              title: 'Forwards'
+            futures1:
+              title: 'Futures'
+            futures2:
+              title: 'Futures II'
+            options1:
+              title: 'Options'
+            options2:
+              title: 'Options II'
+            glossary:
+              title: 'Glossary'
 
