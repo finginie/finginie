@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/FinGinie/omniauth-finginie.git
+  revision: 18b9e3c79f029e5731d7dc8dd31667a0d54d6080
+  specs:
+    omniauth-finginie (0.0.11)
+      omniauth-oauth2 (~> 1.0)
+
+GIT
   remote: git://github.com/TMaYaD/nested_form.git
   revision: fc83f0c6dbe076ef6f61a9776c9c4cd06df7332e
   specs:
@@ -505,6 +512,7 @@ DEPENDENCIES
   newrelic_rpm
   omniauth-facebook
   omniauth-google-oauth2
+  omniauth-finginie!
   paper_trail
   personal_financial_tools!
   pg

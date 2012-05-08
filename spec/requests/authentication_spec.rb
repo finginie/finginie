@@ -11,6 +11,11 @@ describe "Authentication" do
     page.should have_content 'Successfully signed in'
   end
 
+  it "should sign in using finginie oauth2" do
+    visit '/auth/finginie'
+    page.should have_content 'Successfully signed in'
+  end
+
   context "while logged in" do
     include_context "logged in user"
 
