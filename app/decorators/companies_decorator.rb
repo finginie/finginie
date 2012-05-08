@@ -29,16 +29,17 @@ private
   end
 
   def fetch_stocks
-    stocks = Company.stocks.order([[ sort_column.to_sym, sort_direction.to_sym]])
-    stocks = stocks.page(page).per(per_page)
     if params[:sSearch].present?
+      stocks = Company.stocks.order([[ sort_column.to_sym, sort_direction.to_sym]])
+      stocks = stocks.order([[ :company_name, :asc ]]) unless sort_column
+      stocks = stocks.page(page).per(per_page)
       stocks = stocks.csearch(params[:sSearch])
     end
     stocks
   end
 
   def sort_column
-    columns = %w[name sector current_price pe]
+    columns = %w[company_name industry_name current_price percent_change pe]
     columns[params[:iSortCol_0].to_i]
   end
 
