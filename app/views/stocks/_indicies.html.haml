@@ -2,9 +2,9 @@
   %tr
     %th Nifty
     %th Sensex
-    %th Gold
+    %th Gold( 10 gms )
   %tr
-    -%w(Nifty Sensex Gold).each do |index|
+    -%w(Nifty Sensex GoldDecorator).each do |index|
       %td
         %b= index.constantize.current_price
         - red_or_green_class(index.constantize.net_change, "span")

@@ -73,7 +73,7 @@ describe "Stocks", :mongoid do
       visit stocks_path
 
       expected_table = [
-                        ["10.0 1.0 ( 11.11 % )", "10.0 1.0 ( 11.11 % )", "10.0 1.0 ( 11.11 % )"]
+                        ["10.0 1.0 ( 11.11 % )", "10.0 1.0 ( 11.11 % )", "100.0 10.0 ( 11.11 % )"]
                       ]
 
       tableish("table").should include *expected_table
