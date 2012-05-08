@@ -87,8 +87,8 @@ describe "Stocks", :mongoid do
 
       visit stocks_path
 
-      expected_content = ["GAINER0 1.0 ( 100.0 % )", "GAINER1 1.0 ( 50.0 % )", "GAINER2 1.0 ( 33.33 % )", "GAINER3 1.0 ( 25.0 % )", "GAINER4 1.0 ( 20.0 % )"]
-      selector("#gainer", "li").should include *expected_content
+      expected_content = [["GAINER0", "1.00", "100.00"], ["GAINER1", "1.00", "50.00"], ["GAINER2", "1.00", "33.33"], ["GAINER3", "1.00", "25.00"], ["GAINER4", "1.00", "20.00"]]
+      tableish("#gainer").should include *expected_content
     end
 
     it "should list top five loser" do
@@ -99,8 +99,8 @@ describe "Stocks", :mongoid do
 
       visit stocks_path
 
-      expected_content = ["LOSER0 -1.0 ( -50.0 % )", "LOSER1 -1.0 ( -33.33 % )", "LOSER2 -1.0 ( -25.0 % )", "LOSER3 -1.0 ( -20.0 % )", "LOSER4 -1.0 ( -16.67 % )"]
-      selector("#loser", "li").should include *expected_content
+      expected_content = [ ["LOSER0", "-1.00", "-50.00"], ["LOSER1", "-1.00", "-33.33"], ["LOSER2", "-1.00", "-25.00"], ["LOSER3", "-1.00", "-20.00"], ["LOSER4", "-1.00", "-16.67"] ]
+      tableish("#loser").should include *expected_content
     end
   end
 

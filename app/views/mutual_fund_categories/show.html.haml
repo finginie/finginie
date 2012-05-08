@@ -9,22 +9,22 @@
   %table
     %tr
       %th.name{:rowspan => 2} Scheme Name
-      %th.center{:rowspan => 2} Crisil Rank
+      %th.center_align{:rowspan => 2} Crisil Rank
       %th.nav NAV
       %th.invest_amount Min Investment Amt
-      %th.center{:colspan => 7} Returns (%)
+      %th.center_align{:colspan => 7} Returns (%)
     %tr
-      %th.right (Rs)
-      %th.right (Rs)
-      %th.center 1 W
-      %th.center 1 M
-      %th.center 3 M
-      %th.center 6 M
-      %th.center 1 Y
-      %th.center 2 Y
-      %th.center 3 Y
+      %th.right_align (Rs)
+      %th.right_align (Rs)
+      %th.center_align 1 W
+      %th.center_align 1 M
+      %th.center_align 3 M
+      %th.center_align 6 M
+      %th.center_align 1 Y
+      %th.center_align 2 Y
+      %th.center_align 3 Y
     - resource.each do |scheme|
-      %tr.right
+      %tr.right_align
         %td.name= link_to scheme.scheme_name, scheme_summary_mutual_fund_path(scheme.scheme_name)
         %td= scheme.rank
         %td= number_to_indian_currency scheme.nav_amount

@@ -1,15 +1,18 @@
 #tabs
   %ul
-    %li= link_to t(".top_gainer"), "#gainer"
-    %li= link_to t(".top_loser"), "#loser"
+    %li= link_to t(".top_gainers"), "#gainer"
+    %li= link_to t(".top_losers"), "#loser"
 
   - %w(gainer loser).each do |performance|
     %div{ :id => performance }
-      %ul
+      %table
+        %tr
+          %th.ui-state-default Name
+          %th.ui-state-default Today's Change
+          %th.ui-state-default % Change
         - Company.send("top_five_#{performance}").each do |company|
-          %li
-            = link_to company.name, stock_path(company.company_code)
-            - red_or_green_class(company.nse.net_change, "span")
-            = "("
-            - red_or_green_class(company.nse.percent_change, "span")
-            = "% )"
+          %tr{ class: cycle("odd", "even") }
+            %td
+              = link_to company.name, stock_path(company.company_code)
+            = table_content_with_red_or_green_class(company.nse.net_change)
+            = table_content_with_red_or_green_class(company.nse.percent_change)
