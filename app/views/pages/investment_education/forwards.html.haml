@@ -1,6 +1,7 @@
 .wrapper
   %article
     %h1 Forwards
+    = render :partial => 'layouts/facebook_recommend'
     %section
       %h1 Forwards:
       =image_tag  "investment_education/Forwards.png"
@@ -32,7 +33,6 @@
         Next:
         =link_to t('investment_education.futures1'), page_path('investment_education/futures1')
       #disqus_thread
-      .fb-like{"data-action" => "recommend", "data-href" => "http://finginie.com/pages/investment_education/forwards", "data-send" => "false", "data-show-faces" => "true", "data-width" => "451"}
   .extracontent
     .takeaway
       %h1 Take Away

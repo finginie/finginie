@@ -1,6 +1,7 @@
 .wrapper
   %article
     %h1 Bonds
+    = render :partial => 'layouts/facebook_recommend'
     %section
       %h1 What are Debt Instruments?
       =image_tag  "investment_education/debts1.png"
@@ -79,7 +80,6 @@
         Next:
         =link_to t('investment_education.stocks1'), page_path('investment_education/stocks1')
       #disqus_thread
-      .fb-like{"data-action" => "recommend", "data-href" => "http://finginie.com/pages/investment_education/bonds", "data-send" => "false", "data-show-faces" => "true", "data-width" => "451"}
   .extracontent
     .takeaway
       %h1 Take Away

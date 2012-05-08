@@ -1,6 +1,7 @@
 .wrapper
   %article
     %h1 Futures II
+    = render :partial => 'layouts/facebook_recommend'
     %section
       =image_tag  "investment_education/Futures-Advanced1.png", :height => "200", :weight => "250px"
       %p In a futures contract, the buyer usually does not take delivery of the physical asset, rather, the contract is cash-settled.
@@ -64,7 +65,6 @@
         Next:
         =link_to t('investment_education.options1'), page_path('investment_education/options1')
       #disqus_thread
-      .fb-like{"data-action" => "recommend", "data-href" => "http://finginie.com/pages/investment_education/futures2", "data-send" => "false", "data-show-faces" => "true", "data-width" => "451"}
   .extracontent
     .takeaway
       %h1 Take Away

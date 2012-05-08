@@ -1,6 +1,7 @@
 .wrapper
   %article
     %h1 Analyzing your Needs
+    = render :partial => 'layouts/facebook_recommend'
     %section
       %h1 Abstract
       %p 
@@ -60,7 +61,6 @@
         Next:
         =link_to t('investment_education.investment_plan'), page_path('investment_education/investment_plan')
       #disqus_thread
-      .fb-like{"data-action" => "recommend", "data-href" => "http://www.finginie.com/pages/investment_education/analyzing_needs", "data-send" => "false", "data-show-faces" => "true", "data-width" => "450"}
   .extracontent
     .takeaway
       %h1 Take Away

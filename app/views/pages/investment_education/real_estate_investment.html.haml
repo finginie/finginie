@@ -1,6 +1,7 @@
 .wrapper
   %article
     %h1 Real Estate Investments
+    = render :partial => 'layouts/facebook_recommend'
     %section
       %h1 What is real estate?
       =image_tag  "investment_education/RealEstate1.png"
@@ -55,7 +56,6 @@
         Next:
         =link_to t('investment_education.foreign_exchange1'), page_path('investment_education/foreign_exchange1')
       #disqus_thread
-      .fb-like{"data-action" => "recommend", "data-href" => "http://finginie.com/pages/investment_education/real_estate_investment", "data-send" => "false", "data-show-faces" => "true", "data-width" => "451"}
   .extracontent
     .takeaway
       %h1 Take Away

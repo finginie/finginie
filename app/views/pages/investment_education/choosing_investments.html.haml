@@ -1,6 +1,7 @@
 .wrapper
   %article
     %h1 Choosing Investments
+    = render :partial => 'layouts/facebook_recommend'
     %section
       %h1 Security Selection:
       %p
@@ -118,7 +119,6 @@
         Next:
         =link_to t('investment_education.start_investing'), page_path('investment_education/start_investing')
       #disqus_thread
-      .fb-like{"data-action" => "recommend", "data-href" => "http://finginie.com/pages/investment_education/choosing_investments", "data-send" => "false", "data-show-faces" => "true", "data-width" => "450"}
   .extracontent
     .takeaway
       %h1 Take Away

@@ -1,6 +1,7 @@
 .wrapper
   %article
     %h1 Fundamental Analysis
+    = render :partial => 'layouts/facebook_recommend'
     %section
       %h1 What is fundamental analysis?
       =image_tag  "investment_education/FundamentalAnalysis.png"
@@ -115,7 +116,6 @@
         Next:
         =link_to t('investment_education.fundamental_analysis2'), page_path('investment_education/fundamental_analysis2')
       #disqus_thread
-      .fb-like{"data-action" => "recommend", "data-href" => "http://finginie.com/pages/investment_education/fundametal_analysis1", "data-send" => "false", "data-show-faces" => "true", "data-width" => "451"}
   .extracontent
     .takeaway
       %h1 Take Away

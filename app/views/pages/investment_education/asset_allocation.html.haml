@@ -1,6 +1,7 @@
 .wrapper
   %article
     %h1 Asset Allocation
+    = render :partial => 'layouts/facebook_recommend'
     %section
       %h1 Assets and Asset Classes:
       =image_tag  "investment_education/Assets1.png", :height => "150px", :width => "200px"
@@ -88,7 +89,6 @@
         Next:
         =link_to t('investment_education.choosing_investments'), page_path('investment_education/choosing_investments')
       #disqus_thread
-      .fb-like{"data-action" => "recommend", "data-href" => "http://finginie.com/pages/investment_education/asset_allocation", "data-send" => "false", "data-show-faces" => "true", "data-width" => "450"}
   .extracontent
     .takeaway
       %h1 Take Away

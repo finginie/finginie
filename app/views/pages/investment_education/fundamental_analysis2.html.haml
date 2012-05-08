@@ -1,6 +1,7 @@
 .wrapper
   %article
     %h1 Fundamental Analysis II
+    = render :partial => 'layouts/facebook_recommend'
     %section
       %h1 Top-down analysis:
       =image_tag  "investment_education/FundamentalAnalysis-Advanced2.png"
@@ -246,7 +247,6 @@
         Next:
         =link_to t('investment_education.technical_analysis'), page_path('investment_education/technical_analysis')
       #disqus_thread
-      .fb-like{"data-action" => "recommend", "data-href" => "http://finginie.com/pages/investment_education/fundamental_analysis2", "data-send" => "false", "data-show-faces" => "true", "data-width" => "451"}
   .extracontent
     .takeaway
       %h1 Take Away

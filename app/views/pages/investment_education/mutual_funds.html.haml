@@ -1,6 +1,7 @@
 .wrapper
   %article
     %h1 Mutual Funds
+    = render :partial => 'layouts/facebook_recommend'
     %section
       %h1 What is a mutual fund?
       =image_tag  "investment_education/MF1.png"
@@ -149,7 +150,6 @@
         Next:
         =link_to t('exchange_traded_funds'), page_path('investment_education/exchange_traded')
       #disqus_thread
-      .fb-like{"data-action" => "recommend", "data-href" => "http://finginie.com/pages/investment_education/mutual_funds", "data-send" => "false", "data-show-faces" => "true", "data-width" => "451"}
   .extracontent
     .takeaway
       %h1 Take Away

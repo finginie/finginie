@@ -1,6 +1,7 @@
 .wrapper
   %article
     %h1 Stocks I
+    = render :partial => 'layouts/facebook_recommend'
     %section
       %h1 Definition:
       =image_tag "investment_education/Stocks4.png"
@@ -90,7 +91,6 @@
         Next:
         =link_to t('investment_education.stocks2'), page_path('investment_education/stocks2')
       #disqus_thread
-      .fb-like{"data-action" => "recommend", "data-href" => "http://finginie.com/pages/investment_education/stocks1", "data-send" => "false", "data-show-faces" => "true", "data-width" => "451"}
   .extracontent
     .takeaway
       %h1 Take Away

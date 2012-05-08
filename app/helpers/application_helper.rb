@@ -14,6 +14,10 @@ module ApplicationHelper
     end
   end
 
+  def current_page_path
+   request.url
+  end
+
   def red_or_green_class(value, tag)
     value.to_f < 0 ? haml_tag("#{tag}.red", value) : haml_tag("#{tag}.green", value)
   end

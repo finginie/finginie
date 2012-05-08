@@ -1,6 +1,7 @@
 .wrapper
   %article
     %h1 Investment vs Trading
+    = render :partial => 'layouts/facebook_recommend'
     %section
       %p In the financial markets the terms ‘Investing’ and ‘Trading’ are often used loosely and interchangeably.Both the activities have the same objective of making profits but the methodology involved is quite contrasting.
       %p
@@ -47,7 +48,6 @@
         Next:
         =link_to t('investment_education.analyzing_your_needs'), page_path('investment_education/analyzing_needs')
       #disqus_thread
-      .fb-like{"data-action" => "recommend", "data-href" => "http://finginie.com/pages/investment_education/investment_trading", "data-send" => "false", "data-show-faces" => "true", "data-width" => "450"}
   .extracontent
     .takeaway
       %h1 Take Away

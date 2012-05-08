@@ -1,6 +1,7 @@
 .wrapper
   %article
     %h1 Insurance Products
+    = render :partial => 'layouts/facebook_recommend'
     %section
       %h1 What is insurance?
       %p
@@ -180,7 +181,6 @@
         Next:
         =link_to t('investment_education.real_estate_investments'), page_path('investment_education/real_estate_investment')
       #disqus_thread
-      .fb-like{"data-action" => "recommend", "data-href" => "http://finginie.com/pages/investment_education/insurance_products", "data-send" => "false", "data-show-faces" => "true", "data-width" => "451"}
   .extracontent
     .takeaway
       %h1 Take Away

@@ -1,6 +1,7 @@
 .wrapper
   %article
     %h1 Cash Equivalents
+    = render :partial => 'layouts/facebook_recommend'
     %section
       %h1 What are cash equivalents?
       %p
@@ -171,7 +172,6 @@
         Next:
         =link_to t('investment_education.bonds'), page_path('investment_education/bonds')
       #disqus_thread
-      .fb-like{"data-action" => "recommend", "data-href" => "http://finginie.com/pages/investment_education/cash_equivalents", "data-send" => "false", "data-show-faces" => "true", "data-width" => "451"}
   .extracontent
     .takeaway
       %h1 Take Away

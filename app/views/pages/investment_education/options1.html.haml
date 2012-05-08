@@ -1,6 +1,7 @@
 .wrapper
   %article
     %h1 Options I
+    = render :partial => 'layouts/facebook_recommend'
     %section
       =image_tag  "investment_education/options3.png"
       %p An option is a legally binding contract that gives the buyer the right but not the obligation to buy (or sell) a pre-determined asset at a pre-determined price on a pre-determined date. Conversely, the seller has the obligation to deliver that underlying asset at that pre-determined price at that pre-determined time. The underlying assets can be stocks,bonds, baskets of stocks,commodities etc.
@@ -107,7 +108,6 @@
         Next:
         =link_to t('investment_education.options2'), page_path('investment_education/options2')
       #disqus_thread
-      .fb-like{"data-action" => "recommend", "data-href" => "http://finginie.com/pages/investment_education/options1", "data-send" => "false", "data-show-faces" => "true", "data-width" => "451"}
   .extracontent
     .takeaway
       %h1 Take Away

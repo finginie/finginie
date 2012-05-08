@@ -1,6 +1,7 @@
 .wrapper
   %article
     %h1 Risk & Return
+    = render :partial => 'layouts/facebook_recommend'
     %section
       %h1 Expected Returns:
       =image_tag  "investment_education/RiskAndReturn1.png"
@@ -94,7 +95,6 @@
     %footer
       .next= link_to "Next: #{t('investment_education.time_value_of_money')}", page_path('investment_education/time_value_of_money')
       #disqus_thread
-      .fb-like{"data-action" => "recommend", "data-href" => "http://finginie.com/pages/investment_education/risk_and_return", "data-send" => "false", "data-show-faces" => "true", "data-width" => "450"}
   .extracontent
     .takeaway
       %h1 Take Away
