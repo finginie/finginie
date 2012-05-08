@@ -1,13 +1,14 @@
-%table
-  %tr
-    %th Nifty
-    %th Sensex
-    %th Gold( 10 gms )
-  %tr
-    -%w(Nifty Sensex GoldDecorator).each do |index|
-      %td
-        %b= index.constantize.current_price
-        - red_or_green_class(index.constantize.net_change, "span")
-        = "("
-        - red_or_green_class(index.constantize.percent_change, "span")
-        = " % )"
+.exchange_value
+  %table{:cellpadding => "10"}
+    %tr
+      %th.nifty Nifty
+      %th.sensex Sensex
+      %th Gold( 10 gms )
+    %tr.center_align
+      -%w(Nifty Sensex GoldDecorator).each do |index|
+        %td
+          %b= index.constantize.current_price
+          - red_or_green_class(index.constantize.net_change, "span")
+          = "("
+          - red_or_green_class(index.constantize.percent_change, "span")
+          = " % )"

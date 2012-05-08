@@ -4,17 +4,18 @@
 %table{ :id => 'stocks_table', :data => { :source => stocks_path(format: 'json') } }
   %thead
     %tr
-      %th Name
-      %th Sector
-      %th Price
-      %th % Change
-      %th P/E
+      %th.name Name
+      %th.name Sector
+      %th.stock_value Price
+      %th.stock_value % Change
+      %th.stock_value P/E
   %tbody
 
-%p
-  Use our
-  = link_to "Stocks Screener tool", screener_stocks_path
-  to find stocks matching your criteria
-
-#top_gainers_or_losers
+#top_gainers_or_losers.top_gain_loss
   = render "top_gainers_or_losers"
+.screener_tool
+  %p
+    Use our
+    = link_to "Stock Screener tool", screener_stocks_path
+    to find stocks matching your criteria
+

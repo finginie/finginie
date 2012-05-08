@@ -342,11 +342,11 @@ footer {
 
 //------------------ Previous and Next links in articles page  ----------------------------------------------
 
-.next {
+.article_next {
   float: right;
 }
 
-.previous {
+.article_prev {
   float: left;
 }
 //------------------ Disclaimer ----------------------------------------------
@@ -559,6 +559,9 @@ input[type="text"] {
   text-align: right;
 }
 
+.stock_value {
+  width: 70px;
+}
 
 //---------------------------Autocomplete loading image style -------------------- 
 

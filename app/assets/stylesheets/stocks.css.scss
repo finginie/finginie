@@ -18,18 +18,72 @@ body.stocks.index {
     #main {
       .container {
         padding-left: 4px;
-        table {
-          th, td {
-            text-align: center;
-            font: {
-              size: 16px;
-              weight: normal;
+        .exchange_value {
+          margin-bottom: 10px;
+          table {
+            border: 0;
+            th, td {
+              border: 0;
+              text-align: center;
+              margin: 5px;
+              font: {
+                size: 20px;
+                weight: normal;
+              }
+            }
+            td {
+              b {
+                padding-right: 10px;
+                color: $heading-blue;
+              }
+              a {
+                color: $heading-red;
+              }
+            }
+            th {
+              @include linear-gradient(#438DF2, shade(#0F3F7A, 0%));
+              color: #FFF;
+              margin: 6px;
+              @include border-radius(5px 5px 0 0);
+            }
+            th.nifty, th.sensex {
+              border-right: 4px solid #FFF;
             }
           }
         }
-        #slider-range {
-          width:260px;
-          margin:15px;
+        .dataTables_wrapper {
+          margin-bottom: 20px;
+          a {
+           color: $heading-blue;
+          }
+        }
+        .dataTables_info {
+          font-size: 12px;
+        }
+      }
+      .ui-helper-reset {
+        font-size: 14px;
+      }
+      .ui-tabs-panel {
+        padding: 0;
+        table {
+          td {
+            text-align: left;
+          }
+        }
+      }
+      .top_gain_loss {
+        margin-bottom: 20px;
+        td a {
+          color: $heading-blue;
+        }
+      }
+      .screener_tool {
+        p {
+          padding-left: 10px;
+        }
+        a {
+          color: $heading-red;
         }
       }
     }
@@ -206,13 +260,49 @@ body.share_holding{
 body.stocks.screener {
   #wrapper {
     width: 980px;
+    padding-left: 0;
     aside {
       display: none;
     }
-    padding-left: 0;
-    #slider-range {
-      width:260px;
-      margin:15px;
+    #main {
+      .container {
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 4px;
+        #slider-range {
+          width:400px;
+          margin:15px;
+        }
+        input[type="text"]{
+          width: 200px;
+        }
+        .actions {
+          text-align: center;
+          margin-bottom: 20px;
+        }
+        #screener-slider {
+          margin: {
+            top: 10px;
+            bottom: 10px;
+          }
+          th, td {
+            text-align: center;
+          }
+        }
+        .pagination {
+          font-size: 14px;
+        }
+        form {
+          label {
+            padding-right: 10px;
+          }
+          select {
+            font: {
+              size: 12px;
+            }
+          }
+        }
+      }
     }
   }
 }

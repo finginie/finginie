@@ -89,9 +89,6 @@ body.mutual_funds.scheme_returns {
 }
 
 
-
-
-
 body.mutual_funds.top_holdings {
   #main {
     .mf_container {
@@ -139,30 +136,28 @@ body.mutual_funds.sectoral_allocation {
   }
 }
 
-
 body.mutual_funds.index {
-  #main {
-    div {
-      #new_scheme {
-        margin: {
-          top: 10px;
-          bottom: 20px;
+  #wrapper {
+    width: 980px;
+    padding-left:0;
+    aside {
+      display: none;
+    }
+    #main {
+      .container {
+        padding-left: 4px;
+        padding-top: 4px;
+        .dataTables_info {
+          font-size: 12px;
         }
-      }
-      label {
-        padding-right: 1em;
-        font-size: medium;
-        color: $base-color;
-      }
-      p {
-        color: red;
-        font-size: small;
-      }
-      td a {
-        color: $base-color;
+        .dataTables_wrapper {
+          margin-bottom: 20px;
+          a {
+           color: $heading-blue;
+          }
+        }
       }
     }
   }
 }
-
 
