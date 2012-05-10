@@ -599,7 +599,12 @@ ul.ui-autocomplete {
   }
 }
 
+//------------------------- disqus --------------------------------------------
 #disqus_thread {
   clear: both;
   padding-top: 20px
+}
+
+a.dsq-subscribe-email, #dsq-account-dropdown a, a.dsq-subscribe-rss {
+  color: $heading-blue;
 }
