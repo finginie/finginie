@@ -1,6 +1,6 @@
 en:
   comprehensive_risk_profilers:
-    message: 'Please answer the following questions so that we can suggest investments that are suitable for your unique needs.'
+    message: 'Please answer the following questions so that we can suggest a personalized financial plan telling you where to invest.'
     success_message: 'Your answers were successfully updated. Our suggestions for you are as follows.'
     show:
       suggestion: 'Based on your responses,we suggest that your investment mix be structured as follows. Remember, these are guidelines only.'
