@@ -82,6 +82,9 @@ body.comprehensive_risk_profilers {
         left: 20px;
         right: 10px;
       }
+      img {
+        width: 20px;
+      }
     }
     .personalize, .safety {
       border: {
@@ -102,6 +105,13 @@ body.comprehensive_risk_profilers {
   form {
     clear: both;
     padding-top: 30px;
+  }
+  .skip {
+    a {
+      color: $heading-blue;
+      font-size: 14px;
+      padding-left: 20px;
+    }
   }
 }
 

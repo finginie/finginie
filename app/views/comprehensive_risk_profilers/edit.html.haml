@@ -1,25 +1,25 @@
 %h1 Personalized Financial Plan
 .benefits
   .personalize
-    =image_tag  "piggy-bank-icon.png"
+    =image_tag  "Personalized.png"
     %h1 Personalized investment suggestions
     %p
       Gives you personalized investment suggestions based on your unique financial needs &
       constraints.
   .good_balance
-    =image_tag  "piggy-bank-icon.png"
+    =image_tag  "risk_and_return.png"
     %h1 Balance between risk and return
     %p
       Ensures that you strike a perfect balance between risk and return. All suggestions are based on
       financial experts’ opinion & backed by 10 years of market data.
   .safety
-    =image_tag  "piggy-bank-icon.png"
+    =image_tag  "Diversification.png"
     %h1 Diversification
     %p
       Automatically ensures diversification across asset classes such as stocks, fixed deposits and gold.
       This reduces the riskiness of your portfolio drastically.
   .wisdom
-    =image_tag  "piggy-bank-icon.png"
+    =image_tag  "Quick_-free_and_beginner_-friendly.png"
     %h1 Quick, free and beginner friendly
     %p
       Completely free of cost and doesn’t require a credit card or email address. Takes less than a
@@ -27,7 +27,7 @@
 
 -unless resource.persisted?
   .skip
-    = link_to "Skip Quiz and load default portfolio", comprehensive_risk_profiler_path(score: 6), html_options = { id: "skip_quiz"}
+    = link_to "Skip  Step and load balanced portfolio (Not Recommended)", comprehensive_risk_profiler_path(score: 6), html_options = { id: "skip_quiz"}
 
 = simple_form_for resource, :url => comprehensive_risk_profiler_path, :method => :put do |f|
   %ol
