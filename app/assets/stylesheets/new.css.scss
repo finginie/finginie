@@ -12,25 +12,26 @@ body.sessions.new {
     #main {
       .container {
         padding: 10px;
-        margin: 0 auto 5em;
+        margin: 0 auto;
         background: #fff;
         .connect_container {
+          .google {
+            float: right;
+          }
           .facebook, .google {
             display: inline-block;
             width: 450px;
             text-align: center;
             form {
-              margin: 0;
               input[type="submit"] {
                 width: 300px;
                 @include button($base-color);
-                @include linear-gradient($base-color, shade($base-color, 60%));
                 background-repeat:no-repeat;
-                background-postion: left top;
                 font: {
-                  size: 1.2em;
+                  size: 20px;
+                  weight: normal;
                 }
-                 padding: 9px 20px 14px 60px;
+                padding: 9px 20px 14px 60px;
               }
               input[value="Login with Facebook"] {
                 background-image: url('social_facebook.png');
