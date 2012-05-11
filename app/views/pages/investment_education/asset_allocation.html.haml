@@ -1,86 +1,170 @@
 .wrapper
   %article
-    %h1 Asset Allocation
+    %h1 Asset allocation and choosing investments
     = render :partial => 'layouts/facebook_recommend'
     %section
       %h1 Assets and Asset Classes:
-      =image_tag  "investment_education/Assets1.png", :height => "150px", :width => "200px"
       %p
-        An asset is anything that is expected to provide positive cashflow in the future.
-        This is a rather broad definition and thus encompasses securities (e.g. stocks,
-        bonds), real estate (e.g. land, houses), intellectual property (e.g. copyrights,
-        patents) etc.
+        An asset is anything that is expected to provide positive cash flow in the future. In the financial
+        world, assets comprise of stocks, bonds, mutual funds, etc.
       %p
-        Asset classes are sets of assets that have similar features and behave similarly.
-        Securities of one asset class will generally be subject to similar regulations since
-        they exhibit similar characteristics. The main asset classes are – Equity (stocks),
-        Fixed Income Securities (bonds etc), Commodities (gold, silver, oil, wheat etc),
-        Cash Equivalents (short term deposits, money market instruments) and real estate.
-        Some analysts go one step further and have narrower definitions of asset classes
-        resulting in asset classes such as – Large cap domestic stocks, international stocks,
-        mid cap domestic stocks, non-gold commodities etc.
+        Asset classes are sets of assets that have similar features and behave similarly. The main asset
+        classes are – Equity (stocks / shares), Fixed Income Securities (fixed deposits, bonds), Commodities
+        (gold, silver), Cash Equivalents (savings accounts at banks/ money market mutual funds) and real
+        estate. Some analysts go one step further and have narrower definitions of asset classes resulting
+        in asset classes such as – Large cap domestic stocks, international stocks, mid cap domestic stocks,
+        non-gold commodities etc.
     %section
-      %h1 Types of Assets and Varying Risk-Return Profiles:
-      =image_tag  "investment_education/assetallocation1.png", :height => "150px", :width => "200px"
+      %h1 Types of assets and their Risk-Return Profiles:
       %p Different assets carry different risks and yield different returns.
       %ol
         %li
-          Money market instruments are known as cash equivalents as they are extremely liquid (can be converted
-          to cash very easily). They yield the lowest returns amongst all asset classes as they also carry the least risk.
+          %b Cash Equivalents -
+          Cash equivalents such as savings deposits at banks are extremely liquid
+          (can be converted to cash very easily). They yield the lowest returns amongst all asset classes as they
+          also carry the least risk.
         %li
-          Bonds, carry more risk than money market instruments. Bonds are long-term instruments (less liquid)
-          and carry default risk i.e. the risk that the bond-issuer will not be able to make interest/principal payments.
-          Bonds are also subject to inflation risk (the risk that inflation will be more than expected) and interest rate risk
-          (the risk of change interest rates adversely affecting bond prices).
-          %p
-            Since bonds are riskier than cash equivalents, they yield higher returns. If they didn’t , investors
-            wouldn’t have an incentive to invest in bonds and would rather invest in cash equivalents.
+          %b Fixed Income -
+          In general, fixed income securities such as fixed deposits and bonds carry
+          more risk than cash equivalents. In general, they are long-term instruments (less liquid) and carry
+          default risk i.e. the risk that the bank/bond-issuer will not be able to make interest/principal
+          payments. Since bonds and fixed deposits are riskier than cash equivalents, they yield higher returns.
+          If they didn’t, investors wouldn’t have an incentive to invest in bonds and would rather invest in cash
+          equivalents.
         %li
-          Equity(Stocks) are substantially riskier than bonds.
-          Stock holders only have a right to the residual income/assets of the issuing company
-          after all bond-holders and creditors have been paid. Therefore, the bondholder can
-          be considered “senior” to the share holder. To illustrate the concept of seniority,
-          let us consider the following: Under normal circumstances, the bondholder will be
-          paid his original investment and promised interest as long as the bondholder holds
-          the bond until maturity.
-      %p
-        Let us assume that a firm is facing bankruptcy and is liquidated. Proceeds from
-        liquidation will first go to the bondholders and the remaining sum, if any, will
-        go to share holders. However in most cases of bankruptcy, bondholders will get less
-        than their initial investment and the share holders will usually end up with nothing.
-      %p
-        Share prices also depend heavily on market sentiment; corporate earnings etc are
-        a lot more volatile than bond prices. Equities reward investors for taking on all
-        these risk with higher returns than bonds.
+          %b Equity -
+          Equity (stocks / shares) is substantially riskier than bonds. Their returns depend on
+          market conditions and vary widely from year to year. Unlike fixed deposits or bonds, returns are
+          not certain. Investors can even end up losing money. We have divided equity into the following sub-
+          asset classes based on their market capitalization which is a measure of how large the company is.
+          Market Capitalization of a company = No. of shares outstanding X Price of each share
+          Classification into largecaps, midcaps and smallcaps varies widely but we have adopted the following
+          convention:
+          %ol
+            %li
+              %b Largecap stocks -
+              Largecap stocks are stocks of very large companies whose market
+              capitalization is above Rs 10,000 crores. These stocks tend to be less volatile than midcaps
+              and smallcaps. They usually have good records of profitability and growth. E.g. Reliance
+              Industries, ICICI Bank, Infosys, TCS.
+            %li
+              %b Midcap stocks -
+              Midcap stocks are stocks of mid-sized companies whose market
+              capitalization is between Rs 1,000 crores and Rs 10,000 crores. These stocks tend to be
+              less risky than smallcaps but more risky than largecaps. E.g. Bajaj Electric, Cox and Kings,
+              Gitanjali Gems. Midcap stocks tend to give better returns than largecap stocks over the long
+              run.
+            %li
+              %b Smallcap stocks -
+              Smallcap stocks are stocks of small companies whose market capitalization
+              is below Rs 1,000 crores. These stocks tend to be very risky. We do not recommend that
+              small investors look at investing in smallcap stocks.
+        %li
+          %b Commodities -
+          Commodities - “Commodities” as an asset class consists of previous metals such as gold,
+          silver, platinum, agricultural commodities such as wheat, corn, soya, soft commodities such as coffee
+          and tea, base metals such as nickel and lead. However, as far as retail investor is concerned, gold is
+          the most important commodity. Gold has consistently delivered excellent returns over the last 20
+          years and has exhibited lower riskiness than stocks over the last 10 years.
     %section
       %h1 Asset Allocation:
-      =image_tag  "investment_education/assetallocation2.png", :height => "150px", :width => "200px"
       %p
-        Asset Allocation is the process by which the total investible capital of the portfolio
-        is distributed across different asset classes. As discussed in the previous article,
-        asset classes are sets of assets that behave similarly and have similar characteristics,
-        e.g. stocks, fixed income securities, commodities and cash (cash equivalents).
+        Asset Allocation is the process by which the capital of an investor’s portfolio is distributed across
+        different asset classes. As discussed previously, asset classes are sets of assets that behave similarly
+        and have similar characteristics, e.g. stocks, fixed income securities, commodities and cash
+        equivalents. Investors should not invest all their money in one asset class or one single security, or
+        else the portfolio becomes too risky. #{link_to 'Diversification', page_path('investment_education/diversification')} across asset classes helps
+        reduce the risk of a portfolio immensely.
+    %section
+      %h1 Why asset allocation?
       %p
-        Investors typically do not invest all their money in one asset class or one single
-        security. This is done for the sake of diversification benefits.
+        Asset allocation is the backbone of the investment process and not only does it determine the likely
+        returns of the portfolio but also how risky the portfolio is. A study found that up to 90% of the
+        return of portfolios can be explained simply by asset allocation (as opposed to market timing or
+        other factors). Thus, in the opinion of most experts, asset allocation is the single most important part
+        of portfolio management.
+    %section
+      %h1 How does one go about asset allocation?
       %p
-        An investor’s asset allocation should be performed based on:
+        An investor’s asset allocation should be performed based on the following factors:
       %ol
-        %li The investor’s investment goals and needs
-        %li The investor’s risk profile
+        %li The investor’s investment goals and needs.
+        %li The investor’s risk profile.
         %li The investor’s unique constraints.
-        %li Tax regime
-        %li Investor’s Time horizon
+        %li Taxes.
+        %li Investor’s Time horizon.
       %p
-        As discussed in the article on tax planning, tax structures also influence asset
-        allocation. Equities are preferred in countries with high tax rates as taxes typically
-        apply only to dividend income and realized capital gains. Tax drag can be minimized
-        by deferring the realization of capital gains. Tax structures and tax drag are discussed here
+        Your financial advisor is the best person to talk to, for advice on asset allocation. You could also
+        check out our #{link_to 'free Risk Profiling and Asset Allocation tool', edit_comprehensive_risk_profiler_path} for a
+        risk profile and asset allocation that is personalized to your needs and constraints.
       %p
-        A study found that up to 90% of the return of portfolios can be explained simply
-        by asset allocation (as opposed to market timing or other factors). Thus, in the
-        opinion of most experts, asset allocation is the single most important part of portfolio
-        management.
+        For example, let us assume that a portfolio consists of Rs.100, 000 and that we have determined
+        during the asset allocation stage that 40% will be allocated to #{link_to 'stocks', page_path('investment_education/stocks1')}, 30% to fixed
+        deposits<link to fixed deposits> and 30% to gold <link to gold>. This implies that the amount of
+        money allocated to each asset class is:
+      %table
+        %tr
+          %th Asset Class
+          %th Capital Allocated
+        %tr
+          %td Fixed Deposits
+          %td Rs. 30,000
+        %tr
+          %td Largecap stocks
+          %td Rs 40,000
+        %tr
+          %td Midcap Stocks
+          %td Rs 10,000
+        %tr
+          %td Gold
+          %td Rs 20,000
+        %tr
+          %td Total
+          %td Rs. 100,000
+    %section
+      %h1 Why personalize asset allocation?
+      %p
+        We all have different needs and constraints. Our ability to tolerate investment risk is usually quite
+        different from that of others. Our return expectations, tax situations and investment horizons are
+        unique to us. The riskiness and liquidity of our investment portfolio should be tailored based on
+        these factors. Just as my shoe isn’t likely to fit you, my asset allocation is not likely to work for you.
+        Therefore, you should get your own personalized asset allocation before you start investing.
+    %section
+      %h1 Security selection: Choosing your investments
+      %p
+        Once you have figured out the right portfolio mix in the asset allocation stage, the next step is to
+        choose securities from those asset classes accordingly. For example, once you know that you have to
+        invest Rs 40,000 in largecap stocks, how do you go about doing it?
+      %p
+        There are two ways in which you can do this:
+      %ol
+        %li
+          %b Investing via mutual funds and ETFs:
+          There is an array of mutual funds and ETFs out there
+          catering to different investing needs. There are funds that invest only in large caps, some
+          that invest only in mid-caps, some only in gold, others in a mix of different assets including
+          fixed income, equities etc. Choosing this method is relatively easy, less time consuming
+          and safe as the funds are #{link_to 'well diversified', page_path('investment_education/diversification')} and are managed by
+          professionals.
+          %p
+            From our previous example, choosing this method entails investing Rs 40,000 in a mutual fund that invests solely in large cap stocks.l
+        %li
+          %b Picking each security individually:
+          The more difficult of the two options, this process
+          involves selecting individual securities and investing in them. An investor needs to do
+          his own research on each stock/bond and go about identifying the best securities for
+          his portfolio. This involves staying up to date with the latest market news, analyzing the
+          financial statements of companies (for stocks and bonds), comparing interest rates offered
+          by different banks/companies (for bonds) etc. This method is time consuming and more risky
+          but it can fetch you higher returns. Investors using this approach have to keep in mind that
+          not only is it important to diversify across assets classes but also to diversify within each asset class.
+          %p
+            From our previous example, choosing this method entails investing different amounts of
+            money in individual large cap stocks such as Reliance Industries, TCS, ITC, Sun Pharma etc
+            with the total amount invested in largecap stocks adding up to Rs 40,000.
+      %p
+        Read our sections on “Understanding Stock Markets”<link> and Fundamental Analysis <link> to
+        learn how to select stocks to invest in.
     %footer
       .article_prev
         Prev:
