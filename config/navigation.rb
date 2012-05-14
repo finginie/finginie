@@ -87,7 +87,7 @@ SimpleNavigation::Configuration.run do |navigation|
       end
     end
 
-    primary.item :stocks, 'Stocks', main_app.stocks_path, :highlights_on => :subpath do |secondary|
+    primary.item :stocks, 'Shares', main_app.stocks_path, :highlights_on => :subpath do |secondary|
       if @company
         secondary.item :stock,           "#{@company.company_name}",main_app.stock_path(@company.company_code), :highlights_on => :subpath do |tertiary|
           tertiary.item :balance_sheet,  'Balance Sheet',         main_app.stock_balance_sheet_path(@company.company_code)

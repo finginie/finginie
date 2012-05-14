@@ -28,7 +28,7 @@ en:
     show:
       title: 'Stock Quotes'
     index:
-      title: 'Stock Search'
+      title: 'Quotes,Shares,Stocks,BSE,NSE,Sensex,Nifty,Gold'
     screener:
       title: 'Stock Screener'
     balance_sheet:

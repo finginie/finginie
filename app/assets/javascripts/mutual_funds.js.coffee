@@ -22,9 +22,12 @@ jQuery ->
   $('#schemes_table').dataTable
     sPaginationType: "full_numbers"
     bJQueryUI: true
-    bProcessing: false
+    bProcessing: true
     bServerSide: true
     sAjaxSource: $('#schemes_table').data('source')
+    oLanguage: { "sSearch": 'Get Funds' }
+
+  $(".dataTables_processing").css('visibility', 'hidden');
 
   $('#schemes_table').dataTable().bind('filter', ->
       $("#categories_table").css('visibility', 'hidden');
