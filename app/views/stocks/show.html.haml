@@ -9,7 +9,7 @@
         %dd= resource.send(attr)
   %section.fundamentals
     %table
-      %tr.center
+      %tr
         - %w(eps pe price_to_book_value book_value face_value market_capitalization dividend_yield).each do |attr|
           %td
             %span= t ".#{attr}"

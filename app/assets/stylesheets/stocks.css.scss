@@ -126,8 +126,11 @@ body.stocks.show {
         padding: {
           top: 10px;
         }
-        td span {
-          color: $base-color;
+        table {
+          text-align: center;
+          td span {
+            color: $base-color;
+          }
         }
       }
       .nse_quotes, .bse_quotes {
@@ -238,9 +241,10 @@ body.balance_sheet, body.profit_loss, body.cash_flow, body.ratios, body.share_ho
         @include button($base-color);
         @include linear-gradient($base-color, shade(#022744, 10%));
         border-radius: 0;
+        border: 0;
         display: block;
         text-align: left;
-        font-size: medium;
+        font-size: 14px;
         @include aside-links-padding;
       }
     }
@@ -266,27 +270,56 @@ body.stocks.screener {
     }
     #main {
       .container {
-        padding-left: 4px;
-        padding-right: 4px;
-        padding-top: 4px;
+        padding: {
+          left: 4px;
+          right: 4px;
+          top: 4px;
+        }
+        .sector {
+          margin: {
+            bottom: 10px;
+            left: 6px;
+          }
+        }
         #slider-range {
-          width:400px;
-          margin:15px;
+          width:600px;
+          margin: {
+            top:18px;
+            left: 65px;
+            right: 4px;
+            bottom: 16px;
+          }
         }
         input[type="text"]{
-          width: 200px;
+          width: 60px;
         }
         .actions {
           text-align: center;
           margin-bottom: 20px;
         }
         #screener-slider {
+          @include border-radius(5px);
+          border: 1px solid $border-color;
           margin: {
-            top: 10px;
             bottom: 10px;
           }
-          th, td {
-            text-align: center;
+          .ui-slider-range {
+            background: #D2D2D2;
+          }
+          .ui-slider-handle {
+            @include linear-gradient(#1E5799, #2989D8);
+          }
+          table {
+            tr {
+              background-color: #D2D2D2;
+            }
+            th {
+              padding: 10px 4px;
+            }
+            th, td {
+              text-align: center;
+              border: 0;
+            }
           }
         }
         .pagination {
@@ -300,6 +333,11 @@ body.stocks.screener {
             font: {
               size: 12px;
             }
+          }
+        }
+        .actions {
+          input {
+            width: 70px;
           }
         }
       }

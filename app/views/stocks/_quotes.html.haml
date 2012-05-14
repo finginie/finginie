@@ -1,7 +1,7 @@
 - [ 'nse', 'bse' ].each do |index|
   %div{ :class => "#{index}_quotes" }
     %section.daily_prices
-      %h1= index.titleize
+      %h1= index.upcase
       .daily_price_change
         %h1= resource.send(index).last_traded_price
         %strong.net_change= resource.send(index).net_change
