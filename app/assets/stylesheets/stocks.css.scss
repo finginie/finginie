@@ -126,8 +126,11 @@ body.stocks.show {
         padding: {
           top: 10px;
         }
-        td span {
-          color: $base-color;
+        table {
+          text-align: center;
+          td span {
+            color: $base-color;
+          }
         }
       }
       .nse_quotes, .bse_quotes {
@@ -238,9 +241,10 @@ body.balance_sheet, body.profit_loss, body.cash_flow, body.ratios, body.share_ho
         @include button($base-color);
         @include linear-gradient($base-color, shade(#022744, 10%));
         border-radius: 0;
+        border: 0;
         display: block;
         text-align: left;
-        font-size: medium;
+        font-size: 14px;
         @include aside-links-padding;
       }
     }
@@ -296,15 +300,21 @@ body.stocks.screener {
         #screener-slider {
           @include border-radius(5px);
           border: 1px solid $border-color;
+          margin: {
+            bottom: 10px;
+          }
           .ui-slider-range {
-            background: #4A6BA0;
+            background: #D2D2D2;
+          }
+          .ui-slider-handle {
+            @include linear-gradient(#1E5799, #2989D8);
           }
           table {
             tr {
               background-color: #D2D2D2;
             }
             th {
-              padding: 10px 0;
+              padding: 10px 4px;
             }
             th, td {
               text-align: center;
@@ -323,6 +333,11 @@ body.stocks.screener {
             font: {
               size: 12px;
             }
+          }
+        }
+        .actions {
+          input {
+            width: 70px;
           }
         }
       }
