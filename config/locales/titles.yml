@@ -43,7 +43,7 @@ en:
       title: 'Share Holding'
   mutual_funds:
     index:
-      title: 'Mutual Funds'
+      title: 'Mutual Funds,NAVs,SIP enabled funds, ELSS'
     scheme_summary:
       title: 'Scheme Summary'
     scheme_returns:

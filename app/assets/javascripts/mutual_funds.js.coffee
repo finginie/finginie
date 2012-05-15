@@ -25,7 +25,7 @@ jQuery ->
     bProcessing: true
     bServerSide: true
     sAjaxSource: $('#schemes_table').data('source')
-    oLanguage: { "sSearch": 'Get Funds' }
+    oLanguage: { "sSearch": 'Get Fund NAV' }
 
   $(".dataTables_processing").css('visibility', 'hidden');
 

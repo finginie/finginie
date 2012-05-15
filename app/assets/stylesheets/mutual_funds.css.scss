@@ -156,6 +156,14 @@ body.mutual_funds.index {
            color: $heading-blue;
           }
         }
+        .dataTables_processing {
+          margin-left: -170px;
+          margin-top: 6px;
+          border: 0;
+        }
+        .dataTables_empty {
+          color: $heading-red;
+        }
       }
     }
   }
