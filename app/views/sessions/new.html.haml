@@ -41,5 +41,5 @@
       will always be.
 %section
   .connect_container
-    .facebook=button_to "Login with Facebook",  '/auth/facebook',       :method => :get
-    .google=button_to "Login with Google",      '/auth/google_oauth2',  :method => :get
+    - unless current_user
+      %iframe{ src: "/auth/finginie", width:"600px", height: "200px" }

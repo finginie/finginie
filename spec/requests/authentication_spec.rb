@@ -1,16 +1,6 @@
 require 'spec_helper'
 
 describe "Authentication" do
-  it "should sign in using facebook" do
-    visit '/auth/facebook'
-    page.should have_content 'Successfully signed in'
-  end
-
-  it "should sign in using gmail" do
-    visit '/auth/google_oauth2'
-    page.should have_content 'Successfully signed in'
-  end
-
   it "should sign in using finginie oauth2" do
     visit '/auth/finginie'
     page.should have_content 'Successfully signed in'
@@ -34,9 +24,9 @@ describe "Authentication" do
 
   it "should go back to previous page after logging in" do
     visit portfolios_path
-    within "#main" do
-      click_button 'Facebook'
-    end
+
+    visit '/auth/finginie'
+
     current_path.should eq portfolios_path
   end
 
@@ -56,7 +46,7 @@ describe "Authentication" do
           click_link "Continue"
         end
 
-        click_button "Facebook"
+        visit '/auth/finginie'
         page.should have_content 'Successfully signed in'
 
         visit comprehensive_risk_profiler_path
@@ -75,7 +65,7 @@ describe "Authentication" do
           click_link "Continue"
         end
 
-        click_button "Facebook"
+        visit '/auth/finginie'
         page.should have_content 'Successfully signed in'
 
         visit comprehensive_risk_profiler_path

@@ -7,7 +7,7 @@ describe SessionsController do
     end
 
     it "routes to #create" do
-      post("/auth/facebook/callback").should route_to("sessions#create", :provider => 'facebook')
+      post("/auth/finginie/callback").should route_to("sessions#create", :provider => 'finginie')
     end
 
     it "routes to #destroy" do

@@ -5,6 +5,6 @@ shared_context "logged in user" do
   let (:authentication) { create :authentication, :user => current_user }
   before :each do |example|
     OmniAuth.config.add_mock authentication.provider, { :uid => authentication.uid }
-    visit '/auth/facebook'
+    visit '/auth/finginie'
   end
 end

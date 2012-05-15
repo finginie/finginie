@@ -5,7 +5,7 @@ describe User do
   subject { user }
   let(:auth_hash) {
     {
-      :provider => 'facebook',
+      :provider => 'finginie',
       :uid => '12345',
       :info => {
         :email => 'joe@somewhere.com'
@@ -31,7 +31,7 @@ describe User do
     context "'s authention" do
       subject { user.authentications.first }
 
-      its(:provider) { should eq 'facebook' }
+      its(:provider) { should eq 'finginie' }
       its(:uid) { should eq '12345' }
     end
   end

@@ -11,6 +11,9 @@
     = csrf_meta_tags
 
   %body{ :class => auto_page_class_names }
+    - if current_user
+      :javascript
+        auto_refresh();
     - if ENV['PRODUCTION_INSTANCE']
       = render :partial => 'layouts/alexa'
       %webengage{license: '76aa3c4'}
