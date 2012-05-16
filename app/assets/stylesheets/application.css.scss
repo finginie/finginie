@@ -395,6 +395,7 @@ footer {
 tr {
   th {
     background-color: $th-color;
+    //@include linear-gradient(#438DF2, shade(#0F3F7A, 0%));  This linear gradient look good on table headings 
     color: white;
     text-align: left;
   }

@@ -1,3 +1,4 @@
+= render 'stocks/indicies'
 .mf_container
   %h1 Mutual Fund NAVs
   %p
@@ -5,9 +6,9 @@
   %table{ :id => 'schemes_table', :data => { :source => mutual_funds_path(format: 'json') } }
     %thead
       %tr
-        %td Scheme Name
-        %td Category
-        %td Minimum Investment Amount (Rs)
+        %td{:width => '500px'} Scheme Name
+        %td{:width => '200px'} Category
+        %td{:width => '200px'} Minimum Investment Amount (Rs)
     %tbody
       %tr
         %td.dataTables_empty{colspan:5} Start typing the scheme or fund name in the box above to get a fund's NAV
