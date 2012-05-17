@@ -17,10 +17,8 @@
     %h1 Mutual Fund Categories & Returns
     %table
       %tr
-        %th.name{:rowspan => 2} Mutual Fund Category Name
-        %th.scheme{:rowspan => 2} No. of Schemes
-        %th.center_align{:colspan => 7} Return (%)
-      %tr
+        %th.name Mutual Fund Category Name
+        %th.scheme No. of Schemes
         %th.right_align 1 W
         %th.right_align 1 M
         %th.right_align 3 M
@@ -28,6 +26,10 @@
         %th.right_align 1 Y
         %th.right_align 2 Y
         %th.right_align 3 Y
+      %tr
+        %td
+        %td
+        %td.center_align{:colspan => 7} Return (%)
       - @categories.each do |cat|
         %tr.right_align
           %td.name= link_to cat.scheme_class_description, mutual_fund_category_path(cat.scheme_class_code.round) if cat.scheme_class_description

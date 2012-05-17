@@ -227,7 +227,7 @@ header {
 
 
 //--------------------- aside starts ----------------------
-aside{
+aside {
   &>h1 {
     @include linear-gradient(#A1D004, shade(#6B9A00, 30%));
     @include border-radius (4px 4px 0 0);
@@ -394,15 +394,20 @@ footer {
 
 tr {
   th {
-    background-color: $th-color;
-    //@include linear-gradient(#438DF2, shade(#0F3F7A, 0%));  This linear gradient look good on table headings 
-    color: white;
+    //background-color: $th-color;
+    //@include linear-gradient(-90deg, #438DF2 20%, #0F3F7A 10%);  //This linear gradient look good on table headings
+    @include linear-gradient(bottom, #CCC 0%, #EDEDED 100%);
+    color: #2C2C2C;
     text-align: left;
+    padding: 8px 4px;
+    font-size: 12px;
+    //font-weight: normal;
   }
 
-  th, td {
-    padding: 0.4em;
+  td {
+    padding: 6px 4px;
     font-size: 12px;	
+    font-weight: normal;
   }
 }
 
