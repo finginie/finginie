@@ -15,8 +15,20 @@
       %h1 Collaborate with other investors and experts
   = link_to 'Get Started', comprehensive_risk_profiler_path, :class => :get_started
 %section.interesting_facts
-  %h1 Interesting Facts
-  %ul
-    %li Despite 2 global recessions, stocks have given a return of 15.3% p.a  over the last 11 years
-    %li Instead of buying your old Alto car in 2003, had you invested in Maruti's stock, you could buy 4 Swift cars today.
-    %li 2 crore people in India invest. Not all of them are rocket scientists. So, would you prefer investing or be content with a 4-6% bank return?
+  = link_to comprehensive_risk_profiler_path do
+    #fact1
+      %h1 Never invested before?
+      %p
+        Rahul has 1 lakh rupees in his bank account and wants to start investing but doesnt know how to.Finginie's Financial Planner can help him start
+        investing by giving him his ideal investment mix based on his financial needs and constraints.
+  = link_to portfolios_path do
+    #fact2
+      %h1 Just started investing?
+      %p
+        Shruthi has just bought stocks and bonds worth Rs. 50,000 and wants to keep track of her investments.Finginie's Portfolio tracker 
+        can help her analyze her portfolio and give her instant updates and recommendations.
+  #fact3
+    %h1 Need expert help?
+    %p
+      Pooja is sitting on losses on her investments and wants expert advise on what to do next.Finginie's network of investment advisors can help her turn losses into profits. (Coming soon)
+
