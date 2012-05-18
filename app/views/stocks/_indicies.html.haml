@@ -1,10 +1,13 @@
 .exchange_value
-  %table{:cellpadding => "10"}
+  %table
     %tr
-      %th.nifty Nifty
-      %th.sensex Sensex
-      %th Gold( 10 gms )
-    %tr.center_align
+      %th.nifty
+        %h1.ui-widget-header Nifty
+      %th.sensex
+        %h1.ui-widget-header Sensex
+      %th
+        %h1.ui-widget-header Gold (10 gms)
+    %tr
       -%w(Nifty Sensex GoldDecorator).each do |index|
         %td
           %b= index.constantize.current_price

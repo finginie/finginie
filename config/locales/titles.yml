@@ -28,7 +28,7 @@ en:
     show:
       title: 'Stock Quotes'
     index:
-      title: 'Stock Search'
+      title: 'Quotes,Shares,Stocks,BSE,NSE,Sensex,Nifty,Gold'
     screener:
       title: 'Stock Screener'
     balance_sheet:
@@ -43,7 +43,7 @@ en:
       title: 'Share Holding'
   mutual_funds:
     index:
-      title: 'Mutual Funds'
+      title: 'Mutual Funds,NAVs,SIP enabled funds, ELSS'
     scheme_summary:
       title: 'Scheme Summary'
     scheme_returns:

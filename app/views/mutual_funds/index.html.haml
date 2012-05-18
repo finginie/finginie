@@ -1,21 +1,24 @@
+= render 'stocks/indicies'
 .mf_container
-  %h1 Mutual Fund Schemes Search
-
+  %h1 Mutual Fund NAVs
+  %p
+    Get Mutual Fund NAVs and detailed fund information such as portfolio holdings, sectoral allocations, historic fund returns, fund comparative returns and mutual fund asset allocation for 13,500+ mutual funds trading in India.
   %table{ :id => 'schemes_table', :data => { :source => mutual_funds_path(format: 'json') } }
     %thead
       %tr
-        %td Scheme Name
-        %td Category
-        %td Minimum Investment Amount (Rs)
+        %td{:width => '500px'} Scheme Name
+        %td{:width => '200px'} Category
+        %td{:width => '200px'} Minimum Investment Amount (Rs)
+    %tbody
+      %tr
+        %td.dataTables_empty{colspan:5} Start typing the scheme or fund name in the box above to get a fund's NAV
 
   #categories_table
     %h1 Mutual Fund Categories & Returns
     %table
       %tr
-        %th.name{:rowspan => 2} Mutual Fund Category Name
-        %th.scheme{:rowspan => 2} No. of Schemes
-        %th.center_align{:colspan => 7} Return (%)
-      %tr
+        %th.name Mutual Fund Category Name
+        %th.scheme No. of Schemes
         %th.right_align 1 W
         %th.right_align 1 M
         %th.right_align 3 M
@@ -23,6 +26,10 @@
         %th.right_align 1 Y
         %th.right_align 2 Y
         %th.right_align 3 Y
+      %tr
+        %td
+        %td
+        %td.center_align{:colspan => 7} Return (%)
       - @categories.each do |cat|
         %tr.right_align
           %td.name= link_to cat.scheme_class_description, mutual_fund_category_path(cat.scheme_class_code.round) if cat.scheme_class_description

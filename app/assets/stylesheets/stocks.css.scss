@@ -17,40 +17,8 @@ body.stocks.index {
     padding-left: 0;
     #main {
       .container {
+        @include indicies();
         padding-left: 4px;
-        .exchange_value {
-          margin-bottom: 10px;
-          table {
-            border: 0;
-            th, td {
-              border: 0;
-              text-align: center;
-              margin: 5px;
-              font: {
-                size: 20px;
-                weight: normal;
-              }
-            }
-            td {
-              b {
-                padding-right: 10px;
-                color: $heading-blue;
-              }
-              a {
-                color: $heading-red;
-              }
-            }
-            th {
-              @include linear-gradient(#438DF2, shade(#0F3F7A, 0%));
-              color: #FFF;
-              margin: 6px;
-              @include border-radius(5px 5px 0 0);
-            }
-            th.nifty, th.sensex {
-              border-right: 4px solid #FFF;
-            }
-          }
-        }
         .dataTables_wrapper {
           margin-bottom: 20px;
           a {
@@ -63,6 +31,14 @@ body.stocks.index {
       }
       .ui-helper-reset {
         font-size: 14px;
+      }
+      .dataTables_processing {
+        margin-left: -170px;
+        margin-top: 6px;
+        border: 0;
+      }
+      .dataTables_empty {
+        color: $heading-red;
       }
       .ui-tabs-panel {
         padding: 0;

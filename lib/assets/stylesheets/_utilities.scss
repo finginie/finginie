@@ -109,4 +109,50 @@
   }
 }
 
+@mixin indicies {
+  .exchange_value {
+    margin-bottom: 10px;
+    table {
+      border: 0;
+      border-bottom: 1px solid #AAA;
+      th, td {
+        border: 0;
+        text-align: center;
+        margin: 5px;
+        font: {
+          size: 16px;
+          weight: normal;
+        }
+      }
+      td {
+        border-right: 5px solid #FFF;
+        b {
+          padding-right: 10px;
+          color: #2F33F1;
+        }
+        a {
+          color: $heading-red;
+        }
+      }
+      th {
+        padding:0;
+        background: #FFF;
+        h1 {
+          //@include linear-gradient(#438DF2, shade(#0F3F7A, 0%));
+          color: #303030;
+          margin: 0;
+          @include border-radius(5px 5px 0 0);
+          font-size: 20px;
+          font-weight: normal;
+          padding: 10px;
+        }
+      }
+      th.nifty, th.sensex {
+        border-right: 4px solid #FFF;
+        width: 320px;
+      }
+    }
+  }
+}
+
 
