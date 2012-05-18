@@ -37,7 +37,7 @@ body.home {
     }
     >h1 {
       font-size: x-large;
-      color: #D83527;
+      color: $heading-green;
       margin: 0;
       padding: {
         left: 10px;
@@ -88,21 +88,29 @@ body.home {
   }
 
   .interesting_facts {
-    h1 {
-      font-size: x-large;
-      color: #D83527;
-      padding: {
-        left: 10px;
+    a {
+      text-decoration: none;
+    }
+    #fact1, #fact2, #fact3 {
+      width: 285px;
+      height: 150px;
+      padding-left: 20px;
+      float: left;
+      h1 {
+        font-size: 18px;
+        color: $heading-green;
+      }
+      p {
+        text-align: justify;
+        color: #000;
+        margin-top: 0;
+        line-height: 1.6em;
+        font-size: 13px;
       }
     }
-    ul {
-      list-style-image: url('right_arrow.png');
-      li {
-        padding-bottom: 1.5em;
-        font: {
-          size: 14px;
-        }
-      }
+    #fact1, #fact2 {
+      padding-right: 15px;
+      border-right: 1px solid #CCC;
     }
   }
 
