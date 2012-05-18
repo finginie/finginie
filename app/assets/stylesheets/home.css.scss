@@ -74,7 +74,7 @@ body.home {
     a.get_started {
       @include button($base-color);
       @include linear-gradient($base-color, shade($base-color, 60%));
-      font-size: 30px;
+      font-size: 20px;
       padding: 6px 10px;
       @include unstyled_link;
       cursor: pointer;
@@ -82,7 +82,7 @@ body.home {
         color: white;
       }
       &:after {
-        content: url(get-started.png);
+        content: url(get_started.png);
       }
     }
   }
