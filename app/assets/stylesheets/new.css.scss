@@ -52,13 +52,14 @@ body.sessions.new {
           margin-top: 10px;
           p {
             margin-top: 0;
-            //text-align: justify;
+            font-size: 13px;
+            color: #000;
           }
           h1 {
-            color: $heading-red;
+            color: $heading-green;
             padding-left: 10px;
             font: {
-              size: large;
+              size: 18px;
             }
           }
           img {
@@ -66,15 +67,15 @@ body.sessions.new {
             margin-right: 6px;
           }
           .snapshot, .transaction, .sectoral, .profit_loss, .asset_class, .features  {
-            width: 300px;
-            height: 120px;
+            width: 295px;
+            height: 110px;
             float: left;
             margin: {
-              bottom: 15px;
+              bottom: 20px;
             }
             padding: {
-              left: 10px;
-              right: 6px;
+              left: 12px;
+              right: 12px;
             }
             img {
               width: 20px;

@@ -46,7 +46,7 @@ body.home {
     }
   }
   .banner {
-    height: 380px;
+    height: 360px;
     @include border-radius(8px);
     background: lighten($base-color, 45%);
     border: 1px solid $border-color;
@@ -99,6 +99,7 @@ body.home {
       h1 {
         font-size: 18px;
         color: $heading-green;
+        padding-left: 0;
       }
       p {
         text-align: justify;
