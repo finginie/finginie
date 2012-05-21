@@ -63,20 +63,22 @@ body.comprehensive_risk_profilers {
     }
     p {
       margin-top: 0;
+      font-size: 13px;
+      color: #000;
     }
     h1 {
       padding-left: 10px;
-      color: $heading-red;
+      color: $heading-green;
       font: {
-        size: large;
+        size: 18px;
       }
     }
     .personalize, .good_balance, .safety, .wisdom  {
       width: 350px;
-      height: 120px;
+      height: 90px;
       float: left;
       margin: {
-        bottom: 15px;
+        bottom: 20px;
       }
       padding: {
         left: 20px;
@@ -107,8 +109,12 @@ body.comprehensive_risk_profilers {
     padding-top: 30px;
   }
   .skip {
+    clear: both;
+    padding: {
+      top: 20px;
+    }
     a {
-      color: $heading-blue;
+      color: $heading-red;
       font-size: 14px;
       padding-left: 20px;
     }

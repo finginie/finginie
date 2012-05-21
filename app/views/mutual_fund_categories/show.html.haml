@@ -8,14 +8,10 @@
   = paginate @schemes
   %table
     %tr
-      %th.name{:rowspan => 2} Scheme Name
-      %th.center_align{:rowspan => 2} Crisil Rank
+      %th.name Scheme Name
+      %th.center_align Crisil Rank
       %th.nav NAV
       %th.invest_amount Min Investment Amt
-      %th.center_align{:colspan => 7} Returns (%)
-    %tr
-      %th.right_align (Rs)
-      %th.right_align (Rs)
       %th.center_align 1 W
       %th.center_align 1 M
       %th.center_align 3 M
@@ -23,6 +19,12 @@
       %th.center_align 1 Y
       %th.center_align 2 Y
       %th.center_align 3 Y
+    %tr
+      %td
+      %td
+      %td.right_align (Rs)
+      %td.right_align (Rs)
+      %td.center_align{:colspan => 7} Returns (%)
     - resource.each do |scheme|
       %tr.right_align
         %td.name= link_to scheme.scheme_name, scheme_summary_mutual_fund_path(scheme.scheme_name)
