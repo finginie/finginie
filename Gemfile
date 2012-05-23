@@ -7,7 +7,6 @@ gem 'rails', '3.2.3'
 gem 'personal_financial_tools', :path => 'engines/personal_financial_tools'
 gem 'data_provider',            :path => 'engines/data_provider'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -15,6 +14,7 @@ group :assets do
   gem 'sass-rails'
   gem 'uglifier'
   gem 'jquery-ui-rails'
+  gem 'jekyll_pipeline',          :path => 'engines/content'
 end
 
 gem 'bourbon', :git => "git://github.com/FinGinie/bourbon.git"
