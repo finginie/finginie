@@ -14,32 +14,33 @@ SimpleNavigation::Configuration.run do |navigation|
     end
     primary.item :investment_education, 'Learn Investing',main_app.page_path('investment_education') do |secondary|
       secondary.item :preparing_to_invest, 'Preparing to Invest' do |tertiary|
-        tertiary.item :how_to_invest_successfully, 'How to invest successfully', main_app.page_path('investment_education/invest_successfully')
-        tertiary.item :an_overview, 'An overview', main_app.page_path('investment_education/overview')
-        tertiary.item :investment_trading, 'Investing vs Trading', main_app.page_path('investment_education/investment_trading')
+        tertiary.item :how_to_invest_successfully, 'How to Invest', main_app.page_path('investment_education/smart-investments')
+        tertiary.item :an_overview, 'Types of Investments', main_app.page_path('investment_education/investment-types')
+        tertiary.item :investment_trading, 'Investing vs Trading', main_app.page_path('investment_education/investing-trading-shares')
       end
       secondary.item :before_you_invest, 'Before you Invest' do |tertiary|
-        tertiary.item :investment_plan, 'Investment Plan', main_app.page_path('investment_education/investment_plan')
-        tertiary.item :where_to_invest, 'Where to Invest', main_app.page_path('investment_education/where_to_invest')
-        tertiary.item :diversification, 'Diversification', main_app.page_path('investment_education/diversification')
+        tertiary.item :investment_plan, 'Investment Plan', main_app.page_path('investment_education/investment-plan')
+        tertiary.item :where_to_invest, 'Where to Invest', main_app.page_path('investment_education/where-to-invest')
+        tertiary.item :diversification, 'Diversification', main_app.page_path('investment_education/investment-diversification')
+        tertiary.item :planning_your_taxes, 'Planning your Taxes', main_app.page_path('investment_education/tax-planning')
       end
       secondary.item :investment_types, 'Types of Investments' do |tertiary|
-        tertiary.item :bonds, 'Bonds', main_app.page_path('investment_education/bonds')
-        tertiary.item :fixed_deposits, 'Fixed Deposits', main_app.page_path('investment_education/fixed_deposits')
-        tertiary.item :gold, 'Gold', main_app.page_path('investment_education/Gold')
+        tertiary.item :fixed_deposits, 'Fixed Deposits', main_app.page_path('investment_education/investment-fixed-deposits')
+        tertiary.item :gold, 'Gold', main_app.page_path('investment_education/gold-investment')
         tertiary.item :shares, 'Shares', main_app.page_path('investment_education/shares')
-        tertiary.item :mutual_funds, 'Mutual Funds and ETFs', main_app.page_path('investment_education/mutual_funds')
+        tertiary.item :mutual_funds, 'Mutual Funds and ETFs', main_app.page_path('investment_education/mutual-funds-etf')
+        tertiary.item :bonds, 'Bonds', main_app.page_path('investment_education/bonds')
       end
-      secondary.item :investing_in_shares, 'Investing in shares' do |tertiary|
-        tertiary.item :share_market, 'Share market', main_app.page_path('investment_education/share_market')
-        tertiary.item :fundamental_analysis1, 'Fundamental Analysis', main_app.page_path('investment_education/fundamental_analysis1')
-        tertiary.item :technical_analysis, 'Technical Analysis', main_app.page_path('investment_education/technical_analysis')
-        tertiary.item :banking_sector, 'Sectors : Banking', main_app.page_path('investment_education/banking_sector')
-        tertiary.item :information_technology, 'Sectors : IT', main_app.page_path('investment_education/information_technology')
+      secondary.item :investing_in_shares, 'Investing in Shares' do |tertiary|
+        tertiary.item :share_market, 'Share Market', main_app.page_path('investment_education/share-market')
+        tertiary.item :fundamental_analysis1, 'Fundamental Analysis', main_app.page_path('investment_education/fundamental-analysis-shares')
+        tertiary.item :technical_analysis, 'Technical Analysis', main_app.page_path('investment_education/technical-analysis-shares')
+        tertiary.item :banking_sector, 'Banking Sector', main_app.page_path('investment_education/banking-sector-shares')
+        tertiary.item :information_technology, 'IT Sector', main_app.page_path('investment_education/it-sector')
       end
 
       secondary.item :advanced_investments, 'Further Reading' do |tertiary|
-        tertiary.item :read_more_articles, 'Articles', main_app.page_path('investment_education/foreign_exchange1')
+        tertiary.item :read_more_articles, 'Articles', main_app.page_path('investment_education/articles')
       end
     end
 
