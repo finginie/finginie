@@ -1,0 +1,51 @@
+%h1 Fixed Deposit Finder
+
+= simple_form_for @search, :url => fixed_deposits_path, :method => :get do |f|
+  = f.input :amount
+
+  = f.label :duration
+  = f.fields_for :duration do |duration|
+    = duration.input :year
+    = duration.input :month
+    = duration.input :days
+
+  = f.input :senior_citizen do
+    = f.collection_radio_buttons :senior_citizen, [['rate_of_interest_senior_citizen', 'Yes'] ,['rate_of_interest_general', 'No']], :first, :last
+
+  .actions
+    = f.submit 'Submit'
+
+- if params[:fixed_deposit_detail_proxy]
+  - [collection.top_five_public_sector, collection.top_five_private_sector].each do |fd_details|
+    - unless fd_details.empty?
+      %h1= "Top five #{fd_details.first.sector.downcase} banks"
+      %div{ :id => "top_five_#{fd_details.first.sector.downcase}_sector_interest_rate"}
+        %table
+          %tr
+            %th Bank Name
+            %th General Interest Rate
+            %th Senior Citizen Interest Rate
+          - fd_details.each do |fd_detail|
+            %tr
+              %td= fd_detail.bank
+              %td= fd_detail.rate_of_interest_general
+              %td= fd_detail.rate_of_interest_senior_citizen
+- else
+  - [@top_five_public_banks_interest_rates, @top_five_private_banks_interest_rates].each do |fd_details|
+    - unless fd_details.empty?
+      %h1= "Top five #{fd_details.first.sector.downcase} banks"
+      %div{ :id => "top_five_#{fd_details.first.sector.downcase}_sector_interest_rate"}
+        %table
+          %tr
+            %th Bank Name
+            %th 1 year
+            %th 180 days
+            %th 90 days
+            %th 30 days
+          - fd_details.each do |fd_detail|
+            %tr
+              %td= fd_detail.name
+              %td= fd_detail.one_year_interest_rate
+              %td= fd_detail.six_month_interest_rate
+              %td= fd_detail.three_month_interest_rate
+              %td= fd_detail.one_month_interest_rate
