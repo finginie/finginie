@@ -27,6 +27,10 @@ guard 'livereload' do
   watch(%r{config/locales/.+\.yml})
 end
 
+guard 'rake', :task => 'jekyll_pipeline:precompile' do
+  watch(%r{engines/content/app/content/.+\.(erb|haml)})
+end
+
 guard 'rspec', :version => 2, :cli => "--drb" do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
