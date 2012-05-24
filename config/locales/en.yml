@@ -81,6 +81,11 @@ en:
       Gold:
         price: 'Price (gram)'
         quantity: 'Quantity (gram)'
+  fixed_deposits:
+    index:
+      fixed_deposit_tool: 'Use the fixed deposit tool below to find out which banks (public/private) offer the highest interest rates according to your inputs'
+      fixed_deposit_results: 'The tables below show the top 5 interest rates offered by public / private banks depending on invested duration'
+      duration_hints: 'e.g 1 year 2 months 3 days, 6 months, etc ..'
 
   stocks:
     show:

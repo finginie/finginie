@@ -3,9 +3,6 @@ require 'spec_helper'
 describe FixedDepositDetail, :vcr do
 
   before(:each) do
-    ENV['SPREADSHEET_KEY']      = "0AhUqTEsfdol7dEtnYVBYMndlM1ZhS0ptejVQSi1SVnc"
-    ENV['SPREADSHEET_LOGIN']    = "sample@gmail.com"
-    ENV['SPREADSHEET_PASSWORD'] = "sample"
     @collection = FixedDepositDetail.collection
   end
 
@@ -20,23 +17,18 @@ describe FixedDepositDetail, :vcr do
   end
 
   it "should return top five public banks" do
-    bank = ["ANDHRA",
-            "Indian Overseas Bank",
-            "Bank of India",
-            "Union Bank of India",
-            "Canara Bank"
-          ]
+    bank = ["Andhra Bank", "Indian Overseas Bank", "Bank of India", "Union Bank of India", "Canara Bank"]
     FixedDepositDetail.top_public_banks.should include *bank
   end
 
   it "should return top five private banks" do
-    bank =["Karur Vysya", "Kotak", "AXIS", "IDBI", "Yes"]
+    bank = ["Karur Vysya Bank", "Kotak Mahindra Bank", "Axis Bank", "Indus Ind Bank", "Yes Bank"]
     FixedDepositDetail.top_private_banks.should include *bank
   end
 
   it "should have top five private banks interest rates" do
     bank = {
-            "name"                      => "Karur Vysya",
+            "name"                      => "Karur Vysya Bank",
             "sector"                    => "PRIVATE",
             "one_year_interest_rate"    => 10.0,
             "six_month_interest_rate"   => 7.8,
@@ -48,7 +40,7 @@ describe FixedDepositDetail, :vcr do
 
   it "should have top five public banks interest rates" do
     bank = {
-            "name"                      => "ANDHRA",
+            "name"                      => "Andhra Bank",
             "sector"                    => "PUBLIC",
             "one_year_interest_rate"    => 9.4,
             "six_month_interest_rate"   => 8.5,

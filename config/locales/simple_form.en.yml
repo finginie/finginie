@@ -137,6 +137,9 @@ en:
           rate_of_interest: 'Rate of Interest (% p.a.)'
       scheme:
         scheme_name: 'Search Mutual Fund'
+      fixed_deposit_detail_proxy:
+        amount: 'Enter the amount you want to deposit'
+        duration: 'How long do you want to invest '
 
   helpers:
     submit:

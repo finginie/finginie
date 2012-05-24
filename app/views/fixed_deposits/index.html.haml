@@ -1,9 +1,11 @@
 %h1 Fixed Deposit Finder
 
+= t ".fixed_deposit_tool"
 = simple_form_for @search, :url => fixed_deposits_path, :method => :get do |f|
   = f.input :amount
 
   = f.label :duration
+  %div= t ".duration_hints"
   = f.fields_for :duration do |duration|
     = duration.input :year
     = duration.input :month
@@ -15,6 +17,7 @@
   .actions
     = f.submit 'Submit'
 
+= t ".fixed_deposit_results"
 - if params[:fixed_deposit_detail_proxy]
   - [collection.top_five_public_sector, collection.top_five_private_sector].each do |fd_details|
     - unless fd_details.empty?
