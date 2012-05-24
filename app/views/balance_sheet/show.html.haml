@@ -1,3 +1,5 @@
+- provide :title, @audited_results[0].company_name
+
 = render 'stocks/search_form'
 - if @audited_results[0].model
   %h1= "#{@audited_results[0].company_name} - Balance Sheet"
