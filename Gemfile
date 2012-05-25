@@ -38,6 +38,7 @@ gem 'omniauth-google-oauth2'
 gem 'paper_trail'
 gem 'pg'
 gem 'rails-backbone', :git => "git://github.com/TMaYaD/backbone-rails.git"
+gem 'sheet_mapper'
 gem 'simple_form', :git => "git://github.com/plataformatec/simple_form.git"
 gem 'simple-navigation'
 gem 'thin'
@@ -74,3 +75,7 @@ group :development do
   gem 'rails_best_practices'
 end
 
+group :test do
+  gem 'vcr'
+    gem 'webmock'
+end
