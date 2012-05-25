@@ -1,24 +1,25 @@
 %h1 Fixed Deposit Finder
 
-= t ".fixed_deposit_tool"
+%p= t ".fixed_deposit_tool"
 = simple_form_for @search, :url => fixed_deposits_path, :method => :get do |f|
   = f.input :amount
 
   = f.label :duration
-  %div= t ".duration_hints"
   = f.fields_for :duration do |duration|
-    = duration.input :year
-    = duration.input :month
+    = duration.input :year, :label => 'Years'
+    = duration.input :month, :label => 'Months'
     = duration.input :days
 
-  = f.input :senior_citizen do
-    = f.collection_radio_buttons :senior_citizen, [['rate_of_interest_senior_citizen', 'Yes'] ,['rate_of_interest_general', 'No']], :first, :last
+  = f.input :senior_citizen, :collection => [['Yes', "rate_of_interest_senior_citizen"],['No', "rate_of_interest_general"]], :as => :radio_buttons
 
   .actions
     = f.submit 'Submit'
 
 - if params[:fixed_deposit_detail_proxy]
-  = @search.result_summary
+  - unless collection.top_five_public_sector.empty? || collection.top_five_private_sector.empty?
+    #flash_notice= @search.result_summary
+  - else
+    .alert-error= @search.result_summary(true)
   - [collection.top_five_public_sector, collection.top_five_private_sector].each do |fd_details|
     - unless fd_details.empty?
       %h1= "#{fd_details.first.sector.titleize} banks"
@@ -34,7 +35,7 @@
               %td= fd_detail.rate_of_interest_general
               %td= fd_detail.rate_of_interest_senior_citizen
 - else
-  = t ".default"
+  #flash_notice= t ".default"
   - [@top_five_public_banks_interest_rates, @top_five_private_banks_interest_rates].each do |fd_details|
     - unless fd_details.empty?
       %h1= "#{fd_details.first.sector.titleize} banks"

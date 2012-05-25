@@ -8,6 +8,6 @@ describe FixedDepositDetailDecorator do
   subject { fixed_deposit_detail_decorator }
 
   it "should return summary params of fixed deposit results" do
-    fixed_deposit_detail_decorator.result_summary.should eq I18n.t("fixed_deposit_result_summary", amount: "100", duration: "1 years", citizen: "senior citizen")
+    fixed_deposit_detail_decorator.result_summary.should eq I18n.t("fixed_deposit_result_summary", amount: "100", duration: "1 year", citizen: "senior citizen")
   end
 end

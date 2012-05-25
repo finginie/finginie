@@ -81,7 +81,8 @@ en:
       Gold:
         price: 'Price (gram)'
         quantity: 'Quantity (gram)'
-  fixed_deposit_result_summary: 'The following banks offer the best rates for %{amount} amount over %{duration} for a %{citizen}'
+  fixed_deposit_result_summary: 'The following banks offer the best rates for Rs %{amount}, over %{duration} for a %{citizen}'
+  fixed_deposit_no_result_summary: "Oops! We can't seem to find rates for Rs %{amount}, over %{duration} for a %{citizen}. Please try a different time period"
   fixed_deposits:
     index:
       fixed_deposit_tool: 'Use the Fixed Deposit tool below to find out which banks offer the highest interest rates for your desired time period and investment amount.'

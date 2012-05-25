@@ -4,5 +4,22 @@
 @import "defaults";
 
 body.fixed_deposits.index {
+  .container {
+    .radio {
+      width: 50px;
+      text-align: left;
+      .radio_buttons {
+        margin-right: 6px;
+      }
+    }
+    table {
+      margin-bottom: 20px;
+    }
+    #flash_notice {
+      text-align: center;
+      margin-bottom: 20px;
+      margin-top: 20px;
+    }
+  }
   @include simple-form;
 }
