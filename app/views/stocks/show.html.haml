@@ -1,5 +1,7 @@
+
 = render 'search_form'
 - if resource.model
+  - provide :title, resource.company_name
   %h1= resource.company_name
 
   %section

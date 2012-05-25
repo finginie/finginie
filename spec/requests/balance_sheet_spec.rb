@@ -42,4 +42,9 @@ describe "BalanceSheet" do
     click_link "Balance Sheet"
     page.should have_selector("#new_company")
   end
+
+  it "should have a title" do
+    visit stock_balance_sheet_path( company.company_code)
+    page.should have_selector("title", :content => I18n.t('balance_sheet.title'))
+  end
 end

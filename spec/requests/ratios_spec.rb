@@ -56,4 +56,9 @@ describe "Ratios", :mongoid do
     visit stock_ratios_path 18
     page.status_code.should eq 200
   end
+
+  it "should have a title" do
+    visit stock_ratios_path( company.company_code)
+    page.should have_selector("title", :content => I18n.t('ratios.title'))
+  end
 end

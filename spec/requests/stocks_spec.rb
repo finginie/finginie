@@ -135,4 +135,17 @@ describe "Stocks", :mongoid do
       tableish("#stocks table").should include *expected_table
     end
   end
+
+  context "Titles" do
+    it "should have title for index page" do
+      visit stocks_path
+      page.should have_selector("title", :content => I18n.t('stocks.index.title'))
+    end
+
+    it "should have title for show page" do
+      visit stock_path(company.company_code)
+      page.should have_selector("title", :content => I18n.t('stocks.show.title'))
+    end
+
+  end
 end

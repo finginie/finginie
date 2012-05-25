@@ -1,4 +1,6 @@
 = render 'stocks/search_form'
+- provide :title, @company.company_name if @company
+
 - if @share_holding.model
   %h1= "ShareHolding - #{@company.company_name}"
   #share-holding-chart{ 'data-share-holding' => @share_holding.groupwise_percentages }

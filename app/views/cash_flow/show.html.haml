@@ -1,4 +1,6 @@
 = render 'stocks/search_form'
+- provide :title, @company.company_name if @company
+
 - if @cash_flows.instance_variable_get("@cash_flow_decorators").first
   %h1= "#{@company.company_name} - Cash Flow"
   %p *All Numbers are in crores of rupees unless specified otherwise

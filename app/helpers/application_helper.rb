@@ -21,15 +21,19 @@ module ApplicationHelper
   def red_or_green_class(value, tag)
     value.to_f < 0 ? haml_tag("#{tag}.red", value) : haml_tag("#{tag}.green", value)
   end
-  def auto_page_title
+
+  def auto_page_title(default=nil)
     controller_params = params[:controller].gsub('/','.') + '.'
     action_params = params[:action] + '.'
     id_params  = params[:id] ? (params[:id].gsub('/', '.') + '.') : ''
     translation = 'title'
-    I18n.t (controller_params + action_params +id_params + translation).to_sym, :default => [(controller_params + action_params + translation).to_sym,
-                                                                                                            (controller_params +translation ).to_sym,
-                                                                                                            (translation).to_sym]
-
+    title = I18n.t  (controller_params + action_params +id_params + translation).to_sym,
+                    :default => [
+                      (controller_params + action_params + translation).to_sym,
+                      (controller_params + translation ).to_sym,
+                      (translation).to_sym
+                    ],
+                    :name => default
   end
 
 end
