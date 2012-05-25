@@ -17,11 +17,11 @@
   .actions
     = f.submit 'Submit'
 
-= t ".fixed_deposit_results"
 - if params[:fixed_deposit_detail_proxy]
+  = @search.result_summary
   - [collection.top_five_public_sector, collection.top_five_private_sector].each do |fd_details|
     - unless fd_details.empty?
-      %h1= "Top five #{fd_details.first.sector.downcase} banks"
+      %h1= "#{fd_details.first.sector.titleize} banks"
       %div{ :id => "top_five_#{fd_details.first.sector.downcase}_sector_interest_rate"}
         %table
           %tr
@@ -34,9 +34,10 @@
               %td= fd_detail.rate_of_interest_general
               %td= fd_detail.rate_of_interest_senior_citizen
 - else
+  = t ".default"
   - [@top_five_public_banks_interest_rates, @top_five_private_banks_interest_rates].each do |fd_details|
     - unless fd_details.empty?
-      %h1= "Top five #{fd_details.first.sector.downcase} banks"
+      %h1= "#{fd_details.first.sector.titleize} banks"
       %div{ :id => "top_five_#{fd_details.first.sector.downcase}_sector_interest_rate"}
         %table
           %tr
