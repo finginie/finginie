@@ -1,6 +1,6 @@
 class FixedDepositsController < InheritedResources::Base
   def collection
-    @search = FixedDepositDetailProxy.new(params[:fixed_deposit_detail_proxy])
+    @search = FixedDepositDetailDecorator.decorate(FixedDepositDetailProxy.new(params[:fixed_deposit_detail_proxy]))
     if params[:fixed_deposit_detail_proxy]
       @fd_details = FixedDepositDetail.search(params[:fixed_deposit_detail_proxy])
       FixedDepositDetailsDecorator.custom_decorate(@fd_details)

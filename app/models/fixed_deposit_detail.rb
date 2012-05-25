@@ -13,6 +13,7 @@ class FixedDepositDetail < SheetMapper::Base
 
   def self.find_by_duration(params)
     duration = params[:year].to_i * 365 + params[:month].to_i * 30 + params[:days].to_i
+    duration = duration > 0 ? duration : 365
     lambda { |fd_detail| fd_detail.min_duration <= duration and fd_detail.max_duration >= duration }
   end
 

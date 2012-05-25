@@ -1,6 +1,6 @@
 Finginie::Application.routes.draw do
 
-  resources :fixed_deposits, :only => [:index]
+  resources "fixed-deposits", :controller => :fixed_deposits, :as => :fixed_deposits, :only => [:index]
 
   match "/signin" => "sessions#new", :as => :signin
   match "/auth/:provider/callback" => "sessions#create"
