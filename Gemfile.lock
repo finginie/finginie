@@ -158,6 +158,12 @@ GEM
     curb (0.7.18)
     daemons (1.1.8)
     diff-lcs (1.1.3)
+    dimensions (1.2.0)
+    dimensions-rails (1.0.1)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      dimensions
+      railties (~> 3.0)
     directory_watcher (1.4.1)
     ejs (1.0.0)
     em-websocket (0.3.6)
@@ -433,6 +439,7 @@ DEPENDENCIES
   capybara-webkit
   coffee-rails
   data_provider!
+  dimensions-rails
   draper!
   exceptional
   factory_girl_rails

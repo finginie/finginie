@@ -19,6 +19,7 @@ end
 
 gem 'bourbon', :git => "git://github.com/FinGinie/bourbon.git"
 gem 'cancan'
+gem 'dimensions-rails'
 gem 'draper', :git => "git://github.com/jcasimir/draper.git"
 gem 'exceptional'
 gem 'haml-rails'
