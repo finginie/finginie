@@ -26,36 +26,36 @@ en:
       title: 'Fixed Deposit Analysis'
   stocks:
     show:
-      title: 'Stock Quotes'
+      title: "Shares - %{name}"
     index:
       title: 'Quotes,Shares,Stocks,BSE,NSE,Sensex,Nifty,Gold'
     screener:
       title: 'Stock Screener'
-    balance_sheet:
-      title: 'Balance Sheet'
-    profit_loss:
-      title: 'Income Statement'
-    cash_flow:
-      title: 'Cash Flow'
-    ratios:
-      title: 'Ratios'
-    share_holding:
-      title: 'Share Holding'
+  balance_sheet:
+    title: "Shares - %{name} - Balance Sheet"
+  profit_loss:
+    title: "Shares - %{name} - Income Statement"
+  cash_flow:
+    title: "Shares - %{name} - Cash Flow"
+  ratios:
+    title: "Shares - %{name} - Ratios"
+  share_holding:
+    title: "Shares - %{name} - Share Holding"
   mutual_funds:
     index:
       title: 'Mutual Funds,NAVs,SIP enabled funds, ELSS'
     scheme_summary:
-      title: 'Scheme Summary'
+      title: "Mutual Funds - %{name} - Scheme Summary"
     scheme_returns:
-      title: 'Scheme Returns'
+      title: "Mutual Funds - %{name} - Scheme Returns"
     top_holdings:
-      title: 'Top Holdings'
+      title: 'Mutual Funds - %{name} - Top Holdings'
     detailed_holdings:
-      title: 'Detailed Holdings'
+      title: 'Mutual Funds - %{name} - Detailed Holdings'
     asset_allocation:
-      title: 'Asset Allocation'
+      title: 'Mutual Funds - %{name} - Asset Allocation'
     sectoral_allocation:
-      title: 'Sectoral Allocation'
+      title: 'Mutual Funds - %{name} - Sectoral Allocation'
   mutual_fund_categories:
     title: 'Category Schemes'
   personal_financial_tools:

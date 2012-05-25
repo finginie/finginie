@@ -1,4 +1,6 @@
 = render 'stocks/search_form'
+- provide :title, @company.company_name if @company
+
 - if @company
   %h1= "Ratios - #{@company.company_name}"
 

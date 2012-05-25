@@ -51,4 +51,9 @@ describe "Profit Loss" do
     click_link "Income Statement"
     page.should have_selector("#new_company")
   end
+
+  it "should have a title" do
+    visit stock_profit_loss_path( company.company_code)
+    page.should have_selector("title", :content => I18n.t('profit_loss.title'))
+  end
 end

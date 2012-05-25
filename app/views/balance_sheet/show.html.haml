@@ -1,4 +1,4 @@
-- provide :title, @audited_results[0].company_name
+- provide :title, @company.company_name if @company
 
 = render 'stocks/search_form'
 - if @audited_results[0].model

@@ -1,7 +1,7 @@
-- provide :title, @scheme.scheme_name
 
 = render 'search', :search => @search
 - if @scheme.model
+  - provide :title, @scheme.scheme_name
   #scheme_container
     #titlebar
       .scheme_name

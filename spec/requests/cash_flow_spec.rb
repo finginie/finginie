@@ -23,4 +23,9 @@ describe "CashFlow", :mongoid do
     click_link "Cash Flow"
     page.should have_selector("#new_company")
   end
+
+  it "should have a title" do
+    visit stock_cash_flow_path( company.company_code)
+    page.should have_selector("title", :content => I18n.t('cash_flow.title'))
+  end
 end

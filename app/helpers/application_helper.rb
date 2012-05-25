@@ -30,10 +30,10 @@ module ApplicationHelper
     title = I18n.t  (controller_params + action_params +id_params + translation).to_sym,
                     :default => [
                       (controller_params + action_params + translation).to_sym,
-                      (controller_params +translation ).to_sym,
+                      (controller_params + translation ).to_sym,
                       (translation).to_sym
-                    ]
-    title += " - #{default}" if default.present?
+                    ],
+                    :name => default
   end
 
 end

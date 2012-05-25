@@ -36,4 +36,41 @@ describe "MutualFunds" do
     page.current_path.should eq scheme_summary_mutual_fund_path(@scheme.scheme_name)
 
   end
+
+  context "Titles" do
+    it "should have title for index page" do
+      visit mutual_funds_path
+      page.should have_selector("title", :content => I18n.t('mutual_funds.index.title'))
+    end
+
+    it "should have title for summary page" do
+      visit scheme_summary_mutual_fund_path(@scheme.scheme_name)
+      page.should have_selector("title", :content => I18n.t('mutual_funds.scheme_summary.title'))
+    end
+
+    it "should have title for returns page" do
+      visit scheme_returns_mutual_fund_path(@scheme.scheme_name)
+      page.should have_selector("title", :content => I18n.t('mutual_funds.scheme_returns.title'))
+    end
+
+    it "should have title for asset allocation page" do
+      visit asset_allocation_mutual_fund_path(@scheme.scheme_name)
+      page.should have_selector("title", :content => I18n.t('mutual_funds.asset_allocation.title'))
+    end
+
+    it "should have title for sectoral allocation page" do
+      visit sectoral_allocation_mutual_fund_path(@scheme.scheme_name)
+      page.should have_selector("title", :content => I18n.t('mutual_funds.sectoral_allocation.title'))
+    end
+
+    it "should have title for top holdings page" do
+      visit top_holdings_mutual_fund_path(@scheme.scheme_name)
+      page.should have_selector("title", :content => I18n.t('mutual_funds.top_holdings.title'))
+    end
+
+    it "should have title for detailed holdings page" do
+      visit detailed_holdings_mutual_fund_path(@scheme.scheme_name)
+      page.should have_selector("title", :content => I18n.t('mutual_funds.details.title'))
+    end
+  end
 end
