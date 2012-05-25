@@ -57,6 +57,7 @@ group :test, :development do
     gem 'rb-fsevent', :require => false
   gem 'guard-bundler'
   gem 'guard-livereload'
+  gem 'guard-rake'
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'heroku_san'

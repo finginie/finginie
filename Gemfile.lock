@@ -215,6 +215,9 @@ GEM
       em-websocket (>= 0.2.0)
       guard (>= 0.10.0)
       multi_json (~> 1.0)
+    guard-rake (0.0.5)
+      guard
+      rake
     guard-rspec (0.7.0)
       guard (>= 0.10.0)
     guard-spork (0.5.2)
@@ -460,6 +463,7 @@ DEPENDENCIES
   guard
   guard-bundler
   guard-livereload
+  guard-rake
   guard-rspec
   guard-spork
   haml-rails
