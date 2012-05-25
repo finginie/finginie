@@ -1,0 +1,8 @@
+@import "bourbon";
+@import "lists";
+@import "utilities";
+@import "defaults";
+
+body.fixed_deposits.index {
+  @include simple-form;
+}
