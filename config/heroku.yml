@@ -12,7 +12,7 @@
 staging: &staging
   app: finginie
   stack: cedar
-  config:
+  config: &staging_config
     BUNDLE_WITHOUT               : "development:test"
     DEPLOYHOOKS_CAMPFIRE_API_KEY : "3fd084ab0d34857c48ee0bd1534e2b39f2bc40d6"
     DEPLOYHOOKS_CAMPFIRE_MESSAGE : "{{user}} deployed {{app}} to {{url}}. source: https://github.com/FinGinie/{{app}}/tree/{{head}}"
@@ -24,7 +24,8 @@ staging: &staging
     FACEBOOK_SECRET              : "60131991fc9d5faeb78a164789d22a3e"
     GOOGLE_KEY                   : "991503885080.apps.googleusercontent.com"
     GOOGLE_SECRET                : "wgBNGF4LH4K8X8zZeHruc3Pg"
-    MONGOLAB_URI                 : "mongodb://heroku_app1577177:fe2kqfq6m6cifmlgn6ucofchdd@ds031167.mongolab.com:31167/heroku_app1577177"
+    MAINTENANCE_PAGE_URL         : "https://docs.google.com/a/finginie.com/spreadsheet/viewform?formkey=dFJaRjVMaTdSUml1TTlkWG9uaGdKNmc6MA"
+    MONGOLAB_URI                 : "mongodb://heroku_app4427460:kcfr65imah2j5cumpcjql0tpot@ds033007.mongolab.com:33007/heroku_app4427460"
     RACK_ENV                     : "staging"
     RAILS_ENV                    : "staging"
     REDISTOGO_URL                : "redis://redistogo:c7d78e060570807dd158b3b351afae49@goosefish.redistogo.com:10066/"
@@ -39,12 +40,12 @@ production:
   <<: *staging
   app: cold-planet-6262
   config:
-    GOOGLE_ANALYTICS             : "UA-12345678-1"
+    <<: *staging_config
+    DEPLOYHOOKS_HTTP_URL         : "http://airbrake.io/deploys.txt?deploy[rails_env]=production&api_key=d32bd5cf0a8135db0b96b89c0ce468f9"
     FACEBOOK_KEY                 : "227202437375090"
     FACEBOOK_SECRET              : "38dd90840dc6d9a83a8e7578780ddbd8"
+    GOOGLE_ANALYTICS             : "UA-12345678-1"
     GOOGLE_KEY                   : "924488085977.apps.googleusercontent.com"
     GOOGLE_SECRET                : "lWCmvtoikvhfXnB31PJAUsBT"
     RACK_ENV                     : "production"
     RAILS_ENV                    : "production"
-
-
