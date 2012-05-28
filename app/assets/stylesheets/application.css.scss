@@ -28,7 +28,7 @@ body, button, input, select, textarea {
   font-family: $content-font;
   color: $text-color;
 }
-h1, h4 {
+h1, h2, h4 {
   margin: 0;
 }
 ul {
@@ -118,6 +118,7 @@ header {
       padding: 0;
     }
     &.main {
+      margin-top: 10px;
       @include float(right);
       #navigation-about_us {
         display: none;
