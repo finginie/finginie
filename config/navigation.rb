@@ -98,7 +98,7 @@ SimpleNavigation::Configuration.run do |navigation|
 
     primary.item :personal_financial_tools, 'Financial Tools', personal_financial_tools.personal_financial_tools_path do |secondary|
       secondary.item :emi_calculators, 'EMI Calculator', personal_financial_tools.emi_calculators_path
-      secondary.item :fixed_deposit_calculators,'Fixed Deposit Calculators', personal_financial_tools.fixed_deposit_calculators_path
+      secondary.item :fixed_deposit_calculator,'Fixed Deposit Calculators', personal_financial_tools.fixed_deposit_calculators_path
       secondary.item :recurring_deposit_calculator, 'Recurring Deposit Calculator', personal_financial_tools.recurring_deposit_calculator_path
       secondary.item :sip_calculator, 'SIP Calculator', personal_financial_tools.sip_calculator_path
       secondary.item :monthly_sip_calculator, 'Monthly SIP Calculator', personal_financial_tools.monthly_sip_calculator_path

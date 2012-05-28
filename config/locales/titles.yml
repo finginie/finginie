@@ -66,23 +66,41 @@ en:
       index:
         title: 'Financial Tools'
       emi_calculators:
-        title: 'EMI Calculator'
+        title: 'Loan EMI Calculator'
+        description: 'This is a Loan EMI Calculator'
+        keywords: 'Loan, EMI Calculator'
       fixed_deposit_calculators:
-        title: 'Fixed Deposit Calculators'
+        title: 'Fixed Deposit Calculator'
+        description: 'This is a Fixed Deposit Calculator for calculating the maturity amount on fixed deposits'
+        keywords: 'Fixed Deposit Calculator'
       recurring_deposit_calculator:
         title: 'Recurring Deposit Calculator'
+        description: 'This is a Recurring deposit calculator'
+        keywords: 'Recurring Deposit calculator'
       sip_calculator:
-        title: 'SIP Calculator'
+        title: 'Sip Calculator'
+        description: 'This is a Sip Calculator for Systematic Investment plans that yield a fixed return per year.'
+        keywords: 'Sip Calculator, Systematic Investment Plan'
       monthly_sip_calculator:
-        title: 'Monthly SIP Calculator'
+        title: 'Monthly Sip Calculator'
+        description: 'This is a Monthly Sip Calculator for Systematic Investment plans that yield a fixed return per year.'
+        keywords: 'Monthly Sip Calculator, Systematic Investment Plan'
       income_tax_calculator:
         title: 'Income Tax Calculator'
+        description: 'This is an Income Tax Calculator India.'
+        keywords: 'Income Tax Calculator'
       rate_of_return_calculator:
         title: 'Rate of Return Calculator'
+        description: 'This is a Rate of Return Calculator'
+        keywords: 'Rate of Return Calculator'
       life_insurance_calculators:
-        title: 'Life Insurance Calculators'
+        title: 'Life Insurance Calculator'
+        description: 'This is a Life Insurance Calculator'
+        keywords: 'Life Insurance Calculator'
       retirement_corpus_calculator:
-        title: 'Retirement Corpus Calculator'
+        title: 'Retirement Calculator'
+        description: 'This is a Retirement Calculator'
+        keywords: 'Retirement Calculator'
   sessions:
     new:
       title: 'Signin'
