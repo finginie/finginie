@@ -26,7 +26,6 @@ module ApplicationHelper
     controller_params = params[:controller].gsub('/','.') + '.'
     action_params = params[:action] + '.'
     id_params  = params[:id] ? (params[:id].gsub('/', '.') + '.') : ''
-    translation = translation
     I18n.t  (controller_params + action_params +id_params + translation).to_sym,
             :default => [
               (controller_params + action_params + translation).to_sym,
