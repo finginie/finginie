@@ -6,78 +6,44 @@
 body.investment_education {
   #main {
     .container {
-      padding: {
-        left: 10px;
-      }
-      >ul {
-	      margin: 0;
-	      padding: {
-	        top: 0;
-	        left: 1em;
-	      }
-        li {
-          padding: 0;
-          @include horizontal-list;
-          display: inline-block;
-          height: 300px;
-          span {
-            display: block;
-            color: $heading-color;
-            font: {
-              family:$heading-font;
-              size: large;
-            }
-            &:before {
-              display: block;
-              width: 100%;
-              text-align: center;
-            }
+      .articles {
+        .navigation {
+          background-color: #FFF;
+          border: 1px solid $border-color;
+          @include border-radius(4px);
+          float: left;
+          height: 390px;
+          margin-bottom: 22px;
+          h1 {
+            color: $heading-green;
+            font-size: 16px;
+            padding: 2px 0 6px 4px;
+            @include linear-gradient(bottom, #CCC 0%, #FFF 100%);
           }
-          //margin-left: 1em;
-          a {
-            text-decoration: none;
-          }
-          p {
-            display: inline;
-            padding-left: 0;
+          img {
+            width: 245px;
+            border-bottom: 1px solid $border-color;
+            @include border-radius(6px 4px 0 0);
           }
           ul {
-            display: inline;
-            padding-left: 0;
-            padding-right: 1em;
+            padding-left: 4px;
+            margin: 0;
           }
           li {
-            display: inline;
-            &:before {
-              content: ', ';
+            margin-left: 0;
+            padding-bottom: 5px;
+            h2 {
+              font-size: 14px;
+              font-weight: normal;
             }
-            &:last-child:before {
-              content: ' and ';
-            }
-            &:first-child:before {
-              content: ' ';
+            a {
+              color: #023688;
             }
           }
-          // background images for article sections
         }
-      }
-      #navigation-investment_concepts span:before {
-        content: url('investment_education/InvestmentConcepts_1.png');
-      }
-      #navigation-investment_process span:before {
-        content: url('investment_education/InvestmentProcess_1.png');
-      }
-      #navigation-investment_analysis span:before {
-        content: url('investment_education/InvestmentAnalysis_1.png');
-      }
-      #navigation-investment_types span:before {
-        content: url('investment_education/InvestmentTypes_1.png');
-      }
-      #navigation-advanced_investments span:before {
-        content: url('investment_education/AdvancedInvestments_1.png');
-      }
-      #navigation-jargon_demystified span:before {
-        content: url('investment_education/jargon.png');
+        .preparing-to-invest, .before-you-invest, .investing-in-shares {
+          margin-right: 10px;
+        }
       }
     }
   }
@@ -210,7 +176,6 @@ $bottom-grey: #c5c4c4;
           list-style-type: disc;
           margin: 0;
           padding-bottom: 10px;
-          padding-left: 0;
           padding-right: 0;
           text-align: justify;
           li {
