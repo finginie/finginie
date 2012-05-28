@@ -3,11 +3,11 @@ require 'spec_helper'
 describe "ShareHolding", :mongoid do
   let(:company) { create :company }
   before :each do
-    @share_holding = create :share_holding, :company_code => company.company_code
+    @share_holding = create :share_holding, :company_code => company.code
   end
 
-  it "should show the share holding pattern for a Stock" do
-    visit stock_share_holding_path(:stock_id => company.company_code )
+  it "should show the share holding profits_after_taxtern for a Stock" do
+    visit stock_share_holding_path(:stock_id => company.code )
     page.should have_content 'Foreign Institional Investors (FIIs)'
     page.should have_content '8.52'
     page.should have_content 'Other Foreign Investors'
@@ -18,13 +18,13 @@ describe "ShareHolding", :mongoid do
   end
 
   it "should have stock search in the stock share holding page" do
-    visit stock_path company.company_code
+    visit stock_path company.code
     click_link "Ratios"
     page.should have_selector("#new_company")
   end
 
   it "should have a title" do
-    visit stock_share_holding_path( company.company_code)
+    visit stock_share_holding_path( company.code)
     page.should have_selector("title", :content => I18n.t('share_holding.title'))
   end
 end

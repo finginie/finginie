@@ -27,7 +27,7 @@
       %td.center_align{:colspan => 7} Returns (%)
     - resource.each do |scheme|
       %tr.right_align
-        %td.name= link_to scheme.scheme_name, scheme_summary_mutual_fund_path(scheme.scheme_name)
+        %td.name= link_to scheme.name, scheme_summary_mutual_fund_path(scheme.name)
         %td= scheme.rank
         %td= number_to_indian_currency scheme.nav_amount
         %td= number_to_indian_currency scheme.minimum_investment_amount

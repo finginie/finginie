@@ -19,17 +19,17 @@ class CompanyDecorator < ApplicationDecorator
 
   def ratio
     if major_sector == 2
-      @ratio = BankingRatio.all( conditions: { company_code: company_code }, sort: [[ :year_ending, :desc ]] ).first
+      @ratio = BankingRatio.all( conditions: { company_code: code }, sort: [[ :year_ending, :desc ]] ).first
       @ratio = BankingRatioDecorator.decorate(@ratio) if @ratio
     else
-      @ratio = Ratio.all( conditions: { company_code: company_code }, sort: [[ :year_ending, :desc ]] ).first
+      @ratio = Ratio.all( conditions: { company_code: code }, sort: [[ :year_ending, :desc ]] ).first
       @ratio = RatioDecorator.decorate(@ratio) if @ratio
     end
 
   end
 
   def news
-    News.for_company(company_code).latest(5)
+    News.for_company(code).latest(5)
   end
 
   def nse

@@ -8,15 +8,15 @@ class AuditedResultDecorator < ApplicationDecorator
     { :title => 'Equity Share Capital',                   :heading => false, :field_name => 'equity_capital'              },
     { :title => 'Share Application Money',                :heading => false, :field_name => 'share_appl_money'            },
     { :title => 'Preference Share Capital',               :heading => false, :field_name => 'pref_capital'                },
-    { :title => 'Free Reserves and Surplus',              :heading => false, :field_name => 'free_reservesand_surplus'    },
+    { :title => 'Free Reserves and Surplus',              :heading => false, :field_name => 'free_reserves_and_surplus'    },
     { :title => 'Other Reserves',                         :heading => false, :field_name => 'other_reserves'              },
-    { :title => 'Reserves & Surplus',                     :heading => false, :field_name => 'resand_surplus'              },
+    { :title => 'Reserves & Surplus',                     :heading => false, :field_name => 'reserves_and_surplus'              },
     { :title => 'Net Worth',                              :heading => true,  :field_name => 'net_worth'                   },
     { :title => '',                                       :heading => false                                               },
     { :title => 'Loan Funds',                             :heading => true                                                },
     { :title => 'Demand Deposits',                        :heading => false, :field_name => 'demand_deposits'             },
-    { :title => 'Savings Deposits',                       :heading => false, :field_name => 'savings_deposits_un_secured' },
-    { :title => 'Time Deposits',                          :heading => false, :field_name => 'time_deposits_un_secured'    },
+    { :title => 'Savings Deposits',                       :heading => false, :field_name => 'savings_deposits_unsecured' },
+    { :title => 'Time Deposits',                          :heading => false, :field_name => 'time_deposits_unsecured'    },
     { :title => 'Total Deposits',                         :heading => false, :field_name => 'unsecured_loans'             },
     { :title => 'Borrowings made by the bank',            :heading => false, :field_name => 'borrowings_by_bank'          },
     { :title => 'Total Liabilities',                      :heading => true,  :field_name => 'total_liabilities'           },
@@ -43,15 +43,15 @@ class AuditedResultDecorator < ApplicationDecorator
     { :title => 'Current Liabilities And Provisions',     :heading => false, :field_name => 'curr_liab_and_prov'          },
     { :title => 'Net Current  Assets',                    :heading => false,  :field_name => 'net_current_assets'         },
     { :title => '',                                       :heading => false                                               },
-    { :title => 'Miscellaneous Expenses not written off', :heading => false, :field_name => 'misc_exp_not_w_off'          },
+    { :title => 'Miscellaneous Expenses not written off', :heading => false, :field_name => 'misc_exp_not_written_off'          },
     { :title => 'Total Assets',                           :heading => true,  :field_name => 'total_assets'                },
     { :title => '',                                       :heading => false                                               },
     { :title => 'Note',                                   :heading => true                                                },
     { :title => 'Contingent liabilities',                 :heading => false, :field_name => 'contingent_liabilities'      },
     { :title => 'Book Value of Unquoted Investment',      :heading => false, :field_name => 'book_value'                  },
     { :title => 'Market Value of Quoted Investment',      :heading => false, :field_name => 'market_value'                },
-    { :title => 'Deposits in Indian Branches',            :heading => false, :field_name => 'dep_of_ind_branches'         },
-    { :title => 'Deposits in Foreign Branches',           :heading => false, :field_name => 'dep_of_forgn_branches'       },
+    { :title => 'Deposits in Indian Branches',            :heading => false, :field_name => 'deposits_of_indian_branches'         },
+    { :title => 'Deposits in Foreign Branches',           :heading => false, :field_name => 'deposits_of_foreign_branches'       },
     { :title => 'Number Of Branches',                     :heading => false, :field_name => 'number_of_branches'          },
     { :title => 'Number of Equity Shares (in lakhs)',     :heading => false, :field_name => 'number_of_equity_shares'      }
   ]
@@ -64,9 +64,9 @@ class AuditedResultDecorator < ApplicationDecorator
     { :title => 'Equity Share Capital',                   :heading => false, :field_name => 'equity_capital'              },
     { :title => 'Share Application Money',                :heading => false, :field_name => 'share_appl_money'            },
     { :title => 'Preference Share Capital',               :heading => false, :field_name => 'pref_capital'                },
-    { :title => 'Free Reserves and Surplus',              :heading => false, :field_name => 'free_reservesand_surplus'    },
+    { :title => 'Free Reserves and Surplus',              :heading => false, :field_name => 'free_reserves_and_surplus'    },
     { :title => 'Other Reserves',                         :heading => false, :field_name => 'other_reserves'              },
-    { :title => 'Total Reserves & Surplus',               :heading => true,  :field_name => 'resand_surplus'              },
+    { :title => 'Total Reserves & Surplus',               :heading => true,  :field_name => 'reserves_and_surplus'              },
     { :title => 'Revaluation Reserves',                   :heading => false, :field_name => 'revaluation_reserve'         },
     { :title => 'Net Worth',                              :heading => true,  :field_name => 'net_worth'                   },
     { :title => 'Long Term Loans',                        :heading => false, :field_name => 'long_term_loan'              },
@@ -84,7 +84,7 @@ class AuditedResultDecorator < ApplicationDecorator
     { :title => 'Net Current  Assets',                    :heading => true                                                },
     { :title => 'Cash & Bank Balances',                   :heading => false,  :field_name => 'cash_and_bank_balance'      },
     { :title => 'Receivables',                            :heading => false,  :field_name => 'receivables'                },
-    { :title => 'Loans and Advances',                     :heading => false,  :field_name => 'loan_adv'                   },
+    { :title => 'Loans and Advances',                     :heading => false,  :field_name => 'loans_and_advances'                   },
     { :title => 'Inventory',                              :heading => false, :field_name => 'inventory'                   },
     { :title => 'Total CA, Loans & Advances',             :heading => true, :field_name => 'current_assets'               },
     { :title => 'Creditors',                              :heading => false, :field_name => 'sundry_creditors'            },
@@ -93,7 +93,7 @@ class AuditedResultDecorator < ApplicationDecorator
     { :title => 'Current Liabilities And Provisions',     :heading => true,  :field_name => 'curr_liab_and_prov'          },
     { :title => 'Net Current  Assets',                    :heading => true,  :field_name => 'net_current_assets'          },
     { :title => '',                                       :heading => false                                               },
-    { :title => 'Miscellaneous Expenses not written off', :heading => false, :field_name => 'misc_exp_not_w_off'          },
+    { :title => 'Miscellaneous Expenses not written off', :heading => false, :field_name => 'misc_exp_not_written_off'          },
     { :title => 'Total Assets',                           :heading => true,  :field_name => 'total_assets'                },
     { :title => '',                                       :heading => false                                               },
     { :title => 'Note',                                   :heading => true                                                },
@@ -105,18 +105,18 @@ class AuditedResultDecorator < ApplicationDecorator
 
   BANKING_PROFIT_LOSS = [
     { :title => 'Income :',                               :heading => true                                                },
-    { :title => 'Fund based Income',                      :heading => false, :field_name => 'fundbased_income'            },
-    { :title => 'Fee based Income',                       :heading => false, :field_name => 'feebased_income'             },
-    { :title => 'Profit on Sale of Investment',           :heading => false, :field_name => 'pl_onsaleof_invstmts'        },
+    { :title => 'Fund based Income',                      :heading => false, :field_name => 'fund_based_income'            },
+    { :title => 'Fee based Income',                       :heading => false, :field_name => 'fee_based_income'             },
+    { :title => 'Profit on Sale of Investment',           :heading => false, :field_name => 'pl_on_sale_of_investments'        },
     { :title => 'Exchange Rate Fluctuation',              :heading => false, :field_name => 'exchg_rate_fluct'            },
     { :title => 'Operating Income',                       :heading => true,  :field_name => 'operating_income'            },
     { :title => '',                                       :heading => false                                               },
     { :title => 'Expenses',                               :heading => true                                                },
     { :title => 'Financial Expenses',                     :heading => false, :field_name => 'financial_expences'          },
-    { :title => 'Personnel Expenses',                     :heading => false, :field_name => 'personnel_exp'               },
+    { :title => 'Personnel Expenses',                     :heading => false, :field_name => 'personnel_expenses'               },
     { :title => 'Selling Expenses',                       :heading => false, :field_name => 'selling_expenses'            },
     { :title => 'Adminstrative Expenses',                 :heading => false, :field_name => 'admin_expenses'              },
-    { :title => 'Expenses Capitalised',                   :heading => false, :field_name => 'exp_capitalised'             },
+    { :title => 'Expenses Capitalised',                   :heading => false, :field_name => 'expenses_capitalised'             },
     { :title => 'Operating Expenditure',                  :heading => true,  :field_name => 'cost_of_sales'               },
     { :title => '',                                       :heading => false                                               },
     { :title => 'Operating Profit',                       :heading => true,  :field_name => 'operating_profit'            },
@@ -127,7 +127,7 @@ class AuditedResultDecorator < ApplicationDecorator
     { :title => '',                                       :heading => false                                               },
     { :title => 'Provisions Made',                        :heading => false, :field_name => 'banks_provisions_made'       },
     { :title => 'Depreciation',                           :heading => false, :field_name => 'depreciation'                },
-    { :title => 'Other Write offs',                       :heading => false, :field_name => 'prel_def_rev_exp_w_off'      },
+    { :title => 'Other Write offs',                       :heading => false, :field_name => 'prel_def_rev_exp_written_off'      },
     { :title => '',                                       :heading => false                                               },
     { :title => 'Adjusted PBT',                           :heading => false, :field_name => 'adjusted_pbt'                },
     { :title => '',                                       :heading => false                                               },
@@ -143,7 +143,7 @@ class AuditedResultDecorator < ApplicationDecorator
     { :title => '',                                       :heading => false                                               },
     { :title => 'Earnigs Before Appropriation',           :heading => false, :field_name => 'appropriations'              },
     { :title => 'Equity Dividend',                        :heading => false, :field_name => 'equity_dividend'             },
-    { :title => 'Preference Dividend',                    :heading => false, :field_name => 'proposed_pref_divdnd'        },
+    { :title => 'Preference Dividend',                    :heading => false, :field_name => 'proposed_pref_dividend'        },
     { :title => 'Dividend Tax',                           :heading => false, :field_name => 'corporate_dividend_tax'      },
     { :title => 'Retained Earnings',                      :heading => true,  :field_name => 'retained_earnings'           }
   ]
@@ -160,14 +160,14 @@ class AuditedResultDecorator < ApplicationDecorator
     { :title => 'Packing Material Consumed',              :heading => false, :field_name => 'packing_material_consumed'   },
     { :title => 'Spares Stores Consmption',               :heading => false, :field_name => 'spares_stores_consmption'    },
     { :title => 'Purchase Finish Goods',                  :heading => false, :field_name => 'purchase_finish_goods'       },
-    { :title => 'Stock Adjustment',                       :heading => false, :field_name => 'dec_inc_in_stocks'           },
+    { :title => 'Stock Adjustment',                       :heading => false, :field_name => 'stock_adjustment'           },
     { :title => 'Total Material Consumed',                :heading => false, :field_name => 'material_consumed'           },
     { :title => 'Power and Fuel',                         :heading => false, :field_name => 'power_fuel'                  },
     { :title => 'Other Manufacturing Expenses',           :heading => false, :field_name => 'other_manufacturing_exp'     },
-    { :title => 'Personnel Expenses',                     :heading => false, :field_name => 'personnel_exp'               },
+    { :title => 'Personnel Expenses',                     :heading => false, :field_name => 'personnel_expenses'               },
     { :title => 'Selling Expenses',                       :heading => false, :field_name => 'selling_expenses'            },
     { :title => 'Adminstrative Expenses',                 :heading => false, :field_name => 'admin_expenses'              },
-    { :title => 'Expenses Capitalised',                   :heading => false, :field_name => 'exp_capitalised'             },
+    { :title => 'Expenses Capitalised',                   :heading => false, :field_name => 'expenses_capitalised'             },
     { :title => 'Cost of Sales',                          :heading => true,  :field_name => 'cost_of_sales'               },
     { :title => '',                                       :heading => false                                               },
     { :title => 'Operating Profit',                       :heading => true,  :field_name => 'operating_profit'            },
@@ -181,7 +181,7 @@ class AuditedResultDecorator < ApplicationDecorator
     { :title => 'PBDT',                                   :heading => false, :field_name => 'pbdt'                        },
     { :title => '',                                       :heading => false                                               },
     { :title => 'Depreciation',                           :heading => false, :field_name => 'depreciation'                },
-    { :title => 'Other Write offs',                       :heading => false, :field_name => 'prel_def_rev_exp_w_off'      },
+    { :title => 'Other Write offs',                       :heading => false, :field_name => 'prel_def_rev_exp_written_off'      },
     { :title => '',                                       :heading => false                                               },
     { :title => 'Adjusted PBT',                           :heading => false, :field_name => 'adjusted_pbt'                },
     { :title => 'Tax Charges',                            :heading => false, :field_name => 'taxation'                    },
@@ -189,7 +189,7 @@ class AuditedResultDecorator < ApplicationDecorator
     { :title => 'Adjusted PAT',                           :heading => false, :field_name => 'adjusted_pat'                },
     { :title => '',                                       :heading => false                                               },
     { :title => 'Profit on Sale of Assets',               :heading => false, :field_name => 'pl_sale_of_asset'            },
-    { :title => 'Profit on Sale of Investments',          :heading => false, :field_name => 'pl_onsaleof_invstmts'        },
+    { :title => 'Profit on Sale of Investments',          :heading => false, :field_name => 'pl_on_sale_of_investments'        },
     { :title => 'Exchange Rate Fluctuation',              :heading => false, :field_name => 'exchg_rate_fluct'            },
     { :title => 'Extra Ordinary Items',                   :heading => false, :field_name => 'extra_ordinary_items'        },
     { :title => 'Non Recurring Items',                    :heading => false, :field_name => 'non_recurring_income'        },
@@ -200,7 +200,7 @@ class AuditedResultDecorator < ApplicationDecorator
     { :title => 'Earnigs Before Appropriation',           :heading => false, :field_name => 'appropriations'              },
     { :title => '',                                       :heading => false                                               },
     { :title => 'Equity Dividend',                        :heading => false, :field_name => 'equity_dividend'             },
-    { :title => 'Preference Dividend',                    :heading => false, :field_name => 'proposed_pref_divdnd'        },
+    { :title => 'Preference Dividend',                    :heading => false, :field_name => 'proposed_pref_dividend'        },
     { :title => 'Dividend Tax',                           :heading => false, :field_name => 'corporate_dividend_tax'      },
     { :title => 'Retained Earnings',                      :heading => true,  :field_name => 'retained_earnings'           },
     { :title => '',                                       :heading => false                                               },
@@ -212,18 +212,18 @@ class AuditedResultDecorator < ApplicationDecorator
   #{ :title => 'Book Value (Rs)',                        :heading => false, :field_name => 'book_value'                  }
   ]
 
-  FIELDS_CRORE = [ 'authorised_capital', 'equity_capital', 'share_appl_money', 'pref_capital', 'free_reservesand_surplus', 'other_reserves', 'resand_surplus',
-                   'net_worth', 'long_term_loan', 'unsecured_term_loans', 'total_debt', 'receivables', 'loan_adv', 'inventory', 'total_assets', 'demand_deposits',
-                   'savings_deposits_un_secured', 'time_deposits_un_secured', 'unsecured_loans', 'borrowings_by_bank', 'total_liabilities','cash_and_bank_balance',
+  FIELDS_CRORE = [ 'authorised_capital', 'equity_capital', 'share_appl_money', 'pref_capital', 'free_reserves_and_surplus', 'other_reserves', 'reserves_and_surplus',
+                   'net_worth', 'long_term_loan', 'unsecured_term_loans', 'total_debt', 'receivables', 'loans_and_advances', 'inventory', 'total_assets', 'demand_deposits',
+                   'savings_deposits_unsecured', 'time_deposits_unsecured', 'unsecured_loans', 'borrowings_by_bank', 'total_liabilities','cash_and_bank_balance',
                    'money_at_call_short_notice', 'investments', 'advances', 'gross_block', 'revaluation_reserve', 'depreciation_on_f_assets','net_block',
                    'capital_wip', 'net_current_assets', 'current_assets', 'sundry_creditors', 'other_current_liabilities', 'total_provisions', 'curr_liab_and_prov',
-                   'misc_exp_not_w_off', 'contingent_liabilities', 'book_value', 'market_value', 'dep_of_ind_branches', 'dep_of_forgn_branches',
-                   'fundbased_income', 'feebased_income', 'pl_onsaleof_invstmts', 'exchg_rate_fluct', 'operating_income', 'financial_expences', 'personnel_exp',
-                   'selling_expenses', 'admin_expenses', 'exp_capitalised', 'cost_of_sales', 'operating_profit', 'other_recurring_income', 'adjusted_pbdit',
-                   'banks_provisions_made', 'depreciation', 'prel_def_rev_exp_w_off', 'adjusted_pbt', 'taxation', 'adjusted_pat', 'extr_ordinary_items',
+                   'misc_exp_not_written_off', 'contingent_liabilities', 'book_value', 'market_value', 'deposits_of_indian_branches', 'deposits_of_foreign_branches',
+                   'fund_based_income', 'fee_based_income', 'pl_on_sale_of_investments', 'exchg_rate_fluct', 'operating_income', 'financial_expences', 'personnel_expenses',
+                   'selling_expenses', 'admin_expenses', 'expenses_capitalised', 'cost_of_sales', 'operating_profit', 'other_recurring_income', 'adjusted_pbdit',
+                   'banks_provisions_made', 'depreciation', 'prel_def_rev_exp_written_off', 'adjusted_pbt', 'taxation', 'adjusted_pat', 'extr_ordinary_items',
                    'pl_sale_of_asset', 'non_recurring_income', 'non_cash_adjustments', 'reported_net_profit', 'appropriations', 'equity_dividend',
-                   'proposed_pref_divdnd', 'corporate_dividend_tax', 'retained_earnings','sales', 'excise', 'other_income', 'total_income', 'raw_mat_consumed',
-                   'packing_material_consumed', 'spares_stores_consmption', 'purchase_finish_goods', 'dec_inc_in_stocks', 'material_consumed', 'power_fuel',
+                   'proposed_pref_dividend', 'corporate_dividend_tax', 'retained_earnings','sales', 'excise', 'other_income', 'total_income', 'raw_mat_consumed',
+                   'packing_material_consumed', 'spares_stores_consmption', 'purchase_finish_goods', 'stock_adjustment', 'material_consumed', 'power_fuel',
                    'other_manufacturing_exp', 'pbdt', 'extra_ordinary_items', 'total_share_capital'
   ]
 
@@ -234,7 +234,7 @@ class AuditedResultDecorator < ApplicationDecorator
   end
 
   def number_of_equity_shares
-    (model.numberof_equity_shares) ? (model.numberof_equity_shares / 100000).round : h.t('tables_not_available')
+    (model.number_of_equity_shares) ? (model.number_of_equity_shares / 100000).round : h.t('tables_not_available')
   end
 
   def balance_sheet_view_items
@@ -243,7 +243,7 @@ class AuditedResultDecorator < ApplicationDecorator
   end
 
   def company_name
-    Company.where( company_code: model.companycode ).first.company_name
+    Company.where( code: model.company_code ).first.name
   end
 
   def profit_loss_view_items

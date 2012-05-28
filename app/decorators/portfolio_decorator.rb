@@ -137,7 +137,7 @@ class PortfolioDecorator < ApplicationDecorator
   def stocks_positions_profit_or_loss
     companies.map { |company|
                               stock_positions = stock_transactions.for(company)
-                              Hashie::Mash.new({ :name => company.company_name, :type => 'Stock',
+                              Hashie::Mash.new({ :name => company.name, :type => 'Stock',
                                             :sector => company.industry_name,
                                             :average_sell_price => stock_positions.average_sell_price,
                                             :average_cost_price => stock_positions.average_cost_price,

@@ -12,7 +12,7 @@ class FungiblePositionDecorator
   def action_params
     params = { :quantity => @position.quantity, :action => :sell }
     params[:scheme] = @position.name if @position.respond_to?(:mutual_fund)
-    params[:company_code] = @position.company.company_code if @position.respond_to?(:company)
+    params[:company_code] = @position.company.code if @position.respond_to?(:company)
     params
   end
 

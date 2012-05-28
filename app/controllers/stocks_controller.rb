@@ -5,7 +5,7 @@ class StocksController < InheritedResources::Base
 
   def resource
     @search = Company.new
-    @company = Company.find_by_company_code(params[:id])
+    @company = Company.find_by_code(params[:id])
     @chart_url =  "http://www.cs4w.in/Forska/TechnicalChart.aspx?Code=#{@company.nse_code}&width=800" + "&height=600" if @company && @company.nse_code
     CompanyDecorator.decorate(@company)
   end
@@ -13,8 +13,8 @@ class StocksController < InheritedResources::Base
   def collection
     @search = Company.new
     if params[:company]
-      @search_records = Company.stocks.csearch(params[:company].values.join(" ")).order_by([[:company_name, :asc]])
-      @search_records.all.map {|stock| {:value => stock.company_name, :id => stock.company_code}}
+      @search_records = Company.stocks.csearch(params[:company].values.join(" ")).order_by([[:name, :asc]])
+      @search_records.all.map {|stock| {:value => stock.name, :id => stock.code}}
     elsif params[:screener]
       @search_records = Company.screener_search(params[:screener])
       @companies = @search_records.page(params[:page]).per(10)

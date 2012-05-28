@@ -25,7 +25,7 @@ describe Portfolio, :redis do
 
   it "should have_many companies" do
     company = create :company
-    4.times { |n| create :stock_transaction, :company_code =>company.company_code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    4.times { |n| create :stock_transaction, :company_code =>company.code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
     subject.companies.should include company
   end
 
@@ -35,7 +35,7 @@ describe Portfolio, :redis do
 
   it "should have many stock_positions" do
     company = create :company
-    4.times { |n| create :stock_transaction, :company_code =>company.company_code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    4.times { |n| create :stock_transaction, :company_code => company.code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
     4.times { |n| create :stock_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     portfolio.stock_transactions.for(company).quantity.should eq 10
@@ -88,10 +88,10 @@ describe Portfolio, :redis do
   def create_positions_of_all_securities
     company = create :company, :industry_name => "FOO"
     scrip = create :nse_scrip, :last_traded_price => 5, :id => company.nse_code
-    4.times { |n| create :stock_transaction, :company_code => company.company_code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    4.times { |n| create :stock_transaction, :company_code => company.code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     scheme = create :scheme, :nav_amount => "5"
-    4.times { |n| create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    4.times { |n| create :mutual_fund_transaction, :scheme => scheme.name, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     create :nse_scrip, :id => "GOLDBEES", :last_traded_price => 5
     4.times { |n| create :gold_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }

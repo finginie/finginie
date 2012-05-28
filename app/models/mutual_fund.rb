@@ -7,12 +7,12 @@ class MutualFund < Security
 
   belongs_to :user
 
-  delegate :securitycode, :nav_amount, :scheme_class_description, :to => :scheme_master, :allow_nil => true
+  delegate :security_code, :nav_amount, :class_description, :to => :scheme_master, :allow_nil => true
 
-  alias :category :scheme_class_description
+  alias :category :class_description
 
   def scheme_master
-    Scheme.where(:scheme_name => scheme).first
+    Scheme.where(:name => scheme).first
   end
 
   def current_value(transaction)

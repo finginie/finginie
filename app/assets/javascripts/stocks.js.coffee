@@ -1,9 +1,9 @@
 $ ->
   $("div#tabs").tabs();
 
-  $('#company_company_name').autocomplete
+  $('#company_name').autocomplete
     source: ( request, response ) ->
-      $.getJSON( $('#company_company_name').data('autocomplete-source'), { company: { company_name: request.term } }, response );
+      $.getJSON( $('#company_name').data('autocomplete-source'), { company: { name: request.term } }, response );
     select: ( event, ui ) ->
 		    window.location = "/stocks/#{ui.item.id}";
 

@@ -1,7 +1,7 @@
 = form_tag screener_stocks_path, :method => :get, :remote => true, :update =>"stocks" do
   .sector
     = label_tag "screener_industry_name", "Sector"
-    = select_tag("screener[industry_name]", options_for_select([["Any", ""]] + IndustryMaster.all.map{|i| [i.industry_name, i.industry_name]}))
+    = select_tag("screener[industry_name]", options_for_select([["Any", ""]] + Industry.all.map{|i| [i.name, i.name]}))
   #screener-slider
     %table.ui-corner-tl.ui-corner-tr
       %tr

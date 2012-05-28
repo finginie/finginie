@@ -1,6 +1,6 @@
 $ ->
-  $('#scheme_scheme_name').autocomplete
-    source: $('#scheme_scheme_name').data('autocomplete-source'),
+  $('#scheme_name').autocomplete
+    source: $('#scheme_name').data('autocomplete-source'),
     select: ( event, ui ) ->
 			  window.location = "/mutual_funds/#{ui.item.value}/scheme_summary";
 

@@ -6,7 +6,7 @@ class StockTransaction < ActiveRecord::Base
 
   validates_presence_of :company_code
 
-  scope :for, lambda { |company| where(:company_code => company.company_code).order(:date, :created_at) } do
+  scope :for, lambda { |company| where(:company_code => company.code).order(:date, :created_at) } do
     include FungiblePosition
 
     delegate :company, :to => :first
@@ -14,11 +14,11 @@ class StockTransaction < ActiveRecord::Base
   end
 
   def company
-    @company || (company_code && Company.where( company_code: company_code).first)
+    @company || (company_code && Company.where( code: company_code).first)
   end
 
   def company=(company)
-    self.company_code = company.company_code
+    self.company_code = company.code
   end
 
   alias :security :company

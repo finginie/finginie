@@ -5,18 +5,18 @@ describe "Portfolios", :mongoid do
   let (:portfolio) { create :portfolio, :user => current_user }
 
   let(:company) { create :company_with_scrip, :industry_name => "FOO" }
-  let(:scheme) { create :scheme, :nav_amount => "5", :scheme_class_description => "FOO"}
+  let(:scheme) { create :scheme, :nav_amount => "5", :class_description => "FOO"}
   let(:real_estate) { create :real_estate, :name => "Test Property", :location => "Mordor", :current_price => 600 }
   let(:fixed_deposit) { create :fixed_deposit, :name => "Foo", :period => 5, :rate_of_interest => 10.0 }
 
   it "should show all net positions in details page" do
-    4.times { |n| create :stock_transaction, :company_code => company.company_code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
-    4.times { |n| create :mutual_fund_transaction, :scheme => scheme.scheme_name,
+    4.times { |n| create :stock_transaction, :company_code => company.code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    4.times { |n| create :mutual_fund_transaction, :scheme => scheme.name,
                           :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
     4.times { |n| create :gold_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     company_without_current_price = create :company
-    create :stock_transaction, :company_code => company_without_current_price.company_code, :quantity => 10, :price => 5, :date => 5.days.ago, :portfolio => portfolio
+    create :stock_transaction, :company_code => company_without_current_price.code, :quantity => 10, :price => 5, :date => 5.days.ago, :portfolio => portfolio
 
     create :nse_scrip, :id => "GOLDBEES", :last_traded_price => 5
 
@@ -24,12 +24,12 @@ describe "Portfolios", :mongoid do
     find("li#navigation-details").find("a").click
 
     expected_table_for_stocks = [
-                                  [company.company_name,                       "10.00", "3.00",  "30.00", "5.00", "50.00", "20.00", "66.67","Sell"],
-                                  [company_without_current_price.company_name, "10.00", "5.00",  "50.00", "-",    "-",     "-" ,    "-",    "Sell"],
+                                  [company.name,                       "10.00", "3.00",  "30.00", "5.00", "50.00", "20.00", "66.67","Sell"],
+                                  [company_without_current_price.name, "10.00", "5.00",  "50.00", "-",    "-",     "-" ,    "-",    "Sell"],
                                   ["Total",                                    "",      "",      "80.00", "",     "50.00", "20.00", "" ,    ""    ]
                                 ]
     expected_table_for_mfs =    [
-                                  [scheme.scheme_name, "10.00", "3.00", "30.00", "5.00", "50.00", "20.00", "66.67", "Sell"],
+                                  [scheme.name, "10.00", "3.00", "30.00", "5.00", "50.00", "20.00", "66.67", "Sell"],
                                   ["Total",            "",      "",     "30.00", "",     "50.00", "20.00", "",      ""]
                                 ]
     expected_table_for_gold =   [
@@ -50,19 +50,19 @@ describe "Portfolios", :mongoid do
   end
 
   it "should go to stock page when a stock in details page is clicked" do
-    4.times { |n| create :stock_transaction, :company_code => company.company_code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    4.times { |n| create :stock_transaction, :company_code => company.code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
     visit details_portfolio_path(portfolio)
-    click_link company.company_name
-    page.current_path.should eq stock_path(company.company_code)
+    click_link company.name
+    page.current_path.should eq stock_path(company.code)
   end
 
   it "should go to mutual fund page when a mutual fund in details page is clicked" do
-    4.times { |n| create :mutual_fund_transaction, :scheme => scheme.scheme_name,
+    4.times { |n| create :mutual_fund_transaction, :scheme => scheme.name,
                           :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     visit details_portfolio_path(portfolio)
-    click_link scheme.scheme_name
-    page.current_path.should eq scheme_summary_mutual_fund_path(scheme.scheme_name)
+    click_link scheme.name
+    page.current_path.should eq scheme_summary_mutual_fund_path(scheme.name)
   end
 
   it "should show loan net position in details page" do
@@ -238,17 +238,17 @@ describe "Portfolios", :mongoid do
   end
 
   it "should show all transactions in transactions page" do
-    create :stock_transaction, :company_code => company.company_code, :portfolio => portfolio, :quantity => 1, :price => 5, :date => Date.today
-    create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio,:quantity => 1, :price => 5, :date => Date.today
+    create :stock_transaction, :company_code => company.code, :portfolio => portfolio, :quantity => 1, :price => 5, :date => Date.today
+    create :mutual_fund_transaction, :scheme => scheme.name, :portfolio => portfolio,:quantity => 1, :price => 5, :date => Date.today
 
     visit portfolio_path(portfolio)
     click_link 'Historical Transactions'
 
     expected_table_for_stock_transactions = [
-                       [ I18n.l(Date.today), "Buy", company.company_name, "1", "5.00", "5.00", "-"],
+                       [ I18n.l(Date.today), "Buy", company.name, "1", "5.00", "5.00", "-"],
                     ]
     expected_table_for_mutual_fund_transactions = [
-                         [ I18n.l(Date.today), "Buy", scheme.scheme_name, "1", "5.00", "5.00", "-"],
+                         [ I18n.l(Date.today), "Buy", scheme.name, "1", "5.00", "5.00", "-"],
                       ]
     tableish("section.StockTransactions table").should include *expected_table_for_stock_transactions
     tableish("section.MutualFundTransactions table").should include *expected_table_for_mutual_fund_transactions
@@ -257,14 +257,14 @@ describe "Portfolios", :mongoid do
   it "should show stocks analysis table" do
     create_positions_of_all_securities
     another_company = create :company_with_scrip, :industry_name => "BAR"
-    create :stock_transaction, :company_code => another_company.company_code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
+    create :stock_transaction, :company_code => another_company.code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
     visit stocks_analysis_portfolio_path(portfolio)
 
     expected_table = [
                         ["FOO",                        "",     "-",    "-",     "-",    "50.00",  "-",     "71.43"],
-                        [company.company_name,         "10", "3.00", "30.00", "5.00", "50.00",  "20.00", "71.43"],
+                        [company.name,         "10", "3.00", "30.00", "5.00", "50.00",  "20.00", "71.43"],
                         ["BAR",                        "",     "-",    "-",     "-",    "20.00",  "-",     "28.57"],
-                        [another_company.company_name, "4",  "6.00", "24.00", "5.00", "20.00",  "-4.00", "28.57"],
+                        [another_company.name, "4",  "6.00", "24.00", "5.00", "20.00",  "-4.00", "28.57"],
                         ["Total",                      "",     "",     "",      "",     "70.00",  ""      , ""     ]
                      ]
     tableish("table").should include *expected_table
@@ -272,15 +272,15 @@ describe "Portfolios", :mongoid do
 
   it "should show mutual funds analysis table" do
     create_positions_of_all_securities
-    scheme2 = create :scheme, :nav_amount => "5", :scheme_class_description => "BAR"
-    create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today
+    scheme2 = create :scheme, :nav_amount => "5", :class_description => "BAR"
+    create :mutual_fund_transaction, :scheme => scheme2.name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today
 
     visit mutual_funds_analysis_portfolio_path(portfolio)
     expected_table = [
                         ["FOO",               "",     "-",    "-",     "-",    "50.00",  "-",     "71.43"],
-                        [scheme.scheme_name,  "10", "3.00", "30.00", "5.00", "50.00",  "20.00", "71.43"],
+                        [scheme.name,  "10", "3.00", "30.00", "5.00", "50.00",  "20.00", "71.43"],
                         ["BAR",               "",     "-",    "-",     "-",    "20.00",  "-",     "28.57"],
-                        [scheme2.scheme_name, "4",  "6.00", "24.00", "5.00", "20.00",  "-4.00", "28.57"],
+                        [scheme2.name, "4",  "6.00", "24.00", "5.00", "20.00",  "-4.00", "28.57"],
                         ["Total",             "",     "",     "",      "",     "70.00",  ""      , ""     ]
                      ]
     tableish("table").should include(*expected_table)
@@ -296,8 +296,8 @@ describe "Portfolios", :mongoid do
 
       find("li#navigation-accumulated_profits").find("a").click
       expected_table_profits = [ ["Test Property", "Real Estate", "", "", "", "400.00", "80.00"],
-                                 [company.company_name, "Stock", "4", "4.00", "6.00", "12.00", "100.00"],
-                                 [scheme.scheme_name, "Mutual Fund","4", "4.00", "6.00", "12.00", "100.00"],
+                                 [company.name, "Stock", "4", "4.00", "6.00", "12.00", "100.00"],
+                                 [scheme.name, "Mutual Fund","4", "4.00", "6.00", "12.00", "100.00"],
                                  ["Foo", "Fixed Deposit", "", "", "","4.64", "4.64"] ]
       expected_table_losses = [ ["Test Property2", "Real Estate","", "", "","-400.00", "-44.44"],
                                 ["FOO", "Stock", "4", "6.00", "5.00","-4.00", "-16.67"],
@@ -336,14 +336,14 @@ describe "Portfolios", :mongoid do
 
   it "should display stocks profits/losses in stocks analysis page" do
     create_positions_of_all_securities
-    create :stock_transaction, :company_code => company.company_code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
+    create :stock_transaction, :company_code => company.code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
     another_company = create :company_with_scrip, :industry_name => "BAR"
-    create :stock_transaction, :company_code => another_company.company_code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
-    create :stock_transaction, :company_code => another_company.company_code, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
+    create :stock_transaction, :company_code => another_company.code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
+    create :stock_transaction, :company_code => another_company.code, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
 
     visit stocks_analysis_portfolio_path(portfolio)
-    expected_table = [ [ company.company_name,         "FOO", "4", "4.0", "6.0", "12.00", "100.00" ],
-                       [ another_company.company_name, "BAR", "4", "6.0", "5.0", "-4.00", "-16.67" ],
+    expected_table = [ [ company.name,         "FOO", "4", "4.0", "6.0", "12.00", "100.00" ],
+                       [ another_company.name, "BAR", "4", "6.0", "5.0", "-4.00", "-16.67" ],
                        [ "Total",                      "",    "",  "",    "",    "8.00",  ""       ] ]
 
     tableish("#stocks_profit_or_loss_analysis table").should include *expected_table
@@ -351,15 +351,15 @@ describe "Portfolios", :mongoid do
 
   it "should display mutual funds profits/losses in mutual funds anyalysis page" do
     create_positions_of_all_securities
-    scheme2 = create :scheme, :scheme_class_description => "BAR"
-    create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
-    create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
-    create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
+    scheme2 = create :scheme, :class_description => "BAR"
+    create :mutual_fund_transaction, :scheme => scheme.name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
+    create :mutual_fund_transaction, :scheme => scheme2.name, :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
+    create :mutual_fund_transaction, :scheme => scheme2.name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
 
     visit mutual_funds_analysis_portfolio_path(portfolio)
     expected_table = [
-                      [ scheme.scheme_name, "FOO",  "4",  "4.0", "6.0", "12.00", "100.00" ],
-                      [ scheme2.scheme_name, "BAR", "1",  "5.0", "4.0", "-1.00", "-20.00" ],
+                      [ scheme.name, "FOO",  "4",  "4.0", "6.0", "12.00", "100.00" ],
+                      [ scheme2.name, "BAR", "1",  "5.0", "4.0", "-1.00", "-20.00" ],
                       [ "Total", "",                "",   "",    "",    "11.00", ""       ]
                      ]
     tableish("#mfs_profit_or_loss_analysis table").should include *expected_table
@@ -367,25 +367,25 @@ describe "Portfolios", :mongoid do
 
   it "should allow user to sell stocks in current holding page" do
     company.save
-    4.times { |n| create :stock_transaction, :company_code => company.company_code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    4.times { |n| create :stock_transaction, :company_code => company.code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
     visit details_portfolio_path(portfolio)
 
     click_link "Sell"
 
     page.should have_field('stock_transaction_quantity',     :with => '10'    )
     page.should have_field('stock_transaction_action',       :with => 'sell'  )
-    page.should have_field('stock_transaction_company_code', :with => company.company_code.to_s)
+    page.should have_field('stock_transaction_company_code', :with => company.code.to_s)
   end
 
   it "should allow user to sell mutual fund in current holding page" do
-    4.times { |n| create :mutual_fund_transaction, :scheme => scheme.scheme_name,
+    4.times { |n| create :mutual_fund_transaction, :scheme => scheme.name,
                           :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     visit details_portfolio_path(portfolio)
 
     click_link "Sell"
 
-    page.should have_field('mutual_fund_transaction_scheme',    :with => scheme.scheme_name)
+    page.should have_field('mutual_fund_transaction_scheme',    :with => scheme.name)
     page.should have_field('mutual_fund_transaction_quantity',  :with => '10')
     page.should have_field('mutual_fund_transaction_action',    :with => 'sell')
   end
@@ -402,9 +402,9 @@ describe "Portfolios", :mongoid do
   end
 
   def create_positions_of_all_securities(portfolio = portfolio)
-    4.times { |n| create :stock_transaction, :company_code => company.company_code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    4.times { |n| create :stock_transaction, :company_code => company.code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-    4.times { |n| create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
+    4.times { |n| create :mutual_fund_transaction, :scheme => scheme.name, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     4.times { |n| create :gold_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
@@ -417,16 +417,16 @@ describe "Portfolios", :mongoid do
   end
 
   def create_sell_position_of_all_securities_type(portfolio = portfolio)
-    create :stock_transaction, :company_code => company.company_code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
-    another_company = create :company_with_scrip, :industry_name => "BAR", :company_name => "FOO"
-    create :stock_transaction, :company_code => another_company.company_code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
-    create :stock_transaction, :company_code => another_company.company_code, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
+    create :stock_transaction, :company_code => company.code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
+    another_company = create :company_with_scrip, :industry_name => "BAR", :name => "FOO"
+    create :stock_transaction, :company_code => another_company.code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => 5.days.ago
+    create :stock_transaction, :company_code => another_company.code, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
 
-    create :mutual_fund_transaction, :scheme => scheme.scheme_name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
-    scheme2 = create :scheme, :scheme_class_description => "BAR", :scheme_name => "Foo Scheme Name"
+    create :mutual_fund_transaction, :scheme => scheme.name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
+    scheme2 = create :scheme, :class_description => "BAR", :name => "Foo Scheme Name"
 
-    create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
-    create :mutual_fund_transaction, :scheme => scheme2.scheme_name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
+    create :mutual_fund_transaction, :scheme => scheme2.name, :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
+    create :mutual_fund_transaction, :scheme => scheme2.name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
 
     fixed_deposit.update_attributes(:rate_of_redemption => 8.0)
     create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :price => 100, :date => 1.months.ago.to_date, :action => "sell"
