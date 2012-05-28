@@ -1,8 +1,8 @@
-- provide :title, @company.company_name if @company
+- provide :title, @company.name if @company
 
 = render 'stocks/search_form'
 - if @audited_results[0].model
-  %h1= "#{@audited_results[0].company_name} - Balance Sheet"
+  %h1= "#{@company.name} - Balance Sheet"
   %p *All Numbers are in crores of rupees unless specified otherwise
   %table
     %tr
@@ -22,4 +22,4 @@
 - else
   %p Data not available for this company
 
-#disqus_thread{data: {disqus_identifier: "stocks_#{@company.company_code}"}}
+#disqus_thread{data: {disqus_identifier: "stocks_#{@company.code}"}}

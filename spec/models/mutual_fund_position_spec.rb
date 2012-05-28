@@ -4,14 +4,14 @@ describe "MutualFundPosition", :mongoid do
 
   let(:portfolio) { create :portfolio }
   let(:scheme) { create :scheme, :nav_amount => "5" }
-  let(:mutual_fund) { create :mutual_fund, :name => scheme.scheme_name }
+  let(:mutual_fund) { create :mutual_fund, :name => scheme.name }
 
   subject {
     4.times { |n| create :mutual_fund_transaction, :mutual_fund => mutual_fund, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
     portfolio.mutual_fund_transactions.for(mutual_fund)
   }
 
-  its (:name) { should eq scheme.scheme_name }
+  its (:name) { should eq scheme.name }
   its (:quantity) { should eq 10 }
   its (:average_cost_price) { should eq 3 }
   its (:buys) { should include *portfolio.mutual_fund_transactions }
@@ -49,8 +49,8 @@ describe "MutualFundPosition", :mongoid do
 
   it "should return nil unrealised profit when there is no current price" do
     scheme_without_nav_amount = create :scheme, :nav_amount => nil
-    mutual_fund_without_current_price = create :mutual_fund, :name => scheme_without_nav_amount.scheme_name
-    create :mutual_fund_transaction, :scheme => scheme_without_nav_amount.scheme_name, :quantity => 10, :price => 5, :date => 5.days.ago, :portfolio => portfolio
+    mutual_fund_without_current_price = create :mutual_fund, :name => scheme_without_nav_amount.name
+    create :mutual_fund_transaction, :scheme => scheme_without_nav_amount.name, :quantity => 10, :price => 5, :date => 5.days.ago, :portfolio => portfolio
     mutual_fund_position = portfolio.mutual_fund_transactions.for(mutual_fund_without_current_price)
     mutual_fund_position.unrealised_profit.should eq nil
   end

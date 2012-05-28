@@ -14,7 +14,7 @@ describe "StockTransactions" do
     it "should add a new stock transaction to a portfolio" do
       company.save # ensure stock is created
       visit  new_portfolio_stock_transaction_path(portfolio)
-      select company.company_name, :from => "stock_transaction_company_code"
+      select company.name, :from => "stock_transaction_company_code"
 
       fill_in "Price", :with => 200
       select 'Buy', :from => "Action"
@@ -27,7 +27,7 @@ describe "StockTransactions" do
     it "should not add a new sell transaction if the quantity for that stock is not available in the portfolio" do
       company.save
       visit new_portfolio_stock_transaction_path(portfolio)
-      select company.company_name, :from => "stock_transaction_company_code"
+      select company.name, :from => "stock_transaction_company_code"
       fill_in "Price", :with => 200
       select 'Sell', :from => "Action"
       fill_in I18n.t("simple_form.labels.stock_transaction.quantity"), :with => 30
@@ -36,10 +36,10 @@ describe "StockTransactions" do
     end
 
     it "should show stock transactons index page" do
-      create :stock_transaction, :company_code => company.company_code, :portfolio => portfolio, :quantity => 1, :price => 5, :date => Date.today
+      create :stock_transaction, :company_code => company.code, :portfolio => portfolio, :quantity => 1, :price => 5, :date => Date.today
       visit transactions_portfolio_path(portfolio)
       expected_table = [
-                         [ I18n.l(Date.today), "Buy", company.company_name, "1", "5.00", "5.00", "-"]
+                         [ I18n.l(Date.today), "Buy", company.name, "1", "5.00", "5.00", "-"]
                       ]
       tableish("table").should include *expected_table
     end

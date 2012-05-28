@@ -15,8 +15,8 @@ private
   def data
     schemes.map do |scheme|
       [
-        link_to(scheme.scheme_name, Rails.application.routes.url_helpers.scheme_summary_mutual_fund_path(scheme.scheme_name)),
-        h(scheme.scheme_class_description),
+        link_to(scheme.name, Rails.application.routes.url_helpers.scheme_summary_mutual_fund_path(scheme.name)),
+        h(scheme.class_description),
         h(scheme.minimum_investment_amount)
       ]
     end
@@ -36,7 +36,7 @@ private
   end
 
   def sort_column
-    columns = %w[scheme_name industry_name minimum_investment_amount]
+    columns = %w[name class_description minimum_investment_amount]
     columns[params[:iSortCol_0].to_i]
   end
 

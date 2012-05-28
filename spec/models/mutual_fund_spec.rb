@@ -5,7 +5,7 @@ describe MutualFund do
   subject { mutual_fund }
 
   describe "with scheme master", :mongoid do
-    let(:scheme) { create :scheme, :scheme_name => mutual_fund.scheme }
+    let(:scheme) { create :scheme, :name => mutual_fund.scheme }
 
     it "should return nav amount" do
       scheme.update_attributes(:nav_amount => 220)

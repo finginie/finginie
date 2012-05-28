@@ -1,7 +1,7 @@
-- provide :title, @scheme.scheme_name if @scheme.model
+- provide :title, @scheme.name if @scheme.model
 - if @scheme.model
   .mf_container
-    %h1= "Comparative returns - #{@scheme.scheme_name}"
+    %h1= "Comparative returns - #{@scheme.name}"
     #comparative_returns
       #mf-comparative-returns-chart.chart{data: { elements: @scheme.comparative_returns_data_table, title: 'Comparative Returns',
                                                   yAxisTitle: 'Return(%)', chartType: 'Column', legend: 'bottom' } }
@@ -69,4 +69,4 @@
 - else
   %p Data not available
 
-#disqus_thread{data: {disqus_identifier: "mutual_funds_#{@scheme.securitycode}"}}
+#disqus_thread{data: {disqus_identifier: "mutual_funds_#{@scheme.security_code}"}}

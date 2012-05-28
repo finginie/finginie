@@ -1,8 +1,8 @@
 = render 'stocks/search_form'
-- provide :title, @company.company_name if @company
+- provide :title, @company.name if @company
 
 - if @share_holding.model
-  %h1= "ShareHolding - #{@company.company_name}"
+  %h1= "ShareHolding - #{@company.name}"
   #share-holding-chart{ 'data-share-holding' => @share_holding.groupwise_percentages }
   %table
     %th Investor Type
@@ -21,4 +21,4 @@
 - else
   %p No Data Available
 
-#disqus_thread{data: {disqus_identifier: "stocks_#{@company.company_code}"}}
+#disqus_thread{data: {disqus_identifier: "stocks_#{@company.code}"}}

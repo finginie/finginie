@@ -1,8 +1,8 @@
 
-- provide :title, @scheme.scheme_name if @scheme.model
+- provide :title, @scheme.name if @scheme.model
 - if @scheme.sectoral_allocation
   .mf_container
-    %h1= "#{@scheme.scheme_name}'s Sectoral Allocation"
+    %h1= "#{@scheme.name}'s Sectoral Allocation"
     #sectoral_allocation
       #mf-sectoral-allocation-chart.chart{ data: { elements: [['','']] + @scheme.sectoral_allocation.to_a,
                                                    title: 'Sectoral Allocation', chartType: 'Pie' } }
@@ -17,4 +17,4 @@
 - else
   %p Data not available
 
-#disqus_thread{data: {disqus_identifier: "mutual_funds_#{@scheme.securitycode}"}}
+#disqus_thread{data: {disqus_identifier: "mutual_funds_#{@scheme.security_code}"}}

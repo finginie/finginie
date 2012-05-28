@@ -1,12 +1,12 @@
 
 = render 'search', :search => @search
 - if @scheme.model
-  - provide :title, @scheme.scheme_name
+  - provide :title, @scheme.name
   #scheme_container
     #titlebar
       .scheme_name
         %h1
-          =@scheme.scheme_name
+          =@scheme.name
       .nav_amount
         %strong
           =@scheme.nav_amount
@@ -16,7 +16,7 @@
         = "(#{@scheme.percentage_change}%)"
     #title_details
       %strong= 'Category :'
-      %span= @scheme.scheme_class_description
+      %span= @scheme.class_description
       %strong= 'Benchmark Index :'
       %span= @scheme.bench_mark_index_name
     #content
@@ -28,12 +28,12 @@
         %tr
           %td
             %b= 'Plan'
-          %td= @scheme.scheme_plan_description
+          %td= @scheme.plan_description
 
         %tr
           %td
             %b= 'Type'
-          %td= @scheme.scheme_type_description
+          %td= @scheme.type_description
 
         %tr
           %td
@@ -90,7 +90,6 @@
           %td
             %b= 'Date of Dividend'
           %td= @scheme.dividend_date
+  #disqus_thread{data: {disqus_identifier: "mutual_funds_#{@scheme.security_code}"}}
 - else
   %p Data not available
-
-#disqus_thread{data: {disqus_identifier: "mutual_funds_#{@scheme.securitycode}"}}

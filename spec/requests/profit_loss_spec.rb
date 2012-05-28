@@ -5,12 +5,12 @@ describe "Profit Loss" do
 
   before (:each) do
     company.save
-    5.times { |i| create :audited_result, :companycode          => company.company_code,
+    5.times { |i| create :audited_result, :company_code          => company.code,
                                           :year_ending          => "31/03/#{2011 -i}",
                                           :operating_income     => "955255776000",
                                           :excise               => "9347100000",
                                           :reported_net_profit  => "82645190000",
-                                          :numberof_equity_shares=> "634998991",
+                                          :number_of_equity_shares=> "634998991",
                                           :non_recurring_income => "912682000",
                                           :depreciation         => "9904952000",
                                           :material_consumed    => "118825100000",
@@ -19,8 +19,8 @@ describe "Profit Loss" do
   end
 
   it "should show thw correct fields for non-banking sector" do
-    visit stock_profit_loss_path(company.company_code)
-    page.should have_content company.company_name
+    visit stock_profit_loss_path(company.code)
+    page.should have_content company.name
     page.should have_content "Sales"
     page.should have_content "96460"
     page.should have_content "Earning Per Share (Rs)"
@@ -33,8 +33,8 @@ describe "Profit Loss" do
 
   it "should show the correct fields for banking-sector" do
     company.update_attribute(:major_sector, 2)
-    visit stock_profit_loss_path(company.company_code)
-    page.should have_content company.company_name
+    visit stock_profit_loss_path(company.code)
+    page.should have_content company.name
     page.should have_content "Income"
     page.should have_content "Operating Income"
     page.should have_content "95526"
@@ -47,13 +47,13 @@ describe "Profit Loss" do
   end
 
   it "should have stock search in the stock profit loss page" do
-    visit stock_path company.company_code
+    visit stock_path company.code
     click_link "Income Statement"
     page.should have_selector("#new_company")
   end
 
   it "should have a title" do
-    visit stock_profit_loss_path( company.company_code)
+    visit stock_profit_loss_path( company.code)
     page.should have_selector("title", :content => I18n.t('profit_loss.title'))
   end
 end

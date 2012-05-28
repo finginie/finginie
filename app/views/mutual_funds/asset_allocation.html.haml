@@ -1,8 +1,8 @@
-- provide :title, @scheme.scheme_name if @scheme.model
+- provide :title, @scheme.name if @scheme.model
 - if @scheme.asset_allocation
 
   .mf_container
-    %h1= "#{@scheme.scheme_name}'s Asset Allocation"
+    %h1= "#{@scheme.name}'s Asset Allocation"
     #asset_allocation
       #mf-asset-allocation-chart.chart{ data: { elements: [['','']] + @scheme.asset_allocation.to_a,
                                                 title: 'Asset Allocation', chartType: 'Pie' } }
@@ -17,4 +17,4 @@
 - else
   %p Data not available
 
-#disqus_thread{data: {disqus_identifier: "mutual_funds_#{@scheme.securitycode}"}}
+#disqus_thread{data: {disqus_identifier: "mutual_funds_#{@scheme.security_code}"}}

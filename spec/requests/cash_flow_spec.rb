@@ -5,12 +5,12 @@ describe "CashFlow", :mongoid do
   let(:company) { create :company }
 
   it "should show the correct view for cash flow" do
-    5.times { |i| create :cash_flow, :company_code => company.company_code,
+    5.times { |i| create :cash_flow, :company_code => company.code,
                                      :year_ending => "31/03/#{2006 + i}",
-                                     :pl_sale_asst =>	"104562000" }
-    create :cash_flow, :company_code => company.company_code, :year_ending => "31/03/2011", :adv_tax_paid => "212342343"
-    visit stock_cash_flow_path(company.company_code)
-    page.should have_content company.company_name
+                                     :pl_on_sale_of_assets =>	"104562000" }
+    create :cash_flow, :company_code => company.code, :year_ending => "31/03/2011", :advance_tax_paid => "212342343"
+    visit stock_cash_flow_path(company.code)
+    page.should have_content company.name
     page.should have_content "Profit/Loss On Sale Of Assets"
     page.should have_content "10"
     page.should have_content "Advance Tax Paid"
@@ -19,13 +19,13 @@ describe "CashFlow", :mongoid do
   end
 
   it "should have stock search in the cash flow page" do
-    visit stock_path company.company_code
+    visit stock_path company.code
     click_link "Cash Flow"
     page.should have_selector("#new_company")
   end
 
   it "should have a title" do
-    visit stock_cash_flow_path( company.company_code)
+    visit stock_cash_flow_path( company.code)
     page.should have_selector("title", :content => I18n.t('cash_flow.title'))
   end
 end

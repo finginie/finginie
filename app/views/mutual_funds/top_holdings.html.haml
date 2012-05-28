@@ -1,7 +1,7 @@
-- provide :title, @scheme.scheme_name if @scheme.model
+- provide :title, @scheme.name if @scheme.model
 - if @scheme.portfolio_holdings
   .mf_container
-    %h1= "#{@scheme.scheme_name}'s Top Holdings"
+    %h1= "#{@scheme.name}'s Top Holdings"
     #top_holdings
       #top-holdings-chart.chart{data: { elements: [['','']] + @scheme.top_ten_holdings_percentages,
                                         title: 'Top 10 holdings Distribution', chartType: 'Pie' } }
@@ -24,4 +24,4 @@
 - else
   %p Data not available
 
-#disqus_thread{data: {disqus_identifier: "mutual_funds_#{@scheme.securitycode}"}}
+#disqus_thread{data: {disqus_identifier: "mutual_funds_#{@scheme.security_code}"}}

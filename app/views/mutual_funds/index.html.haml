@@ -32,7 +32,7 @@
         %td.center_align{:colspan => 7} Return (%)
       - @categories.each do |cat|
         %tr.right_align
-          %td.name= link_to cat.scheme_class_description, mutual_fund_category_path(cat.scheme_class_code.round) if cat.scheme_class_description
+          %td.name= link_to cat.scheme_class_description, mutual_fund_category_path(cat.scheme_class_code) if cat.scheme_class_description
           %td= cat.no_of_schemes
           %td= cat.one_week_return.round(2)
           %td= cat.one_month_return.round(2)

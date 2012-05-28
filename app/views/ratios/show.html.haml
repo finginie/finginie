@@ -1,8 +1,8 @@
 = render 'stocks/search_form'
-- provide :title, @company.company_name if @company
+- provide :title, @company.name if @company
 
 - if @company
-  %h1= "Ratios - #{@company.company_name}"
+  %h1= "Ratios - #{@company.name}"
 
 - if @company && @ratios.first && @ratios.first.model
   %table
@@ -20,4 +20,4 @@
 - else
   %p No Data Available
 - if @company
-  #disqus_thread{data: {disqus_identifier: "stocks_#{@company.company_code}"}}
+  #disqus_thread{data: {disqus_identifier: "stocks_#{@company.code}"}}
