@@ -1,5 +1,8 @@
 en:
   title: 'Finginie'
+  description: 'Investment for beginners is made easy. You can track your investments using our portfolio tracker.
+                You can plan your investments based on our suggested portfolio mix'
+  keywords: 'Investments, Shares, Mutual Funds, Assets, Portfolio Management, Track Investments'
   comprehensive_risk_profilers:
     edit:
       title: 'Financial Planner'
