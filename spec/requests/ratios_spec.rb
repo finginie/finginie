@@ -12,7 +12,7 @@ describe "Ratios", :mongoid do
                                             :deposits_outside_india_as_per_to_total_deposits => "0.22",
                                             :deposits_per_branch => "221.4549"
 
-    visit stock_ratios_path(:stock_id => company.code)
+    visit stock_ratios_path(company.name)
     page.should have_content 'Capital Adequacy Ratio'
     page.should have_content 'EARNINGS RATIOS'
     page.should have_content 'Fund based income as a % of Op Income'
@@ -33,7 +33,7 @@ describe "Ratios", :mongoid do
                                             :net_profit_margin => "9.19",
                                             :asset_turnover_ratio => "2.1852"
 
-    visit stock_ratios_path(:stock_id => company.code)
+    visit stock_ratios_path(company.name)
     page.should have_content 'Capital Adequacy Ratio'
     page.should have_content 'COMPONENT RATIOS'
     page.should have_content @ratio.sell_distribut_cost_comp.round(2)
@@ -47,7 +47,7 @@ describe "Ratios", :mongoid do
   end
 
   it "should have stock search in the stock ratio page" do
-    visit stock_path company.code
+    visit stock_path company.name
     click_link "Ratios"
     page.should have_selector("#new_company")
   end
@@ -58,7 +58,7 @@ describe "Ratios", :mongoid do
   end
 
   it "should have a title" do
-    visit stock_ratios_path( company.code)
+    visit stock_ratios_path( company.name)
     page.should have_selector("title", :content => I18n.t('ratios.title'))
   end
 end

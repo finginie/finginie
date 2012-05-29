@@ -9,7 +9,7 @@ describe "Stocks", :mongoid do
     nse_scrip.save
     bse_scrip.save
 
-    visit stock_path(company.code)
+    visit stock_path(company.name)
     page.should have_content 24.22
     page.should have_content 23.26
     page.should have_content 8.24
@@ -19,7 +19,7 @@ describe "Stocks", :mongoid do
     create :listing, :exchange_code => 50, :scrip_code1_given_by_exchange => "#{company.nse_code}EQ", :fifty_two_week_high => 100.24, :low_date => "31/01/2012"
     create :listing, :exchange_code => 47, :scrip_code1_given_by_exchange => company.bse_code1, :fifty_two_week_low => 98.62, :high_date => "31/01/2012"
 
-    visit stock_path(company.code)
+    visit stock_path(company.name)
     page.should have_content 100.24
     page.should have_content 98.62
   end
@@ -30,7 +30,7 @@ describe "Stocks", :mongoid do
                                             :net_profit_margin      => "123.32",
                                             :yield_on_fund_advances => "462",
                                             :cost_of_funds_ratio    => "12.343"
-    visit stock_path(company.code)
+    visit stock_path(company.name)
     page.should have_content 13.64
     page.should have_content 123.32
     page.should have_content 462
@@ -43,21 +43,22 @@ describe "Stocks", :mongoid do
     @ratio = create :ratio, :company_code => company.code, :year_ending => '31/03/2011',
                                             :net_profit_margin => "241.23",
                                             :current_ratio     => "321.21"
-    visit stock_path(company.code)
+    visit stock_path(company.name)
     page.should have_content 241.23
     page.should have_content 321.21
 
   end
 
   it "should have search in the stock page", :js => true do
-    visit stock_path company.code
+    visit stock_path company.name
 
     page.execute_script %Q{ $('#company_name').val("#{company.name[0..5]}").keydown(); }
 
     wait_until {  page.should have_selector(".ui-menu-item a:contains('#{company.name}')") }
 
     page.execute_script %Q{ $('.ui-menu-item a:contains("#{company.name}")').trigger('mouseenter').click(); }
-    page.current_path.should eq stock_path company.code
+
+    page.current_path.should eq stock_path company.name
   end
 
   it "show page shouldn't throw any error when company not exists" do
@@ -144,7 +145,7 @@ describe "Stocks", :mongoid do
     end
 
     it "should have title for show page" do
-      visit stock_path(company.code)
+      visit stock_path(company.name)
       page.should have_selector("title", :content => I18n.t('stocks.show.title'))
     end
 

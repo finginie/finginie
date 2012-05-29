@@ -72,12 +72,12 @@ SimpleNavigation::Configuration.run do |navigation|
 
     primary.item :stocks, 'Shares', main_app.stocks_path, :highlights_on => :subpath do |secondary|
       if @company
-        secondary.item :stock,           "#{@company.name}",main_app.stock_path(@company.code), :highlights_on => :subpath do |tertiary|
-          tertiary.item :balance_sheet,  'Balance Sheet',         main_app.stock_balance_sheet_path(@company.code)
-          tertiary.item :profit_loss,    'Income Statement',      main_app.stock_profit_loss_path(@company.code)
-          tertiary.item :cash_flow,      'Cash Flow',             main_app.stock_cash_flow_path(@company.code)
-          tertiary.item :ratios,         'Ratios',                main_app.stock_ratios_path(@company.code)
-          tertiary.item :share_holding,  'Share Holding Pattern', main_app.stock_share_holding_path(@company.code)
+        secondary.item :stock,           "#{@company.name}",main_app.stock_path(@company.name), :highlights_on => :subpath do |tertiary|
+          tertiary.item :balance_sheet,  'Balance Sheet',         main_app.stock_balance_sheet_path(@company.name)
+          tertiary.item :profit_loss,    'Income Statement',      main_app.stock_profit_loss_path(@company.name)
+          tertiary.item :cash_flow,      'Cash Flow',             main_app.stock_cash_flow_path(@company.name)
+          tertiary.item :ratios,         'Ratios',                main_app.stock_ratios_path(@company.name)
+          tertiary.item :share_holding,  'Share Holding Pattern', main_app.stock_share_holding_path(@company.name)
         end
       end
     end

@@ -5,7 +5,7 @@ class StocksController < InheritedResources::Base
 
   def resource
     @search = Company.new
-    @company = Company.find_by_code(params[:id])
+    @company = Company.find_by_name(params[:id])
     @chart_url =  "http://www.cs4w.in/Forska/TechnicalChart.aspx?Code=#{@company.nse_code}&width=800" + "&height=600" if @company && @company.nse_code
     CompanyDecorator.decorate(@company)
   end
