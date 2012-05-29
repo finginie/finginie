@@ -49,7 +49,7 @@ describe "Stocks", :mongoid do
 
   end
 
-  pending "should have search in the stock page", :js => true do
+  it "should have search in the stock page", :js => true do
     visit stock_path company.code
 
     page.execute_script %Q{ $('#company_name').val("#{company.name[0..5]}").keydown(); }
