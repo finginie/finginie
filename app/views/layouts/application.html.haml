@@ -13,6 +13,9 @@
   %body{ :class => auto_page_class_names }
     - if ENV['PRODUCTION_INSTANCE']
       %webengage{license: '76aa3c4'}
+    - if ENV['MAINTENANCE']
+      #maintenance_notice.alert.notice
+        We are upgrading our systems as we speak. You may face minor issues during this period. Thank you for understanding :)
     %header
       #header_resize
         .global_social
