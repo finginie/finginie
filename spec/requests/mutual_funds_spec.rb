@@ -26,7 +26,7 @@ describe "MutualFunds" do
     page.should have_content @mf_dividend_detail.dividend_date
   end
 
-  pending "should have search in the scheme page", :js => true do
+  it "should have search in the scheme page", :js => true do
     visit scheme_summary_mutual_fund_path(@scheme.name)
     page.execute_script %Q{ $('#scheme_name').val("#{@scheme.name[0..5]}").keydown(); }
 
