@@ -97,15 +97,15 @@ SimpleNavigation::Configuration.run do |navigation|
     end
 
     primary.item :personal_financial_tools, 'Financial Tools', personal_financial_tools.personal_financial_tools_path do |secondary|
-      secondary.item :emi_calculators, 'EMI Calculator', personal_financial_tools.emi_calculators_path
-      secondary.item :fixed_deposit_calculator,'Fixed Deposit Calculators', personal_financial_tools.fixed_deposit_calculators_path
+      secondary.item :emi_calculator, 'EMI Calculator', personal_financial_tools.emi_calculator_path
+      secondary.item :fixed_deposit_calculator,'Fixed Deposit Calculator', personal_financial_tools.fixed_deposit_calculator_path
       secondary.item :recurring_deposit_calculator, 'Recurring Deposit Calculator', personal_financial_tools.recurring_deposit_calculator_path
       secondary.item :sip_calculator, 'SIP Calculator', personal_financial_tools.sip_calculator_path
       secondary.item :monthly_sip_calculator, 'Monthly SIP Calculator', personal_financial_tools.monthly_sip_calculator_path
       secondary.item :income_tax_calculator, 'Income Tax Calculator', personal_financial_tools.income_tax_calculator_path
       secondary.item :rate_of_return_calculator, 'Rate of Return Calculator', personal_financial_tools.rate_of_return_calculator_path
-      secondary.item :life_insurance_calculators, 'Life Insurance Calculators', personal_financial_tools.life_insurance_calculators_path
-      secondary.item :retirement_corpus_calculator, 'Retirement Corpus Calculator', personal_financial_tools.retirement_corpus_calculator_path
+      secondary.item :life_insurance_calculator, 'Life Insurance Calculator', personal_financial_tools.life_insurance_calculator_path
+      secondary.item :retirement_calculator, 'Retirement Calculator', personal_financial_tools.retirement_calculator_path
     end
   end
 end

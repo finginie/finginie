@@ -65,9 +65,9 @@ en:
     personal_financial_tools:
       index:
         title: 'Financial Tools'
-      emi_calculators:
-        title: 'Loan EMI Calculator'
-        description: 'This is a Loan EMI Calculator'
+      emi_calculator:
+        title: 'EMI Calculator'
+        description: 'This is a EMI Calculator'
         keywords: 'Loan, EMI Calculator'
       fixed_deposit_calculators:
         title: 'Fixed Deposit Calculator'
@@ -93,11 +93,11 @@ en:
         title: 'Rate of Return Calculator'
         description: 'This is a Rate of Return Calculator'
         keywords: 'Rate of Return Calculator'
-      life_insurance_calculators:
+      life_insurance_calculator:
         title: 'Life Insurance Calculator'
         description: 'This is a Life Insurance Calculator'
         keywords: 'Life Insurance Calculator'
-      retirement_corpus_calculator:
+      retirement_calculator:
         title: 'Retirement Calculator'
         description: 'This is a Retirement Calculator'
         keywords: 'Retirement Calculator'

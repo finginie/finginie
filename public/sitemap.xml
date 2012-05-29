@@ -72,12 +72,12 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.finginie.com/personal_financial_tools/emi_calculators</loc>
+  <loc>http://www.finginie.com/personal_financial_tools/emi_calculator</loc>
   <changefreq>daily</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.finginie.com/personal_financial_tools/fixed_deposit_calculators</loc>
+  <loc>http://www.finginie.com/personal_financial_tools/fixed_deposit_calculator</loc>
   <changefreq>daily</changefreq>
   <priority>0.80</priority>
 </url>
@@ -107,12 +107,12 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.finginie.com/personal_financial_tools/life_insurance_calculators</loc>
+  <loc>http://www.finginie.com/personal_financial_tools/life_insurance_calculator</loc>
   <changefreq>daily</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.finginie.com/personal_financial_tools/retirement_corpus_calculator</loc>
+  <loc>http://www.finginie.com/personal_financial_tools/retirement_calculator</loc>
   <changefreq>daily</changefreq>
   <priority>0.80</priority>
 </url>
