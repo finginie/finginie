@@ -62,6 +62,7 @@ group :test, :development do
   gem 'guard-spork'
   gem 'heroku_san'
   gem 'pry'
+  gem 'rails-footnotes', '>= 3.7.5.rc4'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
