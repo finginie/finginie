@@ -17,14 +17,14 @@ en:
   personal_financial_tools:
     home: 'Personal Financial Tools'
     list:
-      emi_calculators: 'EMI Calculator'
-      fixed_deposit_calculators: 'Fixed Deposit Calculator'
+      emi_calculator: 'EMI Calculator'
+      fixed_deposit_calculator: 'Fixed Deposit Calculator'
       income_tax_calculator: 'Income Tax Calculator'
-      life_insurance_calculators: 'Life Insurance Calculator'
+      life_insurance_calculator: 'Life Insurance Calculator'
       monthly_sip_calculator: 'Monthly SIP Calculator'
       rate_of_return_calculator: 'Rate of Return Calculator'
-      recurring_deposit_calculators: 'Recurring Deposit Calculator'
-      retirement_corpus_calculator: 'Retirement Corpus Calculator'
+      recurring_deposit_calculator: 'Recurring Deposit Calculator'
+      retirement_calculator: 'Retirement Calculator'
       sip_calculator: 'SIP Calculator'
   investment_education:
     home: 'Investment Education'
