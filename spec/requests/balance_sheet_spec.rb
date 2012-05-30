@@ -17,7 +17,7 @@ describe "BalanceSheet", :mongoid do
   end
 
   it "should show the correct fields for non-banking sector" do
-    visit stock_balance_sheet_path(company.code)
+    visit stock_balance_sheet_path(company.name)
     page.should have_content company.name
     page.should have_content "Investments"
     page.should have_content "295601"
@@ -29,7 +29,7 @@ describe "BalanceSheet", :mongoid do
 
   it "should show the correct fields for banking-sector" do
      company.update_attribute(:major_sector, 2)
-     visit stock_balance_sheet_path( company.code)
+     visit stock_balance_sheet_path( company.name)
      page.should have_content "Investments"
      page.should have_content "295601"
      page.should have_content "Advances"
@@ -38,13 +38,13 @@ describe "BalanceSheet", :mongoid do
   end
 
   it "should have stock search in the balance sheet page" do
-    visit stock_path company.code
+    visit stock_path company.name
     click_link "Balance Sheet"
     page.should have_selector("#new_company")
   end
 
   it "should have a title" do
-    visit stock_balance_sheet_path( company.code)
+    visit stock_balance_sheet_path( company.name)
     page.should have_selector("title", :content => I18n.t('balance_sheet.title'))
   end
 end

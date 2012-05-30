@@ -4,7 +4,7 @@ class RatiosController < InheritedResources::Base
 
   def resource
     @search = Company.new
-    @company = Company.find_by_code(params[:stock_id])
+    @company = Company.find_by_name(params[:stock_id] )
     if @company
       if @company.major_sector == 2
         @ratios = BankingRatio.all( conditions: { company_code: @company.code }, sort: [[ :year_ending, :desc ]], limit: 5 )

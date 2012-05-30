@@ -4,15 +4,15 @@ describe StocksController do
   describe "routing" do
 
     it "routes to #index" do
-      get("/stocks").should route_to("stocks#index")
+      get("/shares").should route_to("stocks#index")
     end
 
     it "routes to #screener" do
-      get("/stocks/screener").should route_to("stocks#screener")
+      get("/shares/screener").should route_to("stocks#screener")
     end
 
     it "routes to #show" do
-      get("/stocks/134567.01").should route_to("stocks#show", :id => "134567.01")
+      get("/shares/name").should route_to("stocks#show", :id => "name")
     end
 
   end
