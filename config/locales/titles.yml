@@ -46,7 +46,10 @@ en:
     title: "Shares - %{name} - Share Holding"
   mutual_funds:
     index:
-      title: 'Mutual Funds,NAVs,SIP enabled funds, ELSS'
+      title: 'Mutual Funds | Mutual Fund NAVs | Begin investing in MFs'
+      description: 'Mutual Fund page is India best place for mutual funds, mutual fund NAVs and for beginers to start
+      investing in mutual funds'
+      keywords: 'Mutual Funds,NAV,India,Beginners'
     scheme_summary:
       title: "Mutual Funds - %{name} - Scheme Summary"
     scheme_returns:
