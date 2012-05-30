@@ -27,7 +27,7 @@
       %ul
         - resource.news.each do |news|
           %li
-            = link_to news.headlines, stock_news_path(:stock_id => resource.code, :id => news._id), :target => "_blank"
+            = link_to news.headlines, stock_news_path(:stock_id => resource.name, :id => news._id), :target => "_blank"
 
   - if @chart_url
     %iframe{:src => @chart_url, :style => "width:760px; height:600px"}

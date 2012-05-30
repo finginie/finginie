@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe "Stocks", :mongoid do
-  let (:company) { create :company, :ticker_name => 'TICK', :face_value => 8.24, :major_sector => 2 }
-  let (:nse_scrip) { create :nse_scrip, :id => company.nse_code, :last_traded_price => 24.22 }
+  let (:company) { create :company, :name => 'ABC InfoTech Ltd.', :ticker_name => 'TICK', :face_value => 8.24, :major_sector => 2 }
+  let (:nse_scrip) { create :nse_scrip, :id => company.nse_code, :last_traded_price => 24.22, :close_price => 23.42 }
   let (:bse_scrip) { create :bse_scrip, :id => company.ticker_name, :last_traded_price => 23.26, :close_price => 22 }
 
   it "shows the stock details" do
@@ -67,6 +67,21 @@ describe "Stocks", :mongoid do
   end
 
   context "#index" do
+    it "should have search in index page", :js => true do
+      5.times { |i| create :company, :name => "Company Tech#{i}" }
+
+      visit stocks_path
+
+      page.execute_script %Q{ $('#stocks_table_filter input').focus().val("Company").keyup(); }
+
+      wait_until {  page.should have_selector("#stocks_table a:contains('Company Tech1')") }
+
+      click_on 'Company Tech1'
+
+      page.current_path.should eq stock_path 'Company Tech1'
+
+    end
+
     it "should have market indices" do
       create :bse_scrip, :id => "Sensex",    :last_traded_price => 10, :close_price => 9
       create :nse_scrip, :id => "NSE Index", :last_traded_price => 10, :close_price => 9
@@ -81,16 +96,32 @@ describe "Stocks", :mongoid do
       tableish("table").should include *expected_table
     end
 
-    it "should list top five gainers" do
-      5.times do |i|
-        top_gainer_company = create :company, :name => "GAINER#{i}", :ticker_name => 'Gain #{i}', :nse_code => "GAIN#{i}"
-        create :nse_scrip, :id => top_gainer_company.nse_code, :last_traded_price => i+2, :close_price => i+1
+    context "#Top Gainers" do
+      before(:each) do
+        5.times do |i|
+          top_gainer_company = create :company, :name => "GAINER#{i}", :ticker_name => 'Gain #{i}', :nse_code => "GAIN#{i}"
+          create :nse_scrip, :id => top_gainer_company.nse_code, :last_traded_price => i+2, :close_price => i+1
+        end
       end
 
-      visit stocks_path
+      it "should list top five gainers" do
 
-      expected_content = [["GAINER0", "1.00", "100.00"], ["GAINER1", "1.00", "50.00"], ["GAINER2", "1.00", "33.33"], ["GAINER3", "1.00", "25.00"], ["GAINER4", "1.00", "20.00"]]
-      tableish("#gainer").should include *expected_content
+        visit stocks_path
+
+        expected_content = [["GAINER0", "1.00", "100.00"], ["GAINER1", "1.00", "50.00"], ["GAINER2", "1.00", "33.33"], ["GAINER3", "1.00", "25.00"], ["GAINER4", "1.00", "20.00"]]
+        tableish("#gainer").should include *expected_content
+      end
+
+      it "should go to corresponding stock page when a link in top gainers section is clicked on" do
+        visit stocks_path
+
+        within '#gainer' do
+          page.should have_selector("a", :content => 'GAINER1')
+          click_on 'GAINER1'
+          page.current_path.should eq stock_path 'GAINER1'
+        end
+      end
+
     end
 
     it "should list top five loser" do
