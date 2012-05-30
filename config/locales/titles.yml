@@ -27,6 +27,12 @@ en:
       title: 'Mutual Funds Analysis'
     fixed_deposits_analysis:
       title: 'Fixed Deposit Analysis'
+  fixed_deposits:
+    index:
+      title: 'Fixed Deposits | Bank Interest rates - Compare and Analyze Fixed Deposits in India'
+      description: 'Fixed Deposits page allows you to find the best fixed deposits,compare bank interest rates and analyze
+      the various fixed deposits available in India.'
+      keywords: 'Fixed deposits, fixed deposit, interest rates , bank rates , India'
   stocks:
     show:
       title: "Shares - %{name}"
