@@ -13,6 +13,6 @@
         - Company.send("top_five_#{performance}").each do |company|
           %tr{ class: cycle("odd", "even") }
             %td
-              = link_to company.name, stock_path(company.code)
+              = link_to company.name, stock_path(company.name)
             = table_content_with_red_or_green_class(company.nse.net_change)
             = table_content_with_red_or_green_class(company.nse.percent_change)

@@ -7,7 +7,7 @@ describe "News", :mongoid do
   end
 
   it "should show the news page for a headline" do
-    visit stock_news_path(:stock_id => company.code, :id => @news._id)
+    visit stock_news_path(:stock_id => company.name, :id => @news._id)
     page.should have_content "headlines 0"
     page.should have_content "NOTES 0"
   end

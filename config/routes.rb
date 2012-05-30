@@ -28,7 +28,7 @@ Finginie::Application.routes.draw do
   resources :loans
   resources :fixed_incomes
   resources :real_estates
-  resources "shares", :controller => :stocks, :as => :stocks, :only => [:index, :show] do
+  resources "shares", :controller => :stocks, :as => :stocks, :only => [:index, :show], :constraints => { :id => /.*/ } do
     collection do
       get 'screener'
     end
