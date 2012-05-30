@@ -1,4 +1,4 @@
-%h1 Fixed Deposit Finder
+%h1 Fixed Deposit Comparison tool : Compare fixed deposit interest rates across banks in India
 
 %p= t ".fixed_deposit_tool"
 = simple_form_for @search, :url => fixed_deposits_path, :method => :get do |f|
@@ -38,7 +38,7 @@
   .notice= t ".default"
   - [@top_five_public_banks_interest_rates, @top_five_private_banks_interest_rates].each do |fd_details|
     - unless fd_details.empty?
-      %h1= "#{fd_details.first.sector.titleize} banks"
+      %h1= "Best interest rates on fixed deposits among #{fd_details.first.sector.titleize.downcase!} sector banks"
       %div{ :id => "top_five_#{fd_details.first.sector.downcase}_sector_interest_rate"}
         %table
           %tr
@@ -54,3 +54,20 @@
               %td= fd_detail.six_month_interest_rate
               %td= fd_detail.three_month_interest_rate
               %td= fd_detail.one_month_interest_rate
+
+%h1 Understanding Fixed Deposits
+%p
+  Fixed deposits, colloquially referred to as “FD”s are a form of investment in which an investor deposits his
+  money with a bank for a fixed period of time at a predetermined interest rate.Check out our article on
+  #{link_to 'fixed deposits', main_app.page_path('investment_education/investment-fixed-deposits')}
+  to understand how fixed deposits work across banks in India.
+
+%p
+  %b Important information about investing in fixed deposits.
+  %br
+    Investing in fixed deposits is a safe way for small investors to get a guaranteed return. However, investing in
+    fixed deposits also carries some risk. There have been instances of co-operative banks closing down, leading to
+    huge losses for investors. This risk can be minimized by investing in public sector banks and large private banks.
+    Please consult your financial advisor before making an investment decision. The interest rates displayed on this site
+    are indicative only and are not exhaustive. Please contact the relevant bank to get the most updated interest rate
+    that they offer on their fixed deposits.
