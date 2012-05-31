@@ -27,6 +27,20 @@ body.stocks.index {
         .dataTables_info {
           font-size: 12px;
         }
+        .top_gain_loss, #sectoral_indices {
+          h1 {
+            font-size: large;
+            color: $heading-green;
+          }
+          #div_nse_gainers_losers, #div_bse_gainers_losers, #nse_scrip_sectoral_indices, #bse_scrip_sectoral_indices {
+            width: 480px;
+            float: left;
+            margin-bottom: 20px;
+          }
+          #div_bse_gainers_losers, #bse_scrip_sectoral_indices {
+            margin-left: 12px;
+          }
+        }
       }
       .ui-helper-reset {
         font-size: 14px;
@@ -45,20 +59,6 @@ body.stocks.index {
           td {
             text-align: left;
           }
-        }
-      }
-      .top_gain_loss {
-        margin-bottom: 20px;
-        td a {
-          color: $heading-blue;
-        }
-      }
-      .screener_tool {
-        p {
-          padding-left: 10px;
-        }
-        a {
-          color: $heading-red;
         }
       }
     }
