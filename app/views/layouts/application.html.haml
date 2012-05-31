@@ -51,6 +51,8 @@
         %nav.main
           = render_navigation :level => 1
           = yield :header
+    #stock_indicies
+      = render 'stocks/indicies'
     #wrapper
       #main
         - flash.each do |name, msg|

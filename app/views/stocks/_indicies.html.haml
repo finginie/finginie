@@ -1,17 +1,24 @@
 .exchange_value
-  %table
-    %tr
-      %th.nifty
-        %h1.ui-widget-header Nifty
-      %th.sensex
-        %h1.ui-widget-header Sensex
-      %th
-        %h1.ui-widget-header Gold (10 gms)
-    %tr
-      -%w(Nifty Sensex GoldDecorator).each do |index|
-        %td
-          %b= index.constantize.current_price
-          - red_or_green_class(index.constantize.net_change, "span")
-          = "("
-          - red_or_green_class(index.constantize.percent_change, "span")
-          = " % )"
+  .nifty_value
+    %a Nifty
+    %b= Nifty.current_price
+    - red_or_green_class(Nifty.net_change, "span")
+    = "("
+    - red_or_green_class(Nifty.percent_change, "span")
+    = " % )"
+
+  .sensex_value
+    %a Sensex
+    %b= Sensex.current_price
+    - red_or_green_class(Sensex.net_change, "span")
+    = "("
+    - red_or_green_class(Sensex.percent_change, "span")
+    = " % )"
+
+  .gold_value
+    %a Gold (10 gms)
+    %b= GoldDecorator.current_price
+    - red_or_green_class(GoldDecorator.net_change, "span")
+    = "("
+    - red_or_green_class(GoldDecorator.percent_change, "span")
+    = " % )"

@@ -145,7 +145,6 @@ body.mutual_funds.index {
     }
     #main {
       .container {
-        @include indicies();
         padding-left: 4px;
         .dataTables_info {
           font-size: 12px;

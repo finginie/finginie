@@ -89,11 +89,11 @@ describe "Stocks", :mongoid, :redis do
 
       visit stocks_path
 
-      expected_table = [
-                        ["10.0 1.0 ( 11.11 % )", "10.0 1.0 ( 11.11 % )", "100.0 10.0 ( 11.11 % )"]
+      expected_text = [
+                        "Nifty 10.0 1.0 ( 11.11 % )", "Sensex 10.0 1.0 ( 11.11 % )", "Gold (10 gms) 100.0 10.0 ( 11.11 % )"
                       ]
 
-      tableish("table").should include *expected_table
+      selector("#stock_indicies", "div").should include *expected_text
     end
 
     context "#Top Gainers" do
