@@ -17,7 +17,6 @@ body.stocks.index {
     padding-left: 0;
     #main {
       .container {
-        @include indicies();
         padding-left: 4px;
         .dataTables_wrapper {
           margin-bottom: 20px;
