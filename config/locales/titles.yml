@@ -37,7 +37,10 @@ en:
     show:
       title: "Shares - %{name}"
     index:
-      title: 'Quotes,Shares,Stocks,BSE,NSE,Sensex,Nifty,Gold'
+      title: 'Shares | Quotes | Stocks | BSE | NSE | Sensex | Nifty'
+      description: 'Shares page is the best source in India for quotes,stocks trading on the BSE and NSE as well as
+       quotes for the Sensex and Nifty'
+      keywords: 'Shares , Quotes , Stocks , BSE , NSE , Sensex , Nifty'
     screener:
       title: 'Stock Screener'
   balance_sheet:
