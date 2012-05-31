@@ -1,0 +1,15 @@
+- [ NseScrip, BseScrip ].each do |scrip|
+  %div{ :id => "#{scrip.to_s.underscore}_sectoral_indices" }
+    %h1= "Sectoral Indices - #{scrip.to_s[0..2].upcase}"
+    %table
+      %tr
+        %th Index Name
+        %th Volume
+        %th Change
+        %th % Change
+      - scrip.send('sectoral_indices').each do |index|
+        %tr
+          %td= t(".#{index.id.delete(' ').gsub('&', '')}")
+          %td= index.volume
+          %td= index.net_change
+          %td= index.percent_change
