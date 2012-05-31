@@ -40,4 +40,14 @@ private
     columns[params[:iSortCol_0].to_i]
   end
 
+  def self.top_performers
+    schemes = Scheme.all( sort: [[ :percentage_change, :desc ]], limit: 10)
+    SchemeDecorator.decorate(schemes)
+  end
+
+  def self.biggest_schemes
+    schemes = Scheme.all( sort: [[ :size, :desc ]], limit: 10)
+    SchemeDecorator.decorate(schemes)
+  end
+
 end
