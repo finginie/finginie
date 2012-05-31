@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "MutualFunds" do
+describe "MutualFunds", :mongoid do
   before(:each) do
     @scheme = create :scheme, :objective => "Objective", :bench_mark_index_name => "Crisil Liquid Fund Index"
     @amc =  create :asset_management_company, :company_code => @scheme.company_code, :company_name => "HDFC Mutual Fund"
@@ -35,6 +35,43 @@ describe "MutualFunds" do
     page.execute_script %Q{ $('.ui-menu-item a:contains("#{@scheme.name}")').trigger('mouseenter').click(); }
     page.current_path.should eq scheme_summary_mutual_fund_path(@scheme.name)
 
+  end
+
+  context "#index" do
+    it "should have top funds" do
+      2.times { |i| create :scheme, :name => "scheme-#{i}",:nav_amount => 2 * i + 2, :percentage_change => 5 * i + 1,
+        :prev1_month_percent =>  6 * i + 3, :prev_year_percent =>  6 * i + 5, :prev3_year_percent =>  6 * i + 6 }
+
+      visit mutual_funds_path
+
+      expected_content = [
+        [ 'scheme-0', '2.0', '1.00', '3.0', '5.0', '6.0' ],
+        [ 'scheme-1', '4.0', '6.00', '9.0', '11.0', '12.0' ] ]
+
+      tableish("#top_performers").should include *expected_content
+    end
+
+    it "should redirect to scheme summary page when a scheme in Top 10 funds is clicked on" do
+      visit mutual_funds_path
+
+      within "#top_performers" do
+        click_on @scheme.name
+      end
+      page.current_path.should eq scheme_summary_mutual_fund_path @scheme.name
+    end
+
+    it "should have biggest funds" do
+      2.times { |i| create :scheme, :name => "scheme-#{i}",:nav_amount => 2 * i + 2, :percentage_change => 5 * i + 1,
+        :size => 238.68 + i * 100, :prev_year_percent =>  6 * i + 5  }
+
+      visit mutual_funds_path
+
+      expected_content = [
+        [ 'scheme-0', '2.0', '1.00', '238.68', '5.0' ],
+        [ 'scheme-1', '4.0', '6.00', '338.68', '11.0' ] ]
+
+      tableish("#biggest_schemes").should include *expected_content
+    end
   end
 
   context "Titles" do
