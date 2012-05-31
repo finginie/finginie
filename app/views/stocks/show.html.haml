@@ -29,9 +29,6 @@
           %li
             = link_to news.headlines, stock_news_path(:stock_id => resource.name, :id => news._id), :target => "_blank"
 
-  - if @chart_url
-    %iframe{:src => @chart_url, :style => "width:760px; height:600px"}
-
   - if resource.share_holding
     %section.share_holding
       %h1 Share Holding Pattern
