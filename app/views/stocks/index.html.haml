@@ -1,8 +1,9 @@
 = render 'indicies'
 
-%h1 Share Quotes
+%h1 Shares : Get Quotes and analyze over 3500 shares(stocks) trading on BSE and NSE
 %p
-  Get quotes and all important corporate and financial information such as balance sheets, income statements, key financial ratios and shareholding patterns for all 3500+ shares/stocks listed on the NSE and BSE.
+  Get quotes and all important corporate and financial information such as balance sheets, income statements,
+  key financial ratios and shareholding patterns for all 3500+ shares/stocks listed on NSE and BSE.
 %table{ :id => 'stocks_table', :data => { :source => stocks_path(format: 'json') } }
   %thead
     %tr
@@ -14,12 +15,32 @@
   %tbody
     %tr
       %td.dataTables_empty{colspan:5} Start typing the name or symbol of the company in the box above to get a quote
-%h1 Top Gainers & Losers
+
+%h1 Top Gainers & Losers (shares trading on BSE and NSE)
 #top_gainers_or_losers.top_gain_loss
   = render "top_gainers_or_losers"
-.screener_tool
-  %p
-    Use our
-    = link_to "Stock Screener tool", screener_stocks_path
-    to find stocks matching your criteria
+
+%h1 Understanding shares(stocks) and the share market
+%p
+  Share prices are influenced by several factors ranging from company specific factors such as profit margins, sales
+  forecasts etc to factors that affect the entire market such as news flows and FII inflows/outflows.
+  To understand how  shares work, check out our article on
+  #{link_to 'investing in shares', main_app.page_path('investment_education/shares')}.
+  Before you start investing in shares, it is important to be familiar with the
+  #{link_to 'factors influencing the entire share market', main_app.page_path('investment_education/shares')}.
+  Use our
+  = link_to "Share Screener tool", screener_stocks_path
+  to find shares that match your criteria.
+
+%p
+  %b Important information about investing in shares.
+  %br
+    Shares/stocks are very popular investments across India, both among beginners and season investors. However,
+    investing in shares involves risks such as market risk and unsystematic risk. Please consult your financial advisor
+    before making an investment decision. The share prices,corporate information, financial information such as balance
+    sheets,income statements,cashflow statements etc displayed on this site
+    are indicative only and are not exhaustive. Please contact the company's investor relations cell or the relevant
+    exchange to get the most updated prices/information.
+
+
 
