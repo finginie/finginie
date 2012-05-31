@@ -184,6 +184,26 @@ describe "Stocks", :mongoid, :redis do
 
       end
     end  #  end of context most active
+
+    it "should have sectoral indices" do
+      create :nse_scrip, :id => 'CNXFIN', :last_traded_price => 11, :close_price => 10, :volume => 123456
+      create :nse_scrip, :id => 'CNXAUTO', :last_traded_price => 9.5, :close_price => 10, :volume => 345678
+
+      create :bse_scrip, :id => 'BSE Oil&Gas', :last_traded_price => 11, :close_price => 10, :volume => 123456
+      create :bse_scrip, :id => 'BSE Smallcap', :last_traded_price => 9.5, :close_price => 10, :volume => 345678
+
+      visit stocks_path
+
+      expected_content_nse = [ [ I18n.t('stocks.sectoral_indices.CNXFIN'), '123456', '1.0', '10.0' ],
+                           [ I18n.t('stocks.sectoral_indices.CNXAUTO'), '345678', '-0.5', '-5.0' ] ]
+
+      expected_content_bse = [ [ I18n.t('stocks.sectoral_indices.BSEOilGas'), '123456', '1.0', '10.0' ],
+                           [ I18n.t('stocks.sectoral_indices.BSESmallcap'), '345678', '-0.5', '-5.0' ] ]
+
+      tableish("#nse_scrip_sectoral_indices").should include *expected_content_nse
+
+      tableish("#bse_scrip_sectoral_indices").should include *expected_content_bse
+    end
   end    #  end of context index
 
   context "#screener" do
