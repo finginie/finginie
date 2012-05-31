@@ -1,18 +1,29 @@
-#tabs
-  %ul
-    %li= link_to t(".top_gainers"), "#gainer"
-    %li= link_to t(".top_losers"), "#loser"
+- [ NseScrip, BseScrip ].each do |klass|
+  #div{ :id => "#{klass.to_s[0..2].downcase}_gainers_losers" }
+    %h1= "Trending Shares - #{klass.to_s[0..2].upcase}"
+    .tabs
+      %ul
+        %li= link_to t(".top_gainers"), "##{klass.to_s.underscore}_top_gainers"
+        %li= link_to t(".top_losers"), "##{klass.to_s.underscore}_top_losers"
+        %li= link_to t(".most_active"), "##{klass.to_s.underscore}_most_active"
 
-  - %w(gainer loser).each do |performance|
-    %div{ :id => performance }
-      %table
-        %tr
-          %th.ui-state-default Name
-          %th.ui-state-default Today's Change
-          %th.ui-state-default % Change
-        - Company.send("top_five_#{performance}").each do |company|
-          %tr{ class: cycle("odd", "even") }
-            %td
-              = link_to company.name, stock_path(company.name)
-            = table_content_with_red_or_green_class(company.nse.net_change)
-            = table_content_with_red_or_green_class(company.nse.percent_change)
+      - %w(top_gainers top_losers most_active).each do |performance|
+        %div{ :id => "#{klass.to_s.underscore}_#{performance}" }
+          %table
+            %tr
+              %th.ui-state-default Name
+              %th.ui-state-default Today's Price
+              - if performance == 'most_active'
+                %th.ui-state-default Volume
+              -else
+                %th.ui-state-default % Change
+            - klass.send(performance, 5).each do |scrip|
+              %tr{ class: cycle("odd", "even") }
+                %td
+                  - if scrip.company.name
+                    = link_to scrip.company.name, stock_path(scrip.company.name)
+                %td= number_to_indian_currency(scrip.last_traded_price)
+                - if performance == 'most_active'
+                  %td= number_to_indian_currency(scrip.volume, 0)
+                - else
+                  = table_content_with_red_or_green_class(scrip.percent_change)
