@@ -4,12 +4,12 @@
     %table
       %tr
         %th Index Name
-        %th Volume
+        %th Value
         %th Change
         %th % Change
       - scrip.send('sectoral_indices').each do |index|
         %tr
           %td= t(".#{index.id.delete(' ').gsub('&', '')}")
-          %td= index.volume
+          %td= index.last_traded_price
           %td= index.net_change
           %td= index.percent_change
