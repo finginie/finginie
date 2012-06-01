@@ -21,7 +21,7 @@ class SchemeDecorator < ApplicationDecorator
 
   FIELDS_TO_ROUND.each do |key|
     define_method(key.to_sym) do
-      model.send(key.to_sym) ? model.send(key.to_sym).round(2).to_f : h.t('tables_not_available')
+      model.send(key.to_sym) ? model.send(key.to_sym).round(2).to_f : I18n.t('tables_not_available')
     end
   end
 
