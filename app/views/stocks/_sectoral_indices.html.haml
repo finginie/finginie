@@ -10,6 +10,6 @@
       - scrip.send('sectoral_indices').each do |index|
         %tr
           %td= t(".#{index.id.delete(' ').gsub('&', '')}")
-          %td= index.last_traded_price
-          %td= index.net_change
-          %td= index.percent_change
+          %td= number_to_indian_currency index.last_traded_price
+          = table_content_with_red_or_green_class index.net_change
+          = table_content_with_red_or_green_class index.percent_change

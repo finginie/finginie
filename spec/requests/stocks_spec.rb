@@ -194,11 +194,11 @@ describe "Stocks", :mongoid, :redis do
 
       visit stocks_path
 
-      expected_content_nse = [ [ I18n.t('stocks.sectoral_indices.CNXFIN'), '11.0', '1.0', '10.0' ],
-                           [ I18n.t('stocks.sectoral_indices.CNXAUTO'), '9.5', '-0.5', '-5.0' ] ]
+      expected_content_nse = [ [ I18n.t('stocks.sectoral_indices.CNXFIN'), '11.00', '1.00', '10.00' ],
+                           [ I18n.t('stocks.sectoral_indices.CNXAUTO'), '9.50', '-0.50', '-5.00' ] ]
 
-      expected_content_bse = [ [ I18n.t('stocks.sectoral_indices.BSEOilGas'), '11.0', '1.0', '10.0' ],
-                           [ I18n.t('stocks.sectoral_indices.BSESmallcap'), '9.5', '-0.5', '-5.0' ] ]
+      expected_content_bse = [ [ I18n.t('stocks.sectoral_indices.BSEOilGas'), '11.00', '1.00', '10.00' ],
+                           [ I18n.t('stocks.sectoral_indices.BSESmallcap'), '9.50', '-0.50', '-5.00' ] ]
 
       tableish("#nse_scrip_sectoral_indices").should include *expected_content_nse
 

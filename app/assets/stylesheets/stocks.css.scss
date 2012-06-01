@@ -32,12 +32,12 @@ body.stocks.index {
             font-size: large;
             color: $heading-green;
           }
-          #div_nse_gainers_losers, #div_bse_gainers_losers, #nse_scrip_sectoral_indices, #bse_scrip_sectoral_indices {
+          #nse_gainers_losers, #bse_gainers_losers, #nse_scrip_sectoral_indices, #bse_scrip_sectoral_indices {
             width: 480px;
             float: left;
             margin-bottom: 20px;
           }
-          #div_bse_gainers_losers, #bse_scrip_sectoral_indices {
+          #bse_gainers_losers, #bse_scrip_sectoral_indices {
             margin-left: 12px;
           }
         }
