@@ -19,6 +19,7 @@ end
 
 gem 'bourbon', :git => "git://github.com/FinGinie/bourbon.git"
 gem 'cancan'
+gem 'cells'
 gem 'dimensions-rails'
 gem 'draper', :git => "git://github.com/jcasimir/draper.git"
 gem 'exceptional'
@@ -48,6 +49,7 @@ group :test, :development do
   gem 'capybara'
   gem 'capybara-webkit'
     gem 'headless', :git => "git://github.com/LoonyBin/headless.git" # https://github.com/leonid-shevtsov/headless/pull/22
+  gem "rspec-cells"
   gem 'factory_girl_rails'
   gem 'foreman'
   gem 'guard'

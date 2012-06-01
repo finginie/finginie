@@ -1,0 +1,18 @@
+#top_performers
+  %h1 Top 10 Funds
+  %table
+    %tr
+      %th Name
+      %th NAV
+      %th % Change
+      %th 1 Month return
+      %th 1 Yr return
+      %th 3 Yr return
+    - @top_performers.each do |scheme|
+      %tr
+        %td= link_to scheme.name, scheme_summary_mutual_fund_url(scheme.name)
+        %td= scheme.nav_amount
+        = table_content_with_red_or_green_class scheme.percentage_change
+        %td= scheme.prev1_month_percent
+        %td= scheme.prev_year_percent
+        %td= scheme.prev3_year_percent
