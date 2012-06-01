@@ -163,6 +163,12 @@ body.mutual_funds.index {
         .dataTables_empty {
           color: $heading-red;
         }
+        .ui-tabs-panel {
+          padding: 0;
+        }
+        #top_and_biggest_funds {
+          margin-bottom: 20px;
+        }
       }
     }
   }

@@ -50,3 +50,5 @@ $ ->
     else
       google.setOnLoadCallback drawPieChart(this)
 
+  $("div.tabs").tabs();
+
