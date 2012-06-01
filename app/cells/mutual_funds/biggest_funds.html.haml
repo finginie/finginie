@@ -1,17 +1,16 @@
 #biggest_schemes
-  %h1 Biggest Funds
   %table
     %tr
       %th Name
       %th NAV
       %th % Change
-      %th Size( Crores)
-      %th 1 Yr return
+      %th Size (Crores)
+      %th 1y return (%)
     - @biggest_schemes.each do |scheme|
       %tr
         %td= link_to scheme.name, scheme_summary_mutual_fund_url(scheme.name)
         %td= scheme.nav_amount
         = table_content_with_red_or_green_class scheme.percentage_change
         %td= scheme.size
-        %td= scheme.prev_year_percent
+        = table_content_with_red_or_green_class scheme.prev_year_percent
 

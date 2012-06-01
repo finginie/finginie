@@ -1,5 +1,4 @@
 $ ->
-  $("div.tabs").tabs();
 
   $('#company_name').autocomplete
     source: ( request, response ) ->

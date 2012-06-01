@@ -13,8 +13,13 @@
         %td.dataTables_empty{colspan:5} Start typing the scheme or fund name in the box above to get a fund's NAV
 
   #top_and_biggest_funds
-    = render_cell :mutual_funds, :top_funds
-    = render_cell :mutual_funds, :biggest_funds
+    %h1 Trending Mutual Funds
+    .tabs
+      %ul
+        %li= link_to 'Today\'s top 10 funds', "#top_performers"
+        %li= link_to 'Biggest funds', "#biggest_schemes"
+      = render_cell :mutual_funds, :top_funds
+      = render_cell :mutual_funds, :biggest_funds
 
   #categories_table
     %h1 Mutual Fund Categories & Returns
