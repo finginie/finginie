@@ -55,11 +55,9 @@ body.stocks.index {
       }
       .ui-tabs-panel {
         padding: 0;
-        table {
-          td {
-            text-align: left;
-          }
-        }
+      }
+      .ui-widget {
+        font-family: "Calibri",Helvetica,Arial,sans-serif;
       }
     }
   }

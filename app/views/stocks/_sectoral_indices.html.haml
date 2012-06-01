@@ -4,12 +4,12 @@
     %table
       %tr
         %th Index Name
-        %th Value
-        %th Change
-        %th % Change
+        %th.right_align Value
+        %th.right_align Change
+        %th.right_align % Change
       - scrip.send('sectoral_indices').each do |index|
         %tr
           %td= t(".#{index.id.delete(' ').gsub('&', '')}")
-          %td= number_to_indian_currency index.last_traded_price
+          %td.right_align= number_to_indian_currency index.last_traded_price
           = table_content_with_red_or_green_class index.net_change
           = table_content_with_red_or_green_class index.percent_change

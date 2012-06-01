@@ -12,18 +12,18 @@
           %table
             %tr
               %th.ui-state-default Name
-              %th.ui-state-default Today's Price
+              %th.ui-state-default.right_align Today's Price
               - if performance == 'most_active'
-                %th.ui-state-default Volume
+                %th.ui-state-default.right_align Volume
               -else
-                %th.ui-state-default % Change
+                %th.ui-state-default.right_align % Change
             - klass.send(performance, 5).each do |scrip|
               %tr{ class: cycle("odd", "even") }
                 %td
                   - if scrip.company.name
                     = link_to scrip.company.name, stock_path(scrip.company.name)
-                %td= number_to_indian_currency(scrip.last_traded_price)
+                %td.right_align= number_to_indian_currency(scrip.last_traded_price)
                 - if performance == 'most_active'
-                  %td= number_to_indian_currency(scrip.volume, 0)
+                  %td.right_align= number_to_indian_currency(scrip.volume, 0)
                 - else
                   = table_content_with_red_or_green_class(scrip.percent_change)
