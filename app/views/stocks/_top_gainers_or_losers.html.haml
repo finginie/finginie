@@ -1,5 +1,5 @@
 - [ NseScrip, BseScrip ].each do |klass|
-  #div{ :id => "#{klass.to_s[0..2].downcase}_gainers_losers" }
+  %div{ :id => "#{klass.to_s[0..2].downcase}_gainers_losers" }
     %h1= "Trending Shares - #{klass.to_s[0..2].upcase}"
     .tabs
       %ul
