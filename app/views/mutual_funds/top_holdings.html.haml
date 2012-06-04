@@ -14,7 +14,7 @@
             %th= 'Sector'
             %th= 'Rating'
             - @scheme.portfolio_holdings.take(10).each do |portfolio|
-              %tr
+              %tr{ class: cycle("odd", "even") }
                 %td= portfolio["InvestedCompanyName"]
                 %td= portfolio["Percentage"]
                 %td= portfolio["InstrumentName"]

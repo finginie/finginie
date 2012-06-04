@@ -26,14 +26,14 @@
       %div{ :id => "top_five_#{fd_details.first.sector.downcase}_sector_interest_rate"}
         %table
           %tr
-            %th Bank Name
-            %th General Interest Rate
-            %th Senior Citizen Interest Rate
+            %th.name Bank Name
+            %th.right_align General Interest Rate
+            %th.right_align Senior Citizen Interest Rate
           - fd_details.each do |fd_detail|
             %tr
               %td= fd_detail.bank
-              %td= fd_detail.rate_of_interest_general
-              %td= fd_detail.rate_of_interest_senior_citizen
+              %td.right_align= fd_detail.rate_of_interest_general
+              %td.right_align= fd_detail.rate_of_interest_senior_citizen
 - else
   .notice= t ".default"
   - [@top_five_public_banks_interest_rates, @top_five_private_banks_interest_rates].each do |fd_details|
@@ -42,14 +42,14 @@
       %div{ :id => "top_five_#{fd_details.first.sector.downcase}_sector_interest_rate"}
         %table
           %tr
-            %th Bank Name
-            %th 1 year
-            %th 180 days
-            %th 90 days
-            %th 30 days
+            %th.name Bank Name
+            %th.right_align 1 year
+            %th.right_align 180 days
+            %th.right_align 90 days
+            %th.right_align 30 days
           - fd_details.each do |fd_detail|
-            %tr
-              %td= fd_detail.name
+            %tr.right_align
+              %td.name= fd_detail.name
               %td= fd_detail.one_year_interest_rate
               %td= fd_detail.six_month_interest_rate
               %td= fd_detail.three_month_interest_rate

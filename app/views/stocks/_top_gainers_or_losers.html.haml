@@ -11,12 +11,12 @@
         %div{ :id => "#{klass.to_s.underscore}_#{performance}" }
           %table
             %tr
-              %th.ui-state-default Name
-              %th.ui-state-default.right_align Today's Price
+              %th Name
+              %th.right_align Today's Price
               - if performance == 'most_active'
-                %th.ui-state-default.right_align Volume
+                %th.right_align Volume
               -else
-                %th.ui-state-default.right_align % Change
+                %th.right_align % Change
             - klass.send(performance, 5).each do |scrip|
               %tr{ class: cycle("odd", "even") }
                 %td
@@ -27,3 +27,4 @@
                   %td.right_align= number_to_indian_currency(scrip.volume, 0)
                 - else
                   = table_content_with_red_or_green_class(scrip.percent_change)
+          - reset_cycle

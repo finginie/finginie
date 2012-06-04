@@ -2,15 +2,15 @@
   %table
     %tr
       %th Name
-      %th NAV
-      %th % Change
-      %th 1m return (%)
-      %th 1y return (%)
-      %th 3y return (%)
+      %th.right_align NAV
+      %th.right_align % Change
+      %th.right_align 1m return (%)
+      %th.right_align 1y return (%)
+      %th.right_align 3y return (%)
     - @top_performers.each do |scheme|
-      %tr
+      %tr{ class: cycle("odd", "even") }
         %td= link_to scheme.name, scheme_summary_mutual_fund_url(scheme.name)
-        %td= scheme.nav_amount
+        %td.right_align= scheme.nav_amount
         = table_content_with_red_or_green_class scheme.percentage_change
         = table_content_with_red_or_green_class scheme.prev1_month_percent
         = table_content_with_red_or_green_class scheme.prev_year_percent
