@@ -42,13 +42,13 @@
         %tr.right_align{ class: cycle("odd", "even") }
           %td.name= link_to cat.scheme_class_description, mutual_fund_category_path(cat.scheme_class_code) if cat.scheme_class_description
           %td= cat.no_of_schemes
-          %td= cat.one_week_return.round(2)
-          %td= cat.one_month_return.round(2)
-          %td= cat.three_months_return.round(2)
-          %td= cat.six_months_return.round(2)
-          %td= cat.one_year_return.round(2)
-          %td= cat.two_year_return.round(2)
-          %td= cat.three_year_return.round(2)
+          = table_content_with_red_or_green_class cat.one_week_return.round
+          = table_content_with_red_or_green_class cat.one_month_return.round
+          = table_content_with_red_or_green_class cat.three_months_return.round
+          = table_content_with_red_or_green_class cat.six_months_return.round
+          = table_content_with_red_or_green_class cat.one_year_return.round
+          = table_content_with_red_or_green_class cat.two_year_return.round
+          = table_content_with_red_or_green_class cat.three_year_return.round
   %br
   %h1 Understanding Mutual Funds
   %p
