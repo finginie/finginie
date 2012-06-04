@@ -19,10 +19,13 @@ body.stocks.index {
       .container {
         padding-left: 4px;
         .dataTables_wrapper {
-          margin-bottom: 20px;
+          margin-bottom: 30px;
           a {
-           color: $heading-blue;
+           color: #222;
           }
+        }
+        a:hover {
+          color: #0D56AD;
         }
         .dataTables_info {
           font-size: 12px;
@@ -35,11 +38,14 @@ body.stocks.index {
           #nse_gainers_losers, #bse_gainers_losers, #nse_scrip_sectoral_indices, #bse_scrip_sectoral_indices {
             width: 480px;
             float: left;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
           }
           #bse_gainers_losers, #bse_scrip_sectoral_indices {
             margin-left: 12px;
           }
+        }
+        p {
+          text-align: justify;
         }
       }
       .ui-helper-reset {

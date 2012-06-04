@@ -150,10 +150,7 @@ body.mutual_funds.index {
           font-size: 12px;
         }
         .dataTables_wrapper {
-          margin-bottom: 20px;
-          a {
-           color: $heading-blue;
-          }
+          margin-bottom: 30px;
         }
         .dataTables_processing {
           margin-left: -170px;
@@ -167,7 +164,16 @@ body.mutual_funds.index {
           padding: 0;
         }
         #top_and_biggest_funds {
-          margin-bottom: 20px;
+          margin-bottom: 30px;
+        }
+        a {
+          color: #222;
+        }
+        a:hover {
+          color: #0D56AD;
+        }
+        p {
+          text-align: justify;
         }
       }
     }

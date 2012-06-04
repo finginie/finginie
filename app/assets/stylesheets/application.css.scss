@@ -59,7 +59,7 @@ label {
   font-weight: normal;
 }
 
-table, td, th {
+table, td, th  {
   border: {
     width: 1px;
     style: solid;
@@ -442,12 +442,13 @@ tr {
   th {
     //background-color: $th-color;
     //@include linear-gradient(center top , #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);  //This linear gradient look good on table headings
-    @include linear-gradient(bottom, #CCC 0%, #EDEDED 100%);
-    color: #2C2C2C;
+    //@include linear-gradient(bottom, #CCC 0%, #EDEDED 100%);
+    background: url("/assets/jquery-ui/ui-bg_glass_75_e6e6e6_1x400.png") repeat-x scroll 50% 50% #E6E6E6;
+    color: #000;
     text-align: left;
     padding: 8px 4px;
     font-size: 12px;
-    //font-weight: normal;
+    font-weight: normal;
   }
 
   td {
