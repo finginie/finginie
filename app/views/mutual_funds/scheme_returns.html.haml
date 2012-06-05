@@ -8,63 +8,63 @@
       #comparative_returns_data
         %table
           %tr
-            %th Time Frame
-            %th Scheme Return (%)
-            %th Category Return (%)
+            %th.name Time Frame
+            %th.right_align Scheme Return (%)
+            %th.right_align Category Return (%)
 
           %tr
             %td
               %b= '1 day'
-            %td= "#{@scheme.percentage_change} %"
-            %td= "#{@scheme.one_day_return} %"
+            = table_content_with_red_or_green_class @scheme.percentage_change
+            = table_content_with_red_or_green_class @scheme.one_day_return
 
           %tr
             %td
               %b= '1 week'
-            %td= "#{@scheme.prev1_week_percent} %"
-            %td= "#{@scheme.one_week_return} %"
+            = table_content_with_red_or_green_class @scheme.percentage_change
+            = table_content_with_red_or_green_class @scheme.one_week_return
 
           %tr
             %td
               %b= '1 month'
-            %td= "#{@scheme.prev1_month_percent} %"
-            %td= "#{@scheme.one_month_return} %"
+            = table_content_with_red_or_green_class @scheme.prev1_month_percent
+            = table_content_with_red_or_green_class @scheme.one_month_return
 
           %tr
             %td
               %b= '3 months'
-            %td= "#{@scheme.prev3_months_percent} %"
-            %td= "#{@scheme.three_months_return} %"
+            = table_content_with_red_or_green_class @scheme.prev3_months_percent
+            = table_content_with_red_or_green_class @scheme.three_months_return
 
           %tr
             %td
               %b= '6 months'
-            %td= "#{@scheme.prev6_months_percent} %"
-            %td= "#{@scheme.six_months_return} %"
+            = table_content_with_red_or_green_class @scheme.prev6_months_percent
+            = table_content_with_red_or_green_class @scheme.six_months_return
 
           %tr
             %td
               %b= '9 months'
-            %td= "#{@scheme.prev9_months_percent} %"
-            %td= "#{@scheme.nine_months_return} %"
+            = table_content_with_red_or_green_class @scheme.prev9_months_percent
+            = table_content_with_red_or_green_class @scheme.nine_months_return
 
           %tr
             %td
               %b= '1 Year'
-            %td= "#{@scheme.prev_year_percent} %"
-            %td= "#{@scheme.one_year_return} %"
+            = table_content_with_red_or_green_class @scheme.prev_year_percent
+            = table_content_with_red_or_green_class @scheme.one_year_return
 
           %tr
             %td
               %b= '2 Years'
-            %td= "#{@scheme.prev2_year_comp_percent} %"
-            %td= "#{@scheme.two_year_return} %"
+            = table_content_with_red_or_green_class @scheme.prev2_year_comp_percent
+            = table_content_with_red_or_green_class @scheme.two_year_return
 
           %tr
             %td
               %b= '3 Years'
-            %td= "#{@scheme.prev3_year_comp_percent} %"
-            %td= "#{@scheme.three_year_return} %"
+            = table_content_with_red_or_green_class @scheme.prev3_year_comp_percent
+            = table_content_with_red_or_green_class @scheme.three_year_return
         %p  *All returns for periods greater than 1year are annualized.
 - else
   %p Data not available
