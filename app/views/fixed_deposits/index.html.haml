@@ -1,21 +1,20 @@
 %h1 Fixed Deposit Comparison tool : Compare fixed deposit interest rates across banks in India
 
 %p= t ".fixed_deposit_tool"
-= simple_form_for @search, :url => fixed_deposits_path, :method => :get do |f|
+= simple_form_for @search, :url => fixed_deposits_path, :method => :get, :validate => true do |f|
   = f.input :amount
 
   = f.label :duration
-  = f.fields_for :duration do |duration|
-    = duration.input :year, :label => 'Years'
-    = duration.input :month, :label => 'Months'
-    = duration.input :days
+  = f.input :year
+  = f.input :month
+  = f.input :days
 
-  = f.input :senior_citizen, :collection => [['Yes', "rate_of_interest_senior_citizen"],['No', "rate_of_interest_general"]], :as => :radio_buttons
+  = f.input :senior_citizen, :collection => %w[Yes No], :as => :radio_buttons
 
   .actions
     = f.submit 'Submit'
 
-- if params[:fixed_deposit_detail_proxy]
+- if params[:fixed_deposit_detail]
   - unless collection.top_five_public_sector.empty? || collection.top_five_private_sector.empty?
     .notice= @search.result_summary
   - else
@@ -27,13 +26,11 @@
         %table
           %tr
             %th.name Bank Name
-            %th.right_align General Interest Rate
-            %th.right_align Senior Citizen Interest Rate
+            %th.right_align= @search.senior_citizen? ? "Senior Citizen Interest Rate" : "General Interest Rate"
           - fd_details.each do |fd_detail|
             %tr
               %td= fd_detail.bank
-              %td.right_align= fd_detail.rate_of_interest_general
-              %td.right_align= fd_detail.rate_of_interest_senior_citizen
+              %td.right_align= @search.senior_citizen? ? fd_detail.rate_of_interest_senior_citizen : fd_detail.rate_of_interest_general
 - else
   .notice= t ".default"
   - [@top_five_public_banks_interest_rates, @top_five_private_banks_interest_rates].each do |fd_details|
