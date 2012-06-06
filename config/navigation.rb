@@ -49,6 +49,8 @@ SimpleNavigation::Configuration.run do |navigation|
       secondary.item :comprehensive_risk_profilers, 'Ideal Asset Allocation', main_app.comprehensive_risk_profiler_path
     end
 
+    primary.item :trade, 'Trade', main_app.page_path('trade')
+
     primary.item :portfolios, 'Portfolio Tracker', main_app.portfolios_path, :highlights_on => :subpath do |secondary|
       if current_user
         current_user.portfolios.each do |portfolio|
