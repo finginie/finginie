@@ -119,6 +119,11 @@ en:
   high_voltage:
     pages:
       show:
+        trade:
+          title: 'Cheap Brokerage & Fees: Trade stocks,futures,options and currency with Finginie and Kotak at the lowest rates.'
+          descrition: 'Cheap Brokerage & Fees: Trade stocks,futures,options and currency with Finginie and Kotak at the lowest rates. Introductory offer.'
+          keywords: 'Cheap Brokerage & Fees: Trade stocks,futures,options and currency with Finginie and Kotak at the lowest rates.'
+
         home:
           title: 'Finginie'
         contact_us:
