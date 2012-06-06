@@ -36,4 +36,10 @@ describe "FixedDepositPosition" do
     subject.profit_or_loss_percentage.should eq 0.0
   end
 
+   it "should calculate the profit or loss percentage with out rate of redemption" do
+    subject
+    create :fixed_deposit_transaction, :date => 8.months.ago.to_date, :price => 100, :fixed_deposit => fixed_deposit, :portfolio => portfolio, :action => "sell"
+    subject.all # reload all the transactions
+    subject.profit_or_loss_percentage.should eq 0.0
+  end
 end

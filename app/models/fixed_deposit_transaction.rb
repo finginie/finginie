@@ -10,29 +10,10 @@ class FixedDepositTransaction < ActiveRecord::Base
 
   accepts_nested_attributes_for :fixed_deposit
 
-  delegate *[:rate_of_interest, :period, :name, :rate_of_redemption], :to => :fixed_deposit
+  delegate :rate_of_interest, :period, :name, :rate_of_redemption, :to => :fixed_deposit
 
   scope :for, lambda { |fixed_deposit| where(:fixed_deposit_id => fixed_deposit).order(:date, :created_at) } do
-
-    def name
-      first.name
-    end
-
-    def rate_of_interest
-      first.rate_of_interest
-    end
-
-    def period
-      first.period
-    end
-
-    def invested_amount
-      first.invested_amount
-    end
-
-    def current_value
-      first.current_value
-    end
+    delegate :name, :rate_of_interest, :period, :invested_amount, :current_value, :to => :first
 
     def unrealised_profit
       (current_value - first.amount).round(2)
@@ -43,7 +24,7 @@ class FixedDepositTransaction < ActiveRecord::Base
     end
 
     def profit_or_loss
-      last.profit_or_loss if all.count == 2
+      last.profit_or_loss if count == 2
     end
 
     def profit_or_loss_percentage
@@ -52,10 +33,7 @@ class FixedDepositTransaction < ActiveRecord::Base
   end
 
   def profit_or_loss
-    if action.to_sym == :sell
-     time_period = [ (date - portfolio.fixed_deposit_transactions.for(fixed_deposit).first.date)/365, period ].min
-     (fixed_deposit.send(:value_at_date, price, time_period, rate_of_redemption) - price).round(2)
-    end
+    (fixed_deposit.send(:value_at_date, price, time_period, redemption_interest_rate) - price).round(2) if sell?
   end
 
   def current_value
@@ -71,7 +49,7 @@ class FixedDepositTransaction < ActiveRecord::Base
   end
 
   def amount
-    action.to_sym == :buy ? price : (price * -1)
+    buy? ? price : (price * -1)
   end
 
   def fixed_deposit
@@ -79,16 +57,32 @@ class FixedDepositTransaction < ActiveRecord::Base
   end
 
   def display_action
-    action.to_sym == :buy ? "Deposit" : "Redeem"
+    buy? ? "Deposit" : "Redeem"
+  end
+
+  def sell?
+    action && action.downcase.to_sym == :sell
+  end
+
+  def buy?
+    action && action.downcase.to_sym == :buy
   end
 
 private
+  def redemption_interest_rate
+    rate_of_redemption || rate_of_interest
+  end
+
+  def time_period
+    [ (date - portfolio.fixed_deposit_transactions.for(fixed_deposit).first.date)/365, period ].min
+  end
+
   def date_should_not_be_in_the_future
     errors.add(:date, "can't be in the future") if !date.blank? and date > Date.today
   end
 
   def redemption_date_should_be_greater_than_deposit_date
-    if action.to_sym == :sell
+    if sell?
       errors.add(:date, "can't redeem before the deposit date") if date < portfolio.fixed_deposit_transactions.for(fixed_deposit).first.date
     end
   end
