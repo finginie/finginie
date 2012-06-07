@@ -18,12 +18,17 @@
         %td (Rs)
         %td (Rs)
         %td
+      - company_data = false
       - stock_transactions.each do |stock_transaction|
-        %tr
-          %td.dates= l stock_transaction.date
-          %td.type{:class => stock_transaction.action}= stock_transaction.action.to_s.titleize
-          %td.name= stock_transaction.company.name
-          %td.quantity= stock_transaction.quantity
-          %td.price= number_to_indian_currency stock_transaction.price
-          %td.amount= number_to_indian_currency stock_transaction.value.abs
-          %td.comment= stock_transaction.comments && stock_transaction.comments.strip.empty? ? t("tables_not_available") : stock_transaction.comments
+        - if stock_transaction.company
+          %tr
+            %td.dates= l stock_transaction.date
+            %td.type{:class => stock_transaction.action}= stock_transaction.action.to_s.titleize
+            %td.name= stock_transaction.company.name
+            %td.quantity= stock_transaction.quantity
+            %td.price= number_to_indian_currency stock_transaction.price
+            %td.amount= number_to_indian_currency stock_transaction.value.abs
+            %td.comment= stock_transaction.comments && stock_transaction.comments.strip.empty? ? t("tables_not_available") : stock_transaction.comments
+        - else
+          - company_data = true
+        = t("company_data_not_found")

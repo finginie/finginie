@@ -53,7 +53,7 @@ describe "Portfolios", :mongoid do
     4.times { |n| create :stock_transaction, :company_code => company.code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
     visit details_portfolio_path(portfolio)
     click_link company.name
-    page.current_path.should eq stock_path(company.code)
+    page.current_path.should eq stock_path(company.name)
   end
 
   it "should go to mutual fund page when a mutual fund in details page is clicked" do

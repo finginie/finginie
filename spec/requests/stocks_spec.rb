@@ -207,9 +207,9 @@ describe "Stocks", :mongoid, :redis do
   end    #  end of context index
 
   context "#screener" do
-    it "should have stock screener search", :js => true do
-      company1 = create :company, pe: 1,  eps: 1,  price_to_book_value: 1,  book_value: 1,  :industry_name => "FOO"
-      company2 = create :company, pe: 2,  eps: 2,  price_to_book_value: 2,  book_value: 2,  :industry_name => "BAR"
+    before(:each) do
+      @company1 = create :company, pe: 1,  eps: 1,  price_to_book_value: 1,  book_value: 1,  :industry_name => "FOO"
+      @company2 = create :company, pe: 2,  eps: 2,  price_to_book_value: 2,  book_value: 2,  :industry_name => "BAR"
 
       visit screener_stocks_path
 
@@ -228,13 +228,19 @@ describe "Stocks", :mongoid, :redis do
       click_button "Search"
 
       wait_until {  page.should have_selector("#stocks table") }
+    end
 
+    it "should have stock screener search", :js => true do
       expected_table = [
-                           [ company1.name, "FOO", "", "", "1.0"],
-                           [ company2.name, "BAR", "", "", "2.0"]
+                           [ @company1.name, "FOO", "", "", "1.0"],
+                           [ @company2.name, "BAR", "", "", "2.0"]
                         ]
 
       tableish("#stocks table").should include *expected_table
+    end
+
+    it "should have link that follow to stock page", :js => true do
+      page.should have_link(@company1.name, :href => stock_path(@company1.name))
     end
   end
 

@@ -7,7 +7,7 @@
     %th.right_align P/E
   - companies.each do |company|
     %tr.right_align
-      %td.name= link_to company.name, stock_path(company.code)
+      %td.name= link_to company.name, stock_path(company.name)
       %td.name= company.industry_name
       %td= company.current_price
       %td= company.nse.net_change || company.bse.net_change

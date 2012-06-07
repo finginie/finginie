@@ -43,5 +43,11 @@ describe "StockTransactions" do
                       ]
       tableish("table").should include *expected_table
     end
+
+    it "shouldn't throw error when company name is not found" do
+      create :stock_transaction, :company_code => "12345", :portfolio => portfolio, :quantity => 1, :price => 5, :date => Date.today
+      visit transactions_portfolio_path(portfolio)
+      page.should have_content I18n.t("company_data_not_found")
+    end
   end
 end
