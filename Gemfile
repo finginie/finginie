@@ -17,12 +17,12 @@ group :assets do
   gem 'jekyll_pipeline',          :path => 'engines/content'
 end
 
+gem 'airbrake'
 gem 'bourbon', :git => "git://github.com/FinGinie/bourbon.git"
 gem 'cancan'
 gem 'cells'
 gem 'dimensions-rails'
 gem 'draper', :git => "git://github.com/jcasimir/draper.git"
-gem 'exceptional'
 gem 'haml-rails'
 gem 'high_voltage'
 gem 'inherited_resources'

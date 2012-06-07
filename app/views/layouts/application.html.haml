@@ -6,8 +6,8 @@
     %meta{ :name => 'keywords', :content => auto_page_seo_content('keywords', yield(:keywords) ) }
     = stylesheet_link_tag :application
     = javascript_include_tag 'https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization","version":"1.1"}]}'
-    = javascript_include_tag 'http://js.exceptional.io/exceptional.js'
     = javascript_include_tag :application
+    = raw airbrake_javascript_notifier
     = csrf_meta_tags
 
   %body{ :class => auto_page_class_names }
