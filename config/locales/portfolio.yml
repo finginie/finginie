@@ -18,4 +18,5 @@ en:
       empty_transactions: 'You do not have any transactions in this portfolio.'
     empty_transaction:
       message: 'You do not have any investments in this portfolio.'
-  company_data_not_found: 'Due to technical failure we not showing some of data'
+  company_data_not_found: 'Due to some technical issues, we not showing some of your data. Our technical team has been
+  notified and we are working on fixing this error.'
