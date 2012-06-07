@@ -205,21 +205,25 @@ en:
             description: 'This article explains the differences between investing and trading in shares.'
             keywords: 'investing,trading,shares'
           investment-plan:
-            title: 'Investment Planning'
-            description: ''
-            keywords: ''
+            title: 'Investment Planning: How to plan your investments'
+            description: 'This article explains the investment planning process in simple language for beginners.'
+            keywords: 'investment planning, investment plan'
           investment-fixed-deposits:
             title: 'Investing in Fixed Deposits'
-            description: ''
+            description: 'Investing in fixed deposits is an excellent way to earn good returns while keeping your money
+             safe. Learn how to invest in fixed deposits while minimizing risk and maximizing return.'
             keywords: ''
           investment-types:
             title: 'Shares, Mutual Funds, Fixed Deposits, Bonds and Gold - Types of Investments'
-            description: ''
+            description: 'Shares,mutual funds,fixed deposits and gold are the major types of investments available in
+             India. We go over the risk,return and tax aspects of all of these investments and tell you how to reduce
+             risk and maximize your return while investing.'
             keywords: ''
           it-sector:
-            title: 'How to analyze IT sector shares'
-            description: ''
-            keywords: ''
+            title: 'How to analyze and invest in IT sector shares'
+            description: 'IT sector shares like Infosys and TCS have been the darlings of investors over the years. Learn
+            what influences the share prices of IT companies and how to invest in them.'
+            keywords: 'IT sector, TCS,Infosys, shares'
           mutual-funds-etf:
             title: 'Mutual Funds'
             description: ''
