@@ -24,9 +24,9 @@ class ApplicationController < ActionController::Base
 
 private
   def auto_page_class_names
-    [params[:controller], params[:action], params[:id]].compact.map{ |n| n.split('/') }.flatten
+    @auto_page_class_names ||= request.path.split '/'
+    @auto_page_class_names.empty? ? ['home'] : @auto_page_class_names
   end
-
 
   def current_user
     @current_user ||= User.find session[:user_id] if session[:user_id]
