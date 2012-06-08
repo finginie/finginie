@@ -44,6 +44,15 @@ body.stocks.index {
             margin-left: 12px;
           }
         }
+        #news {
+          float:left;
+          width: 100%;
+          margin-bottom: 20px;
+          h1 {
+            font-size: small;
+            color: $heading-blue;
+          }
+        }
         p {
           text-align: justify;
         }

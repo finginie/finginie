@@ -33,7 +33,8 @@ $ ->
     else
       google.setOnLoadCallback drawPieChart(this)
 
-  $("div.tabs").tabs();
+  $("div.tabs").each ->
+    $(this).tabs();
 
   $('[data-autocomplete-source]').each ->
     $(this).autocomplete

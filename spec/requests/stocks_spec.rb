@@ -207,6 +207,20 @@ describe "Stocks", :mongoid, :redis do
 
       tableish("#bse_scrip_sectoral_indices").should include *expected_content_bse
     end
+
+    it "should have news" do
+      5.times { |i|  create :'data_provider/news_article', :title => "Results Article #{i}",:published => DateTime.now - i, :section_name => 'results' }
+      6.times { |i|  create :'data_provider/news_article', :title => "World News Article #{i}",:published => DateTime.now - i, :section_name => 'world news' }
+
+      visit stocks_path
+
+      within "#news" do
+        page.should have_content 'Results'
+        page.should have_content 'World News'
+        page.should have_link 'Results Article 4'
+        page.should have_link 'World News Article 0'
+      end
+    end
   end    #  end of context index
 
   context "#screener" do
