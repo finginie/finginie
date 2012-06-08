@@ -1,5 +1,5 @@
 en:
-  title: 'Finginie'
+  title: "Finginie: India's best investment portal for beginners."
   description: 'Investment for beginners is made easy. You can track your investments using our portfolio tracker.
                 You can plan your investments based on our suggested portfolio mix'
   keywords: 'Investments, Shares, Mutual Funds, Assets, Portfolio Management, Track Investments'
@@ -123,7 +123,6 @@ en:
           title: 'Cheap Brokerage & Fees: Trade stocks,futures,options and currency with Finginie and Kotak at the lowest rates.'
           descrition: 'Cheap Brokerage & Fees: Trade stocks,futures,options and currency with Finginie and Kotak at the lowest rates. Introductory offer.'
           keywords: 'Cheap Brokerage & Fees: Trade stocks,futures,options and currency with Finginie and Kotak at the lowest rates.'
-
         home:
           title: 'Finginie'
         contact_us:
@@ -137,63 +136,154 @@ en:
         disclaimer:
           title: 'Disclaimer'
         investment_education:
-          title: 'Investement Education'
+          title: 'Learn how to invest.Investing in shares, mutual funds,fixed deposits and gold made easy for beginners.'
+          description: 'Learn investing.Investing in shares, mutual funds,fixed deposits and gold made easy for beginners.'
+          keywords: 'Learn investing, Investing,shares, mutual funds,fixed deposits, gold, made easy,beginners.'
           articles:
             title: 'Further Reading - Articles'
           risk_and_return:
-            title: 'Risk And Return'
+            title: 'Investment Risk And Return: An introduction for beginners'
+            description: 'This article explains the relationship between investment risk and investment return in
+            simple language such that even beginners can understand it.'
+            keywords: 'risk, return, investment risk'
           banking-sector-shares:
-            title: 'How to analyze banking sector shares'
+            title: 'How to analyze and invest in banking sector shares'
+            description: 'This article explains how an investor can analyze banking sector shares, the factors
+            influencing banking sector shares and how one can profit from investing in them.'
+            keywords: 'banking, shares, analyze banking shares, banking sector, banks'
           bonds:
-            title: 'Investing in bonds'
+            title: 'Investing in bonds: A guide'
+            description: 'This article guides investors on investing in bonds in India.Special emphasis is laid on
+            risk,return, taxation and the general principles of investing in bonds.'
+            keywords: 'bonds, India, beginners, investing, invest'
           cash-equivalents:
-            title: 'Cash Equivalents'
+            title: 'Investing in cash equivalents: A guide'
+            description: 'This article guides investors on investing in cash equivalents in India such as savings
+            deposits, bank deposits.Special emphasis is laid on the risk,return, taxation and the general principles of investing in cash
+             equivalents.'
+            keywords: 'cash equivalents, beginners, investing, invest, savings, deposits'
           commodities:
-            title: 'Commodities'
+            title: 'Investing in commodities: A guide'
+            description: 'This article guides investors on investing in commodities in India such as
+            gold,oil,precious and base metals.Special emphasis is laid on the risk,return, taxation and the general
+            principles of investing in commodities and derivatives.'
+            keywords: 'commodities, gold,silver, beginners, investing, invest'
           foreign-exchange:
-            title: 'Foreign Exchange'
+            title: 'Investing in Foreign Exchange/ Currencies: A guide'
+            description: 'This article guides investors on investing in foreign exchange aka currencies.
+            Special emphasis is laid on risk,return, taxation and the general principles of investing in foreign
+            exchange/currencies and derivatives.'
+            keywords: 'foreign exchange, currencies, dollar, beginners, investing, invest'
           forwards:
             title: 'Forwards'
+            description: ''
+            keywords: ''
           futures:
             title: 'Futures'
+            description: ''
+            keywords: ''
           fundamental-analysis-shares:
-            title: 'Fundamental Analysis of shares'
+            title: 'Fundamental Analysis of shares : A guide'
+            description: 'This article helps investors and beginners understand how to use fundamental analysis to
+            analyze shares. Proper application of these principles can help increase your investment return and reduce
+            investment risk.'
+            keywords: 'fundamental analysis, shares, investment,beginners'
           gold-investment:
-            title: 'Gold as an investment'
+            title: 'Gold as an investment: Understanding how to invest successfully in gold.'
+            description: 'This article guides investors and beginners on investing in
+             gold in India. Special emphasis is laid on risk,return, taxation and the general principles of investing
+             in gold.'
+            keywords: 'gold,beginners, investing, invest,ETF,gold fund'
           investment-diversification:
             title: 'Diversifying investments across sectors and asset classes'
+            description: 'This article helps investors and beginners understand how diversification works. Readers will
+             are taught how to diversify their investment portfolios across asset classes (such as shares,fixed deposits etc),
+             and sectors.The benefits of diversification such as reduced risk and enhanced returns are emphasized.'
+            keywords: 'diversification,asset classes,sectors,shares, beginners, investing, invest'
           investing-trading-shares:
             title: 'Investing v/s Trading in shares'
+            description: 'This article explains the differences between investing and trading in shares.'
+            keywords: 'investing,trading,shares'
           investment-plan:
-            title: 'Investment Planning'
+            title: 'Investment Planning: How to plan your investments'
+            description: 'This article explains the investment planning process in simple language for beginners.'
+            keywords: 'investment planning, investment plan'
           investment-fixed-deposits:
             title: 'Investing in Fixed Deposits'
+            description: 'Investing in fixed deposits is an excellent way to earn good returns while keeping your money
+             safe. Learn how to invest in fixed deposits while minimizing risk and maximizing return.'
+            keywords: ''
           investment-types:
             title: 'Shares, Mutual Funds, Fixed Deposits, Bonds and Gold - Types of Investments'
+            description: 'Shares,mutual funds,fixed deposits and gold are the major types of investments available in
+             India. We go over the risk,return and tax aspects of all of these investments and tell you how to reduce
+             risk and maximize your return while investing.'
+            keywords: ''
           it-sector:
-            title: 'How to analyze IT sector shares'
+            title: 'How to analyze and invest in IT sector shares'
+            description: 'IT sector shares like Infosys and TCS have been the darlings of investors over the years. Learn
+            what influences the share prices of IT companies and how to invest in them.'
+            keywords: 'IT sector, TCS,Infosys, shares'
           mutual-funds-etf:
             title: 'Mutual Funds'
+            description: ''
+            keywords: ''
           options:
             title: 'Options'
+            description: 'Options give the astute investor leverage and downside protection.They are powerful tools that
+            can be used for risk management as well as for speculation. Find out how you can make use of options to
+            protect your shares as well as take big positions on the share/stock market.'
+            keywords: 'options, put,call,shares'
           share-market:
             title: 'Share market : What drives it?'
+            description: 'Ever wondered about what drives the share market? About what market sentiment is all about?
+            About how macroeconomic indicators such as GDP,inflation and growth effect it?We tell you how the share/stock
+             market works, what drives share prices and how you can participate and profit from your investments in
+             shares and mutual funds.'
+            keywords: 'share,share market, stock, sentiment'
           shares:
-            title: 'Investing in shares'
+            title: 'Investing in shares : A guide'
+            description: 'This article tells you everything you need to know about investing in shares. We cover aspects
+             such as risk,returns,taxation and strategies to maximize returns.'
+            keywords: 'shares, stocks,risk,return,tax,capital gains'
           smart-investments:
             title: 'Making smart investments'
+            description: '5 tips to transform the way you invest: This guide will help you make smart investments using
+             the principles that experts use to build market-beating portfolios .'
+            keywords: 'smart investments,diversification,shares,invest'
           tax-planning:
             title: 'Planning your taxes'
+            description: 'Taxes can eat into your investment returns if you dont plan carefully. Find out how you can
+            minimize taxes and achieve superior returns.Tax planning for short and long term capital gains tax as well
+             as tax exemptions under Section 80c & 80ccf are emphasized in this article.'
+            keywords: 'tax,tax planning,capital gains tax,long term,short term,80c,infrastructure bonds,invest,
+            investments,investing'
           technical-analysis-shares:
             title: 'Technical Analysis of shares'
+            description: 'We show you how to use technical analysis to achieve superior returns on your investments in
+            shares.'
+            keywords: 'technical analysis,shares,investment,investing'
           time-value-of-money:
             title: 'Time Value Of Money'
+            description: ''
+            keywords: ''
           insurance-products:
-            title: 'Insurance Products'
+            title: 'Insurance Products Demystified'
+            description: 'Confused by the myriad of insurance products in the market? Look no further. We will teach you
+            everything you need to know about insurance and how you should pick the right policy to suit your insurance
+            and investment needs.'
+            keywords: 'insurance, policy,investing,invest,beginners'
           real-estate-investment:
             title: 'Real estate Investments'
+            description: ''
+            keywords: ''
           risk-management:
             title: 'Risk Management'
+            description: ''
+            keywords: ''
           where-to-invest:
             title: 'Where to invest'
+            description: 'Where should you invest? We show you how to allocate your money among different investments
+            and assets such as shares, fixed deposits,gold and mutual funds.'
+            keywords: 'asset allocation,shares,fixed deposits,invest,investment,where to invest,gold,mutual funds'
 
