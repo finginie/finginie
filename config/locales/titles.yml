@@ -230,36 +230,49 @@ en:
             keywords: ''
           options:
             title: 'Options'
-            description: ''
-            keywords: ''
+            description: 'Options give the astute investor leverage and downside protection.They are powerful tools that
+            can be used for risk management as well as for speculation. Find out how you can make use of options to
+            protect your shares as well as take big positions on the share/stock market.'
+            keywords: 'options, put,call,shares'
           share-market:
             title: 'Share market : What drives it?'
-            description: ''
-            keywords: ''
+            description: 'Ever wondered about what drives the share market? About what market sentiment is all about?
+            About how macroeconomic indicators such as GDP,inflation and growth effect it?We tell you how the share/stock
+             market works, what drives share prices and how you can participate and profit from your investments in
+             shares and mutual funds.'
+            keywords: 'share,share market, stock, sentiment'
           shares:
-            title: 'Investing in shares'
-            description: ''
-            keywords: ''
+            title: 'Investing in shares : A guide'
+            description: 'This article tells you everything you need to know about investing in shares. We cover aspects
+             such as risk,returns,taxation and strategies to maximize returns.'
+            keywords: 'shares, stocks,risk,return,tax,capital gains'
           smart-investments:
             title: 'Making smart investments'
-            description: ''
-            keywords: ''
+            description: '5 tips to transform the way you invest: This guide will help you make smart investments using
+             the principles that experts use to build market-beating portfolios .'
+            keywords: 'smart investments,diversification,shares,invest'
           tax-planning:
             title: 'Planning your taxes'
-            description: ''
-            keywords: ''
+            description: 'Taxes can eat into your investment returns if you dont plan carefully. Find out how you can
+            minimize taxes and achieve superior returns.Tax planning for short and long term capital gains tax as well
+             as tax exemptions under Section 80c & 80ccf are emphasized in this article.'
+            keywords: 'tax,tax planning,capital gains tax,long term,short term,80c,infrastructure bonds,invest,
+            investments,investing'
           technical-analysis-shares:
             title: 'Technical Analysis of shares'
-            description: ''
-            keywords: ''
+            description: 'We show you how to use technical analysis to achieve superior returns on your investments in
+            shares.'
+            keywords: 'technical analysis,shares,investment,investing'
           time-value-of-money:
             title: 'Time Value Of Money'
             description: ''
             keywords: ''
           insurance-products:
-            title: 'Insurance Products'
-            description: ''
-            keywords: ''
+            title: 'Insurance Products Demystified'
+            description: 'Confused by the myriad of insurance products in the market? Look no further. We will teach you
+            everything you need to know about insurance and how you should pick the right policy to suit your insurance
+            and investment needs.'
+            keywords: 'insurance, policy,investing,invest,beginners'
           real-estate-investment:
             title: 'Real estate Investments'
             description: ''
@@ -270,6 +283,7 @@ en:
             keywords: ''
           where-to-invest:
             title: 'Where to invest'
-            description: ''
-            keywords: ''
+            description: 'Where should you invest? We show you how to allocate your money among different investments
+            and assets such as shares, fixed deposits,gold and mutual funds.'
+            keywords: 'asset allocation,shares,fixed deposits,invest,investment,where to invest,gold,mutual funds'
 
