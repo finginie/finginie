@@ -1,13 +1,13 @@
-- [ NseScrip, BseScrip ].each do |scrip|
-  %div{ :id => "#{scrip.to_s.underscore}_sectoral_indices" }
-    %h1= "Sectoral Indices - #{scrip.to_s[0..2].upcase}"
+- [ 'NseScrip', 'BseScrip' ].each do |scrip|
+  %div{ :id => "#{scrip.underscore}_sectoral_indices" }
+    %h1= "Sectoral Indices - #{scrip[0..2].upcase}"
     %table
       %tr
         %th Index Name
         %th.right_align Value
         %th.right_align Change
         %th.right_align % Change
-      - scrip.send('sectoral_indices').each do |index|
+      - "DataProvider::#{scrip}".constantize.send('sectoral_indices').each do |index|
         %tr{ class: cycle("odd", "even") }
           %td= t(".#{index.id.delete(' ').gsub('&', '')}")
           %td.right_align= number_to_indian_currency index.last_traded_price

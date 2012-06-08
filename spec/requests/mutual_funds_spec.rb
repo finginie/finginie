@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe "MutualFunds", :mongoid do
   before(:each) do
-    @scheme = create :scheme, :objective => "Objective", :bench_mark_index_name => "Crisil Liquid Fund Index"
-    @amc =  create :asset_management_company, :company_code => @scheme.company_code, :company_name => "HDFC Mutual Fund"
-    @mf_dividend_detail = create :mf_dividend_detail, :security_code => @scheme.security_code
-    @nav_category_detail = create :net_asset_value_category, :scheme_class_code => @scheme.class_code
-    @mf_scheme_wise_portfolio = create :mf_scheme_wise_portfolio, :security_code => @scheme.security_code
+    @scheme = create :'data_provider/scheme', :objective => "Objective", :bench_mark_index_name => "Crisil Liquid Fund Index"
+    @amc =  create :'data_provider/asset_management_company', :company_code => @scheme.company_code, :company_name => "HDFC Mutual Fund"
+    @mf_dividend_detail = create :'data_provider/mf_dividend_detail', :security_code => @scheme.security_code
+    @nav_category_detail = create :'data_provider/net_asset_value_category', :scheme_class_code => @scheme.class_code
+    @mf_scheme_wise_portfolio = create :'data_provider/mf_scheme_wise_portfolio', :security_code => @scheme.security_code
   end
   let(:mutual_fund) { create :mutual_fund }
   subject { mutual_fund }
@@ -39,7 +39,7 @@ describe "MutualFunds", :mongoid do
 
   context "#index" do
     it "should have top funds" do
-      2.times { |i| create :scheme, :name => "scheme-#{i}",:nav_amount => 2 * i + 2, :percentage_change => 5 * i + 1,
+      2.times { |i| create :'data_provider/scheme', :name => "scheme-#{i}",:nav_amount => 2 * i + 2, :percentage_change => 5 * i + 1,
         :prev1_month_percent =>  6 * i + 3, :prev_year_percent =>  6 * i + 5, :prev3_year_percent =>  6 * i + 6 }
 
       visit mutual_funds_path
@@ -61,7 +61,7 @@ describe "MutualFunds", :mongoid do
     end
 
     it "should have biggest funds" do
-      2.times { |i| create :scheme, :name => "scheme-#{i}",:nav_amount => 2 * i + 2, :percentage_change => 5 * i + 1,
+      2.times { |i| create :'data_provider/scheme', :name => "scheme-#{i}",:nav_amount => 2 * i + 2, :percentage_change => 5 * i + 1,
         :size => 238.68 + i * 100, :prev_year_percent =>  6 * i + 5  }
 
       visit mutual_funds_path

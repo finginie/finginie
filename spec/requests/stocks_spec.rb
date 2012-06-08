@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe "Stocks", :mongoid, :redis do
-  let (:company) { create :company, :name => 'ABC InfoTech Ltd.', :ticker_name => 'TICK', :face_value => 8.24, :major_sector => 2 }
-  let (:nse_scrip) { create :nse_scrip, :id => company.nse_code, :last_traded_price => 24.22, :close_price => 23.42 }
-  let (:bse_scrip) { create :bse_scrip, :id => company.ticker_name, :last_traded_price => 23.26, :close_price => 22 }
+  let (:company) { create :'data_provider/company', :name => 'ABC InfoTech Ltd.', :ticker_name => 'TICK', :face_value => 8.24, :major_sector => 2 }
+  let (:nse_scrip) { create :'data_provider/nse_scrip', :id => company.nse_code, :last_traded_price => 24.22, :close_price => 23.42 }
+  let (:bse_scrip) { create :'data_provider/bse_scrip', :id => company.ticker_name, :last_traded_price => 23.26, :close_price => 22 }
 
   it "shows the stock details" do
     nse_scrip.save
@@ -16,8 +16,8 @@ describe "Stocks", :mongoid, :redis do
   end
 
   it "should show 52 w high/low price on stock page" do
-    create :listing, :exchange_code => 50, :scrip_code1_given_by_exchange => "#{company.nse_code}EQ", :fifty_two_week_high => 100.24, :low_date => "31/01/2012"
-    create :listing, :exchange_code => 47, :scrip_code1_given_by_exchange => company.bse_code1, :fifty_two_week_low => 98.62, :high_date => "31/01/2012"
+    create :'data_provider/listing', :exchange_code => 50, :scrip_code1_given_by_exchange => "#{company.nse_code}EQ", :fifty_two_week_high => 100.24, :low_date => "31/01/2012"
+    create :'data_provider/listing', :exchange_code => 47, :scrip_code1_given_by_exchange => company.bse_code1, :fifty_two_week_low => 98.62, :high_date => "31/01/2012"
 
     visit stock_path(company.name)
     page.should have_content 100.24
@@ -25,7 +25,7 @@ describe "Stocks", :mongoid, :redis do
   end
 
   it "should have ratios section for banking company" do
-    @banking_ratio = create :banking_ratio, :company_code => company.code, :year_ending => '31/03/2011',
+    @banking_ratio = create :'data_provider/banking_ratio', :company_code => company.code, :year_ending => '31/03/2011',
                                             :capital_adequacy_ratio => "13.64",
                                             :net_profit_margin      => "123.32",
                                             :yield_on_fund_advances => "462",
@@ -40,7 +40,7 @@ describe "Stocks", :mongoid, :redis do
 
   it "should have ratios section for non-banking company" do
     company.update_attribute( :major_sector, 1)
-    @ratio = create :ratio, :company_code => company.code, :year_ending => '31/03/2011',
+    @ratio = create :'data_provider/ratio', :company_code => company.code, :year_ending => '31/03/2011',
                                             :net_profit_margin => "241.23",
                                             :current_ratio     => "321.21"
     visit stock_path(company.name)
@@ -67,8 +67,14 @@ describe "Stocks", :mongoid, :redis do
   end
 
   context "#index" do
+    before(:each) do
+      create :'data_provider/bse_scrip', :id => "Sensex",    :last_traded_price => 10, :close_price => 9
+      create :'data_provider/nse_scrip', :id => "NSE Index", :last_traded_price => 10, :close_price => 9
+      create :'data_provider/nse_scrip', :id => "GOLDBEES",  :last_traded_price => 10, :close_price => 9
+    end
+
     it "should have search in index page", :js => true do
-      5.times { |i| create :company, :name => "Company Tech#{i}" }
+      5.times { |i| create :'data_provider/company', :name => "Company Tech#{i}" }
 
       visit stocks_path
 
@@ -83,9 +89,6 @@ describe "Stocks", :mongoid, :redis do
     end
 
     it "should have market indices" do
-      create :bse_scrip, :id => "Sensex",    :last_traded_price => 10, :close_price => 9
-      create :nse_scrip, :id => "NSE Index", :last_traded_price => 10, :close_price => 9
-      create :nse_scrip, :id => "GOLDBEES",  :last_traded_price => 10, :close_price => 9
 
       visit stocks_path
 
@@ -99,9 +102,9 @@ describe "Stocks", :mongoid, :redis do
     context "#Top Gainers" do
       before(:each) do
         5.times do |i|
-          top_gainer_company = create :company, :name => "GAINER#{i}", :ticker_name => "Gain #{i}", :nse_code => "GAIN#{i}"
-          create :nse_scrip, :id => top_gainer_company.nse_code, :last_traded_price => i+2, :close_price => i+1
-          create :bse_scrip, :id => top_gainer_company.ticker_name, :last_traded_price => i+3, :close_price => i+2
+          top_gainer_company = create :'data_provider/company', :name => "GAINER#{i}", :ticker_name => "Gain #{i}", :nse_code => "GAIN#{i}"
+          create :'data_provider/nse_scrip', :id => top_gainer_company.nse_code, :last_traded_price => i+2, :close_price => i+1
+          create :'data_provider/bse_scrip', :id => top_gainer_company.ticker_name, :last_traded_price => i+3, :close_price => i+2
         end
       end
 
@@ -136,9 +139,9 @@ describe "Stocks", :mongoid, :redis do
 
       before(:each) do
         5.times do |i|
-          top_loser_company = create :company, :name => "LOSER#{i}", :ticker_name => "Lose #{i}", :nse_code => "LOSE#{i}"
-          create :nse_scrip, :id => top_loser_company.nse_code, :last_traded_price => i+1, :close_price => i+2
-          create :bse_scrip, :id => top_loser_company.ticker_name, :last_traded_price => i+2, :close_price => i+3
+          top_loser_company = create :'data_provider/company', :name => "LOSER#{i}", :ticker_name => "Lose #{i}", :nse_code => "LOSE#{i}"
+          create :'data_provider/nse_scrip', :id => top_loser_company.nse_code, :last_traded_price => i+1, :close_price => i+2
+          create :'data_provider/bse_scrip', :id => top_loser_company.ticker_name, :last_traded_price => i+2, :close_price => i+3
         end
       end
 
@@ -163,9 +166,9 @@ describe "Stocks", :mongoid, :redis do
     context "#most active shares " do
       before(:each) do
         5.times do |i|
-          active_company = create :company, :name => "ACTIVE#{i}", :ticker_name => "Active #{i}", :nse_code => "ACT#{i}"
-          create :nse_scrip, :id => active_company.nse_code, :last_traded_price => i+1, :close_price => i+2, :volume => (20000 + i * 1000)
-          create :bse_scrip, :id => active_company.ticker_name, :last_traded_price => i+2, :close_price => i+2, :volume => 10000 + i * 1000
+          active_company = create :'data_provider/company', :name => "ACTIVE#{i}", :ticker_name => "Active #{i}", :nse_code => "ACT#{i}"
+          create :'data_provider/nse_scrip', :id => active_company.nse_code, :last_traded_price => i+1, :close_price => i+2, :volume => (20000 + i * 1000)
+          create :'data_provider/bse_scrip', :id => active_company.ticker_name, :last_traded_price => i+2, :close_price => i+2, :volume => 10000 + i * 1000
         end
       end
 
@@ -186,11 +189,11 @@ describe "Stocks", :mongoid, :redis do
     end  #  end of context most active
 
     it "should have sectoral indices" do
-      create :nse_scrip, :id => 'CNXFIN', :last_traded_price => 11, :close_price => 10
-      create :nse_scrip, :id => 'CNXAUTO', :last_traded_price => 9.5, :close_price => 10
+      create :'data_provider/nse_scrip', :id => 'CNXFIN', :last_traded_price => 11, :close_price => 10
+      create :'data_provider/nse_scrip', :id => 'CNXAUTO', :last_traded_price => 9.5, :close_price => 10
 
-      create :bse_scrip, :id => 'BSE Oil&Gas', :last_traded_price => 11, :close_price => 10
-      create :bse_scrip, :id => 'BSE Smallcap', :last_traded_price => 9.5, :close_price => 10
+      create :'data_provider/bse_scrip', :id => 'BSE Oil&Gas', :last_traded_price => 11, :close_price => 10
+      create :'data_provider/bse_scrip', :id => 'BSE Smallcap', :last_traded_price => 9.5, :close_price => 10
 
       visit stocks_path
 
@@ -208,8 +211,8 @@ describe "Stocks", :mongoid, :redis do
 
   context "#screener" do
     before(:each) do
-      @company1 = create :company, pe: 1,  eps: 1,  price_to_book_value: 1,  book_value: 1,  :industry_name => "FOO"
-      @company2 = create :company, pe: 2,  eps: 2,  price_to_book_value: 2,  book_value: 2,  :industry_name => "BAR"
+      @company1 = create :'data_provider/company', pe: 1,  eps: 1,  price_to_book_value: 1,  book_value: 1,  :industry_name => "FOO"
+      @company2 = create :'data_provider/company', pe: 2,  eps: 2,  price_to_book_value: 2,  book_value: 2,  :industry_name => "BAR"
 
       visit screener_stocks_path
 

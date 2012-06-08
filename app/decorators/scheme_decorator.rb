@@ -1,5 +1,5 @@
 class SchemeDecorator < ApplicationDecorator
-  decorates :scheme
+  decorates :'data_provider/scheme'
 
   FIELDS_TO_ROUND = [ 'percentage', 'nav_amount', 'percentage_change', 'dividend_percentage', 'day_change', 'prev1_week_percent', 'size',
                       'prev1_month_percent', 'prev3_months_percent', 'prev6_months_percent', 'prev9_months_percent', 'prev_year_percent',

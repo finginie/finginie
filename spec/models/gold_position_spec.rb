@@ -3,12 +3,12 @@ require 'spec_helper'
 describe "GoldPosition" do
   let(:portfolio) { create :portfolio }
   before :all do
-    create :nse_scrip, :id => "GOLDBEES", :last_traded_price => 5
+    create :'data_provider/nse_scrip', :id => "GOLDBEES", :last_traded_price => 5
   end
 
   subject {
     4.times { |n| create :gold_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
-    portfolio.gold_transactions.for(Gold)
+    portfolio.gold_transactions.for(DataProvider::Gold)
   }
 
   its (:quantity) { should eq 10 }

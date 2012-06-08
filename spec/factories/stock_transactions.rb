@@ -8,7 +8,7 @@ FactoryGirl.define do
       action "buy"
       date "2012-03-02"
       comments ""
-      company_code { FactoryGirl.create(:company).code }
+      company_code { FactoryGirl.create(:'data_provider/company').code }
         #portfolio
         #stock
     end

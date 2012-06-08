@@ -12,7 +12,7 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def gold_position
-    FungiblePositionDecorator.custom_decorate(resource.gold_transactions.for(Gold))
+    FungiblePositionDecorator.custom_decorate(resource.gold_transactions.for(DataProvider::Gold))
   end
 
   #portfolio page asset_class wise percentages
@@ -183,12 +183,12 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def gold_positions_profit_or_loss
-    gold_transactions.for(Gold).profit_or_loss ? [Hashie::Mash.new( { :name => "Gold", :type => 'Gold',
-                                                                      :average_sell_price => gold_transactions.for(Gold).average_sell_price,
-                                                                      :average_cost_price => gold_transactions.for(Gold).average_cost_price,
-                                                                      :quantity           => gold_transactions.for(Gold).sells.quantity.abs,
-                                                                      :profit_or_loss     => (gold_transactions.for(Gold).profit_or_loss.to_f),
-                                                                      :percentage         => gold_transactions.for(Gold).profit_or_loss_percentage.to_f } )] : []
+    gold_transactions.for(DataProvider::Gold).profit_or_loss ? [Hashie::Mash.new( { :name => "Gold", :type => 'Gold',
+                                                                      :average_sell_price => gold_transactions.for(DataProvider::Gold).average_sell_price,
+                                                                      :average_cost_price => gold_transactions.for(DataProvider::Gold).average_cost_price,
+                                                                      :quantity           => gold_transactions.for(DataProvider::Gold).sells.quantity.abs,
+                                                                      :profit_or_loss     => (gold_transactions.for(DataProvider::Gold).profit_or_loss.to_f),
+                                                                      :percentage         => gold_transactions.for(DataProvider::Gold).profit_or_loss_percentage.to_f } )] : []
   end
 
   def positions

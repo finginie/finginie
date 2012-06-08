@@ -4,7 +4,7 @@ class SchemesDecorator
   def as_json(options = {})
     {
       sEcho: params[:sEcho].to_i,
-      iTotalRecords: Scheme.count,
+      iTotalRecords: DataProvider::Scheme.count,
       iTotalDisplayRecords: schemes.count,
       aaData: data
     }
@@ -15,7 +15,7 @@ private
   def data
     schemes.map do |scheme|
       [
-        link_to(scheme.name, Rails.application.routes.url_helpers.scheme_summary_mutual_fund_path(scheme.name)),
+        link_to(scheme.name, Rails.application.routes.url_helpers.mutual_fund_path(scheme.name)),
         h(scheme.class_description),
         h(scheme.minimum_investment_amount)
       ]
@@ -28,7 +28,7 @@ private
 
   def fetch_schemes
     if params[:sSearch].present?
-      schemes = Scheme.all.order([[ sort_column.to_sym, sort_direction.to_sym]])
+      schemes = DataProvider::Scheme.all.order([[ sort_column.to_sym, sort_direction.to_sym]])
       schemes = schemes.page(page).per(per_page)
       schemes = schemes.csearch(params[:sSearch])
     end

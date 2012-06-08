@@ -3,7 +3,7 @@
 
   .inputs
     = f.input :company_code do
-      = f.select :company_code, Company.stocks.order_by([[:name, :asc]]).all.map { |c| [c.name, c.code] }
+      = f.select :company_code, DataProvider::Company.stocks.order_by([[:name, :asc]]).all.map { |c| [c.name, c.code] }
     = f.input :action, :collection => [["Buy",:buy],["Sell",:sell]], :include_blank => false
     = f.input :quantity
     = f.input :price

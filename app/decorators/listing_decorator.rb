@@ -1,5 +1,5 @@
 class ListingDecorator < ApplicationDecorator
-  decorates :listing
+  decorates :'data_provider/listing'
 
   FIELDS_TO_ROUND = [ :fifty_two_week_high, :fifty_two_week_low ]
 

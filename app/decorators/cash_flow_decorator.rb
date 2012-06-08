@@ -1,5 +1,5 @@
 class CashFlowDecorator < ApplicationDecorator
-  decorates :cash_flow
+  decorates :'data_provider/cash_flow'
 
   FIELDS_CRORE = [
     'profits_before_tax'            ,

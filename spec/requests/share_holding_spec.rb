@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe "ShareHolding", :mongoid do
-  let(:company) { create :company }
+  let(:company) { create :'data_provider/company' }
   before :each do
-    @share_holding = create :share_holding, :company_code => company.code
+    @share_holding = create :'data_provider/share_holding', :company_code => company.code
   end
 
   it "should show the share holding profits_after_taxtern for a Stock" do

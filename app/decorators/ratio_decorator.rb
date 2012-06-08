@@ -1,5 +1,5 @@
 class RatioDecorator < ApplicationDecorator
-  decorates :ratio
+  decorates :'data_provider/ratio'
 
   RATIO_GROUPS = { 'COMPONENT RATIOS' =>    [ 'bonus_in_equity_capital',
                                               'imported_compof_rawmaterialconsumed',

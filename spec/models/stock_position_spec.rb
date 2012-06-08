@@ -61,7 +61,7 @@ describe "StockPosition",:redis, :mongoid do
   end
 
   it "should return nil unrealised profit when there is no current price" do
-    company_without_current_price = create :company
+    company_without_current_price = create :'data_provider/company'
     create :stock_transaction, :company_code => company_without_current_price.code, :quantity => 10, :price => 5, :date => 5.days.ago, :portfolio => portfolio
     stock_position = portfolio.stock_transactions.for(company_without_current_price)
     stock_position.unrealised_profit.should eq nil

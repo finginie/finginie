@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe BankingRatioDecorator do
   before { ApplicationController.new.set_current_view_context }
-  let(:banking_ratio) { create :banking_ratio, :adjusted_return_on_net_worth => "1.233455",
+  let(:banking_ratio) { create :'data_provider/banking_ratio', :adjusted_return_on_net_worth => "1.233455",
                                                :cost_of_funds_ratio  => "2.3455" }
   let(:banking_ratio_decorator) { BankingRatioDecorator.decorate banking_ratio }
   subject { banking_ratio_decorator }

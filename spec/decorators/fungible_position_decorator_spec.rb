@@ -3,7 +3,7 @@ require 'spec_helper'
 describe FungiblePositionDecorator do
   before(:each) {
     @portfolio = create :portfolio
-    @company = create :company, :industry_name => "FOO"
+    @company = create :'data_provider/company', :industry_name => "FOO"
     4.times { |n| create :stock_transaction, :company_code => @company.code, :portfolio => @portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
   }
 

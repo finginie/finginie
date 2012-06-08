@@ -14,7 +14,7 @@ class StockTransaction < ActiveRecord::Base
   end
 
   def company
-    @company ||= (company_code && Company.where( code: company_code).first)
+    @company ||= (company_code && DataProvider::Company.where( code: company_code).first)
   end
 
   def company=(company)

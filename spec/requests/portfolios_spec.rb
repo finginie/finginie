@@ -5,7 +5,7 @@ describe "Portfolios", :mongoid do
   let (:portfolio) { create :portfolio, :user => current_user }
 
   let(:company) { create :company_with_scrip, :industry_name => "FOO" }
-  let(:scheme) { create :scheme, :nav_amount => "5", :class_description => "FOO"}
+  let(:scheme) { create :'data_provider/scheme', :nav_amount => "5", :class_description => "FOO"}
   let(:real_estate) { create :real_estate, :name => "Test Property", :location => "Mordor", :current_price => 600 }
   let(:fixed_deposit) { create :fixed_deposit, :name => "Foo", :period => 5, :rate_of_interest => 10.0 }
 
@@ -15,10 +15,10 @@ describe "Portfolios", :mongoid do
                           :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
     4.times { |n| create :gold_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-    company_without_current_price = create :company
+    company_without_current_price = create :'data_provider/company'
     create :stock_transaction, :company_code => company_without_current_price.code, :quantity => 10, :price => 5, :date => 5.days.ago, :portfolio => portfolio
 
-    create :nse_scrip, :id => "GOLDBEES", :last_traded_price => 5
+    create :'data_provider/nse_scrip', :id => "GOLDBEES", :last_traded_price => 5
 
     visit portfolio_path(portfolio)
     find("li#navigation-details").find("a").click
@@ -272,7 +272,7 @@ describe "Portfolios", :mongoid do
 
   it "should show mutual funds analysis table" do
     create_positions_of_all_securities
-    scheme2 = create :scheme, :nav_amount => "5", :class_description => "BAR"
+    scheme2 = create :'data_provider/scheme', :nav_amount => "5", :class_description => "BAR"
     create :mutual_fund_transaction, :scheme => scheme2.name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today
 
     visit mutual_funds_analysis_portfolio_path(portfolio)
@@ -316,7 +316,7 @@ describe "Portfolios", :mongoid do
   end
 
   it "user can able to add transactions after selecting securities type", :js => true do
-    create :nse_scrip, :id => "GOLDBEES", :last_traded_price => 2456
+    create :'data_provider/nse_scrip', :id => "GOLDBEES", :last_traded_price => 2456
 
     visit portfolio_path(portfolio)
 
@@ -351,7 +351,7 @@ describe "Portfolios", :mongoid do
 
   it "should display mutual funds profits/losses in mutual funds anyalysis page" do
     create_positions_of_all_securities
-    scheme2 = create :scheme, :class_description => "BAR"
+    scheme2 = create :'data_provider/scheme', :class_description => "BAR"
     create :mutual_fund_transaction, :scheme => scheme.name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
     create :mutual_fund_transaction, :scheme => scheme2.name, :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
     create :mutual_fund_transaction, :scheme => scheme2.name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
@@ -423,7 +423,7 @@ describe "Portfolios", :mongoid do
     create :stock_transaction, :company_code => another_company.code, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
 
     create :mutual_fund_transaction, :scheme => scheme.name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
-    scheme2 = create :scheme, :class_description => "BAR", :name => "Foo Scheme Name"
+    scheme2 = create :'data_provider/scheme', :class_description => "BAR", :name => "Foo Scheme Name"
 
     create :mutual_fund_transaction, :scheme => scheme2.name, :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
     create :mutual_fund_transaction, :scheme => scheme2.name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"

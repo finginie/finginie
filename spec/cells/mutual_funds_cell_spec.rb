@@ -5,7 +5,7 @@ describe MutualFundsCell, :mongoid do
 
     context "rendering top_funds" do
       before(:each) do
-        2.times { |i| create :scheme, :name => "scheme-#{i}",:nav_amount => 2 * i + 2, :percentage_change => 5 * i + 1,
+        2.times { |i| create :'data_provider/scheme', :name => "scheme-#{i}",:nav_amount => 2 * i + 2, :percentage_change => 5 * i + 1,
           :prev1_month_percent =>  6 * i + 3, :prev_year_percent =>  6 * i + 5, :prev3_year_percent =>  6 * i + 6 }
       end
       subject { render_cell(:mutual_funds, :top_funds) }
@@ -23,7 +23,7 @@ describe MutualFundsCell, :mongoid do
 
     context "rendering biggest_funds" do
       before(:each) do
-        2.times { |i| create :scheme, :name => "scheme-#{i}",:nav_amount => 2 * i + 2, :percentage_change => 5 * i + 1,
+        2.times { |i| create :'data_provider/scheme', :name => "scheme-#{i}",:nav_amount => 2 * i + 2, :percentage_change => 5 * i + 1,
           :size => 238.68 + i * 100, :prev_year_percent =>  6 * i + 5  }
       end
 

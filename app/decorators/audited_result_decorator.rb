@@ -1,5 +1,5 @@
 class AuditedResultDecorator < ApplicationDecorator
-  decorates :audited_result
+  decorates :'data_provider/audited_result'
 
   BANKING_BALANCE_SHEET = [
     { :title => 'Authorised Capital',                     :heading => true,  :field_name => 'authorised_capital'          },
@@ -243,7 +243,7 @@ class AuditedResultDecorator < ApplicationDecorator
   end
 
   def company_name
-    Company.where( code: model.company_code ).first.name
+    DataProvider::Company.where( code: model.company_code ).first.name
   end
 
   def profit_loss_view_items

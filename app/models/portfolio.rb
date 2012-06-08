@@ -64,7 +64,7 @@ class Portfolio < ActiveRecord::Base
   end
 
   def gold_value
-    gold_transactions.for(Gold).current_value
+    gold_transactions.for(DataProvider::Gold).current_value
   end
 
   def real_estates_value
