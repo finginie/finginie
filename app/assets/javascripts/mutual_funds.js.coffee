@@ -1,9 +1,4 @@
 $ ->
-  $('#scheme_name').autocomplete
-    source: $('#scheme_name').data('autocomplete-source'),
-    select: ( event, ui ) ->
-			  window.location = "/mutual_funds/#{ui.item.value}/scheme_summary";
-
   change = parseFloat($(".day_change").text().trim())
   percentage_change = parseFloat($(".percentage_change").text().trim().slice(1,-2))
 

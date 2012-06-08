@@ -1,6 +1,6 @@
 class MutualFundsController < InheritedResources::Base
-  actions :index
-  custom_actions :resource => [ :scheme_summary, :scheme_returns, :top_holdings, :detailed_holdings, :asset_allocation, :sectoral_allocation ]
+  actions :index, :show
+  custom_actions :resource => [ :scheme_returns, :top_holdings, :detailed_holdings, :asset_allocation, :sectoral_allocation ]
 
   def collection
     @search = DataProvider::Scheme.new

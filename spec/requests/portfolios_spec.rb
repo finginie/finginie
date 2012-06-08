@@ -62,7 +62,7 @@ describe "Portfolios", :mongoid do
 
     visit details_portfolio_path(portfolio)
     click_link scheme.name
-    page.current_path.should eq scheme_summary_mutual_fund_path(scheme.name)
+    page.current_path.should eq mutual_fund_path(scheme.name)
   end
 
   it "should show loan net position in details page" do

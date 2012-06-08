@@ -11,8 +11,8 @@ class StocksController < InheritedResources::Base
 
   def collection
     @search = DataProvider::Company.new
-    if params[:company]
-      @search_records = DataProvider::Company.stocks.csearch(params[:company].values.join(" ")).order_by([[:name, :asc]])
+    if params[:term]
+      @search_records = DataProvider::Company.stocks.csearch(params[:term]).order_by([[:name, :asc]])
       @search_records.all.map {|stock| {:value => stock.name, :id => stock.code}}
     elsif params[:screener]
       @search_records = DataProvider::Company.screener_search(params[:screener])
@@ -23,7 +23,7 @@ class StocksController < InheritedResources::Base
   def index
     index! do |format|
       format.html
-      format.json { render json: (params[:company] ? collection : CompaniesDecorator.new(view_context)) }
+      format.json { render json: (params[:term] ? collection : CompaniesDecorator.new(view_context)) }
     end
   end
 

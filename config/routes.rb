@@ -13,7 +13,6 @@ Finginie::Application.routes.draw do
 
   resources :mutual_funds, :only => [:index, :show] do
     member do
-      get 'scheme_summary'
       get 'scheme_returns'
       get 'top_holdings'
       get 'detailed_holdings'

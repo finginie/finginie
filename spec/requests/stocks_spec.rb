@@ -52,7 +52,7 @@ describe "Stocks", :mongoid, :redis do
   it "should have search in the stock page", :js => true do
     visit stock_path company.name
 
-    page.execute_script %Q{ $('#company_name').val("#{company.name[0..5]}").keydown(); }
+    page.execute_script %Q{ $('[data-autocomplete-source]').val("#{company.name[0..5]}").keydown(); }
 
     wait_until {  page.should have_selector(".ui-menu-item a:contains('#{company.name}')") }
 

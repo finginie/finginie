@@ -4,7 +4,7 @@
   .inputs
     .security
       = f.input :scheme do
-        = f.text_field :scheme, data: { autocomplete_source: mutual_funds_path }
+        = f.text_field :scheme, data: { autocomplete_source: mutual_funds_path, no_redirect: true }
     = f.input :action, :collection => [["Buy", :buy], ["Sell", :sell]], :include_blank => false
     = f.input :quantity
     = f.input :price
