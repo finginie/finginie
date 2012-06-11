@@ -1,0 +1,108 @@
+@import "bourbon";
+@import "holygrail";
+@import "lists";
+@import "defaults";
+@import "utilities";
+
+@mixin color-highlights($color: grey) {
+  h1 {
+    background: $color;
+    border-radius: 2px 2px 0 0;
+  }
+}
+body.blog {
+  #wrapper {
+    width: 980px;
+    padding-left: 0;
+    @include hide-aside;
+    #main {
+      .container {
+        padding-left: 4px;
+        .postarea {
+          width: 650px;
+          float: left;
+          article {
+            width: 650px;
+            padding: 10px;
+            margin-bottom: 20px;
+            @include border-radius(4px);
+            border: 1px solid $border-color;
+            background: #F5F5F5;
+            h1 a {
+              color: $heading-green;
+              font-size: 24px;
+              line-height: 1.5em;
+              text-decoration: none;
+            }
+            h1 a:hover {
+              color: $heading-blue;
+              text-decoration: underline;
+            }
+            .author {
+              border-bottom: 1px solid #343434;
+              color: #696969;
+              padding: 0 0 10px;
+              font-size: 12px;
+            }
+            .content {
+              p {
+                text-align: justify;
+              }
+            }
+          }
+        }
+        .pagination {
+          width: 670px;
+          text-align: right;
+          font-size: 12px;
+          color: $heading-red;
+        }
+      }
+      .extracontent {
+        width: 290px;
+        float: right;
+        h1 {
+          font: {
+            family: heading-font;
+            size: 16px;
+            weight: normal;
+          }
+          padding: 8px 0;
+          color: #fff;
+          text-align: center;
+        }
+        &>div {
+          border: 1px solid $border-color;
+          @include border-radius(4px 4px 0 0);
+          margin-bottom: 1em;
+          ul {
+            padding: 0;
+          }
+          li {
+            @include no-bullet;
+            margin: 2px;
+            padding: 4px;
+            font: {
+              family: $content-font;
+              size: 12px;
+            }
+            a {
+              text-decoration: none;
+            }
+          }
+        }
+        .takeaway {
+          @include color-highlights(#CE5A5A);
+        }
+        .articles {
+          @include color-highlights(#B6CE61);
+        }
+        .videos {
+          @include color-highlights(#446C99);
+        }
+      }
+    }
+  }
+}
+
+
