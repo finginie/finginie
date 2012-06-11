@@ -4,6 +4,7 @@
 # It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 # the compiled file.
 #
+#= require environment
 #= require jquery
 #= require jquery-ui
 #= require jquery_ujs
@@ -14,29 +15,13 @@
 #= require chosen.jquery.min
 #= require google_charts
 #
-#= require underscore
-#= require backbone
-#= require backbone_rails_sync
-#= require backbone_datalink
-#
 #= require disqus
 #= require twitter
 #= require facebook
 #= require analytics
 #
 #= require_self
-#= require_tree ./templates
-#= require_tree ./models
-#= require_tree ./views
-#= require_tree ./routers
-#
 #= require_tree .
-
-window.Finginie =
-  Models: {}
-  Collections: {}
-  Routers: {}
-  Views: {}
 
 google.load('visualization', '1');
 

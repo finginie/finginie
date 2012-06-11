@@ -1,5 +1,4 @@
 $ ->
-
   $('#company_name').autocomplete
     source: ( request, response ) ->
       $.getJSON( $('#company_name').data('autocomplete-source'), { company: { name: request.term } }, response );
