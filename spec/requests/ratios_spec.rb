@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe "Ratios", :mongoid do
-  let(:company) { create :company, :major_sector => 2 }
+  let(:company) { create :'data_provider/company', :major_sector => 2 }
 
   it "should show the banking ratios page for Stock" do
-    @banking_ratio = create :banking_ratio, :company_code => company.code, :year_ending => '31/03/2011',
+    @banking_ratio = create :'data_provider/banking_ratio', :company_code => company.code, :year_ending => '31/03/2011',
                                             :capital_adequacy_ratio => "13.64",
                                             :fund_based_income_as_a_per_of_op_income => "92.73",
                                             :borrowings_from_others_as_a_per_to_total_borrowings => "1.3",
@@ -23,7 +23,7 @@ describe "Ratios", :mongoid do
   it "should show the ratios page for stock for non-banking" do
 
     company.update_attribute( :major_sector, 1)
-    @ratio = create :ratio, :company_code => company.code, :year_ending => '31/03/2011',
+    @ratio = create :'data_provider/ratio', :company_code => company.code, :year_ending => '31/03/2011',
                                             :sell_distribut_cost_comp => "24.23",
                                             :interest_coverage => "3.2306",
                                             :total_debtto_ownersfund => "9.6534",

@@ -10,7 +10,7 @@ FactoryGirl.define do
     text "Are you a good boy?"
     #quiz
 
-    after_create do |question, proxy|
+    after(:create) do |question, proxy|
       FactoryGirl.create_list :choice, proxy.number_of_choices, :question => question
     end
   end

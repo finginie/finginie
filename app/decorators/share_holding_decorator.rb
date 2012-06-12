@@ -1,5 +1,5 @@
 class ShareHoldingDecorator < ApplicationDecorator
-  decorates :share_holding
+  decorates :'data_provider/share_holding'
 
   SHARE_HOLDING_CODES = { "foreign_institutional_investors_percentage" =>  [ { :code => "1383", :name => "Foreign Institutions" } ] ,
                           "domestic_institutional_investors_percentage" => [ { :code => "1395", :name => "Mutual Funds" },

@@ -3,9 +3,9 @@ class CashFlowController < InheritedResources::Base
   actions :show
 
   def resource
-    @search = Company.new
-    @company = Company.find_by_name(params[:stock_id] )
-    @cash_flows = CashFlow.all(conditions: { company_code: @company.code }, sort: [[ :year_ending, :desc ]], limit: 5)
+    @search = DataProvider::Company.new
+    @company = DataProvider::Company.find_by_name(params[:stock_id] )
+    @cash_flows = DataProvider::CashFlow.all(conditions: { company_code: @company.code }, sort: [[ :year_ending, :desc ]], limit: 5)
     @cash_flows = CashFlowCollectionDecorator.new(@cash_flows)
   end
 end

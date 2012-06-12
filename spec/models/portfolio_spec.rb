@@ -24,7 +24,7 @@ describe Portfolio, :redis do
   it { should have_many :real_estates }
 
   it "should have_many companies" do
-    company = create :company
+    company = create :'data_provider/company'
     4.times { |n| create :stock_transaction, :company_code =>company.code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
     subject.companies.should include company
   end
@@ -34,7 +34,7 @@ describe Portfolio, :redis do
   its(:total_liabilitites_value) { should eq 0 }
 
   it "should have many stock_positions" do
-    company = create :company
+    company = create :'data_provider/company'
     4.times { |n| create :stock_transaction, :company_code => company.code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
     4.times { |n| create :stock_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
@@ -53,8 +53,8 @@ describe Portfolio, :redis do
   it "should have a gold position" do
     4.times { |n| create :gold_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-    portfolio.gold_transactions.for(Gold).quantity.should eq 10
-    portfolio.gold_transactions.for(Gold).average_cost_price.should eq 3
+    portfolio.gold_transactions.for(DataProvider::Gold).quantity.should eq 10
+    portfolio.gold_transactions.for(DataProvider::Gold).average_cost_price.should eq 3
   end
 
   describe "Net Worth" do
@@ -86,14 +86,14 @@ describe Portfolio, :redis do
   end
 
   def create_positions_of_all_securities
-    company = create :company, :industry_name => "FOO"
-    scrip = create :nse_scrip, :last_traded_price => 5, :id => company.nse_code
+    company = create :'data_provider/company', :industry_name => "FOO"
+    scrip = create :'data_provider/nse_scrip', :last_traded_price => 5, :id => company.nse_code
     4.times { |n| create :stock_transaction, :company_code => company.code, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-    scheme = create :scheme, :nav_amount => "5"
+    scheme = create :'data_provider/scheme', :nav_amount => "5"
     4.times { |n| create :mutual_fund_transaction, :scheme => scheme.name, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-    create :nse_scrip, :id => "GOLDBEES", :last_traded_price => 5
+    create :'data_provider/nse_scrip', :id => "GOLDBEES", :last_traded_price => 5
     4.times { |n| create :gold_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     loan =  create :loan, :name => "Foo Loan", :rate_of_interest => "10", :period => "1"

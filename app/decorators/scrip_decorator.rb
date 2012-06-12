@@ -1,6 +1,6 @@
 class ScripDecorator < ApplicationDecorator
-  decorates :nse_scrip
-  decorates :bse_scrip
+  decorates :'data_provider/nse_scrip'
+  decorates :'data_provider/bse_scrip'
 
   FIELDS_TO_ROUND = [ :last_traded_price, :open_price, :high_price, :close_price, :low_price, :net_change, :percent_change ]
 

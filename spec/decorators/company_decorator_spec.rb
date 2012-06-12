@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe CompanyDecorator, :redis, :mongoid do
   before { ApplicationController.new.set_current_view_context }
-  let(:company) {create :company, :eps => '1424.32001', :ticker_name => "TIMSK", :market_capitalization => '2234567890' }
-  let(:nse_scrip) { create :nse_scrip, :id => company.nse_code, :time => Time.now, :volume => 542632788 }
-  let(:bse_scrip) { create :bse_scrip, :id => company.ticker_name, :last_traded_price => 123.45, :volume => 23456784523 }
-  let(:share_holding) { create :share_holding, :company_code => company.code }
+  let(:company) {create :'data_provider/company', :eps => '1424.32001', :ticker_name => "TIMSK", :market_capitalization => '2234567890' }
+  let(:nse_scrip) { create :'data_provider/nse_scrip', :id => company.nse_code, :time => Time.now, :volume => 542632788 }
+  let(:bse_scrip) { create :'data_provider/bse_scrip', :id => company.ticker_name, :last_traded_price => 123.45, :volume => 23456784523 }
+  let(:share_holding) { create :'data_provider/share_holding', :company_code => company.code }
   let(:company_decorator) { CompanyDecorator.decorate(company) }
   subject { company_decorator }
 
@@ -44,7 +44,7 @@ describe CompanyDecorator, :redis, :mongoid do
 
   describe "with news" do
     before :each do
-      6.times { |i| create :news, :company_code => company.code, :headlines => "headlines #{i}", :modify_on => Time.now - i }
+      6.times { |i| create :'data_provider/news', :company_code => company.code, :headlines => "headlines #{i}", :modify_on => Time.now - i }
     end
     it "should get all the news for a company" do
       CompanyDecorator.decorate(company).news.map(&:headlines).should include( "headlines 0", "headlines 1", "headlines 2", "headlines 3", "headlines 4" )

@@ -2,10 +2,10 @@ module GoldPosition
   include FungiblePosition
 
   def name
-    first.gold.name
+    'Gold'
   end
 
   def current_price
-    all.empty? ? 0.0 : first.gold.current_price
+    all.empty? ? 0.0 : first.gold.last_traded_price
   end
 end

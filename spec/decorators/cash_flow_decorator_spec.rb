@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe CashFlowDecorator do
   before { ApplicationController.new.set_current_view_context }
-  let(:company) { create :company }
-  let(:cash_flow)      { create :cash_flow, :company_code => company.code,
+  let(:company) { create :'data_provider/company' }
+  let(:cash_flow)      { create :'data_provider/cash_flow', :company_code => company.code,
                                             :profits_before_tax	        => "139260961000",
                                             :interest_paid_net	=> "25386722000",
                                             :provisions_dimun_in_value_of_investment	=> "-9685958000",

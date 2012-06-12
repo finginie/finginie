@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "GoldTransactions", :redis do
   include_context "logged in user"
   let (:portfolio) { create :portfolio, :user => current_user }
-  before(:each) { create :nse_scrip, :id => "GOLDBEES", :last_traded_price => 2456 }
+  before(:each) { create :'data_provider/nse_scrip', :id => "GOLDBEES", :last_traded_price => 2456 }
   it "should add a new gold transaction to a portfolio" do
     visit  new_portfolio_gold_transaction_path(portfolio)
 

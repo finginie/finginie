@@ -1,6 +1,6 @@
-- [ NseScrip, BseScrip ].each do |klass|
-  %div{ :id => "#{klass.to_s[0..2].downcase}_gainers_losers" }
-    %h1= "Trending Shares - #{klass.to_s[0..2].upcase}"
+- [ 'NseScrip', 'BseScrip' ].each do |klass|
+  %div{ :id => "#{klass[0..2].downcase}_gainers_losers" }
+    %h1= "Trending Shares - #{klass[0..2].upcase}"
     .tabs
       %ul
         %li= link_to t(".top_gainers"), "##{klass.to_s.underscore}_top_gainers"
@@ -8,7 +8,7 @@
         %li= link_to t(".most_active"), "##{klass.to_s.underscore}_most_active"
 
       - %w(top_gainers top_losers most_active).each do |performance|
-        %div{ :id => "#{klass.to_s.underscore}_#{performance}" }
+        %div{ :id => "#{klass.underscore}_#{performance}" }
           %table
             %tr
               %th Name
@@ -17,7 +17,7 @@
                 %th.right_align Volume
               -else
                 %th.right_align % Change
-            - klass.send(performance, 5).each do |scrip|
+            - "DataProvider::#{klass}".constantize.send(performance, 5).each do |scrip|
               %tr{ class: cycle("odd", "even") }
                 %td
                   - if scrip.company.name

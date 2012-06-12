@@ -12,7 +12,7 @@ FactoryGirl.define do
     #weight "9.99"
     result_type "mean"
 
-    after_create do |quiz, proxy|
+    after(:create) do |quiz, proxy|
       FactoryGirl.create_list :question, proxy.number_of_questions, :quiz => quiz, :number_of_choices => proxy.number_of_choices_per_question
     end
   end

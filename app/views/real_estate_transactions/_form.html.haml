@@ -13,7 +13,7 @@
     = f.fields_for :real_estate do |real_estate|
       = real_estate.input :current_price
   .inputs
-    = f.input :date,:order=> [:day,:month,:year]
+    = f.input :date,:order=> [:day,:month,:year], :start_year => 2000
     = f.input :comments
 
   .actions

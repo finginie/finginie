@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "MutualFundTransactions" do
   include_context "logged in user"
   let (:portfolio) { create :portfolio, :user => current_user }
-  let (:scheme) { create :scheme, :nav_amount => "10" }
+  let (:scheme) { create :'data_provider/scheme', :nav_amount => "10" }
 
   before(:each) {
     scheme.save
@@ -33,7 +33,7 @@ describe "MutualFundTransactions" do
 
   it "should autocomplete scheme name when user fill scheme name", :js => true do
     visit new_portfolio_mutual_fund_transaction_path(portfolio)
-    page.execute_script %Q{ $('#mutual_fund_transaction_scheme').val("#{scheme.name[0..5]}").keydown(); }
+    page.execute_script %Q{ $('[data-autocomplete-source]').val("#{scheme.name[0..5]}").keydown(); }
 
     wait_until {  page.should have_selector(".ui-menu-item a:contains('#{scheme.name}')") }
 

@@ -4,7 +4,7 @@ describe PortfolioDecorator, :redis, :mongoid do
   before { ApplicationController.new.set_current_view_context }
   let(:portfolio) { create :portfolio }
   let(:company) { create :company_with_scrip, :industry_name => "FOO" }
-  let(:scheme) { create :scheme, :class_description => "FOO", :nav_amount => "5" }
+  let(:scheme) { create :'data_provider/scheme', :class_description => "FOO", :nav_amount => "5" }
   let(:real_estate) { create :real_estate, :name => "Test Property", :location => "Mordor", :current_price => 600 }
   let(:fixed_deposit) { create :fixed_deposit, :name => "Foo", :period => 5, :rate_of_interest => 10.0 }
 
@@ -41,14 +41,14 @@ describe PortfolioDecorator, :redis, :mongoid do
 
   it "should have catogorywise mf percentages" do
     subject
-    scheme2 = create :scheme, :nav_amount => "5", :class_description => "BAR"
+    scheme2 = create :'data_provider/scheme', :nav_amount => "5", :class_description => "BAR"
     create :mutual_fund_transaction, :scheme => scheme2.name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today
     subject.category_wise_mutual_funds_percentage.should include(*[["FOO", 71.43], ["BAR", 28.57]])
   end
 
   it "should have mutual fund sell positions" do
     subject
-    scheme2 = create :scheme, :class_description => "BAR"
+    scheme2 = create :'data_provider/scheme', :class_description => "BAR"
     create :mutual_fund_transaction, :scheme => scheme.name, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
     create :mutual_fund_transaction, :scheme => scheme2.name, :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
     create :mutual_fund_transaction, :scheme => scheme2.name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
@@ -111,7 +111,7 @@ describe PortfolioDecorator, :redis, :mongoid do
     4.times { |n|
       create :mutual_fund_transaction, :scheme => scheme.name, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
-    create :nse_scrip, :id => "GOLDBEES", :last_traded_price => 5
+    create :'data_provider/nse_scrip', :id => "GOLDBEES", :last_traded_price => 5
     4.times { |n| create :gold_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     loan =  create :loan, :name => "Foo Loan", :rate_of_interest => "10", :period => "1"
@@ -129,7 +129,7 @@ describe PortfolioDecorator, :redis, :mongoid do
     create :stock_transaction, :company_code => another_company.code, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
 
     create :mutual_fund_transaction, :scheme => scheme.name, :portfolio => portfolio, :quantity => 4, :action => 'sell', :price => 6, :date => Date.today
-    scheme2 = create :scheme, :class_description => "BAR", :name => "Foo Scheme Name"
+    scheme2 = create :'data_provider/scheme', :class_description => "BAR", :name => "Foo Scheme Name"
     create :mutual_fund_transaction, :scheme => scheme2.name, :portfolio => portfolio, :quantity => 1, :price => 5, :date => 2.days.ago
     create :mutual_fund_transaction, :scheme => scheme2.name, :portfolio => portfolio, :quantity => 1, :price => 4, :date => 1.days.ago, :action => "sell"
 

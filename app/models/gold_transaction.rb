@@ -6,7 +6,7 @@ class GoldTransaction < ActiveRecord::Base
   end
 
   def gold
-    Gold
+    DataProvider::Gold
   end
   alias :security :gold
 

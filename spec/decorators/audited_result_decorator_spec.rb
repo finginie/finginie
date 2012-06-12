@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe AuditedResultDecorator do
   before { ApplicationController.new.set_current_view_context }
-  let(:company) { create :company }
-  let(:audited_result) { create :audited_result, :company_code            => company.code,
+  let(:company) { create :'data_provider/company' }
+  let(:audited_result) { create :'data_provider/audited_result', :company_code            => company.code,
                                                  :investments            => "2956005690000",
                                                  :equity_capital         => "6349990000",
                                                  :long_term_loan         => "111111111",

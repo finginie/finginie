@@ -2,13 +2,13 @@
 require 'spec_helper'
 
 describe "CashFlow", :mongoid do
-  let(:company) { create :company }
+  let(:company) { create :'data_provider/company' }
 
   it "should show the correct view for cash flow" do
-    5.times { |i| create :cash_flow, :company_code => company.code,
+    5.times { |i| create :'data_provider/cash_flow', :company_code => company.code,
                                      :year_ending => "31/03/#{2006 + i}",
                                      :pl_on_sale_of_assets =>	"104562000" }
-    create :cash_flow, :company_code => company.code, :year_ending => "31/03/2011", :advance_tax_paid => "212342343"
+    create :'data_provider/cash_flow', :company_code => company.code, :year_ending => "31/03/2011", :advance_tax_paid => "212342343"
     visit stock_cash_flow_path(company.name)
     page.should have_content company.name
     page.should have_content "Profit/Loss On Sale Of Assets"

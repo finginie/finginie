@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe "News", :mongoid do
-  let(:company) { create :company }
+  let(:company) { create :'data_provider/company' }
   before :each do
-    @news = create :news, :company_code => company.code, :headlines => "headlines 0", :notes => "NOTES 0", :modify_on => Time.now
+    @news = create :'data_provider/news', :company_code => company.code, :headlines => "headlines 0", :notes => "NOTES 0", :modify_on => Time.now
   end
 
   it "should show the news page for a headline" do

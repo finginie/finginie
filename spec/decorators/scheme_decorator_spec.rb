@@ -4,11 +4,11 @@ describe SchemeDecorator do
   before { ApplicationController.new.set_current_view_context }
 
   before(:each) do
-    @scheme = create :scheme
-    @amc =  create :asset_management_company, :company_code => @scheme.company_code, :company_name => "HDFC Mutual Fund"
-    @mf_dividend_detail = create :mf_dividend_detail, :security_code => @scheme.security_code
-    @nav_category_detail = create :net_asset_value_category, :scheme_class_code => @scheme.class_code
-    @mf_scheme_wise_portfolio = create :mf_scheme_wise_portfolio, :security_code => @scheme.security_code
+    @scheme = create :'data_provider/scheme'
+    @amc =  create :'data_provider/asset_management_company', :company_code => @scheme.company_code, :company_name => "HDFC Mutual Fund"
+    @mf_dividend_detail = create :'data_provider/mf_dividend_detail', :security_code => @scheme.security_code
+    @nav_category_detail = create :'data_provider/net_asset_value_category', :scheme_class_code => @scheme.class_code
+    @mf_scheme_wise_portfolio = create :'data_provider/mf_scheme_wise_portfolio', :security_code => @scheme.security_code
   end
 
   let(:scheme_decorator) { SchemeDecorator.decorate(@scheme) }
