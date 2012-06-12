@@ -1,5 +1,5 @@
 class BankingRatioDecorator < ApplicationDecorator
-  decorates :banking_ratio
+  decorates :'data_provider/banking_ratio'
 
   RATIO_GROUPS = { 'EARNINGS RATIOS' =>     [ 'income_from_fund_advances_as_a_per_of_op_income',
                                               'operating_income_as_a_per_of_working_funds',

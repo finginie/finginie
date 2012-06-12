@@ -7,8 +7,8 @@ describe MutualFundsController do
       get("/mutual_funds").should route_to("mutual_funds#index")
     end
 
-    it "routes to #scheme_summary" do
-      get("/mutual_funds/1/scheme_summary").should route_to("mutual_funds#scheme_summary", :id => "1")
+    it "routes to #show" do
+      get("/mutual_funds/1").should route_to("mutual_funds#show", :id => "1")
     end
 
      it "routes to #scheme_returns" do

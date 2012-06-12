@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe "Profit Loss" do
-  let(:company) { create :company }
+  let(:company) { create :'data_provider/company' }
 
   before (:each) do
     company.save
-    5.times { |i| create :audited_result, :company_code          => company.code,
+    5.times { |i| create :'data_provider/audited_result', :company_code          => company.code,
                                           :year_ending          => "31/03/#{2011 -i}",
                                           :operating_income     => "955255776000",
                                           :excise               => "9347100000",

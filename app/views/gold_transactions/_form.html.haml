@@ -5,7 +5,7 @@
     = f.input :action, :collection => [["Buy",:buy], ["Sell",:sell]], :include_blank => false
     = f.input :quantity
     = f.input :price
-    = f.input :date,:order=> [:day,:month,:year]
+    = f.input :date,:order=> [:day,:month,:year], :start_year => 2000
     = f.input :comments
 
   .actions

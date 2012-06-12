@@ -1,18 +1,18 @@
 .exchange_value
   .nifty_value
     %a Nifty
-    %b= Nifty.current_price
-    - red_or_green_class(Nifty.net_change, "span")
+    %b= NiftyDecorator.last_traded_price
+    - red_or_green_class(NiftyDecorator.net_change, "span")
     = "("
-    - red_or_green_class(Nifty.percent_change, "span")
+    - red_or_green_class(NiftyDecorator.percent_change, "span")
     = " % )"
 
   .sensex_value
     %a Sensex
-    %b= Sensex.current_price
-    - red_or_green_class(Sensex.net_change, "span")
+    %b= SensexDecorator.last_traded_price
+    - red_or_green_class(SensexDecorator.net_change, "span")
     = "("
-    - red_or_green_class(Sensex.percent_change, "span")
+    - red_or_green_class(SensexDecorator.percent_change, "span")
     = " % )"
 
   .gold_value

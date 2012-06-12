@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe ShareHoldingDecorator, :mongoid do
   before { ApplicationController.new.set_current_view_context }
-  let(:company) { create :company }
-  let(:share_holding) { create :share_holding, :company_code => company.code }
+  let(:company) { create :'data_provider/company' }
+  let(:share_holding) { create :'data_provider/share_holding', :company_code => company.code }
   let(:share_holding_decorator) { ShareHoldingDecorator.decorate(share_holding) }
 
   subject { share_holding_decorator }

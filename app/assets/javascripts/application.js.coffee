@@ -35,3 +35,10 @@ $ ->
 
   $("div.tabs").tabs();
 
+  $('[data-autocomplete-source]').each ->
+    $(this).autocomplete
+      source: $(this).data('autocomplete-source'),
+      if !$(this).data('no-redirect')
+        select: ( event, ui ) =>
+            window.location = $(this).data('autocomplete-source') + "/"+ ui.item.value;
+

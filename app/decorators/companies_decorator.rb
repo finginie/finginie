@@ -4,7 +4,7 @@ class CompaniesDecorator
   def as_json(options = {})
     {
       sEcho: params[:sEcho].to_i,
-      iTotalRecords: Company.stocks.count,
+      iTotalRecords: DataProvider::Company.stocks.count,
       iTotalDisplayRecords: stocks.count,
       aaData: data
     }
@@ -30,7 +30,7 @@ private
 
   def fetch_stocks
     if params[:sSearch].present?
-      stocks = Company.stocks.order([[ sort_column.to_sym, sort_direction.to_sym]])
+      stocks = DataProvider::Company.stocks.order([[ sort_column.to_sym, sort_direction.to_sym]])
       stocks = stocks.order([[ :name, :asc ]]) unless sort_column
       stocks = stocks.page(page).per(per_page)
       stocks = stocks.csearch(params[:sSearch])

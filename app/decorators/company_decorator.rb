@@ -1,5 +1,5 @@
 class CompanyDecorator < ApplicationDecorator
-  decorates :company
+  decorates :'data_provider/company'
 
   FIELDS_TO_ROUND = [  'eps', 'pe', 'price_to_book_value', 'book_value', 'face_value', 'dividend_yield']
 
@@ -19,17 +19,17 @@ class CompanyDecorator < ApplicationDecorator
 
   def ratio
     if major_sector == 2
-      @ratio = BankingRatio.all( conditions: { company_code: code }, sort: [[ :year_ending, :desc ]] ).first
+      @ratio = DataProvider::BankingRatio.all( conditions: { company_code: code }, sort: [[ :year_ending, :desc ]] ).first
       @ratio = BankingRatioDecorator.decorate(@ratio) if @ratio
     else
-      @ratio = Ratio.all( conditions: { company_code: code }, sort: [[ :year_ending, :desc ]] ).first
+      @ratio = DataProvider::Ratio.all( conditions: { company_code: code }, sort: [[ :year_ending, :desc ]] ).first
       @ratio = RatioDecorator.decorate(@ratio) if @ratio
     end
 
   end
 
   def news
-    News.for_company(code).latest(5)
+    DataProvider::News.for_company(code).latest(5)
   end
 
   def nse

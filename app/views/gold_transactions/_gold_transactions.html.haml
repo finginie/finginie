@@ -22,7 +22,7 @@
         %tr
           %td.dates= l gold_transaction.date
           %td.type{:class => gold_transaction.action}= gold_transaction.action.to_s.titleize
-          %td.name= gold_transaction.gold.name
+          %td.name Gold
           %td.quantity= gold_transaction.quantity
           %td.price= number_to_indian_currency gold_transaction.price
           %td.amount= number_to_indian_currency gold_transaction.value.abs

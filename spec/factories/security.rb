@@ -9,7 +9,5 @@ FactoryGirl.define do
     #rate_of_interest "9.99"
     #location "MyText"
     #emi "9.99"
-    factory :gold, :class => Gold do
-    end
   end
 end

@@ -91,7 +91,7 @@ SimpleNavigation::Configuration.run do |navigation|
         secondary.item :mutual_fund_category, @nav_category_detail.scheme_class_description, main_app.mutual_fund_category_path(params[:id])
       end
       if @scheme.try(:name)
-        secondary.item :scheme_summary, 'Scheme Summary', main_app.scheme_summary_mutual_fund_path(@scheme.name)
+        secondary.item :scheme_summary, 'Scheme Summary', main_app.mutual_fund_path(@scheme.name)
         secondary.item :scheme_returns, 'Scheme Returns', main_app.scheme_returns_mutual_fund_path(@scheme.name)
         secondary.item :top_holdings,   'Top Holdings', main_app.top_holdings_mutual_fund_path(@scheme.name)
         secondary.item :detailed_holdings, 'Detailed Holdings', main_app.detailed_holdings_mutual_fund_path(@scheme.name)

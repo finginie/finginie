@@ -12,7 +12,7 @@ class MutualFund < Security
   alias :category :class_description
 
   def scheme_master
-    Scheme.where(:name => scheme).first
+    DataProvider::Scheme.where(:name => scheme).first
   end
 
   def current_value(transaction)

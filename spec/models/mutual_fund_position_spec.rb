@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "MutualFundPosition", :mongoid do
 
   let(:portfolio) { create :portfolio }
-  let(:scheme) { create :scheme, :nav_amount => "5" }
+  let(:scheme) { create :'data_provider/scheme', :nav_amount => "5" }
   let(:mutual_fund) { create :mutual_fund, :name => scheme.name }
 
   subject {
@@ -48,7 +48,7 @@ describe "MutualFundPosition", :mongoid do
   end
 
   it "should return nil unrealised profit when there is no current price" do
-    scheme_without_nav_amount = create :scheme, :nav_amount => nil
+    scheme_without_nav_amount = create :'data_provider/scheme', :nav_amount => nil
     mutual_fund_without_current_price = create :mutual_fund, :name => scheme_without_nav_amount.name
     create :mutual_fund_transaction, :scheme => scheme_without_nav_amount.name, :quantity => 10, :price => 5, :date => 5.days.ago, :portfolio => portfolio
     mutual_fund_position = portfolio.mutual_fund_transactions.for(mutual_fund_without_current_price)

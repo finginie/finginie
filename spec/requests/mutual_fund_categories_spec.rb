@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe "MutualFundCategories", :mongoid do
-  let (:navcd) { create :net_asset_value_category, :scheme_class_description => "Special Fund", :scheme_class_code => 1 }
-  let (:scheme) { create :scheme, :class_description => navcd.scheme_class_description, :rank => 10, :nav_amount => 10,
+  let (:navcd) { create :'data_provider/net_asset_value_category', :scheme_class_description => "Special Fund", :scheme_class_code => 1 }
+  let (:scheme) { create :'data_provider/scheme', :class_description => navcd.scheme_class_description, :rank => 10, :nav_amount => 10,
                                   :minimum_investment_amount => 20, :class_code => navcd.scheme_class_code,
                                   :prev1_week_percent => 1, :prev1_month_percent => 2, :prev3_months_percent => 2,
                                   :prev6_months_percent => 3, :prev_year_percent => 3, :prev2_year_comp_percent => 2,
