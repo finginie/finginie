@@ -4,7 +4,7 @@ class SchemesDecorator
   def as_json(options = {})
     {
       sEcho: params[:sEcho].to_i,
-      iTotalRecords: DataProvider::Scheme.count,
+      iTotalRecords: DataProvider::Scheme.active.count,
       iTotalDisplayRecords: schemes.count,
       aaData: data
     }
@@ -28,7 +28,7 @@ private
 
   def fetch_schemes
     if params[:sSearch].present?
-      schemes = DataProvider::Scheme.all.order([[ sort_column.to_sym, sort_direction.to_sym]])
+      schemes = DataProvider::Scheme.active.order([[ sort_column.to_sym, sort_direction.to_sym]])
       schemes = schemes.page(page).per(per_page)
       schemes = schemes.csearch(params[:sSearch])
     end
