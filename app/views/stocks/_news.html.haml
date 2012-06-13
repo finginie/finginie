@@ -1,0 +1,13 @@
+.tabs
+  %ul
+    - DataProvider::NewsArticle.feeds.keys.each do |section_name|
+      %li= link_to t(".#{section_name}"), "#news_#{section_name}"
+
+  - DataProvider::NewsArticle.feeds.each do |section_name,articles|
+    %section{:id => "news_#{section_name}" }
+      - articles.take(10).each do |article|
+        - if article.title
+          %article
+            = link_to article.url, :title => article.source, :target => :blank do
+              %h1= article.title.gsub(/&amp;/, '&')
+            %p= article.summary.gsub(/&amp;/, '&')
