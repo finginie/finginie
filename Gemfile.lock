@@ -323,6 +323,11 @@ GEM
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-environmental (1.2.0)
+      rack-plastic (>= 0.1.1)
+    rack-plastic (0.1.3)
+      nokogiri (~> 1.4)
+      rack (~> 1.0)
     rack-ssl (1.3.2)
       rack
     rack-test (0.6.1)
@@ -484,6 +489,7 @@ DEPENDENCIES
   personal_financial_tools!
   pg
   pry
+  rack-environmental
   rails (= 3.2.3)
   rails-backbone!
   rails-footnotes (>= 3.7.5.rc4)

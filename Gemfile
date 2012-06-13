@@ -38,6 +38,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'paper_trail'
 gem 'pg'
+gem 'rack-environmental'
 gem 'rails-backbone', :git => "git://github.com/TMaYaD/backbone-rails.git"
 gem 'sheet_mapper'
 gem 'simple_form', :git => "git://github.com/plataformatec/simple_form.git"
