@@ -65,50 +65,15 @@ body.blog {
           color: $heading-red;
         }
       }
-      /*
-      .extracontent {
-        display: none;
-        h1 {
-          font: {
-            family: heading-font;
-            size: 16px;
-            weight: normal;
-          }
-          padding: 8px 0;
-          color: #fff;
-          text-align: center;
-        }
-        &>div {
-          border: 1px solid $border-color;
-          @include border-radius(4px 4px 0 0);
-          margin-bottom: 1em;
-          ul {
-            padding: 0;
-          }
-          li {
-            @include no-bullet;
-            margin: 2px;
-            padding: 4px;
-            font: {
-              family: $content-font;
-              size: 12px;
-            }
-            a {
-              text-decoration: none;
-            }
-          }
-        }
-        .takeaway {
-          @include color-highlights(#CE5A5A);
-        }
-        .articles {
-          @include color-highlights(#B6CE61);
-        }
-        .videos {
-          @include color-highlights(#446C99);
+      .readmore {
+        font-size: 12px;
+        a {
+          color: $heading-blue;
         }
       }
-      */
+      .extracontent {
+        display: none;
+      }
     }
   }
 }
