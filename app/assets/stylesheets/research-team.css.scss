@@ -1,0 +1,32 @@
+@import "bourbon";
+@import "holygrail";
+@import "lists";
+@import "defaults";
+@import "utilities";
+
+body.research-team {
+  #wrapper {
+    #main {
+      .container {
+        section {
+          padding: 20px 10px 20px 0;
+          border-top: 1px solid #CCC;
+          p {
+            margin: 0;
+            text-align: justify;
+          }
+          img {
+            width: 200px;
+            height: 200px;
+            @include border-radius(10px);
+            @include box-shadow(0 2px 2px hsla(0, 0%, 0%, 0.30));
+          }
+          span {
+            font-weight: bold;
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+}
