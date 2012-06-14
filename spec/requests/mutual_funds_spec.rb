@@ -37,6 +37,16 @@ describe "MutualFunds", :mongoid do
 
   end
 
+  it "should display only active items in search", :js => true do
+    inactive_scheme = create :'data_provider/scheme', :delete_flag => "True"
+    visit mutual_fund_path(@scheme.name)
+    page.execute_script %Q{ $('[data-autocomplete-source]').val("#{@scheme.name[0..5]}").keydown(); }
+
+    wait_until {  page.should have_selector(".ui-menu-item a:contains('#{@scheme.name}')") }
+    page.should_not have_selector(".ui-menu-item a:contains('#{inactive_scheme.name}')")
+
+  end
+
   context "#index" do
     it "should have top funds" do
       2.times { |i| create :'data_provider/scheme', :name => "scheme-#{i}",:nav_amount => 2 * i + 2, :percentage_change => 5 * i + 1,
@@ -49,6 +59,20 @@ describe "MutualFunds", :mongoid do
         [ 'scheme-1', '4.0', '6.00', '9.00', '11.00', '12.00' ] ]
 
       tableish("#top_performers").should include *expected_content
+    end
+
+    it "should only have active schemes in top funds and biggest funds" do
+      inactive_scheme = create :'data_provider/scheme', :delete_flag => "True"
+      visit mutual_funds_path
+
+      within "#top_performers" do
+        page.should_not have_link inactive_scheme.name
+      end
+
+      within "#biggest_schemes" do
+        page.should_not have_link inactive_scheme.name
+      end
+
     end
 
     it "should redirect to scheme summary page when a scheme in Top 10 funds is clicked on" do
@@ -72,6 +96,7 @@ describe "MutualFunds", :mongoid do
 
       tableish("#biggest_schemes").should include *expected_content
     end
+
   end
 
   context "Titles" do

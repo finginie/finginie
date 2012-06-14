@@ -41,6 +41,15 @@ describe "MutualFundTransactions" do
     page.should have_field("Scheme", :with => scheme.name)
   end
 
+  it "should only autocomplete active scheme names when user fill scheme name", :js => true do
+    inactive_scheme = create :'data_provider/scheme', :delete_flag => true
+    visit new_portfolio_mutual_fund_transaction_path(portfolio)
+    page.execute_script %Q{ $('[data-autocomplete-source]').val("#{scheme.name[0..5]}").keydown(); }
+
+    wait_until {  page.should have_selector(".ui-menu-item a:contains('#{scheme.name}')") }
+    page.should_not have_selector(".ui-menu-item a:contains('#{inactive_scheme.name}')")
+  end
+
   it "should show the index page" do
     create :mutual_fund_transaction, :scheme => scheme.name, :portfolio => portfolio,:quantity => 1, :price => 5, :date => Date.today
     visit portfolio_mutual_fund_transactions_path(portfolio)
