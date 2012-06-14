@@ -189,7 +189,7 @@ describe "Stocks", :mongoid, :redis do
     end  #  end of context most active
 
     it "should have sectoral indices" do
-      create :'data_provider/nse_scrip', :id => 'CNXFIN', :last_traded_price => 11, :close_price => 10
+      create :'data_provider/nse_scrip', :id => 'CNXENERGY', :last_traded_price => 11, :close_price => 10
       create :'data_provider/nse_scrip', :id => 'CNXAUTO', :last_traded_price => 9.5, :close_price => 10
 
       create :'data_provider/bse_scrip', :id => 'BSE Oil&Gas', :last_traded_price => 11, :close_price => 10
@@ -197,7 +197,7 @@ describe "Stocks", :mongoid, :redis do
 
       visit stocks_path
 
-      expected_content_nse = [ [ I18n.t('stocks.sectoral_indices.CNXFIN'), '11.00', '1.00', '10.00' ],
+      expected_content_nse = [ [ I18n.t('stocks.sectoral_indices.CNXENERGY'), '11.00', '1.00', '10.00' ],
                            [ I18n.t('stocks.sectoral_indices.CNXAUTO'), '9.50', '-0.50', '-5.00' ] ]
 
       expected_content_bse = [ [ I18n.t('stocks.sectoral_indices.BSEOilGas'), '11.00', '1.00', '10.00' ],

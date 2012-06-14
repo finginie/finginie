@@ -31,4 +31,4 @@
             %td.comment= stock_transaction.comments && stock_transaction.comments.strip.empty? ? t("tables_not_available") : stock_transaction.comments
         - else
           - company_data = true
-        = t("company_data_not_found")
+    = company_data ? t("company_data_not_found") : ""
