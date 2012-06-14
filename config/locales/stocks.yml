@@ -51,3 +51,8 @@ en:
       BSESmallcap: 'BSE Small Cap'
       BSEPower: 'BSE Power'
       BSEIPO: 'BSE IPO'
+    news:
+      economy_news: 'Economy'
+      sector_spotlights: 'Sector'
+      world_news: 'World'
+      ipos: 'IPOs'

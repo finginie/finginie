@@ -35,26 +35,67 @@ body.stocks.index {
             font-size: large;
             color: $heading-blue;
           }
-          #nse_gainers_losers, #bse_gainers_losers, #nse_scrip_sectoral_indices, #bse_scrip_sectoral_indices {
+          #nse_gainers_losers, #bse_gainers_losers {
             width: 480px;
             float: left;
             margin-bottom: 30px;
           }
-          #bse_gainers_losers, #bse_scrip_sectoral_indices {
+          #bse_gainers_losers  {
             margin-left: 12px;
           }
         }
-        #news {
-          float:left;
-          width: 100%;
-          margin-bottom: 20px;
-          h1 {
-            font-size: small;
-            color: $heading-blue;
+        #news_and_sectoral_indices {
+          clear: both;
+          .ui-tabs-panel {
+            height: 650px;
+            overflow: auto;
           }
+
+        }
+        #news {
+          width: 637px;
+          margin-bottom: 20px;
+          float: left;
+          h1 {
+            font-size: large;
+          }
+          .article_source{
+            color: #696969;
+            font-size: 12px;
+          }
+          section {
+            border: 1px solid #AAA;
+            @include border-radius(4px);
+            margin-top: 4px;
+            padding: 4px;
+            p {
+              font-size: 13px;
+            }
+            h1 {
+              margin-bottom: 0px;
+              a {
+                color: $heading-green;
+                font-size: 15px;
+              }
+            }
+          }
+        }
+        #sectoral_indices {
+          float: left;
+          width: 323px;
+          margin-left: 12px;
         }
         p {
           text-align: justify;
+        }
+        table {
+          margin-top: 4px;
+        }
+      }
+      .page_content{
+        clear: both;
+        h1 {
+          font-size: large;
         }
       }
       .ui-helper-reset {
