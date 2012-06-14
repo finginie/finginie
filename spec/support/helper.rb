@@ -16,3 +16,7 @@ def test_named_scope(all_objects, subset, condition)
   scoped_objects.should == subset
   other_objects.should == all_objects - subset
 end
+
+def table_rows(sub, element)
+  sub.find(element).all('tr').map { |r| r.all('th,td').map { |c| c.text.strip.gsub(/\s+/, ' ') } }
+end

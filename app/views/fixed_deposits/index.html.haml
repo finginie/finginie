@@ -26,11 +26,13 @@
         %table
           %tr
             %th.name Bank Name
-            %th.right_align= @search.senior_citizen? ? "Senior Citizen Interest Rate" : "General Interest Rate"
+            %th.center_align= @search.senior_citizen? ? "Senior Citizen Interest Rate" : "General Interest Rate"
           - fd_details.each do |fd_detail|
             %tr
               %td= fd_detail.bank
-              %td.right_align= @search.senior_citizen? ? fd_detail.rate_of_interest_senior_citizen : fd_detail.rate_of_interest_general
+              %td.center_align= @search.senior_citizen? ? fd_detail.rate_of_interest_senior_citizen : fd_detail.rate_of_interest_general
+
+  = render_cell :fixed_deposits, :special_tenure
 - else
   .notice= t ".default"
   - [@top_five_public_banks_interest_rates, @top_five_private_banks_interest_rates].each do |fd_details|

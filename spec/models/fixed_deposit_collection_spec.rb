@@ -56,4 +56,10 @@ describe FixedDepositCollection, :vcr do
     test_named_scope FixedDepositCollection.search({}), @search,
                      lambda{|u| u.min_duration <= 396 && u.max_duration >= 396 }
   end
+
+  it "should return result based on special tenure search" do
+    @search = FixedDepositCollection.special_tenure({:year => 1, :month => 1, :days => 1})
+    test_named_scope FixedDepositCollection.special_tenure({}), @search,
+                     lambda{|u| u.min_duration <= 456 && u.min_duration >= 336 && u.max_duration == 0}
+  end
 end

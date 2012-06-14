@@ -14,12 +14,12 @@ class FixedDepositCollection < SheetMapper::Base
 
     def find_by_duration(params)
       duration = duration(params)
-      duration = duration > 0 ? duration : 365
       lambda { |fd_detail| fd_detail.min_duration <= duration and fd_detail.max_duration >= duration }
     end
 
     def duration(params)
-      (Date.today - params[:month].to_i.months.ago.to_date + params[:days].to_i + params[:year].to_i * 365)
+      duration = (Date.today - params[:month].to_i.months.ago.to_date + params[:days].to_i + params[:year].to_i * 365)
+      duration = duration > 0 ? duration : 365
     end
 
     def order_by(column)
@@ -32,6 +32,11 @@ class FixedDepositCollection < SheetMapper::Base
 
     def find_by_bank(name)
       lambda {|fd_detail| fd_detail.bank == name }
+    end
+
+    def find_by_special_tenure(params)
+      duration = duration(params)
+      lambda { |fd_detail| fd_detail.min_duration <= duration + 60 and fd_detail.min_duration >= duration -60 and fd_detail.max_duration == 0 }
     end
 
     def private_sector
@@ -65,14 +70,22 @@ class FixedDepositCollection < SheetMapper::Base
     end
 
     def search(params)
-      search = all
-      search = params[:senior_citizen] == "Yes" ? search.sort(&order_by("rate_of_interest_senior_citizen")) : search.sort(&order_by("rate_of_interest_general"))
-      search = search.select(&find_by_amount(params[:amount].to_i)) if params[:amount]
-      search = search.select(&find_by_duration(params))             if params[:year] || params[:month] || params[:days]
-      search
+      search_option(params, "duration")
+    end
+
+    def special_tenure(params)
+      search_option(params, "special_tenure")
     end
 
   private
+    def search_option(params, duration_options)
+      search = all
+      search = params[:senior_citizen] == "Yes" ? search.sort(&order_by("rate_of_interest_senior_citizen")) : search.sort(&order_by("rate_of_interest_general"))
+      search = search.select(&find_by_amount(params[:amount].to_i))              if params[:amount]
+      search = search.select(&send("find_by_#{duration_options}", params))       if params[:year] || params[:month] || params[:days]
+      search
+    end
+
     def fetch
       sheet = SheetMapper::Spreadsheet.new(mapper: FixedDepositCollection, key: ENV['SPREADSHEET_KEY'],
                                            login: ENV['SPREADSHEET_LOGIN'], password: ENV['SPREADSHEET_PASSWORD'])
