@@ -7,7 +7,8 @@ SimpleNavigation::Configuration.run do |navigation|
   # Define the primary navigation
   navigation.items do |primary|
     primary.item :about_us, 'About us', main_app.page_path('about_us') do |secondary|
-      secondary.item :team, 'Team', main_app.page_path('team')
+      secondary.item :team, 'Management Team', main_app.page_path('team')
+      secondary.item :team, 'Research Team', main_app.page_path('research-team')
       secondary.item :careers, 'Careers', main_app.page_path('careers')
       secondary.item :contact_us, 'Contact us', main_app.page_path('contact_us')
       secondary.item :disclaimer, 'Disclaimer', main_app.page_path('disclaimer')
