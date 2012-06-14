@@ -59,7 +59,7 @@ en:
       description: 'Mutual Fund page is India best place for mutual funds, mutual fund NAVs and for beginers to start
       investing in mutual funds'
       keywords: 'Mutual Funds,NAV,India,Beginners'
-    scheme_summary:
+    show:
       title: "Mutual Funds - %{name} - Scheme Summary"
     scheme_returns:
       title: "Mutual Funds - %{name} - Scheme Returns"
@@ -153,9 +153,13 @@ en:
             keywords: 'banking, shares, analyze banking shares, banking sector, banks'
           bonds:
             title: 'Investing in bonds: A guide'
-            description: 'This article guides investors on investing in bonds in India.Special emphasis is laid on
-            risk,return, taxation and the general principles of investing in bonds.'
+            description: 'This article guides investors on investing in bonds in India.Special emphasis is laid on risk,return, taxation and the general principles of investing in bonds.'
             keywords: 'bonds, India, beginners, investing, invest'
+          life-insurance-policies:
+            title: 'Life Insurance policies as investments'
+            description: 'Life insurance policies have been very popular in India for decades. Apart from providing life cover,
+            insurance policies also have investment-like features. Confused by words like "term life insurance", "whole life insurance " and "universal life insurance"? Look no further. This article covers different characteristics of life insurance and how you can choose a policy wisely to protect the financial future of your loved ones.'
+            keywords: 'Life insurance policy, insurance,term life,whole life'
           cash-equivalents:
             title: 'Investing in cash equivalents: A guide'
             description: 'This article guides investors on investing in cash equivalents in India such as savings

@@ -31,6 +31,7 @@ SimpleNavigation::Configuration.run do |navigation|
         tertiary.item :shares, 'Shares', main_app.page_path('investment_education/shares')
         tertiary.item :mutual_funds, 'Mutual Funds and ETFs', main_app.page_path('investment_education/mutual-funds-etf')
         tertiary.item :bonds, 'Bonds', main_app.page_path('investment_education/bonds')
+        tertiary.item :life_insurance, 'Life Insurance', main_app.page_path('investment_education/life-insurance-policies')
       end
       secondary.item :investing_in_shares, 'Investing in Shares' do |tertiary|
         tertiary.item :share_market, 'Share Market', main_app.page_path('investment_education/share-market')
