@@ -15,7 +15,7 @@ en:
       high_date: '52 week High Date'
       low_date: '52 week Low Date'
     sectoral_indices:
-      CNXFIN: 'CNX Finance'
+      CNXMNC: 'CNX MNC'
       CNXAUTO: 'CNX Auto'
       CNXMEDIA: 'CNX Media'
       CNXMETAL: 'CNX Metal'
