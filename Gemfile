@@ -33,7 +33,7 @@ gem 'meta_search'
 gem 'mongoid' # Required by mongoid search
 gem 'mongoid_search', :git => "git://github.com/mauriciozaffari/mongoid_search.git"
 gem 'nested_form'
-# gem 'newrelic_rpm' # Removed temporarily
+gem 'newrelic_rpm' # Removed temporarily
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'paper_trail'
