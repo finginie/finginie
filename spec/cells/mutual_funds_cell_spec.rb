@@ -46,8 +46,4 @@ describe MutualFundsCell, :mongoid do
     it { should respond_to(:top_funds) }
     it { should respond_to(:biggest_funds) }
   end
-
-  def table_rows(sub, element)
-    sub.find(element).all('tr').map { |r| r.all('th,td').map { |c| c.text.strip.gsub(/\s+/, ' ') } }
-  end
 end

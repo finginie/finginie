@@ -137,10 +137,12 @@ en:
           rate_of_interest: 'Rate of Interest (% p.a.)'
       scheme:
         scheme_name: 'Search Mutual Fund'
-      fixed_deposit_detail_proxy:
+      fixed_deposit_detail:
         amount: 'Amount to be deposited'
         duration: 'Time period'
         senior_citizen: 'Are you a senior citizen?'
+        year: 'Years'
+        month: 'Months'
     options:
       income_tax_calculator:
         sex:

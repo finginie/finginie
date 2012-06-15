@@ -27,7 +27,7 @@ http_interactions:
       Expires:
       - Mon, 01-Jan-1990 00:00:00 GMT
       Date:
-      - Fri, 15 Jun 2012 06:02:28 GMT
+      - Fri, 15 Jun 2012 06:01:30 GMT
       X-Content-Type-Options:
       - nosniff
       X-Xss-Protection:
@@ -38,15 +38,15 @@ http_interactions:
       - GSE
     body:
       encoding: US-ASCII
-      string: ! 'SID=DQAAAM8AAABjvkiILXJB8OP4AL964uw_NHESohWOCNBcU__SPa6ZGvC3Weztn_x_ftbkcbfonbxS3MfmAjXX26iQj5WOEXPll-kMGAaBckH_v2RV4GrjWycAaV-zAQ6n8QkI8f4kkXtN_2g6gbMAsDCvwCZdf8XX0JyMCsWGFL5JFLdXiTJCWI3F3EG8id9-HzJCTjFQm6r-PkSYsGpAe_cbgte2cVhxNTZL2Tnvlf0rqBP4f9DEwdlSGllP0hSPDWsUksaSB8BTszu9uoFbOITD3MI5vixN
+      string: ! 'SID=DQAAAM8AAAAoXOxlxMCooxLrwrwFeiIqG3fcKjN6XcWIRSAnGdoiq0vScNQ2BfSymNRSyYtUxIzBa7Tkp8MzISheFovjwaOt58GrPYbcYn8AxslzO1FcZGOujiDH7dI_fSDMC1XAfjMqkm-UORpPe-4xeZR5VK8NRhNWIGEggas09E_DwAjU_offVSL6xc1bcjpWPxjJyuBpE2X4IIHnDg54UxL_x97wxY7B9R2gsWdcoCWvlywoZy0c5_X2EfzWWhMnrNgc__PCDCl0VbtHiySAcgMVtYnE
 
-        LSID=DQAAANIAAAD5bEUow7o53ncaEo-tJQ3CtE-fUcFGcrNAwatWhyWpY_wzKVc9VkU_jJ2b7riN4ahAIuuanN7L_kS7gdK4O5f9ERUTjyzoLD-wICGsszPl46nbYGYw7_BEeho6FuyaYybPmCTLBsfvLIlVKOVdN0Bga8w-dZpbaeAc_sr3bMkCx5UWh62Q8yLPNYao1Zln2zTuvnZ5PklAByGLU0af8IGYFzkxnLA4m3yAbsPXB6IivzZd4nz8YMrhimDBbDEw5NWB04I8fF8ds7-RO5jTTuRCFHnoBz5i_endTG6qOqJdpA
+        LSID=DQAAANIAAABaBd7KIGt8znmR1YvzCWp66loy1AHeUX2cTzgmKbCDD9uKhyKlef0zO_BiE7wb_-8IHNa3qfUo3NFrtI74z4Zl-Z0hf3iYc9hLg_VCdYfjI8QKxV42osr_gcr8VSjlduQrxT1x2nmW6mbS6XTnQKwl6uuvCrN4hVlIpFBvBCWo1YNHpBy7hEzTbeXzdDc5KL1sJJA7-H1v_yFFFtc1h8v37uxEOoyjUshC5Jgx80-a6Gi6VZt2kGTV0Hmn6XF7n2LIHOnyUtlj_EW2CoqMLa7LbwcNFR7BppUfr03SkhD59A
 
-        Auth=DQAAANAAAAD5bEUow7o53ncaEo-tJQ3CtE-fUcFGcrNAwatWhyWpY_wzKVc9VkU_jJ2b7riN4ahAIuuanN7L_kS7gdK4O5f9s9QMxPNitNJ72SMp0UC_TAZCjSwbRg0EuC-yLxKvdnbg2-c6aT81l7DGm93G2m7JFpWkHICc4_lhKPj72QDst_9oqq2rYApoAfeWFnaRHiTZ_yqQl9pbI3ZS5cyUJ-zyCtmxwvZ2cdceTvvN1Lpb9RO2o-ItxDb751enGiyzlVZ92Ycz2yKT9rdqdG3ylXRo
+        Auth=DQAAANAAAABaBd7KIGt8znmR1YvzCWp66loy1AHeUX2cTzgmKbCDD9uKhyKlef0zO_BiE7wb_-8IHNa3qfUo3NFrtI74z4Zl3BojcAt_ghz4dPdAGcBAe_rk0mFwOU-UvRkxbrC0Aq4fqAt1HAmu0SVK2NShAnl2U3MYD54QtQLW8Mdxpgd5Qr0kE33HH6w1aLuqBjXY9zRahxc3aid6QVnL2MAUDABtxlSTXwRP7-YcZzlHv1_LEOQXPCs_5DLPJqvzlNOe3DNS7QBWM290qi8TxFWrgNXw
 
 '
     http_version: 
-  recorded_at: Fri, 15 Jun 2012 06:02:31 GMT
+  recorded_at: Fri, 15 Jun 2012 06:01:33 GMT
 - request:
     method: post
     uri: https://www.google.com/accounts/ClientLogin
@@ -74,7 +74,7 @@ http_interactions:
       Expires:
       - Mon, 01-Jan-1990 00:00:00 GMT
       Date:
-      - Fri, 15 Jun 2012 06:02:29 GMT
+      - Fri, 15 Jun 2012 06:01:31 GMT
       X-Content-Type-Options:
       - nosniff
       X-Xss-Protection:
@@ -85,15 +85,15 @@ http_interactions:
       - GSE
     body:
       encoding: US-ASCII
-      string: ! 'SID=DQAAAM4AAABt3C4xF29hTbtv6oIdGAl78NwvsvjkiO4lX9GDe8OYQflyXZVK28n2jU8MiU4U8CzNsLMcXIZZiAHUwmI02M8zJNNAG_0sfU4z0kmT4i7A6DsTxkXHiQxCQf4myuEeX5n_lAyRaPMJOZkprs8iEGiJQMWOWiiuRQWZBsOXsZwnFI7EhvwXNkMLl-WcdOycbXoCof8PypSPk42vOVC-JdgbAV71-PAc9KuDR6YEEjSlgqLFQ5bXX0XY6AA6rUB7shfLUI4_8iK7ihJUKzOCu_sN
+      string: ! 'SID=DQAAAM4AAADIqb6LLhy1UaQygEZanmU4DnBzFYdmnSfA2snU3HeZa9hXZV3WMttBinmvQUfkshi8zXmXRBi6IOo6VRAVnePd4UGYSKGwzv5VSx7mw9Yl9DSMEZUNMdxiGo9UPRuTxUDgK5LTJfVp2yIhD5tUFYmBSfQ6qCs38S4dC30orWUViuYA13Yk75M2pc6CwCzpas17oYi8L5gPa3AZvVDDCXF0XG5_Yy2ne5Z34_WiNuTzHr89FcUy4kkSPidYfErjy-O6k9vnmspJ0F2jbVbjUTh4
 
-        LSID=DQAAANAAAADV0JWb_lIW6iEMcexLNNAvjQribGi8KljzTTc_Grdhx-rUEN9FQLv2jYsIFJ50ggBN0CleSIVzV5etQ-94V-w0il-p5qB_ux_v_JFYRiccbeMAcdQovvRsQMtXwqElW5LEjvglrdNAjy5UDMjvlVI8ccunozfBn5t8uOKv3TW12SdhwDdir5oSRmq5N-IpmlBYElbxQScPMGcwu2TLGTryNH0EI49d7D_CBVmu8LqDXDqxYiFHBAyiXNlwU8PUrwOGdXj9V7NcGIGNT8SJALw9
+        LSID=DQAAANAAAAC44gt6dSamcYshyseNfOUjWELrWqbSlQ2Lov7t9L8MNL6KHVs49gMqPeI_fpj-BrWwc-UP9E-Gq9MX6PiGBfjzvSRy3SfUgKDNCQBTEtB1sHB19nz1ewOGQ5PmHS9Z5tyV-4aLRGAnow8c75VAMziC1-Jj24CWuIbqvA3mmZ9WnbZoeqVmDvepGSweqqBMNeDlcib1ICso8Gru4wnmxdyjtpjnINgu_gZ6G7U-5CKFClE9y3tNPO2sY0Ze12J76qpwsRUTrjb24L3bCNW6LwmS
 
-        Auth=DQAAANEAAADV0JWb_lIW6iEMcexLNNAvjQribGi8KljzTTc_Grdhx-rUEN9FQLv2jYsIFJ50ggBN0CleSIVzV5etQ-94V-w0Yf2_U6MBDYzTWH3NdUeklzaqo6S2bMvTQae7CcZ_PIElCuALatS8T3iMDdCeI6wDhutAGCk7hYXbcSbNV0oPTUaFqN7e4KYaYUu05j1Gni85h_dKNVC1jIOSUCei1QnChLjvqyJCSe8eE7V4g_9uaN8rch7REQs4KDfAdbyfkp_87As-r8sp6UO0gypGT1yAUk4AsknDjMD-yZVFHf71FA
+        Auth=DQAAANEAAAC44gt6dSamcYshyseNfOUjWELrWqbSlQ2Lov7t9L8MNL6KHVs49gMqPeI_fpj-BrWwc-UP9E-Gq9MX6PiGBfjzQ-5uqa9ERd4k9mA3HIl68uoVce3tj59ToFD9Dlsv9mbcWlbFULz-ABsipgUs-N0nYONg4rV6Gg43Gkfjw8bMNxJg-MzASCiRygswioIoFElnM8kaEWhr9aQc7_Xs2IvE_c4TqnI91t0ksbnzVtRfAw4UersjtQyCWjktlVYNZa9dS646YU1vHwYDoLyX2tSRKYPbm2Wa-gWwQqSdD0705A
 
 '
     http_version: 
-  recorded_at: Fri, 15 Jun 2012 06:02:32 GMT
+  recorded_at: Fri, 15 Jun 2012 06:01:34 GMT
 - request:
     method: get
     uri: https://spreadsheets.google.com/feeds/worksheets/0Ak3raVCu_XPhdG9pM3NIMF95eVZYYlpCcUx1OUQzSHc/private/full
@@ -102,7 +102,7 @@ http_interactions:
       string: ''
     headers:
       Authorization:
-      - GoogleLogin auth=DQAAANAAAAD5bEUow7o53ncaEo-tJQ3CtE-fUcFGcrNAwatWhyWpY_wzKVc9VkU_jJ2b7riN4ahAIuuanN7L_kS7gdK4O5f9s9QMxPNitNJ72SMp0UC_TAZCjSwbRg0EuC-yLxKvdnbg2-c6aT81l7DGm93G2m7JFpWkHICc4_lhKPj72QDst_9oqq2rYApoAfeWFnaRHiTZ_yqQl9pbI3ZS5cyUJ-zyCtmxwvZ2cdceTvvN1Lpb9RO2o-ItxDb751enGiyzlVZ92Ycz2yKT9rdqdG3ylXRo
+      - GoogleLogin auth=DQAAANAAAABaBd7KIGt8znmR1YvzCWp66loy1AHeUX2cTzgmKbCDD9uKhyKlef0zO_BiE7wb_-8IHNa3qfUo3NFrtI74z4Zl3BojcAt_ghz4dPdAGcBAe_rk0mFwOU-UvRkxbrC0Aq4fqAt1HAmu0SVK2NShAnl2U3MYD54QtQLW8Mdxpgd5Qr0kE33HH6w1aLuqBjXY9zRahxc3aid6QVnL2MAUDABtxlSTXwRP7-YcZzlHv1_LEOQXPCs_5DLPJqvzlNOe3DNS7QBWM290qi8TxFWrgNXw
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -117,9 +117,9 @@ http_interactions:
       Content-Type:
       - application/atom+xml; charset=UTF-8
       Expires:
-      - Fri, 15 Jun 2012 06:02:30 GMT
+      - Fri, 15 Jun 2012 06:01:31 GMT
       Date:
-      - Fri, 15 Jun 2012 06:02:30 GMT
+      - Fri, 15 Jun 2012 06:01:31 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Vary:
@@ -166,7 +166,7 @@ http_interactions:
         rel='self' type='application/atom+xml' href='https://spreadsheets.google.com/feeds/worksheets/0Ak3raVCu_XPhdG9pM3NIMF95eVZYYlpCcUx1OUQzSHc/private/full/od7'/><link
         rel='edit' type='application/atom+xml' href='https://spreadsheets.google.com/feeds/worksheets/0Ak3raVCu_XPhdG9pM3NIMF95eVZYYlpCcUx1OUQzSHc/private/full/od7/0'/><gs:rowCount>455</gs:rowCount><gs:colCount>20</gs:colCount></entry></feed>
     http_version: 
-  recorded_at: Fri, 15 Jun 2012 06:02:33 GMT
+  recorded_at: Fri, 15 Jun 2012 06:01:34 GMT
 - request:
     method: get
     uri: https://spreadsheets.google.com/feeds/cells/0Ak3raVCu_XPhdG9pM3NIMF95eVZYYlpCcUx1OUQzSHc/od6/private/full
@@ -175,7 +175,7 @@ http_interactions:
       string: ''
     headers:
       Authorization:
-      - GoogleLogin auth=DQAAANAAAAD5bEUow7o53ncaEo-tJQ3CtE-fUcFGcrNAwatWhyWpY_wzKVc9VkU_jJ2b7riN4ahAIuuanN7L_kS7gdK4O5f9s9QMxPNitNJ72SMp0UC_TAZCjSwbRg0EuC-yLxKvdnbg2-c6aT81l7DGm93G2m7JFpWkHICc4_lhKPj72QDst_9oqq2rYApoAfeWFnaRHiTZ_yqQl9pbI3ZS5cyUJ-zyCtmxwvZ2cdceTvvN1Lpb9RO2o-ItxDb751enGiyzlVZ92Ycz2yKT9rdqdG3ylXRo
+      - GoogleLogin auth=DQAAANAAAABaBd7KIGt8znmR1YvzCWp66loy1AHeUX2cTzgmKbCDD9uKhyKlef0zO_BiE7wb_-8IHNa3qfUo3NFrtI74z4Zl3BojcAt_ghz4dPdAGcBAe_rk0mFwOU-UvRkxbrC0Aq4fqAt1HAmu0SVK2NShAnl2U3MYD54QtQLW8Mdxpgd5Qr0kE33HH6w1aLuqBjXY9zRahxc3aid6QVnL2MAUDABtxlSTXwRP7-YcZzlHv1_LEOQXPCs_5DLPJqvzlNOe3DNS7QBWM290qi8TxFWrgNXw
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -190,9 +190,9 @@ http_interactions:
       Content-Type:
       - application/atom+xml; charset=UTF-8
       Expires:
-      - Fri, 15 Jun 2012 06:02:30 GMT
+      - Fri, 15 Jun 2012 06:01:32 GMT
       Date:
-      - Fri, 15 Jun 2012 06:02:30 GMT
+      - Fri, 15 Jun 2012 06:01:32 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Vary:
@@ -1698,5 +1698,5 @@ http_interactions:
         rel='edit' type='application/atom+xml' href='https://spreadsheets.google.com/feeds/cells/0Ak3raVCu_XPhdG9pM3NIMF95eVZYYlpCcUx1OUQzSHc/od6/private/full/R37C8/392wkp'/><gs:cell
         row='37' col='8' inputValue='PUBLIC'>PUBLIC</gs:cell></entry></feed>
     http_version: 
-  recorded_at: Fri, 15 Jun 2012 06:02:34 GMT
+  recorded_at: Fri, 15 Jun 2012 06:01:36 GMT
 recorded_with: VCR 2.1.1
