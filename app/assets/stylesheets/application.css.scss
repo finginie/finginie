@@ -242,15 +242,18 @@ header {
   @include holy-grail($aside-width, 0);
   height: 100%;
   min-height: 800px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 204px;
-  width: 776px;
+  width: 768px;
   margin: 10px auto;
   overflow: hidden;
   background: #FFF;
   @include border-radius(4px);
   @include box-shadow(0 2px 4px hsla(0, 0%, 0%, 0.65));
+  padding: {
+    top: 6px;
+    right: 6px;
+    bottom: 6px;
+    left: 206px;
+  }
 }
 
 #main {
@@ -258,7 +261,6 @@ header {
   .container {
     padding: {
       left: 10px;
-      right: 4px;
     }
     >h1 {
       font: {

@@ -21,7 +21,7 @@ body.investment_education {
             @include linear-gradient(bottom, #CCC 0%, #FFF 100%);
           }
           img {
-            width: 245px;
+            width: 240px;
             border-bottom: 1px solid $border-color;
             @include border-radius(6px 4px 0 0);
           }
@@ -42,7 +42,7 @@ body.investment_education {
           }
         }
         .preparing-to-invest, .before-you-invest, .investing-in-shares {
-          margin-right: 10px;
+          margin-right: 16px;
         }
       }
     }

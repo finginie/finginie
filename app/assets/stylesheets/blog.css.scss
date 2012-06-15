@@ -12,17 +12,14 @@
 }
 body.blog {
   #wrapper {
-    width: 980px;
-    padding-left: 0;
+    width: 968px;
+    padding: 6px;
     @include hide-aside;
     #main {
       .container {
-        padding-left: 4px;
+        padding-left: 0;
         .postarea {
-          //width: 970px;
           article {
-            width: 950px;
-            //width: 100%;
             padding: 10px;
             margin-bottom: 20px;
             @include border-radius(4px);

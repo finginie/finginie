@@ -138,14 +138,14 @@ body.mutual_funds.sectoral_allocation {
 
 body.mutual_funds.index {
   #wrapper {
-    width: 980px;
-    padding-left:0;
+    width: 968px;
+    padding: 6px;
     aside {
       display: none;
     }
     #main {
       .container {
-        padding-left: 4px;
+        padding-left: 0;
         .dataTables_info {
           font-size: 12px;
         }
