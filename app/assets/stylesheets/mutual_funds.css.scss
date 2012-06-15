@@ -21,6 +21,7 @@ body.mutual_funds {
 body.mutual_funds.show {
   #main {
     #new_data_provider_scheme {
+      @include required-field;
       text-align: right;
       margin : {
         bottom: 20px;
