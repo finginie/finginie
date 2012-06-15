@@ -19,7 +19,7 @@ describe SessionsController do
 
     it "should be redirect" do
       session[:comprehensive_risk_profiler] = comprehensive_risk_profiler_attributes
-      post 'create'
+      post :create, :provider => authentication.provider
       session[:comprehensive_risk_profiler].should eq nil
       response.should be_redirect
     end

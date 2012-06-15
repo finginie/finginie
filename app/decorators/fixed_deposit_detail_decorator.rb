@@ -1,5 +1,5 @@
 class FixedDepositDetailDecorator < ApplicationDecorator
-  decorates :fixed_deposit_detail
+  decorates :fixed_deposit_detail_proxy
   include Draper::LazyHelpers
   include NumberHelper
 
