@@ -10,14 +10,14 @@ $quote-border: 2px solid lightgray;
 
 body.stocks.index {
   #wrapper {
-    width: 980px;
+    width: 968px;
+    padding: 6px;
     aside {
       display: none;
     }
-    padding-left: 0;
     #main {
       .container {
-        padding-left: 4px;
+        padding-left: 0;
         .dataTables_wrapper {
           margin-bottom: 30px;
           a {
@@ -36,7 +36,7 @@ body.stocks.index {
             color: $heading-blue;
           }
           #nse_gainers_losers, #bse_gainers_losers {
-            width: 480px;
+            width: 478px;
             float: left;
             margin-bottom: 30px;
           }
@@ -53,7 +53,7 @@ body.stocks.index {
 
         }
         #news {
-          width: 637px;
+          width: 635px;
           margin-bottom: 20px;
           float: left;
           h1 {
@@ -82,8 +82,8 @@ body.stocks.index {
         }
         #sectoral_indices {
           float: left;
-          width: 323px;
-          margin-left: 12px;
+          width: 320px;
+          margin-left: 13px;
         }
         p {
           text-align: justify;
@@ -93,6 +93,7 @@ body.stocks.index {
         }
       }
       .page_content{
+        padding-top: 20px;
         clear: both;
         h1 {
           font-size: large;
