@@ -78,12 +78,12 @@ SimpleNavigation::Configuration.run do |navigation|
 
     primary.item :stocks, 'Shares', main_app.stocks_path, :highlights_on => :subpath do |secondary|
       if @company
-        secondary.item :stock,           "#{@company.name}",main_app.stock_path(@company.name), :highlights_on => :subpath do |tertiary|
-          tertiary.item :balance_sheet,  'Balance Sheet',         main_app.stock_balance_sheet_path(@company.name)
-          tertiary.item :profit_loss,    'Income Statement',      main_app.stock_profit_loss_path(@company.name)
-          tertiary.item :cash_flow,      'Cash Flow',             main_app.stock_cash_flow_path(@company.name)
-          tertiary.item :ratios,         'Ratios',                main_app.stock_ratios_path(@company.name)
-          tertiary.item :share_holding,  'Share Holding Pattern', main_app.stock_share_holding_path(@company.name)
+        secondary.item :stock,           "#{@company.name}",main_app.stock_path(@company), :highlights_on => :subpath do |tertiary|
+          tertiary.item :balance_sheet,  'Balance Sheet',         main_app.stock_balance_sheet_path(@company)
+          tertiary.item :profit_loss,    'Income Statement',      main_app.stock_profit_loss_path(@company)
+          tertiary.item :cash_flow,      'Cash Flow',             main_app.stock_cash_flow_path(@company)
+          tertiary.item :ratios,         'Ratios',                main_app.stock_ratios_path(@company)
+          tertiary.item :share_holding,  'Share Holding Pattern', main_app.stock_share_holding_path(@company)
         end
       end
     end
@@ -93,12 +93,12 @@ SimpleNavigation::Configuration.run do |navigation|
         secondary.item :mutual_fund_category, @nav_category_detail.scheme_class_description, main_app.mutual_fund_category_path(params[:id])
       end
       if @scheme.try(:name)
-        secondary.item :scheme_summary, 'Scheme Summary', main_app.mutual_fund_path(@scheme.name)
-        secondary.item :scheme_returns, 'Scheme Returns', main_app.scheme_returns_mutual_fund_path(@scheme.name)
-        secondary.item :top_holdings,   'Top Holdings', main_app.top_holdings_mutual_fund_path(@scheme.name)
-        secondary.item :detailed_holdings, 'Detailed Holdings', main_app.detailed_holdings_mutual_fund_path(@scheme.name)
-        secondary.item :asset_allocation, 'Asset Allocation', main_app.asset_allocation_mutual_fund_path(@scheme.name)
-        secondary.item :sectoral_allocation, 'Sectoral Allocation', main_app.sectoral_allocation_mutual_fund_path(@scheme.name)
+        secondary.item :scheme_summary, 'Scheme Summary', main_app.mutual_fund_path(@scheme)
+        secondary.item :scheme_returns, 'Scheme Returns', main_app.scheme_returns_mutual_fund_path(@scheme)
+        secondary.item :top_holdings,   'Top Holdings', main_app.top_holdings_mutual_fund_path(@scheme)
+        secondary.item :detailed_holdings, 'Detailed Holdings', main_app.detailed_holdings_mutual_fund_path(@scheme)
+        secondary.item :asset_allocation, 'Asset Allocation', main_app.asset_allocation_mutual_fund_path(@scheme)
+        secondary.item :sectoral_allocation, 'Sectoral Allocation', main_app.sectoral_allocation_mutual_fund_path(@scheme)
       end
     end
 

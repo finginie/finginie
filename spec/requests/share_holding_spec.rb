@@ -7,7 +7,7 @@ describe "ShareHolding", :mongoid do
   end
 
   it "should show the share holding profits_after_taxtern for a Stock" do
-    visit stock_share_holding_path(company.name )
+    visit stock_share_holding_path(company)
     page.should have_content 'Foreign Institional Investors (FIIs)'
     page.should have_content '8.52'
     page.should have_content 'Other Foreign Investors'
@@ -18,13 +18,13 @@ describe "ShareHolding", :mongoid do
   end
 
   it "should have stock search in the stock share holding page" do
-    visit stock_path company.name
+    visit stock_path company
     click_link "Ratios"
     page.should have_selector("#new_company")
   end
 
   it "should have a title" do
-    visit stock_share_holding_path( company.name)
+    visit stock_share_holding_path(company)
     page.should have_selector("title", :content => I18n.t('share_holding.title'))
   end
 end

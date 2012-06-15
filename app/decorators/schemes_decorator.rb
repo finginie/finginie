@@ -15,7 +15,7 @@ private
   def data
     schemes.map do |scheme|
       [
-        link_to(scheme.name, Rails.application.routes.url_helpers.mutual_fund_path(scheme.name)),
+        link_to(scheme.name, Rails.application.routes.url_helpers.mutual_fund_path(scheme)),
         h(scheme.class_description),
         h(scheme.minimum_investment_amount)
       ]
