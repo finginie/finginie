@@ -18,11 +18,11 @@ group :assets do
 end
 
 gem 'airbrake'
-gem 'bourbon', :git => "git://github.com/FinGinie/bourbon.git"
+gem 'bourbon'
 gem 'cancan'
 gem 'cells'
 gem 'dimensions-rails'
-gem 'draper', :git => "git://github.com/jcasimir/draper.git"
+gem 'draper'
 gem 'haml-rails'
 gem 'high_voltage'
 gem 'inherited_resources'
@@ -32,14 +32,13 @@ gem 'kaminari'
 gem 'meta_search'
 gem 'mongoid' # Required by mongoid search
 gem 'mongoid_search', :git => "git://github.com/mauriciozaffari/mongoid_search.git"
-gem 'nested_form', :git => "git://github.com/TMaYaD/nested_form.git"
+gem 'nested_form'
 # gem 'newrelic_rpm' # Removed temporarily
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'paper_trail'
 gem 'pg'
 gem 'rack-environmental'
-gem 'rails-backbone', :git => "git://github.com/TMaYaD/backbone-rails.git"
 gem 'sheet_mapper'
 gem 'simple_form', :git => "git://github.com/plataformatec/simple_form.git"
 gem 'simple-navigation'
@@ -49,7 +48,7 @@ gem 'thin'
 group :test, :development do
   gem 'capybara'
   gem 'capybara-webkit'
-    gem 'headless', :git => "git://github.com/LoonyBin/headless.git" # https://github.com/leonid-shevtsov/headless/pull/22
+    gem 'headless'
   gem "rspec-cells"
   gem 'factory_girl_rails'
   gem 'foreman'
@@ -60,7 +59,7 @@ group :test, :development do
     gem 'rb-fsevent', :require => false
   gem 'guard-bundler'
   gem 'guard-livereload'
-  gem 'guard-rake'
+#gem 'guard-rake'
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'heroku_san'

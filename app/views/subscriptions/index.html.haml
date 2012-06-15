@@ -8,4 +8,4 @@
   - @subscriptions.each do |subscription|
     %tr
       %td= subscription.subscribable.name
-      %td= link_to 'Destroy', subscription, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Destroy', subscription, :method => :delete, :data => {:confirm => 'Are you sure?'}
