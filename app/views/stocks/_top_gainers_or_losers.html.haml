@@ -21,7 +21,7 @@
               %tr{ class: cycle("odd", "even") }
                 %td
                   - if scrip.company.name
-                    = link_to scrip.company.name, stock_path(scrip.company.name)
+                    = link_to scrip.company.name, stock_path(scrip.company)
                 %td.right_align= number_to_indian_currency(scrip.last_traded_price)
                 - if performance == 'most_active'
                   %td.right_align= number_to_indian_currency(scrip.volume, 0)

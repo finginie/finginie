@@ -102,7 +102,7 @@ describe "Stocks", :mongoid, :redis do
     context "#Top Gainers" do
       before(:each) do
         5.times do |i|
-          top_gainer_company = create :'data_provider/company', :name => "GAINER#{i}", :ticker_name => "Gain #{i}", :nse_code => "GAIN#{i}"
+          top_gainer_company = create :'data_provider/company', :name => "GAINER #{i}", :ticker_name => "Gain #{i}", :nse_code => "GAIN#{i}"
           create :'data_provider/nse_scrip', :id => top_gainer_company.nse_code, :last_traded_price => i+2, :close_price => i+1
           create :'data_provider/bse_scrip', :id => top_gainer_company.ticker_name, :last_traded_price => i+3, :close_price => i+2
         end
@@ -112,14 +112,14 @@ describe "Stocks", :mongoid, :redis do
 
         visit stocks_path
 
-        expected_content = [["GAINER0", "2.00", "100.00"], ["GAINER1", "3.00", "50.00"], ["GAINER2", "4.00", "33.33"], ["GAINER3", "5.00", "25.00"], ["GAINER4", "6.00", "20.00"]]
+        expected_content = [["GAINER 0", "2.00", "100.00"], ["GAINER 1", "3.00", "50.00"], ["GAINER 2", "4.00", "33.33"], ["GAINER 3", "5.00", "25.00"], ["GAINER 4", "6.00", "20.00"]]
         tableish("#nse_scrip_top_gainers").should include *expected_content
       end
 
       it "should list BSE top five gainers" do
         visit stocks_path
 
-        expected_content = [["GAINER0", "3.00", "50.00"], ["GAINER1", "4.00", "33.33"], ["GAINER2", "5.00", "25.00"], ["GAINER3", "6.00", "20.00"], ["GAINER4", "7.00", "16.67"]]
+        expected_content = [["GAINER 0", "3.00", "50.00"], ["GAINER 1", "4.00", "33.33"], ["GAINER 2", "5.00", "25.00"], ["GAINER 3", "6.00", "20.00"], ["GAINER 4", "7.00", "16.67"]]
         tableish("#bse_scrip_top_gainers").should include *expected_content
 
       end
@@ -128,9 +128,9 @@ describe "Stocks", :mongoid, :redis do
         visit stocks_path
 
         within '#nse_scrip_top_gainers' do
-          page.should have_selector("a", :content => 'GAINER1')
-          click_on 'GAINER1'
-          page.current_path.should eq stock_path 'GAINER1'
+          page.should have_selector("a", :content => 'GAINER 1')
+          click_on 'GAINER 1'
+          page.current_path.should eq stock_path 'gainer-1'
         end
       end
     end
