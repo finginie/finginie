@@ -9,7 +9,7 @@ class Loan < Security
                                   :less_than => 37
                                 }
 
-  has_many :loan_transactions
+  has_many :loan_transactions, :dependent => :destroy
 
   def current_value(transaction)
     time_period = (Date.today.year - transaction.date.year) * 12 + (Date.today.month - transaction.date.month) + 1

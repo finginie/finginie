@@ -53,5 +53,17 @@ describe User do
       user.comprehensive_risk_profiler.age.should eq 28
       user.comprehensive_risk_profiler.household_savings.should eq 4000
     end
+
+    it "should delete associate child records" do
+      user = create :user
+      portfolio = create :portfolio, user: user
+      comprehensive_risk_profiler = create :comprehensive_risk_profiler, :user => user
+      authentication = create :authentication, :user => user
+      lambda {
+          user.destroy
+      }.should change(Portfolio, :count).by(-1)
+      change(Authentication, :count).by(-1)
+      change(ComprehensiveRiskProfiler, :count).by(-1)
+    end
   end
 end
