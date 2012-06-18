@@ -2,9 +2,11 @@ require 'spec_helper'
 
 describe FixedDepositCollection, :vcr do
 
-  before(:each) do
+  around(:each) do |spec|
     @collection = FixedDepositCollection.all
-    Timecop.freeze(Date.civil(2012,03,22))
+    Timecop.freeze(Date.civil(2012,03,22)) do
+      spec.run
+    end
   end
 
   it "should have collection of fixed deposit detail proxy" do
