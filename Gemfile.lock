@@ -142,6 +142,7 @@ GEM
     draper (0.14.0)
       actionpack (~> 3.2)
       activesupport (~> 3.2)
+    dynamic_sitemaps (1.0.7)
     em-websocket (0.3.6)
       addressable (>= 2.1.1)
       eventmachine (>= 0.12.9)
@@ -457,6 +458,7 @@ DEPENDENCIES
   data_provider!
   dimensions-rails
   draper
+  dynamic_sitemaps
   factory_girl_rails
   foreman
   growl
