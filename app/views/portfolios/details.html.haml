@@ -29,7 +29,7 @@
 
           - resource.send(positions).each do |net_position|
             %tr
-              %td.name= link_to net_position.name, ( positions == "mutual_fund_positions" ? mutual_fund_path(net_position.name) : stock_path(net_position.name) )
+              %td.name= link_to net_position.name, ( positions == "mutual_fund_positions" ? mutual_fund_path(net_position.mutual_fund.scheme_master) : stock_path(net_position.company) )
               %td= number_to_indian_currency net_position.quantity
               %td= number_to_indian_currency net_position.average_cost_price
               %td= number_to_indian_currency net_position.value

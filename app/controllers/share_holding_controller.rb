@@ -4,7 +4,7 @@ class ShareHoldingController < InheritedResources::Base
 
   def resource
     @search = DataProvider::Company.new
-    @company = DataProvider::Company.find_by_name(params[:stock_id] )
+    @company = DataProvider::Company.find_by_slug(params[:stock_id] )
     @share_holding = DataProvider::ShareHolding.all(conditions: { company_code: @company.code }, sort: [[ :share_holding_date, :desc ]], limit: 1).first
     @share_holding = ShareHoldingDecorator.decorate(@share_holding)
   end

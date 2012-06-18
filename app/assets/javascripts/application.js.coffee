@@ -41,5 +41,5 @@ $ ->
       source: $(this).data('autocomplete-source'),
       if !$(this).data('no-redirect')
         select: ( event, ui ) =>
-            window.location = $(this).data('autocomplete-source') + "/"+ ui.item.value;
+            window.location = $(this).data('autocomplete-source') + "/"+ ui.item.id;
 

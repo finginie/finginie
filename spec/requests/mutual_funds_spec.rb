@@ -14,7 +14,7 @@ describe "MutualFunds", :mongoid do
   it { should validate_uniqueness_of :name }
 
   it "should display all the required fields for a mutual fund summary" do
-    visit mutual_fund_path(@scheme.name)
+    visit mutual_fund_path(@scheme)
     page.should have_content @scheme.name
     page.should have_content @amc.company_name
     page.should have_content @scheme.bench_mark_index_name
@@ -27,19 +27,19 @@ describe "MutualFunds", :mongoid do
   end
 
   it "should have search in the scheme page", :js => true do
-    visit mutual_fund_path(@scheme.name)
+    visit mutual_fund_path(@scheme)
     page.execute_script %Q{ $('[data-autocomplete-source]').val("#{@scheme.name[0..5]}").keydown(); }
 
     wait_until {  page.should have_selector(".ui-menu-item a:contains('#{@scheme.name}')") }
 
     page.execute_script %Q{ $('.ui-menu-item a:contains("#{@scheme.name}")').trigger('mouseenter').click(); }
-    page.current_path.should eq mutual_fund_path(@scheme.name)
+    page.current_path.should eq mutual_fund_path(@scheme)
 
   end
 
   it "should display only active items in search", :js => true do
     inactive_scheme = create :'data_provider/scheme', :delete_flag => "True"
-    visit mutual_fund_path(@scheme.name)
+    visit mutual_fund_path(@scheme)
     page.execute_script %Q{ $('[data-autocomplete-source]').val("#{@scheme.name[0..5]}").keydown(); }
 
     wait_until {  page.should have_selector(".ui-menu-item a:contains('#{@scheme.name}')") }
@@ -81,7 +81,7 @@ describe "MutualFunds", :mongoid do
       within "#top_performers" do
         click_on @scheme.name
       end
-      page.current_path.should eq mutual_fund_path @scheme.name
+      page.current_path.should eq mutual_fund_path @scheme
     end
 
     it "should have biggest funds" do
@@ -106,32 +106,32 @@ describe "MutualFunds", :mongoid do
     end
 
     it "should have title for summary page" do
-      visit mutual_fund_path(@scheme.name)
+      visit mutual_fund_path(@scheme)
       page.should have_selector("title", :content => I18n.t('mutual_funds.show.title'))
     end
 
     it "should have title for returns page" do
-      visit scheme_returns_mutual_fund_path(@scheme.name)
+      visit scheme_returns_mutual_fund_path(@scheme)
       page.should have_selector("title", :content => I18n.t('mutual_funds.scheme_returns.title'))
     end
 
     it "should have title for asset allocation page" do
-      visit asset_allocation_mutual_fund_path(@scheme.name)
+      visit asset_allocation_mutual_fund_path(@scheme)
       page.should have_selector("title", :content => I18n.t('mutual_funds.asset_allocation.title'))
     end
 
     it "should have title for sectoral allocation page" do
-      visit sectoral_allocation_mutual_fund_path(@scheme.name)
+      visit sectoral_allocation_mutual_fund_path(@scheme)
       page.should have_selector("title", :content => I18n.t('mutual_funds.sectoral_allocation.title'))
     end
 
     it "should have title for top holdings page" do
-      visit top_holdings_mutual_fund_path(@scheme.name)
+      visit top_holdings_mutual_fund_path(@scheme)
       page.should have_selector("title", :content => I18n.t('mutual_funds.top_holdings.title'))
     end
 
     it "should have title for detailed holdings page" do
-      visit detailed_holdings_mutual_fund_path(@scheme.name)
+      visit detailed_holdings_mutual_fund_path(@scheme)
       page.should have_selector("title", :content => I18n.t('mutual_funds.details.title'))
     end
   end

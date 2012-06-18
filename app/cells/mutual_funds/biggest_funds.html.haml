@@ -8,7 +8,7 @@
       %th.right_align 1y return (%)
     - @biggest_schemes.each do |scheme|
       %tr{ class: cycle("odd", "even") }
-        %td= link_to scheme.name, mutual_fund_url(scheme.name)
+        %td= link_to scheme.name, mutual_fund_url(scheme)
         %td.right_align= scheme.nav_amount
         = table_content_with_red_or_green_class scheme.percentage_change
         %td.right_align= scheme.size

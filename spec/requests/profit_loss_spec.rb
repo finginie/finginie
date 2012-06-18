@@ -19,7 +19,7 @@ describe "Profit Loss" do
   end
 
   it "should show thw correct fields for non-banking sector" do
-    visit stock_profit_loss_path(company.name)
+    visit stock_profit_loss_path(company)
     page.should have_content company.name
     page.should have_content "Sales"
     page.should have_content "96460"
@@ -33,7 +33,7 @@ describe "Profit Loss" do
 
   it "should show the correct fields for banking-sector" do
     company.update_attribute(:major_sector, 2)
-    visit stock_profit_loss_path(company.name)
+    visit stock_profit_loss_path(company)
     page.should have_content company.name
     page.should have_content "Income"
     page.should have_content "Operating Income"
@@ -47,13 +47,13 @@ describe "Profit Loss" do
   end
 
   it "should have stock search in the stock profit loss page" do
-    visit stock_path company.name
+    visit stock_path company
     click_link "Income Statement"
     page.should have_selector("#new_company")
   end
 
   it "should have a title" do
-    visit stock_profit_loss_path( company.name)
+    visit stock_profit_loss_path( company)
     page.should have_selector("title", :content => I18n.t('profit_loss.title'))
   end
 end

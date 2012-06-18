@@ -15,7 +15,7 @@ private
   def data
     stocks.map do |stock|
       [
-        link_to(stock.name, Rails.application.routes.url_helpers.stock_path(stock.name)),
+        link_to(stock.name, Rails.application.routes.url_helpers.stock_path(stock)),
         h(stock.sector),
         h(stock.current_price),
         h(stock.nse.percent_change || stock.bse.percent_change),

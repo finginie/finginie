@@ -6,7 +6,7 @@ class MutualFundsController < InheritedResources::Base
     @search = DataProvider::Scheme.new
     if params[:term]
       @search_records = DataProvider::Scheme.active.csearch(params[:term], :allow_empty_search => true).order_by([[:name, :asc]])
-      @search_records.all.map(&:name)
+      @search_records.all.map {|scheme| {:value => scheme.name, :id => scheme.slug }}
     else
       @categories = DataProvider::NetAssetValueCategory.all( sort: [[:scheme_class_description, :asc]])
     end
@@ -14,7 +14,7 @@ class MutualFundsController < InheritedResources::Base
 
   def resource
     @search = DataProvider::Scheme.new
-    @scheme = DataProvider::Scheme.where( name: params[:id] ).first
+    @scheme = DataProvider::Scheme.find_by_slug(params[:id])
     @scheme = SchemeDecorator.decorate(@scheme)
   end
 

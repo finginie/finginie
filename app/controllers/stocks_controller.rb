@@ -5,7 +5,7 @@ class StocksController < InheritedResources::Base
 
   def resource
     @search = DataProvider::Company.new
-    @company = DataProvider::Company.find_by_name(params[:id])
+    @company = DataProvider::Company.find_by_slug(params[:id])
     CompanyDecorator.decorate(@company)
   end
 
@@ -13,7 +13,7 @@ class StocksController < InheritedResources::Base
     @search = DataProvider::Company.new
     if params[:term]
       @search_records = DataProvider::Company.stocks.csearch(params[:term]).order_by([[:name, :asc]])
-      @search_records.all.map {|stock| {:value => stock.name, :id => stock.code}}
+      @search_records.all.map {|stock| {:value => stock.name, :id => stock.slug}}
     elsif params[:screener]
       @search_records = DataProvider::Company.screener_search(params[:screener])
       @companies = @search_records.page(params[:page]).per(10)

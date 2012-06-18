@@ -9,7 +9,7 @@
       %th.right_align 3y return (%)
     - @top_performers.each do |scheme|
       %tr{ class: cycle("odd", "even") }
-        %td= link_to scheme.name, mutual_fund_url(scheme.name)
+        %td= link_to scheme.name, mutual_fund_url(scheme)
         %td.right_align= scheme.nav_amount
         = table_content_with_red_or_green_class scheme.percentage_change
         = table_content_with_red_or_green_class scheme.prev1_month_percent
