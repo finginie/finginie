@@ -17,4 +17,12 @@ describe Loan do
     loan_transaction = create :loan_transaction, :loan => loan, :portfolio => create(:portfolio), :price => 100000, :date => 8.months.ago.to_date
     loan.repay(loan_transaction).should be_true
   end
+
+  it "should delete associate child records" do
+    loan = create :loan
+    create :loan_transaction, :loan => loan
+    lambda {
+        loan.destroy
+    }.should change(LoanTransaction, :count).by(-1)
+  end
 end

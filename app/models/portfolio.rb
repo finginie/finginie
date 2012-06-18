@@ -2,12 +2,12 @@ class Portfolio < ActiveRecord::Base
   attr_accessible :name
   belongs_to :user
 
-  has_many :stock_transactions
-  has_many :mutual_fund_transactions
-  has_many :gold_transactions
-  has_many :loan_transactions
-  has_many :fixed_deposit_transactions
-  has_many :real_estate_transactions
+  has_many :stock_transactions,         :dependent => :destroy
+  has_many :mutual_fund_transactions,   :dependent => :destroy
+  has_many :gold_transactions,          :dependent => :destroy
+  has_many :loan_transactions,          :dependent => :destroy
+  has_many :fixed_deposit_transactions, :dependent => :destroy
+  has_many :real_estate_transactions,   :dependent => :destroy
 
   has_many :mutual_funds,   :through => :mutual_fund_transactions,   :uniq => true
   has_many :loans,          :through => :loan_transactions,          :uniq => true

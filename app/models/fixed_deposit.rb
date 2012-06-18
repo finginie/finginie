@@ -1,7 +1,8 @@
 class FixedDeposit < Security
   attr_accessible :period, :rate_of_interest, :rate_of_redemption
   belongs_to :user
-  has_many :fixed_deposit_transactions
+
+  has_many :fixed_deposit_transactions, :dependent => :destroy
 
   validates :period, :numericality => {:greater_than => 0}, :presence => true
   validates :rate_of_interest,  :presence => true,

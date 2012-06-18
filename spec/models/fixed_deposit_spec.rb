@@ -15,4 +15,11 @@ describe FixedDeposit do
   it { should_not allow_value(-1).for(:rate_of_interest) }
   it { should have_many :fixed_deposit_transactions }
 
+  it "should delete associate child records" do
+    fixed_deposit = create :fixed_deposit
+    create :fixed_deposit_transaction, :fixed_deposit => fixed_deposit
+    lambda {
+        fixed_deposit.destroy
+    }.should change(FixedDepositTransaction, :count).by(-1)
+  end
 end

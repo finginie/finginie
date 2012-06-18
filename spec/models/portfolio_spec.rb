@@ -85,6 +85,26 @@ describe Portfolio, :redis do
     end
   end
 
+  it "should delete associate child records" do
+    user = create :user
+    portfolio = create :portfolio, user: user
+    create :stock_transaction,         :portfolio => portfolio
+    create :mutual_fund_transaction,   :portfolio => portfolio
+    create :gold_transaction,          :portfolio => portfolio
+    create :loan_transaction,          :portfolio => portfolio
+    create :fixed_deposit_transaction, :portfolio => portfolio
+    create :real_estate_transaction,   :portfolio => portfolio
+
+      lambda {
+          portfolio.destroy
+      }.should change(StockTransaction, :count).by(-1)
+      change(MutualFundTransaction, :count).by(-1)
+      change(GoldTransaction, :count).by(-1)
+      change(LoanTransaction, :count).by(-1)
+      change(FixedDepositTransaction, :count).by(-1)
+      change(RealEstateTransaction, :count).by(-1)
+  end
+
   def create_positions_of_all_securities
     company = create :'data_provider/company', :industry_name => "FOO"
     scrip = create :'data_provider/nse_scrip', :last_traded_price => 5, :id => company.nse_code
