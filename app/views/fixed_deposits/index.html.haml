@@ -1,7 +1,7 @@
 %h1 Fixed Deposit Comparison tool : Compare fixed deposit interest rates across banks in India
 
 %p= t ".fixed_deposit_tool"
-= simple_form_for @search, :url => fixed_deposits_path, :method => :get, :validate => true do |f|
+= simple_form_for @search, :url => fixed_deposits_path, :method => :get do |f|
   = f.input :amount
 
   = f.label :duration
@@ -14,7 +14,7 @@
   .actions
     = f.submit 'Submit'
 
-- if params[:fixed_deposit_detail]
+- if params[:fixed_deposit_detail] && @search.valid?
   - unless collection.top_five_public_sector.empty? || collection.top_five_private_sector.empty?
     .notice= @search.result_summary
   - else

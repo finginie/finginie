@@ -29,6 +29,12 @@ describe "FixedDeposits", :vcr do
       end
     end
 
+    it "should validate the user entered value" do
+      visit fixed_deposits_url
+      click_button "Submit"
+      page.should have_selector('#fixed_deposit_detail_amount+div.error')
+    end
+
     context "user can search best fixed deposit interest rates" do
       before(:each) do
         Timecop.freeze(Date.civil(2012,03,22)) do
