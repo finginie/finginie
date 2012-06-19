@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe FixedDepositDetail do
-  let(:fixed_deposit_detail) { FixedDepositDetail.new(:amount => 100, :year => 1, :days => 2, :month => 3) }
+describe FixedDepositQuery do
+  let(:fixed_deposit_query) { FixedDepositQuery.new(:amount => 100, :year => 1, :days => 2, :month => 3) }
   it { should validate_numericality_of :month  }
   it { should validate_numericality_of :year   }
   it { should validate_numericality_of :days   }

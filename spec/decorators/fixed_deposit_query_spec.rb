@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe FixedDepositDetailDecorator do
+describe FixedDepositQueryDecorator do
 
-  let (:fixed_deposit_detail) { FixedDepositDetail.new(amount: "100", year: "1", month: "1", days: "1", senior_citizen: "Yes")}
-  let (:fixed_deposit_detail_decorator) { FixedDepositDetailDecorator.decorate fixed_deposit_detail }
+  let (:fixed_deposit_detail) { FixedDepositQuery.new(amount: "100", year: "1", month: "1", days: "1", senior_citizen: "Yes")}
+  let (:fixed_deposit_detail_decorator) { FixedDepositQueryDecorator.decorate fixed_deposit_detail }
 
   subject { fixed_deposit_detail_decorator }
 

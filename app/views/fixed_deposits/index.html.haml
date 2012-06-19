@@ -14,7 +14,7 @@
   .actions
     = f.submit 'Submit'
 
-- if params[:fixed_deposit_detail] && @search.valid?
+- if params[:fixed_deposit_query] && @search.valid?
   - unless collection.top_five_public_sector.empty? || collection.top_five_private_sector.empty?
     .notice= @search.result_summary
   - else

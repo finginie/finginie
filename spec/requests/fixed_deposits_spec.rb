@@ -32,7 +32,7 @@ describe "FixedDeposits", :vcr do
     it "should validate the user entered value" do
       visit fixed_deposits_url
       click_button "Submit"
-      page.should have_selector('#fixed_deposit_detail_amount+div.error')
+      page.should have_selector('#fixed_deposit_query_amount+div.error')
     end
 
     context "user can search best fixed deposit interest rates" do
@@ -40,10 +40,10 @@ describe "FixedDeposits", :vcr do
         Timecop.freeze(Date.civil(2012,03,22)) do
           visit fixed_deposits_url
 
-          fill_in "fixed_deposit_detail_amount", :with => 1600000
-          fill_in "fixed_deposit_detail_year",   :with => 1
-          fill_in "fixed_deposit_detail_month",  :with => 1
-          fill_in "fixed_deposit_detail_days",   :with => 1
+          fill_in "fixed_deposit_query_amount", :with => 1600000
+          fill_in "fixed_deposit_query_year",   :with => 1
+          fill_in "fixed_deposit_query_month",  :with => 1
+          fill_in "fixed_deposit_query_days",   :with => 1
 
           choose "Yes"
 
