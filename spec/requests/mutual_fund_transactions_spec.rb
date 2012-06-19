@@ -28,6 +28,7 @@ describe "MutualFundTransactions" do
     select 'Sell', :from => "Action"
     fill_in I18n.t("simple_form.labels.mutual_fund_transaction.quantity"), :with => 30
     click_on I18n.t("helpers.submit.mutual_fund_transaction.create")
+    page.should have_selector(".error:contains('#{I18n.t("activerecord.errors.models.mutual_fund_transaction.insufficient", :security_name => scheme.name)}')")
     page.should_not have_content "successfully"
   end
 

@@ -1,0 +1,10 @@
+en:
+  activerecord:
+    errors:
+      models:
+        gold_transaction:
+          insufficient: 'Your Portfolio does not have enough units of Gold for this action'
+        stock_transaction:
+          insufficient: 'Your Portfolio does not have enough units of %{security_name} for this action'
+        mutual_fund_transaction:
+          insufficient: 'Your Portfolio does not have enough units of %{security_name} for this action'

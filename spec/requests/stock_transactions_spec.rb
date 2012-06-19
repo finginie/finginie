@@ -32,6 +32,7 @@ describe "StockTransactions" do
       select 'Sell', :from => "Action"
       fill_in I18n.t("simple_form.labels.stock_transaction.quantity"), :with => 30
       click_on I18n.t("helpers.submit.stock_transaction.create")
+      page.should have_selector(".error:contains('#{I18n.t("activerecord.errors.models.stock_transaction.insufficient", :security_name => company.name)}')")
       page.should_not have_content "successfully"
     end
 

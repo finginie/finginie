@@ -57,10 +57,8 @@ private
   end
 
   def sell_quantity_should_be_less_than_or_equal_to_quantity
-    if sell?
-      security_name = self.class == GoldTransaction ? 'Gold' : ( security.name && security.name.pluralize.underscore.humanize)
-      errors.add(:quantity, "Your portfolio does not have enough units of #{security_name} for this action") if similar_transactions.quantity < quantity
-    end
+    name = security.name if security.respond_to?(:name)
+    errors.add(:quantity, :insufficient, :security_name => name) if sell? && similar_transactions.quantity < quantity
   end
 end
 

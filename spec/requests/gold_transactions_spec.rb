@@ -21,6 +21,7 @@ describe "GoldTransactions", :redis do
     select 'Sell', :from => "Action"
     fill_in I18n.t("simple_form.labels.gold_transaction.quantity"), :with => 30
     click_on I18n.t("helpers.submit.gold_transaction.create")
+    page.should have_selector(".error:contains('#{I18n.t("activerecord.errors.models.gold_transaction.insufficient")}')")
     page.should_not have_content "successfully"
   end
 
