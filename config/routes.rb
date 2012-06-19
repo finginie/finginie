@@ -1,5 +1,7 @@
 Finginie::Application.routes.draw do
 
+  match 'sitemap.xml' => 'sitemaps#sitemap'
+
   resources "fixed-deposits", :controller => :fixed_deposits, :as => :fixed_deposits, :only => [:index]
 
   match "/signin" => "sessions#new", :as => :signin
