@@ -4,6 +4,8 @@ en:
     success_message: 'Your answers were successfully updated. Our suggestions for you are as follows.'
     show:
       suggestion: 'Based on your responses,we suggest that your investment mix be structured as follows. Remember, these are guidelines only.'
+      default_suggestion: 'This is a balanced portfolio suitable for most investors.However, to see a portfolio and financial plan suitable for your unique needs please take a
+        %{quiz_link} (Strongly Recommended).'
       future_investment: 'Great! Now you broadly know what you should invest in. But which specific stocks/fixed deposits/mutual funds should you invest in? We are coming up with a feature that tells you exactly what stocks/bonds/mutual funds to invest in. Till then, create a portfolio and track your favourite stocks and mutual funds!'
       sign_up: 'Sign up with Facebook/Google find out. Signing-up is absolutely free,takes less than 5 seconds and does not require a credit card or an email address.'
   initial_investment: 'Your Initial Investment can be Rs %{initial_investment_amount}'

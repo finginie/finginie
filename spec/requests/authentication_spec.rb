@@ -74,7 +74,8 @@ describe "Authentication" do
         page.should have_content 'Successfully signed in'
 
         visit comprehensive_risk_profiler_path
-        page.should have_content "Your Risk Appetite is : 6"
+        expected_content = [ ['Fixed Deposits', '40%'], [ 'Large Cap Stocks', '20%'], [ 'Mid Cap Stocks', '10%'], [ 'Gold', '30%']]
+        tableish("table").should include *expected_content
       end
     end
 

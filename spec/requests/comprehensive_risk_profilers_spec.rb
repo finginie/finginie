@@ -56,7 +56,8 @@ describe "ComprehensiveRiskProfilers" do
     it "allow user to skip quiz and can see default asset allocation" do
       find("a#skip_quiz").click
 
-      page.should have_content "Your Risk Appetite is : 6"
+      expected_content = [ ['Fixed Deposits', '40%'], [ 'Large Cap Stocks', '20%'], [ 'Mid Cap Stocks', '10%'], [ 'Gold', '30%']]
+      tableish("table").should include *expected_content
     end
   end
 
@@ -111,8 +112,9 @@ describe "ComprehensiveRiskProfilers" do
       visit comprehensive_risk_profiler_url
 
       find("a#skip_quiz").click
+      expected_content = [ ['Fixed Deposits', '40%'], [ 'Large Cap Stocks', '20%'], [ 'Mid Cap Stocks', '10%'], [ 'Gold', '30%']]
+      tableish("table").should include *expected_content
 
-      page.should have_content "Your Risk Appetite is : 6"
     end
 
     let(:comprehensive_risk_profiler) { build :comprehensive_risk_profiler }

@@ -57,7 +57,8 @@ private
   end
 
   def sell_quantity_should_be_less_than_or_equal_to_quantity
-    errors.add(:quantity, "Your portfolio does not have sufficient #{security.class.name.pluralize.underscore.humanize} for this action") if sell? && similar_transactions.quantity < quantity
+    name = security.name if security.respond_to?(:name)
+    errors.add(:quantity, :insufficient, :security_name => name) if sell? && similar_transactions.quantity < quantity
   end
 end
 
