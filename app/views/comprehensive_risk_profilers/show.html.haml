@@ -1,15 +1,19 @@
+
 = render :partial => 'layouts/facebook_recommend'
 %p
   %b Your Risk Appetite is :
   %span
     = resource.score
     out of 10. (10 indicates maximum risk taking ability)
-%ul
-  -if resource.valid?
+-if resource.valid?
+  %ul
     = resource.summary
-%h1 Suggested Investment Mix
-%p
-  = t ".suggestion"
+  %h1 Suggested Investment Mix
+  %p= t ".suggestion"
+- else
+  %h1 Balanced Portfolio
+  %p= t( ".default_suggestion", :link_quiz => (link_to 'short quiz', edit_comprehensive_risk_profiler_path)).html_safe
+
 - if resource.score
   %table
     %tr
