@@ -1,7 +1,7 @@
 %h1 News
 .tabs
   %ul
-    - %w(economy_news stock_markets sector_spotlights results ipos commodities world_news).each do |section_name|
+    - %w(markets economy companies stock_tips global_news).each do |section_name|
       %li= link_to t(".#{section_name}"), "#news_#{section_name}"
 
   - DataProvider::NewsArticle.feeds.each do |section_name,articles|
@@ -9,6 +9,6 @@
       - articles.take(10).each do |article|
         - if article.title
           %article
-            %h1= link_to article.title.gsub(/&amp;/, '&'), article.url, :title => article.source, :target => :blank
+            %h1= link_to article.title.html_safe, article.url, :title => article.source, :target => :blank
             %p.article_source #{article.source} - #{time_ago_in_words article.published} ago
-            %p #{article.summary.gsub(/&amp;/, '&')}
+            %p #{article.summary.html_safe}
