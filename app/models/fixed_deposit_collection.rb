@@ -3,7 +3,7 @@ class FixedDepositCollection < SheetMapper::Base
           :rate_of_interest_senior_citizen, :min_amount, :max_amount,
           :bank, :sector
 
-  extend Module.new {
+  module ClassMethods
     def all
       @collection ||= fetch
     end
@@ -44,17 +44,19 @@ class FixedDepositCollection < SheetMapper::Base
     end
 
     def top_public_banks
-      all.select(&public_sector)
-                .select(&find_by_duration({:year => 1}))
-                .sort(&order_by("rate_of_interest_general"))
-                .group_by(&:bank).keys.take(5)
+      all.
+        select(&public_sector).
+        select(&find_by_duration({:year => 1})).
+        sort(&order_by("rate_of_interest_general")).
+        group_by(&:bank).keys.take(5)
     end
 
     def top_private_banks
-      all.select(&private_sector)
-                .select(&find_by_duration({:year => 1}))
-                .sort(&order_by("rate_of_interest_general"))
-                .group_by(&:bank).keys.take(5)
+      all.
+        select(&private_sector).
+        select(&find_by_duration({:year => 1})).
+        sort(&order_by("rate_of_interest_general")).
+        group_by(&:bank).keys.take(5)
     end
 
     def top_five_public_banks_interest_rates
@@ -80,15 +82,19 @@ class FixedDepositCollection < SheetMapper::Base
   private
     def search_option(params, duration_options)
       search = all
-      search = params[:senior_citizen] == "Yes" ? search.sort(&order_by("rate_of_interest_senior_citizen")) : search.sort(&order_by("rate_of_interest_general"))
+      search = (params[:senior_citizen] == "Yes") ? search.sort(&order_by("rate_of_interest_senior_citizen")) : search.sort(&order_by("rate_of_interest_general"))
       search = search.select(&find_by_amount(params[:amount].to_i))              if params[:amount]
       search = search.select(&send("find_by_#{duration_options}", params))       if params[:year] || params[:month] || params[:days]
       search
     end
 
     def fetch
-      sheet = SheetMapper::Spreadsheet.new(mapper: FixedDepositCollection, key: ENV['SPREADSHEET_KEY'],
-                                           login: ENV['SPREADSHEET_LOGIN'], password: ENV['SPREADSHEET_PASSWORD'])
+      sheet = SheetMapper::Spreadsheet.new(
+          :mapper => FixedDepositCollection,
+          :key => ENV['SPREADSHEET_KEY'],
+          :login => ENV['SPREADSHEET_LOGIN'],
+          :password => ENV['SPREADSHEET_PASSWORD']
+        )
       collection = sheet.find_collection_by_title('data').records
       collection.map do |fd_data|
         fixed_deposit_detail(fd_data.attributes)
@@ -101,13 +107,13 @@ class FixedDepositCollection < SheetMapper::Base
 
     def build_bank_interest_rates(fd_detail)
       Bank.new(
-          name: fd_detail.first.bank,
-          sector: fd_detail.first.sector,
-          one_year_interest_rate: fd_detail.select(&find_by_duration({:year => 1})).first.try(:rate_of_interest_general),
-          six_month_interest_rate: fd_detail.select(&find_by_duration({:month => 6})).first.try(:rate_of_interest_general),
-          three_month_interest_rate: fd_detail.select(&find_by_duration({:month => 3})).first.try(:rate_of_interest_general),
-          one_month_interest_rate: fd_detail.select(&find_by_duration({:month => 1})).first.try(:rate_of_interest_general),
+          :name => fd_detail.first.bank,
+          :sector => fd_detail.first.sector,
+          :one_year_interest_rate => fd_detail.select(&find_by_duration(:year => 1)).first.try(:rate_of_interest_general),
+          :six_month_interest_rate => fd_detail.select(&find_by_duration(:month => 6)).first.try(:rate_of_interest_general),
+          :three_month_interest_rate => fd_detail.select(&find_by_duration(:month => 3)).first.try(:rate_of_interest_general),
+          :one_month_interest_rate => fd_detail.select(&find_by_duration(:month => 1)).first.try(:rate_of_interest_general)
       )
     end
-  }
+  end; extend ClassMethods
 end

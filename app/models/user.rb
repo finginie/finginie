@@ -13,15 +13,18 @@ class User < ActiveRecord::Base
   has_one :comprehensive_risk_profiler, :dependent => :destroy
 
   def self.find_or_create_by_omniauth(auth_hash)
-    authentication = Authentication
-                        .where(:provider => auth_hash[:provider], :uid => auth_hash[:uid])
-                        .first_or_create(:user => User.find_or_create_by_email(auth_hash[:info][:email]))
+    authentication = Authentication.where(
+        :provider => auth_hash[:provider],
+        :uid => auth_hash[:uid]
+      ).first_or_create(
+        :user => User.find_or_create_by_email(auth_hash[:info][:email])
+      )
     authentication.user
   end
 
   def merge_comprehensive_risk_profiler(attributes)
-    attributes[:score_cache] ? comprehensive_risk_profiler.update_attribute(:score_cache, attributes[:score_cache])
-                                 : create_comprehensive_risk_profiler(attributes) unless comprehensive_risk_profiler.persisted?
+    return self if comprehensive_risk_profiler.persisted?
+    attributes[:score_cache] ? comprehensive_risk_profiler.update_attribute(:score_cache, attributes[:score_cache]) : create_comprehensive_risk_profiler(attributes)
     self
   end
 

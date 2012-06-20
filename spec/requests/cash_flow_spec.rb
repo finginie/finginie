@@ -7,7 +7,7 @@ describe "CashFlow", :mongoid do
   it "should show the correct view for cash flow" do
     5.times { |i| create :'data_provider/cash_flow', :company_code => company.code,
                                      :year_ending => "31/03/#{2006 + i}",
-                                     :pl_on_sale_of_assets =>	"104562000" }
+                                     :pl_on_sale_of_assets => "104562000" }
     create :'data_provider/cash_flow', :company_code => company.code, :year_ending => "31/03/2011", :advance_tax_paid => "212342343"
     visit stock_cash_flow_path(company)
     page.should have_content company.name

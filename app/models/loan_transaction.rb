@@ -14,7 +14,7 @@ class LoanTransaction < ActiveRecord::Base
 
   accepts_nested_attributes_for :loan
 
-  delegate *[:rate_of_interest, :period, :name], :to => :loan
+  delegate :rate_of_interest, :period, :name, :to => :loan
 
   scope :for, lambda { |loan| where(:loan_id => loan).order(:date, :created_at) } do
     def name

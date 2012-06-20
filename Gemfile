@@ -34,7 +34,7 @@ gem 'meta_search'
 gem 'mongoid' # Required by mongoid search
 gem 'mongoid_search', :git => "git://github.com/mauriciozaffari/mongoid_search.git"
 gem 'nested_form'
-gem 'newrelic_rpm' # Removed temporarily
+gem 'newrelic_rpm'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'paper_trail'
@@ -44,9 +44,9 @@ gem 'sheet_mapper'
 gem 'simple_form', :git => "git://github.com/plataformatec/simple_form.git"
 gem 'simple-navigation'
 gem 'thin'
-# gem 'valuable', :git => "git://github.com/LoonyBin/valuable.git" # Depricated in favour of activeattr
 
 group :test, :development do
+  gem 'brakeman'
   gem 'capybara'
   gem 'capybara-webkit'
     gem 'headless'
@@ -60,7 +60,6 @@ group :test, :development do
     gem 'rb-fsevent', :require => false
   gem 'guard-bundler'
   gem 'guard-livereload'
-#gem 'guard-rake'
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'heroku_san'

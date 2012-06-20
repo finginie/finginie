@@ -74,7 +74,7 @@ describe PortfolioDecorator, :redis, :mongoid do
       create_sell_position_of_all_securities_type(another_portfolio)
 
       expected = [ { "name" => "Test Property",   "type" => "Real Estate",   "profit_or_loss" => 400.0, "percentage" => 80.0 },
-                  { "name" => company.name, "type" => "Stock",  "sector" => "FOO", 
+                  { "name" => company.name, "type" => "Stock",  "sector" => "FOO",
                     "profit_or_loss" => 12.0,  "percentage" => 100.0, "average_sell_price" => 6.0, "quantity" => 4.0, "average_cost_price" => 4.0},
                   { "name" => scheme.name, "type" => "Mutual Fund",   "category" => "FOO", "profit_or_loss" => 12.0,
                     "percentage" => 100, "average_sell_price"=>6.0 , "quantity" => 4.0, "average_cost_price" => 4.0},
