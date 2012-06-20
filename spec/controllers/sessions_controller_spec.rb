@@ -6,20 +6,20 @@ describe SessionsController do
   }
 
   describe "POST 'create'" do
-    let (:authentication) { create :authentication }
+    let (:current_user) { create :user }
 
     before(:each) do
       omniauth = {
-        :uid => authentication.uid,
-        :provider => authentication.provider,
-        :info => { :email => authentication.user.email }
+        :uid => current_user.id,
+        :provider => 'finginie',
+        :info => { :email => current_user.email }
       }
       request.env["omniauth.auth"] = omniauth
     end
 
     it "should be redirect" do
       session[:comprehensive_risk_profiler] = comprehensive_risk_profiler_attributes
-      post :create, :provider => authentication.provider
+      post :create, :provider => 'finginie'
       session[:comprehensive_risk_profiler].should eq nil
       response.should be_redirect
     end

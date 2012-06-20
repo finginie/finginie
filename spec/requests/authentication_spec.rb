@@ -32,7 +32,6 @@ describe "Authentication" do
 
   context "New user" do
     let(:user) { build :user }
-    let(:authentication) { build :authentication, :user => user}
 
     context "with existing comprehensive risk profiler" do
       let(:comprehensive_risk_profile) { build :comprehensive_risk_profiler }
@@ -40,7 +39,7 @@ describe "Authentication" do
 
       it "should save the risk profiler after signing in" do
 
-        OmniAuth.config.add_mock authentication.provider, { :uid => authentication.uid }
+        OmniAuth.config.add_mock 'finginie', { :uid => user.id }
 
         within "#continue" do
           click_link "Continue"
@@ -56,7 +55,7 @@ describe "Authentication" do
 
     context "skipped comprehensive risk profiler quiz" do
       it "should save the default score after signing in" do
-        OmniAuth.config.add_mock authentication.provider, { :uid => authentication.uid }
+        OmniAuth.config.add_mock 'finginie', { :uid => user.id }
 
         visit edit_comprehensive_risk_profiler_path
         find("a#skip_quiz").click
