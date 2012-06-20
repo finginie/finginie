@@ -14,11 +14,12 @@ group :assets do
   gem 'sass-rails'
   gem 'uglifier'
   gem 'jquery-ui-rails'
+  gem 'twitter-bootstrap-rails'
 end
 
 gem 'active_attr', :github => 'sankaranarayanan/active_attr'
 gem 'airbrake'
-gem 'bourbon'
+gem 'bootstrap-helper', git: 'git://github.com/LoonyBin/bootstrap-helper.git'
 gem 'cancan'
 gem 'cells'
 gem 'dimensions-rails'
@@ -42,6 +43,7 @@ gem 'rack-environmental'
 gem 'sheet_mapper', :github => 'TMaYaD/sheet_mapper'
 gem 'simple_form', :github => 'plataformatec/simple_form'
 gem 'simple-navigation'
+gem 'simple-navigation-bootstrap'
 gem 'thin'
 
 group :test, :development do
