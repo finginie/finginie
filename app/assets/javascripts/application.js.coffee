@@ -37,6 +37,8 @@ $ ->
     $(this).tabs();
 
   $('[data-autocomplete-source]').each ->
+    $(this).keypress (e) ->
+      false  if e.keyCode is 13
     $(this).autocomplete
       source: $(this).data('autocomplete-source'),
       if !$(this).data('no-redirect')
