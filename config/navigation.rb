@@ -11,7 +11,7 @@ SimpleNavigation::Configuration.run do |navigation|
       secondary.item :team, 'Research Team', main_app.page_path('research-team')
       secondary.item :careers, 'Careers', main_app.page_path('careers')
       secondary.item :contact_us, 'Contact us', main_app.page_path('contact_us')
-      secondary.item :disclaimer, 'Disclaimer', main_app.page_path('disclaimer')
+      secondary.item :Terms_of_use, 'Terms of use', main_app.page_path('terms_of_use')
     end
     primary.item :investment_education, 'Learn Investing',main_app.page_path('investment_education') do |secondary|
       secondary.item :preparing_to_invest, 'Preparing to Invest' do |tertiary|
@@ -32,6 +32,7 @@ SimpleNavigation::Configuration.run do |navigation|
         tertiary.item :mutual_funds, 'Mutual Funds and ETFs', main_app.page_path('investment_education/mutual-funds-etf')
         tertiary.item :bonds, 'Bonds', main_app.page_path('investment_education/bonds')
         tertiary.item :life_insurance, 'Life Insurance', main_app.page_path('investment_education/life-insurance-policies')
+        tertiary.item :sip, 'Sip', main_app.page_path('investment_education/sip')
       end
       secondary.item :investing_in_shares, 'Investing in Shares' do |tertiary|
         tertiary.item :share_market, 'Share Market', main_app.page_path('investment_education/share-market')

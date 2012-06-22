@@ -133,8 +133,8 @@ en:
           title: 'Careers'
         about_us:
           title: 'About Us'
-        disclaimer:
-          title: 'Disclaimer'
+        terms_of_use:
+          title: 'Terms of use'
         investment_education:
           title: 'Learn how to invest.Investing in shares, mutual funds,fixed deposits and gold made easy for beginners.'
           description: 'Learn investing.Investing in shares, mutual funds,fixed deposits and gold made easy for beginners.'
@@ -160,6 +160,10 @@ en:
             description: 'Life insurance policies have been very popular in India for decades. Apart from providing life cover,
             insurance policies also have investment-like features. Confused by words like "term life insurance", "whole life insurance " and "universal life insurance"? Look no further. This article covers different characteristics of life insurance and how you can choose a policy wisely to protect the financial future of your loved ones.'
             keywords: 'Life insurance policy, insurance,term life,whole life'
+          sip:
+            title: 'SIP: How to invest in a systematic investment plan'
+            description: 'A Systematic Investment Plan(SIP) is a great way for small investors to invest in mutual funds using the principle of rupee cost averaging. This not only helps smoothen out heavy fluctuations from your portfolio but also helps you stay disciplined and develop a habit of saving. Read on to understand how you should best benefit from a SIP.'
+            keywords: 'sip, mutual fund, systematic investment plan, invest, rupee cost averaging'
           cash-equivalents:
             title: 'Investing in cash equivalents: A guide'
             description: 'This article guides investors on investing in cash equivalents in India such as savings
