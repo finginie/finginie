@@ -5,15 +5,15 @@ class CompaniesDecorator
     {
       sEcho: params[:sEcho].to_i,
       iTotalRecords: DataProvider::Company.stocks.count,
-      iTotalDisplayRecords: stocks.count,
-      aaData: data
+      iTotalDisplayRecords: stocks && stocks.count,
+      aaData: data || []
     }
   end
 
 private
 
   def data
-    stocks.map do |stock|
+    stocks && stocks.map do |stock|
       [
         link_to(stock.name, Rails.application.routes.url_helpers.stock_path(stock)),
         h(stock.sector),

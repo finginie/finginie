@@ -79,8 +79,9 @@ describe PortfolioDecorator, :redis, :mongoid do
                   { "name" => scheme.name, "type" => "Mutual Fund",   "category" => "FOO", "profit_or_loss" => 12.0,
                     "percentage" => 100, "average_sell_price"=>6.0 , "quantity" => 4.0, "average_cost_price" => 4.0},
                   { "name" => "Foo",              "type" => "Fixed Deposit", "profit_or_loss" => 4.64,  "percentage" => 4.64 } ]
-
-      PortfolioDecorator.decorate(another_portfolio).top_five_profits.should include *expected
+      decorator = PortfolioDecorator.decorate(another_portfolio)
+      decorator.top_five_profits.count.should eq 4
+      decorator.top_five_profits.should include *expected
     end
   end
 
@@ -92,6 +93,7 @@ describe PortfolioDecorator, :redis, :mongoid do
                    "percentage" => -20, "average_sell_price"=> 4.0 , "quantity" => 1, "average_cost_price" => 5.0},
                  { "name" => "FOO",              "type" => "Stock",       "sector" => "BAR", "profit_or_loss" => -4.0,
                    "percentage" => -16.67, "average_sell_price" => 5.0, "quantity" => 4, "average_cost_price" => 6.0} ]
+    subject.top_five_losses.count.should eq 3
     subject.top_five_losses.should include *expected
   end
 

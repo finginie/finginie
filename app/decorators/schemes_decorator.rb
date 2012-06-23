@@ -5,15 +5,15 @@ class SchemesDecorator
     {
       sEcho: params[:sEcho].to_i,
       iTotalRecords: DataProvider::Scheme.active.count,
-      iTotalDisplayRecords: schemes.count,
-      aaData: data
+      iTotalDisplayRecords: schemes && schemes.count,
+      aaData: data || []
     }
   end
 
 private
 
   def data
-    schemes.map do |scheme|
+    schemes && schemes.map do |scheme|
       [
         link_to(scheme.name, Rails.application.routes.url_helpers.mutual_fund_path(scheme)),
         h(scheme.class_description),
