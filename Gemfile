@@ -17,6 +17,7 @@ group :assets do
   gem 'jekyll_pipeline',          :path => 'engines/content'
 end
 
+gem 'active_attr', :git => 'git://github.com/sankaranarayanan/active_attr.git'
 gem 'airbrake'
 gem 'bourbon'
 gem 'cancan'

@@ -9,10 +9,6 @@ class FixedDepositDetail
   attribute :max_amount,                      type: Integer
   attribute :bank,                            type: String
   attribute :sector,                          type: String
-  attribute :amount,                          type: Float
-  attribute :year,                            type: Integer
-  attribute :month,                           type: Integer
-  attribute :days,                            type: Integer
 
   attr_accessor :senior_citizen
 end

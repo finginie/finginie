@@ -5,7 +5,7 @@ describe FixedDepositsCell, :vcr do
 
     context "special tenure" do
       subject do
-        @request.env["action_dispatch.request.request_parameters"] = {fixed_deposit_detail:                       #Cell need this to set request parameters
+        @request.env["action_dispatch.request.request_parameters"] = {fixed_deposit_query:                       #Cell need this to set request parameters
                                                         {senior_citizen: "Yes", month: "1", year:"1", days:"1"}}
         @controller = Class.new(ActionController::Base).new
         @controller.request = @request

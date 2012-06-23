@@ -14,7 +14,7 @@ class FixedDepositCollection < SheetMapper::Base
 
     def find_by_duration(params)
       duration = duration(params)
-      lambda { |fd_detail| fd_detail.min_duration <= duration and fd_detail.max_duration >= duration }
+      lambda { |fd_detail| fd_detail.min_duration.to_i <= duration and fd_detail.max_duration.to_i >= duration }
     end
 
     def duration(params)
@@ -36,7 +36,7 @@ class FixedDepositCollection < SheetMapper::Base
 
     def find_by_special_tenure(params)
       duration = duration(params)
-      lambda { |fd_detail| fd_detail.min_duration <= duration + 60 and fd_detail.min_duration >= duration -60 and fd_detail.max_duration == 0 }
+      lambda { |fd_detail| fd_detail.min_duration <= duration + 60 and fd_detail.min_duration >= duration -60 and fd_detail.max_duration.to_i == 0 }
     end
 
     def private_sector
@@ -82,10 +82,16 @@ class FixedDepositCollection < SheetMapper::Base
   private
     def search_option(params, duration_options)
       search = all
-      search = (params[:senior_citizen] == "Yes") ? search.sort(&order_by("rate_of_interest_senior_citizen")) : search.sort(&order_by("rate_of_interest_general"))
+      search = params[:senior_citizen] == "Yes" ? sort_by(search, "rate_of_interest_senior_citizen") : sort_by(search, "rate_of_interest_general")
       search = search.select(&find_by_amount(params[:amount].to_i))              if params[:amount]
       search = search.select(&send("find_by_#{duration_options}", params))       if params[:year] || params[:month] || params[:days]
       search
+    end
+
+    def sort_by(collection, field)
+      collection
+            .select {|fd| fd.send(field) > 0 }
+            .sort(&order_by(field))
     end
 
     def fetch

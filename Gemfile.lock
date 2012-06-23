@@ -22,6 +22,14 @@ GIT
     jquery-datatables-rails (1.10.0)
       jquery-rails
 
+GIT
+  remote: git://github.com/sankaranarayanan/active_attr.git
+  revision: 206790d0548e2166676bcb587a4ee17cbfa57903
+  specs:
+    active_attr (0.6.0.alpha1)
+      activemodel (>= 3.0.2, < 4.1)
+      activesupport (>= 3.0.2, < 4.1)
+
 PATH
   remote: engines/content
   specs:
@@ -76,9 +84,6 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.1.3)
-    active_attr (0.5.1)
-      activemodel (>= 3.0.2, < 4.1)
-      activesupport (>= 3.0.2, < 4.1)
     activemodel (3.2.6)
       activesupport (= 3.2.6)
       builder (~> 3.0.0)
@@ -476,6 +481,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_attr!
   airbrake
   bourbon
   brakeman
