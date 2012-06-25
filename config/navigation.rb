@@ -56,6 +56,8 @@ SimpleNavigation::Configuration.run do |navigation|
 
     primary.item :trade, 'Trade', main_app.page_path('trade')
 
+    primary.item :trade, 'Stock Tips', main_app.page_path('stock-recommendations')
+
     primary.item :portfolios, 'Portfolio Tracker', main_app.portfolios_path, :highlights_on => :subpath do |secondary|
       if current_user
         current_user.portfolios.each do |portfolio|
