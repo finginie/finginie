@@ -16,7 +16,7 @@ group :assets do
   gem 'jquery-ui-rails'
 end
 
-gem 'active_attr', :git => 'git://github.com/sankaranarayanan/active_attr.git'
+gem 'active_attr', :github => 'sankaranarayanan/active_attr'
 gem 'airbrake'
 gem 'bourbon'
 gem 'cancan'
@@ -27,7 +27,7 @@ gem 'dynamic_sitemaps'
 gem 'haml-rails'
 gem 'high_voltage'
 gem 'inherited_resources'
-gem 'jquery-datatables-rails', git: "git://github.com/rweng/jquery-datatables-rails.git"
+gem 'jquery-datatables-rails', :github => 'rweng/jquery-datatables-rails'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'meta_search'
@@ -35,12 +35,13 @@ gem 'mongoid' # Required by mongoid search
 gem 'mongoid_search', :git => "git://github.com/mauriciozaffari/mongoid_search.git"
 gem 'nested_form', :github => 'TMaYaD/nested_form'
 gem 'newrelic_rpm'
-gem 'omniauth-finginie', :git => "git://github.com/FinGinie/omniauth-finginie.git"
+gem 'omniauth', :github => 'FinGinie/omniauth'
+gem 'omniauth-finginie', :github => 'FinGinie/omniauth-finginie'
 gem 'paper_trail'
 gem 'pg'
 gem 'rack-environmental'
 gem 'sheet_mapper', :github => 'TMaYaD/sheet_mapper'
-gem 'simple_form', :git => "git://github.com/plataformatec/simple_form.git"
+gem 'simple_form', :github => 'plataformatec/simple_form'
 gem 'simple-navigation'
 gem 'thin'
 
@@ -49,7 +50,7 @@ group :test, :development do
   gem 'capybara'
   gem 'capybara-webkit'
     gem 'headless'
-  gem "rspec-cells"
+  gem 'rspec-cells'
   gem 'factory_girl_rails'
   gem 'foreman'
   gem 'guard'

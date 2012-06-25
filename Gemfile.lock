@@ -6,6 +6,14 @@ GIT
       omniauth-oauth2 (~> 1.0)
 
 GIT
+  remote: git://github.com/FinGinie/omniauth.git
+  revision: 135140bad68b9b9949b2fe88fbb8916c3f7f104a
+  specs:
+    omniauth (1.1.0)
+      hashie (~> 1.2)
+      rack
+
+GIT
   remote: git://github.com/TMaYaD/nested_form.git
   revision: fc83f0c6dbe076ef6f61a9776c9c4cd06df7332e
   specs:
@@ -307,9 +315,6 @@ GEM
       faraday (~> 0.7)
       httpauth (~> 0.1)
       multi_json (~> 1.3)
-    omniauth (1.1.0)
-      hashie (~> 1.2)
-      rack
     omniauth-oauth2 (1.0.2)
       oauth2 (~> 0.6.0)
       omniauth (~> 1.0)
@@ -505,6 +510,7 @@ DEPENDENCIES
   mongoid_search!
   nested_form!
   newrelic_rpm
+  omniauth!
   omniauth-finginie!
   paper_trail
   personal_financial_tools!
