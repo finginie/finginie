@@ -33,7 +33,7 @@ gem 'kaminari'
 gem 'meta_search'
 gem 'mongoid' # Required by mongoid search
 gem 'mongoid_search', :git => "git://github.com/mauriciozaffari/mongoid_search.git"
-gem 'nested_form'
+gem 'nested_form', :github => 'TMaYaD/nested_form'
 gem 'newrelic_rpm'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
