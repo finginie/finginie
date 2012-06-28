@@ -14,6 +14,7 @@ describe FixedDepositQuery do
   it { should     allow_value("").for(:days)  }
   it { should     allow_value("").for(:year)  }
   it { should     allow_value(0).for(:month)  }
+  it { should     allow_value(30).for(:days)  }
   it { should     allow_value(0).for(:days)   }
   it { should     allow_value(0).for(:year)   }
 end
