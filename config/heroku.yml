@@ -14,6 +14,7 @@ staging: &staging
   stack: cedar
   config: &staging_config
     AIRBRAKE_KEY                 : "d32bd5cf0a8135db0b96b89c0ce468f9"
+    BLOG_URI                     : "http://finginie.github.com/commentary"
     BUNDLE_WITHOUT               : "development:test"
     DEPLOYHOOKS_CAMPFIRE_API_KEY : "3fd084ab0d34857c48ee0bd1534e2b39f2bc40d6"
     DEPLOYHOOKS_CAMPFIRE_MESSAGE : "{{user}} deployed {{app}} to {{url}}. source: https://github.com/FinGinie/{{app}}/tree/{{head}}"

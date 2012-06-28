@@ -14,7 +14,6 @@ group :assets do
   gem 'sass-rails'
   gem 'uglifier'
   gem 'jquery-ui-rails'
-  gem 'jekyll_pipeline',          :path => 'engines/content'
 end
 
 gem 'active_attr', :git => 'git://github.com/sankaranarayanan/active_attr.git'
