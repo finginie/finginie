@@ -47,7 +47,7 @@ SimpleNavigation::Configuration.run do |navigation|
       end
     end
 
-    primary.item :market_commentary, 'Market Commentary', main_app.page_path('blog/index')
+    primary.item :market_commentary, 'Market Commentary', main_app.blog_path
 
     primary.item :financial_planner, 'Financial Profile', main_app.comprehensive_risk_profiler_path do |secondary|
       secondary.item :edit_comprehensive_risk_profilers, 'Personalized Financial Plan', main_app.edit_comprehensive_risk_profiler_path

@@ -77,8 +77,8 @@ Finginie::Application.routes.draw do
 
   mount PersonalFinancialTools::Engine => "/personal_financial_tools"
 
-  get '/blog' => redirect("/blog/index")
-  get '/blog/*path' => 'blog#show'
+  get '/blog' => redirect("/blog/index"), :as => :blog
+  get '/blog/*path' => 'blog#show', :as => :blog_post
 
   root :to => 'pages#show', :id => 'home'
 
