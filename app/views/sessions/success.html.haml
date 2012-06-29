@@ -1,2 +1,4 @@
-:javascript
-  window.parent.location = "#{params[:redirect_uri]}"
+%html
+  %body
+    :javascript
+      window.parent.location = "#{params[:redirect_uri]}"
