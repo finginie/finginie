@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def success
-    render :layout => false
+    render :layout => false, :notice => 'Successfully signed in'
   end
 
   def destroy
