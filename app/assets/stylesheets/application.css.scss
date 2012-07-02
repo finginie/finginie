@@ -144,6 +144,13 @@ header {
     }
 
     &.user {
+      a.btnsignout {
+        width: 90px;
+        height: 20px;
+        display: block;
+        background: url("signout_button.png") no-repeat;
+        text-indent: -9999px;
+      }
       //border-left: thin solid shade($base-color, 35%);
       @include float(left);
       li {
@@ -155,13 +162,6 @@ header {
         img {
           padding-right: 4px;
           height: 20px;
-        }
-        a.btnsignout {
-          width: 90px;
-          height: 20px;
-          display: block;
-          background: url("signout_button.png") no-repeat;
-          text-indent: -9999px;
         }
         form {
           input[type="submit"] {
