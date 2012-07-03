@@ -5,6 +5,13 @@ GIT
     nested_form (0.1.1)
 
 GIT
+  remote: git://github.com/TMaYaD/sheet_mapper.git
+  revision: 8a98bd57cbe3cc292ef61a964fa41f4b99c4ebba
+  specs:
+    sheet_mapper (0.1.2)
+      google-spreadsheet-ruby (~> 0.2.1)
+
+GIT
   remote: git://github.com/mauriciozaffari/mongoid_search.git
   revision: 258e9b3add2f1e62807ef10ab1bb13adb093f028
   specs:
@@ -407,8 +414,6 @@ GEM
       multi_json (~> 1.0)
       rubyzip
     sexp_processor (4.0.0)
-    sheet_mapper (0.1.2)
-      google-spreadsheet-ruby (~> 0.2.1)
     shoulda-matchers (1.2.0)
       activesupport (>= 3.0.0)
     simple-navigation (3.7.0)
@@ -514,7 +519,7 @@ DEPENDENCIES
   rspec-cells
   rspec-rails
   sass-rails
-  sheet_mapper
+  sheet_mapper!
   shoulda-matchers
   simple-navigation
   simple_form!

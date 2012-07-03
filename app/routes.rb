@@ -69,6 +69,9 @@ Finginie::Application.routes.draw do
   end
   resources :mutual_fund_categories, :only => [:show]
 
+  # Research reports
+  resources :research_reports, :only => [:index]
+
   # Financial Tools
   mount PersonalFinancialTools::Engine => "/personal_financial_tools"
 
