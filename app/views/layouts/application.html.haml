@@ -28,7 +28,7 @@
             - if current_user
               = link_to 'Sign out', main_app.signout_path, :class => "btnsignout"
             - else
-              = link_to image_tag('loginwith_button.png'), main_app.signin_path
+              = link_to 'Login', main_app.signin_path
 
         %hgroup.title
           = link_to main_app.root_path do
