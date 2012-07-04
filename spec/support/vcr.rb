@@ -2,7 +2,7 @@ require 'timecop'
 require 'vcr'
 
 VCR.configure do |c|
-  c.default_cassette_options = { :record => :once, :match_requests_on => [:method, :uri, :headers], :allow_playback_repeats => true }
+  c.default_cassette_options = { :record => :once, :match_requests_on => [:method, :uri], :allow_playback_repeats => true }
   c.allow_http_connections_when_no_cassette = true
   c.cassette_library_dir  = Rails.root.join("spec", "vcr")
   c.hook_into :webmock

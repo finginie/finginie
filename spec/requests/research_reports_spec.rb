@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "ResearchReports", :mongoid do
+describe "ResearchReports",:vcr, :mongoid do
 
   it "should show latest reports in the index page" do
     visit research_reports_path

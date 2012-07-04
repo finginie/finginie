@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ResearchReport do
+describe ResearchReport, :vcr do
   it "should return a list of research reports" do
     ResearchReport.all.first.should be_a ResearchReport
   end
