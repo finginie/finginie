@@ -10,8 +10,9 @@ describe "ResearchReports", :mongoid do
 
   it "should search for reports in index page" do
     visit research_reports_path
-    fill_in 'report_nsecode', :with => "Angel"
+    fill_in 'query', :with => "Angel"
     click_on 'Search'
+    tableish("table").should_not include (["Jun 27 2012", "Buy Petronet LNG; target of Rs 194", "Emkay", "Petronet LNG Ltd", "Oil and Gas"])
     tableish("table").should include (["May 28 2012", "Accumulate NMDC; target of Rs 187", "Angel Broking", "NMDC", "Mining"])
   end
 

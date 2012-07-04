@@ -20,13 +20,13 @@ describe FixedDepositCollection, :vcr do
   end
 
   it "should return top five public banks" do
-    bank = ["Andhra Bank", "Indian Overseas Bank", "Bank of India", "Union Bank of India", "Canara Bank"]
-    FixedDepositCollection.top_public_banks.should include *bank
+    banks = ["Andhra Bank", "Indian Overseas Bank", "Bank of India", "Union Bank of India", "Canara Bank"]
+    FixedDepositCollection.top_public_banks.should include *banks
   end
 
   it "should return top five private banks" do
-    bank = ["Karur Vysya Bank", "Kotak Mahindra Bank", "Axis Bank", "Indus Ind Bank", "Yes Bank"]
-    FixedDepositCollection.top_private_banks.should include *bank
+    banks = ["Karur Vysya Bank", "Kotak Mahindra Bank", "Axis Bank", "Indus Ind Bank", "Yes Bank"]
+    FixedDepositCollection.top_private_banks.should include *banks
   end
 
   it "should have top five private banks interest rates" do
@@ -56,7 +56,7 @@ describe FixedDepositCollection, :vcr do
   it "should return result based on duration search" do
     @search = FixedDepositCollection.search({:year => 1, :month => 1, :days => 1})
     test_named_scope FixedDepositCollection.search({}), @search,
-                     lambda{|u| u.min_duration <= 396 && u.max_duration >= 396 }
+                     lambda{|u| u.min_duration.to_i <= 396 && u.max_duration.to_i >= 396 }
   end
 
   it "should return result based on special tenure search" do
