@@ -1,5 +1,5 @@
 class ResearchReport < SheetMappedRecord
-  include ActiveAttr::Model
+
   attribute :date,                 type: Date
   attribute :source,               type: String
   attribute :name,                 type: String
@@ -11,4 +11,14 @@ class ResearchReport < SheetMappedRecord
   attribute :recommendation,       type: String
   attribute :current_market_price, type: Float
   attribute :target_price,         type: Float
+
+  def self.filter(params)
+    query = params[:query]
+    params.keys.include?(:nse_code) ?
+      self.all.select { |r| r.nse_code == params[:nse_code] || r.bse_code == params[:bse_code] } :
+        query ? self.all.select { |r| r.source.include?(query) || r.company_name.include?(query) ||
+          r.sector.include?(query) } : self.all
+
+  end
+
 end

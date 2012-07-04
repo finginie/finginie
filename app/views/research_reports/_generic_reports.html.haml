@@ -1,0 +1,16 @@
+%table
+  %tr
+    %th Date
+    %th Report Name
+    %th Source
+    %th Company Name
+    %th Sector
+  - collection.each do |report|
+    %tr
+      - if report.date
+        %td= l report.date, :format => :stock_52w_date
+      %td= link_to report.name, report.link_url
+      %td= report.source
+      %td= report.company_name
+      %td= report.sector
+
