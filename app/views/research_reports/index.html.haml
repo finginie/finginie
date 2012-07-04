@@ -1,11 +1,6 @@
 %h1 Research Reports
 
-= form_tag research_reports_path, :method => :get do
-  = text_field_tag :query, nil, :placeholder => 'Search by company, source or sector'
-  = submit_tag 'Search'
-
-- unless collection.empty?
-  - if parent?
-    =render 'company_reports'
-  - else
-    =render 'generic_reports'
+- if parent?
+  =render 'company_reports'
+- else
+  =render 'generic_reports'

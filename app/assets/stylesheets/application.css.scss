@@ -125,13 +125,10 @@ header {
       }
       //margin: 4em 0 0 0;
       li {
-	      padding: {
-	        bottom: 3px;
-	        top: 3px;
-	      }
+	      padding: 3px 8px;
         a {
           font: {
-            size: 13px;
+            size: 12px;
             weight: normal;
           }
           color: #D9DCFF;
@@ -464,7 +461,7 @@ tr {
 
 //--------------------------------Flash Notice message-------------------------------
 .notice {
-  @include flash-message(#fff6bf, #514721, #ffd324)
+  @include flash-message(#fff6bf, #514721, #ffd324);
 }
 
 .error {
@@ -678,4 +675,15 @@ a.dsq-subscribe-email, #dsq-account-dropdown a, a.dsq-subscribe-rss {
 //--------------------------Mutual Funds and Shares Index Page Disclaimers---------------------
 .disclaimer{
   font-size: 10px;
+}
+::-webkit-input-placeholder {
+  color: #7B7B7B;
+  font-size: 12px;
+  height: 22px;
+}
+
+:-moz-placeholder {
+  color: #7B7B7B;
+  font-size: 12px;
+  height: 22px;
 }
