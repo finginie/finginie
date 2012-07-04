@@ -3,7 +3,7 @@ class ResearchReportsController < InheritedResources::Base
 
   def collection
     conditions = { :query => params[:query] }
-    conditions.merge!({ :nse_code => parent.nse_code}) if parent
+    conditions.merge!({ :nse_code => parent.nse_code, :bse_code => parent.bse_code1 }) if parent
     ResearchReport.filter(conditions)
   end
 end

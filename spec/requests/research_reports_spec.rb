@@ -23,9 +23,10 @@ describe "ResearchReports", :mongoid do
     tableish("table").should include (["Jun 27 2012", "Emkay", "Buy Petronet LNG; target of Rs 194", "140.00", "194", "Buy"])
   end
 
-  pending "should list all the reports for bse company" do
+  it "should list all the reports for bse company" do
     create :'data_provider/company', :name => 'Petronet LNG Ltd.', :nse_code => nil, :bse_code1 => '532522'
     visit stock_research_reports_path(:stock_id => 'petronet-lng-ltd')
+    tableish("table").count.should eq 2
     tableish("table").should include (["Jun 27 2012", "Emkay", "Buy Petronet LNG; target of Rs 194", "140.00", "194", "Buy"])
   end
 end

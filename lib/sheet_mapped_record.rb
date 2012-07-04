@@ -7,9 +7,11 @@ class SheetMappedRecord
 
   def self.filter(params)
     query = params[:query]
-    params.keys.include?(:nse_code) ? self.all.select { |r| r.nse_code == params[:nse_code] } :
-      query ? self.all.select { |r| r.source.include?(query) || r.company_name.include?(query) ||
-                            r.sector.include?(query) } : self.all
+    params.keys.include?(:nse_code) ?
+      self.all.select { |r| r.nse_code == params[:nse_code] || r.bse_code == params[:bse_code] } :
+        query ? self.all.select { |r| r.source.include?(query) || r.company_name.include?(query) ||
+          r.sector.include?(query) } : self.all
+
   end
 
 private
