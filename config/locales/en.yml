@@ -316,4 +316,6 @@ en:
     directors_and_employees_percentage: 'Directors and Employees'
     others_percentage: 'Others'
     public_percentage: 'Public'
- 
+  pages:
+    stock-recommendations:
+      hint: 'Click on any box to read the full report pertaining to that stock'
