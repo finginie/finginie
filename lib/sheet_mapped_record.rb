@@ -5,11 +5,11 @@ class SheetMappedRecord
     self.items
   end
 
-  def self.filter(param)
-    param = param || ''
-    self.all.select { |r| r.source.include?(param) ||
-                          r.company_name.include?(param) ||
-                          r.sector.include?(param) }
+  def self.filter(params)
+    query = params[:query]
+    params.keys.include?(:nse_code) ? self.all.select { |r| r.nse_code == params[:nse_code] } :
+      query ? self.all.select { |r| r.source.include?(query) || r.company_name.include?(query) ||
+                            r.sector.include?(query) } : self.all
   end
 
 private
@@ -37,7 +37,8 @@ private
 
   def self.items
     collection.map do |r|
-      self.new r.attributes
+      attributes = {}; r.attributes.each {|k,v| attributes[k] = v.strip }
+      self.new attributes
     end
   end
 end

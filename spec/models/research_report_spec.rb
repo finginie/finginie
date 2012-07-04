@@ -10,10 +10,24 @@ describe ResearchReport do
   end
 
   it "should filter reports by keyword" do
-    ResearchReport.filter("Angel").count.should eq 2
+    ResearchReport.filter({ :query => "Angel"}).count.should eq 2
   end
 
   it "should give all records when searched for nil" do
-    ResearchReport.filter(nil).count.should eq 10
+    ResearchReport.filter({}).count.should eq 10
+  end
+
+  it "should remove tailing white and leading white spaces from records" do
+    ResearchReport.all.first.source.should eq 'Emkay'
+  end
+
+  it "should filter reports by nse code" do
+    reports = ResearchReport.filter({:nse_code => 'NMDC'})
+    reports.count.should eq 2
+    reports.first.sector.should eq 'Mining'
+  end
+
+  it "should not get any reports when filtered by nil nse_code" do
+    ResearchReport.filter({:nse_code => nil}).count.should eq 0
   end
 end

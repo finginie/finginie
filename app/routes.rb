@@ -55,6 +55,7 @@ Finginie::Application.routes.draw do
     resources :news, :only => [:show]
     resource :ratios, :only => [:show]
     resource :share_holding, :only => [:show], :controller => :share_holding
+    resources :research_reports, :only => [:index]
   end
 
   # Mutual funds
