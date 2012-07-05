@@ -13,6 +13,10 @@ describe ResearchReport, :vcr do
     ResearchReport.filter({ :query => "Angel"}).count.should eq 2
   end
 
+  it "should filter reports by keyword in any case" do
+    ResearchReport.filter({ :query => "anGel"}).count.should eq 2
+  end
+
   it "should give all records when searched for nil" do
     ResearchReport.filter({}).count.should eq 10
   end

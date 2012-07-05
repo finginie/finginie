@@ -35,14 +35,14 @@ describe "ResearchReports",:vcr, :mongoid do
     visit research_reports_path
     fill_in 'query', :with => "Ged"
     click_on 'Search'
-    page.should have_content I18n.t("empty_search")
+    page.should have_content I18n.t('.empty_search')
   end
 
   it "should relevent message for search results" do
     visit research_reports_path
     fill_in 'query', :with => "Em"
     click_on 'Search'
-    page.should have_content I18n.t("results_for_search", :term => 'Em')
+    page.should have_content I18n.t('.results_for_search', :term => 'Em')
 
   end
 
