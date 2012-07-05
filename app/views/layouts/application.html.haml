@@ -12,6 +12,7 @@
 
   %body{ :class => auto_page_class_names }
     - if ENV['PRODUCTION_INSTANCE']
+      = render :partial => 'layouts/alexa'
       %webengage{license: '76aa3c4'}
     - if ENV['MAINTENANCE']
       #maintenance_notice.alert.notice
