@@ -1,0 +1,21 @@
+= form_tag research_reports_path, :method => :get do
+  = text_field_tag :query, nil, :placeholder => 'Search by company, source or sector'
+  = submit_tag 'Search'
+
+= content_tag :div, flash[:result], :id => 'result' if flash[:result].is_a?(String)
+%table
+  %tr
+    %th Date
+    %th Report Name
+    %th Source
+    %th Company Name
+    %th Sector
+  - !collection.empty? && collection.each do |report|
+    %tr
+      - if report.date
+        %td= l report.date, :format => :stock_52w_date
+      %td= link_to report.name, report.link_url
+      %td= report.source
+      %td= report.company_name
+      %td= report.sector
+

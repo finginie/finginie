@@ -3,3 +3,9 @@ if Rails.env.development? || Rails.env.test?
   ENV['SPREADSHEET_LOGIN']    ||= "deploys@finginie.com"
   ENV['SPREADSHEET_PASSWORD'] ||= "gedesh123"
 end
+
+SPREADSHEET = SheetMapper::Spreadsheet.new(
+    :key      => ENV['SPREADSHEET_KEY'],
+    :login    => ENV['SPREADSHEET_LOGIN'],
+    :password => ENV['SPREADSHEET_PASSWORD']
+)

@@ -40,7 +40,7 @@ gem 'omniauth-google-oauth2'
 gem 'paper_trail'
 gem 'pg'
 gem 'rack-environmental'
-gem 'sheet_mapper'
+gem 'sheet_mapper', :github => 'TMaYaD/sheet_mapper'
 gem 'simple_form', :git => "git://github.com/plataformatec/simple_form.git"
 gem 'simple-navigation'
 gem 'thin'

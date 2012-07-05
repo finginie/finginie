@@ -17,8 +17,14 @@ Spork.prefork do
   require 'factory_girl'
   Spork.trap_class_method FactoryGirl, :find_definitions
 
+  # Allow sheet mapper to login during initialization
+  require 'webmock'
+  WebMock.allow_net_connect!
+
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
+
+  WebMock.disable_net_connect!
 
   RSpec.configure do |config|
     config.treat_symbols_as_metadata_keys_with_true_values = true

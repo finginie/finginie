@@ -87,6 +87,7 @@ SimpleNavigation::Configuration.run do |navigation|
           tertiary.item :cash_flow,      'Cash Flow',             main_app.stock_cash_flow_path(@company)
           tertiary.item :ratios,         'Ratios',                main_app.stock_ratios_path(@company)
           tertiary.item :share_holding,  'Share Holding Pattern', main_app.stock_share_holding_path(@company)
+          tertiary.item :research_reports,'Research Reports',     main_app.stock_research_reports_path(@company)
         end
       end
     end
@@ -104,6 +105,8 @@ SimpleNavigation::Configuration.run do |navigation|
         secondary.item :sectoral_allocation, 'Sectoral Allocation', main_app.sectoral_allocation_mutual_fund_path(@scheme)
       end
     end
+
+    primary.item :research_reports, 'Research', main_app.research_reports_path
 
     primary.item :personal_financial_tools, 'Financial Tools', personal_financial_tools.personal_financial_tools_path do |secondary|
       secondary.item :emi_calculator, 'EMI Calculator', personal_financial_tools.emi_calculator_path

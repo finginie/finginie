@@ -1,0 +1,16 @@
+@import "bourbon";
+@import "defaults";
+@import "lists";
+@import "holygrail";
+@import "utilities";
+
+body.research_reports.index {
+  input[type="submit"] {
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+  #result {
+    @include flash-message(#fff6bf, #514721, #ffd324);
+    margin-bottom: 10px;
+  }
+}

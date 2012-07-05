@@ -1,0 +1,18 @@
+- unless collection.empty?
+  %table
+    %tr
+      %th Date
+      %th Source
+      %th Report Name
+      %th Current Market Price
+      %th Target Price
+      %th Recommendation
+    - collection.each do |report|
+      %tr
+        - if report.date
+          %td= l report.date, :format => :stock_52w_date
+        %td= report.source
+        %td= link_to report.name, report.link_url
+        %td= number_to_indian_currency(report.current_market_price, 2)
+        %td= number_to_indian_currency(report.target_price,0)
+        %td= report.recommendation
