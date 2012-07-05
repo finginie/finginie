@@ -35,8 +35,7 @@ gem 'mongoid' # Required by mongoid search
 gem 'mongoid_search', :git => "git://github.com/mauriciozaffari/mongoid_search.git"
 gem 'nested_form', :github => 'TMaYaD/nested_form'
 gem 'newrelic_rpm'
-gem 'omniauth', :github => 'FinGinie/omniauth'
-gem 'omniauth-finginie', :github => 'FinGinie/omniauth-finginie'
+gem 'omniauth_single_signon',   :github => 'FinGinie/omniauth-single-signon'
 gem 'paper_trail'
 gem 'pg'
 gem 'rack-environmental'

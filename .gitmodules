@@ -4,6 +4,3 @@
 [submodule "engines/personal_financial_tools"]
 	path = engines/personal_financial_tools
 	url = https://investoprestodeploys:gedesh123@github.com/InvestoPresto/personal_financial_tools.git
-[submodule "engines/content"]
-	path = engines/content
-	url = https://investoprestodeploys:gedesh123@github.com/InvestoPresto/jekyll-pipeline.git

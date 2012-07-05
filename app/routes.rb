@@ -77,11 +77,9 @@ Finginie::Application.routes.draw do
   mount PersonalFinancialTools::Engine => "/personal_financial_tools"
 
   # Login and Logout (Session Management)
-  match "/signin" => "sessions#new", :as => :signin
-  match "/success" => "sessions#success", :as => :success
-  match "/auth/signout/callback" => "sessions#destroy"
-  match "/auth/:provider/callback" => "sessions#create"
-  get 'auth/signout', :as => :signout
+  match "/signin"  => "sessions#new",     :as  => :signin
+  match "/success" => "sessions#success", :as  => :success
+  mount OmniauthSingleSignon::Engine => ""
 
   # Social Features, TODO: move to authentication
   resources :profiles, :only => [:index, :show]

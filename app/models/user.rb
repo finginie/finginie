@@ -1,7 +1,6 @@
-class User < ActiveRecord::Base
-  attr_accessible :email
-  attr_accessible :name, :avatar_url, :location, :occupation, :company    # Profile Attributes
+require OmniauthSingleSignon::Engine.root.join('app', 'models', 'user')
 
+class User < ActiveRecord::Base
   has_many :portfolios, :dependent => :destroy
 
   has_many :subscriptions, :dependent => :destroy
@@ -9,11 +8,6 @@ class User < ActiveRecord::Base
            :as => :subscribable, :class_name => 'Subscription'
 
   has_one :comprehensive_risk_profiler, :dependent => :destroy
-
-  def self.find_or_create_by_omniauth(auth_hash)
-    where(:id => auth_hash[:uid])
-      .first_or_create(:email => auth_hash[:info][:email])
-  end
 
   def merge_comprehensive_risk_profiler(attributes)
     return self if comprehensive_risk_profiler.persisted?

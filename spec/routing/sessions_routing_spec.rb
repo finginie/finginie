@@ -9,9 +9,5 @@ describe SessionsController do
     it "routes to #success" do
       get("/success").should route_to("sessions#success")
     end
-
-    it "routes to #create" do
-      post("/auth/finginie/callback").should route_to("sessions#create", :provider => 'finginie')
-    end
   end
 end

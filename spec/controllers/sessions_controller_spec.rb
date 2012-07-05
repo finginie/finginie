@@ -19,9 +19,10 @@ describe SessionsController do
 
     it "should be redirect" do
       session[:comprehensive_risk_profiler] = comprehensive_risk_profiler_attributes
-      post :create, :provider => 'finginie'
+      session[:user_id] = current_user.id
+      get :success
       session[:comprehensive_risk_profiler].should eq nil
-      response.should be_redirect
+      response.should render_template("success")
     end
   end
 end

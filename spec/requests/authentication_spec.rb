@@ -3,8 +3,8 @@ require 'spec_helper'
 describe "Authentication" do
 #TODO: Flash message are not displaying after signup
 #Need to fix
-  pending "should sign in using finginie oauth2", :js do
-    visit '/auth/finginie'
+  it "should sign in using single_signon oauth2", :js do
+    visit '/auth/single_signon'
     page.should have_content 'Successfully signed in'
   end
 
@@ -27,7 +27,7 @@ describe "Authentication" do
   it "should go back to previous page after logging in", :js do
     visit portfolios_path
 
-    visit '/auth/finginie'
+    visit '/auth/single_signon'
 
     current_path.should eq portfolios_path
   end
@@ -41,7 +41,7 @@ describe "Authentication" do
 
       it "should save the risk profiler after signing in", :js do
 
-        OmniAuth.config.add_mock 'finginie', { :uid => user.id }
+        OmniAuth.config.add_mock 'single_signon', { :uid => user.id }
 
         within "#continue" do
           click_link "Continue"
@@ -54,7 +54,7 @@ describe "Authentication" do
 
     context "skipped comprehensive risk profiler quiz" do
       it "should save the default score after signing in", :js do
-        OmniAuth.config.add_mock 'finginie', { :uid => user.id }
+        OmniAuth.config.add_mock 'single_signon', { :uid => user.id }
 
         visit edit_comprehensive_risk_profiler_path
         find("a#skip_quiz").click
