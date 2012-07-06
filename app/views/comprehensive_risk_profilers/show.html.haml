@@ -39,4 +39,6 @@
       %p= t ".future_investment"
       -unless current_user
         %p= t ".sign_up"
-      =link_to "#{'Signin & ' unless current_user}Continue", portfolios_path, :class => %w(btn btn-large btn-primary)
+        =link_to 'Signin & Continue', signin_path, :class => %w(btn btn-primary), :data {:role => 'signin_and_continue' }
+      - else
+        =link_to 'Continue', comprehensive_risk_profiler_ideal_investments_path, :class => %w(btn btn-primary), :data {:role => 'signin_and_continue' }

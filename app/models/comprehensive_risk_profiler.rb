@@ -6,6 +6,7 @@ class ComprehensiveRiskProfiler < ActiveRecord::Base
                   :tax_saving_investment, :time_horizon, :score_cache
 
   belongs_to :user
+  has_one :ideal_investment_mix
 
   PREFERENCE_OPTIONS = [1,4,6,8,10]
   PORTFOLIO_INVESTMENT_OPTIONS = [1, 5, 8, 10]
@@ -58,6 +59,10 @@ class ComprehensiveRiskProfiler < ActiveRecord::Base
 
   def initial_investment
     household_savings - (household_expenditure * 2)
+  end
+
+  def ideal_investment_mix
+    @ideal_investment_mix ||= IdealInvestmentMix.new(self)
   end
 
 private

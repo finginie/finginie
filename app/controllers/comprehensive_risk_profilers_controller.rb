@@ -6,6 +6,7 @@ class ComprehensiveRiskProfilersController < InheritedResources::Base
     if first_time?
       redirect_to edit_comprehensive_risk_profiler_path, :notice => t(".comprehensive_risk_profilers.message")
     else
+      session[:return_to] = comprehensive_risk_profiler_ideal_investments_path unless current_user
       show!
     end
   end

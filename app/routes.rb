@@ -6,7 +6,9 @@ Finginie::Application.routes.draw do
   get '/blog/*path' => 'blog#show', :as => :blog_post
 
   # Financial Profile
-  resource :comprehensive_risk_profiler, :only =>[:edit, :update, :show]
+  resource :comprehensive_risk_profiler, :only =>[:edit, :update, :show] do
+    resource :ideal_investments, :only => [:show]
+  end
 
   # Portfolio Tracker
   resources :portfolios do
