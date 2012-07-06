@@ -4,6 +4,7 @@
     %title= auto_page_seo_content('title', yield(:title) )
     %meta{ :name => "description", :content => auto_page_seo_content('description', yield(:description) ) }
     %meta{ :name => 'keywords', :content => auto_page_seo_content('keywords', yield(:keywords) ) }
+    %meta{ :name => 'viewport', :content => "width=device-width, initial-scale=1.0" }
     = stylesheet_link_tag :application
     = javascript_include_tag 'https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization","version":"1.1"}]}'
     = javascript_include_tag :application
@@ -24,19 +25,18 @@
         %h6 India's Best Investment Portal for Beginners
       = render 'layouts/navigation'
       = yield :header
-    #stock_indicies
-      = render 'stocks/indicies'
+      .stock_indices= render 'stocks/indicies'
     #main.container
       .row
         - flash.each do |name, msg|
           = content_tag :div, msg, :id => "flash_#{name}", :class => name if msg.is_a?(String)
       = yield
-    %footer
-      %nav.sitemap
-        = render_navigation :expand_all => true, :level => 1..2
+    %footer.container
+      .row
+        %nav.sitemap.span12
+          =# render_navigation :expand_all => true, :level => 1..2
       =yield :footer
-      .legal
-        .disc_text
-          %P
-            By accessing Finginie.com or any of its associate/group sites, you have read, understood and agree to be legally bound by the #{link_to 'terms of the following end user agreement', main_app.page_path('terms_of_use')}. Copyright © 2012 Finginie.com. All rights reserved.
+      .row
+        %p.legal.span12
+          By accessing Finginie.com or any of its associate/group sites, you have read, understood and agree to be legally bound by the #{link_to 'terms of the following end user agreement', main_app.page_path('terms_of_use')}. Copyright © 2012 Finginie.com. All rights reserved.
 
