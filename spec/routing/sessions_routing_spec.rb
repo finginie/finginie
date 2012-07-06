@@ -9,9 +9,5 @@ describe SessionsController do
     it "routes to #create" do
       post("/auth/finginie/callback").should route_to("sessions#create", :provider => 'finginie')
     end
-
-    it "routes to #destroy" do
-      delete("/signout").should route_to("sessions#destroy")
-    end
   end
 end

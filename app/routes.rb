@@ -78,9 +78,9 @@ Finginie::Application.routes.draw do
 
   # Login and Logout (Session Management)
   match "/signin" => "sessions#new", :as => :signin
-  match "/auth/signout/callback" => "sessions#destroy", :as => :signout
+  match "/auth/signout/callback" => "sessions#destroy"
   match "/auth/:provider/callback" => "sessions#create"
-  match "/signout" => "sessions#destroy", :as => :signout
+  get 'auth/signout', :as => :signout
 
   # Social Features, TODO: move to authentication
   resources :profiles, :only => [:index, :show]
