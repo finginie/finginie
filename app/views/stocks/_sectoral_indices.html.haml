@@ -1,15 +1,14 @@
 %h3 Sectoral Indices
 
 %ul.nav.nav-tabs
-  %li.active= link_to 'NSE', "#nse_scrip_sectoral_indices", :data => { :toggle => :tab }
+  %li= link_to 'NSE', "#nse_scrip_sectoral_indices", :data => { :toggle => :tab }
   %li= link_to 'BSE', "#bse_scrip_sectoral_indices", :data => { :toggle => :tab }
 
 .tab-content
   - [ 'NseScrip', 'BseScrip' ].each do |scrip|
     %div.tab-pane{ :id => "#{scrip.underscore}_sectoral_indices" }
-      %h3= "Sectoral Indices - #{scrip[0..2].upcase}"
       -bt_table "DataProvider::#{scrip}".constantize.send('sectoral_indices').each do |table|
-        = table.ths 'Index Name', 'Value', 'Change', '% Change'
+        = table.ths 'Index Name', 'Value', 'Change', '<nobr>% Change</nobr>'.html_safe
         = table.tds ->(index) { t(".#{index.id.delete(' ').gsub('&', '')}") },
                     ->(index) { number_to_indian_currency index.last_traded_price },
                     ->(index) { table_content_with_red_or_green_class index.net_change },

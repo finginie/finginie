@@ -38,3 +38,4 @@ jQuery ->
 		  });
 
   $('#news a:first').tab('show')
+  $('#sectoral_indices a:first').tab('show')
