@@ -8,5 +8,8 @@ en:
           insufficient: 'Your Portfolio does not have enough units of %{security_name} for this action'
         mutual_fund_transaction:
           insufficient: 'Your Portfolio does not have enough units of %{security_name} for this action'
+  research_reports:
+    company_reports:
+      message: "Research Reports not available for %{name}"
   empty_search: 'Your search did not match any results.Try searching for different term'
   results_for_search: 'Results for %{term}'

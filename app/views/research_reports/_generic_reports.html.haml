@@ -14,8 +14,11 @@
     %tr
       - if report.date
         %td= l report.date, :format => :stock_52w_date
-      %td= link_to report.name, report.link_url
+      %td= link_to report.name, report.link_url, :target => :blank
       %td= report.source
       %td= report.company_name
       %td= report.sector
+- if params[:query]
+  .right_align
+    = link_to 'Back to Reports home', research_reports_path
 

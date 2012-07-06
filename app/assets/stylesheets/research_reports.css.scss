@@ -13,4 +13,7 @@ body.research_reports.index {
     @include flash-message(#fff6bf, #514721, #ffd324);
     margin-bottom: 10px;
   }
+  a {
+    font-size: 12px;
+  }
 }
