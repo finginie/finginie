@@ -1,8 +1,0 @@
-@import "bourbon";
-@import "lists";
-@import "utilities";
-@import "defaults";
-
-body.real_estate_transactions.sell {
-  @include simple-form;
-}

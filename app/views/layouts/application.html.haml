@@ -48,7 +48,7 @@
       .row
         - flash.each do |name, msg|
           = content_tag :div, msg, :id => "flash_#{name}", :class => name if msg.is_a?(String)
-      .row= yield
+      = yield
     %footer
       %nav.sitemap
         = render_navigation :expand_all => true, :level => 1..2
@@ -57,5 +57,4 @@
         .disc_text
           %P
             By accessing Finginie.com or any of its associate/group sites, you have read, understood and agree to be legally bound by the #{link_to 'terms of the following end user agreement', main_app.page_path('terms_of_use')}. Copyright © 2012 Finginie.com. All rights reserved.
-
 

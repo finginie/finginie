@@ -1,9 +1,0 @@
-@import "bourbon";
-@import "lists";
-@import "utilities";
-@import "defaults";
-
-body.new, body.create {
-  @include simple-form;
-}
-
