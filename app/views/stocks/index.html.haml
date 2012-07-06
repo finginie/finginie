@@ -1,4 +1,4 @@
-.row
+.row.show-grid
   %h3.span12 Shares : Get Quotes and analyze over 3500 shares(stocks) trading on BSE and NSE
 
   %p.span12
@@ -17,31 +17,26 @@
         %tr.right_align
           %td.dataTables_empty{colspan:5} Start typing the name or symbol of the company in the box above to get a quote
 
-.row
+.row.show-grid
   #top_gainers_or_losers.top_gain_loss.span12
     = render "top_gainers_or_losers"
 
-.row
-  #news.span6
-    = render "news"
+.row.show-grid
+  #news.span8= render "news"
+  #sectoral_indices.span4= render "sectoral_indices"
 
-  = render "sectoral_indices"
+.row.show-grid
+  %h3.span12 Understanding shares(stocks) and the share market
+  %p.span12
+    Share prices are influenced by several factors ranging from company specific factors such as profit margins, sales
+    forecasts etc to factors that affect the entire market such as news flows and FII inflows/outflows.
+    To understand how  shares work, check out our article on #{link_to 'investing in shares', main_app.page_path('investment_education/shares')}.
+    Before you start investing in shares, it is important to be familiar with the
+    #{link_to 'factors influencing the entire share market', main_app.page_path('investment_education/shares')}.
+    Use our #{ link_to "Share Screener tool", screener_stocks_path } to find shares that match your criteria.
 
-%h1 Understanding shares(stocks) and the share market
-%p
-  Share prices are influenced by several factors ranging from company specific factors such as profit margins, sales
-  forecasts etc to factors that affect the entire market such as news flows and FII inflows/outflows.
-  To understand how  shares work, check out our article on
-  #{link_to 'investing in shares', main_app.page_path('investment_education/shares')}.
-  Before you start investing in shares, it is important to be familiar with the
-  #{link_to 'factors influencing the entire share market', main_app.page_path('investment_education/shares')}.
-  Use our
-  = link_to "Share Screener tool", screener_stocks_path
-  to find shares that match your criteria.
-
-%p
-  %b Important information about investing in shares.
-  %br
+  %h5.span12 Important information about investing in shares.
+  %p.span12
     Shares/stocks are very popular investments across India, both among beginners and season investors. However,
     investing in shares involves risks such as market risk and unsystematic risk. Please consult your financial advisor
     before making an investment decision. The share prices,corporate information, financial information such as balance
