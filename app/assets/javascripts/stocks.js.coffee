@@ -36,3 +36,5 @@ jQuery ->
 			  $( "##{$(this).data("min-field")}" ).val( ui.values[ 0 ])
 			  $( "##{$(this).data("max-field")}" ).val( ui.values[ 1 ])
 		  });
+
+  $('#news a:first').tab('show')
