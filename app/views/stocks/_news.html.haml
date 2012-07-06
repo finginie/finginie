@@ -1,14 +1,13 @@
-%h1 News
-.tabs
-  %ul
-    - %w(markets economy companies stock_tips global_news).each do |section_name|
-      %li= link_to t(".#{section_name}"), "#news_#{section_name}"
+%ul.nav.nav-tabs
+  - DataProvider::NewsArticle.feeds.keys.each do |section_name|
+    %li= link_to t(".#{section_name}"), "#news_#{section_name}", :data => {:toggle => :tab}
 
+.tab-content
   - DataProvider::NewsArticle.feeds.each do |section_name,articles|
-    %section{:id => "news_#{section_name}" }
+    %section.tab-pane{:id => "news_#{section_name}" }
       - articles.take(10).each do |article|
         - if article.title
           %article
-            %h1= link_to article.title.html_safe, article.url, :title => article.source, :target => :blank
-            %p.article_source #{article.source} - #{time_ago_in_words article.published} ago
-            %p #{article.summary.html_safe}
+            %h4= link_to article.title.html_safe, article.url, :title => article.source, :target => :blank
+            %h6 #{article.source} - #{time_ago_in_words article.published} ago
+            %p= article.summary.html_safe

@@ -2,30 +2,22 @@
   - [ 'NseScrip', 'BseScrip' ].each do |klass|
     %div.span6{ :id => "#{klass[0..2].downcase}_gainers_losers" }
       %h1= "Trending Shares - #{klass[0..2].upcase}"
-      .tabs
-        %ul
-          %li= link_to t(".top_gainers"), "##{klass.to_s.underscore}_top_gainers"
-          %li= link_to t(".top_losers"), "##{klass.to_s.underscore}_top_losers"
-          %li= link_to t(".most_active"), "##{klass.to_s.underscore}_most_active"
+      %ul.nav.nav-tabs
+        %li= link_to t(".top_gainers"), "##{klass.to_s.underscore}_top_gainers", :data => {:toggle => :tab}
+        %li= link_to t(".top_losers"), "##{klass.to_s.underscore}_top_losers", :data => {:toggle => :tab}
+        %li.active= link_to t(".most_active"), "##{klass.to_s.underscore}_most_active", :data => {:toggle => :tab}
 
-        - %w(top_gainers top_losers most_active).each do |performance|
-          %div{ :id => "#{klass.underscore}_#{performance}" }
-            %table
-              %tr
-                %th Name
-                %th.right_align Today's Price
-                - if performance == 'most_active'
-                  %th.right_align Volume
-                -else
-                  %th.right_align % Change
-              - "DataProvider::#{klass}".constantize.send(performance, 5).each do |scrip|
-                %tr{ class: cycle("odd", "even") }
-                  %td
-                    - if scrip.company.name
-                      = link_to scrip.company.name, stock_path(scrip.company.name)
-                  %td.right_align= number_to_indian_currency(scrip.last_traded_price)
-                  - if performance == 'most_active'
-                    %td.right_align= number_to_indian_currency(scrip.volume, 0)
-                  - else
-                    = table_content_with_red_or_green_class(scrip.percent_change)
-            - reset_cycle
+      .tab-content
+        .tab-pane.active{ :id => "#{klass.underscore}_most_active" }
+          -bt_table "DataProvider::#{klass}".constantize.most_active(5).each do |table|
+            = table.ths 'Name', "Today's Price", 'Volume'
+            = table.tds ->(scrip) { link_to scrip.company.name, stock_path(scrip.company.name) if scrip.company.name },
+                        ->(scrip) { number_to_indian_currency(scrip.last_traded_price) },
+                        ->(scrip) { number_to_indian_currency(scrip.volume, 0) }
+        - %w(top_gainers top_losers).each do |performance|
+          .tab-pane{ :id => "#{klass.underscore}_#{performance}" }
+            -bt_table "DataProvider::#{klass}".constantize.send(performance, 5).each do |table|
+              = table.ths 'Name', "Today's Price", '% Change'
+              = table.tds ->(scrip) { link_to scrip.company.name, stock_path(scrip.company.name) if scrip.company.name },
+                          ->(scrip) { number_to_indian_currency(scrip.last_traded_price) },
+                          ->(scrip) { table_content_with_red_or_green_class(scrip.percent_change) }

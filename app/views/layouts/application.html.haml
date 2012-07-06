@@ -18,28 +18,10 @@
       #maintenance_notice.alert.notice
         We are upgrading our systems as we speak. You may face minor issues during this period. Thank you for understanding :)
     %header.container
-      .global_social
-        = render :partial => 'layouts/twitter'
-        = render :partial => 'layouts/facebook'
-      %nav.user
-        -navbar do |bar|
-          = bar.second_nav do
-            - if current_user
-              = bar.brand_name current_user.email
-              = bar.item 'Sign out', main_app.signout_path
-            - else
-              = bar.brand_name image_tag('loginwith_button.png')
-              = bar.item image_tag('facebook_20.png'), '/auth/facebook'
-              = bar.item image_tag('google_20.png'), '/auth/google_oauth2'
-
       %hgroup.title
         = link_to main_app.root_path do
-          //%h1 Finginie
-          = image_tag 'Finginie_logo.png'
-          //=image_tag  "logoBlueGreen.png"
-      #tag_line
-        %h1
-          India's Best Investment Portal for Beginners
+          = image_tag 'logo.png'
+        %h6 India's Best Investment Portal for Beginners
       = render 'layouts/navigation'
       = yield :header
     #stock_indicies

@@ -36,9 +36,6 @@ $ ->
     else
       google.setOnLoadCallback drawPieChart(this)
 
-  $("div.tabs").each ->
-    $(this).tabs();
-
   $('[data-autocomplete-source]').each ->
     $(this).keypress (e) ->
       false  if e.keyCode is 13
