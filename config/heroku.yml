@@ -34,7 +34,7 @@ staging: &staging
     REDISTOGO_URL                : "redis://redistogo:2b89b00bbd027a6a3d5eecd059ef7d70@panga.redistogo.com:9105/"
     SENDGRID_PASSWORD            : "miqeakzq"
     SENDGRID_USERNAME            : "app1577177@heroku.com"
-    SPREADSHEET_KEY              : "0Ak3raVCu_XPhdG9pM3NIMF95eVZYYlpCcUx1OUQzSHc"
+    SPREADSHEET_KEY              : "0Ak3raVCu_XPhdGxrZVRMSEdacm1WdVBveTd6a294NEE"
     SPREADSHEET_LOGIN            : "deploys@finginie.com"
     SPREADSHEET_PASSWORD         : "gedesh123"
     TZ                           : "Asia/Kolkata"
