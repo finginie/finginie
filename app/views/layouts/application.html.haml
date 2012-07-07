@@ -25,21 +25,10 @@
           #divfacebook
             = render :partial => 'layouts/facebook'
           %nav.user
-            %ul
-              - if current_user
-                -#%li= link_to current_user.email, edit_user_main_app.registration_path
-                %li
-                  = link_to 'Sign out', main_app.signout_path, :method => :delete, :class => "btnsignout"
-              - else
-                %li
-                  = image_tag 'loginwith_button.png'
-                %li
-                  = link_to '/auth/facebook' do
-                    = image_tag 'facebook_20.png'
-                %li
-                  = link_to '/auth/google_oauth2' do
-                    = image_tag 'google_20.png'
-                -#%li= link_to 'Sign up', new_user_main_app.registration_path
+            - if current_user
+              = link_to 'Sign out', omniauth_single_signon.signout_path
+            - else
+              = link_to 'Login/Signup', main_app.signin_path
 
         %hgroup.title
           = link_to main_app.root_path do

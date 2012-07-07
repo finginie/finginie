@@ -6,12 +6,8 @@ describe SessionsController do
       get("/signin").should route_to("sessions#new")
     end
 
-    it "routes to #create" do
-      post("/auth/facebook/callback").should route_to("sessions#create", :provider => 'facebook')
-    end
-
-    it "routes to #destroy" do
-      delete("/signout").should route_to("sessions#destroy")
+    it "routes to #success" do
+      get("/success").should route_to("sessions#success")
     end
   end
 end
