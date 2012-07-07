@@ -35,8 +35,6 @@ describe "MutualFundTransactions" do
 #TODO: This test excepting current user
 #Temperory fix to save current user here.
   it "should autocomplete scheme name when user fill scheme name", :js => true do
-    current_user.save
-    portfolio.save
     visit new_portfolio_mutual_fund_transaction_path(portfolio)
     page.execute_script %Q{ $('[data-autocomplete-source]').val("#{scheme.name[0..5]}").keydown(); }
 
