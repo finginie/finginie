@@ -4,13 +4,13 @@
     %section
       = render :partial => 'layouts/facebook_recommend'
     %section
-      %h1 Forwards:
+      %h3 Forwards:
       =image_tag  "investment_education/Forwards.png"
       %p A forward on an asset is a contract that gives the buyer the right and the obligation to buy a certain quantity of that asset at a particular price after a particular period of time.
       %p You may find that forwards sound very similar to futures. That is because they are similar in most respects. However, there are some important differences.
       %p The underlying asset in a forward contract in most cases is a commodity or foreign currency.
     %section
-      %h1 Terminology:
+      %h3 Terminology:
       %p Counterparties: The two entities (individuals/corporations) that trade with each other.
       %ol
         %li Long Position: When an investor enters into a contract to buy a certain asset at a certain market determined price, he is said to take the long position in that contract.
@@ -18,7 +18,7 @@
         %li Strike Price: The pre-determined price at which the counterparty with the long position has to buy the underlying asset from the counterparty with the short position on the expiry date.
         %li Expiry Date: The pre-determined date on which the counterparty with the long position has to buy the underlying asset from the counterparty with the short position.
     %section
-      %h1 Characteristics:
+      %h3 Characteristics:
       =image_tag  "investment_education/Forwards2.png"
       %ol
         %li Trading: Forwards are traded over the counter (OTC) and not on an exchange.  This implies that counterparties approach one another and trade these contracts. Futures are exchange traded.
@@ -35,21 +35,21 @@
         =link_to t('investment_education.futures1'), main_app.page_path('investment_education/futures1')
       #disqus_thread
   %ul.thumbnails
-    .takeaway
-      %h1 Take Away
+    %li.span4.takeaway
+      %h3 Take Away
       %ul
         %li A forward on an asset is a contract that gives the buyer the right and the obligation to buy a certain quantity of that asset at a particular price after a particular period of time.
         %li Forwards are traded over the counter (OTC) and not on an exchange.
         %li Counterparties face credit risk because forward contracts are not backed by collateral.
         %li Forwards are customizable.
-    .articles
-      %h1 Articles
+    %li.span4.articles
+      %h3 Articles
       %ul
         %li=link_to "Forward contract", "http://en.wikipedia.org/wiki/Forward_contract", html_options = {:target => "_blank"}
         %li=link_to "Examples of Forward Contracts", "http://www.thehindubusinessline.in/mentor/2008/05/19/stories/2008051950401300.htm", html_options = {:target => "_blank"}
         %li=link_to "Difference between Forward and Futures contracts", "http://www.investopedia.com/ask/answers/06/investment_education/forwardsandfutures.asp", html_options = {:target => "_blank"}
-    .videos
-      %h1 Videos
+    %li.span4.videos
+      %h3 Videos
       %ul
         %li=link_to "Forward Contract Introduction", "http://www.youtube.com/watch?v=H9UEZdAnnt8&feature=player_embedded", html_options = {:target => "_blank"}
         %li=link_to "How do Forward Contracts Work?", "http://www.youtube.com/watch?v=uvlNz0l9nFk&feature=related", html_options = {:target => "_blank"}

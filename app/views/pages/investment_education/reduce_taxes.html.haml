@@ -4,15 +4,15 @@
     %section
       = render :partial => 'layouts/facebook_recommend'
     %section
-      %h1 Taxation:
+      %h3 Taxation:
       %p
         Income earned from investments is usually taxable. The impact of taxes on investment returns can be substantial
         and can potentially play a significant role in investment strategy. It is possible to minimize the impact of
         taxes through tax-planning. Thus, all investors should understand the basics of taxation and the tax laws that apply to them.
     %section
-      %h1 Marginal Tax Rate:
+      %h3 Marginal Tax Rate:
       %p The tax rate applicable to every additional rupee of income earned is called the marginal tax rate. If a country's tax rates are as follows:
-      %table{:border => "1px"}
+      %table.table-bordered.table-condensed.table.table-striped{:border => "1px"}
         %tr
           %th Income(Rs.)
           %th Tax Rate
@@ -27,7 +27,7 @@
           %td 20%
       %p The marginal tax rate applicable to a person whose income is Rs.68,000 is 10%.
     %section
-      %h1 Tax on Dividends and Interests:
+      %h3 Tax on Dividends and Interests:
       =image_tag  "investment_education/tax1.png", :height => "138px", :width => "241px"
       %p
         Income earned as dividends from stocks or interest payments from #{link_to 'Bonds', page_path('investment_education/bonds')}, bank deposits etc is
@@ -36,7 +36,7 @@
         incentive to own stocks and/or interest bearing securities.
       %p For example, dividends are taxed at 15% p.a. in USA for most investors while dividends are not taxed at all in Hong Kong!
     %section
-      %h1 Capital Gains Tax:
+      %h3 Capital Gains Tax:
       =image_tag  "investment_education/tax2.png", :height => "216px", :width => "275px"
       %p
         As we have learnt in the article on stocks, increases in the value of an asset will result in capital gains.
@@ -50,7 +50,7 @@
         most countries do not tax unrealized capital gains. Most countries also tax long term capital gains at
         a lower rate than short term capital gains.
     %section
-      %h1 Comparing Interest/Dividend Taxes and Capital Gains Tax:
+      %h3 Comparing Interest/Dividend Taxes and Capital Gains Tax:
       %p
         Periodically, companies may reward their investors in times of high earnings. They may do so
         by paying out cash in the form of dividends or by repurchasing shares. Share repurchases refers
@@ -65,7 +65,7 @@
         This is in contrast to smaller-cap companies that experience large fluctuations in earnings year-on-year and
         will need to retain some cash to plan for contingencies.
     %section
-      %h1 Fun Facts!
+      %h3 Fun Facts!
       %p
         Many large corporations today have policies that their company managements receive part of their compensation packages in the form
         of stock options. Stock options will give option-holders the right to buy the underlying stock at a particular price. Thus, when the
@@ -79,7 +79,7 @@
         a share repurchase rather than a dividend payout since they will directly profit from the increase in share price. Further information
         can be found in the article on options
     %section
-      %h1 Wealth Tax:
+      %h3 Wealth Tax:
       =image_tag  "investment_education/tax4.png", :height => "216px", :width => "275px"
       %p
         Wealth tax is the tax imposed by some governments on the net assets of its citizens.
@@ -87,7 +87,7 @@
         Fortunately, wealth tax rates are generally much lower than income tax rates and are typically in the order of about 1% p.a. For example,
         the maximum wealth tax applicable in Switzerland is about 1.5% p.a. of net assets.
     %section
-      %h1 Tax Drag:
+      %h3 Tax Drag:
       =image_tag  "investment_education/tax5.png", :height => "178px", :width => "247px"
       %p
         Tax drag is the decrease in possible income due to taxes. An example would best
@@ -97,7 +97,7 @@
         is re-invested in the same fund. Ashish Mishra invests Rs.100,000 in this mutual fund.
         Assuming that no taxes are applicable, his investment would be worth Rs.215,892 in
         10 years.
-      %h1 calculation:
+      %h3 calculation:
       %p ((1.08) ^ 10) X 100,000 = 215,892
       %p
         Suppose the income from mutual funds is taxed at 20%, Ashish would have a post-tax income
@@ -109,9 +109,9 @@
         The following table shows the income, tax paid and the future value of the investment
         in the scenario where there is no tax and in the scenario where there is a 20% tax
         payable every year.
-      %h1 Scenario 1 : No Taxes
+      %h3 Scenario 1 : No Taxes
       %p Initial Investment: Rs.100,000
-      %table{:border => "1px", :cellpadding => "0", :cellspacing => "0"}
+      %table.table-bordered.table-condensed.table.table-striped{:border => "1px", :cellpadding => "0", :cellspacing => "0"}
         %tr
           %th
             Years
@@ -259,8 +259,8 @@
             Total Potential Income Lost(Rs.)
           %td
             0
-      %h1 Scenario 2: 20% Annual Tax
-      %table{:border => "1px"}
+      %h3 Scenario 2: 20% Annual Tax
+      %table.table-bordered.table-condensed.table.table-striped{:border => "1px"}
         %tr
           %th
             Years
@@ -412,7 +412,7 @@
             Note that the total potential income lost due to taxes, i.e. tax drag is Rs.29,934,
             which is more than the total tax paid (Rs.21,490).
     %section
-      %h1 Tax Planning Strategies:
+      %h3 Tax Planning Strategies:
       %p
         It is possible to minimize the impact of taxes through careful planning. The following
         simple strategies can go a long way in minimizing tax drag:
@@ -439,18 +439,18 @@
         =link_to t('investment_education.fundamental_analysis1'), main_app.page_path('investment_education/fundamental_analysis1')
       #disqus_thread
   %ul.thumbnails
-    .takeaway
-      %h1 Take Away
+    %li.span4.takeaway
+      %h3 Take Away
       %ul
         %li Keep in mind that taxes can significantly reduce your returns.
         %li Take this into account when investing.
-    .articles
-      %h1 Articles
+    %li.span4.articles
+      %h3 Articles
       %ul
         %li No Articles yet.
         
-    .videos
-      %h1 Videos
+    %li.span4.videos
+      %h3 Videos
       %ul
         %li No Videos yet.
         

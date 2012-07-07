@@ -4,8 +4,8 @@
     %section
       = render :partial => 'layouts/facebook_recommend'
     %section
-      %h1 Monitoring and Rebalancing
-      %h1 Monitoring:
+      %h3 Monitoring and Rebalancing
+      %h3 Monitoring:
       %p
         Investment performance varies over time. Investment that performed
         well in one year may perform poorly in the following year. This is true especially
@@ -18,7 +18,7 @@
         should be regularly valued at prevailing market prices so that its performance can
         be measured. Strict risk limits should be set and appropriate risk management techniques
         should be used to limit exposure to unwanted risks.
-      %h1 Rebalancing:
+      %h3 Rebalancing:
       %p
         is the process of restoring portfolio component weights to their
         target weights when they change significantly.
@@ -36,7 +36,7 @@
         His new portfolio would consist of Rs.8700 worth of equity and Rs.5800 worth of
         realty.
     %section
-      %h1 Portfolio Management Best Practices
+      %h3 Portfolio Management Best Practices
       %ul
         %li
           Come up with a
@@ -58,8 +58,8 @@
         =link_to t('investment_education.risk_management'), main_app.page_path('investment_education/risk_management')
       #disqus_thread
   %ul.thumbnails
-    .takeaway
-      %h1 Take Away
+    %li.span4.takeaway
+      %h3 Take Away
       %ul
         %li
           Investors should monitor their portfolio to make sure changing market conditions
@@ -67,14 +67,14 @@
         %li
           Rebalance your portfolio if the asset classes’ proportions have deviated significantly
           from the target asset allocation.
-    .articles
-      %h1 Articles
+    %li.span4.articles
+      %h3 Articles
       %ul
         %li=link_to "Rebalance Your Portfolio", "http://stocks.about.com/od/investingstrategies/a/Rebal021205.htm", html_options = {:target => "_blank"}
         %li=link_to "Rules for rebalancing your portfolio", "http://www.rediff.com/money/2008/aug/26perfin.htm", html_options = {:target => "_blank"}
         %li=link_to "Portfolio Rebalancing with an example", "http://www.abcsofinvesting.net/portfolio-rebalancing/", html_options = {:target => "_blank"}
-    .videos
-      %h1 Videos
+    %li.span4.videos
+      %h3 Videos
       %ul
         %li=link_to "Why You Should Rebalance Your Portfolio","http://www.youtube.com/watch?v=c0FNaw-gukM", html_options = {:target => "_blank"}
         %li=link_to "How Often Should You Rebalance Your Portfolio?","http://www.youtube.com/watch?v=DTNbLsuFppw", html_options = {:target => "_blank"}

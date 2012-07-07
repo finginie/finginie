@@ -4,7 +4,7 @@
     %section
       = render :partial => 'layouts/facebook_recommend'
     %section
-      %h1 What are Commodities?
+      %h3 What are Commodities?
       =image_tag  "investment_education/comm1.png", :height => "190px", :width => "280px"
       %p
         Commodities
@@ -18,7 +18,7 @@
         or energy related such as crude oil etc. Even complex instruments such as options
         on freight contracts or weather are traded frequently.
     %section
-      %h1 Why the interest in Commodities?
+      %h3 Why the interest in Commodities?
       =image_tag  "investment_education/comm6.png", :height => "190px", :width => "280px"
       %p
         Commodities,
@@ -37,27 +37,27 @@
       =image_tag  "investment_education/comm3.png", :height => "190px", :width => "280px"
       %ul
         %li
-          %h1 Carrying costs:
+          %h3 Carrying costs:
           Take for example, you decide to invest in oil. In a transaction, you buy 1000 barrels
           of oil. However, once the physicals have been delivered to you, you will need to
           find a place to store all these barrels! Thus, in buying a spot asset, you will
           also incur storage costs, or carrying costs.
         %li
-          %h1 Convenience benefits:
+          %h3 Convenience benefits:
           Take the previous example and assume that you
           run a shipping firm. In an industry such as shipping, timeliness is extremely important
           to clients, and you would not want to make your customers wait. Thus, it will be
           good to have some oil on hand in case of emergency purposes. In such a case, holding
           the actual physical asset has its convenience benefits.
     %section
-      %h1 Commodities Trading:
+      %h3 Commodities Trading:
       =image_tag  "investment_education/comm4.png"
       %p
         Commodities are traded on commodity exchanges such as the Chicago Board of Trade
         (CBOT) or the Singapore Commodity Exchange (SICOM). The bulk of the commodity
         trading is done through derivatives such as
         Futures and Options
-      %h1 Futures Contracts:
+      %h3 Futures Contracts:
       %p
         A commodity future is a contract that gives the buyer
         the right and the obligation to buy or sell a certain quantity of that commodity
@@ -65,11 +65,11 @@
       %p The futures price of a security is derived from its actual spot price. In other words, a futures contract is a type of derivative security because its value is derived from the value of an underlying asset. We will cover in detail how to derive this value in the article on futures.
       %p A commodity option gives the buyer the right but not the obligation to do the same. These futures and options can in turn, be traded. Traders can also trade in commodities without using futures or options. For example, I could buy 1 ton of cotton at X dollars and sell it a day later for a profit.
     %section
-      %h1 How can individual investors trade commodities?
+      %h3 How can individual investors trade commodities?
       %p It is not easy for small investors to trade commodities in general. Investors wanting exposure to oil or gold prices can trade Exchange Traded Funds (ETFs) that track the spot price of gold/oil such as the Benchmark Gold ETF (Gold) or the Macro Shares Oil Up ETF (Oil). Investors have to use options or futures traded on exchanges to get exposure to the prices of other commodities.
       %p Many investors who would like large exposures to commodity prices in a passive manner use collateralized futures positions. This involves the purchase of treasury bills or bonds and the simultaneous entering into a futures contract on the buy side. This position can be rolled over indefinitely as long as the collateral is sufficient to maintain the required maintenance margin.
     %section
-      %h1 Advantages:
+      %h3 Advantages:
       =image_tag  "investment_education/comm5.png"
       %p
         Commodities are not well correlated with equities and could thus provide valuable #{link_to 'diversification', page_path('investment_education/diversification')} benefits. Commodities are considered good hedge against inflation because prices of commodities usually rises when inflation
@@ -83,13 +83,13 @@
         in the form of cash since cash is expected to have more purchasing power. For example,
         in the case of an expected deflation, Rs.1 in cash which can buy you one loaf of bread
         today, may well buy you two loafs of bread in the future.
-      %h1 Commission costs
+      %h3 Commission costs
       %p
         Associated with commodities is lower in comparison
         to other securities. It is always cheaper to buy derivatives and take positions
         on them rather than to buy the actual underlying asset.
     %section
-      %h1 Disadvantages:
+      %h3 Disadvantages:
       %p
         For traditional commodities, a investor has to contact his broker for a deal. The
         broker then conveys the message to a pit, where the transaction is completed. However,
@@ -112,19 +112,19 @@
         =link_to t('investment_education.insurance_products'), main_app.page_path('investment_education/insurance_products')
       #disqus_thread
   %ul.thumbnails
-    .takeaway
-      %h1 Take Away
+    %li.span4.takeaway
+      %h3 Take Away
       %ul
         %li Increase in global demand of commodities has led to a rise in commodities (identical goods) trading.
         %li Commodities are usually traded though options or futures.
         %li Since commodities are not highly correlated with equities, they provide a good #{link_to 'diversification', page_path('investment_education/diversification')} option.
         %li However, it is not easy for small investors to trade commodities.
-    .articles
-      %h1 Articles
+    %li.span4.articles
+      %h3 Articles
       %ul
         %li=link_to "Guide to commodities Trading in India", "http://www.tradingpicks.com/beginners_guide.htm", html_options = {:target => "_blank"}
-    .videos
-      %h1 Videos
+    %li.span4.videos
+      %h3 Videos
       %ul
         %li=link_to "Commodity Trading --Basics", "http://www.youtube.com/watch?v=FOTobOm1M1s", html_options = {:target => "_blank"}
         %li=link_to "How to Trade Commodities", "http://www.youtube.com/watch?v=A4IrqiIshOs&feature=related", html_options = {:target => "_blank"}
