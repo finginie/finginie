@@ -1,0 +1,13 @@
+.subnav
+  %ul.nav.nav-pills
+    %li= link_to resource.name, resource_path(resource)
+    %li= link_to 'Balance Sheet',         main_app.stock_balance_sheet_path(resource)
+    %li= link_to 'Income Statement',      main_app.stock_profit_loss_path(resource)
+    %li= link_to 'Cash Flow',             main_app.stock_cash_flow_path(resource)
+    %li= link_to 'Ratios',                main_app.stock_ratios_path(resource)
+    %li= link_to 'Share Holding Pattern', main_app.stock_share_holding_path(resource)
+    %li= link_to 'Research Reports',      main_app.stock_research_reports_path(resource)
+    %li.pull-right
+      = simple_form_for @search, :url => collection_path, :method => :get, :html => {:novalidate => true, :id => 'new_company', :class => 'navbar-search'} do |f|
+        .input-append
+          = f.text_field :name, data: { autocomplete_source: stocks_path}, :placeholder => 'Search', :class => 'search-query'
