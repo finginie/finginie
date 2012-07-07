@@ -1,6 +1,6 @@
 
-.wrapper
-  %article
+.row
+  %article.span8
     %h1 Overview
     %section
       = render :partial => 'layouts/facebook_recommend'
@@ -24,7 +24,7 @@
           = link_to 'Futures', main_app.page_path('investment_education/futures')
         %li
           = link_to 'Options', main_app.page_path('investment_education/options')
-  .extracontent
+  %ul.thumbnails
     .takeaway
       %h1 Take Away
       %ul

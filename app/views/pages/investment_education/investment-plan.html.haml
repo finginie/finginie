@@ -1,5 +1,5 @@
-.wrapper
-  %article
+.row
+  %article.span8
     %h1 Investment Planning
     %section
       = render :partial => 'layouts/facebook_recommend'
@@ -143,7 +143,7 @@
         Next:
         =link_to t('investment_education.Where_to_Invest'), main_app.page_path('investment_education/where-to-invest')
       #disqus_thread
-  .extracontent
+  %ul.thumbnails
     .takeaway
       %h1 Take Away
       %ul

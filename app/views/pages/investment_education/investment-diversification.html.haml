@@ -1,5 +1,5 @@
-.wrapper
-  %article
+.row
+  %article.span8
     %h1 Diversifying investments across sectors and asset classes
     %section
       = render :partial => 'layouts/facebook_recommend'
@@ -132,7 +132,7 @@
         Next:
         =link_to t('investment_education.Planning_your_Taxes'),main_app.page_path('investment_education/tax-planning')
       #disqus_thread
-  .extracontent
+  %ul.thumbnails
     .takeaway
       %h1 Take Away
       %ul

@@ -1,5 +1,5 @@
-.wrapper
-  %article
+.row
+  %article.span8
     %h1 How to analyze IT sector shares
     %section
       = render :partial => 'layouts/facebook_recommend'
@@ -112,7 +112,7 @@
         Next:
         =link_to t('investment_education.articles'), main_app.page_path('investment_education/articles')
       #disqus_thread
-  .extracontent
+  %ul.thumbnails
     .takeaway
       %h1 Take Away
       %ul

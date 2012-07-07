@@ -1,5 +1,5 @@
-.wrapper
-  %article
+.row
+  %article.span8
     %h1 SIP: How to invest in a systematic investment plan
     %section
       = render :partial => 'layouts/facebook_recommend'
@@ -159,7 +159,7 @@
         Next:
         =link_to t('investment_education.share_market'), main_app.page_path('investment_education/share-market')
       #disqus_thread
-  .extracontent
+  %ul.thumbnails
     .takeaway
       %h1 Take Away
       %ul

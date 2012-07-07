@@ -1,5 +1,5 @@
-.wrapper
-  %article
+.row
+  %article.span8
     %h1 Cash Equivalents
     %section
       = render :partial => 'layouts/facebook_recommend'
@@ -172,7 +172,7 @@
         Next:
         =link_to t('investment_education.bonds'), main_app.page_path('investment_education/insurance-products')
       #disqus_thread
-  .extracontent
+  %ul.thumbnails
     .takeaway
       %h1 Take Away
       %ul

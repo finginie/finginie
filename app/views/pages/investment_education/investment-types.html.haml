@@ -1,6 +1,6 @@
 
-.wrapper
-  %article
+.row
+  %article.span8
     %h1 Shares, Mutual Funds, Fixed Deposits, Bonds and Gold : Types of Investments
     %section
       = render :partial => 'layouts/facebook_recommend'
@@ -325,7 +325,7 @@
       .article_next
         Next:-
         =link_to t('investment_education.investment_trading'), main_app.page_path('investment_education/investing-trading-shares')
-  .extracontent
+  %ul.thumbnails
     .takeaway
       %h1 Take Away
       %ul

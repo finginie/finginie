@@ -1,5 +1,5 @@
-.wrapper
-  %article
+.row
+  %article.span8
     %h1 Where to invest
     %section
       = render :partial => 'layouts/facebook_recommend'
@@ -177,7 +177,7 @@
         Next:
         =link_to t('investment_education.Diversification'), main_app.page_path('investment_education/investment-diversification')
       #disqus_thread
-  .extracontent
+  %ul.thumbnails
     .takeaway
       %h1 Take Away
       %ul
