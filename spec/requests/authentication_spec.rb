@@ -1,10 +1,9 @@
 require 'spec_helper'
 
 describe "Authentication" do
-#TODO: Flash message are not displaying after signup
-#Need to fix
-  it "should sign in using single_signon oauth2", :js do
+  it "should sign in using single_signon oauth2", :js, :omniauth do
     visit '/auth/single_signon'
+
     page.should have_content 'Successfully signed in'
   end
 
@@ -24,10 +23,10 @@ describe "Authentication" do
     current_path.should eq signin_path
   end
 
-  it "should go back to previous page after logging in", :js do
+  it "should go back to previous page after logging in", :js, :omniauth do
     visit portfolios_path
 
-    visit '/auth/single_signon'
+#   omniauth callback url
 
     current_path.should eq portfolios_path
   end
