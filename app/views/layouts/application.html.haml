@@ -18,14 +18,16 @@
     - if ENV['MAINTENANCE']
       #maintenance_notice.alert.notice
         We are upgrading our systems as we speak. You may face minor issues during this period. Thank you for understanding :)
-    %header.container
-      %hgroup.title
-        = link_to main_app.root_path do
-          = image_tag 'logo.png'
-        %h6 India's Best Investment Portal for Beginners
-      = render 'layouts/navigation'
-      = yield :header
-      .stock_indices= render 'stocks/indicies'
+    %header.page-header
+      .container
+        %hgroup.title
+          %h1
+            = link_to main_app.root_path do
+              = image_tag 'logo.png'
+            %small India's Best Investment Portal for Beginners
+        = render 'layouts/navigation'
+        = yield :header
+        .stock_indices= render 'stocks/indicies'
     #main.container
       .row
         - flash.each do |name, msg|

@@ -18,12 +18,11 @@
           %td.dataTables_empty{colspan:5} Start typing the name or symbol of the company in the box above to get a quote
 
 .row.show-grid
-  #top_gainers_or_losers.top_gain_loss.span12
-    = render "top_gainers_or_losers"
+  #news.span12= render "news"
 
 .row.show-grid
-  #news.span8= render "news"
-  #sectoral_indices.span4= render "sectoral_indices"
+  #sectoral_indices.span6= render "sectoral_indices"
+  #top_gainers_or_losers.top_gain_loss.span6= render "top_gainers_or_losers"
 
 .row.show-grid
   %h3.span12 Understanding shares(stocks) and the share market
