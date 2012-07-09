@@ -184,6 +184,15 @@ describe IdealInvestmentMix, :mongoid do
       subject.mid_caps.first.amount.should eq 3000
       subject.mid_caps.first.name.should eq mid_cap_schemes.first.name
     end
+
+    it "should have security mix" do
+      gold_etfs.each{ |scheme| scheme.save }
+      large_cap_schemes.each { |scheme| scheme.save }
+      mid_cap_schemes.each { |scheme| scheme.save }
+      subject.security_mix.count.should eq 5
+      subject.security_mix.should include([gold_etfs.last.name, 9000], [banks.first.name, 6000],
+        [banks.last.name, 6000], [ large_cap_schemes.first.name, 6000], [ mid_cap_schemes.first.name, 3000])
+    end
   end
 
   context "#with custom risk profiler" do

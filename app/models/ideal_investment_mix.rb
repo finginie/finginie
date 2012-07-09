@@ -68,6 +68,11 @@ class IdealInvestmentMix
         top_mid_caps(1).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => mid_cap_amount}) }
   end
 
+  def security_mix
+    [fixed_deposits, gold_investments, large_caps, mid_caps].flatten.map{ |security|
+      [ security.name, security.amount.to_f ] }
+  end
+
 private
   def gold_amount
     initial_investment * asset_allocation['Gold'] / 100
@@ -78,11 +83,11 @@ private
   end
 
   def large_cap_amount
-    asset_allocation['Large Cap Stocks'] * initial_investment / 100
+    initial_investment * asset_allocation['Large Cap Stocks'] / 100
   end
 
   def mid_cap_amount
-    asset_allocation['Mid Cap Stocks'] * initial_investment / 100
+    initial_investment * asset_allocation['Mid Cap Stocks'] / 100
   end
 
   def initial_investment
