@@ -15,8 +15,8 @@ $ ->
 
 jQuery ->
   $('#schemes_table').dataTable
-    sPaginationType: "full_numbers"
-    bJQueryUI: true
+    sDom: "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
+    sPaginationType: "bootstrap"
     bProcessing: true
     bServerSide: true
     sAjaxSource: $('#schemes_table').data('source')
@@ -27,3 +27,5 @@ jQuery ->
   $('#schemes_table').dataTable().bind('filter', ->
       $("#categories_table").css('visibility', 'hidden');
   )
+
+  $('.nav-tabs a:first').tab('show')

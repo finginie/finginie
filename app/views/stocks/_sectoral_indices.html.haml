@@ -6,7 +6,7 @@
 
 .tab-content
   - [ 'NseScrip', 'BseScrip' ].each do |scrip|
-    %div.tab-pane{ :id => "#{scrip.underscore}_sectoral_indices" }
+    .tab-pane{ :id => "#{scrip.underscore}_sectoral_indices" }
       -bt_table "DataProvider::#{scrip}".constantize.send('sectoral_indices').each do |table|
         = table.ths 'Index Name', 'Value', 'Change', '<nobr>% Change</nobr>'.html_safe
         = table.tds ->(index) { t(".#{index.id.delete(' ').gsub('&', '')}") },
