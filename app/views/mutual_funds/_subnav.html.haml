@@ -1,6 +1,5 @@
 .subnav
   %ul.nav.nav-pills
-    = navigation_link 'Mutual Funds', main_app.mutual_funds_path
     - if @nav_category_detail.try(:scheme_class_description)
       = navigation_link @nav_category_detail.scheme_class_description, main_app.mutual_fund_category_path(params[:id])
     - if @scheme.try(:name)
