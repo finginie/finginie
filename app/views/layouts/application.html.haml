@@ -16,7 +16,8 @@
       = render :partial => 'layouts/alexa'
       %webengage{license: '76aa3c4'}
     - if ENV['MAINTENANCE']
-      #maintenance_notice.alert.notice
+      #maintenance_notice.alert.alert-block
+        %button.close{:data => { :dismiss => :alert }} x
         We are upgrading our systems as we speak. You may face minor issues during this period. Thank you for understanding :)
     %header.page-header
       .container
@@ -31,7 +32,12 @@
     #main.container
       .row
         - flash.each do |name, msg|
-          = content_tag :div, msg, :id => "flash_#{name}", :class => name if msg.is_a?(String)
+          - if msg.is_a?(String)
+            %div{ :id => "flash_#{name}", :class => ['alert', 'alert-block', "alert-#{name}"] }
+              %button.close{:data => { :dismiss => :alert }} x
+              %h4.alert-heading= name
+              = msg
+
       = yield
     %footer.container
       .row
