@@ -8,7 +8,7 @@
     = navigation_link 'Share Holding Pattern', main_app.stock_share_holding_path(@company)
     = navigation_link 'Research Reports',      main_app.stock_research_reports_path(@company)
     %li.pull-right
-      = simple_form_for @search, :url => main_app.stocks_path, :method => :get, :html => {:novalidate => true, :id => 'new_company', :class => 'form-search'} do |f|
+      = simple_form_for @search, :url => main_app.stocks_path, :method => :get, :html => {:novalidate => true, :id => 'new_company', :class => 'form-search'}, :html => {:class => 'form-horizontal'} do |f|
         .input-append
           = f.text_field :name, data: { autocomplete_source: stocks_path}, :placeholder => 'Search', :class => 'search-query'
           = f.submit 'Search', :class => :btn

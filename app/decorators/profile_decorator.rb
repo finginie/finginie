@@ -10,7 +10,7 @@ class ProfileDecorator < ApplicationDecorator
   end
 
   def follow_button
-    h.simple_form_for subscription do |f|
+    h.simple_form_for subscription, :html => {:class => 'form-horizontal'} do |f|
       h.concat f.input :subscribable_id, :as => :hidden
       h.concat f.input :subscribable_type, :as => :hidden
       h.concat f.submit 'Follow'

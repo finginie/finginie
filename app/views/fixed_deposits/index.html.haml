@@ -1,13 +1,13 @@
 %h1 Fixed Deposit Comparison tool : Compare fixed deposit interest rates across banks in India
 
 %p= t ".fixed_deposit_tool"
-= simple_form_for @search, :url => fixed_deposits_path, :method => :get do |f|
+= simple_form_for @search, :url => fixed_deposits_path, :method => :get, :html => {:class => 'form-horizontal'} do |f|
   = f.input :amount
 
-  = f.label :duration
-  = f.input :year
-  = f.input :month
-  = f.input :days
+  = field_set_tag :duration do
+    = f.input :year
+    = f.input :month
+    = f.input :days
 
   = f.input :senior_citizen, :collection => %w[Yes No], :as => :radio_buttons
 
