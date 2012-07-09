@@ -12,57 +12,57 @@
       #mf-comparative-returns-chart.chart{data: { elements: @scheme.comparative_returns_data_table, title: 'Comparative Returns',
                                                   yAxisTitle: 'Return(%)', chartType: 'Column', legend: 'bottom' } }
     .span4.show-grid
-        %table.table.table-striped
-          %tr
-            %th Time Frame
-            %th Scheme Return (%)
-            %th Category Return (%)
+      %table.table.table-striped
+        %tr
+          %th Time Frame
+          %th Scheme Return (%)
+          %th Category Return (%)
 
-          %tr
-            %th 1 day
-            %td= table_content_with_red_or_green_class @scheme.percentage_change
-            %td= table_content_with_red_or_green_class @scheme.one_day_return
+        %tr
+          %th 1 day
+          %td= table_content_with_red_or_green_class @scheme.percentage_change
+          %td= table_content_with_red_or_green_class @scheme.one_day_return
 
-          %tr
-            %td 1 week
-            %td= table_content_with_red_or_green_class @scheme.percentage_change
-            %td= table_content_with_red_or_green_class @scheme.one_week_return
+        %tr
+          %td 1 week
+          %td= table_content_with_red_or_green_class @scheme.percentage_change
+          %td= table_content_with_red_or_green_class @scheme.one_week_return
 
-          %tr
-            %th 1 month
-            %td= table_content_with_red_or_green_class @scheme.prev1_month_percent
-            %td= table_content_with_red_or_green_class @scheme.one_month_return
+        %tr
+          %th 1 month
+          %td= table_content_with_red_or_green_class @scheme.prev1_month_percent
+          %td= table_content_with_red_or_green_class @scheme.one_month_return
 
-          %tr
-            %th 3 months
-            %td= table_content_with_red_or_green_class @scheme.prev3_months_percent
-            %td= table_content_with_red_or_green_class @scheme.three_months_return
+        %tr
+          %th 3 months
+          %td= table_content_with_red_or_green_class @scheme.prev3_months_percent
+          %td= table_content_with_red_or_green_class @scheme.three_months_return
 
-          %tr
-            %th 6 months
-            %td= table_content_with_red_or_green_class @scheme.prev6_months_percent
-            %td= table_content_with_red_or_green_class @scheme.six_months_return
+        %tr
+          %th 6 months
+          %td= table_content_with_red_or_green_class @scheme.prev6_months_percent
+          %td= table_content_with_red_or_green_class @scheme.six_months_return
 
-          %tr
-            %th 9 months
-            %td= table_content_with_red_or_green_class @scheme.prev9_months_percent
-            %td= table_content_with_red_or_green_class @scheme.nine_months_return
+        %tr
+          %th 9 months
+          %td= table_content_with_red_or_green_class @scheme.prev9_months_percent
+          %td= table_content_with_red_or_green_class @scheme.nine_months_return
 
-          %tr
-            %th 1 Year
-            %td= table_content_with_red_or_green_class @scheme.prev_year_percent
-            %td= table_content_with_red_or_green_class @scheme.one_year_return
+        %tr
+          %th 1 Year
+          %td= table_content_with_red_or_green_class @scheme.prev_year_percent
+          %td= table_content_with_red_or_green_class @scheme.one_year_return
 
-          %tr
-            %th 2 Years
-            %td= table_content_with_red_or_green_class @scheme.prev2_year_comp_percent
-            %td= table_content_with_red_or_green_class @scheme.two_year_return
+        %tr
+          %th 2 Years
+          %td= table_content_with_red_or_green_class @scheme.prev2_year_comp_percent
+          %td= table_content_with_red_or_green_class @scheme.two_year_return
 
-          %tr
-            %th 3 Years
-            %td= table_content_with_red_or_green_class @scheme.prev3_year_comp_percent
-            %td= table_content_with_red_or_green_class @scheme.three_year_return
-        %p *All returns for periods greater than 1year are annualized.
+        %tr
+          %th 3 Years
+          %td= table_content_with_red_or_green_class @scheme.prev3_year_comp_percent
+          %td= table_content_with_red_or_green_class @scheme.three_year_return
+      %p *All returns for periods greater than 1year are annualized.
 - else
   %p Data not available
 
