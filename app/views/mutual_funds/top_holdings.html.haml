@@ -1,11 +1,18 @@
+= render 'subnav'
 - provide :title, @scheme.name if @scheme.model
 - if @scheme.portfolio_holdings
-  .mf_container
-    %h1= "#{@scheme.name}'s Top Holdings"
-    #top_holdings
+  .row
+    .span12.show-grid
+      .page-header
+        %h2
+          Top holdings
+          %small= @scheme.name
+  .row
+    .span12.show-grid
       #top-holdings-chart.chart{data: { elements: [['','']] + @scheme.top_ten_holdings_percentages,
                                         title: 'Top 10 holdings Distribution', chartType: 'Pie' } }
-      #top_holdings_data
+  .row
+    .span12.show-grid
         %table.table.table-striped
           %tr
             %th= 'Company Name'
