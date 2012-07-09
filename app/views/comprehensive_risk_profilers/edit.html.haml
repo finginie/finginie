@@ -1,54 +1,49 @@
-%h1 Personalized Financial Plan
-.benefits
-  .personalize
-    =image_tag  "Personalized.png"
-    %h1 Personalized investment suggestions
-    %p
-      Gives you personalized investment suggestions based on your unique financial needs &
-      constraints.
-  .good_balance
-    =image_tag  "risk_and_return.png"
-    %h1 Balance between risk and return
-    %p
-      Ensures that you strike a perfect balance between risk and return. All suggestions are based on
-      financial experts’ opinion & backed by 10 years of market data.
-  .safety
-    =image_tag  "Diversification.png"
-    %h1 Diversification
-    %p
-      Automatically ensures diversification across asset classes such as stocks, fixed deposits and gold.
-      This reduces the riskiness of your portfolio drastically.
-  .wisdom
-    =image_tag  "Quick_-free_and_beginner_-friendly.png"
-    %h1 Quick, free and beginner friendly
-    %p
-      Completely free of cost and doesn’t require a credit card or email address. Takes less than a
-      minute to finish and requires no prior knowledge of investing.
 
--unless resource.persisted?
-  .skip
-    = link_to "Skip  Step and load balanced portfolio (Not Recommended)", comprehensive_risk_profiler_path(score: 6), html_options = { id: "skip_quiz"}
+.row
+  .span8
+    %h1 Personalized Financial Plan
 
-= simple_form_for resource, :url => comprehensive_risk_profiler_path, :method => :put do |f|
-  %ol
-    %li= f.input :age
-    %li= f.input :household_savings
-    %li= f.input :household_income
-    %li= f.input :household_expenditure
-    %li= f.input :dependent
-    %li
-      %fieldset#special_goals
-        = f.input :special_goals, :collection => %w[Yes No], :as => :radio_buttons
-        #special_goals_field
-          = f.input :special_goals_amount
-          = f.input :special_goals_years
-    %li
-      %fieldset#tax_saving_investment
-        = f.input :investment_check, :collection => %w[Yes No], :as => :radio_buttons
-        #tax_saving_investment_field
-          = f.input :tax_saving_investment
-    %li= f.input :time_horizon
-    %li= f.input :preference, :collection => t("comprehensive_risk_profiler.preference").invert, :as => :radio_buttons, :collection_wrapper_tag => :ul, :item_wrapper_tag => :li
-    %li= f.input :portfolio_investment, :collection => t("comprehensive_risk_profiler.portfolio_investment").invert, :as => :radio_buttons, :collection_wrapper_tag => :ul, :item_wrapper_tag => :li
-    .actions
-      = f.submit 'Submit'
+    -unless resource.persisted?
+      = link_to "Skip  Step and load balanced portfolio (Not Recommended)", comprehensive_risk_profiler_path(score: 6), html_options = { id: "skip_quiz"}
+
+    = simple_form_for resource, :url => comprehensive_risk_profiler_path, :method => :put do |f|
+      %ol
+        %li= f.input :age
+        %li= f.input :household_savings
+        %li= f.input :household_income
+        %li= f.input :household_expenditure
+        %li= f.input :dependent
+        %li
+          %fieldset#special_goals
+            = f.input :special_goals, :collection => %w[Yes No], :as => :radio_buttons
+            #special_goals_field
+              = f.input :special_goals_amount
+              = f.input :special_goals_years
+        %li
+          %fieldset#tax_saving_investment
+            = f.input :investment_check, :collection => %w[Yes No], :as => :radio_buttons
+            #tax_saving_investment_field
+              = f.input :tax_saving_investment
+        %li= f.input :time_horizon
+        %li= f.input :preference, :collection => t("comprehensive_risk_profiler.preference").invert, :as => :radio_buttons, :collection_wrapper_tag => :ul, :item_wrapper_tag => :li
+        %li= f.input :portfolio_investment, :collection => t("comprehensive_risk_profiler.portfolio_investment").invert, :as => :radio_buttons, :collection_wrapper_tag => :ul, :item_wrapper_tag => :li
+        .actions
+          = f.submit 'Submit'
+  %ul.thumbnails
+    %li.span4
+      .thumbnail
+        %h4 #{image_tag  "Personalized.png"} Personalized investment suggestions
+        %p Gives you personalized investment suggestions based on your unique financial needs & constraints.
+    %li.span4
+      .thumbnail
+        %h4 #{image_tag  "risk_and_return.png"} Balance between risk and return
+        %p Ensures that you strike a perfect balance between risk and return. All suggestions are based on financial experts’ opinion & backed by 10 years of market data.
+    %li.span4
+      .thumbnail
+        %h4 #{image_tag  "Diversification.png"} Diversification
+        %p Automatically ensures diversification across asset classes such as stocks, fixed deposits and gold. This reduces the riskiness of your portfolio drastically.
+    %li.span4
+      .thumbnail
+        %h4 #{image_tag  "Quick_-free_and_beginner_-friendly.png"} Quick, free and beginner friendly
+        %p Completely free of cost and doesn’t require a credit card or email address. Takes less than a minute to finish and requires no prior knowledge of investing.
+

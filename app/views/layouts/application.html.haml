@@ -33,9 +33,8 @@
       .row
         - flash.each do |name, msg|
           - if msg.is_a?(String)
-            %div{ :id => "flash_#{name}", :class => ['alert', 'alert-block', "alert-#{name}"] }
+            %div{ :id => "flash_#{name}", :class => ['alert', "alert-#{name}"] }
               %button.close{:data => { :dismiss => :alert }} x
-              %h4.alert-heading= name
               = msg
 
       = yield
