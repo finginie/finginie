@@ -13,20 +13,20 @@
                                         title: 'Top 10 holdings Distribution', chartType: 'Pie' } }
   .row
     .span12.show-grid
-        %table.table.table-striped
-          %tr
-            %th= 'Company Name'
-            %th= 'Holding (%)'
-            %th= 'Asset Class'
-            %th= 'Sector'
-            %th= 'Rating'
-            - @scheme.portfolio_holdings.take(10).each do |portfolio|
-              %tr{ class: cycle("odd", "even") }
-                %td= portfolio["InvestedCompanyName"]
-                %td= portfolio["Percentage"]
-                %td= portfolio["InstrumentName"]
-                %td= portfolio["IndustryName"] || "-"
-                %td= portfolio["Rating"] || "-"
+      %table.table.table-striped
+        %tr
+          %th= 'Company Name'
+          %th= 'Holding (%)'
+          %th= 'Asset Class'
+          %th= 'Sector'
+          %th= 'Rating'
+          - @scheme.portfolio_holdings.take(10).each do |portfolio|
+            %tr{ class: cycle("odd", "even") }
+              %td= portfolio["InvestedCompanyName"]
+              %td= portfolio["Percentage"]
+              %td= portfolio["InstrumentName"]
+              %td= portfolio["IndustryName"] || "-"
+              %td= portfolio["Rating"] || "-"
 
 - else
   %p Data not available
