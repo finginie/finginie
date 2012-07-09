@@ -6,33 +6,33 @@
                                                          chartType: 'Pie', title: 'Portfolio Assets Composition'} }
   %table.table.table-striped.assets
     %tr
-      %th.name Assets
-      %th.asset_amount Amount
-      %th.right_align Percentage
-    %tr.right_align
+      %th Assets
+      %th Amount
+      %th Percentage
+    %tr
       %td
       %td (Rs)
       %td (%)
     -resource.total_assets_distribution_table.each do |asset|
       %tr{:class => asset[:class]}
-        %td.name= asset[:asset_type]
-        %td.asset_amount= asset[:amount]
-        %td.right_align= asset[:percentage]
+        %td= asset[:asset_type]
+        %td= asset[:amount]
+        %td= asset[:percentage]
 
   %table.table.table-striped.liabilities
     %tr
-      %th.name Liabilities
-      %th.asset_amount Amount
-      %th.right_align Percentage
-    %tr.right_align
+      %th Liabilities
+      %th Amount
+      %th Percentage
+    %tr
       %td
       %td (Rs)
       %td (%)
     -resource.total_liabilities_distribution_table.each do |asset|
       %tr{:class => asset[:class]}
         %td= asset[:asset_type]
-        %td.asset_amount= asset[:amount]
-        %td.right_align= asset[:percentage]
+        %td= asset[:amount]
+        %td= asset[:percentage]
 
 - if resource.assets_and_liabilities?
   #net-worth-chart.chart{ data: { elements: resource.assets_and_liabilities, title: 'Portfolio Summary',
