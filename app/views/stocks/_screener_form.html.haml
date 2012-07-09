@@ -3,7 +3,7 @@
     = label_tag "screener_industry_name", "Sector"
     = select_tag("screener[industry_name]", options_for_select([["Any", ""]] + DataProvider::Industry.all.map{|i| [i.name, i.name]}))
   #screener-slider
-    %table.ui-corner-tl.ui-corner-tr
+    %table.table.table-striped
       %tr
         %th.ui-widget-header Criteria
         %th.ui-widget-header Minimum

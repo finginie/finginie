@@ -7,7 +7,7 @@
       #mf-asset-allocation-chart.chart{ data: { elements: [['','']] + @scheme.asset_allocation.to_a,
                                                 title: 'Asset Allocation', chartType: 'Pie' } }
       #asset_allocation_data
-        %table
+        %table.table.table-striped
           %th Asset Class
           %th Holding (%)
           - @scheme.asset_allocation.each do |name, value|

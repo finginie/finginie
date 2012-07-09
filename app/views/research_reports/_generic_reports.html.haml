@@ -3,7 +3,7 @@
   = submit_tag 'Search'
 
 = content_tag :div, flash[:result], :id => 'result' if flash[:result].is_a?(String)
-%table
+%table.table.table-striped
   %tr
     %th Date
     %th Report Name

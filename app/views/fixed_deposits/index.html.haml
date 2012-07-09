@@ -23,7 +23,7 @@
     - unless fd_details.empty?
       %h1= "#{fd_details.first.sector.titleize} banks"
       %div{ :id => "top_five_#{fd_details.first.sector.downcase}_sector_interest_rate"}
-        %table
+        %table.table.table-striped
           %tr
             %th.name Bank Name
             %th.center_align= @search.senior_citizen? ? "Senior Citizen Interest Rate" : "General Interest Rate"
@@ -39,7 +39,7 @@
     - unless fd_details.empty?
       %h1= "Best interest rates on fixed deposits among #{fd_details.first.sector.titleize.downcase!} sector banks"
       %div{ :id => "top_five_#{fd_details.first.sector.downcase}_sector_interest_rate"}
-        %table
+        %table.table.table-striped
           %tr
             %th.name Bank Name
             %th.right_align 1 year

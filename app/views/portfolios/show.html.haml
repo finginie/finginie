@@ -4,7 +4,7 @@
 - else
   #portfolio-total-asset-allocation-chart.chart{ data: { elements: [['Asset Class','Percenatge']]+resource.total_assets_distribution,
                                                          chartType: 'Pie', title: 'Portfolio Assets Composition'} }
-  %table{:class => "assets"}
+  %table.table.table-striped.assets
     %tr
       %th.name Assets
       %th.asset_amount Amount
@@ -19,7 +19,7 @@
         %td.asset_amount= asset[:amount]
         %td.right_align= asset[:percentage]
 
-  %table{:class => "liabilities"}
+  %table.table.table-striped.liabilities
     %tr
       %th.name Liabilities
       %th.asset_amount Amount

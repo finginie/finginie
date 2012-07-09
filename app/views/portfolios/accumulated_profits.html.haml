@@ -26,7 +26,7 @@
         = t(".no_loss")
     - unless resource.positions.empty?
       %h2 Net Profit/Loss
-      %table
+      %table.table.table-striped
         %tr
           %td.name.total Net Profit/Loss
           = table_content_with_red_or_green_class resource.net_profit_or_loss

@@ -7,7 +7,7 @@
       #mf-sectoral-allocation-chart.chart{ data: { elements: [['','']] + @scheme.sectoral_allocation.to_a,
                                                    title: 'Sectoral Allocation', chartType: 'Pie' } }
       #sectoral_allocation_data
-        %table
+        %table.table.table-striped
           %th Sector
           %th Holding (%)
           - @scheme.sectoral_allocation.each do |name, value|

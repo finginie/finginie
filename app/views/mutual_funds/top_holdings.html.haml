@@ -6,7 +6,7 @@
       #top-holdings-chart.chart{data: { elements: [['','']] + @scheme.top_ten_holdings_percentages,
                                         title: 'Top 10 holdings Distribution', chartType: 'Pie' } }
       #top_holdings_data
-        %table
+        %table.table.table-striped
           %tr
             %th= 'Company Name'
             %th= 'Holding (%)'
