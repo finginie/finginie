@@ -1,14 +1,14 @@
 .subnav
   %ul.nav.nav-pills
-    = navigation_link resource.name, resource_path(resource)
-    = navigation_link 'Balance Sheet',         main_app.stock_balance_sheet_path(resource)
-    = navigation_link 'Income Statement',      main_app.stock_profit_loss_path(resource)
-    = navigation_link 'Cash Flow',             main_app.stock_cash_flow_path(resource)
-    = navigation_link 'Ratios',                main_app.stock_ratios_path(resource)
-    = navigation_link 'Share Holding Pattern', main_app.stock_share_holding_path(resource)
-    = navigation_link 'Research Reports',      main_app.stock_research_reports_path(resource)
+    = navigation_link @company.name,           main_app.stock_path(@company)
+    = navigation_link 'Balance Sheet',         main_app.stock_balance_sheet_path(@company)
+    = navigation_link 'Income Statement',      main_app.stock_profit_loss_path(@company)
+    = navigation_link 'Cash Flow',             main_app.stock_cash_flow_path(@company)
+    = navigation_link 'Ratios',                main_app.stock_ratios_path(@company)
+    = navigation_link 'Share Holding Pattern', main_app.stock_share_holding_path(@company)
+    = navigation_link 'Research Reports',      main_app.stock_research_reports_path(@company)
     %li.pull-right
-      = simple_form_for @search, :url => collection_path, :method => :get, :html => {:novalidate => true, :id => 'new_company', :class => 'form-search'} do |f|
+      = simple_form_for @search, :url => main_app.stocks_path, :method => :get, :html => {:novalidate => true, :id => 'new_company', :class => 'form-search'} do |f|
         .input-append
           = f.text_field :name, data: { autocomplete_source: stocks_path}, :placeholder => 'Search', :class => 'search-query'
           = f.submit 'Search', :class => :btn
