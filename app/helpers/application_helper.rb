@@ -35,4 +35,11 @@ module ApplicationHelper
             :name => default
   end
 
+  def navigation_link(name, path)
+    class_name = current_page?(path) ? 'active' : ''
+    content_tag(:li, :class => class_name) do
+      link_to name, path
+    end
+  end
+
 end
