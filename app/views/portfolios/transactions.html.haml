@@ -1,4 +1,4 @@
-= render 'current_portfolio'
+= render 'subnav'
 - %w(stock_transactions mutual_fund_transactions gold_transactions fixed_deposit_transactions loan_transactions real_estate_transactions).each do |transaction|
   = render "#{transaction}/#{transaction}", transaction.to_sym => resource.send(transaction)
 -if resource.empty_transactions?
