@@ -7,6 +7,65 @@
                     main_app.edit_comprehensive_risk_profiler_path
         = bar.item 'Ideal portfolio',
                     main_app.comprehensive_risk_profiler_path
+
+      = bar.dropdown 'Learn Investing' do
+        .container
+          .row
+            .span6
+              .row
+                .span2
+                  %li.nav-header Preparing to Invest
+                  = bar.item 'How to Invest',
+                              main_app.page_path('investment_education/smart-investments')
+                  = bar.item 'Types of Investments',
+                              main_app.page_path('investment_education/investment-types')
+                  = bar.item 'Investing vs Trading',
+                              main_app.page_path('investment_education/investing-trading-shares')
+
+                  %li.nav-header Before you Invest
+                  = bar.item 'Investment Plan',
+                              main_app.page_path('investment_education/investment-plan')
+                  = bar.item 'Where to Invest',
+                              main_app.page_path('investment_education/where-to-invest')
+                  = bar.item 'Diversification',
+                              main_app.page_path('investment_education/investment-diversification')
+                  = bar.item 'Planning your Taxes',
+                              main_app.page_path('investment_education/tax-planning')
+
+                .span2
+                  %li.nav-header Investments Types
+                  = bar.item 'Fixed Deposits',
+                              main_app.page_path('investment_education/investment-fixed-deposits')
+                  = bar.item 'Gold',
+                              main_app.page_path('investment_education/gold-investment')
+                  = bar.item 'Shares',
+                              main_app.page_path('investment_education/shares')
+                  = bar.item 'Mutual Funds and ETFs',
+                              main_app.page_path('investment_education/mutual-funds-etf')
+                  = bar.item 'Bonds',
+                              main_app.page_path('investment_education/bonds')
+                  = bar.item 'Life Insurance',
+                              main_app.page_path('investment_education/life-insurance-policies')
+                  = bar.item 'Sip',
+                              main_app.page_path('investment_education/sip')
+
+                .span2
+                  %li.nav-header Investing in Shares
+                  = bar.item 'Share Market',
+                              main_app.page_path('investment_education/share-market')
+                  = bar.item 'Fundamental Analysis',
+                              main_app.page_path('investment_education/fundamental-analysis-shares')
+                  = bar.item 'Technical Analysis',
+                              main_app.page_path('investment_education/technical-analysis-shares')
+                  = bar.item 'Banking Sector',
+                              main_app.page_path('investment_education/banking-sector-shares')
+                  = bar.item 'IT Sector',
+                              main_app.page_path('investment_education/it-sector')
+
+                  %li.nav-header Further Reading
+                  = bar.item 'Articles',
+                              main_app.page_path('investment_education/articles')
+
       = bar.dropdown 'Financial Calculators' do
         = bar.item 'EMI Calculator',
                     personal_financial_tools.emi_calculator_path
@@ -43,58 +102,4 @@
                     main_app.blog_path
         = bar.item 'Research',
                     main_app.research_reports_path
-      = bar.dropdown 'Learn Investing' do
-        %li.nav-header Preparing to Invest
-        = bar.item 'How to Invest',
-                    main_app.page_path('investment_education/smart-investments')
-        = bar.item 'Types of Investments',
-                    main_app.page_path('investment_education/investment-types')
-        = bar.item 'Investing vs Trading',
-                    main_app.page_path('investment_education/investing-trading-shares')
-        %li.divider
 
-        %li.nav-header Before you Invest
-        = bar.item 'Investment Plan',
-                    main_app.page_path('investment_education/investment-plan')
-        = bar.item 'Where to Invest',
-                    main_app.page_path('investment_education/where-to-invest')
-        = bar.item 'Diversification',
-                    main_app.page_path('investment_education/investment-diversification')
-        = bar.item 'Planning your Taxes',
-                    main_app.page_path('investment_education/tax-planning')
-        %li.divider
-
-        %li.nav-header Types of Investments
-        = bar.item 'Fixed Deposits',
-                    main_app.page_path('investment_education/investment-fixed-deposits')
-        = bar.item 'Gold',
-                    main_app.page_path('investment_education/gold-investment')
-        = bar.item 'Shares',
-                    main_app.page_path('investment_education/shares')
-        = bar.item 'Mutual Funds and ETFs',
-                    main_app.page_path('investment_education/mutual-funds-etf')
-        = bar.item 'Bonds',
-                    main_app.page_path('investment_education/bonds')
-        = bar.item 'Life Insurance',
-                    main_app.page_path('investment_education/life-insurance-policies')
-        = bar.item 'Sip',
-                    main_app.page_path('investment_education/sip')
-        %li.divider
-
-        %li.nav-header Investing in Shares
-        = bar.item 'Share Market',
-                    main_app.page_path('investment_education/share-market')
-        = bar.item 'Fundamental Analysis',
-                    main_app.page_path('investment_education/fundamental-analysis-shares')
-        = bar.item 'Technical Analysis',
-                    main_app.page_path('investment_education/technical-analysis-shares')
-        = bar.item 'Banking Sector',
-                    main_app.page_path('investment_education/banking-sector-shares')
-        = bar.item 'IT Sector',
-                    main_app.page_path('investment_education/it-sector')
-        %li.divider
-
-        %li.nav-header Further Reading
-        = bar.item 'Articles',
-                    main_app.page_path('investment_education/articles')
-        %li.divider
