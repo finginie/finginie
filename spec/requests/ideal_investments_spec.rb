@@ -29,6 +29,12 @@ describe 'Ideal Investemnts',:mongoid do
     ]
   }
 
+  let(:large_cap_schemes) { [ create(:'data_provider/scheme', :bench_mark_index_name => 'NSE Index',
+                                :prev3_year_comp_percent => 22, :code => '14001200', :plan_code => '2066'),
+                              create(:'data_provider/scheme', :bench_mark_index_name => 'BSE 100 Index',
+                                  :prev3_year_comp_percent => 16, :code => '14001340', :plan_code => '2067') ]
+                   }
+
   context "#Quiz is skipped" do
     before(:each) do
       current_user.comprehensive_risk_profiler.score_cache = 6
@@ -52,6 +58,17 @@ describe 'Ideal Investemnts',:mongoid do
 
       expected_content = banks.map { |bank| [ bank.name, '6,000.00' ] }
       tableish("#fixed_deposits table").should include *expected_content
+    end
+
+    it "should have large caps on the page" do
+      large_cap_schemes.each { |scheme| scheme.save }
+
+      visit comprehensive_risk_profiler_ideal_investments_path
+      page.should have_content 'Large Caps'
+
+      expected_content = large_cap_schemes.take(1).map { |scheme| [ scheme.name, '6,000.00' ] }
+      tableish("#large_caps table").should include *expected_content
+
     end
   end
 
@@ -86,6 +103,16 @@ describe 'Ideal Investemnts',:mongoid do
       expected_content = banks.map { |bank| [ bank.name, '19,500.00' ] }
       tableish("#fixed_deposits table").should include *expected_content
 
+    end
+
+    it "should have large caps on the page" do
+      large_cap_schemes.each { |scheme| scheme.save }
+
+      visit comprehensive_risk_profiler_ideal_investments_path
+      page.should have_content 'Large Caps'
+
+      expected_content = large_cap_schemes.map { |scheme| [ scheme.name, '13,000.00' ] }
+      tableish("#large_caps table").should include *expected_content
     end
 
   end

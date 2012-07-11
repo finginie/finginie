@@ -28,6 +28,32 @@ class IdealInvestmentMix
         highest_interest_fd.map {|fd| Hashie::Mash.new({:name => fd.name, :amount => fd_amount }) }
   end
 
+  def distinct_schemes(schemes, limit=2)
+    distinct_schemes = []
+    schemes.group_by(&:code).each { |code,plans| distinct_schemes << ( plans.select{ |scheme| scheme.plan_code == 2066}.first ||
+                                                  plans.select{ |scheme| scheme.plan_code == 2067}.first ) }
+    distinct_schemes.compact.take(limit)
+  end
+
+  def top_large_caps
+    large_cap_schemes = ( DataProvider::Scheme.only(:code, :name, :plan_code, :minimum_investment_amount, :size, :entry_load, :exit_load, :prev3_year_comp_percent)
+      .where(:bench_mark_index_name.in => ["BSE 100 Index", "S&P CNX 500 Equity Index", "NSE Index", "NSE CNX 100"])
+        .where(:minimum_investment_amount.lte => 5000, :size.gte => 50 ).order_by([[:prev3_year_comp_percent, :desc]])
+          .select{ |scheme| (scheme.entry_load.to_f + scheme.exit_load.to_f) <= 2 }.take(10) + [ goldman_sachs_nifty_etf ] )
+              .compact.sort_by(&:prev3_year_comp_percent).reverse.take(10)
+    distinct_schemes(large_cap_schemes)
+  end
+
+  def goldman_sachs_nifty_etf
+    DataProvider::Scheme.where( :security_code => "17024319.002066").first
+  end
+
+  def large_caps
+    (large_cap_amount / 2) > 5000 ?
+      top_large_caps.map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => large_cap_amount / 2  }) } :
+        top_large_caps.take(1).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => large_cap_amount}) }
+  end
+
 private
   def gold_amount
     initial_investment * asset_allocation['Gold'] / 100
@@ -35,6 +61,10 @@ private
 
   def fd_amount
     initial_investment * asset_allocation['Fixed Deposits'] / 100
+  end
+
+  def large_cap_amount
+    asset_allocation['Large Cap Stocks'] * initial_investment / 100
   end
 
   def initial_investment
