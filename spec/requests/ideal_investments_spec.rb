@@ -1,23 +1,93 @@
 require 'spec_helper'
 
-describe 'Ideal Investemnts' do
+describe 'Ideal Investemnts',:mongoid do
   include_context "logged in user"
 
-  it "should have default ideal investments on the page" do
-    current_user.comprehensive_risk_profiler.score_cache = 6
-    current_user.comprehensive_risk_profiler.save(validate: false)
+  let(:gold_etfs) { [ ['Goldman Sachs Gold Exchange Traded Scheme-Growth', 24.93 ],
+                      ['SBI Gold Exchange Traded Scheme-Growth', '24.43' ],
+                      ['Kotak Gold ETF-Growth', '25.50' ] ].map { |etf|
+    create :'data_provider/scheme', :name => etf.first, :prev3_year_comp_percent => etf.last }
+  }
 
-    create :'data_provider/scheme', :name => 'Goldman Sachs Gold Exchange Traded Scheme-Growth',
-                                    :class_description => 'Special Fund', :prev3_year_comp_percent => 25.45
-    create :'data_provider/scheme', :name => 'SBI Gold Exchange Traded Scheme-Growth',
-                                    :class_description => 'Special Fund', :prev3_year_comp_percent => 25.34
-    create :'data_provider/scheme', :name => 'Kotak Gold ETF-Growth',
-                                    :class_description => 'Special Fund', :prev3_year_comp_percent => 25.50
+  let(:banks) { [
+        Bank.new(
+            name:                      "Karur Vysya Bank",
+            sector:                    "PRIVATE",
+            one_year_interest_rate:    10.0,
+            six_month_interest_rate:   7.8,
+            three_month_interest_rate: 7.8,
+            one_month_interest_rate:   6.0
+        ),
+        Bank.new(
+            name:                      "Andhra Bank",
+            sector:                    "PUBLIC",
+            one_year_interest_rate:    9.4,
+            six_month_interest_rate:   8.5,
+            three_month_interest_rate: 7.25,
+            one_month_interest_rate:   4.5
+        )
+    ]
+  }
 
-    visit comprehensive_risk_profiler_ideal_investments_path
-    page.should have_content 'Ideal Investments'
+  context "#Quiz is skipped" do
+    before(:each) do
+      current_user.comprehensive_risk_profiler.score_cache = 6
+      current_user.comprehensive_risk_profiler.save(validate: false)
+    end
 
-    tableish("table").should include [ 'Kotak Gold ETF-Growth', '9,000.00' ]
+    it "should have default gold investments on the page" do
+      gold_etfs.each{ |scheme| scheme.save }
+
+      visit comprehensive_risk_profiler_ideal_investments_path
+      page.should have_content 'Ideal Investments'
+      page.should have_content 'Gold ETFs'
+
+      tableish("#gold_investments table").should include [ gold_etfs.last.name, '9,000.00' ]
+    end
+
+    it "should have fixed deposits on the page" do
+
+      visit comprehensive_risk_profiler_ideal_investments_path
+      page.should have_content 'Fixed Deposits'
+
+      expected_content = banks.map { |bank| [ bank.name, '6,000.00' ] }
+      tableish("#fixed_deposits table").should include *expected_content
+    end
+  end
+
+  context "#Quiz is answered" do
+    before(:each) do
+      current_user.comprehensive_risk_profiler.update_attributes(
+        :age                      => 25,
+        :household_savings        => 200000,
+        :household_income         => 60000,
+        :household_expenditure    => 35000,
+        :dependent                => 3,
+        :tax_saving_investment    => 100,
+        :special_goals_amount     => 2000000,
+        :special_goals_years      => 5,
+        :preference               => 6,
+        :portfolio_investment     => 5,
+        :time_horizon             => 4 )
+    end
+
+    it "should have gold investemnts" do
+      gold_etfs.each{ |scheme| scheme.save }
+      visit comprehensive_risk_profiler_ideal_investments_path
+
+      tableish("#gold_investments table").should include([ gold_etfs.last.name, '19,500.00' ],
+          [ gold_etfs.first.name, '19,500.00' ])
+    end
+
+    it "should have fixed deposits" do
+      visit comprehensive_risk_profiler_ideal_investments_path
+      page.should have_content 'Fixed Deposits'
+
+      expected_content = banks.map { |bank| [ bank.name, '19,500.00' ] }
+      tableish("#fixed_deposits table").should include *expected_content
+
+    end
+
   end
 
 end

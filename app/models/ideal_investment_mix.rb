@@ -18,9 +18,23 @@ class IdealInvestmentMix
         top_gold_etfs.take(1).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => gold_amount }) }
   end
 
+  def fixed_deposits
+    top_fds = [ FixedDepositCollection.top_five_public_banks_interest_rates.first,
+                  FixedDepositCollection.top_five_private_banks_interest_rates.first ]
+
+    highest_interest_fd = top_fds.select { |fd| fd.one_year_interest_rate == top_fds.map(&:one_year_interest_rate).max }
+    (fd_amount / 2) > 5000 ?
+      top_fds.map{ |fd| Hashie::Mash.new({:name => fd.name, :amount => fd_amount / 2  }) } :
+        highest_interest_fd.map {|fd| Hashie::Mash.new({:name => fd.name, :amount => fd_amount }) }
+  end
+
 private
   def gold_amount
     initial_investment * asset_allocation['Gold'] / 100
+  end
+
+  def fd_amount
+    initial_investment * asset_allocation['Fixed Deposits'] / 100
   end
 
   def initial_investment

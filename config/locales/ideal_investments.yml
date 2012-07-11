@@ -1,0 +1,5 @@
+en:
+  ideal_investments:
+    show:
+      fixed_deposits: 'Fixed Deposits'
+      gold_investments: 'Gold ETFs'

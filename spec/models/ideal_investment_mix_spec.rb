@@ -1,6 +1,31 @@
 require 'spec_helper'
 
 describe IdealInvestmentMix, :mongoid do
+  let(:banks) { [
+        Bank.new(
+            name:                      "Karur Vysya Bank",
+            sector:                    "PRIVATE",
+            one_year_interest_rate:    10.0,
+            six_month_interest_rate:   7.8,
+            three_month_interest_rate: 7.8,
+            one_month_interest_rate:   6.0
+        ),
+        Bank.new(
+            name:                      "Andhra Bank",
+            sector:                    "PUBLIC",
+            one_year_interest_rate:    9.4,
+            six_month_interest_rate:   8.5,
+            three_month_interest_rate: 7.25,
+            one_month_interest_rate:   4.5
+        )
+    ]
+  }
+
+  let(:gold_etfs) { [ ['Goldman Sachs Gold Exchange Traded Scheme-Growth', 24.93 ],
+                      ['SBI Gold Exchange Traded Scheme-Growth', '24.43' ],
+                      ['Kotak Gold ETF-Growth', '25.50' ] ].map { |etf|
+    create :'data_provider/scheme', :name => etf.first, :prev3_year_comp_percent => etf.last }
+  }
 
   context "#with default risk profiler" do
     let(:risk_profiler) { ComprehensiveRiskProfiler.new(score_cache: 6) }
@@ -13,6 +38,7 @@ describe IdealInvestmentMix, :mongoid do
     its(:initial_investment) { should eq 30000 }
     its(:asset_allocation)   { should eq({ 'Fixed Deposits' => 40,   'Large Cap Stocks' => 20,  'Mid Cap Stocks' => 10, 'Gold' => 30 }) }
     its(:gold_amount)        { should eq 9000 }
+    its(:fd_amount)          { should eq 12000 }
 
     it "should have top gold etfs" do
       create :'data_provider/scheme', :name => 'Goldman Sachs Gold Exchange Traded Scheme-Growth', :class_description => 'Special Fund', :prev3_year_comp_percent => 25.45
@@ -26,14 +52,14 @@ describe IdealInvestmentMix, :mongoid do
     end
 
     it "should have gold etfs" do
-
-      create :'data_provider/scheme', :name => 'Goldman Sachs Gold Exchange Traded Scheme-Growth',
-                                      :class_description => 'Special Fund', :prev3_year_comp_percent => 25.45
-      create :'data_provider/scheme', :name => 'Kotak Gold ETF-Growth',
-                                      :class_description => 'Special Fund', :prev3_year_comp_percent => 25.50
-
+      gold_etfs.each{ |scheme| scheme.save }
       subject.gold_investments.count.should eq 1
-      subject.gold_investments.first.to_a.should eq [["name", "Kotak Gold ETF-Growth"], ["amount", 9000]]
+      subject.gold_investments.first.to_a.should eq [["name", gold_etfs.last.name], ["amount", 9000]]
+    end
+
+    it "should have fixed deposits" do
+      subject.fixed_deposits.first.amount.should eq 6000
+      subject.fixed_deposits.map(&:name).should include *banks.map(&:name)
     end
 
   end
@@ -58,18 +84,18 @@ describe IdealInvestmentMix, :mongoid do
     its(:initial_investment) { should eq 130000 }
     its(:asset_allocation)   { should eq({ 'Fixed Deposits' => 30,   'Large Cap Stocks' => 20,  'Mid Cap Stocks' => 20, 'Gold' => 30 }) }
     its(:gold_amount)        { should eq 39000 }
+    its(:fd_amount)          { should eq 39000 }
 
     it "should have gold etfs" do
-
-      create :'data_provider/scheme', :name => 'Goldman Sachs Gold Exchange Traded Scheme-Growth',
-                                      :class_description => 'Special Fund', :prev3_year_comp_percent => 25.45
-      create :'data_provider/scheme', :name => 'Kotak Gold ETF-Growth',
-                                      :class_description => 'Special Fund', :prev3_year_comp_percent => 25.50
-
+      gold_etfs.each{ |scheme| scheme.save }
       subject.gold_investments.count.should eq 2
       subject.gold_investments.first.amount.should eq 19500
-      subject.gold_investments.map(&:name).should eq [ 'Kotak Gold ETF-Growth', 'Goldman Sachs Gold Exchange Traded Scheme-Growth']
+      subject.gold_investments.map(&:name).should eq [ gold_etfs.last.name, gold_etfs.first.name ]
+    end
 
+    it "should have fixed deposits" do
+      subject.fixed_deposits.first.amount.should eq 19500
+      subject.fixed_deposits.map(&:name).should include *banks.map(&:name)
     end
   end
 
