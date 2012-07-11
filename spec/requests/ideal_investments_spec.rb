@@ -32,8 +32,12 @@ describe 'Ideal Investemnts',:mongoid do
   let(:large_cap_schemes) { [ create(:'data_provider/scheme', :bench_mark_index_name => 'NSE Index',
                                 :prev3_year_comp_percent => 22, :code => '14001200', :plan_code => '2066'),
                               create(:'data_provider/scheme', :bench_mark_index_name => 'BSE 100 Index',
-                                  :prev3_year_comp_percent => 16, :code => '14001340', :plan_code => '2067') ]
-                   }
+                                  :prev3_year_comp_percent => 16, :code => '14001340', :plan_code => '2067') ] }
+
+  let(:mid_cap_schemes) { [ create(:'data_provider/scheme', :bench_mark_index_name => 'CNX Midcap Index',
+                              :prev3_year_comp_percent => 22, :code => '15002000', :plan_code => '2066'),
+                              create(:'data_provider/scheme', :bench_mark_index_name => 'BSE Mid-Cap Index',
+                                  :prev3_year_comp_percent => 16, :code => '15001200', :plan_code => '2067') ] }
 
   context "#Quiz is skipped" do
     before(:each) do
@@ -69,6 +73,16 @@ describe 'Ideal Investemnts',:mongoid do
       expected_content = large_cap_schemes.take(1).map { |scheme| [ scheme.name, '6,000.00' ] }
       tableish("#large_caps table").should include *expected_content
 
+    end
+
+    it "should have mid caps on the page" do
+      mid_cap_schemes.each { |scheme| scheme.save }
+
+      visit comprehensive_risk_profiler_ideal_investments_path
+      page.should have_content 'Mid Caps'
+
+      expected_content = mid_cap_schemes.take(1).map { |scheme| [ scheme.name, '3,000.00' ] }
+      tableish("#mid_caps table").should include *expected_content
     end
   end
 
@@ -115,6 +129,15 @@ describe 'Ideal Investemnts',:mongoid do
       tableish("#large_caps table").should include *expected_content
     end
 
+    it "should have mid caps on the page" do
+      mid_cap_schemes.each { |scheme| scheme.save }
+
+      visit comprehensive_risk_profiler_ideal_investments_path
+      page.should have_content 'Mid Caps'
+
+      expected_content = mid_cap_schemes.map { |scheme| [ scheme.name, '13,000.00' ] }
+      tableish("#mid_caps table").should include *expected_content
+    end
   end
 
 end

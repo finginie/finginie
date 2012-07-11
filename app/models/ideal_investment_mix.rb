@@ -28,20 +28,20 @@ class IdealInvestmentMix
         highest_interest_fd.map {|fd| Hashie::Mash.new({:name => fd.name, :amount => fd_amount }) }
   end
 
-  def distinct_schemes(schemes, limit=2)
+  def distinct_schemes(schemes, limit)
     distinct_schemes = []
     schemes.group_by(&:code).each { |code,plans| distinct_schemes << ( plans.select{ |scheme| scheme.plan_code == 2066}.first ||
                                                   plans.select{ |scheme| scheme.plan_code == 2067}.first ) }
     distinct_schemes.compact.take(limit)
   end
 
-  def top_large_caps
+  def top_large_caps(limit=2)
     large_cap_schemes = ( DataProvider::Scheme.only(:code, :name, :plan_code, :minimum_investment_amount, :size, :entry_load, :exit_load, :prev3_year_comp_percent)
       .where(:bench_mark_index_name.in => ["BSE 100 Index", "S&P CNX 500 Equity Index", "NSE Index", "NSE CNX 100"])
         .where(:minimum_investment_amount.lte => 5000, :size.gte => 50 ).order_by([[:prev3_year_comp_percent, :desc]])
-          .select{ |scheme| (scheme.entry_load.to_f + scheme.exit_load.to_f) <= 2 }.take(10) + [ goldman_sachs_nifty_etf ] )
-              .compact.sort_by(&:prev3_year_comp_percent).reverse.take(10)
-    distinct_schemes(large_cap_schemes)
+          .select{ |scheme| (scheme.entry_load.to_f + scheme.exit_load.to_f) <= 2 }.take(3*limit) + [ goldman_sachs_nifty_etf ] )
+              .compact.sort_by(&:prev3_year_comp_percent).reverse.take(3*limit)
+    distinct_schemes(large_cap_schemes, limit)
   end
 
   def goldman_sachs_nifty_etf
@@ -51,7 +51,21 @@ class IdealInvestmentMix
   def large_caps
     (large_cap_amount / 2) > 5000 ?
       top_large_caps.map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => large_cap_amount / 2  }) } :
-        top_large_caps.take(1).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => large_cap_amount}) }
+        top_large_caps(1).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => large_cap_amount}) }
+  end
+
+  def top_mid_caps(limit=2)
+    mid_cap_schemes = DataProvider::Scheme.only(:code, :name, :plan_code, :minimum_investment_amount, :size, :entry_load, :exit_load, :prev3_year_comp_percent)
+      .where(:bench_mark_index_name.in => ["CNX Midcap Index", "BSE Mid-Cap Index"])
+        .where(:minimum_investment_amount.lte => 5000, :size.gte => 50 ).order_by([[:prev3_year_comp_percent, :desc]])
+          .select{ |scheme| (scheme.entry_load.to_f + scheme.exit_load.to_f) <= 2 }.take(3 * limit)
+    distinct_schemes(mid_cap_schemes, limit)
+  end
+
+  def mid_caps
+    (mid_cap_amount / 2) > 5000 ?
+      top_mid_caps.map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => mid_cap_amount / 2  }) } :
+        top_mid_caps(1).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => mid_cap_amount}) }
   end
 
 private
@@ -65,6 +79,10 @@ private
 
   def large_cap_amount
     asset_allocation['Large Cap Stocks'] * initial_investment / 100
+  end
+
+  def mid_cap_amount
+    asset_allocation['Mid Cap Stocks'] * initial_investment / 100
   end
 
   def initial_investment

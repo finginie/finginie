@@ -27,10 +27,16 @@ describe IdealInvestmentMix, :mongoid do
     create :'data_provider/scheme', :name => etf.first, :prev3_year_comp_percent => etf.last }
   }
 
-  let(:large_cap_schemes) {[ create(:'data_provider/scheme', :bench_mark_index_name => 'NSE Index',
+  let(:large_cap_schemes) { [ create(:'data_provider/scheme', :bench_mark_index_name => 'NSE Index',
                                   :prev3_year_comp_percent => 22, :code => '14001200', :plan_code => '2066'),
                               create(:'data_provider/scheme', :bench_mark_index_name => 'BSE 100 Index',
                                   :prev3_year_comp_percent => 16, :code => '14001340', :plan_code => '2067') ] }
+
+  let(:mid_cap_schemes) { [ create(:'data_provider/scheme', :bench_mark_index_name => 'CNX Midcap Index',
+                              :prev3_year_comp_percent => 22, :code => '15002000', :plan_code => '2066'),
+                              create(:'data_provider/scheme', :bench_mark_index_name => 'BSE Mid-Cap Index',
+                                  :prev3_year_comp_percent => 16, :code => '15001200', :plan_code => '2067') ]
+                   }
 
   context "#with default risk profiler" do
     let(:risk_profiler) { ComprehensiveRiskProfiler.new(score_cache: 6) }
@@ -41,10 +47,12 @@ describe IdealInvestmentMix, :mongoid do
     end
 
     its(:initial_investment) { should eq 30000 }
-    its(:asset_allocation)   { should eq({ 'Fixed Deposits' => 40,   'Large Cap Stocks' => 20,  'Mid Cap Stocks' => 10, 'Gold' => 30 }) }
+    its(:asset_allocation)   { should eq({ 'Fixed Deposits' => 40, 'Large Cap Stocks' => 20,
+                                           'Mid Cap Stocks' => 10, 'Gold' => 30 }) }
     its(:gold_amount)        { should eq 9000 }
     its(:fd_amount)          { should eq 12000 }
     its(:large_cap_amount)   { should eq 6000 }
+    its(:mid_cap_amount)     { should eq 3000 }
 
     it "should have gold etfs" do
       gold_etfs.each{ |scheme| scheme.save }
@@ -68,8 +76,8 @@ describe IdealInvestmentMix, :mongoid do
       subject.fixed_deposits.map(&:name).should include *banks.map(&:name)
     end
 
+    let(:scheme) { create :'data_provider/scheme' }
     context "#Top Large Caps" do
-      let(:scheme) { create :'data_provider/scheme' }
       before(:each) { scheme.save }
 
       it "should be filtered from Schemes by bench mark index name" do
@@ -124,6 +132,58 @@ describe IdealInvestmentMix, :mongoid do
       subject.large_caps.first.name.should eq large_cap_schemes.first.name
     end
 
+    context "#Top Mid Caps" do
+      before(:each) { scheme.save }
+      it "should be filtered from schemes by bench mark index name" do
+        cnx_scheme = create :'data_provider/scheme', :code => '14000000', :plan_code => '2066', :bench_mark_index_name => 'CNX Midcap Index'
+        bse_scheme = create :'data_provider/scheme', :code => '15000000', :plan_code => '2067', :bench_mark_index_name => 'BSE Mid-Cap Index'
+        subject.top_mid_caps.should_not include scheme
+        subject.top_mid_caps.should include( cnx_scheme, bse_scheme)
+      end
+
+      it "should be filtered by minimum investment" do
+        cnx_scheme = create :'data_provider/scheme', :code => '14000000', :plan_code => '2066', :bench_mark_index_name => 'CNX Midcap Index', :minimum_investment_amount => 5000
+        bse_scheme = create :'data_provider/scheme', :code => '15000000', :plan_code => '2067', :bench_mark_index_name => 'BSE Mid-Cap Index', :minimum_investment_amount => 3500
+        another_cnx_scheme = create :'data_provider/scheme', :code => '16000000', :plan_code => '2067', :bench_mark_index_name => 'CNX Midcap Index', :minimum_investment_amount => 10000
+
+        subject.top_mid_caps.should_not include(scheme, another_cnx_scheme)
+        subject.top_mid_caps.should include(cnx_scheme, bse_scheme)
+      end
+
+      it "should be filtered by size" do
+        cnx_scheme = create :'data_provider/scheme', :code => '14000000', :plan_code => '2066', :bench_mark_index_name => 'CNX Midcap Index', :size => 500
+        bse_scheme = create :'data_provider/scheme', :code => '15000000', :plan_code => '2067', :bench_mark_index_name => 'BSE Mid-Cap Index', :size => 50
+        another_cnx_scheme = create :'data_provider/scheme', :bench_mark_index_name => 'CNX Midcap Index', :size => 25
+
+        subject.top_mid_caps.should_not include(scheme, another_cnx_scheme)
+        subject.top_mid_caps.should include(cnx_scheme, bse_scheme)
+      end
+
+      it "should be filtered by entry load and exit load" do
+        cnx_scheme = create :'data_provider/scheme', :code => '14000000', :plan_code => '2066', :bench_mark_index_name => 'CNX Midcap Index', :entry_load => nil, :exit_load => 2
+        bse_scheme = create :'data_provider/scheme', :code => '15000000', :plan_code => '2067', :bench_mark_index_name => 'BSE Mid-Cap Index', :entry_load => 1, :exit_load => 1
+        another_cnx_scheme = create :'data_provider/scheme', :bench_mark_index_name => 'CNX Midcap Index', :entry_load => 1, :exit_load => 1.25
+
+        subject.top_mid_caps.should_not include(scheme, another_cnx_scheme)
+        subject.top_mid_caps.should include(cnx_scheme, bse_scheme)
+      end
+
+      it "should get top two schemes by prev3_year_comp_percent" do
+        cnx_scheme = create :'data_provider/scheme', :code => '14000000', :plan_code => '2066', :bench_mark_index_name => 'CNX Midcap Index', :prev3_year_comp_percent => 16
+        bse_scheme = create :'data_provider/scheme', :code => '15000000', :plan_code => '2067', :bench_mark_index_name => 'BSE Mid-Cap Index', :prev3_year_comp_percent => 14
+        another_cnx_scheme = create :'data_provider/scheme', :bench_mark_index_name => 'CNX Midcap Index', :prev3_year_comp_percent => 10
+
+        subject.top_mid_caps.should_not include(scheme, another_cnx_scheme)
+        subject.top_mid_caps.should include(cnx_scheme, bse_scheme)
+      end
+    end
+
+    it "should have mid caps" do
+      mid_cap_schemes.each { |scheme| scheme.save }
+      subject.mid_caps.count.should eq 1
+      subject.mid_caps.first.amount.should eq 3000
+      subject.mid_caps.first.name.should eq mid_cap_schemes.first.name
+    end
   end
 
   context "#with custom risk profiler" do
@@ -148,7 +208,8 @@ describe IdealInvestmentMix, :mongoid do
                                            'Mid Cap Stocks' => 20, 'Gold' => 30 }) }
     its(:gold_amount)        { should eq 39000 }
     its(:fd_amount)          { should eq 39000 }
-    its(:large_cap_amount)         { should eq 26000 }
+    its(:large_cap_amount)   { should eq 26000 }
+    its(:mid_cap_amount)     { should eq 26000 }
 
     it "should have gold etfs" do
       gold_etfs.each{ |scheme| scheme.save }
@@ -166,7 +227,14 @@ describe IdealInvestmentMix, :mongoid do
       large_cap_schemes.each { |scheme| scheme.save }
       subject.large_caps.count.should eq 2
       subject.large_caps.first.amount.should eq 13000
-      subject.large_caps.map(&:name).should eq [ large_cap_schemes.first.name, large_cap_schemes.last.name ]
+      subject.large_caps.map(&:name).should eq large_cap_schemes.map(&:name)
+    end
+
+    it "should have mid caps" do
+      mid_cap_schemes.each { |scheme| scheme.save }
+      subject.mid_caps.count.should eq 2
+      subject.mid_caps.first.amount.should eq 13000
+      subject.mid_caps.map(&:name).should eq mid_cap_schemes.map(&:name)
     end
   end
 
