@@ -13,10 +13,6 @@ Spork.prefork do
   # This file is copied to spec/ when you run 'rails generate rspec:install'
   ENV["RAILS_ENV"] ||= 'test'
 
-  # Stop factory girl from autoloading models is spork prefork
-  require 'factory_girl'
-  Spork.trap_class_method FactoryGirl, :find_definitions
-
   # Allow sheet mapper to login during initialization
   require 'webmock'
   WebMock.allow_net_connect!
@@ -55,6 +51,10 @@ Spork.each_run do
   if ENV['DRB']
     require 'simplecov'
   end
+
+  # Import factories from data provider
+  FactoryGirl.definition_file_paths << File.expand_path('../../engines/data_provider/spec/factories', __FILE__)
+  FactoryGirl.reload
 
   # This code will be run each time you run your specs.
 end
