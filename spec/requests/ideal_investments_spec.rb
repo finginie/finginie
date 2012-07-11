@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Ideal Investemnts',:mongoid do
+describe 'Ideal Investments',:mongoid do
   include_context "logged in user"
 
   let(:gold_etfs) { [ ['Goldman Sachs Gold Exchange Traded Scheme-Growth', 24.93 ],
@@ -138,6 +138,16 @@ describe 'Ideal Investemnts',:mongoid do
       expected_content = mid_cap_schemes.map { |scheme| [ scheme.name, '13,000.00' ] }
       tableish("#mid_caps table").should include *expected_content
     end
+
+    it "should give a form to enter the initial investment" do
+      visit comprehensive_risk_profiler_ideal_investments_path
+      fill_in 'initial_investment', :with => 45000
+      click_on 'Submit'
+
+      expected_content = banks.map { |bank| [ bank.name, '6,750.00' ] }
+      tableish("#fixed_deposits table").should include *expected_content
+    end
+
   end
 
 end

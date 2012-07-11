@@ -1,6 +1,14 @@
 %h1 Ideal Investments
 #ideal-security-mix.chart{ data: { elements: [['Name','Amount']] + resource.security_mix,
                                          title: 'Ideal Investments', chartType: 'Pie'} }
+- if params[:initial_investment] && params[:initial_investment].to_f != resource.initial_investment
+  = content_tag :div, t(".too_low_investment"), :id => 'result'
+
+= form_tag comprehensive_risk_profiler_ideal_investments_path, :method => :get do
+  = label_tag :initial_investment, t('.initial_investment')
+  = text_field_tag :initial_investment
+  = submit_tag 'Submit'
+
 -%w(fixed_deposits gold_investments large_caps mid_caps).each do |type|
   %div{ :id => type, :class => cycle('left_div', 'right_div') }
     %h1= t(".#{type}")

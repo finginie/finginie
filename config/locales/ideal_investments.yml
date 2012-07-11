@@ -4,3 +4,5 @@ en:
       fixed_deposits: 'Fixed Deposits'
       gold_investments: 'Gold ETFs'
       large_caps: 'Large Caps'
+      too_low_investment: 'You have too low savings to invest.Try building your ideal investments for more than or equal to Rs. 30,000'
+      initial_investment: 'Enter the amount to be invested'

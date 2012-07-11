@@ -193,6 +193,20 @@ describe IdealInvestmentMix, :mongoid do
       subject.security_mix.should include([gold_etfs.last.name, 9000], [banks.first.name, 6000],
         [banks.last.name, 6000], [ large_cap_schemes.first.name, 6000], [ mid_cap_schemes.first.name, 3000])
     end
+
+    context "#Initial Investment" do
+      it { should respond_to(:initial_investment=) }
+      it "should allow initial investment to be set" do
+        subject.initial_investment= 50000
+        subject.initial_investment.should eq 50000
+        subject.send(:fd_amount).should eq 20000
+      end
+
+      it "should always be greater than or equal to 30000" do
+        subject.initial_investment= 20000
+        subject.initial_investment.should eq 30000
+      end
+    end
   end
 
   context "#with custom risk profiler" do

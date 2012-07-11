@@ -1,9 +1,11 @@
 class IdealInvestmentMix
 
   attr_reader :comprehensive_risk_profiler
+  attr_accessor :initial_investment
 
   def initialize(comprehensive_risk_profiler)
     @comprehensive_risk_profiler = comprehensive_risk_profiler
+    @initial_investment = [comprehensive_risk_profiler.initial_investment, IndianCurrency.new(30000)].max
   end
 
   def top_gold_etfs
@@ -73,6 +75,10 @@ class IdealInvestmentMix
       [ security.name, security.amount.to_f ] }
   end
 
+  def initial_investment=(amount)
+    @initial_investment = [ IndianCurrency.new(amount), IndianCurrency.new(30000)].max
+  end
+
 private
   def gold_amount
     initial_investment * asset_allocation['Gold'] / 100
@@ -88,10 +94,6 @@ private
 
   def mid_cap_amount
     initial_investment * asset_allocation['Mid Cap Stocks'] / 100
-  end
-
-  def initial_investment
-    [comprehensive_risk_profiler.initial_investment, IndianCurrency.new(30000)].max
   end
 
   def asset_allocation

@@ -7,6 +7,9 @@
                     main_app.edit_comprehensive_risk_profiler_path
         = bar.item 'Ideal Portfolio Mix',
                     main_app.comprehensive_risk_profiler_path
+        - if current_user
+          = bar.item 'Ideal Investments',
+                      main_app.comprehensive_risk_profiler_ideal_investments_path
 
       = bar.dropdown 'Learn Investing' do
         .container
