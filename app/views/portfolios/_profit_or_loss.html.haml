@@ -23,8 +23,8 @@
       %td.right_align= security.quantity ? security.quantity : ""
       %td.right_align= security.average_cost_price ? number_to_indian_currency(security.average_cost_price) : ""
       %td.right_align= security.average_sell_price ? number_to_indian_currency(security.average_sell_price) : ""
-      %td= table_content_with_red_or_green_class security.profit_or_loss
-      %td= table_content_with_red_or_green_class security.percentage
+      %td= rg_colorize security.profit_or_loss
+      %td= rg_colorize security.percentage
   %tr.total
     %td Total
     %td

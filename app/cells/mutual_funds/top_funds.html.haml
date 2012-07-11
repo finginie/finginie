@@ -10,7 +10,7 @@
     %tr{ class: cycle("odd", "even") }
       %td= link_to scheme.name, mutual_fund_url(scheme)
       %td= scheme.nav_amount
-      %td= table_content_with_red_or_green_class scheme.percentage_change
-      %td= table_content_with_red_or_green_class scheme.prev1_month_percent
-      %td= table_content_with_red_or_green_class scheme.prev_year_percent
-      %td= table_content_with_red_or_green_class scheme.prev3_year_percent
+      %td= rg_colorize scheme.percentage_change
+      %td= rg_colorize scheme.prev1_month_percent
+      %td= rg_colorize scheme.prev_year_percent
+      %td= rg_colorize scheme.prev3_year_percent
