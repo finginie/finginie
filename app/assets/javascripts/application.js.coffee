@@ -26,7 +26,7 @@
 #= require_self
 #= require_tree .
 
-google.load('visualization', '1');
+google.load('visualization', '1')
 
 $ ->
 
@@ -43,5 +43,5 @@ $ ->
       source: $(this).data('autocomplete-source'),
       if !$(this).data('no-redirect')
         select: ( event, ui ) =>
-            window.location = $(this).data('autocomplete-source') + "/"+ ui.item.id;
+            window.location = $(this).data('autocomplete-source') + "/"+ ui.item.id
 
