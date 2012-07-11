@@ -105,3 +105,10 @@
         = bar.item 'Stock Recommendations',
                     main_app.page_path('stock-recommendations')
 
+    = bar.second_nav do
+      - if current_user
+        = bar.item 'Sign out', omniauth_single_signon.signout_path
+      - else
+        = bar.item 'Sign in', main_app.signin_path
+        = bar.item 'Register', main_app.signin_path
+

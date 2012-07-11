@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: git://github.com/LoonyBin/bootstrap-helper.git
-  revision: 29569b36c7451bea2bd030590a427bca14fdf847
+  revision: c9632b9715071b030d82fe692d8533240d3306c9
   specs:
     bootstrap-helper (0.0.1)
       rails (~> 3.2.0)
