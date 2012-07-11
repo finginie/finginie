@@ -119,7 +119,7 @@ describe "ComprehensiveRiskProfilers" do
       end
 
       it "should go to ideal investments page" do
-        find('#continue a').click
+        click_on 'Continue'
         page.current_path.should eq comprehensive_risk_profiler_ideal_investments_path
       end
     end

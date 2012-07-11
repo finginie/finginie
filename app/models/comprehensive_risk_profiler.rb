@@ -57,8 +57,13 @@ class ComprehensiveRiskProfiler < ActiveRecord::Base
     special_goals_amount? && special_goals_years?
   end
 
-  def initial_investment
+  def available_savings
     household_savings - (household_expenditure * 2)
+  end
+
+  def initial_investment
+    return 0 unless self.valid?
+    available_savings > 0 ? available_savings : household_savings.to_f/2
   end
 
   def ideal_investment_mix

@@ -8,7 +8,7 @@ class ComprehensiveRiskProfilerDecorator < ApplicationDecorator
   end
 
   def initial_investment
-    model.initial_investment > 0 ? model.initial_investment : model.household_savings/2
+    model.initial_investment
   end
 
   def three_month_investment_amount

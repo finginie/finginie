@@ -1,1 +1,11 @@
 %h1 Ideal Investments
+.right_div
+  %h1 Gold ETFS
+  %table
+    %tr
+      %th Name
+      %th Amount
+    -resource.gold_investments.each do |investment|
+      %tr
+        %td= investment.name
+        %td= investment.amount
