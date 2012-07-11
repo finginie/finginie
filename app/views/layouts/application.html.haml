@@ -4,6 +4,7 @@
     %title= auto_page_seo_content('title', yield(:title) )
     %meta{ :name => "description", :content => auto_page_seo_content('description', yield(:description) ) }
     %meta{ :name => 'keywords', :content => auto_page_seo_content('keywords', yield(:keywords) ) }
+    %meta{ :name => 'viewport', :content => "width=device-width, initial-scale=1.0" }
     = stylesheet_link_tag :application
     = javascript_include_tag 'https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization","version":"1.1"}]}'
     = javascript_include_tag :application
@@ -15,51 +16,35 @@
       = render :partial => 'layouts/alexa'
       %webengage{license: '76aa3c4'}
     - if ENV['MAINTENANCE']
-      #maintenance_notice.alert.notice
+      #maintenance_notice.alert.alert-block
+        %button.close{:data => { :dismiss => :alert }} x
         We are upgrading our systems as we speak. You may face minor issues during this period. Thank you for understanding :)
-    %header
-      #header_resize
-        .global_social
-          #divtwitter
-            = render :partial => 'layouts/twitter'
-          #divfacebook
-            = render :partial => 'layouts/facebook'
-          %nav.user
-            - if current_user
-              = link_to 'Sign out', omniauth_single_signon.signout_path
-            - else
-              = link_to 'Login/Signup', main_app.signin_path
-
+    %header.page-header
+      .container
         %hgroup.title
-          = link_to main_app.root_path do
-            //%h1 Finginie
-            = image_tag 'Finginie_logo.png'
-            //=image_tag  "logoBlueGreen.png"
-        #tag_line
           %h1
-            India's Best Investment Portal for Beginners
-        %nav.main
-          = render_navigation :level => 1
-          = yield :header
-    #stock_indicies
-      = render 'stocks/indicies'
-    #wrapper
-      #main
-        - flash.each do |name, msg|
-          = content_tag :div, msg, :id => "flash_#{name}", :class => name if msg.is_a?(String)
-        .container
-          = yield
-      %aside
-        %h1= active_navigation_item_name :level => 1
-        %nav= render_navigation :expand_all => true, :skip_if_empty => true, :level => 2..3
-        =yield :aside
-    %footer
-      %nav.sitemap
-        = render_navigation :expand_all => true, :level => 1..2
-      =yield :footer
-      .legal
-        .disc_text
-          %P
-            By accessing Finginie.com or any of its associate/group sites, you have read, understood and agree to be legally bound by the #{link_to 'terms of the following end user agreement', main_app.page_path('terms_of_use')}. Copyright © 2012 Finginie.com. All rights reserved.
+            = link_to main_app.root_path do
+              = image_tag 'logo.png'
+            %small India's Best Investment Portal for Beginners
+        = render 'layouts/navigation'
+        = yield :header
+        .stock_indices= render 'stocks/indicies'
+    #main.container
+      .row
+        .span12
+          - flash.each do |name, msg|
+            - if msg.is_a?(String)
+              %div{ :id => "flash_#{name}", :class => ['alert', "alert-#{name}"] }
+                %button.close{:data => { :dismiss => :alert }} x
+                = msg
 
+      = yield
+    %footer.container
+      .row
+        %nav.sitemap.span12
+          =# render_navigation :expand_all => true, :level => 1..2
+      =yield :footer
+      .row
+        %p.legal.span12
+          By accessing Finginie.com or any of its associate/group sites, you have read, understood and agree to be legally bound by the #{link_to 'terms of the following end user agreement', main_app.page_path('terms_of_use')}. Copyright © 2012 Finginie.com. All rights reserved.
 

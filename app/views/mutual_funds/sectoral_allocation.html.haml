@@ -1,19 +1,24 @@
-
+= render 'subnav'
 - provide :title, @scheme.name if @scheme.model
 - if @scheme.sectoral_allocation
-  .mf_container
-    %h1= "#{@scheme.name}'s Sectoral Allocation"
-    #sectoral_allocation
+  .row
+    .span12.show-grid
+      .page-header
+        %h2
+          Sectoral Allocation
+          %small= @scheme.name
+  .row
+    .span8.show-grid
       #mf-sectoral-allocation-chart.chart{ data: { elements: [['','']] + @scheme.sectoral_allocation.to_a,
                                                    title: 'Sectoral Allocation', chartType: 'Pie' } }
-      #sectoral_allocation_data
-        %table
-          %th Sector
-          %th Holding (%)
-          - @scheme.sectoral_allocation.each do |name, value|
-            %tr
-              %td= name
-              %td= value
+    .span4.show-grid
+      %table.table.table-striped
+        %th Sector
+        %th Holding (%)
+        - @scheme.sectoral_allocation.each do |name, value|
+          %tr
+            %td= name
+            %td= value
 - else
   %p Data not available
 

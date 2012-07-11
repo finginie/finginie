@@ -5,10 +5,13 @@
 # the compiled file.
 #
 #= require environment
+#
 #= require jquery
 #= require jquery-ui
 #= require jquery_ujs
+#= require twitter/bootstrap
 #= require dataTables/jquery.dataTables
+#= require dataTables/jquery.dataTables.bootstrap
 #
 #= require html5
 #= require personal_financial_tools
@@ -23,7 +26,7 @@
 #= require_self
 #= require_tree .
 
-google.load('visualization', '1');
+google.load('visualization', '1')
 
 $ ->
 
@@ -33,9 +36,6 @@ $ ->
     else
       google.setOnLoadCallback drawPieChart(this)
 
-  $("div.tabs").each ->
-    $(this).tabs();
-
   $('[data-autocomplete-source]').each ->
     $(this).keypress (e) ->
       false  if e.keyCode is 13
@@ -43,5 +43,5 @@ $ ->
       source: $(this).data('autocomplete-source'),
       if !$(this).data('no-redirect')
         select: ( event, ui ) =>
-            window.location = $(this).data('autocomplete-source') + "/"+ ui.item.id;
+            window.location = $(this).data('autocomplete-source') + "/"+ ui.item.id
 

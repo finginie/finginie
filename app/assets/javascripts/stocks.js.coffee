@@ -15,23 +15,26 @@ $ ->
 jQuery ->
 
   $('#stocks_table').dataTable
-    sPaginationType: "full_numbers"
-    bJQueryUI: true
+    sDom: "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
+    sPaginationType: "bootstrap"
     bProcessing: true
     bServerSide: true
     sAjaxSource: $('#stocks_table').data('source')
     oLanguage: { "sSearch": 'Get Quotes' }
 
-  $(".dataTables_processing").css('visibility', 'hidden');
+  $('.slider-range').each ->
+    $(this).slider
+      orientation: "horizontal"
+      range: true
+      min: $(this).data("min-values")
+      max: $(this).data("max-values")
+      values: [$(this).data("min-values"), $(this).data("max-values")]
+      slide: ( event, ui ) ->
+        $( "##{$(this).data("min-field")}" ).val( ui.values[ 0 ])
+        $( "##{$(this).data("max-field")}" ).val( ui.values[ 1 ])
 
-  $("div#slider-range").each ->
-    $(this).slider({
-		  orientation: "horizontal",
-		  range: true,
-		  min: $(this).data("min-values"),
-		  max: $(this).data("max-values"),
-		  values: [$(this).data("min-values"), $(this).data("max-values")]
-		  slide: ( event, ui ) ->
-			  $( "##{$(this).data("min-field")}" ).val( ui.values[ 0 ])
-			  $( "##{$(this).data("max-field")}" ).val( ui.values[ 1 ])
-		  });
+  $(".dataTables_processing").css('visibility', 'hidden')
+
+
+  $('#news a:first').tab('show')
+  $('#sectoral_indices a:first').tab('show')

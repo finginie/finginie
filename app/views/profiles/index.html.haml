@@ -1,10 +1,10 @@
 %h1 Listing profiles
 
-= simple_form_for @search, :url => collection_path, :html => {:novalidate => true} do |f|
+= simple_form_for @search, :url => collection_path, :html => {:novalidate => true}, :html => {:class => 'form-horizontal'} do |f|
   = f.input :name_contains
   = f.submit 'Search'
 
-%table
+%table.table.table-striped
   %tr
     %th Name
     %th Avatar url

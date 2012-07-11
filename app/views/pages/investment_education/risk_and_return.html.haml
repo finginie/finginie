@@ -1,26 +1,26 @@
-.wrapper
-  %article
+.row
+  %article.span8
     %h1 Risk & Return
     %section
       = render :partial => 'layouts/facebook_recommend'
     %section
-      %h1 Expected Returns:
+      %h3 Expected Returns:
       =image_tag  "investment_education/RiskAndReturn1.png"
       %p
         Return is the total monetary reward received from an investment. This reward, in the case of stocks, is typically in the form of capital gains (stock price appreciation) and dividends.
     %section
-      %h1 Risk:
+      %h3 Risk:
       %p 
         Risk, in the context of investing, is defined as the volatility of returns. This volatility can be as the variance of the security’s returns. Assume that Stock A’s monthly returns are 5%, -6%, 10%, 1%, -8% and that Stock B’s returns are 1%, 0.2%, 0%, -0.2%, 0.2%. Stock A is considered more risky than Stock B since its standard deviation of returns is 7.5% while that of Stock B is 0.45 %. That is despite the fact that Stock A has a higher average return than Stock B.
     %section
-      %h1 Types of Risk:
+      %h3 Types of Risk:
       =image_tag  "investment_education/RiskAndReturn3.png", :width => "250px", :height => "150px"
       %p 
         Systematic Risk of an investment is associated with market risk that is inherent to all securities. This risk cannot be diversified away and is measured by a term known as the beta of a security. Examples of systematic risks include changes in current interest rates, government policies, etc. All these risks will impact all securities in a particular market, no matter which industries they belong to.
       %p 
         Unsystematic Risk is the company or industry specific risk associated to an investment and is unique to it. This risk can be eliminated by diversifying your portfolio. Holding securities in different sectors and using various instruments helps to reduce the unsystematic risk. This will be further explained in the article on Diversification.
     %section
-      %h1 Relationship between Risk and Return:
+      %h3 Relationship between Risk and Return:
       =image_tag "investment_education/RiskAndReturn2.png", :width => "250px", :height => "150px"
       %p 
         Risks and returns are highly correlated. If an investor wants high returns from his investments, he must also be prepared to take on a high amount of risk. Returns can be considered compensation for taking on investment risk. This compensation is the only way to entice investors into investing in a risky asset.
@@ -31,8 +31,8 @@
       %p 
         Typically, stocks provide the highest returns, followed by #{link_to 'Bonds', page_path('investment_education/bonds')} and treasury bills. The following information, obtained from “ Stocks for the Long Run” by Jeremy J. Siegel show how a Rs. 1 investment in the various asset classes in 1802 would grow into in 1999, as shown in the following table.
     %section
-      %h1 Asset Class Returns (1802-1999):
-      %table{:border => "1px"}
+      %h3 Asset Class Returns (1802-1999):
+      %table.table-bordered.table-condensed.table.table-striped{:border => "1px"}
         %tr
           %th
             Asset Class
@@ -55,7 +55,7 @@
             Rs. 292
       %p 
         Of course, figures have shown a very different trend in the last decade (1999 to 2009). The table below shows the average returns of different asset classes over the past decade as reported by Haver Analytics.
-      %table{:border => "1px"}
+      %table.table-bordered.table-condensed.table.table-striped{:border => "1px"}
         %tr
           %th
             Asset Class
@@ -96,20 +96,20 @@
     %footer
       .article_next= link_to "Next: #{t('investment_education.time_value_of_money')}", main_app.page_path('investment_education/time_value_of_money')
       #disqus_thread
-  .extracontent
-    .takeaway
-      %h1 Take Away
+  %ul.thumbnails
+    %li.span4.takeaway
+      %h3 Take Away
       %ul
         %li Returns can be considered compensation for taking on investment risk.
         %li Investors seeking high returns from investments must be prepared to take on a high amount of risk.
         %li Risk can be classified as Systematic and Unsystematic risk.
         %li Systematic Risk of an investment is associated with market risk that is inherent to all investments. This risk cannot be eliminated. 
         %li Unsystematic Risk is the company or industry specific risk associated with an investment and is unique to it. This risk can be eliminated by diversifying your portfolio.				
-    .articles
-      %h1 Articles
+    %li.span4.articles
+      %h3 Articles
       %ul
-        %li No articles yet.
-    .videos
-      %h1 Videos
+        %li No%li.span4 articles yet.
+    %li.span4.videos
+      %h3 Videos
       %ul
-        %li No videos yet
+        %li No%li.span4 videos yet

@@ -3,7 +3,7 @@
     = label_tag "screener_industry_name", "Sector"
     = select_tag("screener[industry_name]", options_for_select([["Any", ""]] + DataProvider::Industry.all.map{|i| [i.name, i.name]}))
   #screener-slider
-    %table.ui-corner-tl.ui-corner-tr
+    %table.table.table-striped
       %tr
         %th.ui-widget-header Criteria
         %th.ui-widget-header Minimum
@@ -13,25 +13,25 @@
         %td P/E
         %td= text_field_tag "screener[pe_gt]", 0
         %td
-          %div{ data: { "min-field" => 'screener_pe_gt',  "min-values" => 0 , "max-field" => 'screener_pe_lt',  "max-values" => 200     }, id: "slider-range"}
+          %div.slider-range{ data: { "min-field" => 'screener_pe_gt', "min-values" => 0 , "max-field" => 'screener_pe_lt', "max-values" => 200 }}
         %td= text_field_tag "screener[pe_lt]", 200
       %tr.ui-state-default
         %td EPS
         %td= text_field_tag "screener[eps_gt]", 0
         %td
-          %div{ data: { "min-field" => 'screener_eps_gt', "min-values" => 0 , "max-field" => 'screener_eps_lt', "max-values" => 1600     }, id: "slider-range"}
+          %div.slider-range{ data: { "min-field" => 'screener_eps_gt', "min-values" => 0 , "max-field" => 'screener_eps_lt', "max-values" => 1600 }}
         %td= text_field_tag "screener[eps_lt]", 1600
       %tr.ui-state-default
         %td P/BV
         %td= text_field_tag "screener[price_to_book_value_gt]", 0
         %td
-          %div{ data: { "min-field" => 'screener_price_to_book_value_gt', "min-values" => 0 , "max-field" => 'screener_price_to_book_value_lt', "max-values" => 8000    }, id: "slider-range"}
+          %div.slider-range{ data: { "min-field" => 'screener_price_to_book_value_gt', "min-values" => 0 , "max-field" => 'screener_price_to_book_value_lt', "max-values" => 8000 }}
         %td= text_field_tag "screener[price_to_book_value_lt]", 8000
       %tr.ui-state-default
         %td Book Value
         %td= text_field_tag "screener[book_value_gt]", 0
         %td
-          %div{ data: { "min-field" => 'screener_book_value_gt', "min-values" => 0 , "max-field" => 'screener_book_value_lt',  "max-values" => 25000   }, id: "slider-range"}
+          %div.slider-range{ data: { "min-field" => 'screener_book_value_gt', "min-values" => 0 , "max-field" => 'screener_book_value_lt', "max-values" => 25000 }}
         %td= text_field_tag "screener[book_value_lt]", 25000
 
   .actions

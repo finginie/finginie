@@ -1,11 +1,11 @@
-= render 'stocks/search_form'
+= render 'stocks/subnav'
 - provide :title, @company.name if @company
 
 - if @company
   %h1= "Ratios - #{@company.name}"
 
 - if @company && @ratios.first && @ratios.first.model
-  %table
+  %table.table.table-striped
     %tr
       %th Ratio
       - @ratios.each do|ratio|

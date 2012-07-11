@@ -1,9 +1,0 @@
-@import "bourbon";
-@import "lists";
-@import "utilities";
-@import "defaults";
-
-body.fixed_deposit_transactions.redeem {
-  @include simple-form;
-  @include hide-aside;
-}

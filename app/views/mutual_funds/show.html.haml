@@ -1,26 +1,23 @@
-
-= render 'search', :search => @search
+= render 'subnav'
 - if @scheme.model
   - provide :title, @scheme.name
-  #scheme_container
-    #titlebar
-      .scheme_name
-        %h1
+  .row
+    .span12.show-grid
+      .page-header
+        %h2
           =@scheme.name
-      .nav_amount
-        %strong
-          =@scheme.nav_amount
-      .day_change
-        =@scheme.day_change
-      .percentage_change
-        = "(#{@scheme.percentage_change}%)"
-    #title_details
-      %strong= 'Category :'
-      %span= @scheme.class_description
-      %strong= 'Benchmark Index :'
-      %span= @scheme.bench_mark_index_name
-    #content
-      %table
+          %small
+            %strong= @scheme.nav_amount
+            = @scheme.day_change
+            (#{@scheme.percentage_change}%)
+        %p
+          %strong= 'Category :'
+          %span= @scheme.class_description
+          %strong= 'Benchmark Index :'
+          %span= @scheme.bench_mark_index_name
+  .row
+    .span12.show-grid
+      %table.table.table-striped
         %tr
           %td
             %b= 'Asset Management Company'

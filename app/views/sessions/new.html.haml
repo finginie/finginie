@@ -1,45 +1,32 @@
-%h1 Portfolio Tracker
-%section
-  .benefits
-    .snapshot
-      =image_tag  "Portfolio_Snapshot.png"
-      %h1 Portfolio Snapshot
-      %p
-        Gives you personalized investment suggestions based on your unique financial needs &
-        constraints.
-    .transaction
-      =image_tag  "Transaction_History_Comments.png"
-      %h1 Transaction History & Comments
-      %p
-        View a log of all your trades, neatly organized by our system along with your comments pertaining to
-        each trade.
-    .sectoral
-      =image_tag  "Sectoral_Analysis.png"
-      %h1 Sectoral Analysis
-      %p
-        See the sector wise/category wise breakdown of your stocks and mutual funds.
-    .profit_loss
-      =image_tag  "Profit_and_Loss_Analysis.png"
-      %h1 Profit and Loss Analysis
-      %p
-        View your profits and losses across stocks, fixed deposits, gold and mutual funds.
-    .asset_class
-      =image_tag  "Asset_Class_Analysis.png"
-      %h1 Asset Class Analysis
-      %p
-        View how your portfolio is distributed across asset classes such as fixed deposits, stocks and gold.
-    .features
-      =image_tag  "Features.png"
-      %h1 More Features Coming Soon
-      %p
-        Personalized stock recommendations based on your existing portfolio, email alerts, watchlists, portfolio
-        sharing with friends and portfolio risk analysis coming shortly!
-%section
-  .access
+.row
+  %h2.span12.show-grid Portfolio Tracker
+%section.row
+  .span12.show-grid
+    %ul.thumbnails
+      %li.span4
+        %h4 #{image_tag  "Portfolio_Snapshot.png"} Portfolio Snapshot
+        %p Gives you personalized investment suggestions based on your unique financial needs & constraints.
+      %li.span4
+        %h4 #{image_tag  "Transaction_History_Comments.png"} Transaction History & Comments
+        %p View a log of all your trades, neatly organized by our system along with your comments pertaining to each trade.
+      %li.span4
+        %h4 #{image_tag  "Sectoral_Analysis.png"} Sectoral Analysis
+        %p See the sector wise/category wise breakdown of your stocks and mutual funds.
+      %li.span4
+        %h4 #{image_tag  "Profit_and_Loss_Analysis.png"} Profit and Loss Analysis
+        %p View your profits and losses across stocks, fixed deposits, gold and mutual funds.
+      %li.span4
+        %h4 #{image_tag  "Asset_Class_Analysis.png"} Asset Class Analysis
+        %p View how your portfolio is distributed across asset classes such as fixed deposits, stocks and gold.
+      %li.span4
+        %h4 #{image_tag  "Features.png"} More Features Coming Soon
+        %p Personalized stock recommendations based on your existing portfolio, email alerts, watchlists, portfolio sharing with friends and portfolio risk analysis coming shortly!
+%section.row
+  .span12.show-grid
     %p
       Please login/signup using one of the options below to access these features. Signing up is quick, free and
       will always be.
-%section
-  .connect_container
+%section.row
+  .span12.show-grid
     - unless current_user
-      %iframe{ src: "/auth/single_signon", width:"100%", height: "630px", style: 'border:none;' }
+      %iframe{ src: "/auth/single_signon", width:"100%", height: "350px", style: 'border:none;' }

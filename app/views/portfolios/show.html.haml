@@ -1,39 +1,43 @@
-= render 'current_portfolio'
+= render 'subnav'
 - if resource.empty_transactions?
   = render 'empty_transaction'
 - else
-  #portfolio-total-asset-allocation-chart.chart{ data: { elements: [['Asset Class','Percenatge']]+resource.total_assets_distribution,
+  .row
+    .span8.show-grid
+      #portfolio-total-asset-allocation-chart.show-grid.chart{ data: { elements: [['Asset Class','Percenatge']]+resource.total_assets_distribution,
                                                          chartType: 'Pie', title: 'Portfolio Assets Composition'} }
-  %table{:class => "assets"}
-    %tr
-      %th.name Assets
-      %th.asset_amount Amount
-      %th.right_align Percentage
-    %tr.right_align
-      %td
-      %td (Rs)
-      %td (%)
-    -resource.total_assets_distribution_table.each do |asset|
-      %tr{:class => asset[:class]}
-        %td.name= asset[:asset_type]
-        %td.asset_amount= asset[:amount]
-        %td.right_align= asset[:percentage]
+      - if resource.assets_and_liabilities?
+        #net-worth-chart.show-grid.chart{ data: { elements: resource.assets_and_liabilities, title: 'Portfolio Summary',
+                                        yAxisTitle: 'Amount(Rupees)', chartType: 'Column' } }
 
-  %table{:class => "liabilities"}
-    %tr
-      %th.name Liabilities
-      %th.asset_amount Amount
-      %th.right_align Percentage
-    %tr.right_align
-      %td
-      %td (Rs)
-      %td (%)
-    -resource.total_liabilities_distribution_table.each do |asset|
-      %tr{:class => asset[:class]}
-        %td= asset[:asset_type]
-        %td.asset_amount= asset[:amount]
-        %td.right_align= asset[:percentage]
+    .span4.show-grid
+      %table.table.table-striped.show-grid.assets
+        %tr
+          %th Assets
+          %th Amount
+          %th Percentage
+        %tr
+          %td
+          %td (Rs)
+          %td (%)
+        -resource.total_assets_distribution_table.each do |asset|
+          %tr{:class => asset[:class]}
+            %td= asset[:asset_type]
+            %td= asset[:amount]
+            %td= asset[:percentage]
 
-- if resource.assets_and_liabilities?
-  #net-worth-chart.chart{ data: { elements: resource.assets_and_liabilities, title: 'Portfolio Summary',
-                                  yAxisTitle: 'Amount(Rupees)', chartType: 'Column' } }
+      %table.table.table-striped.show-grid.liabilities
+        %tr
+          %th Liabilities
+          %th Amount
+          %th Percentage
+        %tr
+          %td
+          %td (Rs)
+          %td (%)
+        -resource.total_liabilities_distribution_table.each do |asset|
+          %tr{:class => asset[:class]}
+            %td= asset[:asset_type]
+            %td= asset[:amount]
+            %td= asset[:percentage]
+

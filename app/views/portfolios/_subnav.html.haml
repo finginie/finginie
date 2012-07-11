@@ -1,0 +1,20 @@
+%ul.nav.nav-pills
+  %li.btn-large Portfolio
+  %li.btn-group
+    %a.btn.dropdown-toggle{ :href => '#', :data => {:toggle => :dropdown}}
+      = @portfolio.name
+      %span.caret
+    %ul.dropdown-menu
+      - current_user.portfolios.each do |portfolio|
+        %li= link_to portfolio.name, portfolio
+  %li.btn-large.pull-right= l Time.now, :format => :date_time_IST
+.subnav
+  %ul.nav.nav-pills
+    = navigation_link 'Add Transactions',        main_app.add_transaction_portfolio_path(@portfolio)
+    = navigation_link 'Current Holdings',        main_app.details_portfolio_path(@portfolio)
+    = navigation_link 'Profit/Loss',             main_app.accumulated_profits_portfolio_path(@portfolio)
+    = navigation_link 'Historical Transactions', main_app.transactions_portfolio_path(@portfolio)
+    = navigation_link 'Assets Breakdown',        main_app.portfolio_path(@portfolio)
+    = navigation_link 'Stocks Analysis',         main_app.stocks_analysis_portfolio_path(@portfolio)
+    = navigation_link 'Mutual Funds Analysis',   main_app.mutual_funds_analysis_portfolio_path(@portfolio)
+    = navigation_link 'Fixed Deposits Analysis', main_app.fixed_deposits_analysis_portfolio_path(@portfolio)

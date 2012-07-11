@@ -1,29 +1,31 @@
 - [ 'nse', 'bse' ].each do |index|
-  %div{ :class => "#{index}_quotes" }
-    %section.daily_prices
-      %h1= index.upcase
-      .daily_price_change
-        %h1= resource.send(index).last_traded_price
-        %strong.net_change= resource.send(index).net_change
-        %span.percent_change= "(#{resource.send(index).percent_change}%)"
-        - unless resource.send(index).time.kind_of?(String)
-          %p= l resource.send(index).time, :format => :short_date_and_time
-        - else
-          %p= resource.send(index).time
-      %table
-        - %w(close_price open_price volume high_price low_price) .each do |attr|
-          %tr
-            %td.name
-              %span= t ".#{attr}"
-            %td
-              = resource.send(index).send(attr)
-        - %w(fifty_two_week_high fifty_two_week_low high_date low_date).each do |attr|
-          %tr
-            %td.name
-              %span= t ".#{attr}"
-            %td
-              - if [ "high_date", "low_date" ].include?(attr) && !resource.send("#{index}_listing").send(attr).kind_of?(String)
-                = l resource.send("#{index}_listing").send(attr), :format => :stock_52w_date
-              - else
-                = resource.send("#{index}_listing").send(attr)
+  %section.daily_prices.span6{ :class => "#{index}_quotes" }
+    .page-header
+      %h2
+        = index.upcase
+        %small
+          %strong= resource.send(index).last_traded_price
+          %strong.net_change= resource.send(index).net_change
+          %span.percent_change= "(#{resource.send(index).percent_change}%)"
+          .pull-right
+            - unless resource.send(index).time.kind_of?(String)
+              %p= l resource.send(index).time, :format => :short_date_and_time
+            - else
+              %p= resource.send(index).time
+    %table.table.table-striped.table-condensed
+      - %w(close_price open_price volume high_price low_price) .each do |attr|
+        %tr
+          %th
+            %span= t ".#{attr}"
+          %td
+            = resource.send(index).send(attr)
+      - %w(fifty_two_week_high fifty_two_week_low high_date low_date).each do |attr|
+        %tr
+          %th
+            %span= t ".#{attr}"
+          %td
+            - if [ "high_date", "low_date" ].include?(attr) && !resource.send("#{index}_listing").send(attr).kind_of?(String)
+              = l resource.send("#{index}_listing").send(attr), :format => :stock_52w_date
+            - else
+              = resource.send("#{index}_listing").send(attr)
 

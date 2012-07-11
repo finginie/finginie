@@ -1,9 +1,11 @@
-= form_tag research_reports_path, :method => :get do
-  = text_field_tag :query, nil, :placeholder => 'Search by company, source or sector'
-  = submit_tag 'Search'
+= form_tag research_reports_path, :method => :get, :class => 'form-search' do
+  .input-append
+    = text_field_tag :query, nil, :placeholder => 'Search by company, source or sector', :class => 'search-query'
+    = button_tag :class => 'btn' do
+      %i.icon-search
 
 = content_tag :div, flash[:result], :id => 'result' if flash[:result].is_a?(String)
-%table
+%table.table.table-striped
   %tr
     %th Date
     %th Report Name
