@@ -11,11 +11,11 @@
 */
 
 ul.nav li.dropdown:hover>ul.dropdown-menu{
-    display: block;
+  display: block;
 }
 
 a.menu:after, .dropdown-toggle:after {
-    content: none;
+  content: none;
 }
 
 // TODO: Make Responsive
@@ -29,4 +29,10 @@ a.menu:after, .dropdown-toggle:after {
 .subnav {
   height: 36px;
   width: 100%;
+}
+
+.bs-icon {
+  float: left;
+  margin-right: 4px;
+  opacity: 0.8;
 }
