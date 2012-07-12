@@ -4,7 +4,7 @@
 - unless resource.category_wise_mutual_funds_percentage.empty?
   #mutual-fund-category-wise-allocation-chart.chart{ data: { elements: [['','']] + resource.category_wise_mutual_funds_percentage,
                                                              title: 'Category Wise Mutual Fund Allocation', chartType: 'Pie' } }
-  %h2 Category wise Analysis
+  %h1 Category wise Analysis
   %table.table.table-striped
     %tr
       %th.name Category
@@ -55,7 +55,7 @@
   - unless resource.mutual_fund_positions_profit_or_loss.empty?
     #mutual-fund-profit-or-loss-chart.chart{ data: { elements: [['','']] + resource.mutual_fund_positions_profit_or_loss.map { |r| [r.name, r.percentage] },
                                                      title: 'Realized Profit/Loss on Mutual Funds', yAxisTitle: 'Percentage (%)', chartType: 'Column' } }
-    %h2 Realized Profits/Losses
+    %h1 Realized Profits/Losses
     %table.table.table-striped
       %tr
         %th.name Scheme Name

@@ -2,9 +2,8 @@
   %article.span8
     %h1 Where to invest
     %section
-      = render :partial => 'layouts/facebook_recommend'
     %section
-      %h3 Assets and Asset Classes:
+      %h2 Assets and Asset Classes:
       %p
         An asset is anything that is expected to provide positive cash flow in the future. In the financial
         world, assets comprise of stocks, bonds, mutual funds, etc.
@@ -16,16 +15,16 @@
         in asset classes such as – Large cap domestic stocks, international stocks, mid cap domestic stocks,
         non-gold commodities etc.
     %section
-      %h3 Types of assets and their Risk-Return Profiles:
+      %h2 Types of assets and their Risk-Return Profiles:
       %p Different assets carry different risks and yield different returns.
       %ol
         %li
-          %h6 Cash Equivalents:
+          %h3 Cash Equivalents:
           Cash equivalents such as savings deposits at banks are extremely liquid
           (can be converted to cash very easily). They yield the lowest returns amongst all asset classes as they
           also carry the least risk.
         %li
-          %h6 Fixed Income:
+          %h3 Fixed Income:
           In general, fixed income securities such as fixed deposits and bonds carry
           more risk than cash equivalents. In general, they are long-term instruments (less liquid) and carry
           default risk i.e. the risk that the bank/bond-issuer will not be able to make interest/principal
@@ -33,44 +32,44 @@
           If they didn’t, investors wouldn’t have an incentive to invest in bonds and would rather invest in cash
           equivalents.
         %li
-          %h6 Equity:
+          %h3 Equity:
           Equity (stocks / shares) is substantially riskier than bonds. Their returns depend on
           market conditions and vary widely from year to year. Unlike fixed deposits or bonds, returns are
           not certain. Investors can even end up losing money. We have divided equity into the following sub-
           asset classes based on their market capitalization which is a measure of how large the company is.
-        %h6r
+        %h3r
           %p
             Market Capitalization of a company = No. of shares outstanding X Price of each share
           %p
             Classification into largecaps, midcaps and smallcaps varies widely but we have adopted the following convention:
           %ol
             %li
-              %h6 Largecap stocks:
+              %h3 Largecap stocks:
               Largecap stocks are stocks of very large companies whose market
               capitalization is above Rs 10,000 crores. These stocks tend to be less volatile than midcaps
               and smallcaps. They usually have good records of profitability and growth. E.g. Reliance
               Industries, ICICI Bank, Infosys, TCS.
             %li
-              %h6 Midcap stocks:
+              %h3 Midcap stocks:
               Midcap stocks are stocks of mid-sized companies whose market
               capitalization is between Rs 1,000 crores and Rs 10,000 crores. These stocks tend to be
               less risky than smallcaps but more risky than largecaps. E.g. Bajaj Electric, Cox and Kings,
               Gitanjali Gems. Midcap stocks tend to give better returns than largecap stocks over the long
               run.
             %li
-              %h6 Smallcap stocks:
+              %h3 Smallcap stocks:
               Smallcap stocks are stocks of small companies whose market capitalization
               is below Rs 1,000 crores. These stocks tend to be very risky. We do not recommend that
               small investors look at investing in smallcap stocks.
         %li
-          %h6 Commodities:
+          %h3 Commodities:
           Commodities - “Commodities” as an asset class consists of previous metals such as gold,
           silver, platinum, agricultural commodities such as wheat, corn, soya, soft commodities such as coffee
           and tea, base metals such as nickel and lead. However, as far as retail investor is concerned, gold is
           the most important commodity. Gold has consistently delivered excellent returns over the last 20
           years and has exhibited lower riskiness than stocks over the last 10 years.
     %section
-      %h3 Asset Allocation:
+      %h2 Asset Allocation:
       %p
         Asset Allocation is the process by which the capital of an investor’s portfolio is distributed across
         different asset classes. As discussed previously, asset classes are sets of assets that behave similarly
@@ -79,7 +78,7 @@
         else the portfolio becomes too risky. #{link_to 'Diversification', main_app.page_path('investment_education/investment-diversification')} across asset classes helps
         reduce the risk of a portfolio immensely.
     %section
-      %h3 Why asset allocation?
+      %h2 Why asset allocation?
       %p
         Asset allocation is the backbone of the investment process and not only does it determine the likely
         returns of the portfolio but also how risky the portfolio is. A study found that up to 90% of the
@@ -87,7 +86,7 @@
         other factors). Thus, in the opinion of most experts, asset allocation is the single most important part
         of portfolio management.
     %section
-      %h3 How does one go about asset allocation?
+      %h2 How does one go about asset allocation?
       %p
         An investor’s asset allocation should be performed based on the following factors:
       %ol
@@ -125,7 +124,7 @@
           %td Total
           %td Rs. 1,00,000
     %section
-      %h3 Why personalize asset allocation?
+      %h2 Why personalize asset allocation?
       %p
         We all have different needs and constraints. Our ability to tolerate investment risk is usually quite
         different from that of others. Our return expectations, tax situations and investment horizons are
@@ -133,7 +132,7 @@
         these factors. Just as my shoe isn’t likely to fit you, my asset allocation is not likely to work for you.
         Therefore, you should get your own personalized asset allocation before you start investing.
     %section
-      %h3 Security selection: Choosing your investments
+      %h2 Security selection: Choosing your investments
       %p
         Once you have figured out the right portfolio mix in the asset allocation stage, the next step is to
         choose securities from those asset classes accordingly. For example, once you know that you have to
@@ -142,7 +141,7 @@
         There are two ways in which you can do this:
       %ol
         %li
-          %h6 Investing via mutual funds and ETFs:
+          %h3 Investing via mutual funds and ETFs:
           There is an array of mutual funds and ETFs out there
           catering to different investing needs. There are funds that invest only in large caps, some
           that invest only in mid-caps, some only in gold, others in a mix of different assets including
@@ -152,7 +151,7 @@
           %p
             From our previous example, choosing this method entails investing Rs 40,000 in a mutual fund that invests solely in large cap stocks.
         %li
-          %h6 Picking each security individually:
+          %h3 Picking each security individually:
           The more difficult of the two options, this process
           involves selecting individual securities and investing in them. An investor needs to do
           his own research on each stock/bond and go about identifying the best securities for
@@ -179,7 +178,7 @@
       #disqus_thread
   %ul.thumbnails
     %li.span4.takeaway
-      %h3 Take Away
+      %h2 Take Away
       %ul
         %li
           An asset class is a group of investments which have similar characteristics, exhibit
@@ -192,7 +191,7 @@
           various asset classes according to the individual’s needs, risk tolerance and time
           horizon.
     %li.span4.articles
-      %h3 Articles
+      %h2 Articles
       %ul
         %li=link_to "Try our Asset Allocator.", "http://www.finginie.com/prebeta/membershipPages/PlanningTools.aspx", html_options = {:target => "_blank"}
         %li=link_to "Finding the Right Asset Allocation", "http://www.schwabmoneywise.com/basics/investing/asset-allocation.php", html_options = {:target => "_blank"}
@@ -200,7 +199,7 @@
         %li=link_to "Asset allocation strategies", "http://www.investopedia.com%li.span4/articles/04/031704.asp", html_options = {:target => "_blank"}
         %li=link_to "Asset Allocation -Wikipedia", "http://en.wikipedia.org/wiki/Asset_allocation", html_options = {:target => "_blank"}
     %li.span4.videos
-      %h3 Videos
+      %h2 Videos
       %ul
         %li=link_to "Examining Asset Allocation and Assumptions", "http://www.youtube.com/watch?v=o-p1q3sGscc", html_options = {:target => "_blank"}
         %li=link_to "Asset Allocation Pyramid", "http://www.youtube.com/watch?v=uKz4mc1gYeQ&feature=related", html_options = {:target => "_blank"}

@@ -2,9 +2,8 @@
   %article.span8
     %h1 SIP: How to invest in a systematic investment plan
     %section
-      = render :partial => 'layouts/facebook_recommend'
     %section
-      %h3 What is a SIP?
+      %h2 What is a SIP?
       %p
         SIP stands for- Systematic Investment Plan. It is a method of investing small amounts in #{link_to 'mutual funds', main_app.page_path('investment_education/mutual-funds-etf')}  at regular intervals.
       %p
@@ -12,17 +11,17 @@
       %p In SIP, a fixed amount is debited from your bank account on pre specified dates in favour of the mutual fund. The money is then channelized into the scheme/ schemes selected by you for the specified time.
       %p The minimum investment required in a SIP is very small. Though it varies from fund to fund, it can be as little as Rs 500. You can opt to make investments spread over periods ranging from daily to half-yearly.
     %section
-      %h3 How can I invest via a SIP?
+      %h2 How can I invest via a SIP?
       %p In a SIP, you have 2 options via which you can make payments to the mutual funds.
       %ul
         %li You can give standing instructions to your bank to debit your account on the pre specified dates in favour of the mutual fund.
         %li You can issue post-dated cheques in favour of the mutual fund.
       %p Contact your financial advisor or the mutual fund house for further details.
     %section
-      %h3 Advantages of SIPs
+      %h2 Advantages of SIPs
       %ol
         %li
-          %h6
+          %h3
             SIPs use rupee cost averaging to safeguard your investments when markets are volatile.
           %p In the past 5 years, markets have been extremely volatile. Consider the following scenario during the 2008 sub-prime crises:
           %table.table-bordered.table-condensed.table.table-striped
@@ -116,40 +115,40 @@
               %td 6167
           %p As you notice in the above example, the NAV in 1st and 5th months is the same. Had you invested a lump sum in the 1st month, the value of your investment after 4 months would remain the same. However by investing via SIP, the value of your portfolio would have increased by 23.3%.
         %li
-          %h6
+          %h3
             Convenience: SIPs allow you to make small and regular investments
           %p In SIPs investments are broken down into small amounts over a period of time, thus making savings more convenient than say investing a lump sum. In a way, SIPs also enforce disciplined investing as making regular investments on specified dates is mandatory. Often when you are trying to save money, part of your saving tends to get spent on frivolous purposes.
         %li
-          %h6
+          %h3
             SIP take out the guess-work from investing and enable you to avoid trying to predict the market.
           %p
             SIPs entail making small investment at regular intervals spread over a long period of time. Thus an investor need not worry about wild fluctuations in markets amidst high volatility.
     %section
-      %h3 Disadvantages of SIPs
+      %h2 Disadvantages of SIPs
       %p As you have seen above, SIP has a fair number of advantages. However there are instances when investments in SIP may not be lucrative.
       %ol
         %li
-          %h6
+          %h3
             SIPs don’t perform well in rising markets
           %p While SIPs are beneficial in a falling market, in a rising market, they increase your average cost per unit. Thus the returns derived from SIPs in a market that is rising continuously would be lesser than those from investing a lump sum.
         %li
-          %h6
+          %h3
             An  SIP in a fund performing poorly performs poorly
           %p Returns from SIP are as good as those of the funds in which you opt to invest. In case you end up choosing funds that are badly managed and their performances are very poor, your investment is bound to suffer.
     %section
-      %h3 How are SIPs taxed?
+      %h2 How are SIPs taxed?
       %p
         For #{link_to 'tax purposes', main_app.page_path('investment_education/tax-planning')} and lock-in periods each date of your investment is looked upon as the date when you made your investment. Example: Suppose you have invested in a scheme which has a 3 years lock-in period via a SIP, where by you have to make an investment every 6 months beginning 1st January 2012. The lock in period of your 1st instalment would expire
         on 1st January 2015, 2nd instalment would expire on 1st July 2015 (6 months later) so on and so forth.
       %p Similarly for tax purposes also, each instalment is looked upon as an individual investment and based on the tenure you have been invested for, you are taxed as per long term capital gains tax or short term capital gains tax rates (as is appropriate).
     %section
-      %h3 Tips for investing successfully in SIPs:
+      %h2 Tips for investing successfully in SIPs:
       %ol
         %li Check the incremental charges that are applicable on each investment. There may be a fee attached to each transaction.
         %li While choosing funds, check the ‘entry load’ that the fund is charging. Entry load can reduce your returns.
         %li If you should fail to pay the SIP amount on the particular day, your previous investment will not be subject to default but your returns will be adjusted against the failure of payment for that day.
       %p
-        %h6 Editor’s Note:
+        %h3 Editor’s Note:
         SIPs in well managed funds tend to work very well, especially for small investors. They also force the investor to be disciplined and save regularly.
     %footer
       .article_prev
@@ -161,7 +160,7 @@
       #disqus_thread
   %ul.thumbnails
     %li.span4.takeaway
-      %h3 Take Away
+      %h2 Take Away
       %ul
         %li SIP stands for- Systematic Investment Plan.
         %li SIP a method of investing and not an investment avenue in itself.
@@ -170,7 +169,7 @@
         %li SIPs don’t perform well in rising markets.
         %li SIPs in well managed funds tend to work very well, especially for small investors.
     %li.span4.articles
-      %h3 Articles
+      %h2 Articles
       %ul
         %li
           =link_to "SIP-Wikipedia", "http://en.wikipedia.org/wiki/Systematic_Investment_Plan", html_options = {:target => "_blank"}
@@ -179,7 +178,7 @@
         %li
           =link_to "UTI on SIPs", "http://www.utimf.com/learningcentre/pages/all-about-sip.aspx", html_options = {:target => "_blank"}
     %li.span4.videos
-      %h3 Videos
+      %h2 Videos
       %ul
         %li
           =link_to "BlackRock on SIPs", "http://www.youtube.com/watch?v=uZnXinkypd8", html_options = {:target => "_blank"}

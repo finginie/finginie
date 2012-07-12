@@ -2,9 +2,8 @@
   %article.span8
     %h1 Choosing Investments
     %section
-      = render :partial => 'layouts/facebook_recommend'
     %section
-      %h3 Security Selection:
+      %h2 Security Selection:
       %p
         The exact mix of a portfolio’s capital allocated to different asset classes is decided
         in the asset allocation stage. The next
@@ -50,9 +49,9 @@
             Rs. 10,000
         %tr
           %td
-            %h6 Total
+            %h3 Total
           %td
-            %h6 Rs. 100,000
+            %h3 Rs. 100,000
       %p
         The next step is to decide which large-cap stocks will take up the Rs.20,000 allocated
         to this asset class and in what proportion and so on. The process of making that
@@ -62,7 +61,7 @@
         invest in individual #{link_to 'Stocks', page_path('investment_education/stocks')}/#{link_to 'Bonds', page_path('investment_education/bonds')}. That decision is influenced by the investor’s
         perceptions of his skill, of market efficiency etc.
     %section
-      %h3 Business Cycles:
+      %h2 Business Cycles:
       %p
         It is critically important to keep in mind business cycles while analyzing markets
         and securities. A term that is widely used to describe the swings between economic
@@ -78,7 +77,7 @@
         market volatility. Finally, this bubble will burst and the economy plunges into
         recession.
     %section
-      %h3 Typical security selection styles
+      %h2 Typical security selection styles
       %ol
         %li
           Aggressive Strategies:
@@ -100,15 +99,15 @@
           than an aggressive portfolio. Such a portfolio carries a relatively equal mix of
           #{link_to 'Bonds', page_path('investment_education/bonds')}/#{link_to 'Cash Equivalents', page_path('investment_education/cash_equivalents')} and equities.
     %section
-      %h3 There are several approaches to valuing securities:
+      %h2 There are several approaches to valuing securities:
       =image_tag  "investment_education/ss4.png", :width => "250px", :height => "150px"
-      %h3 Fundamental Analysis:
+      %h2 Fundamental Analysis:
       %p
         Fundamental Analysis involves assessing companies based on fundamental factors such as financial health, industry outlook, competitive advantage and quality of management.
         Fundamental analysts are typically holistic when they value the security.
       %p For example, in valuing a stock, analysts will analyse factors such as the future direction of the economy, the potential growth of the industry it belongs to, the operational efficiency of the company management, the competitiveness of the company strategies, etc.
       =image_tag  "investment_education/ss5.png", :width => "250px", :height => "130px"
-      %h3 Technical Analysis:
+      %h2 Technical Analysis:
       %P
         involves the analysis of securities based on the current market demand and supply. Technical analysts typically use historical charts to predict future price trends of various securities.
         Technical analysts use technical indicators calculated from the prices and volumes of securities to make predictions about future price movements. Chartists also use chart-patterns involving price/volume data.
@@ -122,7 +121,7 @@
       #disqus_thread
   %ul.thumbnails
     %li.span4.takeaway
-      %h3 Take Away
+      %h2 Take Away
       %ul
         %li
           Security Selection involves choosing which securities e.g. #{link_to 'Stocks', page_path('investment_education/stocks')}, #{link_to 'Bonds', page_path('investment_education/bonds')}, etc to
@@ -134,11 +133,11 @@
           Fundamental Analysis and Technical Analysis are some of the approaches used to value
           securities.
     %li.span4.articles
-      %h3 Articles
+      %h2 Articles
       %ul
         %li=link_to "Stock Selection techniques – Using Stock Screeners", "http://finaticsonline.com/blog/2011/01/stock-selection-techniques-%E2%80%93-using-stock-screening-models/", html_options = {:target => "_blank"}
         %li=link_to "Stock selection criteria", "http://en.wikipedia.org/wiki/Stock_selection_criterion", html_options = {:target => "_blank"}
     %li.span4.videos
-      %h3 Videos
+      %h2 Videos
       %ul
         %li=link_to "Choosing Good Investments", "http://video.cnbc.com/gallery/?video=781699708", html_options = {:target => "_blank"}

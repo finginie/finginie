@@ -1,4 +1,4 @@
-%h3 News
+%h1 News
 %ul.nav.nav-tabs#news
   - DataProvider::NewsArticle.feeds.keys.each do |section_name|
     %li= link_to t(".#{section_name}"), "#news_#{section_name}", :data => {:toggle => :tab}
@@ -9,6 +9,6 @@
       - articles.take(10).each do |article|
         - if article.title
           %article
-            %h4= link_to article.title.html_safe, article.url, :title => article.source, :target => :blank
+            %h2= link_to article.title.html_safe, article.url, :title => article.source, :target => :blank
             %h6 #{article.source} - #{time_ago_in_words article.published} ago
             %p= article.summary.html_safe
