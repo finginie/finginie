@@ -29,6 +29,8 @@
 google.load('visualization', '1')
 
 $ ->
+  $('.carousel').carousel
+    interval: 2000
 
   $("div.chart").each ->
     if $(this).attr("data-chartType") is "Column"
@@ -44,4 +46,5 @@ $ ->
       if !$(this).data('no-redirect')
         select: ( event, ui ) =>
             window.location = $(this).data('autocomplete-source') + "/"+ ui.item.id
+
 

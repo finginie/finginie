@@ -1,38 +1,16 @@
-.hero-unit
-  .row-fluid.show-grid
-    %h1.span12 Investing the Finginie way
-  %section.row-fluid.show-grid
-    %ul.thumbnails
-      %li.span3
-        = image_tag "learn_investment.png"
-        %h5 Understand how investing works
-      %li.span3
-        = image_tag "investment_mix.png"
-        %h5 Discover your personalized investment mix
-      %li.span3
-        = image_tag "optmize_investments.png"
-        %h5 Track and optimize your investments
-      %li.span3
-        = image_tag "community.png"
-        %h5 Collaborate with other investors and experts
-  = link_to 'Get Started', comprehensive_risk_profiler_path, :class => %w(btn btn-primary btn-large)
-%section.interesting_facts
-  %ul.thumbnails
-    %li.span4
-      = link_to comprehensive_risk_profiler_path, :class => :thumbnail do
-        %h3 Never invested before?
-        %p
-          Rahul has 1 lakh rupees in his bank account and wants to start investing but doesnt know how to.Finginie's Financial Planner can help him start
-          investing by giving him his ideal investment mix based on his financial needs and constraints.
-    %li.span4
-      = link_to portfolios_path, :class => :thumbnail do
-        %h3 Just started investing?
-        %p
-          Shruthi has just bought stocks and bonds worth Rs. 50,000 and wants to keep track of her investments.Finginie's Portfolio tracker
-          can help her analyze her portfolio and give her instant updates and recommendations.
-    %li.span4
-      .thumbnail
-        %h3 Need expert help?
-        %p
-          Pooja is sitting on losses on her investments and wants expert advise on what to do next.Finginie's network of investment advisors can help her turn losses into profits. (Coming soon)
-
+.row
+  .span8
+    .hero-unit
+      #home-slider.carousel.slide
+        .carousel-inner
+          .item.active
+            = image_tag 'http://placehold.it/770x350&text=slide+1'
+          .item
+            = image_tag 'http://placehold.it/770x350&text=slide+2'
+          .item
+            = image_tag 'http://placehold.it/770x350&text=slide+3'
+          .item
+            = image_tag 'http://placehold.it/770x350&text=slide+4'
+        %a.carousel-control.left{:href => '#home-slider', :data => {:slide => :prev}} &lsaquo;
+        %a.carousel-control.right{:href => '#home-slider', :data => {:slide => :next}} &rsaquo;
+  .span4
