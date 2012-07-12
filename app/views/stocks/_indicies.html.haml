@@ -1,24 +1,24 @@
-.row
+.row.show-grid
   .span4
-    %a Nifty
-    %b= NiftyDecorator.last_traded_price
-    - red_or_green_class(NiftyDecorator.net_change, "span")
-    = "("
-    - red_or_green_class(NiftyDecorator.percent_change, "span")
-    = " % )"
+    %h4
+      Nifty
+      %small
+        %strong= NiftyDecorator.last_traded_price
+        =  rg_colorize NiftyDecorator.net_change
+        (#{rg_colorize NiftyDecorator.percent_change})
 
   .span4
-    %a Sensex
-    %b= SensexDecorator.last_traded_price
-    - red_or_green_class(SensexDecorator.net_change, "span")
-    = "("
-    - red_or_green_class(SensexDecorator.percent_change, "span")
-    = " % )"
+    %h4
+      Sensex
+      %small
+        %strong= SensexDecorator.last_traded_price
+        =  rg_colorize SensexDecorator.net_change
+        (#{rg_colorize SensexDecorator.percent_change})
 
   .span4
-    %a Gold (10 gms)
-    %b= GoldDecorator.current_price
-    - red_or_green_class(GoldDecorator.net_change, "span")
-    = "("
-    - red_or_green_class(GoldDecorator.percent_change, "span")
-    = " % )"
+    %h4
+      Gold (10 gm)
+      %small
+        %strong= GoldDecorator.current_price
+        =  rg_colorize GoldDecorator.net_change
+        (#{rg_colorize GoldDecorator.percent_change})

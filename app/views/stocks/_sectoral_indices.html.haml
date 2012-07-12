@@ -11,5 +11,5 @@
         = table.ths 'Index Name', 'Value', 'Change', '<nobr>% Change</nobr>'.html_safe
         = table.tds ->(index) { t(".#{index.id.delete(' ').gsub('&', '')}") },
                     ->(index) { number_to_indian_currency index.last_traded_price },
-                    ->(index) { table_content_with_red_or_green_class index.net_change },
-                    ->(index) { table_content_with_red_or_green_class index.percent_change }
+                    ->(index) { rg_colorize index.net_change },
+                    ->(index) { rg_colorize index.percent_change }

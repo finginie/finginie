@@ -1,8 +1,7 @@
 module ApplicationHelper
-  def table_content_with_red_or_green_class(value)
-    if value
-      ( value.to_f < 0 ) ? content_tag(:span, number_to_indian_currency(value), :class => "red") : content_tag(:span, number_to_indian_currency(value), :class => "green")
-    end
+  def rg_colorize(content, value = nil)
+    value ||= content.to_f
+    content_tag :span, content, :class => (value < 0 ? :red : :green)
   end
 
   def row_for(translate_label, field, objects)
@@ -16,10 +15,6 @@ module ApplicationHelper
 
   def current_page_path
    request.url
-  end
-
-  def red_or_green_class(value, tag)
-    value.to_f < 0 ? haml_tag("#{tag}.red", value) : haml_tag("#{tag}.green", value)
   end
 
   def auto_page_seo_content(translation,default=nil)
