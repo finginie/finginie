@@ -1,4 +1,3 @@
-= render :partial => 'layouts/facebook_recommend'
 .row
   .span12.show-grid
     -if resource.valid?
@@ -35,4 +34,4 @@
       %p= t ".future_investment"
       -unless current_user
         %p= t ".sign_up"
-      =link_to "#{'Signin & ' unless current_user}Continue", portfolios_path, :class => %w(btn btn-primary)
+      =link_to "#{'Signin & ' unless current_user}Continue", portfolios_path, :class => %w(btn btn-large btn-primary)

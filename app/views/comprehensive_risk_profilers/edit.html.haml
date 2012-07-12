@@ -6,20 +6,24 @@
 
     .row
       .span5.show-grid
-        = image_tag "Personalized.png", :class => 'bs-icon'
-        %h4 Personalized investment suggestions
+        %h2
+          = image_tag "Personalized.png"
+          Personalized investment suggestions
         %p Gives you personalized investment suggestions based on your unique financial needs & constraints.
       .span5.show-grid
-        = image_tag "risk_and_return.png", :class => 'bs-icon'
-        %h4 Balance between risk and return
+        %h2
+          = image_tag "risk_and_return.png"
+          Balance between risk and return
         %p Ensures that you strike a perfect balance between risk and return. All suggestions are based on financial experts’ opinion & backed by 10 years of market data.
       .span5.show-grid
-        = image_tag "Diversification.png", :class => 'bs-icon'
-        %h4 Diversification
+        %h2
+          = image_tag "Diversification.png"
+          Diversification
         %p Automatically ensures diversification across asset classes such as stocks, fixed deposits and gold. This reduces the riskiness of your portfolio drastically.
       .span5.show-grid
-        = image_tag "Quick_-free_and_beginner_-friendly.png", :class => 'bs-icon'
-        %h4 Quick, free and beginner friendly
+        %h2
+          = image_tag "Quick_-free_and_beginner_-friendly.png"
+          Quick, free and beginner friendly
         %p Completely free of cost and doesn’t require a credit card or email address. Takes less than a minute to finish and requires no prior knowledge of investing.
 
     .row
@@ -51,6 +55,6 @@
             %li= f.input :preference, :collection => t("comprehensive_risk_profiler.preference").invert, :as => :radio_buttons, :collection_wrapper_tag => :ul, :item_wrapper_tag => :li
             %li= f.input :portfolio_investment, :collection => t("comprehensive_risk_profiler.portfolio_investment").invert, :as => :radio_buttons, :collection_wrapper_tag => :ul, :item_wrapper_tag => :li
             .actions
-              = f.submit 'Submit'
+              = f.submit 'Submit', :class => %w(btn btn-primary)
 
   .span2

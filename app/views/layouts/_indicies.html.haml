@@ -1,6 +1,6 @@
 .row.show-grid
   .span4
-    %h4.align-center
+    %h3.align-center
       Nifty
       %small
         %strong= NiftyDecorator.last_traded_price
@@ -8,7 +8,7 @@
         (#{rg_colorize NiftyDecorator.percent_change})
 
   .span4
-    %h4.align-center
+    %h3.align-center
       Sensex
       %small
         %strong= SensexDecorator.last_traded_price
@@ -16,7 +16,7 @@
         (#{rg_colorize SensexDecorator.percent_change})
 
   .span4
-    %h4.align-center
+    %h3.align-center
       Gold (10 gm)
       %small
         %strong= GoldDecorator.current_price
