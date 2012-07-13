@@ -32,7 +32,7 @@ describe "FixedDeposits", :vcr do
     it "should validate the user entered value" do
       visit fixed_deposits_url
       click_button "Submit"
-      page.should have_selector('#fixed_deposit_query_amount+div.error')
+      page.should have_error_message("fixed_deposit_query[amount]")
     end
 
     context "user can search best fixed deposit interest rates" do

@@ -20,8 +20,7 @@ describe "Portfolios", :mongoid do
 
     create :'data_provider/nse_scrip', :id => "GOLDBEES", :last_traded_price => 5
 
-    visit portfolio_path(portfolio)
-    find("li#navigation-details").find("a").click
+    visit details_portfolio_path(portfolio)
 
     expected_table_for_stocks = [
                                   [company.name,                       "10.00", "3.00",  "30.00", "5.00", "50.00", "20.00", "66.67","Sell"],
@@ -163,8 +162,8 @@ describe "Portfolios", :mongoid do
 
   context "new portfolio" do
     before(:each) do
-      new_portfolio = create :portfolio, :user => current_user
-      visit portfolio_path(new_portfolio)
+      @new_portfolio = create :portfolio, :user => current_user
+      visit portfolio_path(@new_portfolio)
     end
 
     it "should display default message" do
@@ -172,68 +171,33 @@ describe "Portfolios", :mongoid do
     end
 
     it "should display default message for stock when there is no stock transaction" do
-      find("li#navigation-stocks_analysis").find("a").click
+      find(:link, "portfolios-#{@new_portfolio.id}-stocks_analysis").click
       page.should have_content I18n.t("portfolios.stocks_analysis.no_stock_transaction")
     end
 
     it "should display default message for mutual funds when there is no mutual fund transaction" do
-      find("li#navigation-mutual_funds_analysis").find("a").click
+      find(:link, "portfolios-#{@new_portfolio.id}-mutual_funds_analysis").click
       page.should have_content I18n.t("portfolios.mutual_funds_analysis.no_mutual_fund_transaction")
     end
 
     it "should display default message for fixed deposit when there is no fixed deposit transaction" do
-      find("li#navigation-fixed_deposits_analysis").find("a").click
+      find(:link, "portfolios-#{@new_portfolio.id}-fixed_deposits_analysis").click
       page.should have_content I18n.t("portfolios.fixed_deposits_analysis.no_fixed_deposit_transaction")
     end
 
     it "should display default messages in Accumulated Profits page" do
-      find("li#navigation-accumulated_profits").find("a").click
+      find(:link, "portfolios-#{@new_portfolio.id}-accumulated_profits").click
       page.should have_content I18n.t("portfolios.accumulated_profits.no_profit_or_loss")
     end
 
     it "should display default messages in Details Page" do
-      find("li#navigation-details").find("a").click
+      find(:link, "portfolios-#{@new_portfolio.id}-details").click
       page.should have_content I18n.t("portfolios.empty_transaction.message")
     end
 
     it "should display default messages in Transactions page" do
-      find("li#navigation-transactions").find("a").click
+      find(:link, "portfolios-#{@new_portfolio.id}-transactions").click
       page.should have_content I18n.t("portfolios.transactions.empty_transactions")
-    end
-
-     it "should display current portfolio in stock analysis page" do
-      find("li#navigation-stocks_analysis").find("a").click
-      page.should have_selector("#current_portfolio")
-    end
-
-    it "should display current portfolio in mutual funds analysis page" do
-      find("li#navigation-mutual_funds_analysis").find("a").click
-      page.should have_selector("#current_portfolio")
-    end
-
-    it "should display current portfolio in fixed deposit analysis page" do
-      find("li#navigation-fixed_deposits_analysis").find("a").click
-      page.should have_selector("#current_portfolio")
-    end
-
-    it "should display current portfolio in Accumulated Profits page" do
-      find("li#navigation-accumulated_profits").find("a").click
-      page.should have_selector("#current_portfolio")
-    end
-
-    it "should display current portfolio in Details Page" do
-      find("li#navigation-details").find("a").click
-      page.should have_selector("#current_portfolio")
-    end
-
-    it "should display current portfolio in Transactions page" do
-      find("li#navigation-transactions").find("a").click
-      page.should have_selector("#current_portfolio")
-    end
-
-    it "should display current portfolio in add transaction page" do
-      find("li#navigation-add_transaction").find("a").click
-      page.should have_selector("#current_portfolio")
     end
   end
 
@@ -292,9 +256,8 @@ describe "Portfolios", :mongoid do
       create_positions_of_all_securities(another_portfolio)
       create_sell_position_of_all_securities_type(another_portfolio)
 
-      visit portfolio_path(another_portfolio)
+      visit accumulated_profits_portfolio_path(another_portfolio)
 
-      find("li#navigation-accumulated_profits").find("a").click
       expected_table_profits = [ ["Test Property", "Real Estate", "", "", "", "400.00", "80.00"],
                                  [company.name, "Stock", "4", "4.00", "6.00", "12.00", "100.00"],
                                  [scheme.name, "Mutual Fund","4", "4.00", "6.00", "12.00", "100.00"],

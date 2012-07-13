@@ -11,13 +11,13 @@
         .tab-pane.active{ :id => "#{klass.underscore}_most_active" }
           -bt_table "DataProvider::#{klass}".constantize.most_active(5).each do |table|
             = table.ths 'Name', "<nobr>Today's Price</nobr>".html_safe, 'Volume'
-            = table.tds ->(scrip) { link_to scrip.company.name, stock_path(scrip.company.name) if scrip.company.name },
+            = table.tds ->(scrip) { link_to scrip.company.name, stock_path(scrip.company) if scrip.company.name },
                         ->(scrip) { number_to_indian_currency(scrip.last_traded_price) },
                         ->(scrip) { number_to_indian_currency(scrip.volume, 0) }
         - %w(top_gainers top_losers).each do |performance|
           .tab-pane{ :id => "#{klass.underscore}_#{performance}" }
             -bt_table "DataProvider::#{klass}".constantize.send(performance, 5).each do |table|
               = table.ths 'Name', "<nobr>Today's Price</nobr>".html_safe, '<nobr>% Change</nobr>'.html_safe
-              = table.tds ->(scrip) { link_to scrip.company.name, stock_path(scrip.company.name) if scrip.company.name },
+              = table.tds ->(scrip) { link_to scrip.company.name, stock_path(scrip.company) if scrip.company.name },
                           ->(scrip) { number_to_indian_currency(scrip.last_traded_price) },
                           ->(scrip) { rg_colorize(scrip.percent_change) }

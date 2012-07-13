@@ -1,7 +1,7 @@
 module ApplicationHelper
   def rg_colorize(content, value = nil)
     value ||= content.to_f
-    content_tag :span, content, :class => (value < 0 ? :red : :green)
+    content_tag :span, number_to_indian_currency(content), :class => (value < 0 ? :red : :green)
   end
 
   def row_for(translate_label, field, objects)
@@ -11,6 +11,16 @@ module ApplicationHelper
         haml_tag(:td, object.send(field))
       end
     end
+  end
+
+  def link_to_with_data_role(name, path, *args)
+    data_role = {:data => {:role => path.parameterize}}
+    if args.first
+      args.first[:data] ? args : args << {:data => {:role => path.parameterize}}
+    else
+      args << data_role
+    end
+    link_to(name, path, *args)
   end
 
   def current_page_path
@@ -33,7 +43,7 @@ module ApplicationHelper
   def navigation_link(name, path)
     class_name = current_page?(path) ? 'active' : ''
     content_tag(:li, :class => class_name) do
-      link_to name, path
+      link_to_with_data_role name, path
     end
   end
 
