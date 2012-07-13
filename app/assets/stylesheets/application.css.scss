@@ -19,15 +19,9 @@ a.menu:after, .dropdown-toggle:after {
 }
 
 // TODO: Make Responsive
-.show-grid {
+section, .show-grid {
   margin-top: 10px;
   margin-bottom: 20px;
-}
-
-footer {
-    border-top: 1px solid #E5E5E5;
-    margin-top: 45px;
-    padding: 35px 0 36px;
 }
 
 #flash_result { display: none; }
@@ -58,5 +52,3 @@ footer {
 .align-right {
   text-align: right;
 }
-
-
