@@ -16,10 +16,9 @@
   = link_to 'Create New Portfolio', new_portfolio_path, :method => :get, :class => "create_new_portfolio"
 
 -else
-  #no_portfolios
-    %p
+  .hero-unit.show-grid
+    %p.align-center
       You do not have any portfolios.
-    %p
       = t(".empty_portfolio")
       = link_to 'click here.', new_portfolio_path, :method => :get
 

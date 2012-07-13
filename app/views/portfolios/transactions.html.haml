@@ -2,9 +2,8 @@
 - %w(stock_transactions mutual_fund_transactions gold_transactions fixed_deposit_transactions loan_transactions real_estate_transactions).each do |transaction|
   = render "#{transaction}/#{transaction}", transaction.to_sym => resource.send(transaction)
 -if resource.empty_transactions?
-  #no_portfolios
-    %p
+  .hero-unit.show-grid
+    %p.align-center
       = t(".empty_transactions")
-    %p
       = link_to("Click here", add_transaction_portfolio_path)
       = "to add some."

@@ -24,8 +24,8 @@
       %td
       %td= number_to_indian_currency resource.fixed_deposit_open_positions_rate_of_interests.sum(&:amount)
 -else
-  #no_portfolios
-    %p= t ".no_fixed_deposit_transaction"
-    %p
+  .hero-unit.show-grid
+    %p.align-center
+      = t ".no_fixed_deposit_transaction"
       = link_to "Click here", new_portfolio_fixed_deposit_transaction_path(resource)
       = "to add some."

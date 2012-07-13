@@ -45,9 +45,9 @@
       %td
       %td
 -else
-  #no_portfolios
-    %p= t ".no_stock_transaction"
-    %p
+  .hero-unit.show-grid
+    %p.align-center
+      = t ".no_stock_transaction"
       = link_to "Click here", new_portfolio_stock_transaction_path(resource)
       = "to add some."
 
