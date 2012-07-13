@@ -3,7 +3,7 @@ require 'spec_helper'
 describe IdealInvestmentMix, :mongoid do
   let(:banks) { [
         Bank.new(
-            name:                      "Karur Vysya Bank",
+            name:                      "Fixed Deposit at Karur Vysya Bank",
             sector:                    "PRIVATE",
             one_year_interest_rate:    10.0,
             six_month_interest_rate:   7.8,
@@ -11,7 +11,7 @@ describe IdealInvestmentMix, :mongoid do
             one_month_interest_rate:   6.0
         ),
         Bank.new(
-            name:                      "Andhra Bank",
+            name:                      "Fixed Deposit at Andhra Bank",
             sector:                    "PUBLIC",
             one_year_interest_rate:    9.4,
             six_month_interest_rate:   8.5,
@@ -37,6 +37,21 @@ describe IdealInvestmentMix, :mongoid do
                               create(:'data_provider/scheme', :bench_mark_index_name => 'BSE Mid-Cap Index',
                                   :prev3_year_comp_percent => 16, :code => '15001200', :plan_code => '2067') ]
                    }
+
+  context "#zero amount investments" do
+    let(:risk_profiler) { ComprehensiveRiskProfiler.new(score_cache: 1) }
+
+    subject do
+      risk_profiler.save(validate: false)
+      IdealInvestmentMix.new(risk_profiler)
+    end
+
+    its(:gold_investments) { should be_empty }
+    its(:fixed_deposits)   { should_not be_empty }
+    its(:large_caps)       { should be_empty }
+    its(:mid_caps)         { should be_empty }
+
+  end
 
   context "#with default risk profiler" do
     let(:risk_profiler) { ComprehensiveRiskProfiler.new(score_cache: 6) }

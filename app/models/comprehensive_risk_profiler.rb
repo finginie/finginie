@@ -30,7 +30,7 @@ class ComprehensiveRiskProfiler < ActiveRecord::Base
 
   attr_accessor :investment_check, :special_goals
 
-  monetize :household_income, :household_savings, :household_expenditure, :tax_saving_investment, :special_goals_amount
+  monetize :household_income, :household_savings, :household_expenditure, :tax_saving_investment, :special_goals_amount, :initial_investment
 
   before_save { score(true) }
 
@@ -62,7 +62,7 @@ class ComprehensiveRiskProfiler < ActiveRecord::Base
   end
 
   def initial_investment
-    return 0 unless self.valid?
+    return IndianCurrency.new(0) unless self.valid?
     available_savings > 0 ? available_savings : household_savings.to_f/2
   end
 

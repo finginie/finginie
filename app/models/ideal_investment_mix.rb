@@ -1,11 +1,12 @@
 class IdealInvestmentMix
 
+  MINIMUM_INVESTMENT = IndianCurrency.new(30000)
   attr_reader :comprehensive_risk_profiler
   attr_accessor :initial_investment
 
   def initialize(comprehensive_risk_profiler)
     @comprehensive_risk_profiler = comprehensive_risk_profiler
-    @initial_investment = [comprehensive_risk_profiler.initial_investment, IndianCurrency.new(30000)].max
+    @initial_investment = [comprehensive_risk_profiler.initial_investment, MINIMUM_INVESTMENT].max
   end
 
   def top_gold_etfs
@@ -15,6 +16,7 @@ class IdealInvestmentMix
   end
 
   def gold_investments
+    return [] if gold_amount == 0
     (gold_amount / 2) > 5000 ? top_gold_etfs
       .map{ |scheme| Hashie::Mash.new({:name => scheme.name, :amount => gold_amount / 2  }) } :
         top_gold_etfs.take(1).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => gold_amount }) }
@@ -26,8 +28,8 @@ class IdealInvestmentMix
 
     highest_interest_fd = top_fds.select { |fd| fd.one_year_interest_rate == top_fds.map(&:one_year_interest_rate).max }
     (fd_amount / 2) > 5000 ?
-      top_fds.map{ |fd| Hashie::Mash.new({:name => fd.name, :amount => fd_amount / 2  }) } :
-        highest_interest_fd.map {|fd| Hashie::Mash.new({:name => fd.name, :amount => fd_amount }) }
+      top_fds.map{ |fd| Hashie::Mash.new({:name => "Fixed Deposit at #{fd.name}", :amount => fd_amount / 2  }) } :
+        highest_interest_fd.map {|fd| Hashie::Mash.new({:name => "Fixed Deposit at #{fd.name}", :amount => fd_amount }) }
   end
 
   def distinct_schemes(schemes, limit)
@@ -51,6 +53,7 @@ class IdealInvestmentMix
   end
 
   def large_caps
+    return [] if large_cap_amount == 0
     (large_cap_amount / 2) > 5000 ?
       top_large_caps.map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => large_cap_amount / 2  }) } :
         top_large_caps(1).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => large_cap_amount}) }
@@ -65,6 +68,7 @@ class IdealInvestmentMix
   end
 
   def mid_caps
+    return [] if mid_cap_amount == 0
     (mid_cap_amount / 2) > 5000 ?
       top_mid_caps.map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => mid_cap_amount / 2  }) } :
         top_mid_caps(1).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => mid_cap_amount}) }
@@ -75,8 +79,12 @@ class IdealInvestmentMix
       [ security.name, security.amount.to_f ] }
   end
 
+  def scheme(name)
+    DataProvider::Scheme.where(:name => name).first
+  end
+
   def initial_investment=(amount)
-    @initial_investment = [ IndianCurrency.new(amount), IndianCurrency.new(30000)].max
+    @initial_investment = [ IndianCurrency.new(amount), MINIMUM_INVESTMENT].max
   end
 
 private

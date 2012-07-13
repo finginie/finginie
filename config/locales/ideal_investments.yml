@@ -1,8 +1,14 @@
 en:
   ideal_investments:
     show:
+      submit: 'Update'
       fixed_deposits: 'Fixed Deposits'
       gold_investments: 'Gold ETFs'
       large_caps: 'Large Caps'
-      too_low_investment: 'You have too low savings to invest.Try building your ideal investments for more than or equal to Rs. 30,000'
-      initial_investment: 'Enter the amount to be invested'
+      mid_caps: 'Mid Caps'
+      too_low_investment: 'You should increase your savings before starting to invest.We recommend that you first save atleast Rs 30,000 for emergencies before you start investing.'
+      initial_investment: 'Amount to be invested (Rs)'
+      default_amount: 'If no amount has been entered, a portfolio worth Rs %{amount} is shown'
+      introduction: 'We have selected the best investments for you based on their historic return, liquidity, trading volumes and entry/exit loads. We have also pre-populated the
+        investment amount based on our suggestions in the previous step.'
+      intro_to_trade: 'Now you can click the below button to start investing'

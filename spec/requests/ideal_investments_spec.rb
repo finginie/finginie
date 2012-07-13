@@ -11,7 +11,7 @@ describe 'Ideal Investments',:mongoid do
 
   let(:banks) { [
         Bank.new(
-            name:                      "Karur Vysya Bank",
+            name:                      "Fixed Deposit at Karur Vysya Bank",
             sector:                    "PRIVATE",
             one_year_interest_rate:    10.0,
             six_month_interest_rate:   7.8,
@@ -19,7 +19,7 @@ describe 'Ideal Investments',:mongoid do
             one_month_interest_rate:   6.0
         ),
         Bank.new(
-            name:                      "Andhra Bank",
+            name:                      "Fixed Deposit at Andhra Bank",
             sector:                    "PUBLIC",
             one_year_interest_rate:    9.4,
             six_month_interest_rate:   8.5,
@@ -50,7 +50,7 @@ describe 'Ideal Investments',:mongoid do
 
       visit comprehensive_risk_profiler_ideal_investments_path
       page.should have_content 'Ideal Investments'
-      page.should have_content 'Gold ETFs'
+      page.should have_content I18n.t('ideal_investments.show.gold_investments')
 
       tableish("#gold_investments table").should include [ gold_etfs.last.name, '9,000.00' ]
     end
@@ -58,7 +58,7 @@ describe 'Ideal Investments',:mongoid do
     it "should have fixed deposits on the page" do
 
       visit comprehensive_risk_profiler_ideal_investments_path
-      page.should have_content 'Fixed Deposits'
+      page.should have_content I18n.t('ideal_investments.show.fixed_deposits')
 
       expected_content = banks.map { |bank| [ bank.name, '6,000.00' ] }
       tableish("#fixed_deposits table").should include *expected_content
@@ -68,7 +68,7 @@ describe 'Ideal Investments',:mongoid do
       large_cap_schemes.each { |scheme| scheme.save }
 
       visit comprehensive_risk_profiler_ideal_investments_path
-      page.should have_content 'Large Caps'
+      page.should have_content I18n.t('ideal_investments.show.large_caps')
 
       expected_content = large_cap_schemes.take(1).map { |scheme| [ scheme.name, '6,000.00' ] }
       tableish("#large_caps table").should include *expected_content
@@ -79,7 +79,7 @@ describe 'Ideal Investments',:mongoid do
       mid_cap_schemes.each { |scheme| scheme.save }
 
       visit comprehensive_risk_profiler_ideal_investments_path
-      page.should have_content 'Mid Caps'
+      page.should have_content I18n.t('ideal_investments.show.mid_caps')
 
       expected_content = mid_cap_schemes.take(1).map { |scheme| [ scheme.name, '3,000.00' ] }
       tableish("#mid_caps table").should include *expected_content
@@ -112,7 +112,7 @@ describe 'Ideal Investments',:mongoid do
 
     it "should have fixed deposits" do
       visit comprehensive_risk_profiler_ideal_investments_path
-      page.should have_content 'Fixed Deposits'
+      page.should have_content I18n.t('ideal_investments.show.fixed_deposits')
 
       expected_content = banks.map { |bank| [ bank.name, '19,500.00' ] }
       tableish("#fixed_deposits table").should include *expected_content
@@ -123,7 +123,7 @@ describe 'Ideal Investments',:mongoid do
       large_cap_schemes.each { |scheme| scheme.save }
 
       visit comprehensive_risk_profiler_ideal_investments_path
-      page.should have_content 'Large Caps'
+      page.should have_content I18n.t('ideal_investments.show.large_caps')
 
       expected_content = large_cap_schemes.map { |scheme| [ scheme.name, '13,000.00' ] }
       tableish("#large_caps table").should include *expected_content
@@ -133,7 +133,7 @@ describe 'Ideal Investments',:mongoid do
       mid_cap_schemes.each { |scheme| scheme.save }
 
       visit comprehensive_risk_profiler_ideal_investments_path
-      page.should have_content 'Mid Caps'
+      page.should have_content I18n.t('ideal_investments.show.mid_caps')
 
       expected_content = mid_cap_schemes.map { |scheme| [ scheme.name, '13,000.00' ] }
       tableish("#mid_caps table").should include *expected_content
@@ -142,10 +142,17 @@ describe 'Ideal Investments',:mongoid do
     it "should give a form to enter the initial investment" do
       visit comprehensive_risk_profiler_ideal_investments_path
       fill_in 'initial_investment', :with => 45000
-      click_on 'Submit'
+      click_on I18n.t('ideal_investments.show.submit')
 
       expected_content = banks.map { |bank| [ bank.name, '6,750.00' ] }
       tableish("#fixed_deposits table").should include *expected_content
+    end
+
+    it "should have continue button linked to trade page" do
+      visit comprehensive_risk_profiler_ideal_investments_path
+      page.should have_link 'Continue'
+      click_on 'Continue'
+      page.current_path.should eq page_path('trade')
     end
 
   end

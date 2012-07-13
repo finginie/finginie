@@ -37,8 +37,8 @@
   .span12.show-grid
     .well
       %p= t ".future_investment"
-      -unless current_user
+      - if current_user
+        =link_to 'Continue', comprehensive_risk_profiler_ideal_investments_path, :class => %w(btn btn-primary)
+      - else
         %p= t ".sign_up"
         =link_to 'Signin & Continue', signin_path, :class => %w(btn btn-primary)
-      - else
-        =link_to 'Continue', comprehensive_risk_profiler_ideal_investments_path, :class => %w(btn btn-primary)

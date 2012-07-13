@@ -7,10 +7,6 @@ class ComprehensiveRiskProfilerDecorator < ApplicationDecorator
     model.household_expenditure * 3
   end
 
-  def initial_investment
-    model.initial_investment
-  end
-
   def three_month_investment_amount
     model.monthly_savings * 3
   end
