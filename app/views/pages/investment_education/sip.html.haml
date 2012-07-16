@@ -2,22 +2,19 @@
   %article.span9
     %h1 SIP: How to invest in a systematic investment plan
     %section
-    %section
-      %h2 What is a SIP?
+      %h3 What is a SIP?
       %p
         SIP stands for- Systematic Investment Plan. It is a method of investing small amounts in #{link_to 'mutual funds', main_app.page_path('investment_education/mutual-funds-etf')}  at regular intervals.
       %p
         Note: SIP a method of investing and not an investment avenue in itself.
       %p In SIP, a fixed amount is debited from your bank account on pre specified dates in favour of the mutual fund. The money is then channelized into the scheme/ schemes selected by you for the specified time.
       %p The minimum investment required in a SIP is very small. Though it varies from fund to fund, it can be as little as Rs 500. You can opt to make investments spread over periods ranging from daily to half-yearly.
-    %section
-      %h2 How can I invest via a SIP?
+      %h3 How can I invest via a SIP?
       %p In a SIP, you have 2 options via which you can make payments to the mutual funds.
       %ul
         %li You can give standing instructions to your bank to debit your account on the pre specified dates in favour of the mutual fund.
         %li You can issue post-dated cheques in favour of the mutual fund.
       %p Contact your financial advisor or the mutual fund house for further details.
-    %section
       %h2 Advantages of SIPs
       %ol
         %li
@@ -123,8 +120,7 @@
             SIP take out the guess-work from investing and enable you to avoid trying to predict the market.
           %p
             SIPs entail making small investment at regular intervals spread over a long period of time. Thus an investor need not worry about wild fluctuations in markets amidst high volatility.
-    %section
-      %h2 Disadvantages of SIPs
+      %h3 Disadvantages of SIPs
       %p As you have seen above, SIP has a fair number of advantages. However there are instances when investments in SIP may not be lucrative.
       %ol
         %li
@@ -135,28 +131,29 @@
           %h3
             An  SIP in a fund performing poorly performs poorly
           %p Returns from SIP are as good as those of the funds in which you opt to invest. In case you end up choosing funds that are badly managed and their performances are very poor, your investment is bound to suffer.
-    %section
-      %h2 How are SIPs taxed?
+      %h3 How are SIPs taxed?
       %p
         For #{link_to 'tax purposes', main_app.page_path('investment_education/tax-planning')} and lock-in periods each date of your investment is looked upon as the date when you made your investment. Example: Suppose you have invested in a scheme which has a 3 years lock-in period via a SIP, where by you have to make an investment every 6 months beginning 1st January 2012. The lock in period of your 1st instalment would expire
         on 1st January 2015, 2nd instalment would expire on 1st July 2015 (6 months later) so on and so forth.
       %p Similarly for tax purposes also, each instalment is looked upon as an individual investment and based on the tenure you have been invested for, you are taxed as per long term capital gains tax or short term capital gains tax rates (as is appropriate).
-    %section
-      %h2 Tips for investing successfully in SIPs:
+      %h3 Tips for investing successfully in SIPs:
       %ol
-        %li Check the incremental charges that are applicable on each investment. There may be a fee attached to each transaction.
-        %li While choosing funds, check the ‘entry load’ that the fund is charging. Entry load can reduce your returns.
-        %li If you should fail to pay the SIP amount on the particular day, your previous investment will not be subject to default but your returns will be adjusted against the failure of payment for that day.
+        %li
+          %p Check the incremental charges that are applicable on each investment. There may be a fee attached to each transaction.
+        %li
+          %p While choosing funds, check the ‘entry load’ that the fund is charging. Entry load can reduce your returns.
+        %li
+          %p If you should fail to pay the SIP amount on the particular day, your previous investment will not be subject to default but your returns will be adjusted against the failure of payment for that day.
       %p
         %h3 Editor’s Note:
-        SIPs in well managed funds tend to work very well, especially for small investors. They also force the investor to be disciplined and save regularly.
+        %p SIPs in well managed funds tend to work very well, especially for small investors. They also force the investor to be disciplined and save regularly.
     %footer
       .article_prev
         Prev:
         =link_to t('investment_education.life_insurance_policies'), main_app.page_path('investment_education/life-insurance-policies')
-      .article_next
-        Next:
-        =link_to t('investment_education.share_market'), main_app.page_path('investment_education/share-market')
+        .article_next
+          Next:
+          =link_to t('investment_education.share_market'), main_app.page_path('investment_education/share-market')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway
