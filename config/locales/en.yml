@@ -88,6 +88,12 @@ en:
       fixed_deposit_tool: 'Use the Fixed Deposit tool below to find out which banks offer the highest interest rates for your desired time period and investment amount.'
       duration_hints: 'e.g 1 year 2 months 3 days, 6 months, etc ..'
       default: 'The following banks offer the highest interest rates on fixed deposits for a non senior citizen'
+  gold:
+    name: 'Gold (10 gm)'
+  nifty:
+    name: 'Nifty'
+  sensex:
+    name: 'Sensex'
 
   stocks:
     show:

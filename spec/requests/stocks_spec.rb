@@ -67,12 +67,6 @@ describe "Stocks", :mongoid, :redis do
   end
 
   context "#index" do
-    before(:each) do
-      create :'data_provider/bse_scrip', :id => "Sensex",    :last_traded_price => 10, :close_price => 9
-      create :'data_provider/nse_scrip', :id => "NSE Index", :last_traded_price => 10, :close_price => 9
-      create :'data_provider/nse_scrip', :id => "GOLDBEES",  :last_traded_price => 10, :close_price => 9
-    end
-
     it "should have search in index page", :js => true do
       5.times { |i| create :'data_provider/company', :name => "Company Tech#{i}" }
 
@@ -86,17 +80,6 @@ describe "Stocks", :mongoid, :redis do
 
       page.current_path.should eq stock_path 'company-tech1'
 
-    end
-
-    it "should have market indices" do
-
-      visit stocks_path
-
-      expected_text = [
-                        "Nifty 10.0 1.0 ( 11.11 % )", "Sensex 10.0 1.0 ( 11.11 % )", "Gold (10 gms) 100.0 10.0 ( 11.11 % )"
-                      ]
-
-      selector("#stock_indicies", "div").should include *expected_text
     end
 
     context "#Top Gainers" do
