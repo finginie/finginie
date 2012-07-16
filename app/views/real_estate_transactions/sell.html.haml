@@ -1,4 +1,4 @@
-= simple_nested_form_for([parent, resource], :url => create_sell_portfolio_real_estate_transaction_path) do |f|
+= simple_nested_form_for [parent, resource], :url => create_sell_portfolio_real_estate_transaction_path, :html => {:class => 'form-horizontal'} do |f|
   = f.error_notification
 
   .security

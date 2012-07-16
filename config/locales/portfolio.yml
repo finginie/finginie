@@ -1,7 +1,5 @@
 en:
   portfolios:
-    index:
-      empty_portfolio: 'To create a new portfolio, '
     stocks_analysis:
       no_stock_transaction: 'You do not have any stocks in this portfolio.'
       no_sell_stock_transaction: 'You do not have any realized profits/losses in this portfolio to analyze.'

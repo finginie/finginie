@@ -7,7 +7,7 @@
       %div{ :id => "#{positions}"}
         %table.table.table-striped
           %tr
-            %th.name Name
+            %th Name
             %th Quantity
             %th Avg Cost Price
             %th Amt Invested
@@ -15,7 +15,7 @@
             %th Current Value
             %th Unrealised Profit
             %th Profit/Loss Percentage
-            %th.center_align Sell
+            %th Sell
           %tr
             %td.name
             %td
@@ -29,7 +29,7 @@
 
           - resource.send(positions).each do |net_position|
             %tr
-              %td.name= link_to net_position.name, ( positions == "mutual_fund_positions" ? mutual_fund_path(net_position.mutual_fund.scheme_master) : stock_path(net_position.company) )
+              %td= link_to net_position.name, ( positions == "mutual_fund_positions" ? mutual_fund_path(net_position.mutual_fund.scheme_master) : stock_path(net_position.company) )
               %td= number_to_indian_currency net_position.quantity
               %td= number_to_indian_currency net_position.average_cost_price
               %td= number_to_indian_currency net_position.value
@@ -41,9 +41,9 @@
               %td= rg_colorize net_position.unrealised_profit
               %td= rg_colorize net_position.unrealised_profit_percentage
               -transaction = positions.gsub(/_positions/,'_transaction')
-              %td.center_align= link_to "Sell", send("new_portfolio_#{transaction}_path",resource, transaction.to_sym => net_position.action_params)
+              %td= link_to "Sell", send("new_portfolio_#{transaction}_path",resource, transaction.to_sym => net_position.action_params)
           %tr.total
-            %td.name Total
+            %td Total
             %td
             %td
             %td= number_to_indian_currency resource.send(positions).sum(&:value)
@@ -59,7 +59,7 @@
     #gold_positions
       %table.table.table-striped
         %tr
-          %th.name Name
+          %th Name
           %th Quantity
           %th Avg Cost price
           %th Amt Invested
@@ -67,7 +67,7 @@
           %th Current Value
           %th Unrealised Profit
           %th Profit/Loss Percentage
-          %th.center_align Sell
+          %th Sell
         %tr
           %td.name
           %td (grams)
@@ -79,7 +79,7 @@
           %td (%)
           %td
         %tr
-          %td.name Gold
+          %td Gold
           %td= number_to_indian_currency resource.gold_position.quantity
           %td= number_to_indian_currency resource.gold_position.average_cost_price
           %td= number_to_indian_currency resource.gold_position.value
@@ -87,9 +87,9 @@
           %td= number_to_indian_currency resource.gold_position.current_value
           %td= rg_colorize resource.gold_position.unrealised_profit
           %td= rg_colorize resource.gold_position.unrealised_profit_percentage
-          %td.center_align= link_to "Sell", new_portfolio_gold_transaction_path(resource, gold_transaction: resource.gold_position.action_params)
+          %td= link_to "Sell", new_portfolio_gold_transaction_path(resource, gold_transaction: resource.gold_position.action_params)
         %tr.total
-          %td.name Total
+          %td Total
           %td
           %td
           %td= number_to_indian_currency resource.gold_position.value

@@ -3,8 +3,8 @@
 #accumulated_profits_or_losses
   %h1 Your Realized Profits and Losses
   - if resource.top_five_losses.empty? && resource.top_five_profits.empty?
-    #no_portfolios
-      %p
+    .hero-unit.show-grid
+      %p.align-center
         = t ".no_profit_or_loss"
   - else
     #accumulated-profits-chart.chart{ data: { elements: [['','']] + (resource.top_five_profits + resource.top_five_losses).map{ |r| [ r.name, r.percentage ] },

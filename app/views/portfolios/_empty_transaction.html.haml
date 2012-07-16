@@ -1,6 +1,4 @@
-#no_portfolios
-  %p
+.hero-unit.show-grid
+  %p.align-center
     = t(".message")
-  %p
-    = link_to("Click here", add_transaction_portfolio_path)
-    = "to add some."
+    = link_to "Add Some", add_transaction_portfolio_path, :class => 'btn btn-primary'
