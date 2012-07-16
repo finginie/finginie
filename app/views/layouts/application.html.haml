@@ -21,6 +21,9 @@
         We are upgrading our systems as we speak. You may face minor issues during this period. Thank you for understanding :)
     %header
       .container
+        %hgroup.social.pull-right
+          =render 'layouts/twitter'
+          =render 'layouts/facebook'
         %hgroup.title
           %h1
             = link_to main_app.root_path do
@@ -28,7 +31,7 @@
             %small India's Best Investment Portal for Beginners
         = render 'layouts/navigation'
         = yield :header
-        .stock_indices= render 'stocks/indicies'
+        = render 'layouts/indicies'
     #main.container
       .row
         .span12
@@ -40,10 +43,8 @@
 
       = yield
     %footer.container
-      .row
-        %nav.sitemap.span12
-          =# render_navigation :expand_all => true, :level => 1..2
-      =yield :footer
+      = render 'layouts/footer'
+      = yield :footer
       .row
         %p.legal.span12
           By accessing Finginie.com or any of its associate/group sites, you have read, understood and agree to be legally bound by the #{link_to 'terms of the following end user agreement', main_app.page_path('terms_of_use')}. Copyright © 2012 Finginie.com. All rights reserved.

@@ -1,7 +1,7 @@
 - [ 'nse', 'bse' ].each do |index|
   %section.daily_prices.span6{ :class => "#{index}_quotes" }
     .page-header
-      %h2
+      %h1
         = index.upcase
         %small
           %strong= resource.send(index).last_traded_price

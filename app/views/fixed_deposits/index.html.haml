@@ -1,6 +1,6 @@
 .row
   .span12.show-grid
-    %h2 Fixed Deposit Comparison tool <small>Compare fixed deposit interest rates across banks in India</small>
+    %h1 Fixed Deposit Comparison tool <small>Compare fixed deposit interest rates across banks in India</small>
     %p= t ".fixed_deposit_tool"
 
   .span12.show-grid
@@ -24,7 +24,7 @@
       .alert.alert-error= @search.result_summary(true)
     - [collection.top_five_public_sector, collection.top_five_private_sector].each do |fd_details|
       - unless fd_details.empty?
-        %h3= "#{fd_details.first.sector.titleize} banks"
+        %h1= "#{fd_details.first.sector.titleize} banks"
         %div{ :id => "top_five_#{fd_details.first.sector.downcase}_sector_interest_rate"}
           %table.table.table-striped
             %tr
@@ -41,7 +41,7 @@
     - [@top_five_public_banks_interest_rates, @top_five_private_banks_interest_rates].each do |fd_details|
       .span6.show-grid
         - unless fd_details.empty?
-          %h4
+          %h2
             Best interest rates on fixed deposits among
             %strong=fd_details.first.sector.titleize.downcase!
             sector banks
@@ -62,7 +62,7 @@
                   %td= fd_detail.one_month_interest_rate
 
   .span12.show-grid
-    %h3 Understanding Fixed Deposits
+    %h1 Understanding Fixed Deposits
     %p
       Fixed deposits, colloquially referred to as “FD”s are a form of investment in which an investor deposits his
       money with a bank for a fixed period of time at a predetermined interest rate.Check out our article on

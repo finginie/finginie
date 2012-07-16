@@ -5,21 +5,22 @@
       %i.icon-search
 
 = content_tag :div, flash[:result], :id => 'result' if flash[:result].is_a?(String)
-%table.table.table-striped
-  %tr
-    %th Date
-    %th Report Name
-    %th Source
-    %th Company Name
-    %th Sector
-  - !collection.empty? && collection.each do |report|
+- unless collection.empty?
+  %table.table.table-striped
     %tr
-      - if report.date
-        %td= l report.date, :format => :stock_52w_date
-      %td= link_to report.name, report.link_url, :target => :blank
-      %td= report.source
-      %td= report.company_name
-      %td= report.sector
+      %th Date
+      %th Report Name
+      %th Source
+      %th Company Name
+      %th Sector
+    - collection.each do |report|
+      %tr
+        - if report.date
+          %td= l report.date, :format => :stock_52w_date
+        %td= link_to report.name, report.link_url, :target => :blank
+        %td= report.source
+        %td= report.company_name
+        %td= report.sector
 - if params[:query]
   .right_align
     = link_to 'Back to Reports home', research_reports_path

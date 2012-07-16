@@ -24,6 +24,12 @@ a.menu:after, .dropdown-toggle:after {
   margin-bottom: 20px;
 }
 
+footer {
+    border-top: 1px solid #E5E5E5;
+    margin-top: 45px;
+    padding: 35px 0 36px;
+}
+
 #flash_result { display: none; }
 
 .subnav {
@@ -44,3 +50,13 @@ a.menu:after, .dropdown-toggle:after {
 .green {
   color: green;
 }
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+

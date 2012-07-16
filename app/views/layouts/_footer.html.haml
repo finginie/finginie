@@ -1,0 +1,19 @@
+.row
+  .span4.align-center
+    %h2 Best of Finginie
+    %ul.nav.nav-list
+
+  .span4.align-center
+    %h2 Most popular
+    .btn-toolbar= link_to 'Open an Account', main_app.page_path('trade'), :class => %w(btn btn-large btn-primary)
+    .btn-toolbar= link_to 'Start Investing Now', main_app.comprehensive_risk_profiler_path, :class => %w(btn btn-large btn-primary)
+
+  .span4.align-center
+    %h2 Finginie
+    %ul.nav.nav-list
+      = navigation_link 'About us', main_app.page_path('about_us')
+      = navigation_link 'Management Team', main_app.page_path('team')
+      = navigation_link 'Research Team', main_app.page_path('research-team')
+      = navigation_link 'Careers', main_app.page_path('careers')
+      = navigation_link 'Contact us', main_app.page_path('contact_us')
+      = navigation_link 'Terms of use', main_app.page_path('terms_of_use')

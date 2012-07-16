@@ -10,7 +10,17 @@
   %li.btn-large.pull-right= l Time.now, :format => :date_time_IST
 .subnav
   %ul.nav.nav-pills
-    = navigation_link 'Add Transactions',        main_app.add_transaction_portfolio_path(@portfolio)
+    %li.dropdown
+      %a.dropdown-toggle{ :href => '#', :data => {:toggle => :dropdown}}
+        Add Transactions
+        %b.caret
+      %ul.dropdown-menu
+        = navigation_link 'Add Stocks',          main_app.new_portfolio_stock_transaction_path(@portfolio)
+        = navigation_link 'Add Mutual Funds',    main_app.new_portfolio_mutual_fund_transaction_path(@portfolio)
+        = navigation_link 'Add Gold',            main_app.new_portfolio_gold_transaction_path(@portfolio)
+        = navigation_link 'Add Loans',           main_app.new_portfolio_loan_transaction_path(@portfolio)
+        = navigation_link 'Add Fixed Deposits',  main_app.new_portfolio_fixed_deposit_transaction_path(@portfolio)
+        = navigation_link 'Add Real Estate',     main_app.new_portfolio_real_estate_transaction_path(@portfolio)
     = navigation_link 'Current Holdings',        main_app.details_portfolio_path(@portfolio)
     = navigation_link 'Profit/Loss',             main_app.accumulated_profits_portfolio_path(@portfolio)
     = navigation_link 'Historical Transactions', main_app.transactions_portfolio_path(@portfolio)

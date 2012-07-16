@@ -23,7 +23,7 @@
   .span8
     - if resource.news.count > 0
       %section.news
-        %h3
+        %h1
           %i.icon-bullhorn
           News
         %ul
@@ -33,7 +33,7 @@
   .span4
     - if resource.share_holding
       %section.share_holding
-        %h3
+        %h1
           %i.icon-adjust
           Share Holding Pattern
         %table.table.table-striped
@@ -45,7 +45,7 @@
               %td= resource.share_holding.send(attr)
     - if resource.ratio
       %section.ratios
-        %h3
+        %h1
           %i.icon-adjust
           Ratios
         %table.table.table-striped
