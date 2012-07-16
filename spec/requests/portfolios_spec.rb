@@ -278,25 +278,6 @@ describe "Portfolios", :mongoid do
     page.should have_content I18n.t("portfolios.index.empty_portfolio")
   end
 
-  it "user can able to add transactions after selecting securities type", :js => true do
-    create :'data_provider/nse_scrip', :id => "GOLDBEES", :last_traded_price => 2456
-
-    visit portfolio_path(portfolio)
-
-    click_link "Add Transaction"
-    current_path.should eq add_transaction_portfolio_path(portfolio)
-    select "Gold", :from => "Type of investment"
-
-    wait_until {  page.should have_selector("#new_gold_transaction") }
-
-    fill_in "Price", :with => 200
-    select 'Buy', :from => "Action"
-    fill_in I18n.t("simple_form.labels.gold_transaction.quantity"), :with => 30
-    click_on I18n.t("helpers.submit.gold_transaction.create")
-    page.should have_content "successfully"
-    current_path.should eq details_portfolio_path(portfolio)
-  end
-
   it "should display stocks profits/losses in stocks analysis page" do
     create_positions_of_all_securities
     create :stock_transaction, :company_code => company.code, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
