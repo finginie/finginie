@@ -19,6 +19,5 @@
   .hero-unit.show-grid
     %p.align-center
       You do not have any portfolios.
-      = t(".empty_portfolio")
-      = link_to 'click here.', new_portfolio_path, :method => :get
+      = link_to 'Create new portfolio', new_portfolio_path, :method => :get, :class => 'btn btn-primary'
 
