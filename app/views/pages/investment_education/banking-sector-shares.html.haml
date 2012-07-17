@@ -1,10 +1,11 @@
 .row
   %article.span9
-    %h1 How to analyze banking sector shares
+    %h1.page-header How to analyze banking sector shares
     %section
       %h3 What is a bank?
       %p
         A bank is essentially a financial institution that acts as an intermediary between those who need money and those who have an excess of it. Banks accept deposits from companies and the general public and make loans to companies and individuals who need money. Banks offer interest on the deposits made with it and charge interest on the loans lent out. The rate of interest offered on deposits is less than the interest charged on loans lent out. The difference between these interests is the main source of income for a bank. Apart from depositors’ money, a bank has access to other sources of funds like borrowing from the RBI (Reserve Bank of India), from corporate bodies and from foreign sources.
+    %section
       %h3 RBI (Reserve Bank of India)
       %p The Reserve Bank of India (RBI) is a government body that oversees the banking system in India and is in charge of regulating the affairs of the banks.
     %section
@@ -67,7 +68,7 @@
             paid on borrowed funds divided by the average amount of the assets on which it earned income in
             that time period (the average earning assets).
           %h3 Source:
-          Footnotes of company financials and conference calls.
+          %p Footnotes of company financials and conference calls.
           %h3 Importance:
           %p
             Net interest margin (NIM) is an indicator of the ability of a bank to generate returns.
@@ -158,6 +159,7 @@
       %p
         Now that you know the important factors to look for in banks, go ahead and look at some banks
         #{link_to 'stocks','http://finginie.com/stocks/14030001.0'} to put your newfound knowledge to work!
+    %sectopm
       %h3 Banking Sector: Risk and Returns
       .align-center
         %small Bank Index vs Interest Rates
@@ -221,7 +223,7 @@
       .article_prev
         Prev:
         =link_to t('investment_education.technical analysis'), main_app.page_path('investment_education/technical-analysis-shares')
-        .article_next
+        .article_next.pull-right
           Next:
           =link_to t('investment_education.IT sectors'), main_app.page_path('investment_education/it-sector')
       #disqus_thread

@@ -1,6 +1,6 @@
 .row
   %article.span9
-    %h1 SIP: How to invest in a systematic investment plan
+    %h1.page-header SIP: How to invest in a systematic investment plan
     %section
       %h3 What is a SIP?
       %p
@@ -9,13 +9,15 @@
         Note: SIP a method of investing and not an investment avenue in itself.
       %p In SIP, a fixed amount is debited from your bank account on pre specified dates in favour of the mutual fund. The money is then channelized into the scheme/ schemes selected by you for the specified time.
       %p The minimum investment required in a SIP is very small. Though it varies from fund to fund, it can be as little as Rs 500. You can opt to make investments spread over periods ranging from daily to half-yearly.
+    %section
       %h3 How can I invest via a SIP?
       %p In a SIP, you have 2 options via which you can make payments to the mutual funds.
       %ul
         %li You can give standing instructions to your bank to debit your account on the pre specified dates in favour of the mutual fund.
         %li You can issue post-dated cheques in favour of the mutual fund.
       %p Contact your financial advisor or the mutual fund house for further details.
-      %h2 Advantages of SIPs
+    %section
+      %h2.page-header Advantages of SIPs
       %ol
         %li
           %h3
@@ -62,9 +64,12 @@
           %p From 1st June 2007 to 1st June 2009 the NIFTY returned a meagre 3.53%. However in this period it traded in a range between 6287.85 (46.33% higher from 1st June, 2007) and 2524.42 (41.26% lower from 1st June, 2009). Also the October, 2008 lows were almost 60% lower than their January, 2008 highs.
           %p What does all this mean you as an investor?
           %ul
-            %li Had you invested a lump sum amount, say Rs 10,000 for 2 years on June 1st 2007, at maturity, your investment would be worth only Rs 10,305 today.
-            %li Had you invested an amount of Rs 10,000 around the time of the January highs, in a matter of 10 and ½ months your investment would have been depleted by 60% to Rs. 4,000 and had you continued to remain invested till June 2009 (investment horizon = 1.5 years) your investment would be worth Rs 6,975.
-            %li Had you invested in Rs 10,000 around October lows you would stand to earn returns of 75%+ in less than a year.
+            %li
+              %p Had you invested a lump sum amount, say Rs 10,000 for 2 years on June 1st 2007, at maturity, your investment would be worth only Rs 10,305 today.
+            %li
+              %p Had you invested an amount of Rs 10,000 around the time of the January highs, in a matter of 10 and ½ months your investment would have been depleted by 60% to Rs. 4,000 and had you continued to remain invested till June 2009 (investment horizon = 1.5 years) your investment would be worth Rs 6,975.
+            %li
+              %p Had you invested in Rs 10,000 around October lows you would stand to earn returns of 75%+ in less than a year.
           %p The lesson to be derived from the above points is that during volatile times, the money that an investor stands to gain or lose can be extremely high and one needs to safeguard himself as much as possible from potential losses yet maximise his returns during up-moves.
           %p SIP mode of investing gives an investor an ideal platform to meet the above objectives. By investing via SIP, an investor basically invests a fixed amount at regular intervals regardless of what level the market is trading at. Hence in a falling market, an investor would benefit by purchasing more units for a given amount while in a rising market the investor is rewarded by rising NAVs. Consider the following examples (amount invested is Rs 1000 at every period):
           %table.table-bordered.table-condensed.table.table-striped
@@ -112,14 +117,13 @@
               %td 6167
           %p As you notice in the above example, the NAV in 1st and 5th months is the same. Had you invested a lump sum in the 1st month, the value of your investment after 4 months would remain the same. However by investing via SIP, the value of your portfolio would have increased by 23.3%.
         %li
-          %h3
-            Convenience: SIPs allow you to make small and regular investments
+          %h3 Convenience: SIPs allow you to make small and regular investments
           %p In SIPs investments are broken down into small amounts over a period of time, thus making savings more convenient than say investing a lump sum. In a way, SIPs also enforce disciplined investing as making regular investments on specified dates is mandatory. Often when you are trying to save money, part of your saving tends to get spent on frivolous purposes.
         %li
-          %h3
-            SIP take out the guess-work from investing and enable you to avoid trying to predict the market.
+          %h3 SIP take out the guess-work from investing and enable you to avoid trying to predict the market.
           %p
             SIPs entail making small investment at regular intervals spread over a long period of time. Thus an investor need not worry about wild fluctuations in markets amidst high volatility.
+    %section
       %h3 Disadvantages of SIPs
       %p As you have seen above, SIP has a fair number of advantages. However there are instances when investments in SIP may not be lucrative.
       %ol
@@ -131,11 +135,13 @@
           %h3
             An  SIP in a fund performing poorly performs poorly
           %p Returns from SIP are as good as those of the funds in which you opt to invest. In case you end up choosing funds that are badly managed and their performances are very poor, your investment is bound to suffer.
+    %section
       %h3 How are SIPs taxed?
       %p
         For #{link_to 'tax purposes', main_app.page_path('investment_education/tax-planning')} and lock-in periods each date of your investment is looked upon as the date when you made your investment. Example: Suppose you have invested in a scheme which has a 3 years lock-in period via a SIP, where by you have to make an investment every 6 months beginning 1st January 2012. The lock in period of your 1st instalment would expire
         on 1st January 2015, 2nd instalment would expire on 1st July 2015 (6 months later) so on and so forth.
       %p Similarly for tax purposes also, each instalment is looked upon as an individual investment and based on the tenure you have been invested for, you are taxed as per long term capital gains tax or short term capital gains tax rates (as is appropriate).
+    %section
       %h3 Tips for investing successfully in SIPs:
       %ol
         %li
@@ -151,7 +157,7 @@
       .article_prev
         Prev:
         =link_to t('investment_education.life_insurance_policies'), main_app.page_path('investment_education/life-insurance-policies')
-        .article_next
+        .article_next.pull-right
           Next:
           =link_to t('investment_education.share_market'), main_app.page_path('investment_education/share-market')
       #disqus_thread

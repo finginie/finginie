@@ -1,15 +1,13 @@
 .row
   %article.span9
-    %h1 Insurance Products
+    %h1.page-header Insurance Products
     %section
-    %section
-      %h2 What is insurance?
+      %h3 What is insurance?
       %p
         Insurance is a form of risk management that allows an insured entity (individual/corporation)
         to protect itself and transfer away its risks to the insurer.
     %section
-      %h2 Indemnify Yourself: Transfer Away Your Risks:
-      =image_tag "investment_education/InsuranceProducts1.png"
+      %h3 Indemnify Yourself: Transfer Away Your Risks:
       %p How can an individual “transfer away his risk”? How can an insurance product protect an individual?
       %p Note that an individual is faced with a risk of a possible loss.
       %p
@@ -25,16 +23,14 @@
         compensation as stated in his insurance policy contract. This is known as insurance
         claiming.
     %section
-      %h2 The Insured and the Insurer:
-      =image_tag "investment_education/InsuranceProducts2.png"
+      %h3 The Insured and the Insurer:
       %p
         The insured is an individual, or an organization that buys an insurance policy and
         is entitled to the compensation benefits of the policy, subject to the terms and
         conditions specified in the contract.
       %p An insurer is a company that sells insurance policies to individuals or organizations who want to be insured.
     %section
-      %h2 Insurance Premiums:
-      =image_tag "investment_education/InsuranceProducts3.png"
+      %h3 Insurance Premiums:
       %p
         Of course, in exchange for such an indemnification by the insurer, the insured will
         have to pay the insurer a sum of money known as the insurance premium. Usually,
@@ -52,7 +48,7 @@
         There have been cases of insurers refusing to insure individuals because of his
         poor track record.
     %section
-      %h2 Life Insurance:
+      %h3 Life Insurance:
       %p
         Life insurance provides some compensation to the family (or any other nominated
         beneficiary) in the event of the insured’s death. The insurer will pay out this
@@ -66,12 +62,12 @@
         insurance and variable life insurance because of their additional savings or investment
         components on top of the basic protection benefits.
       %p
-      %h2 Term Life Insurance
+    %section
+      %h3 Term Life Insurance
       %p
         Term life insurance is the simplest and cheapest form of insurance, typically for
         people under the age of 50. It usually covers only a short term period between 1
         to 10 years and can be renewed at the end of the term.
-      =image_tag "investment_education/InsuranceProducts4.png"
       %p
         Term life insurance is a protection policy in that it only provides protection or
         coverage for the insured event. It does not allow for cash accumulation. So long
@@ -85,7 +81,8 @@
         life insurance. However, the premiums to be paid for this insurance gradually get
         more expensive as a person’s age increases because of the increasing likelihood
         of death.
-      %h2 Whole Life
+    %section
+      %h3 Whole Life
       %p
         Whole life insurance provides the insured with permanent protection as well as a
         savings component. This means that as long as the individual keeps paying the premium,
@@ -95,14 +92,14 @@
         against or redeemed by the insured. This is in contrast to the term insurance which
         has no savings component and only provides protection during the stipulated term
         period in which the insurance contract is in force.
-      =image_tag "investment_education/InsuranceProducts5.png"
       %p
         The premiums charged to younger individuals will usually be lower than those for
         older individuals, because younger individuals have lower probabilities of death.
       %p
         As such, it is advisable for individuals to start buying whole life insurance policies
         when they are young, so that they can lock-in lower premium rates.
-      %h2 Universal Life
+    %section
+      %h3 Universal Life
       %p
         Universal life insurance is similar to the whole life insurance except that there
         is an additional benefit of a potentially higher cash value in the savings component
@@ -114,7 +111,6 @@
         will deduct from the cash value in the account periodically. The amount of interest
         paid will be determined by the insurer and this is usually pegged to a benchmark
         rate such as the SIBOR (Singapore Inter-bank Offered Rate).
-      =image_tag "investment_education/InsuranceProducts6.png"
       %p
         Universal life insurance may provide potentially higher returns because of the flexibility
         of premium payments. Depending on how the interest is credited into the account,
@@ -135,7 +131,8 @@
         to 7% of premium payments. These fees can potentially wipe out the gains received
         from the interest. The guaranteed cash value return is typically at least 4%, which
         is also an extremely low rate.
-      %h2 Variable Life
+    %section
+      %h3 Variable Life
       %p
         The variable life insurance can be considered a type of investment product. The
         insured will invest a portion of his premium into a combination of stocks,bonds,
@@ -143,7 +140,6 @@
         and cash value received will depend on the performance of these investments. The
         returns from these investments will accrue to an insured’s account and potentially
         decrease the size of subsequent premiums that he has to pay.
-      =image_tag "investment_education/InsuranceProducts7.png"
       %p
         There is no guarantee on the cash value received at maturity. If the investments
         perform badly, even the principal sum paid by the policyholder may be at risk.
@@ -152,7 +148,8 @@
         type of insurance will also entail higher administrative fees than most other insurance
         policies because of this investment option.
       %p
-      %h2 Risks
+    %section
+      %h3 Risks
       %ol
         %li
           One risk of investing in insurance policies is the possibility of bankruptcy
@@ -162,7 +159,8 @@
         %li
           Variable life insurance policies entail market risk i.e. the risk that the underlying
           basket of investments don’t perform well, leading to poor or even negative returns
-      %h2 Advantages
+    %section
+      %h3 Advantages
       %ol
         %li
           Insurance policies provide some protection from the negative financial implications
@@ -170,16 +168,17 @@
         %li
           Most insurance policies entail relatively low risk as insurance companies are
           highly regulated.
-      %h2 Disadvantages
+    %section
+      %h3 Disadvantages
       %ol
         %li Insurance returns are usually low in comparison to those of stocks or real estate.
     %footer
       .article_prev
         Prev:
         =link_to t('investment_education.cash_equivalents'), main_app.page_path('investment_education/cash-equivalents')
-      .article_next
-        Next:
-        =link_to t('investment_education.real_estate_investments'), main_app.page_path('investment_education/real-estate-investment')
+        .article_next.pull-right
+          Next:
+          =link_to t('investment_education.real_estate_investments'), main_app.page_path('investment_education/real-estate-investment')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway

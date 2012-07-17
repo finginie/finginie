@@ -1,44 +1,45 @@
 .row
   %article.span9
-    %h1 Options I
+    %h1.page-header Options
     %section
-    %section
-      =image_tag  "investment_education/options3.png"
       %p An option is a legally binding contract that gives the buyer the right but not the obligation to buy (or sell) a pre-determined asset at a pre-determined price on a pre-determined date. Conversely, the seller has the obligation to deliver that underlying asset at that pre-determined price at that pre-determined time. The underlying assets can be stocks,bonds, baskets of stocks,commodities etc.
-      %h2 Terminology
-      %h2 Strike Price
+    %h2.page-header Terminology
+    %section
+      %h3 Strike Price
       %p The pre-determined price at which the option buyer can buy (or sell) the underlying asset at the pre-determined date.
-      %h2 Expiry Date
+    %section
+      %h3 Expiry Date
       %p The pre-determined date on or before which the option buyer can buy (or sell) the underlying asset at the strike price. The option contract will become worthless after the expiry date.
-      %h2 Exercise:
+    %section
+      %h3 Exercise:
       %p The process by which the option buyer “exercises” his right to buy (or sell) the underlying asset on or before the expiry date, thereby taking/making delivery of the underlying asset.
-      %h2 American Option
+    %section
+      %h3 American Option
       %p The type of option which gives the buyer the right to exercise it anytime on or before the expiry date.
-      %h2 European Option
+    %section
+      %h3 European Option
       %p The type of option which gives the buyer the right to exercise it only on the expiry date.
-      %h2 Option Premium
+    %section
+      %h3 Option Premium
       %p The price of the option, i.e. the amount of money that the option buyer has to pay to the seller in order to buy the option.
-      %h2 In the money
+    %section
+      %h3 In the money
       %p If the exercise of an option would result in a profit at that particular moment, it is said to be “in the money” at that moment.
-      %h2 Out of the money
+    %section
+      %h3 Out of the money
       %p If the exercise of an option would not result in a profit at that particular moment, it is said to be “out of the money” at that moment.
     %section
-      %h2 Types of Options:
+      %h3 Types of Options:
       %ol
-        %li 
-          Call Options: Call options give the buyer the right but not the
-          obligation to buy the underlying asset at a pre-determined price on a
-          pre-determined date.
-        %li 
-          Put Options: Put options give the buyer the right but not the
-          obligation to sell the underlying asset at a pre-determined price on a
-          pre-determined date.
+        %li
+          %p Call Options: Call options give the buyer the right but not the obligation to buy the underlying asset at a pre-determined price on a pre-determined date.
+        %li
+          %p Put Options: Put options give the buyer the right but not the obligation to sell the underlying asset at a pre-determined price on a pre-determined date.
       %p
         For example, a call option on 1 Google share with strike price of Rs.500 expiring on 22nd June, 2009 gives the buyer the right to buy 1 Google share at the price of Rs.500 on or before 22nd June, 2009.
         Similarly, a put option on 1 Google share with strike price of Rs.500 expiring on 22nd June, 2009 gives the buyer the right to sell 1 Google share at the price of Rs.500 on or before 22nd June, 2009. Suppose that on 22nd June, Google Shares were trading at Rs.450 and if the buyer were to use his put option to sell his share for Rs.500, he would make a profit of Rs.50.
     %section
-      %h2 Modalities:
-      =image_tag  "investment_education/options8.png"
+      %h3 Modalities:
       %p
         Options give investors leverage as they expose investors to large possible changes
         in the value of their position with small amounts of initial capital. Leverage serves
@@ -69,9 +70,8 @@
         option) even if it means buying shares in the open market and delivering them at
         a loss. The option seller is rewarded for taking this risk in the form of the option
         premium.
-      =image_tag  "investment_education/options9.png"
     %section
-      %h2 Trading:
+      %h3 Trading:
       %p
         Like futures, options too are traded on exchanges. The exchange regulates the trade
         of options and acts as the counterparty to both the buyers and the sellers. The
@@ -79,7 +79,7 @@
         same underlying asset can have different strike prices unlike futures where the
         price is market determined.
     %section
-      %h2 Advantages:
+      %h3 Advantages:
       %ol
         %li
           Options give their buyers leverage. Hence, they gain exposure to large price
@@ -87,13 +87,14 @@
           speculators.
         %li Options are good ways to hedge exposure to the underlying asset price movement.
     %section
-      %h2 Disadvantages:
+      %h3 Disadvantages:
       %ol
-        %li Options expire on the expiry date. Hence is possible for option buyers to lose
-        their entire investment if their options expire out of the money.
-        %li  Option sellers have an unlimited downside and can lose more money than the premium they receive.
+        %li
+          %p Options expire on the expiry date. Hence is possible for option buyers to lose their entire investment if their options expire out of the money.
+        %li
+          %p Option sellers have an unlimited downside and can lose more money than the premium they receive.
     %section
-      %h2 Exotic Options:
+      %h3 Exotic Options:
       %p
         We have only examined basic options in this article. Complex and exotic options
         such as Barrier options, Digital options, Bermudan style options, James Bond style
@@ -101,16 +102,12 @@
         in another article.
 
     %section
-      %h2 Intrinsic Value of Options:
-      =image_tag  "investment_education/Options-Advanced.png"
-      %p 
-        Assume the following:
-        Rs.V represents the value of an underlying stock on the date at which the option contract is exercised
-        Rs.X represents the strike price as indicated on the option contract.
+      %h3 Intrinsic Value of Options:
+      %p Assume the following: Rs.V represents the value of an underlying stock on the date at which the option contract is exercised Rs.X represents the strike price as indicated on the option contract.
       %ol
         %li
-          Intrinsic value of Call option = Rs. Max [0, V – X]
-          %p 
+          %p Intrinsic value of Call option = Rs. Max [0, V – X]
+          %p
             A call option allows the option buyer the right to buy the stock at the strike price, Rs.X. The buyer will then sell this stock in the open market at the current trading price of Rs.V. His profit will thus, be Rs.(V – X). Thus, it is obvious that a call option buyer will only profit if Rs.V > Rs.X. This option contract is thus in-the-money as the buyer is profiting.
           %p
             Next, if the stock is currently trading below the strike price of the option, i.e. Rs.V<
@@ -118,16 +115,14 @@
           %p
             The option contract will not be exercised and the option’s intrinsic value is Rs.0. This option contract is considered out-of-the money.
           %p
-        =image_tag  "investment_education/Options-Advanced2.png"
         %li Intrinsic value of Put option = Rs. Max [0, X – V]
         A put option allows the option buyer the right to sell the stock at the strike price, Rs.X. The buyer will then sell this stock at Rs.X, no matter what price the stock is currently trading at in the open market. His profit will thus be Rs.(X – V). Thus, it is obvious that the put option buyer will only profit if Rs.V<
         Rs.X. This put option is considered in-the-money.
         %p Next, suppose that the stock is currently trading above the strike price of the option i.e. Rs. V > Rs.X. It makes no sense for the option buyer to sell at a lower value when he can sell it in the open market at a higher value. The option contract will not be exercised and the options intrinsic value is Rs.0. The put option is considered out-of-the-money.
-      %p 
+      %p
         The minimum intrinsic value of an option is zero because the option contract will not be exercised if the investor expects a loss upon the exercise of the option. In this case, the seller will earn the option premium on selling the option and the buyer will make a loss on the premium paid to the seller.
     %section
-      %h2 Calculating Payoffs:
-      =image_tag  "investment_education/Options-Advanced3.png"
+      %h3 Calculating Payoffs:
       %p
         Buyers of option contracts need to pay for the option premium. Thus, the appropriate payoffs for buyers of option contracts can be calculated as follows:
       %ol
@@ -135,21 +130,21 @@
         %li Put Option: Rs. Max [0, V – X] - Rs.P, where P is the put option premium
       %p The payoff for the seller of an option will be the exactly opposite of that of his buyer. This makes sense because the seller has an obligation to the buyer. A call option seller has the obligation to sell the underlying stock to the buyer at the strike price if the buyer exercises the call option.
     %section
-      %h2 Trading Positions: The Long and Short of it:
+      %h3 Trading Positions: The Long and Short of it:
       %p
       %ol
         %li Long position: When one buys an options contract, one is said to have a “long” position in the option
         %li Short position: When one sells an options contract, one is said to have a “short”position in the option.
     %section
-      %h2 Option Payoff Diagrams:
+      %h3 Option Payoff Diagrams:
       %p Again, we assume the following: Rs.V represents the value of an underlying stock on the date at which the option contract is exercised and Rs.X represents the strike price as indicated on the option contract. Rs.C is the call option premium and Rs.P is the put option premium.
       =image_tag  "investment_education/Options-Advanced4.png"
-      =image_tag  "investment_education/Options-Advanced5.png"
+      =image_tag  "investment_education/Options-Advanced5.png", :class => "pull-right"
       %p The buyer will only exercise his call option if the value of the stock price rises above the strike price i.e. he will be able to buy an expensive stock for a relatively low price. His breakeven point is Rs. (X + C).
       %p The payoff diagram for the call option seller will be exactly opposite of that of his buyer.
       %p An interesting point to note here is that in theory, the stock price may rise to infinity. The payoff for a call option buyer may rise to positive infinity while a call option seller may see losses that extend to infinity as well.
       =image_tag  "investment_education/Options-Advanced6.png"
-      =image_tag  "investment_education/Options-Advanced7.png"
+      =image_tag  "investment_education/Options-Advanced7.png", :class => "pull-right"
       %p Refer to the payoff diagram for the put option buyer: Since the buyer will receive Rs.X by exercising his right to sell as well as incur a cost of Rs.P by investing in the put option, his highest payoff is Rs.(X – P). His maximum loss is Rs.P if he does not exercise his option. The buyer will only exercise his put option if the value of the stock price falls below the strike price of Rs.X i.e. he will be able to sell a cheap stock at a high price.
       %p The payoff diagram for the put option seller will be exactly opposite of that of his buyer.
 

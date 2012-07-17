@@ -1,6 +1,6 @@
 .row
   %article.span9
-    %h1 Tax Planning
+    %h1.page-header Tax Planning
     %section
       %p
         If you plan well, investments can offer you benefits in the form of tax exemptions and lead to significant savings. At times, the appreciation in certain investments may not be significant but when you factor in the tax benefits you gain from them, they may beat other investments avenues which give you higher absolute returns. Let us have a look at some of tax aspects of various investments.
@@ -115,10 +115,14 @@
     %section
       %p As you notice above
       %ul
-        %li Even though S&P CNX Nifty returned almost the same as fixed deposit, there is a big difference between the net value of portfolio “Equity 1” and “8.5% Fixed Deposit”. This is because of the tax saved under section 80C (which is invested).
-        %li CNX Midcap outperformed provident fund over the past 5 years, yet the net value of portfolio “Equity 2” is less than “Provident fund”. This again is because the tax benefits offered under section 80C.
-        %li Fixed deposits and provident fund yielded the same return over 5 years, yet the provident fund portfolio is more than the fixed deposit portfolio. This is because the interest earned in provident is tax free while that under fixed deposit is taxable.
-        %li Amongst all the different avenues ELSS has proved to be the best.
+        %li
+          %p Even though S&P CNX Nifty returned almost the same as fixed deposit, there is a big difference between the net value of portfolio “Equity 1” and “8.5% Fixed Deposit”. This is because of the tax saved under section 80C (which is invested).
+        %li
+          %p CNX Midcap outperformed provident fund over the past 5 years, yet the net value of portfolio “Equity 2” is less than “Provident fund”. This again is because the tax benefits offered under section 80C.
+        %li
+          %p Fixed deposits and provident fund yielded the same return over 5 years, yet the provident fund portfolio is more than the fixed deposit portfolio. This is because the interest earned in provident is tax free while that under fixed deposit is taxable.
+        %li
+          %p Amongst all the different avenues ELSS has proved to be the best.
       %p As an investor, do not be solely driven by the percentage returns but do factor in benefits of tax exemptions.
     %section
       %h3 Tax on interest
@@ -135,8 +139,10 @@
     %section
       %h3 Tips to save tax on capital gains
       %ol
-        %li In case you are sitting on a profit that you made on an investment within one year you may consider continuing to hold it to avoid paying 15% short term capital gains tax. However do keep in mind that markets are extremely volatile and you may end up losing more than you save in taxes.
-        %li In case you are incurring short term losses and expect a further drop in the prices, sell your stocks, realize your losses and buy those stocks at a cheaper valuation when the prices fall in future. In such a case not only would you pick up stocks at a lower price but also benefit from booking a short term capital loss which can be used to set off any capital gains that might have booked that year (thus reducing your tax payable). Tax loss can be carried forward for next 8 years and set off against futures profits.
+        %li
+          %p In case you are sitting on a profit that you made on an investment within one year you may consider continuing to hold it to avoid paying 15% short term capital gains tax. However do keep in mind that markets are extremely volatile and you may end up losing more than you save in taxes.
+        %li
+          %p In case you are incurring short term losses and expect a further drop in the prices, sell your stocks, realize your losses and buy those stocks at a cheaper valuation when the prices fall in future. In such a case not only would you pick up stocks at a lower price but also benefit from booking a short term capital loss which can be used to set off any capital gains that might have booked that year (thus reducing your tax payable). Tax loss can be carried forward for next 8 years and set off against futures profits.
     %section
       %h3 Illustration
       %p You have booked short term capital gains of Rs 12,700 up till 7th December, 2011 and you are currently incurring a loss of Rs 7,200 from your investment in Tata Steel. Since the global market cues are weak, you expect a further correction in price of Tata Steel. What should you do?
@@ -145,13 +151,11 @@
       %h3 Other tax on shares
       %ol
         %li
-          %h3
-            Securities transaction tax (STT):
-          Securities Transaction is charged at 0.025% of the transaction value. In case you make a purchase of Rs 10,000, you would pay Rs 2.5 as STT.
+          %h3 Securities transaction tax (STT):
+          %p Securities Transaction is charged at 0.025% of the transaction value. In case you make a purchase of Rs 10,000, you would pay Rs 2.5 as STT.
         %li
-          %h3
-            Service tax on brokerage:
-          A retail investor can purchase and sell share only through a broker and is to pay service tax on the brokerage fees he pays to the broker. At present the service tax is 10.3%. In case you pay 0.5% brokerage and you have just bought shares worth Rs 10,000 then the brokerage payable is Rs 50. You would pay an additional Rs 5.15 (50 *10.3%) as service tax on the brokerage.
+          %h3 Service tax on brokerage:
+          %p A retail investor can purchase and sell share only through a broker and is to pay service tax on the brokerage fees he pays to the broker. At present the service tax is 10.3%. In case you pay 0.5% brokerage and you have just bought shares worth Rs 10,000 then the brokerage payable is Rs 50. You would pay an additional Rs 5.15 (50 *10.3%) as service tax on the brokerage.
     %section
       %h3 Other Investments
       %p The Government of India/Government linked entities keep coming up with special issues like the NHAI Tax-Free bonds, PFC bonds etc which offer reasonable returns that are 100% tax free. Returns from some of these issues are higher than the after tax returns of several bonds and fixed deposits. Investors should certainly evaluate these investments and could invest in them as part of a diversified portfolio.
@@ -159,7 +163,7 @@
       .article_prev
         Prev:
         =link_to t('investment_education.Diversification'),main_app.page_path('investment_education/investment-diversification')
-        .article_next
+        .article_next.pull-right
           Next:
           =link_to t('investment_education.fixed_deposits'), main_app.page_path('investment_education/investment-fixed-deposits')
       #disqus_thread
