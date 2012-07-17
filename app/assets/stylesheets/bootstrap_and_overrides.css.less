@@ -61,16 +61,12 @@ h2, h5 {
   }
 }
 
-h3 {
+h3, h6 {
   font-size: 14px;
-  color: #414141;
 }
 
-h6 {
-  font-size: 12px;
-}
-h4, h5, h6 {
-  color: @grayLight;
+h3, h4, h5 {
+  color: @grayDark;
 }
 
 p {
@@ -86,8 +82,15 @@ select.date {
   margin-right: 4px;
 }
 
-.page-header {
-  padding-bottom: 0;
-  border-color: #414141;
-  margin-top: 0;
+.well {
+  background-color: inherit;
+  overflow: hidden;
 }
+.well .header {
+  background-color: @grayLighter;
+  border-bottom: 1px @grayDark;
+
+  margin: -20px -20px 10px;
+  padding: 7px 20px;
+}
+
