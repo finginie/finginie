@@ -130,12 +130,11 @@
         This was a summary of a sample financial plan, not the full plan.
 
     %footer
-      .article_prev
-        Prev:
-        =link_to t('investment_education.Investingi_vs_Trading'), main_app.page_path('investment_education/investing-trading-shares')
-        .article_next.pull-right
-          Next:
-          =link_to t('investment_education.Where_to_Invest'), main_app.page_path('investment_education/where-to-invest')
+      %ul.pager
+        %li.previous
+          =link_to t('investment_education.← Investingi_vs_Trading'), main_app.page_path('investment_education/investing-trading-shares')
+        %li.next
+          =link_to t('investment_education.Where_to_Invest →'), main_app.page_path('investment_education/where-to-invest')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway

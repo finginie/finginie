@@ -220,12 +220,11 @@
       %small
         * The above returns are adjusted for stock bonus and stock splits
     %footer
-      .article_prev
-        Prev:
-        =link_to t('investment_education.technical analysis'), main_app.page_path('investment_education/technical-analysis-shares')
-        .article_next.pull-right
-          Next:
-          =link_to t('investment_education.IT sectors'), main_app.page_path('investment_education/it-sector')
+      %ul.pager
+        %li.previous
+          =link_to t('investment_education.← technical analysis'), main_app.page_path('investment_education/technical-analysis-shares')
+        %li.next
+          =link_to t('investment_education.IT sectors →'), main_app.page_path('investment_education/it-sector')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway

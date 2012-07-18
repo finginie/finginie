@@ -101,12 +101,11 @@
       %p
         Investors should invest for the medium to long term and not get overly worried about short term fluctuations. Remember, the market is driven by fundamentals in the long run. Fundamentals are easier to model and understand than therefore profit from, than short term fluctuations which are capricious and very hard to predict/model.
     %footer
-      .article_prev
-        Prev:
-        =link_to t('investment_education.life_insurance'), main_app.page_path('investment_education/life-insurance-policies')
-        .article_next.pull-right
-          Next:
-          =link_to t('investment_education.Fundamental_Analysis'), main_app.page_path('investment_education/fundamental-analysis-shares')
+      %ul.pager
+        %li.previous
+          =link_to t('investment_education.← life_insurance'), main_app.page_path('investment_education/life-insurance-policies')
+        %li.next
+          =link_to t('investment_education.Fundamental_Analysis →'), main_app.page_path('investment_education/fundamental-analysis-shares')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway

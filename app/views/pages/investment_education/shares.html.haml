@@ -81,12 +81,11 @@
       %p
         Dividends received are taxed at the company’s end before they are distributed to the shareholder and as such are tax free in hand of the investor.
     %footer
-      .article_prev
-        Prev:
-        =link_to t('investment_education.Gold'), main_app.page_path('investment_education/gold-investment')
-        .article_next.pull-right
-          Next:
-          =link_to t('investment_education.Mutual_Funds'), main_app.page_path('investment_education/mutual-funds-etf')
+      %ul.pager
+        %li.previous
+          =link_to t('investment_education.← Gold'), main_app.page_path('investment_education/gold-investment')
+        %li.next
+          =link_to t('investment_education.Mutual_Funds →'), main_app.page_path('investment_education/mutual-funds-etf')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway

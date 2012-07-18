@@ -173,12 +173,11 @@
       %ol
         %li Insurance returns are usually low in comparison to those of stocks or real estate.
     %footer
-      .article_prev
-        Prev:
-        =link_to t('investment_education.cash_equivalents'), main_app.page_path('investment_education/cash-equivalents')
-        .article_next.pull-right
-          Next:
-          =link_to t('investment_education.real_estate_investments'), main_app.page_path('investment_education/real-estate-investment')
+      %ul.pager
+        %li.previous
+          =link_to t('investment_education.← cash_equivalents'), main_app.page_path('investment_education/cash-equivalents')
+        %li.next
+          =link_to t('investment_education.real_estate_investments →'), main_app.page_path('investment_education/real-estate-investment')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway

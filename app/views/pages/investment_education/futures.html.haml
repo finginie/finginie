@@ -150,12 +150,11 @@
       %p Futures prices change every day as the spot prices, interest rates and dividend yields change. The futures price will converge to equal the spot price as maturity date approaches.
 
     %footer
-      .article_prev
-        Prev:
-        =link_to t('investment_education.forwards'), main_app.page_path('investment_education/forwards')
-        .article_next.pull-right
-          Next:
-          =link_to t('investment_education.options'), main_app.page_path('investment_education/options')
+      %ul.pager
+        %li.previous
+          =link_to t('investment_education.← forwards'), main_app.page_path('investment_education/forwards')
+        %li.next
+          =link_to t('investment_education.options →'), main_app.page_path('investment_education/options')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway

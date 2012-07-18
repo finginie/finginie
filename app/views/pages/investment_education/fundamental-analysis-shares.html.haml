@@ -92,12 +92,11 @@
         %li
           %p Return on Equity (ROE)
     %footer
-      .article_prev
-        Prev:
-        =link_to t('investment_education.share_market'), main_app.page_path('investment_education/share-market')
-        .article_next.pull-right
-          Next:
-          =link_to t('investment_education.technical_analysis'), main_app.page_path('investment_education/technical-analysis-shares')
+      %ul.pager
+        %li.previous
+          =link_to t('investment_education.← share_market'), main_app.page_path('investment_education/share-market')
+        %li.next
+          =link_to t('investment_education.technical_analysis →'), main_app.page_path('investment_education/technical-analysis-shares')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway

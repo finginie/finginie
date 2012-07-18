@@ -47,12 +47,11 @@
       %p REITS are listed on exchanges and can be bought and sold just like regular stocks. In Singapore, REITS are typically known as S-REITS. There are about 20 S-REITS currently trading on the Singapore Exchange.
       %p Further information on REITS will be covered in the article on REITS.
     %footer
-      .article_prev
-        Prev:
-        =link_to t('investment_education.insurance_products'), main_app.page_path('investment_education/insurance-products')
-        .article_next.pull-right
-          Next:
-          =link_to t('investment_education.foreign_exchange'), main_app.page_path('investment_education/foreign-exchange')
+      %ul.pager
+        %li.previous
+          =link_to t('investment_education.← insurance_products'), main_app.page_path('investment_education/insurance-products')
+        %li.next
+          =link_to t('investment_education.foreign_exchange →'), main_app.page_path('investment_education/foreign-exchange')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway

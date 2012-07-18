@@ -181,12 +181,11 @@
         and #{link_to 'Fundamental Analysis', main_app.page_path('investment_education/fundamental-analysis-shares')} to
         learn how to select stocks to invest in.
     %footer
-      .article_prev
-        Prev:
-        =link_to t('investment_education.Investment_Plan'), main_app.page_path('investment_education/investment-plan')
-        .article_next.pull-right
-          Next:
-          =link_to t('investment_education.Diversification'), main_app.page_path('investment_education/investment-diversification')
+      %ul.pager
+        %li.previous
+          =link_to t('investment_education.← Investment_Plan'), main_app.page_path('investment_education/investment-plan')
+        %li.next
+          =link_to t('investment_education.Diversification →'), main_app.page_path('investment_education/investment-diversification')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway

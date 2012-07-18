@@ -32,12 +32,11 @@
         %li
           %p Collateral: Forward contracts are not backed by collateral. Therefore, counterparties face credit risk. In contrast, futures contracts are traded over an exchange and the values of the futures contracts are marked-to-market daily.
     %footer
-      .article_prev
-        Prev:
-        =link_to t('investment_education.foreign_exchange'), main_app.page_path('investment_education/foreign_exchange2')
-        .article_next.pull-right
-          Next:
-          =link_to t('investment_education.futures'), main_app.page_path('investment_education/futures')
+      %ul.pager
+        %li.previous
+          =link_to t('investment_education.← foreign_exchange'), main_app.page_path('investment_education/foreign_exchange2')
+        %li.next
+          =link_to t('investment_education.futures →'), main_app.page_path('investment_education/futures')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway

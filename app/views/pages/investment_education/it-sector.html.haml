@@ -103,12 +103,11 @@
       %small
         * The above returns are adjusted for stock bonus and stock splits
     %footer
-      .article_prev
-        Prev:
-        =link_to t('investment_education.Banking_Sector'), main_app.page_path('investment_education/banking-sector-shares')
-        .article_next.pull-right
-          Next:
-          =link_to t('investment_education%li.span3.articles'), main_app.page_path('investment_education/articles')
+      %ul.pager
+        %li.previous
+          =link_to t('investment_education.← Banking_Sector'), main_app.page_path('investment_education/banking-sector-shares')
+        %li.next
+          =link_to t('investment_education.articles →'), main_app.page_path('investment_education/articles')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway

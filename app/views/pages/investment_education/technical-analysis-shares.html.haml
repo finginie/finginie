@@ -65,12 +65,11 @@
         In doing so, there is no need for information on the fundamentals of securities, such as the business model, management strategies or financial statements, in order to value these securities. This is one important advantage of technical analysis that makes it more popular than fundamental analysis.
 
     %footer
-      .article_prev
-        Prev:
-        =link_to t('investment_education.fundamental_analysis'), main_app.page_path('investment_education/fundamental-analysis-shares')
-        .article_next.pull-right
-          Next:
-          =link_to t('investment_education.Banking_Sector'), main_app.page_path('investment_education/banking-sector-shares')
+      %ul.pager
+        %li.previous
+          =link_to t('investment_education.← fundamental_analysis'), main_app.page_path('investment_education/fundamental-analysis-shares')
+        %li.next
+          =link_to t('investment_education.Banking_Sector →'), main_app.page_path('investment_education/banking-sector-shares')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway
@@ -85,7 +84,7 @@
         %ul.unstyled
           %li=link_to "Technical Analysis -Wikipedia", "http://en.wikipedia.org/wiki/Technical_analysis", html_options = {:target => "_blank"}
           %li=link_to "Technical Analysis: Tutorial", "http://www.investopedia.com/university/technical/", html_options = {:target => "_blank"}
-        %li=link_to "Blending Technical And Fundamental Analysis", "http://www.investopedia.com/articles/trading/07/technical-fundamental.asp", html_options = {:target => "_blank"}
+          %li=link_to "Blending Technical And Fundamental Analysis", "http://www.investopedia.com/articles/trading/07/technical-fundamental.asp", html_options = {:target => "_blank"}
     %li.span3.videos
       .well
         %h5.header Videos

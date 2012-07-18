@@ -66,12 +66,11 @@
         #{link_to 'diversification', main_app.page_path('investment_education/investment-diversification')}
         asset. We advise investing in gold ETFs and gold Mutual funds as opposed to physical gold.
     %footer
-      .article_prev
-        Prev:
-        =link_to t('investment_education.fixed_deposits'), main_app.page_path('investment_education/investment-fixed-deposits')
-        .article_next.pull-right
-          Next:
-          =link_to t('investment_education.Shares'), main_app.page_path('investment_education/shares')
+      %ul.pager
+        %li.previous
+          =link_to t('investment_education.← fixed_deposits'), main_app.page_path('investment_education/investment-fixed-deposits')
+        %li.next
+          =link_to t('investment_education.Shares →'), main_app.page_path('investment_education/shares')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway

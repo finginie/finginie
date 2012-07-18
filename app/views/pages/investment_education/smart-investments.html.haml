@@ -197,9 +197,9 @@
         Lesson :
         %small Follow your portfolio regularly to avoid ending up with a ‘burnt’ portfolio.
     %footer
-      .article_next.pull-right
-        Next:-
-        =link_to t('investment_education.Types of Investments'), main_app.page_path('investment_education/investment-types')
+      %ul.pager
+        %li.next
+          =link_to t('investment_education.Types of Investments →'), main_app.page_path('investment_education/investment-types')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway

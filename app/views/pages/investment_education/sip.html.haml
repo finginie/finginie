@@ -154,12 +154,11 @@
         %h3 Editor’s Note:
         %p SIPs in well managed funds tend to work very well, especially for small investors. They also force the investor to be disciplined and save regularly.
     %footer
-      .article_prev
-        Prev:
-        =link_to t('investment_education.life_insurance_policies'), main_app.page_path('investment_education/life-insurance-policies')
-        .article_next.pull-right
-          Next:
-          =link_to t('investment_education.share_market'), main_app.page_path('investment_education/share-market')
+      %ul.pager
+        %li.previous
+          =link_to t('investment_education.← life_insurance_policies'), main_app.page_path('investment_education/life-insurance-policies')
+        %li.next
+          =link_to t('investment_education.share_market →'), main_app.page_path('investment_education/share-market')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway

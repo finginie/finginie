@@ -166,12 +166,11 @@
         for their short-term financing needs. In the midst of the crisis, the Federal Reserve
         kept the entire financial system in the U.S. from falling apart.
     %footer
-      .article_prev
-        Prev:
-        =link_to t('investment_education.risk_management'), main_app.page_path('investment_education/risk-management')
-        .article_next.pull-right
-          Next:
-          =link_to t('investment_education.insurance_products'), main_app.page_path('investment_education/insurance-products')
+      %ul.pager
+        %li.previous
+          =link_to t('investment_education.← risk_management'), main_app.page_path('investment_education/risk-management')
+        %li.next
+          =link_to t('investment_education.insurance_products →'), main_app.page_path('investment_education/insurance-products')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway

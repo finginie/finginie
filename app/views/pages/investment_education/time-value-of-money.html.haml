@@ -138,9 +138,11 @@
       %p The investment product is worth Rs. 6998.02 today.
       %p The concept of “Time Value of Money” is of paramount importance in finance. All securities are valued using this concept. You will need a financial calculator to help you use these concepts to real world situations.
     %footer
-      .article_next.pull-right
-        Next:
-        =link_to t('investment_education.risk_management'), main_app.page_path('investment_education/risk-management')
+      %ul.pager
+        %li.previous
+          =link_to t('investment_education.← articles'), main_app.page_path('investment_education/articles')
+        %li.next
+          =link_to t('investment_education.risk_management →'), main_app.page_path('investment_education/risk-management')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway

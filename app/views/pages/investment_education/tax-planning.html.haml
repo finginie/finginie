@@ -160,12 +160,11 @@
       %h3 Other Investments
       %p The Government of India/Government linked entities keep coming up with special issues like the NHAI Tax-Free bonds, PFC bonds etc which offer reasonable returns that are 100% tax free. Returns from some of these issues are higher than the after tax returns of several bonds and fixed deposits. Investors should certainly evaluate these investments and could invest in them as part of a diversified portfolio.
     %footer
-      .article_prev
-        Prev:
-        =link_to t('investment_education.Diversification'),main_app.page_path('investment_education/investment-diversification')
-        .article_next.pull-right
-          Next:
-          =link_to t('investment_education.fixed_deposits'), main_app.page_path('investment_education/investment-fixed-deposits')
+      %ul.pager
+        %li.previous
+          =link_to t('investment_education.← Diversification'),main_app.page_path('investment_education/investment-diversification')
+        %li.next
+          =link_to t('investment_education.fixed_deposits →'), main_app.page_path('investment_education/investment-fixed-deposits')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway

@@ -75,12 +75,11 @@
       In the above case, we have made some very simple assumptions to make it easy for our readers to understand the case. Fixed deposit rates are subject to change with time and investors face the risk of interest rates decreasing.
 
     %footer
-      .article_prev
-        Prev:
-        =link_to t('investment_education.bonds'), main_app.page_path('investment_education/bonds')
-        .article_next.pull-right
-          Next:
-          =link_to t('investment_education.sip'), main_app.page_path('investment_education/sip')
+      %ul.pager
+        %li.previous
+          =link_to t('investment_education.← bonds'), main_app.page_path('investment_education/bonds')
+        %li.next
+          =link_to t('investment_education.sip →'), main_app.page_path('investment_education/sip')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway

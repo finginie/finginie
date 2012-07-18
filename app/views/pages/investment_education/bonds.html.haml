@@ -116,12 +116,11 @@
         portfolio. Bonds with tax saving features under Section 80 CCF are very popular these days and small
         investors should seriously consider these bonds for investment.
     %footer
-      .article_prev
-        Prev:
-        =link_to t('investment_education.mutual_funds'),main_app.page_path('investment_education/mutual-funds-etf')
-        .article_next.pull-right
-          Next:
-          =link_to t('investment_education.life_insurance'), main_app.page_path('investment_education/life-insurance-policies')
+      %ul.pager
+        %li.previous
+          =link_to t('investment_education.← mutual_funds'),main_app.page_path('investment_education/mutual-funds-etf')
+        %li.next
+          =link_to t('investment_education.life_insurance →'), main_app.page_path('investment_education/life-insurance-policies')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway

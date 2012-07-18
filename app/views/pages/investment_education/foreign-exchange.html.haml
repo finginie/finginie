@@ -92,12 +92,11 @@
         %li
           %p Brokerages or money-changers will profit from the bid-ask spread, which is the difference between the bid-offer rate
     %footer
-      .article_prev
-        Prev:
-        =link_to t('investment_education.real_estate_investment'), main_app.page_path('investment_education/real_estate_investment')
-        .article_next.pull-right
-          Next:
-          =link_to t('investment_education.forwards'), main_app.page_path('investment_education/forwards')
+      %ul.pager
+        %li.previous
+          =link_to t('investment_education.← real_estate_investment'), main_app.page_path('investment_education/real_estate_investment')
+        %li.next
+          =link_to t('investment_education.forwards →'), main_app.page_path('investment_education/forwards')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway

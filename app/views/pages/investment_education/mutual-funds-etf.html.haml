@@ -533,12 +533,11 @@
         Mutual Funds and ETFs are fantastic for small investors just starting out as they give you diversification benefits at a low cost. We strongly recommend that you try to max out your potential tax deduction under Section 80c by investing in 80c compliant schemes such as ELSSs to save tax.
 
     %footer
-      .article_prev
-        Prev:
-        =link_to t('investment_education.shares'), main_app.page_path('investment_education/shares')
-        .article_next.pull-right
-          Next:
-          =link_to t('investment_education.bonds'), main_app.page_path('investment_education/bonds')
+      %ul.pager
+        %li.previous
+          =link_to t('investment_education.← shares'), main_app.page_path('investment_education/shares')
+        %li.next
+          =link_to t('investment_education.bonds →'), main_app.page_path('investment_education/bonds')
       #disqus_thread
   %ul.thumbnails
     %li.span3.takeaway
