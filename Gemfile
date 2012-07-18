@@ -17,9 +17,9 @@ group :assets do
   gem 'twitter-bootstrap-rails'
 end
 
-gem 'active_attr', :github => 'sankaranarayanan/active_attr'
+gem 'active_attr',                         :github => 'sankaranarayanan/active_attr'
 gem 'airbrake'
-gem 'bootstrap-helper', git: 'git://github.com/LoonyBin/bootstrap-helper.git'
+gem 'bootstrap-helper',                    :github => 'LoonyBin/bootstrap-helper'
 gem 'cancan'
 gem 'cells'
 gem 'dimensions-rails'
@@ -28,20 +28,18 @@ gem 'dynamic_sitemaps'
 gem 'haml-rails'
 gem 'high_voltage'
 gem 'inherited_resources'
-gem 'jquery-datatables-rails', :github => 'rweng/jquery-datatables-rails'
+gem 'jquery-datatables-rails',             :github => 'rweng/jquery-datatables-rails'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'meta_search'
-gem 'mongoid' # Required by mongoid search
-gem 'mongoid_search', :git => "git://github.com/mauriciozaffari/mongoid_search.git"
-gem 'nested_form', :github => 'TMaYaD/nested_form'
+gem 'nested_form',                         :github => 'TMaYaD/nested_form'
 gem 'newrelic_rpm'
-gem 'omniauth_single_signon',   :github => 'FinGinie/omniauth-single-signon'
+gem 'omniauth_single_signon',              :github => 'FinGinie/omniauth-single-signon'
 gem 'paper_trail'
 gem 'pg'
 gem 'rack-environmental'
-gem 'sheet_mapper', :github => 'TMaYaD/sheet_mapper'
-gem 'simple_form', :github => 'plataformatec/simple_form'
+gem 'sheet_mapper',                        :github => 'TMaYaD/sheet_mapper'
+gem 'simple_form',                         :github => 'plataformatec/simple_form'
 gem 'simple-navigation'
 gem 'simple-navigation-bootstrap'
 gem 'thin'
@@ -75,7 +73,7 @@ group :test, :development do
 end
 
 group :development do
-  gem 'heroku'
+  gem 'heroku_san'
   gem 'rails_best_practices'
   gem 'rails-footnotes', '>= 3.7.5.rc4'
 end
