@@ -1,5 +1,5 @@
 .row
-  %article.span8
+  %article.span9
     %h1 Commodities
     %section
     %section
@@ -111,19 +111,19 @@
         =link_to t('investment_education.insurance_products'), main_app.page_path('investment_education/insurance_products')
       #disqus_thread
   %ul.thumbnails
-    %li.span4.takeaway
-      %h2 Take Away
+    %li.span3.takeaway
+      %h5.header Take Away
       %ul
         %li Increase in global demand of commodities has led to a rise in commodities (identical goods) trading.
         %li Commodities are usually traded though options or futures.
         %li Since commodities are not highly correlated with equities, they provide a good #{link_to 'diversification', page_path('investment_education/diversification')} option.
         %li However, it is not easy for small investors to trade commodities.
-    %li.span4.articles
-      %h2 Articles
+    %li.span3.articles
+      %h5.header Articles
       %ul
         %li=link_to "Guide to commodities Trading in India", "http://www.tradingpicks.com/beginners_guide.htm", html_options = {:target => "_blank"}
-    %li.span4.videos
-      %h2 Videos
+    %li.span3.videos
+      %h5.header Videos
       %ul
         %li=link_to "Commodity Trading --Basics", "http://www.youtube.com/watch?v=FOTobOm1M1s", html_options = {:target => "_blank"}
         %li=link_to "How to Trade Commodities", "http://www.youtube.com/watch?v=A4IrqiIshOs&feature=related", html_options = {:target => "_blank"}

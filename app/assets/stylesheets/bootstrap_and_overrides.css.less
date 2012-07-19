@@ -43,16 +43,14 @@
 
 h1, h4 {
   font-size: 20px;
+  line-height: @baseLineHeight * 2;
   small {
     font-size: 16px;
   }
 }
 
-h1, h2, h4, h5 {
+h2, h3, h5, h6 {
   line-height: @baseLineHeight * 1.5;
-}
-h3, h6 {
-  line-height: @baseLineHeight;
 }
 h2, h5 {
   font-size: 16px;
@@ -60,11 +58,13 @@ h2, h5 {
     font-size: 12px;
   }
 }
+
 h3, h6 {
-  font-size: 12px;
+  font-size: 14px;
 }
-h4, h5, h6 {
-  color: @grayLight;
+
+h3, h4, h5 {
+  color: @grayDark;
 }
 
 p {
@@ -78,4 +78,12 @@ textarea {
 select.date {
   width: 70px;
   margin-right: 4px;
+}
+
+.well {
+  padding: 14px;
+}
+.well .header {
+  border-bottom: 1px solid @grayLight;
+  margin: 0 0 10px;
 }

@@ -1,5 +1,5 @@
 .row
-  %article.span8
+  %article.span9
     %h1 Analyzing your Needs
     %section
     %section
@@ -57,25 +57,25 @@
       .article_prev
         Prev:
         =link_to t('investment_education.investment_trading'), main_app.page_path('investment_education/investment_trading')
-      .article_next
-        Next:
-        =link_to t('investment_education.investment_plan'), main_app.page_path('investment_education/investment_plan')
+        .article_nex.pull-rightt
+          Next:
+          =link_to t('investment_education.investment_plan'), main_app.page_path('investment_education/investment_plan')
       #disqus_thread
   %ul.thumbnails
-    %li.span4.takeaway
-      %h2 Take Away
+    %li.span3.takeaway
+      %h5.header Take Away
       %ul
         %li Analyzing your needs and constraints is the first step in investing.
         %li Your age, current financial position and future goals affect your investing strategies.
         %li Select an appropriate time horizon- the time you would like invest for e.g. 2 years, 10 years, etc.
         %li Understand your risk profile- your ability and willingness to take on risk.
         %li A portfolio consisting of a right mix of different securities can be constructed after needs analysis.
-    %li.span4.articles
-      %h2 Articles
+    %li.span3.articles
+      %h5.header Articles
       %ul
-        %li=link_to "Financial Needs Analysis", "http://ezin%li.span4earticles.com/?Financial-Needs-Analysis&id=628766", html_options = {:target => "_blank"}
+        %li=link_to "Financial Needs Analysis", "http://ezinearticles.com/?Financial-Needs-Analysis&id=628766", html_options = {:target => "_blank"}
         %li=link_to "Sample Needs Analysis Document", "https://www.impact-tech.com/PlanLabContent/Documents/Sample_Presentations/fna.pdf", html_options = {:target => "_blank"}
-    %li.span4.videos
-      %h2 Videos
+    %li.span3.videos
+      %h5.header Videos
       %ul
         %li No video available yet.

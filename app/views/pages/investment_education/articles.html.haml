@@ -1,8 +1,7 @@
 
 .row
-  %article.span8
+  %article.span9
     %h1 Overview
-    %section
     %section
       %ul
         %li
@@ -23,21 +22,23 @@
           = link_to 'Futures', main_app.page_path('investment_education/futures')
         %li
           = link_to 'Options', main_app.page_path('investment_education/options')
-  %ul.thumbnails
-    %li.span4.takeaway
-      %h2 Take Away
-      %ul
-        %li Stockholders usually receive a part of the company’s income as dividend, although some companies may not pay dividends regularly.
-        %li Total return on stocks is the sum of capital gains and dividends received.
-        %li Common stock and preferred stock are the two types of stock.
-    %li.span4.articles
-      %h2 Articles
-      %ul
-        %li=link_to "Stocks -Wikipedia", "http://en.wikipedia.org/wiki/Stock", html_options = {:target => "_blank"}
-    %li.span4.videos
-      %h2 Videos
-      %ul
-        %li=link_to "Introduction to Stocks", "http://www.youtube.com/watch?v=r0k3qmaIW5k", html_options = {:target => "_blank"}
-        %li=link_to "What it means to buy a company's stock", "http://www.youtube.com/watch?v=WvITkPn83gc&feature=player_embedded", html_options = {:target => "_blank"}
-        %li=link_to "Bonds vs. Stocks", "http://www.youtube.com/watch?v=rs1md3e4aYU", html_options = {:target => "_blank"}
+  %ul.thumbnails.span3
+    %li.span3.takeaway
+      .well
+        %h5.header Take Away
+        %p Stockholders usually receive a part of the company’s income as dividend, although some companies may not pay dividends regularly.
+        %p Total return on stocks is the sum of capital gains and dividends received.
+        %p Common stock and preferred stock are the two types of stock.
+    %li.span3.articles
+      .well
+        %h5.header Articles
+        %ul.unstyled
+          %li=link_to "Stocks -Wikipedia", "http://en.wikipedia.org/wiki/Stock", html_options = {:target => "_blank"}
+    %li.span3.videos
+      .well
+        %h5.header Videos
+        %ul.unstyled
+          %li=link_to "Introduction to Stocks", "http://www.youtube.com/watch?v=r0k3qmaIW5k", html_options = {:target => "_blank"}
+          %li=link_to "What it means to buy a company's stock", "http://www.youtube.com/watch?v=WvITkPn83gc&feature=player_embedded", html_options = {:target => "_blank"}
+          %li=link_to "Bonds vs. Stocks", "http://www.youtube.com/watch?v=rs1md3e4aYU", html_options = {:target => "_blank"}
 

@@ -1,22 +1,21 @@
 .row
-  %article.span8
-    %h1 Investing v/s Trading in shares
-    %section
+  %article.span9
+    %h1.page-header Investing v/s Trading in shares
     %section
       %p In the financial markets, the terms ‘Investing’ and ‘Trading’ are often used loosely and interchangeably.  Both the activities have the same objective of making profits but they are quite different in reality.
     %section
-      %h2 What is the difference between investment and trading in shares?
+      %h3 What is the difference between investment and trading in shares?
       %p
         ‘Investors’ make their investments based on fundamental factors such as the long term profitability and growth potential of companies. They tend to stay invested over long periods of time ranging from 1 year to 20 years. On the other hand, ‘Traders’ are more of speculators and they trade over short periods of time ranging from a couple of minutes to a few days. Their investments are usually driven by a number of factors such as news/anticipated news or momentum gauged by technical analysis.
     %section
-      %h2 What are the returns from trading and investing in shares?
+      %h3 What are the returns from trading and investing in shares?
       %p
         Returns from investing in broad-based market indices over long periods (30 years +) tend to be about 15-20 % p.a. Returns from trading are extremely uncertain. You can potentially multiply your capital many-fold or can lose a lot more than you had invested in the first place (through futures and options). Speculative investments have often yielded over 100% in a single day, just as they have also resulted in returns of minus 100% over a few hours. 
       %p
         In the short term, markets are manipulated and driven by traders but over a long period, markets trade
         at their fair value and investors are often rewarded for making good bets.
     %section
-      %h2 Should you invest or trade?
+      %h3 Should you invest or trade?
       %p Now let us look at Investing vs Trading from a retail investor’s perspective:
       %ul
         %li
@@ -28,31 +27,32 @@
         %li
           Trading requires sound market knowledge, immense discipline and the ability to manage your emotions in a detached manner. It is also considered extremely stressful (on an average, traders quit at the age of  35 ).
     %section
-      %h2 Editor’s take
+      %h3 Editor’s take
       %P
         In our view, as glamorous as it sounds, trading is best left for professionals with training and the necessary tools. You should concentrate on investing over periods not less than 1 year. That will fetch you regular income and over a period of time help you build a good capital base. More importantly, small investors are much more likely to succeed as investors than as traders. Remember – 
         %h3
-          Slow and steady wins the race.
+          Slow and steady wins the race.....
     %footer
-      .article_prev
-        Prev:-
-        =link_to t('investment_education.Types_of_Investments'), main_app.page_path('investment_education/investment-types')
-      .article_next
-        Next:-
-        =link_to t('investment_education.Investment_Plan'), main_app.page_path('investment_education/investment-plan')
+      %ul.pager
+        %li.previous
+          =link_to t('investment_education.← Types_of_Investments'), main_app.page_path('investment_education/investment-types')
+        %li.next
+          =link_to t('investment_education.Investment_Plan →'), main_app.page_path('investment_education/investment-plan')
       #disqus_thread
   %ul.thumbnails
-    %li.span4.takeaway
-      %h2 Take Away
-      %ul
-        %li Investors are people who buy assets hoping for long term appreciation in price.
-        %li Traders are people who buy or sell assets, expecting to profit from short term changes in their price.
-    %li.span4.articles
-      %h2 Articles
-      %ul
-        %li=link_to "Difference between Investing & Trading", "http://www.cnbc.com/id/42710009/The_Difference_Between_Investing_Trading", html_options = {:target => "_blank"}
-        %li=link_to "Investing Vs Trading", "http://www.investnewz.com/investnewz-7-20060621InvestingvsTradingWhatsTheDifference.html", html_options = {:target => "_blank"}
-    %li.span4.videos
-      %h2 Videos
-      %ul
-        %li=link_to "Investment vs Trading", "http://www.facebook.com/video/video.php?v=1176395922417", html_options = {:target => "_blank"}
+    %li.span3.takeaway
+      .well
+        %h5.header Take Away
+        %p Investors are people who buy assets hoping for long term appreciation in price.
+        %p Traders are people who buy or sell assets, expecting to profit from short term changes in their price.
+    %li.span3.articles
+      .well
+        %h5.header Articles
+        %ul.unstyled
+          %li=link_to "Difference between Investing & Trading", "http://www.cnbc.com/id/42710009/The_Difference_Between_Investing_Trading", html_options = {:target => "_blank"}
+          %li=link_to "Investing Vs Trading", "http://www.investnewz.com/investnewz-7-20060621InvestingvsTradingWhatsTheDifference.html", html_options = {:target => "_blank"}
+    %li.span3.videos
+      .well
+        %h5.header Videos
+        %ul.unstyled
+          %li=link_to "Investment vs Trading", "http://www.facebook.com/video/video.php?v=1176395922417", html_options = {:target => "_blank"}
