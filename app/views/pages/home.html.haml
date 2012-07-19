@@ -1,16 +1,111 @@
 .row
   .span8
-    .hero-unit
-      #home-slider.carousel.slide
-        .carousel-inner
-          .item.active
-            = image_tag 'http://placehold.it/770x350&text=slide+1'
-          .item
-            = image_tag 'http://placehold.it/770x350&text=slide+2'
-          .item
-            = image_tag 'http://placehold.it/770x350&text=slide+3'
-          .item
-            = image_tag 'http://placehold.it/770x350&text=slide+4'
-        %a.carousel-control.left{:href => '#home-slider', :data => {:slide => :prev}} &lsaquo;
-        %a.carousel-control.right{:href => '#home-slider', :data => {:slide => :next}} &rsaquo;
+    #home-slider.carousel.slide
+      .carousel-inner
+        .item.active
+          = image_tag 'http://placehold.it/770x350&text=slide+1'
+        .item
+          = image_tag 'http://placehold.it/770x350&text=slide+2'
+        .item
+          = image_tag 'http://placehold.it/770x350&text=slide+3'
+        .item
+          = image_tag 'http://placehold.it/770x350&text=slide+4'
+      %a.carousel-control.left{:href => '#home-slider', :data => {:slide => :prev}} &lsaquo;
+      %a.carousel-control.right{:href => '#home-slider', :data => {:slide => :next}} &rsaquo;
   .span4
+    .well
+      %p
+        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. .
+        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+        %h1 Ads
+        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+        Donec id elit non mi porta gravida at eget metus. 
+.row.show-grid
+  .span8
+    %h1 News
+    %ul.nav.nav-tabs
+      %li
+        %a{"data-toggle" => "tab", :href => "#market"} Market
+      %li
+        %a{"data-toggle" => "tab", :href => "#economy"} Economy
+      %li
+        %a{"data-toggle" => "tab", :href => "#"} Stock Tips
+      %li
+        %a{"data-toggle" => "tab", :href => "#"} Companies
+      %li
+        %a{"data-toggle" => "tab", :href => "#"} Global News
+
+    .tab-content
+      #market.tab-pane.active
+        %section#news_markets.tab-pane.active
+          %article
+            %h2
+              %a{:href => "http://www.business-standard.com/india/news/bse-sensex-rises-to-1-wk-high-maruti-slumps/179353/on", :target => "blank", :title => "Business Standard"} BSE Sensex rises to 1-wk high Maruti slumps
+            %h6 Business Standard - about 1 hour ago
+            %p The BSE Sensex rose on Thursday to its highest close in a week as Reliance Industries rose a day before its quarterly earnings, while hopes for policy reforms boosted sectors expected to benefit such as airlines.
+          %article
+            %h2
+              %a{:href => "http://www.business-standard.com/india/news/markets-gain-amid-firm-global-cues/179351/on", :target => "blank", :title => "Business Standard"} Markets gain amid firm global cues
+            %h6 Business Standard - about 1 hour ago
+            %p Benchmark share indices ended higher on Thursday, amid firm global cues, led by gains in index heavyweights Reliance Industries and Infosys.
+          %article
+            %h2
+              %a{:href => "http://www.business-standard.com/india/news/markets-end-higher-led-by-heavyweights/179320/on", :target => "blank", :title => "Business Standard"} Markets end higher led by heavyweights
+            %h6 Business Standard - about 1 hour ago
+            %p Benchmark share indices ended higher on Thursday, amid firm global cues, led by gains in index heavyweights Reliance Industries and Infosys.
+          %article
+            %h2
+              %a{:href => "http://www.business-standard.com/india/news/higher-gold-prices-trigger-selling-summer-demand-tepid/179332/on", :target => "blank", :title => "Business Standard"} Higher gold prices trigger selling summer demand tepid
+            %h6 Business Standard - about 2 hours ago
+            %p Selling in Asia's physical gold market could pick up as prices advance towards $1,580 an ounce, but trading is likely to remain dull as long as there is no clear direction for prices during the summer lull.
+          %article
+            %h2
+              %a{:href => "http://www.business-standard.com/india/news/turmeric-surges-4-pc/179327/on", :target => "blank", :title => "Business Standard"} Turmeric surges 4% pc
+            %h6 Business Standard - about 2 hours ago
+            %p Turmeric prices surged by Rs 212, or 4.03%, to hit upper circuit at Rs 5,476 per quintal in futures trade today after participants created speculative positions, driven by deficient rains in key growing areas.
+          %article
+            %h2
+              %a{:href => "http://www.business-standard.com/india/news/gold-recovers6-week-low/179330/on", :target => "blank", :title => "Business Standard"} Gold recovers from 6-week low
+            %h6 Business Standard - about 2 hours ago
+            %p Indian gold edged higher on Thursday, recovering from its lowest level in six weeks, in line with global markets, keeping away physical traders looking for bargains.
+          %article
+            %h2
+              %a{:href => "http://www.business-standard.com/india/news/nickel-movesin-futures-tradespot-demand/179325/on", :target => "blank", :title => "Business Standard"} Nickel moves up in futures trade on spot demand
+            %h6 Business Standard - about 2 hours ago
+            %p Nickel prices moved up by Rs 7.20 to Rs 901 per kg in futures market today following pick up in demand from alloy-makers in the spot market.
+          %article
+            %h2
+              %a{:href => "http://www.business-standard.com/india/news/copper-risesglobal-cues/179322/on", :target => "blank", :title => "Business Standard"} Copper rises on global cues
+            %h6 Business Standard - about 3 hours ago
+            %p Buoyed by a firming trend in global markets and pick up in domestic demand, copper prices rose by Rs 2.85 to Rs 428.55 per kg in futures trade today.
+          %article
+            %h2
+              %a{:href => "http://www.business-standard.com/india/news/markets-remain-rangeboundpositive-bias/179320/on", :target => "blank", :title => "Business Standard"} Markets remain rangebound with positive bias
+            %h6 Business Standard - about 3 hours ago
+            %p Key share indices continue to maintain the upbeat trend amid volatility led by support from Infosys, RIL, banking and auto shares.
+          %article
+            %h2
+              %a{:href => "http://www.business-standard.com/india/news/oil-above-90-in-asia-for-first-time-since-may/179310/on", :target => "blank", :title => "Business Standard"} Oil above $90 in Asia for first time since May
+            %h6 Business Standard - about 3 hours ago
+            %p Oil rose above $90 a barrel in Asia for the first time since May after the US government said oil demand is on the rise and regional stock markets rebounded on strong earnings and improved US economic data.
+  .span4
+    %h1 Sectoral Indices
+    %ul.nav.nav-tabs
+      %li
+        %a{"data-toggle" => "tab", :href => "#nse"} NSE
+      %li
+        %a{"data-toggle" => "tab", :href => "#"} BSE
+    .tab-content
+      #nse.tab-pane.active
+        %p
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+
+.row.show-grid
+  .span8
+    %h1 Top Gainers
+    %ul.nav.nav-tabs
+      %li
+        %a{"data-toggle" => "tab", :href => "#home"} NSE
+      %li
+        %a{"data-toggle" => "tab", :href => "#profile"} BSE
