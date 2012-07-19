@@ -13,13 +13,7 @@
       %a.carousel-control.left{:href => '#home-slider', :data => {:slide => :prev}} &lsaquo;
       %a.carousel-control.right{:href => '#home-slider', :data => {:slide => :next}} &rsaquo;
   .span4
-    .well
-      %p
-        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. .
-        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-        %h1 Ads
-        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-        Donec id elit non mi porta gravida at eget metus. 
+    .well=image_tag 'http://placehold.it/350x330/85C9F4/FFFFFF&text=Ad+space'
 .row.show-grid
   .span8
     %h1 News
@@ -73,21 +67,6 @@
               %a{:href => "http://www.business-standard.com/india/news/nickel-movesin-futures-tradespot-demand/179325/on", :target => "blank", :title => "Business Standard"} Nickel moves up in futures trade on spot demand
             %h6 Business Standard - about 2 hours ago
             %p Nickel prices moved up by Rs 7.20 to Rs 901 per kg in futures market today following pick up in demand from alloy-makers in the spot market.
-          %article
-            %h2
-              %a{:href => "http://www.business-standard.com/india/news/copper-risesglobal-cues/179322/on", :target => "blank", :title => "Business Standard"} Copper rises on global cues
-            %h6 Business Standard - about 3 hours ago
-            %p Buoyed by a firming trend in global markets and pick up in domestic demand, copper prices rose by Rs 2.85 to Rs 428.55 per kg in futures trade today.
-          %article
-            %h2
-              %a{:href => "http://www.business-standard.com/india/news/markets-remain-rangeboundpositive-bias/179320/on", :target => "blank", :title => "Business Standard"} Markets remain rangebound with positive bias
-            %h6 Business Standard - about 3 hours ago
-            %p Key share indices continue to maintain the upbeat trend amid volatility led by support from Infosys, RIL, banking and auto shares.
-          %article
-            %h2
-              %a{:href => "http://www.business-standard.com/india/news/oil-above-90-in-asia-for-first-time-since-may/179310/on", :target => "blank", :title => "Business Standard"} Oil above $90 in Asia for first time since May
-            %h6 Business Standard - about 3 hours ago
-            %p Oil rose above $90 a barrel in Asia for the first time since May after the US government said oil demand is on the rise and regional stock markets rebounded on strong earnings and improved US economic data.
   .span4
     %h1 Sectoral Indices
     %ul.nav.nav-tabs
@@ -97,9 +76,143 @@
         %a{"data-toggle" => "tab", :href => "#"} BSE
     .tab-content
       #nse.tab-pane.active
-        %p
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+        %table.table.table-bordered.table-striped
+          %thead
+            %tr
+              %th Index Name
+              %th Value
+              %th Change
+              %th
+                %nobr % Change
+          %tbody
+            %tr
+              %td Bank Nifty
+              %td 10,622.05
+              %td
+                %span.green 14.95
+              %td
+                %span.green 0.14
+            %tr
+              %td
+                %span.translation_missing{:title => "translation missing: en.stocks.sectoral_indices.CNX200"} CNX200
+              %td 2,648.50
+              %td
+                %span.green 11.4
+              %td
+                %span.green 0.43
+            %tr
+              %td
+                %span.translation_missing{:title => "translation missing: en.stocks.sectoral_indices.CNX500"} CNX500
+              %td 4,157.30
+              %td
+                %span.green 17.55
+              %td
+                %span.green 0.42
+            %tr
+              %td CNX Auto
+              %td 3,845.90
+              %td
+                %span.red -15.65
+              %td
+                %span.red -0.41
+            %tr
+              %td CNX Defty
+              %td 3,283.10
+              %td
+                %span.green 21.75
+              %td
+                %span.green 0.67
+            %tr
+              %td CNX Energy
+              %td 7,506.65
+              %td
+                %span.green 86.75
+              %td
+                %span.green 1.17
+            %tr
+              %td CNX FMCG
+              %td 12,603.80
+              %td
+                %span.red -10.95
+              %td
+                %span.red -0.09
+            %tr
+              %td CNX Infra
+              %td 2,423.65
+              %td
+                %span.green 0.4
+              %td
+                %span.green 0.02
+            %tr
+              %td CNX IT
+              %td 5,682.25
+              %td
+                %span.green 100.0
+              %td
+                %span.green 1.79
+            %tr
+              %td CNX Media
+              %td 1,286.30
+              %td
+                %span.green 7.75
+              %td
+                %span.green 0.61
+            %tr
+              %td CNX Metal
+              %td 2,832.35
+              %td
+                %span.green 23.95
+              %td
+                %span.green 0.85
+            %tr
+              %td CNX MidCap
+              %td 7,376.10
+              %td
+                %span.green 20.6
+              %td
+                %span.green 0.28
+            %tr
+              %td CNX MNC
+              %td 5,184.00
+              %td
+                %span.red -4.3
+              %td
+                %span.red -0.08
+            %tr
+              %td CNX Pharma
+              %td 5,318.85
+              %td
+                %span.green 6.3
+              %td
+                %span.green 0.12
+            %tr
+              %td CNX Public Sector Enterprise
+              %td 2,934.55
+              %td
+                %span.green 14.6
+              %td
+                %span.green 0.5
+            %tr
+              %td CNX PSU Bank
+              %td 3,204.50
+              %td
+                %span.red -39.9
+              %td
+                %span.red -1.23
+            %tr
+              %td CNX Reality
+              %td 227.15
+              %td
+                %span.green 1.35
+              %td
+                %span.green 0.6
+            %tr
+              %td CNX Small Cap
+              %td 3,363.45
+              %td
+                %span.green 15.05
+              %td
+                %span.green 0.45
 
 .row.show-grid
   .span8
@@ -109,3 +222,178 @@
         %a{"data-toggle" => "tab", :href => "#home"} NSE
       %li
         %a{"data-toggle" => "tab", :href => "#profile"} BSE
+    .tab-content
+      #nse.tab-pane.active
+        %table.table.table-bordered.table-striped
+          %tbody
+            %tr
+              %th Stock name
+              %th Price
+              %th Change(day)
+              %th % Change(day)
+            %tr.odd
+              %td
+                %a{:href => "/shares/advik-laboratories-ltd"} Advik Laboratories Ltd.
+              %td
+              %td.right_align 5.46
+              %td.green 20.00
+            %tr.even
+              %td
+                %a{:href => "/shares/beckons-industries-ltd"} Beckons Industries Ltd.
+              %td
+              %td.right_align 0.93
+              %td.green 19.23
+            %tr.odd
+              %td
+                %a{:href => "/shares/kriti-nutrients-ltd"} Kriti Nutrients Ltd.
+              %td
+              %td.right_align 6.36
+              %td.green 17.78
+            %tr.even
+              %td
+                %a{:href => "/shares/cupid-ltd"} Cupid Ltd.
+              %td
+              %td.right_align 8.98
+              %td.green 14.83
+            %tr.odd
+              %td
+                %a{:href => "/shares/sks-microfinance-ltd"} SKS Microfinance Ltd.
+              %td
+              %td.right_align 89.20
+              %td.green 12.77
+  .span4
+    .well
+      %h1.header stock recommendations
+      %p Hold HDFC Bank Target price 651 Long term
+      %p Hold Axis Bank Target price 1,578 Long term
+      %p Buy Yes Bank Target price 447 Long term
+      %p Hold Yes Bank Target price 447 Short term term
+      %p Buy HDFC Bank Target price 651 Short term
+      %p Hold Axis Bank Target price 1,578 Long term
+      %p Buy ICICI Bank Target price 1,157 Long term
+      %p Hold Yes Bank Target price 447 Short term term
+
+
+.row.show-grid
+  .span8
+    %h1 Top Losers
+    %ul.nav.nav-tabs
+      %li
+        %a{"data-toggle" => "tab", :href => "#home"} NSE
+      %li
+        %a{"data-toggle" => "tab", :href => "#profile"} BSE
+    .tab-content
+      #nse.tab-pane.active
+        %table.table.table-bordered.table-striped
+          %tbody
+            %tr
+              %th Stock name
+              %th Price
+              %th Change(day)
+              %th % Change(day)
+            %tr.odd
+              %td
+                %a{:href => "/shares/advik-laboratories-ltd"} Advik Laboratories Ltd.
+              %td
+              %td.right_align 5.46
+              %td.green 20.00
+            %tr.even
+              %td
+                %a{:href => "/shares/beckons-industries-ltd"} Beckons Industries Ltd.
+              %td
+              %td.right_align 0.93
+              %td.green 19.23
+            %tr.odd
+              %td
+                %a{:href => "/shares/kriti-nutrients-ltd"} Kriti Nutrients Ltd.
+              %td
+              %td.right_align 6.36
+              %td.green 17.78
+            %tr.even
+              %td
+                %a{:href => "/shares/cupid-ltd"} Cupid Ltd.
+              %td
+              %td.right_align 8.98
+              %td.green 14.83
+            %tr.odd
+              %td
+                %a{:href => "/shares/sks-microfinance-ltd"} SKS Microfinance Ltd.
+              %td
+              %td.right_align 89.20
+              %td.green 12.77
+  .span4
+    .well
+      %h1.header Research Reports
+      %p Stock report-Buy Automobile Sector Angel Broking
+      %p Stock report-Sell CCI imposes penalty on cement cos. Angel Broking
+      %p Stock report-Sell Allahabad Bank:Making the right choice Nirmal Bang
+      %p Stock report-Buy Automobile Sector Angel Broking
+      %p Stock report-Buy Automobile Sector Angel Broking
+      %p Stock report-Sell Allahabad Bank:Making the right choice Nirmal Bang
+
+.row.show-grid
+  .span8
+    %h1 Most Active
+    %ul.nav.nav-tabs
+      %li
+        %a{"data-toggle" => "tab", :href => "#home"} NSE
+      %li
+        %a{"data-toggle" => "tab", :href => "#profile"} BSE
+    .tab-content
+      #nse.tab-pane.active
+        %table.table.table-bordered.table-striped
+          %tbody
+            %tr
+              %th Stock name
+              %th Price
+              %th Change(day)
+              %th % Change(day)
+            %tr.odd
+              %td
+                %a{:href => "/shares/advik-laboratories-ltd"} Advik Laboratories Ltd.
+              %td
+              %td.right_align 5.46
+              %td.green 20.00
+            %tr.even
+              %td
+                %a{:href => "/shares/beckons-industries-ltd"} Beckons Industries Ltd.
+              %td
+              %td.right_align 0.93
+              %td.green 19.23
+            %tr.odd
+              %td
+                %a{:href => "/shares/kriti-nutrients-ltd"} Kriti Nutrients Ltd.
+              %td
+              %td.right_align 6.36
+              %td.green 17.78
+            %tr.even
+              %td
+                %a{:href => "/shares/cupid-ltd"} Cupid Ltd.
+              %td
+              %td.right_align 8.98
+              %td.green 14.83
+            %tr.odd
+              %td
+                %a{:href => "/shares/sks-microfinance-ltd"} SKS Microfinance Ltd.
+              %td
+              %td.right_align 89.20
+              %td.green 12.77
+            %tr.odd
+              %td
+                %a{:href => "/shares/sks-microfinance-ltd"} SKS Microfinance Ltd.
+              %td
+              %td.right_align 89.20
+              %td.green 12.77
+  .span4
+    .well
+      %h1.header Top Articles
+      %p How to invest
+      %p Types Of Investemnts
+      %p Investing vs Trading
+      %p Fixed Deposits
+      %p Gold
+      %p Shares
+      %p Mutual Funds and ETFs
+      %p Bonds
+      %p Life Insurance
+
