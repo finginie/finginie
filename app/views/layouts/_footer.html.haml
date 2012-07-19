@@ -1,19 +1,45 @@
-.row
-  .span4.align-center
-    %h2 Best of Finginie
+.row.show-grid
+  .span4
     %ul.nav.nav-list
+      %li.nav-header Best of Finginie
+      %hr
+    .row
+      .span2
+        %ul.nav.nav-list
+          %li= link_to 'Personalized Financial Plan', main_app.edit_comprehensive_risk_profiler_path
+          %li= link_to 'Manage Investments', main_app.portfolios_path
+          %li= link_to 'Financial Calculators', personal_financial_tools.personal_financial_tools_path
+      .span2
+        %ul.nav.nav-list
+          %li= link_to 'stock recommendations', main_app.page_path('stock-recommendations')
+          %li= link_to 'Research', main_app.research_reports_path
+          %li= link_to 'Fixed Deposits', main_app.fixed_deposits_path
 
-  .span4.align-center
-    %h2 Most popular
-    .btn-toolbar= link_to 'Open an Account', main_app.page_path('trade'), :class => %w(btn btn-large btn-primary)
-    .btn-toolbar= link_to 'Start Investing Now', main_app.comprehensive_risk_profiler_path, :class => %w(btn btn-large btn-primary)
-
-  .span4.align-center
-    %h2 Finginie
+  .span4
     %ul.nav.nav-list
-      = navigation_link 'About us', main_app.page_path('about_us')
-      = navigation_link 'Management Team', main_app.page_path('team')
-      = navigation_link 'Research Team', main_app.page_path('research-team')
-      = navigation_link 'Careers', main_app.page_path('careers')
-      = navigation_link 'Contact us', main_app.page_path('contact_us')
-      = navigation_link 'Terms of use', main_app.page_path('terms_of_use')
+      %li.nav-header Finginie
+      %hr
+    .row
+      .span2
+        %ul.nav.nav-list
+          %li= link_to 'About us', main_app.page_path('about_us')
+          %li= link_to 'Management Team', main_app.page_path('team')
+          %li= link_to 'Research Team', main_app.page_path('research-team')
+      .span2
+        %ul.nav.nav-list
+          %li= link_to 'Careers', main_app.page_path('careers')
+          %li= link_to 'Contact us', main_app.page_path('contact_us')
+          %li= link_to 'Terms of use', main_app.page_path('terms_of_use')
+  .span2
+    %ul.nav.nav-list
+      %li.nav-header Most popular
+      %hr
+      %li= link_to 'Open an Account', main_app.page_path('trade')
+      %li= link_to 'Start Investing Now', main_app.comprehensive_risk_profiler_path
+  .span2
+    %ul.nav.nav-list
+      %li.nav-header Top Articles
+      %hr
+      %li= link_to 'How to Invest', main_app.page_path('investment_education/smart-investments')
+      %li= link_to 'Types of Investments', main_app.page_path('investment_education/investment-types')
+      %li= link_to 'Mutual Funds and ETFs', main_app.page_path('investment_education/mutual-funds-etf')
