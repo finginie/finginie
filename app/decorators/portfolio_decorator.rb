@@ -199,7 +199,7 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def unrealised_profit(positions)
-    model.send(positions).map{|position| position.unrealised_profit unless position.unrealised_profit == "-" }.compact.inject(:+).to_currency
+    model.send(positions).map{|position| position.unrealised_profit unless position.unrealised_profit == "-" }.compact.inject(:+)
   end
 
   def losses

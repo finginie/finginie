@@ -9,7 +9,7 @@
   - @top_performers.each do |scheme|
     %tr{ class: cycle("odd", "even") }
       %td= link_to scheme.name, mutual_fund_url(scheme)
-      %td= scheme.nav_amount.try :to_currency
+      %td= scheme.nav_amount
       %td= rg_colorize number_with_precision(scheme.percentage_change), scheme.percentage_change.to_f
       %td= rg_colorize number_with_precision(scheme.prev1_month_percent), scheme.prev1_month_percent.to_f
       %td= rg_colorize number_with_precision(scheme.prev_year_percent), scheme.prev_year_percent.to_f

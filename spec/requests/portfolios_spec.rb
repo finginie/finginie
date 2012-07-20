@@ -23,16 +23,16 @@ describe "Portfolios", :mongoid do
     visit details_portfolio_path(portfolio)
 
     expected_table_for_stocks = [
-                                  [company.name,                       "10.00", "3.00",  "30.00", "5.00", "50.00", "20.00", "66.67","Sell"],
-                                  [company_without_current_price.name, "10.00", "5.00",  "50.00", "-",    "-",     "-" ,    "-",    "Sell"],
-                                  ["Total",                                    "",      "",      "80.00", "",     "50.00", "20.00", "" ,    ""    ]
+                                  [company.name,                       "10", "2.99",  "29.90", "5.00", "50.00", "20.10", "67.22","Sell"],
+                                  [company_without_current_price.name, "10", "5.00",  "50.00", "-",    "-",     "-" ,    "-",    "Sell"],
+                                  ["Total",                                    "",      "",      "79.90", "",     "50.00", "20.10", "" ,    ""    ]
                                 ]
     expected_table_for_mfs =    [
-                                  [scheme.name, "10.00", "3.00", "30.00", "5.00", "50.00", "20.00", "66.67", "Sell"],
-                                  ["Total",            "",      "",     "30.00", "",     "50.00", "20.00", "",      ""]
+                                  [scheme.name, "10", "2.99", "29.90", "5.00", "50.00", "20.10", "67.22", "Sell"],
+                                  ["Total",            "",      "",     "29.90", "",     "50.00", "20.10", "",      ""]
                                 ]
     expected_table_for_gold =   [
-                                  ["Gold", "10.00", "3.00", "30.00", "5.00", "50.00", "20.00", "66.67", "Sell"]
+                                  ["Gold", "10", "2.99", "29.90", "5.00", "50.00", "20.10", "67.22", "Sell"]
                                 ]
 
     within "#stock_positions" do

@@ -1,13 +1,23 @@
 class FungiblePositionDecorator
 
   FIELDS_TO_NA = [ :current_price, :unrealised_profit, :unrealised_profit_percentage ]
+  FIELDS_TO_COLORIZE = [:unrealised_profit, :unrealised_profit_percentage]
 
-  (FIELDS_TO_NA).each do |key|                        ##
+  FIELDS_TO_NA.each do |key|                        ##
     define_method(key.to_sym) do                      # def key
-      return "-" unless @position.send(key)           #   return "-"
-      @position.send(key)                             #   @position.key
+      @position.send(key) || '-'                      #   @position.key || '-'
     end                                               # end
   end                                                 ##
+
+  FIELDS_TO_COLORIZE.each do |key|
+    define_method "#{key}_with_colorize" do
+      if model.send(key)
+        rg_colorize self.send("#{key}_without_colorize"), model.send(key)
+      else
+        self.send #{key}_without_colorize"
+      end
+    end
+  end
 
   def action_params
     params = { :quantity => @position.quantity, :action => :sell }

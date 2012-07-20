@@ -38,7 +38,7 @@
                 %td= net_position.current_value
               - else
                 %td -
-              %td= net_position.unrealised_profit.to_currency
+              %td= net_position.unrealised_profit
               %td= rg_colorize net_position.unrealised_profit_percentage
               -transaction = positions.gsub(/_positions/,'_transaction')
               %td= link_to "Sell", send("new_portfolio_#{transaction}_path",resource, transaction.to_sym => net_position.action_params)
@@ -48,8 +48,8 @@
             %td
             %td= resource.send(positions).sum(&:value)
             %td
-            %td= resource.send(positions).sum(&:current_value).to_currency
-            %td{:data => {:attribute => :unrealised_profit}}= resource.unrealised_profit # send(positions).map{|position| position.unrealised_profit unless position.unrealised_profit == "-" }.compact.inject(:+).to_currency
+            %td= resource.send(positions).sum(&:current_value)
+            %td{:data => {:attribute => :unrealised_profit}}= resource.unrealised_profit positions
             %td
             %td
 
