@@ -70,8 +70,8 @@ describe "Portfolios", :mongoid do
 
     visit details_portfolio_path(portfolio)
     expected_table = [
-                       [ "Test Loan", I18n.l(8.months.ago.to_date), "10.0", "1.0",   "25,937.39", "Clear Loan"],
-                       [ "Total",     "",                           "",     "",      "25,937.39", ""          ]
+                       [ "Test Loan", I18n.l(8.months.ago.to_date), "10.0", "1.0",   "25,941.32", "Clear Loan"],
+                       [ "Total",     "",                           "",     "",      "25,941.32", ""          ]
                     ]
     tableish("section.Loan table").should include *expected_table
   end

@@ -9,7 +9,7 @@ describe "MutualFundCategories", :mongoid do
                                   :prev3_year_comp_percent => 3
                 }
 
-  it "should scheme categories show page" do
+  pending "should scheme categories show page" do
     navcd.save
     scheme.save
 

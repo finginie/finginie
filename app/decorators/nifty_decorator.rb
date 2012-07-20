@@ -3,7 +3,7 @@ class NiftyDecorator
     delegate :last_traded_price, :net_change, :percent_change, :to => :nifty, :allow_nil => true
 
     def name
-      I18n.t('nifty.name')
+      'Nifty'
     end
 
   private

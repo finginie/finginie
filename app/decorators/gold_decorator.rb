@@ -14,7 +14,7 @@ class GoldDecorator
     end
 
     def name
-      I18n.t('gold.name')
+      'Gold (10 gm)'
     end
   }
 end

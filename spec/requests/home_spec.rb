@@ -10,7 +10,7 @@ describe "home page" do
     end
     it "should have market indices" do
       visit root_path
-      content = "Nifty 10.0 1.00 (11.11 %) Sensex 10.0 1.00 (11.11 %) Gold (10 gm) 100.0 10.00 (11.11 %)"
+      content = "Nifty 10.00 1.00 (11.11 %) Sensex 10.00 1.00 (11.11 %) Gold (10 gm) 100.00 10.00 (11.11 %)"
       content_selector("span[@data-role='market_indices']").should eq content
     end
   end

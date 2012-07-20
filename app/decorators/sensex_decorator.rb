@@ -3,7 +3,7 @@ class SensexDecorator
     delegate :last_traded_price, :net_change, :percent_change, :to => :sensex, :allow_nil => true
 
     def name
-      I18n.t('sensex.name')
+      'Sensex'
     end
 
   private

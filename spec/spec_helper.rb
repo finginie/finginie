@@ -39,6 +39,9 @@ Spork.prefork do
     # examples within a transaction, remove the following line or assign false
     # instead of true.
     config.use_transactional_fixtures = true
+
+    # Use the fail_fast option to tell RSpec to abort the run on first failure.
+    # config.fail_fast = true
   end
 
   # Requires supporting ruby files with custom matchers and macros, etc,

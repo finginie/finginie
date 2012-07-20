@@ -5,6 +5,6 @@
         %h3.align-center
           = indices.constantize.name
           %small
-            %strong= indices.constantize.last_traded_price
-            =  rg_colorize indices.constantize.net_change
-            (#{rg_colorize indices.constantize.percent_change} %)
+            %strong= indices.constantize.last_traded_price.try :to_currency
+            = indices.constantize.net_change
+            (#{indices.constantize.percent_change} %)

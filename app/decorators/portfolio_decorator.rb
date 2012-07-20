@@ -198,6 +198,10 @@ class PortfolioDecorator < ApplicationDecorator
         gold_positions_profit_or_loss
   end
 
+  def unrealised_profit(positions)
+    model.send(positions).map{|position| position.unrealised_profit unless position.unrealised_profit == "-" }.compact.inject(:+).to_currency
+  end
+
   def losses
     positions.select{ |position| position.profit_or_loss < 0 }
   end
