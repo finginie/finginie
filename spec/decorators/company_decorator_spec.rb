@@ -29,7 +29,7 @@ describe CompanyDecorator, :redis, :mongoid do
 
     it "should have time for bse" do
       subject.bse.time.should eq "-"
-      subject.current_price.should eq 123.45
+      subject.current_price.should be_a_indian_currency_of 123.45
     end
 
     it "should have volume comma seperated" do

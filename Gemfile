@@ -32,6 +32,7 @@ gem 'jquery-datatables-rails',             :github => 'rweng/jquery-datatables-r
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'meta_search'
+gem 'money',                               :github => 'sankaranarayanan/money'
 gem 'nested_form',                         :github => 'TMaYaD/nested_form'
 gem 'newrelic_rpm'
 gem 'omniauth_single_signon',              :github => 'FinGinie/omniauth-single-signon'

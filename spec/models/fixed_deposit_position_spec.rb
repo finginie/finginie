@@ -10,13 +10,13 @@ describe "FixedDepositPosition" do
   }
 
   its (:name) { should eq fixed_deposit.name }
-  its (:invested_amount) { should eq 100 }
+  its (:invested_amount) { should be_a_indian_currency_of 100 }
 
   describe "Net Worth" do
     before(:all) { Timecop.freeze(Date.civil(2012, 03, 22)) }
     after(:all) { Timecop.return }
-    its(:current_value) { should eq 106.58 }
-    its(:unrealised_profit) { should eq 6.58 }
+    its(:current_value) { should be_a_indian_currency_of 106.58 }
+    its(:unrealised_profit) { should be_a_indian_currency_of 6.58 }
     its(:unrealised_profit_percentage) { should eq 6.58 }
 
     it "should calculate the profit or loss percentage" do

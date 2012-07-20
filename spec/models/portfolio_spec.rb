@@ -66,23 +66,16 @@ describe Portfolio, :redis do
       portfolio
     }
 
-    its(:stocks_value) { should eq 50 }
-    its(:mutual_funds_value) { should eq 50 }
-    its(:gold_value) { should eq 50 }
-    its(:fixed_deposits_value) { should eq 106.58 }
-    its(:real_estates_value) { should eq 600 }
+    its(:stocks_value) { should be_a_indian_currency_of 50 }
+    its(:mutual_funds_value) { should be_a_indian_currency_of 50 }
+    its(:gold_value) { should be_a_indian_currency_of 50 }
+    its(:fixed_deposits_value) { should be_a_indian_currency_of 106.58 }
+    its(:real_estates_value) { should be_a_indian_currency_of 600 }
+    its(:net_worth) { should be_a_indian_currency_of 597.43 }
 
-    it "should calculate net worth of portfolio" do
-      subject.net_worth.should eq 597.95
-    end
+    its(:total_assets_value) { should be_a_indian_currency_of 856.58 }
 
-    it "should calculate total asset value" do
-      subject.total_assets_value.should eq 856.58
-    end
-
-    it "should calcualte total liabilities" do
-      subject.total_liabilitites_value.should eq -258.63
-    end
+    its(:total_liabilitites_value) { should be_a_indian_currency_of -259.15 }
   end
 
   it "should delete associate child records" do

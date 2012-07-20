@@ -4,7 +4,7 @@ module FungiblePosition
   end
 
   def current_value
-    quantity && current_price ? quantity * current_price : 0.0
+    quantity && current_price ? current_price * quantity : 0.0
   end
 
   def profit_or_loss
@@ -28,10 +28,10 @@ module FungiblePosition
   end
 
   def unrealised_profit
-    current_price ? (current_value - value) : nil
+    current_price ? (current_value - IndianCurrency.new(value)) : nil
   end
 
   def unrealised_profit_percentage
-    unrealised_profit ? (unrealised_profit / value * 100).round(2) : nil
+    unrealised_profit ? Percentage.new((unrealised_profit.to_f / value.to_f * 100)) : nil
   end
 end

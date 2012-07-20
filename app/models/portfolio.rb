@@ -44,11 +44,11 @@ class Portfolio < ActiveRecord::Base
   end
 
   def total_liabilitites_value
-    (loan_positions.map(&:outstanding_amount).sum).round(2).to_f
+    (loan_positions.map(&:outstanding_amount).sum)
   end
 
   def total_assets_value
-    ( stocks_value + mutual_funds_value + gold_value + fixed_deposits_value + real_estates_value ).round(2).to_f
+    ( stocks_value + mutual_funds_value + gold_value + fixed_deposits_value + real_estates_value )
   end
 
   def net_worth

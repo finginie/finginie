@@ -20,11 +20,11 @@ describe LoanTransaction do
   it "should get amount" do
     loan_transaction.action = "repay"
     loan_transaction.price = 20
-    loan_transaction.amount.should eq 20
+    loan_transaction.amount.should be_a_indian_currency_of 20
 
     loan_transaction.action = "borrow"
     loan_transaction.price = 10
-    loan_transaction.amount.should eq -10
+    loan_transaction.amount.should be_a_indian_currency_of -10
   end
 
   it "should not allow repay transaction if there is no borrow transaction for that loan" do

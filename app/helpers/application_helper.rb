@@ -1,7 +1,6 @@
 module ApplicationHelper
-  def rg_colorize(content, value = nil)
-    value ||= content.to_f
-    content_tag :span, number_to_indian_currency(content), :class => (value < 0 ? :red : :green)
+  def rg_colorize(content, value = content.to_f)
+    content_tag :span, content, :class => (value < 0 ? :red : :green)
   end
 
   def row_for(translate_label, field, objects)

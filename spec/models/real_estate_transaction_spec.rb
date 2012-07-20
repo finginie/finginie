@@ -19,11 +19,11 @@ describe RealEstateTransaction do
   it "should get amount" do
     real_estate_transaction.action = "buy"
     real_estate_transaction.price = 20
-    real_estate_transaction.amount.should eq 20
+    real_estate_transaction.amount.should be_a_indian_currency_of 20
 
     real_estate_transaction.action = "sell"
     real_estate_transaction.price = 10
-    real_estate_transaction.amount.should eq -10
+    real_estate_transaction.amount.should be_a_indian_currency_of -10
   end
 
   it "should give percentage change of market value" do
@@ -38,7 +38,7 @@ describe RealEstateTransaction do
     create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => 100000, :date => 8.months.ago.to_date
     transaction = create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => 120000, :date => 1.months.ago.to_date, :action => "sell"
 
-    transaction.profit_or_loss.should eq 20000
+    transaction.profit_or_loss.should be_a_indian_currency_of 20000
 
   end
 

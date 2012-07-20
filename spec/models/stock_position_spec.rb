@@ -17,8 +17,8 @@ describe "StockPosition",:redis, :mongoid do
   its (:quantity) { should eq 10 }
   its (:average_cost_price) { should eq 3 }
   its (:value) { should eq 30 }
-  its (:current_value) { should eq 50 }
-  its (:unrealised_profit) { should eq 20 }
+  its (:current_value) { should be_a_indian_currency_of 50 }
+  its (:unrealised_profit) { should be_a_indian_currency_of 20 }
   its (:unrealised_profit_percentage) { should eq 66.67 }
 
   context "should calculate after sell transaction" do

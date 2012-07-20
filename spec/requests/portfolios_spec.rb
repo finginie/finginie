@@ -161,9 +161,10 @@ describe "Portfolios", :mongoid do
   end
 
   context "new portfolio" do
+    let(:new_portfolio) { create :portfolio, :user => current_user }
+
     before(:each) do
-      @new_portfolio = create :portfolio, :user => current_user
-      visit portfolio_path(@new_portfolio)
+      visit portfolio_path(new_portfolio)
     end
 
     it "should display default message" do
@@ -171,32 +172,32 @@ describe "Portfolios", :mongoid do
     end
 
     it "should display default message for stock when there is no stock transaction" do
-      find(:link, "portfolios-#{@new_portfolio.id}-stocks_analysis").click
+      visit stocks_analysis_portfolio_path(new_portfolio)
       page.should have_content I18n.t("portfolios.stocks_analysis.no_stock_transaction")
     end
 
     it "should display default message for mutual funds when there is no mutual fund transaction" do
-      find(:link, "portfolios-#{@new_portfolio.id}-mutual_funds_analysis").click
+      visit mutual_funds_analysis_portfolio_path(new_portfolio)
       page.should have_content I18n.t("portfolios.mutual_funds_analysis.no_mutual_fund_transaction")
     end
 
     it "should display default message for fixed deposit when there is no fixed deposit transaction" do
-      find(:link, "portfolios-#{@new_portfolio.id}-fixed_deposits_analysis").click
+      visit fixed_deposits_analysis_portfolio_path(new_portfolio)
       page.should have_content I18n.t("portfolios.fixed_deposits_analysis.no_fixed_deposit_transaction")
     end
 
     it "should display default messages in Accumulated Profits page" do
-      find(:link, "portfolios-#{@new_portfolio.id}-accumulated_profits").click
+      visit accumulated_profits_portfolio_path(new_portfolio)
       page.should have_content I18n.t("portfolios.accumulated_profits.no_profit_or_loss")
     end
 
     it "should display default messages in Details Page" do
-      find(:link, "portfolios-#{@new_portfolio.id}-details").click
+      visit details_portfolio_path(new_portfolio)
       page.should have_content I18n.t("portfolios.empty_transaction.message")
     end
 
     it "should display default messages in Transactions page" do
-      find(:link, "portfolios-#{@new_portfolio.id}-transactions").click
+      visit transactions_portfolio_path(new_portfolio)
       page.should have_content I18n.t("portfolios.transactions.empty_transactions")
     end
   end

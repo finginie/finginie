@@ -1,4 +1,5 @@
 class FixedDepositTransaction < ActiveRecord::Base
+  include CurrencyFormatter
   attr_accessible :date, :comments, :price, :action, :portfolio_id, :fixed_deposit_id, :fixed_deposit_attributes
   belongs_to :portfolio
   belongs_to :fixed_deposit
@@ -11,12 +12,13 @@ class FixedDepositTransaction < ActiveRecord::Base
   accepts_nested_attributes_for :fixed_deposit
 
   delegate :rate_of_interest, :period, :name, :rate_of_redemption, :to => :fixed_deposit
+  monetize :price
 
   scope :for, lambda { |fixed_deposit| where(:fixed_deposit_id => fixed_deposit).order(:date, :created_at) } do
     delegate :name, :rate_of_interest, :period, :invested_amount, :current_value, :to => :first
 
     def unrealised_profit
-      (current_value - first.amount).round(2)
+      (current_value - first.amount)
     end
 
     def unrealised_profit_percentage
@@ -33,11 +35,11 @@ class FixedDepositTransaction < ActiveRecord::Base
   end
 
   def profit_or_loss
-    (fixed_deposit.send(:value_at_date, price, time_period, redemption_interest_rate) - price).round(2) if sell?
+    (fixed_deposit.send(:value_at_date, price, time_period, redemption_interest_rate) - price) if sell?
   end
 
   def current_value
-    fixed_deposit.current_value(self).round(2)
+    fixed_deposit.current_value(self)
   end
 
   def invested_amount
