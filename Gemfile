@@ -41,8 +41,6 @@ gem 'pg'
 gem 'rack-environmental'
 gem 'sheet_mapper',                        :github => 'TMaYaD/sheet_mapper'
 gem 'simple_form',                         :github => 'plataformatec/simple_form'
-gem 'simple-navigation'
-gem 'simple-navigation-bootstrap'
 gem 'thin'
 
 group :test, :development do
@@ -82,4 +80,5 @@ end
 group :test do
   gem 'vcr'
     gem 'webmock'
+  gem 'sqlite3'
 end
