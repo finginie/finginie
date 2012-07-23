@@ -42,7 +42,7 @@ describe "Authentication" do
 
         OmniAuth.config.add_mock 'single_signon', { :uid => user.id }
 
-        find(:link, 'signin-continue').click
+        visit '/auth/single_signon'
 
         visit comprehensive_risk_profiler_path
         page.should have_content "Your Risk Appetite is : #{comprehensive_risk_profile.score.round}"
@@ -56,7 +56,7 @@ describe "Authentication" do
         visit edit_comprehensive_risk_profiler_path
         find("a#skip_quiz").click
 
-        find(:link, 'signin-continue').click
+        visit '/auth/single_signon'
 
         visit comprehensive_risk_profiler_path
         expected_content = [ ['Fixed Deposits', '40%'], [ 'Large Cap Stocks', '20%'], [ 'Mid Cap Stocks', '10%'], [ 'Gold', '30%']]

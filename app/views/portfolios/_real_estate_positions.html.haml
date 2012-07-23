@@ -19,15 +19,15 @@
       - real_estate_positions.each do |net_position|
         %tr
           %td.name= net_position.name
-          %td= number_to_indian_currency net_position.buy_value
-          %td= number_to_indian_currency net_position.current_value
+          %td= net_position.buy_value
+          %td= net_position.current_value
           %td= rg_colorize net_position.unrealised_profit
-          %td= rg_colorize net_position.unrealised_profit_percentage
+          %td= rg_colorize(number_with_precision(net_position.unrealised_profit_percentage), net_position.unrealised_profit_percentage)
           %td.center_align= link_to 'Sell', sell_portfolio_real_estate_transaction_path(net_position.first.portfolio_id, net_position.first), :method => :get
       %tr.total
         %td.name Total
-        %td= number_to_indian_currency real_estate_positions.sum(&:buy_value)
-        %td= number_to_indian_currency real_estate_positions.sum(&:current_value)
+        %td= real_estate_positions.sum(&:buy_value)
+        %td= real_estate_positions.sum(&:current_value)
         %td= rg_colorize real_estate_positions.sum(&:unrealised_profit)
         %td
         %td

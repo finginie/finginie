@@ -13,24 +13,24 @@ describe "MutualFundPosition", :mongoid do
 
   its (:name) { should eq scheme.name }
   its (:quantity) { should eq 10 }
-  its (:average_cost_price) { should eq 3 }
+  its (:average_cost_price) { should be_a_indian_currency_of 2.99 }
   its (:buys) { should include *portfolio.mutual_fund_transactions }
-  its (:value) { should eq 30 }
+  its (:value) { should be_a_indian_currency_of 29.9 }
   its (:current_value) { should be_a_indian_currency_of 50 }
-  its (:unrealised_profit) { should be_a_indian_currency_of 20 }
-  its (:unrealised_profit_percentage) { should eq 66.67 }
+  its (:unrealised_profit) { should be_a_indian_currency_of 20.1 }
+  its (:unrealised_profit_percentage) { should eq 67.22 }
 
   context "should calculate after sell transaction" do
     before(:each) {
       subject # ensure mutual transaction is saved
       create :mutual_fund_transaction, :mutual_fund => mutual_fund, :portfolio => portfolio, :quantity => 4, :price => 6, :date => Date.today, :action => "sell"
     }
-    its(:average_cost_price) { should eq 3 }
-    its(:value) { should eq 18 }
-    its(:profit_or_loss) { should eq 12 }
+    its(:average_cost_price) { should be_a_indian_currency_of 2.99 }
+    its(:value) { should be_a_indian_currency_of 17.94 }
+    its(:profit_or_loss) { should be_a_indian_currency_of 12.04 }
 
     it "should return sell transaction profit or loss" do
-      subject.last.profit_or_loss.should eq 12
+      subject.last.profit_or_loss.should be_a_indian_currency_of 12.04
     end
 
     its(:average_sell_price) { should eq 6 }
@@ -42,9 +42,9 @@ describe "MutualFundPosition", :mongoid do
       create :mutual_fund_transaction, :mutual_fund => mutual_fund, :portfolio => portfolio, :quantity => 3, :price => 6, :date => Date.today, :action => "sell"
       create :mutual_fund_transaction, :mutual_fund => mutual_fund, :portfolio => portfolio, :quantity => 4, :price => 1, :date => Date.today, :action => "sell"
     }
-    its(:profit_or_loss) { should eq 1 }
+    its(:profit_or_loss) { should be_a_indian_currency_of 1.07 }
     its(:average_sell_price) { should eq 3.14 }
-    its(:profit_or_loss_percentage) { should eq 4.76 }
+    its(:profit_or_loss_percentage) { should be_a_indian_currency_of 5.11 }
   end
 
   it "should return nil unrealised profit when there is no current price" do

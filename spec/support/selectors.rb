@@ -11,5 +11,5 @@ def have_error_message(name)
 end
 
 Capybara.add_selector(:link) do
-  xpath { |content| ".//a[@data-role='#{content}']" }
+  xpath { |content| ".//a[@href='#{content}']" }
 end

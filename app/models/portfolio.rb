@@ -44,7 +44,7 @@ class Portfolio < ActiveRecord::Base
   end
 
   def total_liabilitites_value
-    (loan_positions.map(&:outstanding_amount).sum)
+    (loan_positions.sum(IndianCurrency.new(0),&:outstanding_amount))
   end
 
   def total_assets_value
@@ -56,11 +56,11 @@ class Portfolio < ActiveRecord::Base
   end
 
   def stocks_value
-    stock_positions.map(&:current_value).sum
+    stock_positions.sum(IndianCurrency.new(0),&:current_value)
   end
 
   def mutual_funds_value
-    mutual_fund_positions.map(&:current_value).sum
+    mutual_fund_positions.sum(IndianCurrency.new(0),&:current_value)
   end
 
   def gold_value
@@ -68,10 +68,10 @@ class Portfolio < ActiveRecord::Base
   end
 
   def real_estates_value
-    real_estate_positions.map(&:current_value).sum
+    real_estate_positions.sum(IndianCurrency.new(0),&:current_value)
   end
 
   def fixed_deposits_value
-    fixed_deposit_positions.map(&:current_value).sum
+    fixed_deposit_positions.sum(IndianCurrency.new(0),&:current_value)
   end
 end

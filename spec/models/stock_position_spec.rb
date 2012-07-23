@@ -15,11 +15,11 @@ describe "StockPosition",:redis, :mongoid do
   its (:name) { should eq company.name }
   its (:sector) { should eq company.industry_name }
   its (:quantity) { should eq 10 }
-  its (:average_cost_price) { should eq 3 }
-  its (:value) { should eq 30 }
+  its (:average_cost_price) { should be_a_indian_currency_of 2.99 }
+  its (:value) { should be_a_indian_currency_of 29.9 }
   its (:current_value) { should be_a_indian_currency_of 50 }
-  its (:unrealised_profit) { should be_a_indian_currency_of 20 }
-  its (:unrealised_profit_percentage) { should eq 66.67 }
+  its (:unrealised_profit) { should be_a_indian_currency_of 20.1 }
+  its (:unrealised_profit_percentage) { should eq 67.22 }
 
   context "should calculate after sell transaction" do
     before(:each) do
@@ -27,15 +27,15 @@ describe "StockPosition",:redis, :mongoid do
       create :stock_transaction, :company_code => company.code, :portfolio => portfolio, :quantity => 4, :action => 'sell', :price => 6, :date => Date.today
     end
 
-    its(:average_cost_price) { should eq 3 }
-    its(:value) { should eq 18 }
-    its(:profit_or_loss) { should eq 12 }
+    its(:average_cost_price) { should be_a_indian_currency_of 2.99 }
+    its(:value) { should be_a_indian_currency_of 17.94 }
+    its(:profit_or_loss) { should be_a_indian_currency_of 12.04 }
 
     it "should return sell transaction profit or loss" do
-      subject.last.profit_or_loss.should eq 12
+      subject.last.profit_or_loss.should be_a_indian_currency_of 12.04
     end
 
-    its(:profit_or_loss_percentage) { should eq 100 }
+    its(:profit_or_loss_percentage) { should eq 100.67 }
 
     its(:average_sell_price) { should eq 6 }
   end
@@ -49,15 +49,15 @@ describe "StockPosition",:redis, :mongoid do
       subject.all # force reload all transactions
     }
 
-    its(:average_cost_price) { should eq 4 }
+    its(:average_cost_price) { should be_a_indian_currency_of 3.99 }
     its(:average_sell_price) { should eq 6.5 }
-    its(:value) { should eq 20 }
+    its(:value) { should be_a_indian_currency_of 19.95 }
   end
 
   it "should calculate average cost price based only on the transactions of current portfolio" do
     create :stock_transaction, :company_code => company.code, :quantity => 10, :price => 5, :date => 5.days.ago
     subject.average_cost_price.should_not == 4
-    subject.average_cost_price.should eq 3
+    subject.average_cost_price.should be_a_indian_currency_of 2.99
   end
 
   it "should return nil unrealised profit when there is no current price" do

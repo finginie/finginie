@@ -24,6 +24,6 @@
           %td.type{:class => gold_transaction.action}= gold_transaction.action.to_s.titleize
           %td.name Gold
           %td.quantity= gold_transaction.quantity
-          %td.price= number_to_indian_currency gold_transaction.price
-          %td.amount= number_to_indian_currency gold_transaction.value.abs
+          %td.price= gold_transaction.price
+          %td.amount= gold_transaction.value.abs
           %td.comment= gold_transaction.comments && gold_transaction.comments.strip.empty?  ? t("tables_not_available") : gold_transaction.comments

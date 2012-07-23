@@ -76,33 +76,33 @@ class PortfolioDecorator < ApplicationDecorator
     [
       {
         :asset_type => "Stocks",
-        :percentage => number_to_indian_currency(stocks_percentage),
-        :amount     => number_to_indian_currency(stocks_value,0)
+        :percentage => number_with_precision(stocks_percentage),
+        :amount     => stocks_value
       },
       {
         :asset_type => "Mutual Funds",
-        :percentage => number_to_indian_currency(mutual_funds_percentage),
-        :amount     => number_to_indian_currency(mutual_funds_value,0)
+        :percentage => number_with_precision(mutual_funds_percentage),
+        :amount     => mutual_funds_value
       },
       {
         :asset_type => "Gold",
-        :percentage => number_to_indian_currency(gold_percentage),
-        :amount     => number_to_indian_currency(gold_value,0)
+        :percentage => number_with_precision(gold_percentage),
+        :amount     => gold_value
       },
       {
         :asset_type => "Fixed Deposits",
-        :percentage => number_to_indian_currency(fixed_deposits_percentage),
-        :amount     => number_to_indian_currency(fixed_deposits_value,0)
+        :percentage => number_with_precision(fixed_deposits_percentage),
+        :amount     => fixed_deposits_value
       },
       {
          :asset_type => "Real Estate" ,
-         :percentage => number_to_indian_currency(real_estates_percentage),
-         :amount     => number_to_indian_currency(real_estates_value,0)
+         :percentage => number_with_precision(real_estates_percentage),
+         :amount     => real_estates_value
       },
       {
         :asset_type => "Total",
         :class      => "total",
-        :amount     => number_to_indian_currency(total_assets_value,0)}
+        :amount     => total_assets_value}
       ]
   end
 
@@ -110,18 +110,18 @@ class PortfolioDecorator < ApplicationDecorator
     [
       {
         :asset_type => "Loans",
-        :percentage => number_to_indian_currency(total_liabilitites_percentage),
-        :amount     => number_to_indian_currency(total_liabilitites_value.abs,0)
+        :percentage => number_with_precision(total_liabilitites_percentage),
+        :amount     => total_liabilitites_value.abs
       },
       {
         :asset_type => "Total",
         :class      => "total",
-        :amount     => number_to_indian_currency(total_liabilitites_value.abs,0)
+        :amount     => total_liabilitites_value.abs
       },
       {
         :asset_type => "Net Worth",
         :class      => "total",
-        :amount     => number_to_indian_currency(net_worth,0)}
+        :amount     => net_worth}
     ]
   end
 
@@ -142,7 +142,7 @@ class PortfolioDecorator < ApplicationDecorator
                                             :average_sell_price => stock_positions.average_sell_price,
                                             :average_cost_price => stock_positions.average_cost_price,
                                             :quantity => stock_positions.sells.quantity.abs,
-                                            :profit_or_loss => (stock_positions.profit_or_loss.round(2).to_f),
+                                            :profit_or_loss => (stock_positions.profit_or_loss),
                                             :percentage => (stock_positions.profit_or_loss_percentage.to_f)}) if !stock_positions.sells.empty?}.compact
   end
 
@@ -162,7 +162,7 @@ class PortfolioDecorator < ApplicationDecorator
                                                :average_sell_price => mutual_fund_positions.average_sell_price,
                                                :average_cost_price => mutual_fund_positions.average_cost_price,
                                                :quantity => mutual_fund_positions.sells.quantity.abs,
-                              :profit_or_loss => (mutual_fund_positions.profit_or_loss.round(2).to_f),
+                              :profit_or_loss => (mutual_fund_positions.profit_or_loss),
                               :percentage => (mutual_fund_positions.profit_or_loss_percentage.round(2).to_f) })  if !mutual_fund_positions.sells.empty? }.compact
   end
 
@@ -172,13 +172,13 @@ class PortfolioDecorator < ApplicationDecorator
 
   def fixed_deposit_positions_profit_or_loss
     fixed_deposits.map { |fd| Hashie::Mash.new({ :name => fd.name, :type => 'Fixed Deposit',
-                                                 :profit_or_loss => model.fixed_deposit_transactions.for(fd).profit_or_loss.to_f,
+                                                 :profit_or_loss => model.fixed_deposit_transactions.for(fd).profit_or_loss,
                                                  :percentage => model.fixed_deposit_transactions.for(fd).profit_or_loss_percentage.to_f }) if model.fixed_deposit_transactions.for(fd).profit_or_loss }.compact
   end
 
   def real_estate_positions_profit_or_loss
     real_estates.map { |re| Hashie::Mash.new( { :name => re.name, :type => 'Real Estate',
-                                                :profit_or_loss => (model.real_estate_transactions.for(re.id).profit_or_loss.to_f),
+                                                :profit_or_loss => (model.real_estate_transactions.for(re.id).profit_or_loss),
                                                 :percentage => model.real_estate_transactions.for(re.id).profit_or_loss_percentage.to_f} ) if model.real_estate_transactions.for(re.id).profit_or_loss }.compact
   end
 
@@ -219,7 +219,7 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def net_profit_or_loss
-    positions.map(&:profit_or_loss).sum.round(2)
+    positions.sum(&:profit_or_loss)
   end
 
   def stock_transactions

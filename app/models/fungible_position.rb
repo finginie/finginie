@@ -12,7 +12,7 @@ module FungiblePosition
   end
 
   def profit_or_loss_percentage
-    (sells.map(&:profit_or_loss).inject(:+) * 100 / sells.map { |s| s.adjusted_average_price * s.quantity }.inject(:+)).round(2).to_f unless sells.empty?
+    (sells.sum(&:profit_or_loss) * 100 / sells.map { |s| s.adjusted_average_price * s.quantity }.inject(:+)).round(2).to_f unless sells.empty?
   end
 
   def average_cost_price

@@ -26,8 +26,7 @@
         = t(".no_loss")
     - unless resource.positions.empty?
       %h1 Net Profit/Loss
-      %table.table.table-striped
+      %table.table.table-striped{ :data => {:role => 'net_profit_loss'}}
         %tr
-          %td.name.total Net Profit/Loss
+          %td.name.total= t('.net_profit_loss')
           %td= rg_colorize resource.net_profit_or_loss
-

@@ -39,7 +39,7 @@ describe Portfolio, :redis do
     4.times { |n| create :stock_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     portfolio.stock_transactions.for(company).quantity.should eq 10
-    portfolio.stock_transactions.for(company).average_cost_price.should eq 3
+    portfolio.stock_transactions.for(company).average_cost_price.should be_a_indian_currency_of 2.99
   end
 
   it "should have many mutual_fund_positions" do
@@ -47,14 +47,14 @@ describe Portfolio, :redis do
     4.times { |n| create :mutual_fund_transaction, :mutual_fund => mutual_fund, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     portfolio.mutual_fund_transactions.for(mutual_fund).quantity.should eq 10
-    portfolio.mutual_fund_transactions.for(mutual_fund).average_cost_price.should eq 3
+    portfolio.mutual_fund_transactions.for(mutual_fund).average_cost_price.should be_a_indian_currency_of 2.99
   end
 
   it "should have a gold position" do
     4.times { |n| create :gold_transaction, :portfolio => portfolio, :quantity => n+1, :price => n+1, :date => (n +1).days.ago  }
 
     portfolio.gold_transactions.for(DataProvider::Gold).quantity.should eq 10
-    portfolio.gold_transactions.for(DataProvider::Gold).average_cost_price.should eq 3
+    portfolio.gold_transactions.for(DataProvider::Gold).average_cost_price.should be_a_indian_currency_of 2.99
   end
 
   describe "Net Worth" do

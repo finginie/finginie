@@ -18,11 +18,11 @@
       %tr
         %td.name= hsh.name
         %td= hsh.rate
-        %td= number_to_indian_currency hsh.amount
+        %td= hsh.amount
     %tr.total
       %td.name Total
       %td
-      %td= number_to_indian_currency resource.fixed_deposit_open_positions_rate_of_interests.sum(&:amount)
+      %td= resource.fixed_deposit_open_positions_rate_of_interests.sum(&:amount)
 -else
   .hero-unit.show-grid
     %p.align-center

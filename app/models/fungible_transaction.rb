@@ -27,7 +27,7 @@ module FungibleTransaction
   end
 
   def profit_or_loss
-    @profit_or_loss ||= buy? ? 0 : quantity * ( price - adjusted_average_price )
+    @profit_or_loss ||= buy? ? 0 : ( price - adjusted_average_price ) * quantity
   end
 
   def value

@@ -12,9 +12,9 @@ class ScripDecorator < ApplicationDecorator
   end                                           ##
 
   FIELDS_TO_COLORIZE.each do |key|
-    define_method("#{key}_with_colorize".to_sym) do                # def key
-      if model.send(key)
-        h.rg_colorize self.send("#{key}_without_colorize"), model.send(key) #   key || "N/A"
+    define_method("#{key}_with_colorize".to_sym) do                         # def key_with_colorize
+      if model.send(key)                                                    # if model.send(key)
+        h.rg_colorize self.send("#{key}_without_colorize"), model.send(key) #
       else
         self.send("#{key}_without_colorize")
       end
@@ -23,6 +23,6 @@ class ScripDecorator < ApplicationDecorator
   end
 
   def volume
-    model.volume ? h.number_to_indian_currency(model.volume.round, 0) : h.t('not_available')
+    model.volume ? h.number_to_indian_format(model.volume.round, 0) : h.t('not_available')
   end
 end

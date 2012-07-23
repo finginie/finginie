@@ -143,18 +143,18 @@ describe "Portfolios", :mongoid do
 
     visit portfolio_path(portfolio)
     expected_asset_table = [
-                             [ 'Stocks',           "50" ,  "5.84"],
-                             [ 'Mutual Funds',     "50" ,  "5.84"],
-                             [ 'Gold',             "50" ,  "5.84"],
-                             [ 'Fixed Deposits',   "107", "12.44"],
-                             [ 'Real Estate',      "600", "70.05"],
-                             [ "Total",            "857",      ""]
+                             [ 'Stocks',           "50.00" ,  "5.84"],
+                             [ 'Mutual Funds',     "50.00" ,  "5.84"],
+                             [ 'Gold',             "50.00" ,  "5.84"],
+                             [ 'Fixed Deposits',   "106.55", "12.44"],
+                             [ 'Real Estate',      "600.00", "70.05"],
+                             [ "Total",            "856.55",      ""]
                           ]
 
     expected_liabilities_table = [
-                                   ["Loans",     "259", "100.00"],
-                                   ["Total",     "259",       ""],
-                                   ["Net Worth", "598",       ""]
+                                   ["Loans",     "259.15", "100.00"],
+                                   ["Total",     "259.15",       ""],
+                                   ["Net Worth", "597.40",       ""]
                                   ]
     tableish("table.assets").should include *expected_asset_table
     tableish("table.liabilities").should include *expected_liabilities_table
@@ -227,7 +227,7 @@ describe "Portfolios", :mongoid do
 
     expected_table = [
                         ["FOO",                        "",     "-",    "-",     "-",    "50.00",  "-",     "71.43"],
-                        [company.name,         "10", "3.00", "30.00", "5.00", "50.00",  "20.00", "71.43"],
+                        [company.name,         "10", "2.99", "29.90", "5.00", "50.00",  "20.10", "71.43"],
                         ["BAR",                        "",     "-",    "-",     "-",    "20.00",  "-",     "28.57"],
                         [another_company.name, "4",  "6.00", "24.00", "5.00", "20.00",  "-4.00", "28.57"],
                         ["Total",                      "",     "",     "",      "",     "70.00",  ""      , ""     ]
@@ -243,7 +243,7 @@ describe "Portfolios", :mongoid do
     visit mutual_funds_analysis_portfolio_path(portfolio)
     expected_table = [
                         ["FOO",               "",     "-",    "-",     "-",    "50.00",  "-",     "71.43"],
-                        [scheme.name,  "10", "3.00", "30.00", "5.00", "50.00",  "20.00", "71.43"],
+                        [scheme.name,  "10", "2.99", "29.90", "5.00", "50.00",  "20.10", "71.43"],
                         ["BAR",               "",     "-",    "-",     "-",    "20.00",  "-",     "28.57"],
                         [scheme2.name, "4",  "6.00", "24.00", "5.00", "20.00",  "-4.00", "28.57"],
                         ["Total",             "",     "",     "",      "",     "70.00",  ""      , ""     ]
@@ -260,16 +260,18 @@ describe "Portfolios", :mongoid do
       visit accumulated_profits_portfolio_path(another_portfolio)
 
       expected_table_profits = [ ["Test Property", "Real Estate", "", "", "", "400.00", "80.00"],
-                                 [company.name, "Stock", "4", "4.00", "6.00", "12.00", "100.00"],
-                                 [scheme.name, "Mutual Fund","4", "4.00", "6.00", "12.00", "100.00"],
+                                 [company.name, "Stock", "4", "4.00", "6.00", "12.04", "100.67"],
+                                 [scheme.name, "Mutual Fund","4", "4.00", "6.00", "12.04", "100.67"],
                                  ["Foo", "Fixed Deposit", "", "", "","4.64", "4.64"] ]
       expected_table_losses = [ ["Test Property2", "Real Estate","", "", "","-400.00", "-44.44"],
                                 ["FOO", "Stock", "4", "6.00", "5.00","-4.00", "-16.67"],
                                 ["Foo Scheme Name", "Mutual Fund", "1", "5.00", "4.00", "-1.00", "-20.00"]]
+      expected_table_net = [
+                            [I18n.t('portfolios.accumulated_profits.net_profit_loss'), '23.72']]
 
       tableish("#accumulated_profits table").should include *expected_table_profits
       tableish("#accumulated_losses table").should include *expected_table_losses
-      page.should have_content 23.64
+      tableish("table[data-role='net_profit_loss']").should include *expected_table_net
     end
   end
 
@@ -287,9 +289,9 @@ describe "Portfolios", :mongoid do
     create :stock_transaction, :company_code => another_company.code, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
 
     visit stocks_analysis_portfolio_path(portfolio)
-    expected_table = [ [ company.name,         "FOO", "4", "4.0", "6.0", "12.00", "100.00" ],
-                       [ another_company.name, "BAR", "4", "6.0", "5.0", "-4.00", "-16.67" ],
-                       [ "Total",                      "",    "",  "",    "",    "8.00",  ""       ] ]
+    expected_table = [ [ company.name,         "FOO", "4", "4.00", "6.00", "12.04", "100.67" ],
+                       [ another_company.name, "BAR", "4", "6.00", "5.00", "-4.00", "-16.67" ],
+                       [ "Total",                      "",    "",  "",    "",    "8.04",  ""       ] ]
 
     tableish("#stocks_profit_or_loss_analysis table").should include *expected_table
   end
@@ -303,9 +305,9 @@ describe "Portfolios", :mongoid do
 
     visit mutual_funds_analysis_portfolio_path(portfolio)
     expected_table = [
-                      [ scheme.name, "FOO",  "4",  "4.0", "6.0", "12.00", "100.00" ],
-                      [ scheme2.name, "BAR", "1",  "5.0", "4.0", "-1.00", "-20.00" ],
-                      [ "Total", "",                "",   "",    "",    "11.00", ""       ]
+                      [ scheme.name, "FOO",  "4",  "4.00", "6.00", "12.04", "100.67" ],
+                      [ scheme2.name, "BAR", "1",  "5.00", "4.00", "-1.00", "-20.00" ],
+                      [ "Total", "",                "",   "",    "",    "11.04", ""       ]
                      ]
     tableish("#mfs_profit_or_loss_analysis table").should include *expected_table
   end

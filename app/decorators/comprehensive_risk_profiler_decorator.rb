@@ -4,15 +4,15 @@ class ComprehensiveRiskProfilerDecorator < ApplicationDecorator
   include NumberHelper
 
   def three_month_household_expenditure
-    number_to_indian_currency(3 * model.household_expenditure)
+    model.household_expenditure * 3
   end
 
   def initial_investment
-    model.initial_investment > 0 ? number_to_indian_currency(model.initial_investment) : number_to_indian_currency(model.household_savings.to_f/2)
+    model.initial_investment > 0 ? model.initial_investment : model.household_savings/2
   end
 
   def three_month_investment_amount
-   number_to_indian_currency(3 * model.monthly_savings)
+    model.monthly_savings * 3
   end
 
   def summary
@@ -44,7 +44,7 @@ class ComprehensiveRiskProfilerDecorator < ApplicationDecorator
   end
 
   def monthly_savings_needed
-    (model.special_goals_factor - model.monthly_savings).round
+    (model.special_goals_factor - model.monthly_savings)
   end
 
   def inadequate_monthly_savings?
@@ -52,7 +52,7 @@ class ComprehensiveRiskProfilerDecorator < ApplicationDecorator
   end
 
   def inadequate_household_savings?
-    model.household_savings < (3 * model.household_expenditure)
+    model.household_savings < (model.household_expenditure * 3)
   end
 
   def time_horizon_summary

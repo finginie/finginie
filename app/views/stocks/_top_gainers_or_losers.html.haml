@@ -13,7 +13,7 @@
             = table.ths 'Name', "<nobr>Today's Price</nobr>".html_safe, 'Volume'
             = table.tds ->(scrip) { link_to scrip.company.name, stock_path(scrip.company) },
                         ->(scrip) { scrip.last_traded_price },
-                        ->(scrip) { number_to_indian_currency(scrip.volume, 0) }
+                        ->(scrip) { number_to_indian_format(scrip.volume,0) }
         - %w(top_gainers top_losers).each do |performance|
           .tab-pane{ :id => "#{klass.underscore}_#{performance}" }
             -bt_table "DataProvider::#{klass}".constantize.send(performance, 5).each do |table|

@@ -4,7 +4,7 @@ class FixedDepositQueryDecorator < ApplicationDecorator
   include NumberHelper
 
   def result_summary(default= false)
-    attributes = {amount: number_to_indian_currency(amount) }
+    attributes = {amount: number_to_indian_format(amount) }
     time_duration  = ""
     time_duration += "#{pluralize(year, 'year')}"    if year
     time_duration += " #{pluralize(month, 'month')}" if month

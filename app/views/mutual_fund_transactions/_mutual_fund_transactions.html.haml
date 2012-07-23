@@ -24,6 +24,6 @@
           %td.type{:class => mf_transaction.action}= mf_transaction.action.to_s.titleize
           %td.name= mf_transaction.mutual_fund.name
           %td.quantity= mf_transaction.quantity
-          %td.price= number_to_indian_currency mf_transaction.price
-          %td.amount= number_to_indian_currency mf_transaction.value.abs
+          %td.price= mf_transaction.price
+          %td.amount= mf_transaction.value.abs
           %td.comment= mf_transaction.comments && mf_transaction.comments.strip.empty?  ? t("tables_not_available") : mf_transaction.comments
