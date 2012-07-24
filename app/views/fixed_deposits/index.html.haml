@@ -1,6 +1,7 @@
 .row
-  .span12.show-grid
-    %h1 Fixed Deposit Comparison tool <small>Compare fixed deposit interest rates across banks in India</small>
+  .span12
+    .page-header
+      %h1 Fixed Deposit Comparison tool <small>Compare fixed deposit interest rates across banks in India</small>
     %p= t ".fixed_deposit_tool"
 
   .span12.show-grid
@@ -39,14 +40,14 @@
     .span12.show-grid
       .notice= t ".default"
     - [@top_five_public_banks_interest_rates, @top_five_private_banks_interest_rates].each do |fd_details|
-      .span6.show-grid
+      .span6
         - unless fd_details.empty?
           %h2
             Best interest rates on fixed deposits among
             %strong=fd_details.first.sector.titleize.downcase!
             sector banks
           %div{ :id => "top_five_#{fd_details.first.sector.downcase}_sector_interest_rate"}
-            %table.table.table-striped
+            %table.table.table-striped.table-bordered
               %tr
                 %th.name Bank Name
                 %th.right_align 1 year

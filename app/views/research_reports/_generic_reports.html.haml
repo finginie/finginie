@@ -1,6 +1,6 @@
 = form_tag research_reports_path, :method => :get, :class => 'form-search' do
   .input-append
-    = text_field_tag :query, nil, :placeholder => 'Search by company, source or sector', :class => 'search-query'
+    = text_field_tag :query, nil, :placeholder => 'company or source or sector', :class => 'search-query'
     = button_tag :class => 'btn' do
       %i.icon-search
 

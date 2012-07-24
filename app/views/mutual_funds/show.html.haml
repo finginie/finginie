@@ -2,19 +2,21 @@
 - if @scheme.model
   - provide :title, @scheme.name
   .row
-    .span12.show-grid
+    .span12
       .page-header
         %h1
           =@scheme.name
           %small
             %strong= @scheme.nav_amount
             = @scheme.day_change
-            (#{@scheme.percentage_change}%)
-        %p
-          %strong= 'Category :'
-          %span= @scheme.class_description
-          %strong= 'Benchmark Index :'
-          %span= @scheme.bench_mark_index_name
+            = rg_colorize "(#{@scheme.percentage_change}%)", @scheme.percentage_change
+  .row
+    .span12
+      %p
+        %strong= 'Category :'
+        %span= @scheme.class_description
+        %strong= 'Benchmark Index :'
+        %span= @scheme.bench_mark_index_name
   .row
     .span12.show-grid
       %table.table.table-striped

@@ -12,7 +12,7 @@ class StocksController < InheritedResources::Base
   def collection
     @search = DataProvider::Company.new
     if params[:term]
-      @search_records = DataProvider::Company.stocks.csearch(params[:term]).order_by([[:name, :asc]])
+      @search_records = DataProvider::Company.stocks.csearch(params[:term]).order_by([[:name, :asc]]).limit(10)
       @search_records.all.map {|stock| {:value => stock.name, :id => stock.slug}}
     elsif params[:screener]
       @search_records = DataProvider::Company.screener_search(params[:screener])

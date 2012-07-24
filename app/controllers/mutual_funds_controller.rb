@@ -5,7 +5,7 @@ class MutualFundsController < InheritedResources::Base
   def collection
     @search = DataProvider::Scheme.new
     if params[:term]
-      @search_records = DataProvider::Scheme.active.csearch(params[:term], :allow_empty_search => true).order_by([[:name, :asc]])
+      @search_records = DataProvider::Scheme.active.csearch(params[:term], :allow_empty_search => true).order_by([[:name, :asc]]).limit(10)
       @search_records.all.map {|scheme| {:value => scheme.name, :id => scheme.slug }}
     else
       @categories = DataProvider::NetAssetValueCategory.all( sort: [[:scheme_class_description, :asc]])
