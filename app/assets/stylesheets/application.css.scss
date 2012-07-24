@@ -57,3 +57,23 @@ section, .show-grid {
   margin-top: 60px;
   background-color: #EEE;
 }
+
+.marketing h1 {
+    font-size: 40px;
+    font-weight: 300;
+    margin: 0 0 40px;
+    text-align: center;
+    color: #333;
+}
+
+.marketing h5 {
+  font-weight: 300;
+  font-size: 22px;
+}
+
+hr.soften {
+  background-image: -moz-linear-gradient(left center , transparent, rgba(0, 0, 0, 0.1), transparent);
+  border: 0 none;
+  height: 1px;
+  margin: 54px 0;
+}
