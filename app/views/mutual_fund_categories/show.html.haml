@@ -1,5 +1,6 @@
-= render 'mutual_funds/search', :search => @search
-%h1= @nav_category_detail.scheme_class_description
+//= render 'mutual_funds/search', :search => @search
+.page-header
+  %h1= @nav_category_detail.scheme_class_description
 
 %p= t ".#{@nav_category_detail.scheme_class_description.gsub(/[^\w]/,"").underscore}"
 

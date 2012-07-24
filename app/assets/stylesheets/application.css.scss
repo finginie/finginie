@@ -77,3 +77,35 @@ hr.soften {
   height: 1px;
   margin: 54px 0;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+//  Todo: Find a way with bootstrap to fix dropdown styling
+
+ul.ui-autocomplete {
+    border: 1px solid #AAAAAA;
+    cursor: default;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+
+ul.ui-autocomplete li {
+    background-color: #FFFFFF;
+    border-top: 1px solid #DDDDDD;
+    margin: 0;
+    padding: 0;
+}
+
+ul.ui-autocomplete li a {
+    color: #3872C2;
+    display: block;
+    font-size: 12px;
+    padding: 4px;
+}
