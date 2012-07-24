@@ -17,8 +17,10 @@
 - if resource.score
   .row
     .span8.show-grid
-      #asset-allocation-chart.chart{ data: { elements: [['','']] + FinancialPlanner.ideal_asset_allocation(resource).to_a,
-                                             title: 'Suggested Asset Allocation', chartType: 'Pie'} }
+      -gchart(:data => FinancialPlanner.ideal_asset_allocation(resource).to_a,
+              :title => 'Suggested Asset Allocation',
+              :chartType => 'Pie' )
+
     .span4.show-grid
       %table.table.table-striped
         %tr
@@ -34,4 +36,4 @@
       %p= t ".future_investment"
       -unless current_user
         %p= t ".sign_up"
-      =link_to "#{'Signin & ' unless current_user}Continue", portfolios_path, :class => %w(btn btn-large btn-primary), :data => { :role => 'signin-continue'}
+      =link_to "#{'Signin & ' unless current_user}Continue", portfolios_path, :class => %w(btn btn-large btn-primary)

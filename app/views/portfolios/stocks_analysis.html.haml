@@ -2,8 +2,8 @@
 
 %h1 Stocks Analysis
 - unless resource.sector_wise_stock_percentage.empty?
-  #stock-sectoral-allocation-chart.chart{ data: { elements: [['','']] + resource.sector_wise_stock_percentage,
-                                                  title: 'Sector Wise Stocks Allocation', chartType: 'Pie'} }
+  - gchart( :data => resource.sector_wise_stock_percentage,
+      :title => 'Sector Wise Stocks Allocation', :chartType => 'Pie')
   %h1 Current Holdings:Sector wise Analysis
   %table.table.table-striped
     %tr
@@ -52,8 +52,8 @@
 
 #stocks_profit_or_loss_analysis
   - unless resource.stocks_positions_profit_or_loss.empty?
-    #stocks-profit-or-loss-chart.chart{ data: { elements: [['','']] + resource.stocks_positions_profit_or_loss.map { |r| [r.name, r.percentage] },
-                                                title: 'Realized Profit/Loss on Stocks', yAxisTitle: 'Percentage (%)', chartType: 'Column' } }
+    - gchart(:data => resource.stocks_positions_profit_or_loss.map { |r| [r.name, r.percentage] },
+             :title => 'Realized Profit/Loss on Stocks', :yAxisTitle => 'Percentage (%)', :chartType => 'Column')
     %h1 Realized Profits/Losses
     %table.table.table-striped
       %tr

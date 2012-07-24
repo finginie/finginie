@@ -9,8 +9,7 @@
           %small= @scheme.name
   .row
     .span8.show-grid
-      #mf-comparative-returns-chart.chart{data: { elements: @scheme.comparative_returns_data_table, title: 'Comparative Returns',
-                                                  yAxisTitle: 'Return(%)', chartType: 'Column', legend: 'bottom' } }
+      -gchart(:data => @scheme.comparative_returns_data_table, :title => 'Comparative Returns', :yAxisTitle => 'Return(%)', :chartType => 'Column', :legend => 'bottom')
     .span4.show-grid
       %table.table.table-striped
         %tr

@@ -15,7 +15,7 @@ describe "ComprehensiveRiskProfilers" do
       end
 
       it "should show the login link on page" do
-        should_have_data_role('a', 'signin-continue')
+        page.should have_content 'Signin & Continue'
       end
     end
 

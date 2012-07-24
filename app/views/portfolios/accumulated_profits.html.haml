@@ -7,8 +7,9 @@
       %p.align-center
         = t ".no_profit_or_loss"
   - else
-    #accumulated-profits-chart.chart{ data: { elements: [['','']] + (resource.top_five_profits + resource.top_five_losses).map{ |r| [ r.name, r.percentage ] },
-                                              chartType: 'Column', yAxisTitle: 'Percentage (%)', title: 'Your Top Realised Profit/Losses by Percentage' } }
+    - gchart(:data => (resource.top_five_profits + resource.top_five_losses).map{ |r| [ r.name, r.percentage ] },
+              :chartType => 'Column', :yAxisTitle => 'Percentage (%)',
+              :title =>'Your Top Realised Profit/Losses by Percentage')
     %h1 Realized Profits
     - unless resource.top_five_profits.empty?
       #accumulated_profits

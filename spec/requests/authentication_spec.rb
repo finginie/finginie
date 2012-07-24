@@ -38,7 +38,7 @@ describe "Authentication" do
       let(:comprehensive_risk_profile) { build :comprehensive_risk_profiler }
       before(:each) { answer_comprehensive_risk_profiler_with(comprehensive_risk_profile) }
 
-      it "should save the risk profiler after signing in", :js do
+      it "should save the risk profiler after signing in", :js, :omniauth do
 
         OmniAuth.config.add_mock 'single_signon', { :uid => user.id }
 
@@ -50,7 +50,7 @@ describe "Authentication" do
     end
 
     context "skipped comprehensive risk profiler quiz" do
-      it "should save the default score after signing in", :js do
+      it "should save the default score after signing in", :js, :omniauth do
         OmniAuth.config.add_mock 'single_signon', { :uid => user.id }
 
         visit edit_comprehensive_risk_profiler_path

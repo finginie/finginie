@@ -12,9 +12,7 @@ describe "ResearchReports",:vcr, :mongoid do
     company = create :'data_provider/company', :name => 'Petronet LNG Ltd.', :nse_code => nil, :bse_code1 => '532522'
     visit stock_path(company)
 
-    find(:link, "shares-#{company.to_param}-research_reports").click
-
-    page.current_path.should eq stock_research_reports_path(:stock_id => 'petronet-lng-ltd')
+    find(:link, "/shares/#{company.to_param}/research_reports")
   end
 
   it "should show latest reports in the index page" do

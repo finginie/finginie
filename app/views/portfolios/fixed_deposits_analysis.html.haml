@@ -2,8 +2,8 @@
 
 %h1 Fixed Deposits Analysis
 - unless resource.fixed_deposit_open_positions_rate_of_interests.empty?
-  #fixed-deposits-chart.chart{ data: { elements: [['Rate','Amount']] + resource.fixed_deposit_open_positions_rate_of_interests.map{ |fd| [fd.rate.to_s, fd.amount] },
-                               title: 'Fixed Deposits', yAxisTitle: 'Amount Invested (Rs)', xAxisTitle: 'Interest Rate p.a.(%)', chartType: 'Column' } }
+  - gchart(:header => ['Rate','Amount'], :data => resource.fixed_deposit_open_positions_rate_of_interests.map{ |fd| [fd.rate, fd.amount] },
+           :title => 'Fixed Deposits', :yAxisTitle => 'Amount Invested (Rs)', :xAxisTitle => 'Interest Rate p.a.(%)', :chartType => 'Column')
   %h1 Interest rate wise Analysis
   %table.table.table-striped
     %tr

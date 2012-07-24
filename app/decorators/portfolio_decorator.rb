@@ -167,7 +167,7 @@ class PortfolioDecorator < ApplicationDecorator
   end
 
   def fixed_deposit_open_positions_rate_of_interests
-    fixed_deposit_positions.map{ |fd| Hashie::Mash.new({ :rate => fd.rate_of_interest.to_f, :name => fd.name, :amount => fd.invested_amount.to_f }) }
+    fixed_deposit_positions.map{ |fd| Hashie::Mash.new({ :rate => fd.rate_of_interest.to_f, :name => fd.name, :amount => fd.invested_amount }) }
   end
 
   def fixed_deposit_positions_profit_or_loss
@@ -187,7 +187,7 @@ class PortfolioDecorator < ApplicationDecorator
                                                                       :average_sell_price => gold_transactions.for(DataProvider::Gold).average_sell_price,
                                                                       :average_cost_price => gold_transactions.for(DataProvider::Gold).average_cost_price,
                                                                       :quantity           => gold_transactions.for(DataProvider::Gold).sells.quantity.abs,
-                                                                      :profit_or_loss     => (gold_transactions.for(DataProvider::Gold).profit_or_loss.to_f),
+                                                                      :profit_or_loss     => (gold_transactions.for(DataProvider::Gold).profit_or_loss),
                                                                       :percentage         => gold_transactions.for(DataProvider::Gold).profit_or_loss_percentage.to_f } )] : []
   end
 

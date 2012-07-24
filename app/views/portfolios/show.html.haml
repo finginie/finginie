@@ -4,11 +4,11 @@
 - else
   .row
     .span8.show-grid
-      #portfolio-total-asset-allocation-chart.show-grid.chart{ data: { elements: [['Asset Class','Percenatge']]+resource.total_assets_distribution,
-                                                         chartType: 'Pie', title: 'Portfolio Assets Composition'} }
+      - gchart( :header => ['Asset Class','Percenatge'], :data => resource.total_assets_distribution,
+                :chartType => 'Pie', :title => 'Portfolio Assets Composition')
       - if resource.assets_and_liabilities?
-        #net-worth-chart.show-grid.chart{ data: { elements: resource.assets_and_liabilities, title: 'Portfolio Summary',
-                                        yAxisTitle: 'Amount(Rupees)', chartType: 'Column' } }
+        - gchart(:elements => resource.assets_and_liabilities, :title => 'Portfolio Summary',
+                  :yAxisTitle => 'Amount(Rupees)', :chartType => 'Column')
 
     .span4.show-grid
       %table.table.table-striped.show-grid.assets
