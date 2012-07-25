@@ -15,9 +15,7 @@ describe "ComprehensiveRiskProfilers" do
       end
 
       it "should show the login link on page" do
-        within "#continue" do
-          page.should have_link('Signin')
-        end
+        page.should have_content 'Signin & Continue'
       end
     end
 
@@ -47,10 +45,10 @@ describe "ComprehensiveRiskProfilers" do
     end
 
     it "should raise error for an invalid answer" do
-      fill_in I18n.t("simple_form.labels.comprehensive_risk_profiler.age"), :with => "abc"
+      fill_in "comprehensive_risk_profiler[age]", :with => "abc"
       click_button 'Submit'
 
-      page.should have_selector('#comprehensive_risk_profiler_age+div.error')
+      page.should have_error_message("comprehensive_risk_profiler[age]")
     end
 
     it "allow user to skip quiz and can see default asset allocation" do

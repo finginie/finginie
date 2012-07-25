@@ -20,20 +20,19 @@ describe "Portfolios", :mongoid do
 
     create :'data_provider/nse_scrip', :id => "GOLDBEES", :last_traded_price => 5
 
-    visit portfolio_path(portfolio)
-    find("li#navigation-details").find("a").click
+    visit details_portfolio_path(portfolio)
 
     expected_table_for_stocks = [
-                                  [company.name,                       "10.00", "3.00",  "30.00", "5.00", "50.00", "20.00", "66.67","Sell"],
-                                  [company_without_current_price.name, "10.00", "5.00",  "50.00", "-",    "-",     "-" ,    "-",    "Sell"],
-                                  ["Total",                                    "",      "",      "80.00", "",     "50.00", "20.00", "" ,    ""    ]
+                                  [company.name,                       "10", "2.99",  "29.90", "5.00", "50.00", "20.10", "67.22","Sell"],
+                                  [company_without_current_price.name, "10", "5.00",  "50.00", "-",    "-",     "-" ,    "-",    "Sell"],
+                                  ["Total",                                    "",      "",      "79.90", "",     "50.00", "20.10", "" ,    ""    ]
                                 ]
     expected_table_for_mfs =    [
-                                  [scheme.name, "10.00", "3.00", "30.00", "5.00", "50.00", "20.00", "66.67", "Sell"],
-                                  ["Total",            "",      "",     "30.00", "",     "50.00", "20.00", "",      ""]
+                                  [scheme.name, "10", "2.99", "29.90", "5.00", "50.00", "20.10", "67.22", "Sell"],
+                                  ["Total",            "",      "",     "29.90", "",     "50.00", "20.10", "",      ""]
                                 ]
     expected_table_for_gold =   [
-                                  ["Gold", "10.00", "3.00", "30.00", "5.00", "50.00", "20.00", "66.67", "Sell"]
+                                  ["Gold", "10", "2.99", "29.90", "5.00", "50.00", "20.10", "67.22", "Sell"]
                                 ]
 
     within "#stock_positions" do
@@ -71,8 +70,8 @@ describe "Portfolios", :mongoid do
 
     visit details_portfolio_path(portfolio)
     expected_table = [
-                       [ "Test Loan", I18n.l(8.months.ago.to_date), "10.0", "1.0",   "25,937.39", "Clear Loan"],
-                       [ "Total",     "",                           "",     "",      "25,937.39", ""          ]
+                       [ "Test Loan", I18n.l(8.months.ago.to_date), "10.0", "1.0",   "25,941.32", "Clear Loan"],
+                       [ "Total",     "",                           "",     "",      "25,941.32", ""          ]
                     ]
     tableish("section.Loan table").should include *expected_table
   end
@@ -144,26 +143,27 @@ describe "Portfolios", :mongoid do
 
     visit portfolio_path(portfolio)
     expected_asset_table = [
-                             [ 'Stocks',           "50" ,  "5.84"],
-                             [ 'Mutual Funds',     "50" ,  "5.84"],
-                             [ 'Gold',             "50" ,  "5.84"],
-                             [ 'Fixed Deposits',   "107", "12.44"],
-                             [ 'Real Estate',      "600", "70.05"],
-                             [ "Total",            "857",      ""]
+                             [ 'Stocks',           "50.00" ,  "5.84"],
+                             [ 'Mutual Funds',     "50.00" ,  "5.84"],
+                             [ 'Gold',             "50.00" ,  "5.84"],
+                             [ 'Fixed Deposits',   "106.55", "12.44"],
+                             [ 'Real Estate',      "600.00", "70.05"],
+                             [ "Total",            "856.55",      ""]
                           ]
 
     expected_liabilities_table = [
-                                   ["Loans",     "259", "100.00"],
-                                   ["Total",     "259",       ""],
-                                   ["Net Worth", "598",       ""]
+                                   ["Loans",     "259.15", "100.00"],
+                                   ["Total",     "259.15",       ""],
+                                   ["Net Worth", "597.40",       ""]
                                   ]
     tableish("table.assets").should include *expected_asset_table
     tableish("table.liabilities").should include *expected_liabilities_table
   end
 
   context "new portfolio" do
+    let(:new_portfolio) { create :portfolio, :user => current_user }
+
     before(:each) do
-      new_portfolio = create :portfolio, :user => current_user
       visit portfolio_path(new_portfolio)
     end
 
@@ -172,68 +172,33 @@ describe "Portfolios", :mongoid do
     end
 
     it "should display default message for stock when there is no stock transaction" do
-      find("li#navigation-stocks_analysis").find("a").click
+      visit stocks_analysis_portfolio_path(new_portfolio)
       page.should have_content I18n.t("portfolios.stocks_analysis.no_stock_transaction")
     end
 
     it "should display default message for mutual funds when there is no mutual fund transaction" do
-      find("li#navigation-mutual_funds_analysis").find("a").click
+      visit mutual_funds_analysis_portfolio_path(new_portfolio)
       page.should have_content I18n.t("portfolios.mutual_funds_analysis.no_mutual_fund_transaction")
     end
 
     it "should display default message for fixed deposit when there is no fixed deposit transaction" do
-      find("li#navigation-fixed_deposits_analysis").find("a").click
+      visit fixed_deposits_analysis_portfolio_path(new_portfolio)
       page.should have_content I18n.t("portfolios.fixed_deposits_analysis.no_fixed_deposit_transaction")
     end
 
     it "should display default messages in Accumulated Profits page" do
-      find("li#navigation-accumulated_profits").find("a").click
+      visit accumulated_profits_portfolio_path(new_portfolio)
       page.should have_content I18n.t("portfolios.accumulated_profits.no_profit_or_loss")
     end
 
     it "should display default messages in Details Page" do
-      find("li#navigation-details").find("a").click
+      visit details_portfolio_path(new_portfolio)
       page.should have_content I18n.t("portfolios.empty_transaction.message")
     end
 
     it "should display default messages in Transactions page" do
-      find("li#navigation-transactions").find("a").click
+      visit transactions_portfolio_path(new_portfolio)
       page.should have_content I18n.t("portfolios.transactions.empty_transactions")
-    end
-
-     it "should display current portfolio in stock analysis page" do
-      find("li#navigation-stocks_analysis").find("a").click
-      page.should have_selector("#current_portfolio")
-    end
-
-    it "should display current portfolio in mutual funds analysis page" do
-      find("li#navigation-mutual_funds_analysis").find("a").click
-      page.should have_selector("#current_portfolio")
-    end
-
-    it "should display current portfolio in fixed deposit analysis page" do
-      find("li#navigation-fixed_deposits_analysis").find("a").click
-      page.should have_selector("#current_portfolio")
-    end
-
-    it "should display current portfolio in Accumulated Profits page" do
-      find("li#navigation-accumulated_profits").find("a").click
-      page.should have_selector("#current_portfolio")
-    end
-
-    it "should display current portfolio in Details Page" do
-      find("li#navigation-details").find("a").click
-      page.should have_selector("#current_portfolio")
-    end
-
-    it "should display current portfolio in Transactions page" do
-      find("li#navigation-transactions").find("a").click
-      page.should have_selector("#current_portfolio")
-    end
-
-    it "should display current portfolio in add transaction page" do
-      find("li#navigation-add_transaction").find("a").click
-      page.should have_selector("#current_portfolio")
     end
   end
 
@@ -262,7 +227,7 @@ describe "Portfolios", :mongoid do
 
     expected_table = [
                         ["FOO",                        "",     "-",    "-",     "-",    "50.00",  "-",     "71.43"],
-                        [company.name,         "10", "3.00", "30.00", "5.00", "50.00",  "20.00", "71.43"],
+                        [company.name,         "10", "2.99", "29.90", "5.00", "50.00",  "20.10", "71.43"],
                         ["BAR",                        "",     "-",    "-",     "-",    "20.00",  "-",     "28.57"],
                         [another_company.name, "4",  "6.00", "24.00", "5.00", "20.00",  "-4.00", "28.57"],
                         ["Total",                      "",     "",     "",      "",     "70.00",  ""      , ""     ]
@@ -278,7 +243,7 @@ describe "Portfolios", :mongoid do
     visit mutual_funds_analysis_portfolio_path(portfolio)
     expected_table = [
                         ["FOO",               "",     "-",    "-",     "-",    "50.00",  "-",     "71.43"],
-                        [scheme.name,  "10", "3.00", "30.00", "5.00", "50.00",  "20.00", "71.43"],
+                        [scheme.name,  "10", "2.99", "29.90", "5.00", "50.00",  "20.10", "71.43"],
                         ["BAR",               "",     "-",    "-",     "-",    "20.00",  "-",     "28.57"],
                         [scheme2.name, "4",  "6.00", "24.00", "5.00", "20.00",  "-4.00", "28.57"],
                         ["Total",             "",     "",     "",      "",     "70.00",  ""      , ""     ]
@@ -292,20 +257,21 @@ describe "Portfolios", :mongoid do
       create_positions_of_all_securities(another_portfolio)
       create_sell_position_of_all_securities_type(another_portfolio)
 
-      visit portfolio_path(another_portfolio)
+      visit accumulated_profits_portfolio_path(another_portfolio)
 
-      find("li#navigation-accumulated_profits").find("a").click
       expected_table_profits = [ ["Test Property", "Real Estate", "", "", "", "400.00", "80.00"],
-                                 [company.name, "Stock", "4", "4.00", "6.00", "12.00", "100.00"],
-                                 [scheme.name, "Mutual Fund","4", "4.00", "6.00", "12.00", "100.00"],
+                                 [company.name, "Stock", "4", "4.00", "6.00", "12.04", "100.67"],
+                                 [scheme.name, "Mutual Fund","4", "4.00", "6.00", "12.04", "100.67"],
                                  ["Foo", "Fixed Deposit", "", "", "","4.64", "4.64"] ]
       expected_table_losses = [ ["Test Property2", "Real Estate","", "", "","-400.00", "-44.44"],
                                 ["FOO", "Stock", "4", "6.00", "5.00","-4.00", "-16.67"],
                                 ["Foo Scheme Name", "Mutual Fund", "1", "5.00", "4.00", "-1.00", "-20.00"]]
+      expected_table_net = [
+                            [I18n.t('portfolios.accumulated_profits.net_profit_loss'), '23.72']]
 
       tableish("#accumulated_profits table").should include *expected_table_profits
       tableish("#accumulated_losses table").should include *expected_table_losses
-      page.should have_content 23.64
+      tableish("table[data-role='net_profit_loss']").should include *expected_table_net
     end
   end
 
@@ -313,25 +279,6 @@ describe "Portfolios", :mongoid do
     Portfolio.destroy_all
     visit portfolios_path
     page.should have_content I18n.t("portfolios.index.empty_portfolio")
-  end
-
-  it "user can able to add transactions after selecting securities type", :js => true do
-    create :'data_provider/nse_scrip', :id => "GOLDBEES", :last_traded_price => 2456
-
-    visit portfolio_path(portfolio)
-
-    click_link "Add Transaction"
-    current_path.should eq add_transaction_portfolio_path(portfolio)
-    select "Gold", :from => "Type of investment"
-
-    wait_until {  page.should have_selector("#new_gold_transaction") }
-
-    fill_in "Price", :with => 200
-    select 'Buy', :from => "Action"
-    fill_in I18n.t("simple_form.labels.gold_transaction.quantity"), :with => 30
-    click_on I18n.t("helpers.submit.gold_transaction.create")
-    page.should have_content "successfully"
-    current_path.should eq details_portfolio_path(portfolio)
   end
 
   it "should display stocks profits/losses in stocks analysis page" do
@@ -342,9 +289,9 @@ describe "Portfolios", :mongoid do
     create :stock_transaction, :company_code => another_company.code, :portfolio => portfolio, :quantity => 4, :price => 5, :date => Date.today, :action => "sell"
 
     visit stocks_analysis_portfolio_path(portfolio)
-    expected_table = [ [ company.name,         "FOO", "4", "4.0", "6.0", "12.00", "100.00" ],
-                       [ another_company.name, "BAR", "4", "6.0", "5.0", "-4.00", "-16.67" ],
-                       [ "Total",                      "",    "",  "",    "",    "8.00",  ""       ] ]
+    expected_table = [ [ company.name,         "FOO", "4", "4.00", "6.00", "12.04", "100.67" ],
+                       [ another_company.name, "BAR", "4", "6.00", "5.00", "-4.00", "-16.67" ],
+                       [ "Total",                      "",    "",  "",    "",    "8.04",  ""       ] ]
 
     tableish("#stocks_profit_or_loss_analysis table").should include *expected_table
   end
@@ -358,9 +305,9 @@ describe "Portfolios", :mongoid do
 
     visit mutual_funds_analysis_portfolio_path(portfolio)
     expected_table = [
-                      [ scheme.name, "FOO",  "4",  "4.0", "6.0", "12.00", "100.00" ],
-                      [ scheme2.name, "BAR", "1",  "5.0", "4.0", "-1.00", "-20.00" ],
-                      [ "Total", "",                "",   "",    "",    "11.00", ""       ]
+                      [ scheme.name, "FOO",  "4",  "4.00", "6.00", "12.04", "100.67" ],
+                      [ scheme2.name, "BAR", "1",  "5.00", "4.00", "-1.00", "-20.00" ],
+                      [ "Total", "",                "",   "",    "",    "11.04", ""       ]
                      ]
     tableish("#mfs_profit_or_loss_analysis table").should include *expected_table
   end

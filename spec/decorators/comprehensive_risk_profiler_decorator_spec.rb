@@ -35,7 +35,7 @@ describe ComprehensiveRiskProfilerDecorator do
 
   its(:initial_investment) { should eq "1,30,000.00" }
 
-  its(:monthly_savings_needed) { should eq 4826 }
+  its(:monthly_savings_needed) { should be_a_indian_currency_of 4825.73 }
 
   its(:three_month_investment_amount) { should eq "75,000.00" }
 

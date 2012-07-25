@@ -3,9 +3,8 @@ def tableish(element)
   table = rows.map { |r| r.all('th,td').map { |c| c.text.strip.gsub(/\s+/, ' ') } }
 end
 
-def selector(element, tag)
-  elements = page.find(element).all(tag)
-  content = elements.map { |element| element.text.strip.gsub(/\s+/, ' ') }
+def content_selector(element)
+  page.find(element).text.strip.gsub(/\s+/, ' ')
 end
 
 #named scope tests
@@ -19,4 +18,10 @@ end
 
 def table_rows(sub, element)
   sub.find(element).all('tr').map { |r| r.all('th,td').map { |c| c.text.strip.gsub(/\s+/, ' ') } }
+end
+
+RSpec::Matchers.define :be_a_indian_currency_of do |expected|
+  match do |actual|
+    actual.should eq IndianCurrency.new(expected)
+  end
 end

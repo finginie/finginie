@@ -1,4 +1,4 @@
-%table.table.table-striped
+%table.table.table-striped{:data => {:role => 'biggest_schemes'} }
   %tr
     %th Name
     %th NAV
@@ -9,7 +9,7 @@
     %tr{ class: cycle("odd", "even") }
       %td= link_to scheme.name, mutual_fund_url(scheme)
       %td= scheme.nav_amount
-      %td= rg_colorize scheme.percentage_change
+      %td= rg_colorize number_with_precision(scheme.percentage_change), scheme.percentage_change.to_f
       %td= scheme.size
-      %td= rg_colorize scheme.prev_year_percent
+      %td= rg_colorize number_with_precision(scheme.prev_year_percent), scheme.prev_year_percent.to_f
 

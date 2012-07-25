@@ -24,6 +24,6 @@
           %td.type{:class => transaction.action}= transaction.display_action
           %td.name= transaction.name
           %td.duration= transaction.period
-          %td.rate=   number_to_indian_currency transaction.rate_of_interest
-          %td.amount= number_to_indian_currency transaction.invested_amount.abs
+          %td.rate=   number_with_precision transaction.rate_of_interest
+          %td.amount= transaction.invested_amount.abs
           %td.comment= transaction.comments && transaction.comments.strip.empty?  ? t("tables_not_available") : transaction.comments

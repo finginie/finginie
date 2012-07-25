@@ -1,4 +1,6 @@
 class ComprehensiveRiskProfiler < ActiveRecord::Base
+  include CurrencyFormatter
+
   attr_accessible :age, :dependent, :household_expenditure, :household_income, :household_savings,
                   :portfolio_investment, :preference, :special_goals_amount, :special_goals_years,
                   :tax_saving_investment, :time_horizon, :score_cache
@@ -27,6 +29,8 @@ class ComprehensiveRiskProfiler < ActiveRecord::Base
 
   attr_accessor :investment_check, :special_goals
 
+  monetize :household_income, :household_savings, :household_expenditure, :tax_saving_investment, :special_goals_amount
+
   before_save { score(true) }
 
   def score(recalculate = false)
@@ -53,7 +57,7 @@ class ComprehensiveRiskProfiler < ActiveRecord::Base
   end
 
   def initial_investment
-    household_savings - (2 * household_expenditure)
+    household_savings - (household_expenditure * 2)
   end
 
 private
@@ -102,7 +106,7 @@ private
   def weighted(attribute)
     return 0 unless self.send(attribute)
     weightage_attribute = attribute.to_s.gsub(/_score/,'').concat('_weightage').upcase.to_sym
-    self.send(attribute) * WEIGHTAGE[weightage_attribute]
+    self.send(attribute).to_f * WEIGHTAGE[weightage_attribute]
   end
 
   def total_score

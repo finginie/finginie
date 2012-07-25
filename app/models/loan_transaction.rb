@@ -1,4 +1,5 @@
 class LoanTransaction < ActiveRecord::Base
+  include CurrencyFormatter
   attr_accessible :portfolio_id, :loan_id, :price, :date, :action, :loan_attributes, :comments
 
   belongs_to :portfolio
@@ -15,6 +16,7 @@ class LoanTransaction < ActiveRecord::Base
   accepts_nested_attributes_for :loan
 
   delegate :rate_of_interest, :period, :name, :to => :loan
+  monetize :price
 
   scope :for, lambda { |loan| where(:loan_id => loan).order(:date, :created_at) } do
     def name
@@ -34,7 +36,7 @@ class LoanTransaction < ActiveRecord::Base
     end
 
     def outstanding_amount
-       first.loan.loan_transactions.count == 2 ? 0.0 : first.current_value
+       first.loan.loan_transactions.count == 2 ? IndianCurrency.new(0.0) : first.current_value
     end
   end
 
@@ -48,10 +50,10 @@ class LoanTransaction < ActiveRecord::Base
 
   def current_value(on_date = Date.today)
     time_period = (on_date.year - date.year) * 12 + (on_date.month - date.month) + 1
-    emi = EmiCalculator.new(:cost => price, :rate => rate_of_interest, :term => period).calculate_emi
+    emi = IndianCurrency.new EmiCalculator.new(:cost => price, :rate => rate_of_interest, :term => period).calculate_emi
     i = ( 1 + rate_of_interest / 1200)
 
-    (- (price * i ** time_period - emi.round * ( i ** time_period - 1) / (i - 1))).round(2)
+    (- (price * i ** time_period - emi * ( i ** time_period - 1) / (i - 1)))
   end
 
   def amount

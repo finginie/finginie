@@ -2,6 +2,9 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  number:
+    format:
+      precision: 2
   date:
     formats:
       default: "%b %d, %Y"  # Mar 31,2011

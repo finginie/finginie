@@ -15,8 +15,8 @@
           %td= l report.date, :format => :stock_52w_date
         %td= report.source
         %td= link_to report.name, report.link_url, :target => :blank
-        %td= number_to_indian_currency(report.current_market_price, 2)
-        %td= number_to_indian_currency(report.target_price,0)
+        %td= number_with_precision report.current_market_price
+        %td= number_with_precision report.target_price
         %td= report.recommendation
 - else
   %p= t(".message", :name => @company.name)

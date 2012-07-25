@@ -32,6 +32,7 @@ gem 'jquery-datatables-rails',             :github => 'rweng/jquery-datatables-r
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'meta_search'
+gem 'money',                               :github => 'FinGinie/money'
 gem 'nested_form',                         :github => 'TMaYaD/nested_form'
 gem 'newrelic_rpm'
 gem 'omniauth_single_signon',              :github => 'FinGinie/omniauth-single-signon'
@@ -40,8 +41,6 @@ gem 'pg'
 gem 'rack-environmental'
 gem 'sheet_mapper',                        :github => 'TMaYaD/sheet_mapper'
 gem 'simple_form',                         :github => 'plataformatec/simple_form'
-gem 'simple-navigation'
-gem 'simple-navigation-bootstrap'
 gem 'thin'
 
 group :test, :development do
@@ -81,4 +80,5 @@ end
 group :test do
   gem 'vcr'
     gem 'webmock'
+  gem 'sqlite3'
 end

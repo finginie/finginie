@@ -9,8 +9,7 @@
           %small= @scheme.name
   .row
     .span12.show-grid
-      #top-holdings-chart.chart{data: { elements: [['','']] + @scheme.top_ten_holdings_percentages,
-                                        title: 'Top 10 holdings Distribution', chartType: 'Pie' } }
+      -gchart(:data => @scheme.top_ten_holdings_percentages, :title => 'Top 10 holdings Distribution', :chartType => 'Pie')
   .row
     .span12.show-grid
       %table.table.table-striped

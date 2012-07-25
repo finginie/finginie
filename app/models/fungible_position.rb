@@ -4,7 +4,7 @@ module FungiblePosition
   end
 
   def current_value
-    quantity && current_price ? quantity * current_price : 0.0
+    quantity && current_price ? current_price * quantity : IndianCurrency.new(0)
   end
 
   def profit_or_loss
@@ -12,15 +12,15 @@ module FungiblePosition
   end
 
   def profit_or_loss_percentage
-    (sells.map(&:profit_or_loss).inject(:+) * 100 / sells.map { |s| s.adjusted_average_price * s.quantity }.inject(:+)).round(2).to_f unless sells.empty?
+    (sells.sum(&:profit_or_loss) * 100 / sells.map { |s| s.adjusted_average_price * s.quantity }.inject(:+)).round(2).to_f unless sells.empty?
   end
 
   def average_cost_price
-    last ? last.adjusted_average_price : 0
+    last ? last.adjusted_average_price : IndianCurrency.new(0)
   end
 
   def average_sell_price
-    sells.empty? ? 0 : (sells.sum("price * quantity").to_f / sells.sum(:quantity)).round(2)
+    sells.empty? ? IndianCurrency.new(0) : IndianCurrency.new(sells.sum("price * quantity").to_f) / sells.sum(:quantity).to_f
   end
 
   def value
@@ -32,6 +32,6 @@ module FungiblePosition
   end
 
   def unrealised_profit_percentage
-    unrealised_profit ? (unrealised_profit / value * 100).round(2) : nil
+    unrealised_profit ? (unrealised_profit.to_f / value.to_f * 100).round(2) : nil
   end
 end

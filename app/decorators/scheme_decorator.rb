@@ -1,11 +1,6 @@
 class SchemeDecorator < ApplicationDecorator
   decorates :'data_provider/scheme'
 
-  FIELDS_TO_ROUND = [ 'percentage', 'nav_amount', 'percentage_change', 'dividend_percentage', 'day_change', 'prev1_week_percent', 'size',
-                      'prev1_month_percent', 'prev3_months_percent', 'prev6_months_percent', 'prev9_months_percent', 'prev_year_percent',
-                      'prev2_year_comp_percent', 'prev3_year_comp_percent', 'prev3_year_percent', 'one_day_return', 'one_week_return',
-                      'one_month_return', 'three_months_return', 'six_months_return', 'nine_months_return', 'one_year_return',
-                      'two_year_return', 'three_year_return' ]
   def sip
     if model.sip == "True"
       "Yes"
@@ -19,12 +14,6 @@ class SchemeDecorator < ApplicationDecorator
       model.send(attr) || "-"                            #   model.attr || "NA"
     end                                                   # end
   end                                                     ##
-
-  FIELDS_TO_ROUND.each do |key|
-    define_method(key.to_sym) do
-      model.send(key.to_sym) ? model.send(key.to_sym).round(2).to_f : I18n.t('tables_not_available')
-    end
-  end
 
   def comparative_returns_data_table
     [ ['Time Frame', 'Scheme Returns',        'Category Returns'  ],

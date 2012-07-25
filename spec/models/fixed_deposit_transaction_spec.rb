@@ -18,11 +18,11 @@ describe FixedDepositTransaction do
   it "should get amount" do
     fixed_deposit_transaction.action = "buy"
     fixed_deposit_transaction.price = 20
-    fixed_deposit_transaction.amount.should eq 20
+    fixed_deposit_transaction.amount.should be_a_indian_currency_of 20
 
     fixed_deposit_transaction.action = "sell"
     fixed_deposit_transaction.price = 10
-    fixed_deposit_transaction.amount.should eq -10
+    fixed_deposit_transaction.amount.should be_a_indian_currency_of -10
   end
 
   it "should give correct porfit or loss for redeemed deposit" do
@@ -33,7 +33,7 @@ describe FixedDepositTransaction do
 
       fixed_deposit_1.update_attributes(:rate_of_redemption => 8)
       fixed_deposit_transaction_2 = create :fixed_deposit_transaction, :date => 1.months.ago.to_date, :price => 100000, :fixed_deposit => fixed_deposit_1, :portfolio => portfolio, :action => "sell"
-      fixed_deposit_transaction_2.profit_or_loss.should eq 4637.65
+      fixed_deposit_transaction_2.profit_or_loss.should be_a_indian_currency_of 4637.65
     end
   end
 

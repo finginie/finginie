@@ -38,13 +38,11 @@ describe "Authentication" do
       let(:comprehensive_risk_profile) { build :comprehensive_risk_profiler }
       before(:each) { answer_comprehensive_risk_profiler_with(comprehensive_risk_profile) }
 
-      it "should save the risk profiler after signing in", :js do
+      it "should save the risk profiler after signing in", :js, :omniauth do
 
         OmniAuth.config.add_mock 'single_signon', { :uid => user.id }
 
-        within "#continue" do
-          click_link "Continue"
-        end
+        visit '/auth/single_signon'
 
         visit comprehensive_risk_profiler_path
         page.should have_content "Your Risk Appetite is : #{comprehensive_risk_profile.score.round}"
@@ -52,15 +50,13 @@ describe "Authentication" do
     end
 
     context "skipped comprehensive risk profiler quiz" do
-      it "should save the default score after signing in", :js do
+      it "should save the default score after signing in", :js, :omniauth do
         OmniAuth.config.add_mock 'single_signon', { :uid => user.id }
 
         visit edit_comprehensive_risk_profiler_path
         find("a#skip_quiz").click
 
-        within "#continue" do
-          click_link "Continue"
-        end
+        visit '/auth/single_signon'
 
         visit comprehensive_risk_profiler_path
         expected_content = [ ['Fixed Deposits', '40%'], [ 'Large Cap Stocks', '20%'], [ 'Mid Cap Stocks', '10%'], [ 'Gold', '30%']]

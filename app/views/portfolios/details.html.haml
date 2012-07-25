@@ -30,15 +30,15 @@
           - resource.send(positions).each do |net_position|
             %tr
               %td= link_to net_position.name, ( positions == "mutual_fund_positions" ? mutual_fund_path(net_position.mutual_fund.scheme_master) : stock_path(net_position.company) )
-              %td= number_to_indian_currency net_position.quantity
-              %td= number_to_indian_currency net_position.average_cost_price
-              %td= number_to_indian_currency net_position.value
-              %td= number_to_indian_currency net_position.current_price
+              %td= net_position.quantity
+              %td= net_position.average_cost_price
+              %td= net_position.value
+              %td= net_position.current_price
               - unless net_position.current_price == "-"
-                %td= number_to_indian_currency net_position.current_value
+                %td= net_position.current_value
               - else
                 %td -
-              %td= rg_colorize net_position.unrealised_profit
+              %td= net_position.unrealised_profit
               %td= rg_colorize net_position.unrealised_profit_percentage
               -transaction = positions.gsub(/_positions/,'_transaction')
               %td= link_to "Sell", send("new_portfolio_#{transaction}_path",resource, transaction.to_sym => net_position.action_params)
@@ -46,10 +46,10 @@
             %td Total
             %td
             %td
-            %td= number_to_indian_currency resource.send(positions).sum(&:value)
+            %td= resource.send(positions).sum(&:value)
             %td
-            %td= number_to_indian_currency resource.send(positions).sum(&:current_value)
-            %td= rg_colorize resource.send(positions).map{|position| position.unrealised_profit unless position.unrealised_profit == "-" }.compact.inject(:+)
+            %td= resource.send(positions).sum(&:current_value)
+            %td{:data => {:attribute => :unrealised_profit}}= resource.unrealised_profit positions
             %td
             %td
 
@@ -80,11 +80,11 @@
           %td
         %tr
           %td Gold
-          %td= number_to_indian_currency resource.gold_position.quantity
-          %td= number_to_indian_currency resource.gold_position.average_cost_price
-          %td= number_to_indian_currency resource.gold_position.value
-          %td= number_to_indian_currency resource.gold_position.current_price
-          %td= number_to_indian_currency resource.gold_position.current_value
+          %td= resource.gold_position.quantity
+          %td= resource.gold_position.average_cost_price
+          %td= resource.gold_position.value
+          %td= resource.gold_position.current_price
+          %td= resource.gold_position.current_value
           %td= rg_colorize resource.gold_position.unrealised_profit
           %td= rg_colorize resource.gold_position.unrealised_profit_percentage
           %td= link_to "Sell", new_portfolio_gold_transaction_path(resource, gold_transaction: resource.gold_position.action_params)
@@ -92,9 +92,9 @@
           %td Total
           %td
           %td
-          %td= number_to_indian_currency resource.gold_position.value
+          %td= resource.gold_position.value
           %td
-          %td= number_to_indian_currency resource.gold_position.current_value
+          %td= resource.gold_position.current_value
           %td= rg_colorize resource.gold_position.unrealised_profit
           %td
           %td

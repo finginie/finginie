@@ -2,8 +2,8 @@
 
 %h1 Mutual Funds Analysis
 - unless resource.category_wise_mutual_funds_percentage.empty?
-  #mutual-fund-category-wise-allocation-chart.chart{ data: { elements: [['','']] + resource.category_wise_mutual_funds_percentage,
-                                                             title: 'Category Wise Mutual Fund Allocation', chartType: 'Pie' } }
+  - gchart(:data => resource.category_wise_mutual_funds_percentage, :title => 'Category Wise Mutual Fund Allocation', :chartType => 'Pie')
+
   %h1 Category wise Analysis
   %table.table.table-striped
     %tr
@@ -29,19 +29,19 @@
         %tr
           %td.name{:class => position.class_name }= position.name
           %td= position.quantity
-          %td= position.average_cost_price ? number_to_indian_currency(position.average_cost_price) : "-"
-          %td= position.amount_invested ? number_to_indian_currency(position.amount_invested) : "-"
-          %td= position.current_price ? number_to_indian_currency(position.current_price) : "-"
-          %td= position.current_value ? number_to_indian_currency(position.current_value) : "-"
-          %td= position.unrealised_profit ? number_to_indian_currency(position.unrealised_profit) : "-"
-          %td= position.percentage ? number_to_indian_currency(position.percentage) : "-"
+          %td= position.average_cost_price ? position.average_cost_price : "-"
+          %td= position.amount_invested ? position.amount_invested : "-"
+          %td= position.current_price ? position.current_price : "-"
+          %td= position.current_value ? position.current_value : "-"
+          %td= position.unrealised_profit ? position.unrealised_profit : "-"
+          %td= position.percentage ? number_with_precision(position.percentage) : "-"
     %tr.total
       %td.name Total
       %td
       %td
       %td
       %td
-      %td= number_to_indian_currency resource.mutual_funds_value
+      %td= resource.mutual_funds_value
       %td
       %td
 -else
@@ -52,8 +52,8 @@
 
 #mfs_profit_or_loss_analysis
   - unless resource.mutual_fund_positions_profit_or_loss.empty?
-    #mutual-fund-profit-or-loss-chart.chart{ data: { elements: [['','']] + resource.mutual_fund_positions_profit_or_loss.map { |r| [r.name, r.percentage] },
-                                                     title: 'Realized Profit/Loss on Mutual Funds', yAxisTitle: 'Percentage (%)', chartType: 'Column' } }
+    - gchart(:data => resource.mutual_fund_positions_profit_or_loss.map { |r| [r.name, r.percentage] },
+             :title => 'Realized Profit/Loss on Mutual Funds', :yAxisTitle => 'Percentage (%)', :chartType => 'Column')
     %h1 Realized Profits/Losses
     %table.table.table-striped
       %tr
@@ -79,17 +79,13 @@
           %td= position.quantity
           %td= position.average_cost_price
           %td= position.average_sell_price
-          - if position.profit_or_loss < 0
-            %td.red= number_to_indian_currency position.profit_or_loss
-            %td.red= number_to_indian_currency position.percentage
-          - else position.profit_or_loss < 0
-            %td.green= number_to_indian_currency position.profit_or_loss
-            %td.green= number_to_indian_currency position.percentage
+          %td= rg_colorize position.profit_or_loss
+          %td= rg_colorize number_with_precision(position.percentage), position.percentage
       %tr.total
         %td.name Total
         %td
         %td
         %td
         %td
-        %td= number_to_indian_currency resource.mutual_fund_positions_profit_or_loss.map(&:profit_or_loss).sum
+        %td= resource.mutual_fund_positions_profit_or_loss.sum(&:profit_or_loss)
         %td

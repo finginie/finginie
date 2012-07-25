@@ -1,7 +1,7 @@
 class GoldDecorator
   extend Module.new {
 
-    def current_price
+    def last_traded_price
       DataProvider::Gold.last_traded_price * 10 if DataProvider::Gold && DataProvider::Gold.last_traded_price
     end
 
@@ -11,6 +11,10 @@ class GoldDecorator
 
     def percent_change
       DataProvider::Gold.percent_change if DataProvider::Gold
+    end
+
+    def name
+      'Gold (10 gm)'
     end
   }
 end

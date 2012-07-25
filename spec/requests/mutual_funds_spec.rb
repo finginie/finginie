@@ -55,8 +55,8 @@ describe "MutualFunds", :mongoid do
       visit mutual_funds_path
 
       expected_content = [
-        [ 'scheme-0', '2.0', '1.00', '3.00', '5.00', '6.00' ],
-        [ 'scheme-1', '4.0', '6.00', '9.00', '11.00', '12.00' ] ]
+        [ 'scheme-0', '2.00', '1.00', '3.00', '5.00', '6.00' ],
+        [ 'scheme-1', '4.00', '6.00', '9.00', '11.00', '12.00' ] ]
 
       tableish("#top_performers").should include *expected_content
     end
@@ -91,8 +91,8 @@ describe "MutualFunds", :mongoid do
       visit mutual_funds_path
 
       expected_content = [
-        [ 'scheme-0', '2.0', '1.00', '238.68', '5.00' ],
-        [ 'scheme-1', '4.0', '6.00', '338.68', '11.00' ] ]
+        [ 'scheme-0', '2.00', '1.00', '238.68', '5.00' ],
+        [ 'scheme-1', '4.00', '6.00', '338.68', '11.00' ] ]
 
       tableish("#biggest_schemes").should include *expected_content
     end

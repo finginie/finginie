@@ -4,6 +4,9 @@ module FungibleTransaction
   included do
     attr_accessible :action, :quantity, :price, :date, :comments
 
+    include CurrencyFormatter
+    monetize :price
+
     scope :buys, where(:action => ['buy', 'Buy'])
     scope :sells, where(:action => ['sell', 'Sell'])
     scope :before, lambda { |transaction|
@@ -24,15 +27,15 @@ module FungibleTransaction
   end
 
   def profit_or_loss
-    @profit_or_loss ||= buy? ? 0 : quantity * ( price - adjusted_average_price )
+    @profit_or_loss ||= buy? ? 0 : ( price - adjusted_average_price ) * quantity
   end
 
   def value
-    quantity * price
+    price * quantity
   end
 
   def adjusted_average_price
-    @average_price ||= buy? ? ((similar_transactions.value + value) / (similar_transactions.quantity + quantity)).round(2) : similar_transactions.average_cost_price
+    @average_price ||= buy? ? ((similar_transactions.value + value) / (similar_transactions.quantity + quantity)) : similar_transactions.average_cost_price
   end
 
   def buy?

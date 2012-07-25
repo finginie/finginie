@@ -30,13 +30,13 @@
       %tr.right_align
         %td.name= link_to scheme.name, mutual_fund_path(scheme)
         %td= scheme.rank
-        %td= number_to_indian_currency scheme.nav_amount
-        %td= number_to_indian_currency scheme.minimum_investment_amount
-        %td= number_to_indian_currency scheme.prev1_week_percent
-        %td= number_to_indian_currency scheme.prev1_month_percent
-        %td= number_to_indian_currency scheme.prev3_months_percent
-        %td= number_to_indian_currency scheme.prev6_months_percent
-        %td= number_to_indian_currency scheme.prev_year_percent
-        %td= number_to_indian_currency scheme.prev2_year_comp_percent
-        %td= number_to_indian_currency scheme.prev3_year_comp_percent
+        %td= scheme.nav_amount
+        %td= scheme.minimum_investment_amount
+        %td= scheme.prev1_week_percent
+        %td= scheme.prev1_month_percent
+        %td= scheme.prev3_months_percent
+        %td= scheme.prev6_months_percent
+        %td= scheme.prev_year_percent
+        %td= scheme.prev2_year_comp_percent
+        %td= scheme.prev3_year_comp_percent
 

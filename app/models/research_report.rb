@@ -1,4 +1,5 @@
 class ResearchReport < SheetMappedRecord
+  include CurrencyFormatter
 
   attribute :date,                 type: Date
   attribute :source,               type: String
@@ -11,6 +12,8 @@ class ResearchReport < SheetMappedRecord
   attribute :recommendation,       type: String
   attribute :current_market_price, type: Float
   attribute :target_price,         type: Float
+
+  monetize :current_market_price, :target_price
 
   def self.filter(params)
     query = params[:query].downcase if params[:query]

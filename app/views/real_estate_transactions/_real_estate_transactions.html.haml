@@ -19,5 +19,5 @@
           %td.dates= l real_estate_transaction.date
           %td.type{:class => real_estate_transaction.action}= real_estate_transaction.action.to_s.titleize
           %td.name= real_estate_transaction.name
-          %td.real_amount= number_to_indian_currency real_estate_transaction.price.abs
+          %td.real_amount= real_estate_transaction.price.abs
           %td.comment= real_estate_transaction.comments && real_estate_transaction.comments.strip.empty? ? t("tables_not_available") : real_estate_transaction.comments

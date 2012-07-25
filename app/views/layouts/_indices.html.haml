@@ -1,0 +1,10 @@
+.row.show-grid
+  %span{:data => {:role => 'market_indices'}}
+    - %w(NiftyDecorator SensexDecorator GoldDecorator).each do |indices|
+      .span4
+        %h3.align-center
+          = indices.constantize.name
+          %small
+            %strong= indices.constantize.last_traded_price
+            = indices.constantize.net_change
+            (#{indices.constantize.percent_change} %)

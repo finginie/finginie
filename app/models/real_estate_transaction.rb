@@ -1,4 +1,5 @@
 class RealEstateTransaction < ActiveRecord::Base
+  include CurrencyFormatter
   attr_accessible :date, :price, :comments, :action, :portfolio_id, :real_estate_id, :real_estate_attributes
 
   belongs_to :portfolio
@@ -12,6 +13,8 @@ class RealEstateTransaction < ActiveRecord::Base
   accepts_nested_attributes_for :real_estate
 
   delegate :name, :to => :real_estate
+
+  monetize :price
 
   scope :for, lambda { |real_estate| where(:real_estate_id => real_estate).order(:date, :created_at) } do
 
@@ -55,7 +58,7 @@ class RealEstateTransaction < ActiveRecord::Base
   end
 
   def percentage_change
-    ((current_value - price).to_f / price * 100).round(2)
+    ((current_value - price) / price * 100)
   end
 
   def real_estate

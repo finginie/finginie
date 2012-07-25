@@ -12,13 +12,12 @@ describe MutualFundsCell, :mongoid do
 
       it  "should have the table" do
         expected_content = [
-          [ 'scheme-0', '2.0', '1.00', '3.00', '5.00', '6.00' ],
-          [ 'scheme-1', '4.0', '6.00', '9.00', '11.00', '12.00' ] ]
+          [ 'scheme-0', '2.00', '1.00', '3.00', '5.00', '6.00' ],
+          [ 'scheme-1', '4.00', '6.00', '9.00', '11.00', '12.00' ] ]
 
-        table_rows(subject, "#top_performers").should include *expected_content
+        table_rows(subject, "table[data-role='top_performers']").should include *expected_content
 
       end
-      it { should have_css("#top_performers") }
     end
 
     context "rendering biggest_funds" do
@@ -31,10 +30,10 @@ describe MutualFundsCell, :mongoid do
 
       it "should have table content" do
         expected_content = [
-          [ 'scheme-0', '2.0', '1.00', '238.68', '5.00' ],
-          [ 'scheme-1', '4.0', '6.00', '338.68', '11.00' ] ]
+          [ 'scheme-0', '2.00', '1.00', '238.68', '5.00' ],
+          [ 'scheme-1', '4.00', '6.00', '338.68', '11.00' ] ]
 
-        table_rows(subject, "#biggest_schemes").should include *expected_content
+        table_rows(subject, "table[data-role='biggest_schemes']").should include *expected_content
       end
     end
   end

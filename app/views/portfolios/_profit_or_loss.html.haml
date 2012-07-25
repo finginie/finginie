@@ -21,15 +21,15 @@
       %td.name= security.name
       %td.center_align= security.type
       %td.right_align= security.quantity ? security.quantity : ""
-      %td.right_align= security.average_cost_price ? number_to_indian_currency(security.average_cost_price) : ""
-      %td.right_align= security.average_sell_price ? number_to_indian_currency(security.average_sell_price) : ""
+      %td.right_align= security.average_cost_price ? security.average_cost_price : ""
+      %td.right_align= security.average_sell_price ? security.average_sell_price : ""
       %td= rg_colorize security.profit_or_loss
-      %td= rg_colorize security.percentage
+      %td= rg_colorize number_with_precision(security.percentage), security.percentage
   %tr.total
     %td Total
     %td
     %td
     %td
     %td
-    %td.right_align= number_to_indian_currency net_income.sum(&:profit_or_loss).round(2)
+    %td.right_align= net_income.sum(&:profit_or_loss)
     %td

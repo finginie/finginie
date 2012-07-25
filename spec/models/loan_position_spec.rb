@@ -14,8 +14,5 @@ describe "LoanPosition" do
   its(:rate_of_interest) { should eq 10 }
   its(:period) { should eq 1 }
   its(:date) { should eq 8.months.ago.to_date }
-
-  it "should calculate present current value" do
-    subject.outstanding_amount.should eq -25937.39
-  end
+  its(:outstanding_amount) { should be_a_indian_currency_of -25941.32 }
 end
