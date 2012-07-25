@@ -8,7 +8,7 @@
 
 = content_tag :div, flash[:result], :id => 'result' if flash[:result].is_a?(String)
 - unless collection.empty?
-  %table.table.table-striped
+  %table.table.table-striped.table-bordered
     %tr
       %th Date
       %th Report Name

@@ -1,11 +1,15 @@
-= render 'stocks/subnav'
+.row.show-grid
+  .span12
+    = render 'stocks/subnav'
+
 - provide :title, @company.name if @company
 
 - if @company
-  %h1= "Ratios - #{@company.name}"
+  .page-header
+    %h1= "Ratios - #{@company.name}"
 
 - if @company && @ratios.first && @ratios.first.model
-  %table.table.table-striped
+  %table.table.table-striped.table-bordered
     %tr
       %th Ratio
       - @ratios.each do|ratio|

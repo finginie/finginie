@@ -1,60 +1,61 @@
-= render 'subnav'
-
-- if resource.model
-  .page-header
-    - provide :title, resource.name
-    %h1
-      = resource.name
-      %small
-        %span
-          - %w( nse_code industry_name ).each do |attr|
-            %strong #{t ".#{attr}"}:
-            %span= resource.send(attr)
-  %section.fundamentals.row
-    .span12
-      -bt_table [resource] do |table|
-        - fields = %w(eps pe price_to_book_value book_value face_value market_capitalization dividend_yield)
-        = table.ths *(fields.map {|attr| t ".#{attr}"})
-        = table.tds *(fields.map &:to_sym)
+.row.show-grid
+  .span12
+    = render 'subnav'
+.row
+  .span12
+    - if resource.model
+      - provide :title, resource.name
+      %h1
+        = resource.name
+        %small
+          %span
+            - %w( nse_code industry_name ).each do |attr|
+              %strong #{t ".#{attr}"}:
+              %span= resource.send(attr)
+.row
+  .span12
+    -bt_table [resource] do |table|
+      - fields = %w(eps pe price_to_book_value book_value face_value market_capitalization dividend_yield)
+      = table.ths *(fields.map {|attr| t ".#{attr}"})
+      = table.tds *(fields.map &:to_sym)
 
   .row= render 'quotes'
 
-  .row
-    .span8
-      - if resource.news.count > 0
-        %section.news
-          %h1
-            %i.icon-bullhorn
-            News
-          %ul
-            - resource.news.each do |news|
-              %li
-                = link_to news.headlines, stock_news_path(:stock_id => resource.name, :id => news._id), :target => "_blank"
-    .span4
-      - if resource.share_holding
-        %section.share_holding
-          %h1
-            %i.icon-adjust
-            Share Holding Pattern
-          %table.table.table-striped
-            %th Investor Type
-            %th.percentage Percentage(%)
-            - resource.share_holding.non_zero_groups.each do |attr|
-              %tr
-                %td= t "share_holding.#{attr}"
-                %td= resource.share_holding.send(attr)
-      - if resource.ratio
-        %section.ratios
-          %h1
-            %i.icon-adjust
-            Ratios
-          %table.table.table-striped
-            %th Ratio
-            %th.percentage Value
-            - resource.ratio.company_view_items.each do |attr|
-              %tr
-                %td= t "ratio.#{attr}"
-                %td= resource.ratio.send(attr)
+.row
+  .span8
+    - if resource.news.count > 0
+      %section.news
+        %h1
+          %i.icon-bullhorn
+          News
+        %ul
+          - resource.news.each do |news|
+            %li
+              = link_to news.headlines, stock_news_path(:stock_id => resource.name, :id => news._id), :target => "_blank"
+  .span4
+    - if resource.share_holding
+      %section.share_holding
+        %h1
+          %i.icon-adjust
+          Share Holding Pattern
+        %table.table.table-striped.table-bordered
+          %th Investor Type
+          %th.percentage Percentage(%)
+          - resource.share_holding.non_zero_groups.each do |attr|
+            %tr
+              %td= t "share_holding.#{attr}"
+              %td= resource.share_holding.send(attr)
+    - if resource.ratio
+      %section.ratios
+        %h1
+          Ratios
+        %table.table.table-striped.table-bordered
+          %th Ratio
+          %th.percentage Value
+          - resource.ratio.company_view_items.each do |attr|
+            %tr
+              %td= t "ratio.#{attr}"
+              %td= resource.ratio.send(attr)
 
   .row
     .span12

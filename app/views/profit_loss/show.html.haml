@@ -1,10 +1,13 @@
-= render 'stocks/subnav'
+.row.show-grid
+  .span12
+    = render 'stocks/subnav'
 - provide :title, @company.name if @company
 
 - if @company && @audited_results[0] && @audited_results[0].model
-  %h1= "#{@company.name} - Income Statement"
+  .page-header
+    %h1= "#{@company.name} - Income Statement"
   %p *All Numbers are in crores of rupees unless specified otherwise
-  %table.table.table-striped
+  %table.table.table-striped.table-bordered
     %tr
       %th
       - @audited_results.each do |audited_result|
