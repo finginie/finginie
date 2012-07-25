@@ -3,14 +3,16 @@
     #home-slider.carousel.slide
       .carousel-inner
         .item.active
-          = link_to image_tag('never-invested-slide.gif'), main_app.edit_comprehensive_risk_profiler_path
+          = link_to image_tag('Never-invested.jpg'), main_app.edit_comprehensive_risk_profiler_path
         .item
-          = link_to image_tag('ideal-security-mix-slide.gif'), main_app.edit_comprehensive_risk_profiler_path
+          = link_to image_tag('Suggested-asset-allocation.gif'), main_app.edit_comprehensive_risk_profiler_path
+        .item
+          = link_to image_tag('Trading.jpg'), main_app.page_path('trade')
       %a.carousel-control.left{:href => '#home-slider', :data => {:slide => :prev}} &lsaquo;
       %a.carousel-control.right{:href => '#home-slider', :data => {:slide => :next}} &rsaquo;
   .span4
     .pull-right
-      = link_to image_tag('trade300-250.png'), main_app.page_path('trade')
+      = link_to image_tag('ads-370-250.jpg'), main_app.page_path('trade')
 
 %hr.soften
 .marketing

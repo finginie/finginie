@@ -30,7 +30,7 @@ google.load('visualization', '1')
 
 $ ->
   $('.carousel').carousel
-    interval: 2000
+    interval: 3000
 
   $("div.chart").each ->
     if $(this).attr("data-chartType") is "Column"
