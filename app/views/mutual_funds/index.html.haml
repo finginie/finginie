@@ -1,67 +1,68 @@
-.mf_container
-  .page-header
-    %h1 Mutual Fund NAVs
-  %p
-    Get Mutual Fund NAVs and detailed fund information such as portfolio holdings, sectoral allocations, historic fund returns, fund comparative returns and mutual fund asset allocation for 13,500+ mutual funds trading in India.
-  %table#schemes_table.table.table-striped{ :data => { :source => mutual_funds_path(format: 'json') } }
-    %thead
-      %tr
-        %td{:width => '500px'} Scheme Name
-        %td{:width => '200px'} Category
-        %td{:width => '200px'} Minimum Investment Amount (Rs)
-    %tbody
-      %tr
-        %td.dataTables_empty{colspan:5} Start typing the scheme or fund name in the box above to get a fund's NAV
-  .show-grid
-    %h1 Trending Mutual Funds
-    %ul.nav.nav-tabs
-      %li= link_to 'Today\'s top 10 funds', "#top_performers", :data => { :toggle => :tab }
-      %li= link_to 'Biggest funds', "#biggest_schemes", :data => { :toggle => :tab }
-    .tab-content
-      #top_performers.tab-pane= render_cell :mutual_funds, :top_funds
-      #biggest_schemes.tab-pane= render_cell :mutual_funds, :biggest_funds
+.row
+  .span12
+    .page-header
+      %h1 Mutual Fund NAVs
+    %p
+      Get Mutual Fund NAVs and detailed fund information such as portfolio holdings, sectoral allocations, historic fund returns, fund comparative returns and mutual fund asset allocation for 13,500+ mutual funds trading in India.
+    %table#schemes_table.table.table-striped.table-bordered{ :data => { :source => mutual_funds_path(format: 'json') } }
+      %thead
+        %tr
+          %td{:width => '500px'} Scheme Name
+          %td{:width => '200px'} Category
+          %td{:width => '200px'} Minimum Investment Amount (Rs)
+      %tbody
+        %tr
+          %td.dataTables_empty{colspan:5} Start typing the scheme or fund name in the box above to get a fund's NAV
+    .show-grid
+      %h1 Trending Mutual Funds
+      %ul.nav.nav-tabs
+        %li= link_to 'Today\'s top 10 funds', "#top_performers", :data => { :toggle => :tab }
+        %li= link_to 'Biggest funds', "#biggest_schemes", :data => { :toggle => :tab }
+      .tab-content
+        #top_performers.tab-pane= render_cell :mutual_funds, :top_funds
+        #biggest_schemes.tab-pane= render_cell :mutual_funds, :biggest_funds
 
-  #categories_table.show-grid
-    %h1 Mutual Fund Categories & Returns
-    %table.table.table-striped
-      %tr
-        %th.name Mutual Fund Category Name
-        %th.scheme No. of Schemes
-        %th 1 W
-        %th 1 M
-        %th 3 M
-        %th 6 M
-        %th 1 Y
-        %th 2 Y
-        %th 3 Y
-      %tr
-        %td
-        %td
-        %td.center_align{:colspan => 7} Return (%)
-      - @categories.each do |cat|
-        %tr{ class: cycle("odd", "even") }
-          %td.name= link_to cat.scheme_class_description, mutual_fund_category_path(cat.scheme_class_code) if cat.scheme_class_description
-          %td= cat.no_of_schemes
-          %td= rg_colorize cat.one_week_return.round
-          %td= rg_colorize cat.one_month_return.round
-          %td= rg_colorize cat.three_months_return.round
-          %td= rg_colorize cat.six_months_return.round
-          %td= rg_colorize cat.one_year_return.round
-          %td= rg_colorize cat.two_year_return.round
-          %td= rg_colorize cat.three_year_return.round
-  %h1 Understanding Mutual Funds
-  %p
-    Mutual funds are great investments for small investors since they provide diversification benefits at a low cost.
-    Refer to our article on
-    #{link_to 'mutual funds', main_app.page_path('investment_education/mutual-funds-etf')}
-    to understand how mutual funds work and how you can start investing in them.
+    .show-grid
+      %h1 Mutual Fund Categories & Returns
+      %table.table.table-striped.table-bordered
+        %tr
+          %th.name Mutual Fund Category Name
+          %th.scheme No. of Schemes
+          %th 1 W
+          %th 1 M
+          %th 3 M
+          %th 6 M
+          %th 1 Y
+          %th 2 Y
+          %th 3 Y
+        %tr
+          %td
+          %td
+          %td.center_align{:colspan => 7} Return (%)
+        - @categories.each do |cat|
+          %tr{ class: cycle("odd", "even") }
+            %td.name= link_to cat.scheme_class_description, mutual_fund_category_path(cat.scheme_class_code) if cat.scheme_class_description
+            %td= cat.no_of_schemes
+            %td= rg_colorize cat.one_week_return.round
+            %td= rg_colorize cat.one_month_return.round
+            %td= rg_colorize cat.three_months_return.round
+            %td= rg_colorize cat.six_months_return.round
+            %td= rg_colorize cat.one_year_return.round
+            %td= rg_colorize cat.two_year_return.round
+            %td= rg_colorize cat.three_year_return.round
+
+      %h1 Understanding Mutual Funds
+      %p
+        Mutual funds are great investments for small investors since they provide diversification benefits at a low cost.
+        Refer to our article on
+        #{link_to 'mutual funds', main_app.page_path('investment_education/mutual-funds-etf')}
+        to understand how mutual funds work and how you can start investing in them.
 
 
-  %p
-    %b Important information about investing in mutual funds.
-    %br
-    Investing in mutual funds is a great way to diversify and get access to professional fund management at a
-    low cost. However, it involves risks and may not be suitable for everybody.Please consult your financial adviser and
-    read the offer documents carefully before making an investment decision.All information provided on this site such
-    as NAVs,portfolio holdings, sectoral allocations,historic fund returns,comparative returns etc is indicative
-    only.Please contact the fund manager of the mutual fund for the most up to date information.
+      %p
+        %b Important information about investing in mutual funds.
+        Investing in mutual funds is a great way to diversify and get access to professional fund management at a
+        low cost. However, it involves risks and may not be suitable for everybody.Please consult your financial adviser and
+        read the offer documents carefully before making an investment decision.All information provided on this site such
+        as NAVs,portfolio holdings, sectoral allocations,historic fund returns,comparative returns etc is indicative
+        only.Please contact the fund manager of the mutual fund for the most up to date information.

@@ -1,4 +1,6 @@
-= render 'subnav'
+.row.show-grid
+  .span12
+    = render 'subnav'
 - if @scheme.model
   - provide :title, @scheme.name
   .row
@@ -11,7 +13,7 @@
     .span8.show-grid
       -gchart(:data => @scheme.comparative_returns_data_table, :title => 'Comparative Returns', :yAxisTitle => 'Return(%)', :chartType => 'Column', :legend => 'bottom')
     .span4.show-grid
-      %table.table.table-striped
+      %table.table.table-striped.table-bordered
         %tr
           %th Time Frame
           %th Scheme Return (%)
