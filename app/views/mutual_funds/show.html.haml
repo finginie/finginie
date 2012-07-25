@@ -1,15 +1,16 @@
-= render 'subnav'
+.row.show-grid
+  .span12
+    = render 'subnav'
 - if @scheme.model
   - provide :title, @scheme.name
   .row
     .span12
-      .page-header
-        %h1
-          =@scheme.name
-          %small
-            %strong= @scheme.nav_amount
-            = @scheme.day_change
-            = rg_colorize "(#{@scheme.percentage_change}%)", @scheme.percentage_change.to_f
+      %h1
+        =@scheme.name
+        %small
+          %strong= @scheme.nav_amount
+          = @scheme.day_change
+          = rg_colorize "(#{@scheme.percentage_change}%)", @scheme.percentage_change.to_f
   .row
     .span12
       %p
@@ -18,8 +19,8 @@
         %strong= 'Benchmark Index :'
         %span= @scheme.bench_mark_index_name
   .row
-    .span12.show-grid
-      %table.table.table-striped
+    .span12
+      %table.table.table-striped.table-bordered
         %tr
           %td
             %b= 'Asset Management Company'

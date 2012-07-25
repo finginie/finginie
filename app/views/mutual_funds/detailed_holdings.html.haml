@@ -1,15 +1,17 @@
-= render 'subnav'
+.row.show-grid
+  .span12
+    = render 'subnav'
 - provide :title, @scheme.name if @scheme.model
 - if @scheme.portfolio_holdings
   .row
-    .span12.show-grid
+    .span12
       .page-header
         %h1
           Detailed holdings
           %small= @scheme.name
   .row
-    .span12.show-grid
-      %table.table.table-striped
+    .span12
+      %table.table.table-striped.table-bordered
         %tr
           %th.name= 'Company Name'
           %th= 'Sector'

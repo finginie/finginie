@@ -4,8 +4,7 @@
   .inputs
     = f.input :name
 
-  .actions
-    = f.button :submit
+  .form-actions
+    = f.button :submit, :class => 'btn btn-primary'
+    = button_to 'Back', portfolios_path, :class => 'btn btn-primary'
 
-  #back
-    = button_to 'Back', portfolios_path

@@ -1,6 +1,7 @@
 .row
   %article.span9
-    %h1.page-header Making Smart Investments
+    .page-header
+      %h1 Making Smart Investments
     %section
       %p
         Managing your hard earned money wisely is as tough as earning it and it is something that most investors fail at either because of the lack of knowledge or because of the wrong attitude towards investing. Therefore, a large number of investors in the share markets end up making losses.
@@ -201,7 +202,7 @@
         %li.next
           =link_to t('investment_education.Types of Investments →'), main_app.page_path('investment_education/investment-types')
       #disqus_thread
-  %ul.thumbnails
+  %ul.thumbnails.show-grid
     %li.span3.takeaway
       .well
         %h5.header Take Away

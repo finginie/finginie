@@ -1,18 +1,17 @@
 - [ 'nse', 'bse' ].each do |index|
   %section.daily_prices.span6{ :class => "#{index}_quotes" }
-    .page-header
-      %h1
-        = index.upcase
-        %small
-          %strong= resource.send(index).last_traded_price
-          %strong.net_change= rg_colorize resource.send(index).net_change
-          %span.percent_change= rg_colorize "(#{resource.send(index).percent_change}%)", resource.send(index).percent_change.to_f
-          .pull-right
-            - unless resource.send(index).time.kind_of?(String)
-              %p= l resource.send(index).time, :format => :short_date_and_time
-            - else
-              %p= resource.send(index).time
-    %table.table.table-striped.table-condensed
+    %h1
+      = index.upcase
+      %small
+        %strong= resource.send(index).last_traded_price
+        %strong.net_change= rg_colorize resource.send(index).net_change
+        %span.percent_change= rg_colorize "(#{resource.send(index).percent_change}%)", resource.send(index).percent_change.to_f
+        .pull-right
+          - unless resource.send(index).time.kind_of?(String)
+            %p= l resource.send(index).time, :format => :short_date_and_time
+          - else
+            %p= resource.send(index).time
+    %table.table.table-striped.table-bordered
       - %w(close_price open_price volume high_price low_price) .each do |attr|
         %tr
           %th

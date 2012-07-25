@@ -1,10 +1,13 @@
-= render 'stocks/subnav'
+.row.show-grid
+  .span12
+    = render 'stocks/subnav'
 - provide :title, @company.name if @company
 
 - if @share_holding.model
-  %h1= "ShareHolding - #{@company.name}"
+  .page-header
+    %h1= "ShareHolding - #{@company.name}"
   #share-holding-chart{ 'data-share-holding' => @share_holding.groupwise_percentages }
-  %table.table.table-striped
+  %table.table.table-striped.table-bordered
     %th Investor Type
     %th Percentage(%)
     - @share_holding.non_zero_groups.each do |attr|

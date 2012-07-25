@@ -21,7 +21,7 @@ a.menu:after, .dropdown-toggle:after {
 // TODO: Make Responsive
 section, .show-grid {
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 #flash_result { display: none; }
@@ -58,24 +58,12 @@ section, .show-grid {
   background-color: #EEE;
 }
 
-.marketing h1 {
-    font-size: 40px;
-    font-weight: 300;
-    margin: 0 0 40px;
-    text-align: center;
-    color: #333;
-}
-
-.marketing h5 {
-  font-weight: 300;
-  font-size: 22px;
-}
 
 hr.soften {
   background-image: -moz-linear-gradient(left center , transparent, rgba(0, 0, 0, 0.1), transparent);
   border: 0 none;
   height: 1px;
-  margin: 54px 0;
+  margin: 30px 0;
 }
 
 input::-webkit-outer-spin-button,
@@ -109,3 +97,5 @@ ul.ui-autocomplete li a {
     font-size: 12px;
     padding: 4px;
 }
+
+

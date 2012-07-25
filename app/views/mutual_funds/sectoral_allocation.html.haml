@@ -1,8 +1,10 @@
-= render 'subnav'
+.row.show-grid
+  .span12
+    = render 'subnav'
 - provide :title, @scheme.name if @scheme.model
 - if @scheme.sectoral_allocation
   .row
-    .span12.show-grid
+    .span12
       .page-header
         %h1
           Sectoral Allocation
@@ -10,8 +12,8 @@
   .row
     .span8.show-grid
       -gchart(:data => @scheme.sectoral_allocation, :title => 'Sectoral Allocation', chartType: 'Pie')
-    .span4.show-grid
-      %table.table.table-striped
+    .span4
+      %table.table.table-striped.table-bordered
         %th Sector
         %th Holding (%)
         - @scheme.sectoral_allocation.each do |name, value|

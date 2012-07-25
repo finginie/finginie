@@ -12,5 +12,4 @@
     %li.pull-right
       = simple_form_for @search, :url => main_app.mutual_funds_path, :method => :get, :html => {:novalidate => true, :class => 'form-search'} do |f|
         .input-append
-          = f.text_field :name, data: { autocomplete_source: mutual_funds_path }, :placeholder => 'Search', :class => 'search-query'
-          = f.submit 'Search', :class => :btn
+          = f.text_field :name, data: { autocomplete_source: mutual_funds_path }, :placeholder => 'Search Mutual Funds', :class => 'search-query'

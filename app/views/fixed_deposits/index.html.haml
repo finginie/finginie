@@ -15,8 +15,8 @@
 
       = f.input :senior_citizen, :collection => %w[Yes No], :as => :radio_buttons
 
-      .actions
-        = f.submit 'Submit'
+      .form-actions
+        = f.submit 'Submit', :class => 'btn btn-primary'
 
   - if params[:fixed_deposit_query] && @search.valid?
     - unless collection.top_five_public_sector.empty? || collection.top_five_private_sector.empty?
@@ -27,7 +27,7 @@
       - unless fd_details.empty?
         %h1= "#{fd_details.first.sector.titleize} banks"
         %div{ :id => "top_five_#{fd_details.first.sector.downcase}_sector_interest_rate"}
-          %table.table.table-striped
+          %table.table.table-striped.table-bordered
             %tr
               %th.name Bank Name
               %th.center_align= @search.senior_citizen? ? "Senior Citizen Interest Rate" : "General Interest Rate"

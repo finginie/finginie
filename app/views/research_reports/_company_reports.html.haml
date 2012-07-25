@@ -1,7 +1,9 @@
-= render 'stocks/subnav'
+.row.show-grid
+  .span12
+    = render 'stocks/subnav'
 
 - unless collection.empty?
-  %table.table.table-striped
+  %table.table.table-striped.tabel-bordered
     %tr
       %th Date
       %th Source

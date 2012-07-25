@@ -5,7 +5,7 @@
   - gchart( :data => resource.sector_wise_stock_percentage,
       :title => 'Sector Wise Stocks Allocation', :chartType => 'Pie')
   %h1 Current Holdings:Sector wise Analysis
-  %table.table.table-striped
+  %table.table.table-striped.table-bordered
     %tr
       %th.name Sector
       %th Quantity
@@ -45,7 +45,7 @@
       %td
       %td
 -else
-  .hero-unit.show-grid
+  .well.show-grid
     %p.align-center
       = t ".no_stock_transaction"
       = link_to "Add a stock", new_portfolio_stock_transaction_path(resource), :class => 'btn btn-primary'
@@ -55,7 +55,7 @@
     - gchart(:data => resource.stocks_positions_profit_or_loss.map { |r| [r.name, r.percentage] },
              :title => 'Realized Profit/Loss on Stocks', :yAxisTitle => 'Percentage (%)', :chartType => 'Column')
     %h1 Realized Profits/Losses
-    %table.table.table-striped
+    %table.table.table-striped.table-bordered
       %tr
         %th.name Stock Name
         %th.sector Sector
