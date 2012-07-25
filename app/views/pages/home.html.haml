@@ -1,56 +1,54 @@
-.row
+.row.show-grid
   .span8
     #home-slider.carousel.slide
       .carousel-inner
         .item.active
-          = image_tag 'never-invested-slide.gif'
+          = link_to image_tag('never-invested-slide.gif'), main_app.edit_comprehensive_risk_profiler_path
         .item
-          = image_tag 'ideal-security-mix-slide.gif'
+          = link_to image_tag('ideal-security-mix-slide.gif'), main_app.edit_comprehensive_risk_profiler_path
       %a.carousel-control.left{:href => '#home-slider', :data => {:slide => :prev}} &lsaquo;
       %a.carousel-control.right{:href => '#home-slider', :data => {:slide => :next}} &rsaquo;
   .span4
     .pull-right
-      =image_tag 'trade300-250.png'
+      = link_to image_tag('trade300-250.png'), main_app.page_path('trade')
+
 %hr.soften
 .marketing
-  .row
-    %h1.header.align-center Manage Trade and investments with ease
   .row.show-grid
     .span4
-      = image_tag "piggy-bank-icon.png", :class => 'bs-icon'
-      %h5 Financial Planning
+      %h5
+        =link_to 'Financial Planning', main_app.edit_comprehensive_risk_profiler_path
       %p Planning can be nerve-wracking. That’s why we did all the complicated number crunching so that you can invest with a single click.
     .span4
-      = image_tag "piggy-bank-icon.png", :class => 'bs-icon'
-      %h5 Learn Investings
+      %h5
+        = link_to 'Learn Investing', main_app.page_path('investment_education')
       %p "An investment in knowledge pays the best interest." - Benjamin Franklin Learn how to make good investment decisions.
     .span4
-      = image_tag "piggy-bank-icon.png", :class => 'bs-icon'
-      %h5 Stock Market data
+      %h5
+        = link_to 'Stock Market data', main_app.stocks_path
       %p The stock market is flooding with information. Stay ahead of others with the latest news, quotes and detailed corporate information. We support 3,500 stocks and 5,000 mutual funds.
   .row.show-grid
     .span4
-      = image_tag "piggy-bank-icon.png", :class => 'bs-icon'
-      %h5 Stock Recommendations
+      %h5
+        = link_to 'Stock Recommendations', main_app.page_path('stock-recommendations')
       %p No one has become a crorepati by saving money in a bank account or fixed deposit. That’s why we recommend money-multiplying stocks.
     .span4
-      = image_tag "piggy-bank-icon.png", :class => 'bs-icon'
-      %h5 Research Reports
+      %h5
+        = link_to 'Research Reports', main_app.research_reports_path
       %p Our research report aggregator tool is so vast that you can become a Ph.d in Financial Research.
     .span4
-      = image_tag "piggy-bank-icon.png", :class => 'bs-icon'
-      %h5 Trading Account
+      %h5
+        = link_to 'Trading Account', main_app.page_path('trade')
       %p Lowest Brokerage in the industry. That does not mean cheap service. Get a personal financial advisor to help you invest.
   .row.show-grid
     .span4
-      = image_tag "piggy-bank-icon.png", :class => 'bs-icon'
-      %h5 Portfolio Tracking
+      %h5
+        = link_to 'Portfolio Tracking', main_app.portfolios_path
       %p No unnecessary paperwork, excel formulas or any other fancy tools. Get a financial analyst’s perspective of all your investments with just a few clicks.
     .span4
-      = image_tag "piggy-bank-icon.png", :class => 'bs-icon'
       %h5 Social Features
       %p Connect with the kings of investing and learn how to make profitable investments. If you are a king yourself, build a kingdom of followers.
     .span4
-      = image_tag "piggy-bank-icon.png", :class => 'bs-icon'
-      %h5 Financial Calculators
+      %h5
+        = link_to 'Financial Calculators', personal_financial_tools.personal_financial_tools_path
       %p Use our financial calculators to dodge complicated maths and plan your future.
