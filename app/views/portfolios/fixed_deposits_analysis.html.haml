@@ -5,7 +5,7 @@
   - gchart(:header => ['Rate','Amount'], :data => resource.fixed_deposit_open_positions_rate_of_interests.map{ |fd| [fd.rate, fd.amount] },
            :title => 'Fixed Deposits', :yAxisTitle => 'Amount Invested (Rs)', :xAxisTitle => 'Interest Rate p.a.(%)', :chartType => 'Column')
   %h1 Interest rate wise Analysis
-  %table.table.table-striped
+  %table.table.table-striped.table-bordered
     %tr
       %th.name Name
       %th Interest Rate
@@ -24,7 +24,7 @@
       %td
       %td= resource.fixed_deposit_open_positions_rate_of_interests.sum(&:amount)
 -else
-  .hero-unit.show-grid
+  .well.show-grid
     %p.align-center
       = t ".no_fixed_deposit_transaction"
       = link_to "Add a fixed deposit", new_portfolio_fixed_deposit_transaction_path(resource), :class => 'btn btn-primary'

@@ -10,7 +10,7 @@
         %small
           %strong= @scheme.nav_amount
           = @scheme.day_change
-          = rg_colorize "(#{@scheme.percentage_change}%)", @scheme.percentage_change
+          = rg_colorize "(#{@scheme.percentage_change}%)", @scheme.percentage_change.to_f
   .row
     .span12
       %p

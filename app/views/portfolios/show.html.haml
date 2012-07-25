@@ -11,7 +11,7 @@
                   :yAxisTitle => 'Amount(Rupees)', :chartType => 'Column')
 
     .span4.show-grid
-      %table.table.table-striped.show-grid.assets
+      %table.table.table-striped.show-grid.assets.table-bordered
         %tr
           %th Assets
           %th Amount
@@ -26,7 +26,7 @@
             %td= asset[:amount]
             %td= asset[:percentage]
 
-      %table.table.table-striped.show-grid.liabilities
+      %table.table.table-striped.show-grid.liabilities.table-bordered
         %tr
           %th Liabilities
           %th Amount

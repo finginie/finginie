@@ -3,7 +3,7 @@
 #accumulated_profits_or_losses
   %h1 Your Realized Profits and Losses
   - if resource.top_five_losses.empty? && resource.top_five_profits.empty?
-    .hero-unit.show-grid
+    .well.show-grid
       %p.align-center
         = t ".no_profit_or_loss"
   - else
@@ -27,7 +27,7 @@
         = t(".no_loss")
     - unless resource.positions.empty?
       %h1 Net Profit/Loss
-      %table.table.table-striped{ :data => {:role => 'net_profit_loss'}}
+      %table.table.table-striped.table-bordered{ :data => {:role => 'net_profit_loss'}}
         %tr
           %td.name.total= t('.net_profit_loss')
           %td= rg_colorize resource.net_profit_or_loss

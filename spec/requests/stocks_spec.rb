@@ -61,7 +61,7 @@ describe "Stocks", :mongoid, :redis do
     page.current_path.should eq stock_path company
   end
 
-  it "show page shouldn't throw any error when company not exists" do
+  pending "show page shouldn't throw any error when company not exists" do
     visit stock_path 25
     page.status_code.should eq 200
   end

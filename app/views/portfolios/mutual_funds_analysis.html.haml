@@ -5,7 +5,7 @@
   - gchart(:data => resource.category_wise_mutual_funds_percentage, :title => 'Category Wise Mutual Fund Allocation', :chartType => 'Pie')
 
   %h1 Category wise Analysis
-  %table.table.table-striped
+  %table.table.table-striped.table-bordered
     %tr
       %th.name Category
       %th Quantity
@@ -45,7 +45,7 @@
       %td
       %td
 -else
-  .hero-unit.show-grid
+  .well.show-grid
     %p.align-center
       = t ".no_mutual_fund_transaction"
       = link_to "Add a mutual fund", new_portfolio_mutual_fund_transaction_path(resource), :class => 'btn btn-primary'
@@ -55,7 +55,7 @@
     - gchart(:data => resource.mutual_fund_positions_profit_or_loss.map { |r| [r.name, r.percentage] },
              :title => 'Realized Profit/Loss on Mutual Funds', :yAxisTitle => 'Percentage (%)', :chartType => 'Column')
     %h1 Realized Profits/Losses
-    %table.table.table-striped
+    %table.table.table-striped.table-bordered
       %tr
         %th.name Scheme Name
         %th Category

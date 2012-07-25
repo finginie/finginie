@@ -1,6 +1,6 @@
 %h1 My Portfolios
 - unless collection.empty?
-  %table.table.table-striped
+  %table.table.table-striped.table-bordered
     %thead
       %tr
         %th{:colspan => 3} Portfolio Name
@@ -16,7 +16,7 @@
   = link_to 'Create New Portfolio', new_portfolio_path, :method => :get, :class => "create_new_portfolio"
 
 -else
-  .hero-unit.show-grid
+  .well.show-grid
     %p.align-center
       = t '.empty_portfolio'
       = link_to 'Create new portfolio', new_portfolio_path, :method => :get, :class => 'btn btn-primary'

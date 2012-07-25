@@ -5,7 +5,7 @@
     %section{ :class => positions }
       %h1= positions.gsub(/_positions/,'').titleize.pluralize
       %div{ :id => "#{positions}"}
-        %table.table.table-striped
+        %table.table.table-striped.table-bordered
           %tr
             %th Name
             %th Quantity
@@ -57,7 +57,7 @@
   %section{ :class => "Gold" }
     %h1 Gold
     #gold_positions
-      %table.table.table-striped
+      %table.table.table-striped.table-bordered
         %tr
           %th Name
           %th Quantity
