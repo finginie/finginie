@@ -4,8 +4,8 @@
       = index.upcase
       %small
         %strong= resource.send(index).last_traded_price
-        %strong.net_change= rg_colorize resource.send(index).net_change
-        %span.percent_change= rg_colorize "(#{resource.send(index).percent_change}%)", resource.send(index).percent_change.to_f
+        %strong= resource.send(index).net_change
+        (#{resource.send(index).percent_change} %)
         .pull-right
           - unless resource.send(index).time.kind_of?(String)
             %p= l resource.send(index).time, :format => :short_date_and_time

@@ -3,7 +3,7 @@ class ScripDecorator < ApplicationDecorator
   decorates :'data_provider/bse_scrip'
 
   FIELDS_TO_NA = [ :time, :last_traded_price, :open_price, :high_price, :close_price, :low_price, :net_change, :percent_change ]
-  FIELDS_TO_COLORIZE = [ :percent_change]
+  FIELDS_TO_COLORIZE = [ :percent_change, :net_change]
 
   FIELDS_TO_NA.each do |key|                    ##
     define_method(key) do                       # def key

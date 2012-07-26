@@ -1,13 +1,13 @@
 - unless @fd_details.empty?
-  %h Special Rates
+  %h5 Special Rates
   #special_tenure
-    %table
+    %table.table.table-striped.table-bordered
       %tr
-        %th.name Bank
-        %th.center_align Number of days
-        %th.center_align= @search[:senior_citizen] == "Yes" ? "Senior Citizen Interest Rate" : "General Interest Rate"
+        %th Bank
+        %th Number of days
+        %th= @search[:senior_citizen] == "Yes" ? "Senior Citizen Interest Rate" : "General Interest Rate"
       - @fd_details.each do |fd_detail|
         %tr
           %td= fd_detail.bank
-          %td.center_align= fd_detail.min_duration
-          %td.center_align= @search[:senior_citizen] == "Yes" ?  fd_detail.rate_of_interest_senior_citizen : fd_detail.rate_of_interest_general
+          %td= fd_detail.min_duration
+          %td= @search[:senior_citizen] == "Yes" ?  fd_detail.rate_of_interest_senior_citizen : fd_detail.rate_of_interest_general
