@@ -7,4 +7,4 @@
           %small
             %strong= indices.constantize.last_traded_price
             = rg_colorize indices.constantize.net_change
-            = rg_colorize "(#{indices.constantize.percent_change} %)", indices.constantize.percent_change
+            = rg_colorize "(#{indices.constantize.percent_change} %)", indices.constantize.percent_change.to_f

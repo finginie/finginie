@@ -14,7 +14,7 @@ class ScripDecorator < ApplicationDecorator
   FIELDS_TO_COLORIZE.each do |key|
     define_method("#{key}_with_colorize".to_sym) do                         # def key_with_colorize
       if model.send(key)                                                    # if model.send(key)
-        h.rg_colorize self.send("#{key}_without_colorize"), model.send(key) #
+        h.rg_colorize self.send("#{key}_without_colorize"), model.send(key).to_f #
       else
         self.send("#{key}_without_colorize")
       end
