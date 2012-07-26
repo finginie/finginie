@@ -48,8 +48,8 @@
                 #tax_saving_investment_field
                   = f.input :tax_saving_investment
             %li= f.input :time_horizon
-            %li= f.input :preference, :collection => t("comprehensive_risk_profiler.preference").invert, :as => :radio_buttons, :collection_wrapper_tag => :ul, :item_wrapper_tag => :li
-            %li= f.input :portfolio_investment, :collection => t("comprehensive_risk_profiler.portfolio_investment").invert, :as => :radio_buttons, :collection_wrapper_tag => :ul, :item_wrapper_tag => :li
+            %li= f.input :preference, :collection => t("comprehensive_risk_profiler.preference").invert, :as => :radio_buttons
+            %li= f.input :portfolio_investment, :collection => t("comprehensive_risk_profiler.portfolio_investment").invert, :as => :radio_buttons
             .form-actions
               = f.submit 'Submit', :class => %w(btn btn-primary)
 

@@ -3,12 +3,12 @@
     .page-header
       %h1 Fixed Deposit Comparison tool <small>Compare fixed deposit interest rates across banks in India</small>
     %p= t ".fixed_deposit_tool"
-
+.row
   .span12.show-grid
     = simple_form_for @search, :url => fixed_deposits_path, :method => :get, :html => {:class => 'form-horizontal'} do |f|
       = f.input :amount
 
-      = field_set_tag :duration do
+      = field_set_tag 'Duration' do
         = f.input :year
         = f.input :month
         = f.input :days
@@ -17,51 +17,51 @@
 
       .form-actions
         = f.submit 'Submit', :class => 'btn btn-primary'
-
+.row
   - if params[:fixed_deposit_query] && @search.valid?
-    - unless collection.top_five_public_sector.empty? || collection.top_five_private_sector.empty?
-      .notice= @search.result_summary
-    - else
-      .alert.alert-error= @search.result_summary(true)
+    .span12
+      - unless collection.top_five_public_sector.empty? || collection.top_five_private_sector.empty?
+        .alert.alert-notice= @search.result_summary
+      - else
+        .alert.alert-error= @search.result_summary(true)
     - [collection.top_five_public_sector, collection.top_five_private_sector].each do |fd_details|
       - unless fd_details.empty?
-        %h1= "#{fd_details.first.sector.titleize} banks"
-        %div{ :id => "top_five_#{fd_details.first.sector.downcase}_sector_interest_rate"}
-          %table.table.table-striped.table-bordered
+        .span6
+          %h5= "#{fd_details.first.sector.titleize} banks"
+          %table.table.table-striped.table-bordered{ :data => {:role => "top_five_#{fd_details.first.sector.downcase}_sector_interest_rate"}}
             %tr
-              %th.name Bank Name
-              %th.center_align= @search.senior_citizen? ? "Senior Citizen Interest Rate" : "General Interest Rate"
+              %th Bank Name
+              %th= @search.senior_citizen? ? "Senior Citizen Interest Rate" : "General Interest Rate"
             - fd_details.each do |fd_detail|
               %tr
                 %td= fd_detail.bank
-                %td.center_align= @search.senior_citizen? ? fd_detail.rate_of_interest_senior_citizen : fd_detail.rate_of_interest_general
-    = render_cell :fixed_deposits, :special_tenure
+                %td= @search.senior_citizen? ? fd_detail.rate_of_interest_senior_citizen : fd_detail.rate_of_interest_general
+    .span12= render_cell :fixed_deposits, :special_tenure
   - else
-    .span12.show-grid
+    .span12
       .notice= t ".default"
     - [@top_five_public_banks_interest_rates, @top_five_private_banks_interest_rates].each do |fd_details|
-      .span6
-        - unless fd_details.empty?
-          %h2
+      - unless fd_details.empty?
+        .span6
+          %h5
             Best interest rates on fixed deposits among
             %strong=fd_details.first.sector.titleize.downcase!
             sector banks
-          %div{ :id => "top_five_#{fd_details.first.sector.downcase}_sector_interest_rate"}
-            %table.table.table-striped.table-bordered
+          %table.table.table-striped.table-bordered{ :data => {:role => "top_five_#{fd_details.first.sector.downcase}_sector_interest_rate"}}
+            %tr
+              %th Bank Name
+              %th 1 year
+              %th 180 days
+              %th 90 days
+              %th 30 days
+            - fd_details.each do |fd_detail|
               %tr
-                %th.name Bank Name
-                %th.right_align 1 year
-                %th.right_align 180 days
-                %th.right_align 90 days
-                %th.right_align 30 days
-              - fd_details.each do |fd_detail|
-                %tr.right_align
-                  %td.name= fd_detail.name
-                  %td= fd_detail.one_year_interest_rate
-                  %td= fd_detail.six_month_interest_rate
-                  %td= fd_detail.three_month_interest_rate
-                  %td= fd_detail.one_month_interest_rate
-
+                %td= fd_detail.name
+                %td= fd_detail.one_year_interest_rate
+                %td= fd_detail.six_month_interest_rate
+                %td= fd_detail.three_month_interest_rate
+                %td= fd_detail.one_month_interest_rate
+.row
   .span12.show-grid
     %h1 Understanding Fixed Deposits
     %p
@@ -70,12 +70,11 @@
       #{link_to 'fixed deposits', main_app.page_path('investment_education/investment-fixed-deposits')}
       to understand how fixed deposits work across banks in India.
 
+    %h3 Important information about investing in fixed deposits.
     %p
-      %b Important information about investing in fixed deposits.
-      %br
-        Investing in fixed deposits is a safe way for small investors to get a guaranteed return. However, investing in
-        fixed deposits also carries some risk. There have been instances of co-operative banks closing down, leading to
-        huge losses for investors. This risk can be minimized by investing in public sector banks and large private banks.
-        Please consult your financial advisor before making an investment decision. The interest rates displayed on this site
-        are indicative only and are not exhaustive. Please contact the relevant bank to get the most updated interest rate
-        that they offer on their fixed deposits.
+      Investing in fixed deposits is a safe way for small investors to get a guaranteed return. However, investing in
+      fixed deposits also carries some risk. There have been instances of co-operative banks closing down, leading to
+      huge losses for investors. This risk can be minimized by investing in public sector banks and large private banks.
+      Please consult your financial advisor before making an investment decision. The interest rates displayed on this site
+      are indicative only and are not exhaustive. Please contact the relevant bank to get the most updated interest rate
+      that they offer on their fixed deposits.

@@ -1,14 +1,14 @@
 %ul.nav.nav-pills
-  %li.btn-large Portfolio
+  %li.btn-large Select Portfolio
   %li.btn-group
-    %a.btn.dropdown-toggle{ :href => '#', :data => {:toggle => :dropdown}}
+    %a.btn.btn-success.dropdown-toggle{ :href => '#', :data => {:toggle => :dropdown}}
       = @portfolio.name
       %span.caret
     %ul.dropdown-menu
       - current_user.portfolios.each do |portfolio|
         %li= link_to portfolio.name, portfolio
   %li.btn-large.pull-right= l Time.now, :format => :date_time_IST
-.subnav
+.subnav.show-grid
   %ul.nav.nav-pills
     %li.dropdown
       %a.dropdown-toggle{ :href => '#', :data => {:toggle => :dropdown}}

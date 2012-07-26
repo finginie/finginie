@@ -14,7 +14,7 @@ describe "FixedDeposits", :vcr do
         private_sector_bank_table = [
                           ["Karur Vysya Bank", "10.0", "7.8", "7.8", "6.0"]
                         ]
-        tableish("#top_five_private_sector_interest_rate").should include *private_sector_bank_table
+        tableish("table[data-role='top_five_private_sector_interest_rate']").should include *private_sector_bank_table
       end
     end
 
@@ -25,7 +25,7 @@ describe "FixedDeposits", :vcr do
         public_sector_bank_table = [
                           ["Andhra Bank", "9.4", "8.5", "7.25", "4.5"]
                         ]
-        tableish("#top_five_public_sector_interest_rate").should include *public_sector_bank_table
+        tableish("table[data-role='top_five_public_sector_interest_rate']").should include *public_sector_bank_table
       end
     end
 
@@ -63,8 +63,8 @@ describe "FixedDeposits", :vcr do
            ["Axis Bank",        "10.25"]
           ]
 
-        tableish("#top_five_public_sector_interest_rate").should include *public_sector_bank_table
-        tableish("#top_five_private_sector_interest_rate").should include *private_sector_bank_table
+        tableish("table[data-role='top_five_public_sector_interest_rate']").should include *public_sector_bank_table
+        tableish("table[data-role='top_five_private_sector_interest_rate']").should include *private_sector_bank_table
       end
 
       it "should list special days interest rate closed to duration search" do
