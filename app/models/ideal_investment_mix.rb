@@ -83,6 +83,10 @@ class IdealInvestmentMix
     DataProvider::Scheme.where(:name => name).first
   end
 
+  def top_elss_funds
+    DataProvider::Scheme.active.where(:class_code => 2119).order_by([[:prev3_year_comp_percent, :desc]])
+  end
+
   def initial_investment=(amount)
     @initial_investment = [ IndianCurrency.new(amount), MINIMUM_INVESTMENT].max
   end

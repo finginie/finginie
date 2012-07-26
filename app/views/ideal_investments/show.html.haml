@@ -29,5 +29,16 @@
             %td= investment.amount
 - reset_cycle
 
+%p Also see the ELSS funds
+%h1 Top ELSS funds
+%table{:id => 'top_elss_funds'}
+  %tr
+    %th Name
+    %th 3 Yr Return (%)
+    - resource.top_elss_funds.limit(5).each do |fund|
+      %tr
+        %td= fund.name
+        %td= number_with_precision fund.prev3_year_comp_percent
+
 %p= t('.intro_to_trade')
 = link_to 'Continue', page_path('trade')

@@ -84,6 +84,16 @@ describe 'Ideal Investments',:mongoid do
       expected_content = mid_cap_schemes.take(1).map { |scheme| [ scheme.name, '3,000.00' ] }
       tableish("#mid_caps table").should include *expected_content
     end
+
+    it "should show top five ELSS funds on the page" do
+      top_elss_funds = [ create(:'data_provider/scheme', :class_code => 2119, :prev3_year_comp_percent => 22),
+                         create(:'data_provider/scheme', :class_code => 2119, :prev3_year_comp_percent => 21.2) ]
+
+      visit comprehensive_risk_profiler_ideal_investments_path
+      expected_content = [ [top_elss_funds.first.name, '22.00'],[top_elss_funds.last.name, '21.20'] ]
+      tableish("#top_elss_funds").should include *expected_content
+    end
+
   end
 
   context "#Quiz is answered" do

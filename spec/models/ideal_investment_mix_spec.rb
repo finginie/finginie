@@ -191,6 +191,13 @@ describe IdealInvestmentMix, :mongoid do
         subject.top_mid_caps.should_not include(scheme, another_cnx_scheme)
         subject.top_mid_caps.should include(cnx_scheme, bse_scheme)
       end
+
+      it "should scope the elss funds" do
+        scheme.update_attributes(:class_code => 2119)
+        another_scheme = create :'data_provider/scheme'
+        subject.top_elss_funds.should include scheme
+        subject.top_elss_funds.should_not include another_scheme
+      end
     end
 
     it "should have mid caps" do
