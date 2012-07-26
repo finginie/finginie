@@ -1,43 +1,47 @@
-= render 'subnav'
-- if resource.empty_transactions?
-  = render 'empty_transaction'
-- else
-  .row
-    .span8.show-grid
-      - gchart( :header => ['Asset Class','Percenatge'], :data => resource.total_assets_distribution,
-                :chartType => 'Pie', :title => 'Portfolio Assets Composition')
-      - if resource.assets_and_liabilities?
-        - gchart(:elements => resource.assets_and_liabilities, :title => 'Portfolio Summary',
-                  :yAxisTitle => 'Amount(Rupees)', :chartType => 'Column')
+.row.show-grid
+  .span12
+    = render 'subnav'
+.row.show-grid
+  .span12
+    - if resource.empty_transactions?
+      = render 'empty_transaction'
+    - else
+      .row
+        .span8.show-grid
+          - gchart( :header => ['Asset Class','Percenatge'], :data => resource.total_assets_distribution,
+                    :chartType => 'Pie', :title => 'Portfolio Assets Composition')
+          - if resource.assets_and_liabilities?
+            - gchart(:elements => resource.assets_and_liabilities, :title => 'Portfolio Summary',
+                      :yAxisTitle => 'Amount(Rupees)', :chartType => 'Column')
 
-    .span4.show-grid
-      %table.table.table-striped.show-grid.assets.table-bordered
-        %tr
-          %th Assets
-          %th Amount
-          %th Percentage
-        %tr
-          %td
-          %td (Rs)
-          %td (%)
-        -resource.total_assets_distribution_table.each do |asset|
-          %tr{:class => asset[:class]}
-            %td= asset[:asset_type]
-            %td= asset[:amount]
-            %td= asset[:percentage]
+        .span4.show-grid
+          %table.table.table-striped.show-grid.assets.table-bordered
+            %tr
+              %th Assets
+              %th Amount
+              %th Percentage
+            %tr
+              %td
+              %td (Rs)
+              %td (%)
+            -resource.total_assets_distribution_table.each do |asset|
+              %tr{:class => asset[:class]}
+                %td= asset[:asset_type]
+                %td= asset[:amount]
+                %td= asset[:percentage]
 
-      %table.table.table-striped.show-grid.liabilities.table-bordered
-        %tr
-          %th Liabilities
-          %th Amount
-          %th Percentage
-        %tr
-          %td
-          %td (Rs)
-          %td (%)
-        -resource.total_liabilities_distribution_table.each do |asset|
-          %tr{:class => asset[:class]}
-            %td= asset[:asset_type]
-            %td= asset[:amount]
-            %td= asset[:percentage]
+          %table.table.table-striped.show-grid.liabilities.table-bordered
+            %tr
+              %th Liabilities
+              %th Amount
+              %th Percentage
+            %tr
+              %td
+              %td (Rs)
+              %td (%)
+            -resource.total_liabilities_distribution_table.each do |asset|
+              %tr{:class => asset[:class]}
+                %td= asset[:asset_type]
+                %td= asset[:amount]
+                %td= asset[:percentage]
 

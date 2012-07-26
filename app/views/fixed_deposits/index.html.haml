@@ -8,7 +8,7 @@
     = simple_form_for @search, :url => fixed_deposits_path, :method => :get, :html => {:class => 'form-horizontal'} do |f|
       = f.input :amount
 
-      = field_set_tag :duration do
+      = field_set_tag 'Duration' do
         = f.input :year
         = f.input :month
         = f.input :days

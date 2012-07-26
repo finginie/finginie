@@ -1,14 +1,16 @@
-= simple_form_for [parent, resource], :html => {:class => 'form-horizontal'} do |f|
-  = f.error_notification
+.row
+  .span8
+    = simple_form_for [parent, resource], :html => {:class => 'form-horizontal'} do |f|
+      = f.error_notification
 
-  .inputs
-    = f.input :company_code do
-      = f.select :company_code, DataProvider::Company.stocks.order_by([[:name, :asc]]).all.map { |c| [c.name, c.code] }
-    = f.input :action, :collection => [["Buy",:buy],["Sell",:sell]], :include_blank => false
-    = f.input :quantity
-    = f.input :price
-    = f.input :date,:order=>[:day,:month,:year], :start_year => 2000
-    = f.input :comments
+      .form-inputs
+        = f.input :company_code do
+          = f.select :company_code, DataProvider::Company.stocks.order_by([[:name, :asc]]).all.map { |c| [c.name, c.code] }
+        = f.input :action, :collection => [["Buy",:buy],["Sell",:sell]], :include_blank => false
+        = f.input :quantity
+        = f.input :price
+        = f.input :date,:order=>[:day,:month,:year], :start_year => 2000
+        = f.input :comments
 
-  .form-actions
-    = f.button :submit, :class => 'btn btn-primary'
+      .form-actions
+        = f.button :submit, :class => 'btn btn-primary'

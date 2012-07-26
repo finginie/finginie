@@ -37,6 +37,15 @@ SimpleForm.setup do |config|
     end
   end
 
+  # Define the way to render check boxes / radio buttons with labels.
+  # Defaults to :nested for bootstrap config.
+  # :inline => input + label
+  # :nested => label > input
+  config.boolean_style = :nested
+
+  # You can define the class to use on all labels. Default is nil.
+  config.label_class = 'control-label'
+
   # Wrappers for forms and inputs using the Twitter Bootstrap toolkit.
   # Check the Bootstrap docs (http://twitter.github.com/bootstrap)
   # to learn about the different styles for forms and inputs,

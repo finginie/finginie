@@ -1,92 +1,97 @@
-= render 'subnav'
-
-%h1 Stocks Analysis
-- unless resource.sector_wise_stock_percentage.empty?
-  - gchart( :data => resource.sector_wise_stock_percentage,
-      :title => 'Sector Wise Stocks Allocation', :chartType => 'Pie')
-  %h1 Current Holdings:Sector wise Analysis
-  %table.table.table-striped.table-bordered
-    %tr
-      %th.name Sector
-      %th Quantity
-      %th Avg Cost Price
-      %th Invested Amount
-      %th Current Price
-      %th Current Value
-      %th Unrealised Profit
-      %th Percentage Holding
-    %tr
-      %td
-      %td
-      %td (Rs)
-      %td (Rs)
-      %td (Rs)
-      %td (Rs)
-      %td (Rs)
-      %td (%)
-    - resource.sector_wise_stock_percentage_table.each do |sector|
-      - sector.each do |position|
+.row.show-grid
+  .span12
+    = render 'subnav'
+.row
+  .span12
+    %h1 Stocks Analysis
+    - unless resource.sector_wise_stock_percentage.empty?
+      - gchart( :data => resource.sector_wise_stock_percentage,
+          :title => 'Sector Wise Stocks Allocation', :chartType => 'Pie')
+      %h5
+        Current Holdings:
+        %small Sector wise Analysis
+      %table.table.table-striped.table-bordered
         %tr
-          %td.name{:class => position.class_name }= position.name
-          %td= position.quantity
-          %td= position.average_cost_price ? position.average_cost_price : "-"
-          %td= position.amount_invested ? position.amount_invested : "-"
-          %td= position.current_price ? position.current_price : "-"
-          %td= position.current_value ? position.current_value : "-"
-          %td= position.unrealised_profit ? position.unrealised_profit : "-"
-          %td= position.percentage ? number_with_precision(position.percentage) : "-"
-    %tr.total
-      %td.name Total
-      %td
-      %td
-      %td
-      %td
-      %td= resource.stocks_value
-      %td
-      %td
--else
-  .well.show-grid
-    %p.align-center
-      = t ".no_stock_transaction"
-      = link_to "Add a stock", new_portfolio_stock_transaction_path(resource), :class => 'btn btn-primary'
-
-#stocks_profit_or_loss_analysis
-  - unless resource.stocks_positions_profit_or_loss.empty?
-    - gchart(:data => resource.stocks_positions_profit_or_loss.map { |r| [r.name, r.percentage] },
-             :title => 'Realized Profit/Loss on Stocks', :yAxisTitle => 'Percentage (%)', :chartType => 'Column')
-    %h1 Realized Profits/Losses
-    %table.table.table-striped.table-bordered
-      %tr
-        %th.name Stock Name
-        %th.sector Sector
-        %th Quantity
-        %th Avg cost Price
-        %th Avg Sell Price
-        %th Profit/Loss
-        %th Percentage Profit/Loss
-      %tr
-        %td
-        %td
-        %td
-        %td (Rs.)
-        %td (Rs.)
-        %td (Rs.)
-        %td (%)
-      -resource.stocks_positions_profit_or_loss.each do |position|
+          %th.name Sector
+          %th Quantity
+          %th Avg Cost Price
+          %th Invested Amount
+          %th Current Price
+          %th Current Value
+          %th Unrealised Profit
+          %th Percentage Holding
         %tr
-          %td.name= position.name
-          %td.sector= position.sector
-          %td= position.quantity
-          %td= position.average_cost_price
-          %td= position.average_sell_price
-          %td= rg_colorize position.profit_or_loss
-          %td= rg_colorize number_with_precision(position.percentage), position.percentage
+          %td
+          %td
+          %td (Rs)
+          %td (Rs)
+          %td (Rs)
+          %td (Rs)
+          %td (Rs)
+          %td (%)
+        - resource.sector_wise_stock_percentage_table.each do |sector|
+          - sector.each do |position|
+            %tr
+              %td.name{:class => position.class_name }= position.name
+              %td= position.quantity
+              %td= position.average_cost_price ? position.average_cost_price : "-"
+              %td= position.amount_invested ? position.amount_invested : "-"
+              %td= position.current_price ? position.current_price : "-"
+              %td= position.current_value ? position.current_value : "-"
+              %td= position.unrealised_profit ? position.unrealised_profit : "-"
+              %td= position.percentage ? number_with_precision(position.percentage) : "-"
+        %tr.total
+          %td.name Total
+          %td
+          %td
+          %td
+          %td
+          %td= resource.stocks_value
+          %td
+          %td
+    -else
+      .well.show-grid
+        %p.align-center
+          = t ".no_stock_transaction"
+          = link_to "Add a stock", new_portfolio_stock_transaction_path(resource), :class => 'btn btn-primary'
 
-      %tr.total
-        %td.name Total
-        %td
-        %td
-        %td
-        %td
-        %td= resource.stocks_positions_profit_or_loss.map(&:profit_or_loss).sum
-        %td
+    #stocks_profit_or_loss_analysis
+      - unless resource.stocks_positions_profit_or_loss.empty?
+        - gchart(:data => resource.stocks_positions_profit_or_loss.map { |r| [r.name, r.percentage] },
+                 :title => 'Realized Profit/Loss on Stocks', :yAxisTitle => 'Percentage (%)', :chartType => 'Column')
+        %h5 Realized Profits/Losses
+        %table.table.table-striped.table-bordered
+          %tr
+            %th.name Stock Name
+            %th.sector Sector
+            %th Quantity
+            %th Avg cost Price
+            %th Avg Sell Price
+            %th Profit/Loss
+            %th Percentage Profit/Loss
+          %tr
+            %td
+            %td
+            %td
+            %td (Rs.)
+            %td (Rs.)
+            %td (Rs.)
+            %td (%)
+          -resource.stocks_positions_profit_or_loss.each do |position|
+            %tr
+              %td.name= position.name
+              %td.sector= position.sector
+              %td= position.quantity
+              %td= position.average_cost_price
+              %td= position.average_sell_price
+              %td= rg_colorize position.profit_or_loss
+              %td= rg_colorize number_with_precision(position.percentage), position.percentage
+
+          %tr.total
+            %td.name Total
+            %td
+            %td
+            %td
+            %td
+            %td= resource.stocks_positions_profit_or_loss.map(&:profit_or_loss).sum
+            %td

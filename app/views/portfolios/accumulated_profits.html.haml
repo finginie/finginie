@@ -1,33 +1,37 @@
-= render 'subnav'
+.row.show-grid
+  .span12
+    = render 'subnav'
+.row.show-grid
+  .span12
+    #accumulated_profits_or_losses
+      %h1 Your Realized Profits and Losses
+      - if resource.top_five_losses.empty? && resource.top_five_profits.empty?
+        .well.show-grid
+          %p.align-center
+            = t ".no_profit_or_loss"
+      - else
+        - gchart(:data => (resource.top_five_profits + resource.top_five_losses).map{ |r| [ r.name, r.percentage ] },
+                  :chartType => 'Column', :yAxisTitle => 'Percentage (%)',
+                  :title =>'Your Top Realised Profit/Losses by Percentage')
+        .show-grid
+          %h5 Realized Profits
+          - unless resource.top_five_profits.empty?
+            #accumulated_profits
+              = render 'profit_or_loss', :net_income => resource.profits
+          - else
+            %p
+              = t(".no_profit")
 
-#accumulated_profits_or_losses
-  %h1 Your Realized Profits and Losses
-  - if resource.top_five_losses.empty? && resource.top_five_profits.empty?
-    .well.show-grid
-      %p.align-center
-        = t ".no_profit_or_loss"
-  - else
-    - gchart(:data => (resource.top_five_profits + resource.top_five_losses).map{ |r| [ r.name, r.percentage ] },
-              :chartType => 'Column', :yAxisTitle => 'Percentage (%)',
-              :title =>'Your Top Realised Profit/Losses by Percentage')
-    %h1 Realized Profits
-    - unless resource.top_five_profits.empty?
-      #accumulated_profits
-        = render 'profit_or_loss', :net_income => resource.profits
-    - else
-      %p
-        = t(".no_profit")
-
-    %h1 Realized Losses
-    - unless resource.top_five_losses.empty?
-      #accumulated_losses
-        = render 'profit_or_loss', :net_income => resource.losses
-    - else
-      %p
-        = t(".no_loss")
-    - unless resource.positions.empty?
-      %h1 Net Profit/Loss
-      %table.table.table-striped.table-bordered{ :data => {:role => 'net_profit_loss'}}
-        %tr
-          %td.name.total= t('.net_profit_loss')
-          %td= rg_colorize resource.net_profit_or_loss
+        %h5 Realized Losses
+        - unless resource.top_five_losses.empty?
+          #accumulated_losses
+            = render 'profit_or_loss', :net_income => resource.losses
+        - else
+          %p
+            = t(".no_loss")
+        - unless resource.positions.empty?
+          %h5 Net Profit/Loss
+          %table.table.table-striped.table-bordered{ :data => {:role => 'net_profit_loss'}}
+            %tr
+              %td.name.total= t('.net_profit_loss')
+              %td= rg_colorize resource.net_profit_or_loss
