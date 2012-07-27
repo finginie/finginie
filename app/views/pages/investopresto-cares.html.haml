@@ -20,7 +20,9 @@
           %p
             We will donate Rs 2 for every newly registered user on our website. Registration is always free, takes
             less than 5 seconds and gives you access to the best in breed financial planning and investing tools such
-            as risk profiling, stock recommendations, research reports etc. To register, #{link_to 'Click here', login_and_go_to(comprehensive_risk_profiler_ideal_investments_path)}
+            as risk profiling, stock recommendations, research reports etc.
+            - unless current_user
+              To register, #{link_to 'Click here', login_and_go_to(comprehensive_risk_profiler_ideal_investments_path(:special_offer => true))}
     %section
       %p
         So, go ahead and help us in donating for a noble cause. For you it is just a click, for many unfortunate
