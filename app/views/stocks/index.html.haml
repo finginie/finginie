@@ -28,20 +28,22 @@
   #top_gainers_or_losers.top_gain_loss.span6= render "top_gainers_or_losers"
 
 .row.show-grid
-  %h1.span12 Understanding shares(stocks) and the share market
-  %p.span12
-    Share prices are influenced by several factors ranging from company specific factors such as profit margins, sales
-    forecasts etc to factors that affect the entire market such as news flows and FII inflows/outflows.
-    To understand how  shares work, check out our article on #{link_to 'investing in shares', main_app.page_path('investment_education/shares')}.
-    Before you start investing in shares, it is important to be familiar with the
-    #{link_to 'factors influencing the entire share market', main_app.page_path('investment_education/shares')}.
-    Use our #{ link_to "Share Screener tool", screener_stocks_path } to find shares that match your criteria.
+  .span12
+    %h1 Understanding shares(stocks) and the share market
+    %p
+      Share prices are influenced by several factors ranging from company specific factors such as profit margins, sales
+      forecasts etc to factors that affect the entire market such as news flows and FII inflows/outflows.
+      To understand how  shares work, check out our article on #{link_to 'investing in shares', main_app.page_path('investment_education/shares')}.
+      Before you start investing in shares, it is important to be familiar with the
+      #{link_to 'factors influencing the entire share market', main_app.page_path('investment_education/shares')}.
+      Use our #{ link_to "Share Screener tool", screener_stocks_path } to find shares that match your criteria.
 
-  %h5.span12 Important information about investing in shares.
-  %p.span12
-    Shares/stocks are very popular investments across India, both among beginners and season investors. However,
-    investing in shares involves risks such as market risk and unsystematic risk. Please consult your financial advisor
-    before making an investment decision. The share prices,corporate information, financial information such as balance
-    sheets,income statements,cashflow statements etc displayed on this site
-    are indicative only and are not exhaustive. Please contact the company's investor relations cell or the relevant
-    exchange to get the most updated prices/information.
+  .span12
+    %h5 Important information about investing in shares.
+    %p
+      Shares/stocks are very popular investments across India, both among beginners and season investors. However,
+      investing in shares involves risks such as market risk and unsystematic risk. Please consult your financial advisor
+      before making an investment decision. The share prices,corporate information, financial information such as balance
+      sheets,income statements,cashflow statements etc displayed on this site
+      are indicative only and are not exhaustive. Please contact the company's investor relations cell or the relevant
+      exchange to get the most updated prices/information.

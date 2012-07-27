@@ -1,48 +1,48 @@
 -#= render_navigation :expand_all => true, :level => 2, :renderer => DescriptiveList
-%ul.thumbnails
-  %li.span4
-    .thumbnail
+.row.show-grid
+  .span3
+    %pre
       =image_tag "investment_education/smart_investments.jpg"
-      %h1 Preparing to Invest
-      %ul
-        %li= link_to 'How to invest', main_app.page_path('investment_education/smart-investments')
-        %li= link_to 'Types Of Investemnts', main_app.page_path('investment_education/investment-types')
-        %li= link_to 'Investing vs Trading', main_app.page_path('investment_education/investing-trading-shares')
-
-  %li.span4
-    .thumbnail
+    %h3 Preparing to Invest
+    %ul
+      %li= link_to 'How to invest', main_app.page_path('investment_education/smart-investments')
+      %li= link_to 'Types Of Investemnts', main_app.page_path('investment_education/investment-types')
+      %li= link_to 'Investing vs Trading', main_app.page_path('investment_education/investing-trading-shares')
+  .span3
+    %pre
       =image_tag "investment_education/InvestmentConcepts_1.jpg"
-      %h1 Before you Invest
-      %ul
-        %li= link_to 'Investment Plan', main_app.page_path('investment_education/investment-plan')
-        %li= link_to 'Where to Invest', main_app.page_path('investment_education/where-to-invest')
-        %li= link_to 'Diversification', main_app.page_path('investment_education/investment-diversification')
-        %li= link_to 'Planning your Taxes', main_app.page_path('investment_education/tax-planning')
-  %li.span4
-    .thumbnail
-      =image_tag "investment_education/InvestmentTypes_1.jpg"
-      %h1 Types of Investments
-      %ul
-        %li= link_to 'Fixed Deposits', main_app.page_path('investment_education/investment-fixed-deposits')
-        %li= link_to 'Gold', main_app.page_path('investment_education/gold-investment')
-        %li= link_to 'Shares', main_app.page_path('investment_education/shares')
-        %li= link_to 'Mutual Funds and ETFs', main_app.page_path('investment_education/mutual-funds-etf')
-        %li= link_to 'Bonds', main_app.page_path('investment_education/bonds')
-        %li= link_to 'Life Insurance', main_app.page_path('investment_education/life-insurance-policies')
-        %li= link_to 'Sip', main_app.page_path('investment_education/sip')
-  %li.span4
-    .thumbnail
+    %h3 Before you Invest
+    %ul
+      %li= link_to 'Investment Plan', main_app.page_path('investment_education/investment-plan')
+      %li= link_to 'Where to Invest', main_app.page_path('investment_education/where-to-invest')
+      %li= link_to 'Diversification', main_app.page_path('investment_education/investment-diversification')
+      %li= link_to 'Planning your Taxes', main_app.page_path('investment_education/tax-planning')
+  .span3
+    %pre
       =image_tag "investment_education/InvestmentAnalysis.jpg"
-      %h1 Investing in Shares
-      %ul
-        %li= link_to 'Share Market', main_app.page_path('investment_education/share-market')
-        %li= link_to 'Fundamental Analysis', main_app.page_path('investment_education/fundamental-analysis-shares')
-        %li= link_to 'Technical Analysis', main_app.page_path('investment_education/technical-analysis-shares')
-        %li= link_to 'Banking Sector', main_app.page_path('investment_education/banking-sector-shares')
-        %li= link_to 'IT Sector', main_app.page_path('investment_education/it-sector')
-  %li.span4
-    .thumbnail
+    %h3 Investing in Shares
+    %ul
+      %li= link_to 'Share Market', main_app.page_path('investment_education/share-market')
+      %li= link_to 'Fundamental Analysis', main_app.page_path('investment_education/fundamental-analysis-shares')
+      %li= link_to 'Technical Analysis', main_app.page_path('investment_education/technical-analysis-shares')
+      %li= link_to 'Banking Sector', main_app.page_path('investment_education/banking-sector-shares')
+      %li= link_to 'IT Sector', main_app.page_path('investment_education/it-sector')
+  .span3
+    %pre
+      =image_tag "investment_education/InvestmentTypes_1.jpg"
+    %h3 Types of Investments
+    %ul
+      %li= link_to 'Fixed Deposits', main_app.page_path('investment_education/investment-fixed-deposits')
+      %li= link_to 'Gold', main_app.page_path('investment_education/gold-investment')
+      %li= link_to 'Shares', main_app.page_path('investment_education/shares')
+      %li= link_to 'Mutual Funds and ETFs', main_app.page_path('investment_education/mutual-funds-etf')
+      %li= link_to 'Bonds', main_app.page_path('investment_education/bonds')
+      %li= link_to 'Life Insurance', main_app.page_path('investment_education/life-insurance-policies')
+      %li= link_to 'Sip', main_app.page_path('investment_education/sip')
+.row.show-grid
+  .span3
+    %pre
       =image_tag "investment_education/InvestmentEducation.png", {:style => "height: 200px;"}
-      %h1 Further Reading
-      %ul
-        %li= link_to 'Articles', main_app.page_path('investment_education/articles')
+    %h3 Further Reading
+    %ul
+      %li= link_to 'Articles', main_app.page_path('investment_education/articles')
