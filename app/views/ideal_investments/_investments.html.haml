@@ -6,9 +6,9 @@
       %th Amount (Rs)
     -resource.send(type).each do |investment|
       %tr
-        - unless type == 'fixed_deposits'
-          %td= link_to investment.name, mutual_fund_path(resource.scheme(investment.name))
-        - else
+        - if type == 'fixed_deposits'
           %td= investment.name
+        - else
+          %td= link_to investment.name, mutual_fund_path(resource.scheme(investment.name))
         %td= investment.amount
 

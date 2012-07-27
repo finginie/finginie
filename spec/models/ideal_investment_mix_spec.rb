@@ -81,8 +81,8 @@ describe IdealInvestmentMix, :mongoid do
       create :'data_provider/scheme', :name => 'Kotak Gold ETF-Growth', :class_description => 'Special Fund', :prev3_year_comp_percent => 25.50
 
       scheme = create :'data_provider/scheme'
-      subject.top_gold_etfs.should_not include scheme
-      subject.top_gold_etfs.map(&:name).should eq [ 'Kotak Gold ETF-Growth',
+      subject.top_gold_etfs(2).should_not include scheme
+      subject.top_gold_etfs(2).map(&:name).should eq [ 'Kotak Gold ETF-Growth',
                                                     'Goldman Sachs Gold Exchange Traded Scheme-Growth' ]
     end
 
@@ -98,8 +98,8 @@ describe IdealInvestmentMix, :mongoid do
       it "should be filtered from Schemes by bench mark index name" do
         cnx_scheme = create :'data_provider/scheme', :code => '14000000', :plan_code => '2066', :bench_mark_index_name => 'NSE CNX 100'
         bse_scheme = create :'data_provider/scheme', :code => '15000000', :plan_code => '2067', :bench_mark_index_name => 'BSE 100 Index'
-        subject.top_large_caps.should_not include scheme
-        subject.top_large_caps.should include( cnx_scheme, bse_scheme)
+        subject.top_large_caps(2).should_not include scheme
+        subject.top_large_caps(2).should include( cnx_scheme, bse_scheme)
       end
 
       it "should be filtered by minimum investment" do
@@ -107,8 +107,8 @@ describe IdealInvestmentMix, :mongoid do
         bse_scheme = create :'data_provider/scheme', :code => '15000000', :plan_code => '2067', :bench_mark_index_name => 'BSE 100 Index', :minimum_investment_amount => 3500
         another_cnx_scheme = create :'data_provider/scheme', :bench_mark_index_name => 'NSE CNX 100', :minimum_investment_amount => 10000
 
-        subject.top_large_caps.should_not include(scheme, another_cnx_scheme)
-        subject.top_large_caps.should include(cnx_scheme, bse_scheme)
+        subject.top_large_caps(2).should_not include(scheme, another_cnx_scheme)
+        subject.top_large_caps(2).should include(cnx_scheme, bse_scheme)
       end
 
       it "should be filtered by size" do
@@ -116,8 +116,8 @@ describe IdealInvestmentMix, :mongoid do
         bse_scheme = create :'data_provider/scheme', :code => '15000000', :plan_code => '2067', :bench_mark_index_name => 'BSE 100 Index', :size => 50
         another_cnx_scheme = create :'data_provider/scheme', :bench_mark_index_name => 'NSE CNX 100', :size => 25
 
-        subject.top_large_caps.should_not include(scheme, another_cnx_scheme)
-        subject.top_large_caps.should include(cnx_scheme, bse_scheme)
+        subject.top_large_caps(2).should_not include(scheme, another_cnx_scheme)
+        subject.top_large_caps(2).should include(cnx_scheme, bse_scheme)
       end
 
       it "should be filtered by entry load and exit load" do
@@ -125,8 +125,8 @@ describe IdealInvestmentMix, :mongoid do
         bse_scheme = create :'data_provider/scheme', :code => '15000000', :plan_code => '2067', :bench_mark_index_name => 'BSE 100 Index', :entry_load => 1, :exit_load => 1
         another_cnx_scheme = create :'data_provider/scheme', :bench_mark_index_name => 'NSE CNX 100', :entry_load => 1, :exit_load => 1.25
 
-        subject.top_large_caps.should_not include(scheme, another_cnx_scheme)
-        subject.top_large_caps.should include(cnx_scheme, bse_scheme)
+        subject.top_large_caps(2).should_not include(scheme, another_cnx_scheme)
+        subject.top_large_caps(2).should include(cnx_scheme, bse_scheme)
       end
 
       it "should include goldman sachs though the minimum investment criteria is not matched" do
@@ -135,8 +135,8 @@ describe IdealInvestmentMix, :mongoid do
         cnx_scheme = create :'data_provider/scheme', :code => '14000000', :plan_code => '2066', :bench_mark_index_name => 'NSE CNX 100', :prev3_year_comp_percent => 16
         another_cnx_scheme = create :'data_provider/scheme', :code => '15000000', :plan_code => '2067', :bench_mark_index_name => 'NSE CNX 100', :prev3_year_comp_percent => 12
 
-        subject.top_large_caps.should_not include(another_cnx_scheme)
-        subject.top_large_caps.should include(cnx_scheme, goldman_nifty)
+        subject.top_large_caps(2).should_not include(another_cnx_scheme)
+        subject.top_large_caps(2).should include(cnx_scheme, goldman_nifty)
       end
     end
 
@@ -152,8 +152,8 @@ describe IdealInvestmentMix, :mongoid do
       it "should be filtered from schemes by bench mark index name" do
         cnx_scheme = create :'data_provider/scheme', :code => '14000000', :plan_code => '2066', :bench_mark_index_name => 'CNX Midcap Index'
         bse_scheme = create :'data_provider/scheme', :code => '15000000', :plan_code => '2067', :bench_mark_index_name => 'BSE Mid-Cap Index'
-        subject.top_mid_caps.should_not include scheme
-        subject.top_mid_caps.should include( cnx_scheme, bse_scheme)
+        subject.top_mid_caps(2).should_not include scheme
+        subject.top_mid_caps(2).should include( cnx_scheme, bse_scheme)
       end
 
       it "should be filtered by minimum investment" do
@@ -161,8 +161,8 @@ describe IdealInvestmentMix, :mongoid do
         bse_scheme = create :'data_provider/scheme', :code => '15000000', :plan_code => '2067', :bench_mark_index_name => 'BSE Mid-Cap Index', :minimum_investment_amount => 3500
         another_cnx_scheme = create :'data_provider/scheme', :code => '16000000', :plan_code => '2067', :bench_mark_index_name => 'CNX Midcap Index', :minimum_investment_amount => 10000
 
-        subject.top_mid_caps.should_not include(scheme, another_cnx_scheme)
-        subject.top_mid_caps.should include(cnx_scheme, bse_scheme)
+        subject.top_mid_caps(2).should_not include(scheme, another_cnx_scheme)
+        subject.top_mid_caps(2).should include(cnx_scheme, bse_scheme)
       end
 
       it "should be filtered by size" do
@@ -170,8 +170,8 @@ describe IdealInvestmentMix, :mongoid do
         bse_scheme = create :'data_provider/scheme', :code => '15000000', :plan_code => '2067', :bench_mark_index_name => 'BSE Mid-Cap Index', :size => 50
         another_cnx_scheme = create :'data_provider/scheme', :bench_mark_index_name => 'CNX Midcap Index', :size => 25
 
-        subject.top_mid_caps.should_not include(scheme, another_cnx_scheme)
-        subject.top_mid_caps.should include(cnx_scheme, bse_scheme)
+        subject.top_mid_caps(2).should_not include(scheme, another_cnx_scheme)
+        subject.top_mid_caps(2).should include(cnx_scheme, bse_scheme)
       end
 
       it "should be filtered by entry load and exit load" do
@@ -179,8 +179,8 @@ describe IdealInvestmentMix, :mongoid do
         bse_scheme = create :'data_provider/scheme', :code => '15000000', :plan_code => '2067', :bench_mark_index_name => 'BSE Mid-Cap Index', :entry_load => 1, :exit_load => 1
         another_cnx_scheme = create :'data_provider/scheme', :bench_mark_index_name => 'CNX Midcap Index', :entry_load => 1, :exit_load => 1.25
 
-        subject.top_mid_caps.should_not include(scheme, another_cnx_scheme)
-        subject.top_mid_caps.should include(cnx_scheme, bse_scheme)
+        subject.top_mid_caps(2).should_not include(scheme, another_cnx_scheme)
+        subject.top_mid_caps(2).should include(cnx_scheme, bse_scheme)
       end
 
       it "should get top two schemes by prev3_year_comp_percent" do
@@ -188,8 +188,8 @@ describe IdealInvestmentMix, :mongoid do
         bse_scheme = create :'data_provider/scheme', :code => '15000000', :plan_code => '2067', :bench_mark_index_name => 'BSE Mid-Cap Index', :prev3_year_comp_percent => 14
         another_cnx_scheme = create :'data_provider/scheme', :bench_mark_index_name => 'CNX Midcap Index', :prev3_year_comp_percent => 10
 
-        subject.top_mid_caps.should_not include(scheme, another_cnx_scheme)
-        subject.top_mid_caps.should include(cnx_scheme, bse_scheme)
+        subject.top_mid_caps(2).should_not include(scheme, another_cnx_scheme)
+        subject.top_mid_caps(2).should include(cnx_scheme, bse_scheme)
       end
 
       it "should scope the elss funds" do

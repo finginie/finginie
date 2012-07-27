@@ -7,6 +7,12 @@ describe "Authentication" do
     page.should have_content 'Successfully signed in'
   end
 
+  it "should redirect to comprehensive_risk_profiler quiz page if user not logged in" do
+    visit comprehensive_risk_profiler_ideal_investments_path
+
+    page.current_path.should eq edit_comprehensive_risk_profiler_path
+  end
+
   context "while logged in" do
     include_context "logged in user"
 
@@ -15,6 +21,12 @@ describe "Authentication" do
       click_link 'Sign out'
       current_path.should eq root_path
       page.should have_content 'Successfully signed out'
+    end
+
+    it "should go to comprehensive_risk_profiler quiz page if directly clicked on ideal investments link" do
+      visit comprehensive_risk_profiler_ideal_investments_path
+
+      page.current_path.should eq edit_comprehensive_risk_profiler_path
     end
   end
 
