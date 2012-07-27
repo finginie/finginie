@@ -6,7 +6,7 @@ en:
       suggestion: 'Based on your responses,we suggest that your investment mix be structured as follows. Remember, these are guidelines only.'
       default_suggestion: 'This is a balanced portfolio suitable for most investors.However, to see a portfolio and financial plan suitable for your unique needs please take a
         %{quiz_link} (Strongly Recommended).'
-      future_investment: 'Great! You now know where to invest broadly. Click the button below to sign in and see more detailed investment suggestions based on historic returns,liquidity and suitability.
+      future_investment: 'Great! You now know where to invest broadly. Click the button below to continue and see more detailed investment suggestions based on historic returns,liquidity and suitability.
         You will be able to see the names of the stocks,mutual funds and banks you should invest in along with the suggested investment amounts.'
       sign_up: 'Sign up to continue. Signing-up is absolutely free,takes only a few seconds and does not require a credit card or an email address.'
   initial_investment: 'Your Initial Investment can be Rs %{initial_investment_amount}'

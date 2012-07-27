@@ -58,12 +58,16 @@ class ComprehensiveRiskProfiler < ActiveRecord::Base
   end
 
   def available_savings
-    household_savings - (household_expenditure * 2)
+    household_savings - two_month_household_expenditure
+  end
+
+  def two_month_household_expenditure
+    household_expenditure * 2
   end
 
   def initial_investment
-    return IndianCurrency.new(0) unless self.valid?
-    available_savings > 0 ? available_savings : household_savings.to_f/2
+    return IndianCurrency.new unless self.valid?
+    available_savings > 0 ? available_savings : household_savings / 2
   end
 
   def ideal_investment_mix

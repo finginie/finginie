@@ -62,6 +62,15 @@ describe "Authentication" do
         expected_content = [ ['Fixed Deposits', '40%'], [ 'Large Cap Stocks', '20%'], [ 'Mid Cap Stocks', '10%'], [ 'Gold', '30%']]
         tableish("table").should include *expected_content
       end
+
+      it "should go to ideal investments page after signing in", :js, :omniauth do
+        OmniAuth.config.add_mock 'single_signon', { :uid => user.id }
+        visit edit_comprehensive_risk_profiler_path
+        find("a#skip_quiz").click
+
+        click_on 'Signin & Continue'
+        page.current_path.should eq comprehensive_risk_profiler_ideal_investments_path
+      end
     end
 
     def answer_comprehensive_risk_profiler_with(comprehensive_risk_profile)

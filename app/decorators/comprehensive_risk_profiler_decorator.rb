@@ -48,7 +48,7 @@ class ComprehensiveRiskProfilerDecorator < ApplicationDecorator
   end
 
   def inadequate_household_savings?
-    model.household_savings < (model.household_expenditure * 3)
+    model.household_savings < three_month_household_expenditure
   end
 
   def time_horizon_summary

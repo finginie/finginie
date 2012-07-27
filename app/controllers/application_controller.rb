@@ -8,8 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_login
-    session[:user_return_to] = request.fullpath
-    redirect_to main_app.signin_path
+    redirect_to login_and_go_to(request.fullpath)
   end
 
   def redirect_back_with(exception)
@@ -23,9 +22,19 @@ class ApplicationController < ActionController::Base
   helper OmniauthSingleSignon::ApplicationHelper
 
   helper_method :auto_page_class_names
+  helper_method :login_and_go_to
+  helper_method :single_signon_path
 
 private
   def auto_page_class_names
     [params[:controller], params[:action], params[:id]].compact.map{ |n| n.split('/') }.flatten
+  end
+
+  def login_and_go_to(origin = main_app.root_path)
+    main_app.signin_path(:origin => origin)
+  end
+
+  def single_signon_path
+    "/auth/single_signon?origin=#{params[:origin]}"
   end
 end

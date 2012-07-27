@@ -50,28 +50,28 @@ describe 'Ideal Investments',:mongoid do
 
       visit comprehensive_risk_profiler_ideal_investments_path
       page.should have_content 'Ideal Investments'
-      page.should have_content I18n.t('ideal_investments.show.gold_investments')
+      page.should have_content I18n.t('ideal_investments.investments.gold_investments')
 
-      tableish("#gold_investments table").should include [ gold_etfs.last.name, '9,000.00' ]
+      tableish("table[data-role='gold_investments']").should include [ gold_etfs.last.name, '9,000.00' ]
     end
 
     it "should have fixed deposits on the page" do
 
       visit comprehensive_risk_profiler_ideal_investments_path
-      page.should have_content I18n.t('ideal_investments.show.fixed_deposits')
+      page.should have_content I18n.t('ideal_investments.investments.fixed_deposits')
 
       expected_content = banks.map { |bank| [ bank.name, '6,000.00' ] }
-      tableish("#fixed_deposits table").should include *expected_content
+      tableish("table[data-role='fixed_deposits']").should include *expected_content
     end
 
     it "should have large caps on the page" do
       large_cap_schemes.each { |scheme| scheme.save }
 
       visit comprehensive_risk_profiler_ideal_investments_path
-      page.should have_content I18n.t('ideal_investments.show.large_caps')
+      page.should have_content I18n.t('ideal_investments.investments.large_caps')
 
       expected_content = large_cap_schemes.take(1).map { |scheme| [ scheme.name, '6,000.00' ] }
-      tableish("#large_caps table").should include *expected_content
+      tableish("table[data-role='large_caps']").should include *expected_content
 
     end
 
@@ -79,10 +79,10 @@ describe 'Ideal Investments',:mongoid do
       mid_cap_schemes.each { |scheme| scheme.save }
 
       visit comprehensive_risk_profiler_ideal_investments_path
-      page.should have_content I18n.t('ideal_investments.show.mid_caps')
+      page.should have_content I18n.t('ideal_investments.investments.mid_caps')
 
       expected_content = mid_cap_schemes.take(1).map { |scheme| [ scheme.name, '3,000.00' ] }
-      tableish("#mid_caps table").should include *expected_content
+      tableish("table[data-role='mid_caps']").should include *expected_content
     end
 
     it "should show top five ELSS funds on the page" do
@@ -91,7 +91,7 @@ describe 'Ideal Investments',:mongoid do
 
       visit comprehensive_risk_profiler_ideal_investments_path
       expected_content = [ [top_elss_funds.first.name, '22.00'],[top_elss_funds.last.name, '21.20'] ]
-      tableish("#top_elss_funds").should include *expected_content
+      tableish("table[data-role='top_elss_funds']").should include *expected_content
     end
 
   end
@@ -116,16 +116,16 @@ describe 'Ideal Investments',:mongoid do
       gold_etfs.each{ |scheme| scheme.save }
       visit comprehensive_risk_profiler_ideal_investments_path
 
-      tableish("#gold_investments table").should include([ gold_etfs.last.name, '19,500.00' ],
+      tableish("table[data-role='gold_investments']").should include([ gold_etfs.last.name, '19,500.00' ],
           [ gold_etfs.first.name, '19,500.00' ])
     end
 
     it "should have fixed deposits" do
       visit comprehensive_risk_profiler_ideal_investments_path
-      page.should have_content I18n.t('ideal_investments.show.fixed_deposits')
+      page.should have_content I18n.t('ideal_investments.investments.fixed_deposits')
 
       expected_content = banks.map { |bank| [ bank.name, '19,500.00' ] }
-      tableish("#fixed_deposits table").should include *expected_content
+      tableish("table[data-role='fixed_deposits']").should include *expected_content
 
     end
 
@@ -133,20 +133,20 @@ describe 'Ideal Investments',:mongoid do
       large_cap_schemes.each { |scheme| scheme.save }
 
       visit comprehensive_risk_profiler_ideal_investments_path
-      page.should have_content I18n.t('ideal_investments.show.large_caps')
+      page.should have_content I18n.t('ideal_investments.investments.large_caps')
 
       expected_content = large_cap_schemes.map { |scheme| [ scheme.name, '13,000.00' ] }
-      tableish("#large_caps table").should include *expected_content
+      tableish("table[data-role='large_caps']").should include *expected_content
     end
 
     it "should have mid caps on the page" do
       mid_cap_schemes.each { |scheme| scheme.save }
 
       visit comprehensive_risk_profiler_ideal_investments_path
-      page.should have_content I18n.t('ideal_investments.show.mid_caps')
+      page.should have_content I18n.t('ideal_investments.investments.mid_caps')
 
       expected_content = mid_cap_schemes.map { |scheme| [ scheme.name, '13,000.00' ] }
-      tableish("#mid_caps table").should include *expected_content
+      tableish("table[data-role='mid_caps']").should include *expected_content
     end
 
     it "should give a form to enter the initial investment" do
@@ -155,7 +155,7 @@ describe 'Ideal Investments',:mongoid do
       click_on I18n.t('ideal_investments.show.submit')
 
       expected_content = banks.map { |bank| [ bank.name, '6,750.00' ] }
-      tableish("#fixed_deposits table").should include *expected_content
+      tableish("table[data-role='fixed_deposits']").should include *expected_content
     end
 
     it "should have continue button linked to trade page" do
