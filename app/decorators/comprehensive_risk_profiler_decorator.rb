@@ -7,10 +7,6 @@ class ComprehensiveRiskProfilerDecorator < ApplicationDecorator
     model.household_expenditure * 3
   end
 
-  def initial_investment
-    model.initial_investment > 0 ? model.initial_investment : model.household_savings/2
-  end
-
   def three_month_investment_amount
     model.monthly_savings * 3
   end
@@ -52,7 +48,7 @@ class ComprehensiveRiskProfilerDecorator < ApplicationDecorator
   end
 
   def inadequate_household_savings?
-    model.household_savings < (model.household_expenditure * 3)
+    model.household_savings < three_month_household_expenditure
   end
 
   def time_horizon_summary

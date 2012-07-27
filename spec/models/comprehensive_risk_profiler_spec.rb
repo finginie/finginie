@@ -41,6 +41,13 @@ describe ComprehensiveRiskProfiler do
 
   subject { comprehensive_risk_profiler }
 
+  its(:initial_investment) { should eq 130000 }
+
+  it "should have initial investment as half the savings if savings is less than twice the expenditure" do
+    subject.update_attributes(:household_savings => 60000)
+    subject.initial_investment.should eq 30000
+  end
+
   it "should calculate score for given comprehensive_risk_profiler and return score 7.62" do
     subject.update_attributes(:age => 30, :household_savings => 200000, :household_income => 60000,
                               :household_expenditure => 35000, :portfolio_investment  => 5)

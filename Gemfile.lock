@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/FinGinie/omniauth-single-signon.git
-  revision: 586841992b3b7804a46bf693cf31ea844d1c9160
+  revision: cb975f920a9fb0bb1aed2728a52825808f3e8528
   specs:
     omniauth_single_signon (0.0.1)
       active_attr
@@ -268,7 +268,7 @@ GEM
     jquery-ui-rails (1.0.0)
       jquery-rails
       railties (>= 3.1.0)
-    json (1.7.3)
+    json (1.7.4)
     json_pure (1.7.3)
     jwt (0.1.5)
       multi_json (>= 1.0)

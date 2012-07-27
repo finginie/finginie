@@ -106,13 +106,22 @@ describe "ComprehensiveRiskProfilers" do
       page.should have_content I18n.t('.comprehensive_risk_profilers.message')
     end
 
-    it "can skip quiz and can see default asset allocation" do
-      visit comprehensive_risk_profiler_url
+    context "if quiz is skipped" do
+      before(:each) do
+        visit comprehensive_risk_profiler_url
+        find("a#skip_quiz").click
+      end
 
-      find("a#skip_quiz").click
-      expected_content = [ ['Fixed Deposits', '40%'], [ 'Large Cap Stocks', '20%'], [ 'Mid Cap Stocks', '10%'], [ 'Gold', '30%']]
-      tableish("table").should include *expected_content
+      it "can see default asset allocation" do
+        expected_content = [ ['Fixed Deposits', '40%'], [ 'Large Cap Stocks', '20%'], [ 'Mid Cap Stocks', '10%'], [ 'Gold', '30%']]
+        tableish("table").should include *expected_content
 
+      end
+
+      it "should go to ideal investments page" do
+        click_on 'Continue'
+        page.current_path.should eq comprehensive_risk_profiler_ideal_investments_path
+      end
     end
 
     let(:comprehensive_risk_profiler) { build :comprehensive_risk_profiler }

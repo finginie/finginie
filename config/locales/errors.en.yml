@@ -13,3 +13,5 @@ en:
       message: "Research Reports not available for %{name}"
   empty_search: 'Your search did not match any results.Try searching for different term'
   results_for_search: 'Results for %{term}'
+  display_initial_investment: 'You have Rs. %{amount} to start investing'
+  too_low_investment: 'Please try to save atleast Rs 30,000 before you start investing.'

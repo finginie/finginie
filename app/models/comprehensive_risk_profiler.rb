@@ -6,6 +6,7 @@ class ComprehensiveRiskProfiler < ActiveRecord::Base
                   :tax_saving_investment, :time_horizon, :score_cache
 
   belongs_to :user
+  has_one :ideal_investment_mix
 
   PREFERENCE_OPTIONS = [1,4,6,8,10]
   PORTFOLIO_INVESTMENT_OPTIONS = [1, 5, 8, 10]
@@ -29,7 +30,7 @@ class ComprehensiveRiskProfiler < ActiveRecord::Base
 
   attr_accessor :investment_check, :special_goals
 
-  monetize :household_income, :household_savings, :household_expenditure, :tax_saving_investment, :special_goals_amount
+  monetize :household_income, :household_savings, :household_expenditure, :tax_saving_investment, :special_goals_amount, :initial_investment
 
   before_save { score(true) }
 
@@ -56,8 +57,21 @@ class ComprehensiveRiskProfiler < ActiveRecord::Base
     special_goals_amount? && special_goals_years?
   end
 
+  def available_savings
+    household_savings - two_month_household_expenditure
+  end
+
+  def two_month_household_expenditure
+    household_expenditure * 2
+  end
+
   def initial_investment
-    household_savings - (household_expenditure * 2)
+    return IndianCurrency.new unless self.valid?
+    available_savings > 0 ? available_savings : household_savings / 2
+  end
+
+  def ideal_investment_mix
+    @ideal_investment_mix ||= IdealInvestmentMix.new(self)
   end
 
 private

@@ -1,0 +1,39 @@
+.row.show-grid
+  .span12
+    %h1 Ideal Investments
+    %p= t(".introduction")
+    - if params[:initial_investment] && params[:initial_investment].to_f != resource.initial_investment
+      = content_tag :div, t(".too_low_investment"), :id => 'result', :class => 'alert alert-notice'
+
+    = form_tag comprehensive_risk_profiler_ideal_investments_path, :method => :get, :class => 'form-horizontal' do
+      .input-append
+        = label_tag :initial_investment, t('.initial_investment'), :class => 'control-label'
+        .controls
+          = text_field_tag :initial_investment, resource.initial_investment.to_s
+          = submit_tag t('.submit'), :class => 'btn btn-primary'
+
+    %p= t('.default_amount', :amount => [ resource.comprehensive_risk_profiler.initial_investment, IdealInvestmentMix::MINIMUM_INVESTMENT].max.to_s)
+
+    -gchart( :data => resource.security_mix, :header =>  ['Name','Amount'], title: 'Ideal Investments', chartType: 'Pie' )
+
+-[%w(fixed_deposits gold_investments),%w(large_caps mid_caps)].each do |row|
+  .row
+    - row.each do |type|
+      - unless resource.send(type).empty?
+        = render 'investments', :type => type
+
+.row
+  .span12
+    %p= t(".elss_message")
+    %h5 Top ELSS funds
+    %table.table.table-striped.table-bordered{:data => {:role => 'top_elss_funds'} }
+      %tr
+        %th Name
+        %th 3 Yr Return (%)
+        - resource.top_elss_funds.limit(5).each do |fund|
+          %tr
+            %td= link_to fund.name, mutual_fund_path(resource.scheme(fund.name))
+            %td= number_with_precision fund.prev3_year_comp_percent
+
+    %p= t('.intro_to_trade')
+    = link_to 'Continue', page_path('trade'), :class => 'btn btn-primary'
