@@ -22,8 +22,8 @@
     %header
       .container
         %hgroup.social.pull-right
-          =render 'layouts/twitter'
           =render 'layouts/facebook'
+          =render 'layouts/twitter'
         %hgroup.title
           %h1
             = link_to main_app.root_path do
@@ -33,11 +33,12 @@
         = yield :header
         = render 'layouts/indices'
     #main.container
-      .row
+      .row{:style => "padding-bottom: 10px;"}
         .span12
           %div{:style => 'text-align:center;'}
             - unless current_page?(root_path)
-              = image_tag 'satyamevjayate-720-90.jpg'
+              = link_to main_app.page_path('finginie-cares') do
+                = image_tag 'satyamevjayate-720-90.jpg'
           - flash.each do |name, msg|
             - if msg.is_a?(String)
               %div{ :id => "flash_#{name}", :class => ['alert', "alert-#{name}"] }
