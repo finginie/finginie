@@ -22,10 +22,6 @@ module ApplicationHelper
     link_to(name, path, *args)
   end
 
-  def current_page_path
-   request.url
-  end
-
   def auto_page_seo_content(translation,default=nil)
     controller_params = params[:controller].gsub('/','.') + '.'
     action_params = params[:action] + '.'

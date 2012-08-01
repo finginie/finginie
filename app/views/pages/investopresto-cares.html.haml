@@ -1,5 +1,3 @@
-= render 'sessions/signin_benefits'
-
 .row
   .span12
     %section
@@ -32,6 +30,8 @@
 
 - unless current_user
   = render 'sessions/form', :origin => comprehensive_risk_profiler_ideal_investments_path(:special_offer => true)
+
+= render 'sessions/signin_benefits'
 
 .row
   .span12
