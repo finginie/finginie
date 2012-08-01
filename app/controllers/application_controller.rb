@@ -34,7 +34,7 @@ private
     main_app.signin_path(:origin => origin)
   end
 
-  def single_signon_path
-    "/auth/single_signon?origin=#{params[:origin]}"
+  def single_signon_path(origin)
+    "/auth/single_signon?origin=#{origin}"
   end
 end
