@@ -1,25 +1,9 @@
-.row
-  %h1.span12.show-grid Why Signin?
-%section.row
-  .span12.show-grid
-    %ul.thumbnails
-      %li.span4
-        %h5 #{image_tag  "Portfolio_Snapshot.png"} Portfolio Tracker
-        %p Sign up for free to access India’s best portfolio tracker that lets you slice and dice your investments in addition to simply tracking their value.
-      %li.span4
-        %h5 #{image_tag  "Sectoral_Analysis.png"} Portfolio Analysis
-        %p Portfolio Analytics ranging from profit & loss distributions and asset class distributions to sectoral compositions and transactional comments- You get all these things when you sign up for free.
-      %li.span4
-        = image_tag "Personalized.png", :class => 'bs-icon'
-        %h5 Personalized Investment recommendations
-        %p Signing up for free allows you to get customized investment recommendations including mutual fund names, fixed deposit names, stock names, investment amounts and financial tips personalized to your unique financial needs.
+= render 'signin_benefits'
+
 %section.row
   .span12
     .alert.alert-notice
       %p
         Signing up also lets you save all the data you had entered so that you won’t have to reenter a thing when you come back. Please login/signup using one of the options below to access these features. Signing up is quick, free and will always be.
-%section.row
-  .span12
-    .well
-      - unless current_user
-        %iframe{ src: single_signon_path, width:"100%", height: "380px", style: 'border:none;' }
+
+= render 'form', :origin => params[:origin]

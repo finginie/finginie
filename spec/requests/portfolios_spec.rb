@@ -139,25 +139,27 @@ describe "Portfolios", :mongoid do
   end
 
   it "should show the summary in show page" do
-    create_positions_of_all_securities
+    Timecop.freeze(Date.civil(2012,03,22)) do
+      create_positions_of_all_securities
 
-    visit portfolio_path(portfolio)
-    expected_asset_table = [
-                             [ 'Stocks',           "50.00" ,  "5.84"],
-                             [ 'Mutual Funds',     "50.00" ,  "5.84"],
-                             [ 'Gold',             "50.00" ,  "5.84"],
-                             [ 'Fixed Deposits',   "106.55", "12.44"],
-                             [ 'Real Estate',      "600.00", "70.05"],
-                             [ "Total",            "856.55",      ""]
-                          ]
+      visit portfolio_path(portfolio)
+      expected_asset_table = [
+                               [ 'Stocks',           "50.00" ,  "5.84"],
+                               [ 'Mutual Funds',     "50.00" ,  "5.84"],
+                               [ 'Gold',             "50.00" ,  "5.84"],
+                               [ 'Fixed Deposits',   "106.58", "12.44"],
+                               [ 'Real Estate',      "600.00", "70.05"],
+                               [ "Total",            "856.58",      ""]
+                            ]
 
-    expected_liabilities_table = [
-                                   ["Loans",     "259.15", "100.00"],
-                                   ["Total",     "259.15",       ""],
-                                   ["Net Worth", "597.40",       ""]
-                                  ]
-    tableish("table.assets").should include *expected_asset_table
-    tableish("table.liabilities").should include *expected_liabilities_table
+      expected_liabilities_table = [
+                                     ["Loans",     "259.15", "100.00"],
+                                     ["Total",     "259.15",       ""],
+                                     ["Net Worth", "597.43",       ""]
+                                    ]
+      tableish("table.assets").should include *expected_asset_table
+      tableish("table.liabilities").should include *expected_liabilities_table
+    end
   end
 
   context "new portfolio" do

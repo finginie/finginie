@@ -35,6 +35,9 @@
     #main.container
       .row
         .span12
+          %div{:style => 'text-align:center;'}
+            - unless current_page?(root_path)
+              = image_tag 'satyamevjayate-720-90.jpg'
           - flash.each do |name, msg|
             - if msg.is_a?(String)
               %div{ :id => "flash_#{name}", :class => ['alert', "alert-#{name}"] }

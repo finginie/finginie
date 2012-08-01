@@ -11,7 +11,9 @@
     %section
       %ul
         %li
-          %p We will donate Re 1 for every user who likes our #{link_to 'Facebook page', 'http://www.facebook.com/finginie', html_options = {:target => "_blank" }}
+          %p
+            %hgroup{:class => "social" }
+              We will donate Re 1 for every user who likes our Facebook page #{render 'layouts/facebook'}
 
         %li
           %p We will donate Re 1 on behalf of every user who shares this post on Facebook.
@@ -21,19 +23,16 @@
             We will donate Rs 2 for every newly registered user on our website. Registration is always free, takes
             less than 5 seconds and gives you access to the best in breed financial planning and investing tools such
             as risk profiling, stock recommendations, research reports etc.
-            - unless current_user
-              To register, #{link_to 'Click here', login_and_go_to(comprehensive_risk_profiler_ideal_investments_path(:special_offer => true))}
     %section
       %p
         So, go ahead and help us in donating for a noble cause. For you it is just a click, for many unfortunate
         people it’s a life.
 
-    %section
-      %h5 Terms and Conditions
-      %p
-        We are not associated with Aamir Khan, Star Plus or Satyamev Jayate. This promotion is open until
-        August 15, 2012. We will make the donation on August 16, 2012. The maximum amount we will donate
-        for Facebook likes and shares together is Rs 1 lakh. The maximum amount we will donate for registered
-        users is Rs 2 lakhs. Finginie reserves the right to change the rules of/cancel the promotion at any
-        time without prior intimation and without any reason whatsoever. Finginie’s decision is final in all
-        respects.
+- unless current_user
+  = render 'sessions/form', :origin => comprehensive_risk_profiler_ideal_investments_path(:special_offer => true)
+
+= render 'sessions/signin_benefits'
+
+.row
+  .span12
+    #{link_to '*Terms and Conditions', main_app.page_path('terms_and_conditions') }
