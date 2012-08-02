@@ -54,3 +54,76 @@
       %h5
         = link_to 'Financial Calculators', personal_financial_tools.personal_financial_tools_path
       %p Use our financial calculators to dodge complicated maths and plan your future.
+
+.row.show-grid
+  .span8
+    %h1 Biggest Equity Mutual Funds
+    %table.table.table-bordered.table-striped
+      %tbody
+        %tr
+          %th Name
+          %th NAV
+          %th % Change
+          %th 1m return (%)
+          %th 1y return (%)
+          %th 3y return (%)
+        %tr.odd
+          %td
+            %a{:href => "http://finginie.herokuapp.com/mutual_funds/motilal-oswal-most-shares-nasdaq-100-etf-growth"} Motilal Oswal MOSt Shares NASDAQ 100 ETF-Growth
+          %td 145.19
+          %td
+            %span.green 2.05
+          %td
+            %span.green 0.46
+          %td
+            %span.green 39.04
+          %td
+            %span.green 0.0
+        %tr.even
+          %td
+            %a{:href => "http://finginie.herokuapp.com/mutual_funds/canara-robeco-gold-savings-fund-dividend"} Canara Robeco Gold Savings Fund-Dividend
+          %td 9.93
+          %td
+            %span.green 2.03
+          %td
+            %span.green 0.0
+          %td
+            %span.green 0.0
+          %td
+            %span.green 0.0
+        %tr.odd
+          %td
+            %a{:href => "http://finginie.herokuapp.com/mutual_funds/canara-robeco-gold-savings-fund-growth"} Canara Robeco Gold Savings Fund-Growth
+          %td 9.93
+          %td
+            %span.green 2.03
+          %td
+            %span.green 0.0
+          %td
+            %span.green 0.0
+          %td
+            %span.green 0.0
+        %tr.even
+          %td
+            %a{:href => "http://finginie.herokuapp.com/mutual_funds/dsp-blackrock-world-energy-fund-growth"} DSP BlackRock World Energy Fund-Growth
+          %td 11.34
+          %td
+            %span.green 1.76
+          %td
+            %span.green 2.8
+          %td
+            %span.red -2.03
+          %td
+            %span.green 0.0
+        %tr.odd
+          %td
+            %a{:href => "http://finginie.herokuapp.com/mutual_funds/dsp-blackrock-world-energy-fund-dividend"} DSP BlackRock World Energy Fund-Dividend
+          %td 11.34
+          %td
+            %span.green 1.76
+          %td
+            %span.green 2.8
+          %td
+            %span.red -2.03
+          %td
+            %span.green 0.0
