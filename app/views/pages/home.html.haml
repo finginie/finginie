@@ -15,45 +15,6 @@
       = link_to image_tag('satyamevjayate370.jpg'), main_app.page_path('finginie-cares')
 
 %hr.soften
-.marketing
-  .row.show-grid
-    .span4
-      %h5
-        =link_to 'Financial Planning', main_app.edit_comprehensive_risk_profiler_path
-      %p Planning can be nerve-wracking. That’s why we did all the complicated number crunching so that you can invest with a single click.
-    .span4
-      %h5
-        = link_to 'Learn Investing', main_app.page_path('investment_education')
-      %p "An investment in knowledge pays the best interest." - Benjamin Franklin Learn how to make good investment decisions.
-    .span4
-      %h5
-        = link_to 'Stock Market data', main_app.stocks_path
-      %p The stock market is flooding with information. Stay ahead of others with the latest news, quotes and detailed corporate information. We support 3,500 stocks and 5,000 mutual funds.
-  .row.show-grid
-    .span4
-      %h5
-        = link_to 'Stock Recommendations', main_app.page_path('stock-recommendations')
-      %p No one has become a crorepati by saving money in a bank account or fixed deposit. That’s why we recommend money-multiplying stocks.
-    .span4
-      %h5
-        = link_to 'Research Reports', main_app.research_reports_path
-      %p Our research report aggregator tool is so vast that you can become a Ph.d in Financial Research.
-    .span4
-      %h5
-        = link_to 'Trading Account', main_app.page_path('trade')
-      %p Lowest Brokerage in the industry. That does not mean cheap service. Get a personal financial advisor to help you invest.
-  .row.show-grid
-    .span4
-      %h5
-        = link_to 'Portfolio Tracking', main_app.portfolios_path
-      %p No unnecessary paperwork, excel formulas or any other fancy tools. Get a financial analyst’s perspective of all your investments with just a few clicks.
-    .span4
-      %h5 Social Features
-      %p Connect with the kings of investing and learn how to make profitable investments. If you are a king yourself, build a kingdom of followers.
-    .span4
-      %h5
-        = link_to 'Financial Calculators', personal_financial_tools.personal_financial_tools_path
-      %p Use our financial calculators to dodge complicated maths and plan your future.
 
 .row.show-grid
   .span8
@@ -127,3 +88,76 @@
             %span.red -2.03
           %td
             %span.green 0.0
+
+.row.show-grid
+  .span8
+    %h1 Top Equity Mutual Funds
+    %table.table.table-striped.table-bordered{"data-role" => "top_performers"}
+      %tbody
+        %tr
+          %th Name
+          %th NAV
+          %th % Change
+          %th 1m return (%)
+          %th 1y return (%)
+          %th 3y return (%)
+        %tr.odd
+          %td
+            %a{:href => "http://finginie.herokuapp.com/mutual_funds/dws-hybrid-fixed-term-fund-series-6-growth"} DWS Hybrid Fixed Term Fund - Series 6-Growth
+          %td 10.77
+          %td
+            %span.green 6.15
+          %td
+            %span.green 5.45
+          %td
+            %span.green 0.00
+          %td
+            %span.green 0.00
+        %tr.even
+          %td
+            %a{:href => "http://finginie.herokuapp.com/mutual_funds/dws-hybrid-fixed-term-fund-series-6-dividend"} DWS Hybrid Fixed Term Fund - Series 6-Dividend
+          %td 10.77
+          %td
+            %span.green 6.15
+          %td
+            %span.green 5.45
+          %td
+            %span.green 0.00
+          %td
+            %span.green 0.00
+        %tr.odd
+          %td
+            %a{:href => "http://finginie.herokuapp.com/mutual_funds/dsp-blackrock-dual-advantage-fund-series-2-36m-growth"} DSP BlackRock Dual Advantage Fund - Series 2- 36M-Growth
+          %td 10.36
+          %td
+            %span.green 4.75
+          %td
+            %span.green 3.88
+          %td
+            %span.green 0.00
+          %td
+            %span.green 0.00
+        %tr.even
+          %td
+            %a{:href => "http://finginie.herokuapp.com/mutual_funds/dsp-blackrock-dual-advantage-fund-series-2-36m-dividend"} DSP BlackRock Dual Advantage Fund - Series 2- 36M-Dividend
+          %td 10.36
+          %td
+            %span.green 4.75
+          %td
+            %span.green 3.88
+          %td
+            %span.green 0.00
+          %td
+            %span.green 0.00
+        %tr.odd
+          %td
+            %a{:href => "http://finginie.herokuapp.com/mutual_funds/dsp-blackrock-dual-advantage-fund-series-i-36m-growth"} DSP BlackRock Dual Advantage Fund - Series I - 36M-Growth
+          %td 10.27
+          %td
+            %span.green 4.74
+          %td
+            %span.green 3.79
+          %td
+            %span.green 0.00
+          %td
+            %span.green 0.00
