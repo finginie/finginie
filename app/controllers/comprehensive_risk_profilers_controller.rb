@@ -2,6 +2,11 @@ class ComprehensiveRiskProfilersController < InheritedResources::Base
   defaults :singleton => true
   actions :show, :edit, :update
 
+  def public
+    @user = User.find params[:id]
+    @comprehensive_risk_profiler = ComprehensiveRiskProfilerDecorator.decorate(@user.comprehensive_risk_profiler)
+  end
+
   def show
     if first_time?
       redirect_to edit_comprehensive_risk_profiler_path, :notice => t(".comprehensive_risk_profilers.message")

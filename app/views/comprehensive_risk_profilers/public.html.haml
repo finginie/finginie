@@ -1,0 +1,38 @@
+.row
+  .span12
+    .page-header
+      - if @comprehensive_risk_profiler.valid?
+        %h1
+          = @user.email
+          Risk Appetite is :
+          %small
+            %span{ :data => { :role => 'risk_appetite' } }
+              = @comprehensive_risk_profiler.score
+            out of 10. (10 indicates maximum risk taking ability)
+
+        %span{ :data => { :role => 'public_summary' } }
+          %ul
+            = @comprehensive_risk_profiler.public_summary
+      - else
+        %h1
+          %span{ :data => { :role => 'balanced_portfolio' } } Balanced Portfolio
+          %p= t( ".default_suggestion")
+
+.row
+  .span8.show-grid
+    -gchart(:data => FinancialPlanner.ideal_asset_allocation(@comprehensive_risk_profiler).to_a,
+            :title => 'Suggested Asset Allocation',
+            :chartType => 'Pie' )
+
+  .span4.show-grid
+    %table.table.table-striped
+      %tr
+        %th Asset Class
+        %th Percentage
+      - FinancialPlanner.ideal_asset_allocation(@comprehensive_risk_profiler).each do |asset_class,percentage|
+        %tr
+          %td= asset_class
+          %td= "#{percentage}%"
+
+- unless current_user && current_user.id == @user.id
+  = link_to t('.take_quiz'), edit_comprehensive_risk_profiler_path

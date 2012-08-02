@@ -14,5 +14,9 @@ describe ComprehensiveRiskProfilersController do
     it "routes to #update" do
       put("/comprehensive_risk_profiler").should route_to("comprehensive_risk_profilers#update")
     end
+
+    it "routes to #public" do
+      get('/comprehensive_risk_profiler/1/public/').should route_to("comprehensive_risk_profilers#public", :id => '1')
+    end
   end
 end

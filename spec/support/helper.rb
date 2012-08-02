@@ -3,6 +3,10 @@ def tableish(element)
   table = rows.map { |r| r.all('th,td').map { |c| c.text.strip.gsub(/\s+/, ' ') } }
 end
 
+def span_data_role(attr)
+  content_selector("span[data-role='#{attr}']")
+end
+
 def content_selector(element)
   page.find(element).text.strip.gsub(/\s+/, ' ')
 end
@@ -23,5 +27,11 @@ end
 RSpec::Matchers.define :be_a_indian_currency_of do |expected|
   match do |actual|
     actual.should eq IndianCurrency.new(expected)
+  end
+end
+
+RSpec::Matchers.define :have_span_data_role do |expected|
+  match do |actual|
+    should have_selector("span[data-role='#{expected}']")
   end
 end
