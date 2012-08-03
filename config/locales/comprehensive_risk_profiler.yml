@@ -5,6 +5,7 @@ en:
     public:
       take_quiz: 'Take your own quiz'
       default_suggestion: 'This is a balanced portfolio suitable for most investors.'
+      personalize_message: 'This is the personalized'
     show:
       suggestion: 'Based on your responses,we suggest that your investment mix be structured as follows. Remember, these are guidelines only.'
       default_suggestion: 'This is a balanced portfolio suitable for most investors.However, to see a portfolio and financial plan suitable for your unique needs please take a

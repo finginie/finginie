@@ -4,7 +4,9 @@
     %p= t(".introduction")
     - if params[:initial_investment] && params[:initial_investment].to_f != resource.initial_investment
       = content_tag :div, t(".too_low_investment"), :id => 'result', :class => 'alert alert-notice'
-
+    %p
+      = t('.public.message')
+      = link_to t('.public.profile_link'), public_financial_profile_path(current_user)
     = form_tag comprehensive_risk_profiler_ideal_investments_path, :method => :get, :class => 'form-horizontal' do
       .input-append
         = label_tag :initial_investment, t('.initial_investment'), :class => 'control-label'

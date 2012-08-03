@@ -9,6 +9,9 @@ en:
         investment amount based on our suggestions in the previous step.'
       intro_to_trade: 'Now you can click the below button to start investing'
       elss_message: 'If you would like to invest in tax-saving mutual funds, here are some options'
+      public:
+        profile_link: ' (Click here to public page)'
+        message: 'You can share this page with your friends on Facebook. No personal information will be shared. Click here to view what your friends can see.'
     investments:
       fixed_deposits: 'Fixed Deposits'
       gold_investments: 'Gold ETFs'
