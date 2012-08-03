@@ -1,4 +1,16 @@
 class ComprehensiveRiskProfilerDecorator < ApplicationDecorator
+  SUMMARY_CONFIG = {
+    :initial_investment           => { private: true },
+    :three_month_investment       => { private: true },
+    :score_view                   => { private: false },
+    :age                          => { private: false },
+    :inadequate_household_income  => { private: true },
+    :inadequate_household_savings => { private: true },
+    :special_goals                => { private: false },
+    :time_horizon                 => { private: false },
+    :general                      => { private: false }
+  }
+
   decorates :comprehensive_risk_profiler
   include Draper::LazyHelpers
   include NumberHelper
@@ -11,28 +23,43 @@ class ComprehensiveRiskProfilerDecorator < ApplicationDecorator
     model.monthly_savings * 3
   end
 
-  def summary
-    markup = content_tag(:li, h.t("initial_investment", :initial_investment_amount => initial_investment), :data =>{:role => 'initial_investment'})
-    markup +=  content_tag(:li, h.t('three_month_investment', :three_month_investment_amount => three_month_investment_amount), :data =>{:role => 'three_month_investment'}) unless inadequate_monthly_savings?
-    markup +=  content_tag(:li, score_view_summary, :data =>{:role => 'score_view_summary'})
-    markup +=  content_tag(:li, age_summary, :data =>{:role => 'age_summary'})
-    markup +=  content_tag(:li, inadequate_household_income, :data =>{:role => 'household_savings_summary'}) if inadequate_monthly_savings?
-    markup +=  content_tag(:li, inadequate_household_savings, :data =>{:role => 'household_savings_summary'}) if inadequate_household_savings?
-    markup +=  content_tag(:li, special_goals_summary, :data =>{:role => 'special_goals_summary'}) if special_goals?
-    markup +=  content_tag(:li, time_horizon_summary, :data =>{:role => 'time_horizon_summary'})
-    markup +=  content_tag(:li, h.t("general_summary"), :data =>{:role => 'general_summary'})
+  def summary(is_public_financial_profile)
+    markup = ActiveSupport::SafeBuffer.new
+
+    SUMMARY_CONFIG.each do |message_summary_key, options_hash|
+      next if is_public_financial_profile && options_hash[:private]
+
+      if is_public_financial_profile
+        li_tag_value = send("#{message_summary_key}_summary", "public")
+      else
+        li_tag_value = send("#{message_summary_key}_summary")
+      end
+
+      next if li_tag_value.nil?
+      markup +=  content_tag(:li, li_tag_value, :data => {:role => message_summary_key})
+    end
+
     markup
   end
 
-  def age_summary
-    h.t case model.age
+  def private_summary
+    summary(false)
+  end
+
+  def public_summary
+    summary(true)
+  end
+
+  def age_summary(summary_type = 'private')
+    label = case model.age
       when 0..34
-        "age_summary.below_thirty_five"
+        'below_thirty_five'
       when 35..49
-        "age_summary.below_fifty"
+        'below_fifty'
       else
-        "age_summary.above_fifty"
+        'above_fifty'
       end
+    h.t("#{summary_type}.age_summary.#{label}")
   end
 
   def score
@@ -51,40 +78,57 @@ class ComprehensiveRiskProfilerDecorator < ApplicationDecorator
     model.household_savings < three_month_household_expenditure
   end
 
-  def time_horizon_summary
-    translation_key = case model.time_horizon
+  def time_horizon_summary(summary_type = 'private')
+    label = case model.time_horizon
       when 0..2
-        "time_horizon_summary.below_three_years"
+        'below_three_years'
       when 3..4
-        "time_horizon_summary.below_five_years"
+        'below_five_years'
       else
-        "time_horizon_summary.above_five_years"
+        'above_five_years'
       end
+
+    translation_key = "#{summary_type}.time_horizon_summary.#{label}"
     h.t "#{translation_key}", :time_horizon_years => time_horizon
   end
 
-  def score_view_summary
-    h.t case model.score
+  def score_view_summary(summary_type = 'private')
+    label = case model.score
       when 0..3
-        "score_summary.below_three"
+        'below_three'
       when 4..5
-        "score_summary.below_five"
+        'below_five'
       when 6..8
-        "score_summary.below_eight"
+        'below_eight'
       else
-        "score_summary.above_eight"
+        'above_eight'
       end
+
+    h.t("#{summary_type}.score_summary.#{label}")
   end
 
-  def special_goals_summary
-    h.t "special_goals_summary.condition_#{(model.special_goals_factor <= model.monthly_savings).to_s}", :monthly_savings_needed => monthly_savings_needed
+  def general_summary(summary_type = 'private')
+    h.t("#{summary_type}.general_summary")
   end
 
-  def inadequate_household_income
-    h.t "household_savings_summary.inadequate_household_income" if inadequate_monthly_savings?
+  def three_month_investment_summary
+    h.t('three_month_investment', :three_month_investment_amount => three_month_investment_amount) unless inadequate_monthly_savings?
   end
 
-  def inadequate_household_savings
-    h.t "household_savings_summary.inadequate_household_savings", :household_savings_less_amount => three_month_household_expenditure if inadequate_household_savings?
+  def initial_investment_summary
+    h.t("initial_investment", :initial_investment_amount => initial_investment)
   end
+
+  def special_goals_summary(summary_type = 'private')
+    h.t "#{summary_type}.special_goals_summary.condition_#{(model.special_goals_factor <= model.monthly_savings).to_s}", :monthly_savings_needed => monthly_savings_needed  if special_goals?
+  end
+
+  def inadequate_household_income_summary
+    h.t "household_savings_summary.inadequate_household_income"  if inadequate_monthly_savings?
+  end
+
+  def inadequate_household_savings_summary
+    h.t "household_savings_summary.inadequate_household_savings", :household_savings_less_amount => three_month_household_expenditure  if inadequate_household_savings?
+  end
+
 end

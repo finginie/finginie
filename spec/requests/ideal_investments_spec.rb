@@ -120,6 +120,11 @@ describe 'Ideal Investments',:mongoid do
           [ gold_etfs.first.name, '19,500.00' ])
     end
 
+    it "should have public financial profile page link" do
+      visit comprehensive_risk_profiler_ideal_investments_path
+      page.should have_content I18n.t('ideal_investments.show.public.profile_link')
+    end
+
     it "should have fixed deposits" do
       visit comprehensive_risk_profiler_ideal_investments_path
       page.should have_content I18n.t('ideal_investments.investments.fixed_deposits')

@@ -46,6 +46,7 @@ gem 'thin'
 group :test, :development do
   gem 'brakeman'
   gem 'capybara'
+  gem 'capybara-mechanize'
   gem 'capybara-webkit'
     gem 'headless'
   gem 'rspec-cells'

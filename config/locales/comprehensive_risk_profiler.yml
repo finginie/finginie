@@ -2,32 +2,58 @@ en:
   comprehensive_risk_profilers:
     message: 'Please answer the following questions so that we can suggest a personalized financial plan telling you where to invest.'
     success_message: 'Your answers were successfully updated. Our suggestions for you are as follows.'
+    public:
+      take_quiz: 'Take your own quiz'
+      default_suggestion: 'This is a balanced portfolio suitable for most investors.'
+      personalize_message: 'This is the personalized'
+      facebook:
+        success_message: 'Successfully posted on your facebook wall'
     show:
       suggestion: 'Based on your responses,we suggest that your investment mix be structured as follows. Remember, these are guidelines only.'
       default_suggestion: 'This is a balanced portfolio suitable for most investors.However, to see a portfolio and financial plan suitable for your unique needs please take a
         %{quiz_link} (Strongly Recommended).'
       future_investment: 'Great! You now know where to invest broadly. Click the button below to continue and see more detailed investment suggestions based on historic returns,liquidity and suitability.
-        You will be able to see the names of the stocks,mutual funds and banks you should invest in along with the suggested investment amounts.'
+        You will be able to see the names of the stocks,mutual funds and banks you should invest in along with the suggested investment amounts. You have now earned 50 points. Share your ideal investments
+        suggestions with your friends and earn more points'
       sign_up: 'Sign up to continue. Signing-up is absolutely free,takes only a few seconds and does not require a credit card or an email address.'
   initial_investment: 'Your Initial Investment can be Rs %{initial_investment_amount}'
   three_month_investment: 'Every 3 months you can invest Rs %{three_month_investment_amount}'
-  age_summary:
-    below_thirty_five: 'You are quite young. Hence, you can afford to take on a high amount of investment risk. This should fetch you excellent returns in the long run.'
-    below_fifty: 'You have quite a few years before retirement. Therefore, you can take on moderate amounts of investment risk. This should fetch you good returns in the long run.'
-    above_fifty: 'You are nearing your retirement. Therefore, it is advisable to invest in low risk investments. This should you reasonable returns.'
-  time_horizon_summary:
-    below_three_years: 'Your time horizon of %{time_horizon_years} years is relatively short term. Studies show that the longer you stay invested, the better your returns and lower the probability of losses. Do consider increasing your time horizon of investing for better returns'
-    below_five_years: 'Your time horizon of %{time_horizon_years} years is moderate. Studies show that the longer you stay invested, the better your returns and lower the probability of losses. Do consider increasing your time horizon of investing for better returns'
-    above_five_years: 'You have a satisfactory long term time horizon. Studies show that the longer you stay invested, the better your returns and lower the probability of losses.'
-  score_summary:
-    below_three: 'Your risk tolerance is low. Hence, you should stick to investments that keep your principal safe and give you reasonable returns.'
-    below_five: 'Your risk tolerance is average. Therefore, you can take on average amounts of investment risk. This should fetch you enough returns to combat inflation and grow your wealth at a steady pace.'
-    below_eight: 'Your risk tolerance is above average. Therefore, you can take on moderate amounts of investment risk. This should fetch you good returns in the long run.'
-    above_eight: 'Your risk tolerance is high. Hence, you can afford to take on a high amount of investment risk. This should  fetch you excellent returns in the long run.'
   household_savings_summary:
     inadequate_household_income: 'Your household income is less than your household expenditure. It is recommended that you save some money every month either by reducing your monthly expenditure or adding alternate sources of income.'
     inadequate_household_savings: 'Your household savings are less than 3 months worth of household expenses. It is recommended that you save atleast Rupees %{household_savings_less_amount} for emergencies and unforseen events.'
-  special_goals_summary:
-    condition_true: 'It is likely that you will meet your special goal. Keep continuing to spend and save according to current standards'
-    condition_false: 'It is unlikely that you will meet your special goals. You need to save Rs %{monthly_savings_needed} more every month to meet your special goal'
-  general_summary: 'It is recommended that your investment portfolio is a healthy mix of debt, equity and gold. If you follow our recommended asset allocation, this will be ensured.'
+  private:
+    age_summary:
+      below_thirty_five: 'You are quite young. Hence, you can afford to take on a high amount of investment risk. This should fetch you excellent returns in the long run.'
+      below_fifty: 'You have quite a few years before retirement. Therefore, you can take on moderate amounts of investment risk. This should fetch you good returns in the long run.'
+      above_fifty: 'You are nearing your retirement. Therefore, it is advisable to invest in low risk investments. This should you reasonable returns.'
+    time_horizon_summary:
+      below_three_years: 'Your time horizon of %{time_horizon_years} years is relatively short term. Studies show that the longer you stay invested, the better your returns and lower the probability of losses. Do consider increasing your time horizon of investing for better returns'
+      below_five_years: 'Your time horizon of %{time_horizon_years} years is moderate. Studies show that the longer you stay invested, the better your returns and lower the probability of losses. Do consider increasing your time horizon of investing for better returns'
+      above_five_years: 'You have a satisfactory long term time horizon. Studies show that the longer you stay invested, the better your returns and lower the probability of losses.'
+    score_summary:
+      below_three: 'Your risk tolerance is low. Hence, you should stick to investments that keep your principal safe and give you reasonable returns.'
+      below_five: 'Your risk tolerance is average. Therefore, you can take on average amounts of investment risk. This should fetch you enough returns to combat inflation and grow your wealth at a steady pace.'
+      below_eight: 'Your risk tolerance is above average. Therefore, you can take on moderate amounts of investment risk. This should fetch you good returns in the long run.'
+      above_eight: 'Your risk tolerance is high. Hence, you can afford to take on a high amount of investment risk. This should  fetch you excellent returns in the long run.'
+    special_goals_summary:
+      condition_true: 'It is likely that you will meet your special goal. Keep continuing to spend and save according to current standards'
+      condition_false: 'It is unlikely that you will meet your special goals. You need to save Rs %{monthly_savings_needed} more every month to meet your special goal'
+    general_summary: 'It is recommended that your investment portfolio is a healthy mix of debt, equity and gold. If you follow our recommended asset allocation, this will be ensured.'
+  public:
+    age_summary:
+      below_thirty_five: 'You are quite young. Hence, you can afford to take on a high amount of investment risk. This should fetch you excellent returns in the long run.'
+      below_fifty: 'You have quite a few years before retirement. Therefore, you can take on moderate amounts of investment risk. This should fetch you good returns in the long run.'
+      above_fifty: 'You are nearing your retirement. Therefore, it is advisable to invest in low risk investments. This should you reasonable returns.'
+    time_horizon_summary:
+      below_three_years: 'Your time horizon of %{time_horizon_years} years is relatively short term. Studies show that the longer you stay invested, the better your returns and lower the probability of losses. Do consider increasing your time horizon of investing for better returns'
+      below_five_years: 'Your time horizon of %{time_horizon_years} years is moderate. Studies show that the longer you stay invested, the better your returns and lower the probability of losses. Do consider increasing your time horizon of investing for better returns'
+      above_five_years: 'You have a satisfactory long term time horizon. Studies show that the longer you stay invested, the better your returns and lower the probability of losses.'
+    score_summary:
+      below_three: 'Your risk tolerance is low. Hence, you should stick to investments that keep your principal safe and give you reasonable returns.'
+      below_five: 'Your risk tolerance is average. Therefore, you can take on average amounts of investment risk. This should fetch you enough returns to combat inflation and grow your wealth at a steady pace.'
+      below_eight: 'Your risk tolerance is above average. Therefore, you can take on moderate amounts of investment risk. This should fetch you good returns in the long run.'
+      above_eight: 'Your risk tolerance is high. Hence, you can afford to take on a high amount of investment risk. This should  fetch you excellent returns in the long run.'
+    special_goals_summary:
+      condition_true: 'It is likely that you will meet your special goal. Keep continuing to spend and save according to current standards'
+      condition_false: 'It is unlikely that you will meet your special goals. You need to save Rs %{monthly_savings_needed} more every month to meet your special goal'
+    general_summary: 'It is recommended that your investment portfolio is a healthy mix of debt, equity and gold. If you follow our recommended asset allocation, this will be ensured.'
