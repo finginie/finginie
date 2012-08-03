@@ -4,7 +4,11 @@ class ComprehensiveRiskProfilersController < InheritedResources::Base
 
   def public
     @user = User.find params[:id]
-    flash[:notice] = I18n.t('.comprehensive_risk_profilers.public.personalize_message')
+   if params[:post_id]
+     flash[:notice] = I18n.t('comprehensive_risk_profilers.public.facebook.success_message')
+    else
+     flash[:notice] = I18n.t('.comprehensive_risk_profilers.public.personalize_message')
+   end
     @comprehensive_risk_profiler = ComprehensiveRiskProfilerDecorator.decorate(@user.comprehensive_risk_profiler)
   end
 
