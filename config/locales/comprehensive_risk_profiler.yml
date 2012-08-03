@@ -5,7 +5,7 @@ en:
     public:
       take_quiz: 'Take your own quiz'
       default_suggestion: 'This is a balanced portfolio suitable for most investors.'
-      personalize_message: 'This is the personalized'
+      personalize_message: "This is %{email}'s personalized financial plan %{quiz_link} to view yours"
       facebook:
         success_message: 'Successfully posted on your facebook wall'
     show:
