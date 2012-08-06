@@ -7,14 +7,16 @@
           %small
             = resource.score
             out of 10. (10 indicates maximum risk taking ability)
+        = facebook_recommendation_tag
       %ul
         = resource.private_summary
       .page-header
-        %h1 Suggested Investment Mix
+        = facebook_recommendation('Suggested Investment Mix')
       %p= t ".suggestion"
     - else
       .page-header
         %h1 Balanced Portfolio
+        = facebook_recommendation_tag
       %p= t( ".default_suggestion", :quiz_link => (link_to 'short quiz', edit_comprehensive_risk_profiler_path)).html_safe
 
 - if resource.score

@@ -5,7 +5,7 @@
 
 - if @company && @audited_results[0] && @audited_results[0].model
   .page-header
-    %h1= "#{@company.name} - Income Statement"
+    = facebook_recommendation("#{@company.name} - Income Statement")
   %p *All Numbers are in crores of rupees unless specified otherwise
   %table.table.table-striped.table-bordered
     %tr

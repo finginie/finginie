@@ -1,7 +1,7 @@
 .row
   .span12
     .page-header
-      %h1 Mutual Fund NAVs
+      = facebook_recommendation('Mutual Fund NAVs')
     %p
       Get Mutual Fund NAVs and detailed fund information such as portfolio holdings, sectoral allocations, historic fund returns, fund comparative returns and mutual fund asset allocation for 13,500+ mutual funds trading in India.
     %table#schemes_table.table.table-striped.table-bordered{ :data => { :source => mutual_funds_path(format: 'json') } }

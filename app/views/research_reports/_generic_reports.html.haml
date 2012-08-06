@@ -1,6 +1,6 @@
 .row.show-grid
   .span6
-    %h1 Research reports
+    = facebook_recommendation('Research reports')
   .span6
     .pull-right
       = form_tag research_reports_path, :method => :get, :class => 'form-search' do

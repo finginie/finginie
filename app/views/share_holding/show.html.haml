@@ -5,7 +5,7 @@
 
 - if @share_holding.model
   .page-header
-    %h1= "ShareHolding - #{@company.name}"
+    = facebook_recommendation("ShareHolding - #{@company.name}")
   #share-holding-chart{ 'data-share-holding' => @share_holding.groupwise_percentages }
   %table.table.table-striped.table-bordered
     %th Investor Type

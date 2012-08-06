@@ -50,6 +50,10 @@ module ApplicationHelper
     host + relative_url
   end
 
+  def current_page_url
+    host + request.fullpath
+  end
+
   def host
     'http://' + request.host_with_port
   end

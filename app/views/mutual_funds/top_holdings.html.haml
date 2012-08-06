@@ -7,9 +7,7 @@
   .row
     .span12
       .page-header
-        %h1
-          Top holdings
-          %small= @scheme.name
+        = facebook_recommendation("Top holdings <small>#{@scheme.name}</small>")
   .row
     .span12.show-grid
       -gchart(:data => @scheme.top_ten_holdings_percentages, :title => 'Top 10 holdings Distribution', :chartType => 'Pie')

@@ -4,7 +4,7 @@
 
 .row.show-grid
   .span12
-    %h1 Mutual Funds Analysis
+    = facebook_recommendation('Mutual Funds Analysis')
     - unless resource.category_wise_mutual_funds_percentage.empty?
       - gchart(:data => resource.category_wise_mutual_funds_percentage, :title => 'Category Wise Mutual Fund Allocation', :chartType => 'Pie')
 

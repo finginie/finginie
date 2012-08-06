@@ -4,7 +4,7 @@
 
 .row.show-grid
   .span12
-    %h1 Fixed Deposits Analysis
+    = facebook_recommendation('Fixed Deposits Analysis')
     - unless resource.fixed_deposit_open_positions_rate_of_interests.empty?
       - gchart(:header => ['Rate','Amount'], :data => resource.fixed_deposit_open_positions_rate_of_interests.map{ |fd| [fd.rate, fd.amount] },
                :title => 'Fixed Deposits', :yAxisTitle => 'Amount Invested (Rs)', :xAxisTitle => 'Interest Rate p.a.(%)', :chartType => 'Column')
