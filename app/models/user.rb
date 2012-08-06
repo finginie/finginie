@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
            :as => :subscribable, :class_name => 'Subscription'
 
   has_one :comprehensive_risk_profiler, :dependent => :destroy
+  has_many :completed_steps
 
   def merge_comprehensive_risk_profiler(attributes)
     return self if comprehensive_risk_profiler.persisted?
@@ -21,5 +22,9 @@ class User < ActiveRecord::Base
 
   def already_referred?
     CompletedStep.where("data -> 'referred_user_id' = '#{self.id}'").present?
+  end
+
+  def completed_referral_step?
+    completed_steps.where(step_id: Step::REFERRAL).present?
   end
 end
