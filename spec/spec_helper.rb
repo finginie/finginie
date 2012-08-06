@@ -41,7 +41,7 @@ Spork.prefork do
     config.use_transactional_fixtures = true
 
     # Use the fail_fast option to tell RSpec to abort the run on first failure.
-    config.fail_fast = true
+    config.fail_fast = false
   end
 
   # Requires supporting ruby files with custom matchers and macros, etc,
@@ -63,15 +63,13 @@ Spork.each_run do
     @@shared_connection = nil
 
     def self.connection
-      @connection ||= @@shared_connection || retrieve_connection
+      @@shared_connection || retrieve_connection
     end
   end
 
   # Forces all threads to share the same connection. This works on
   # Capybara because it starts the web server in a thread.
   ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
-
-  require File.expand_path("../../db/schema", __FILE__)
 
   # Import factories from data provider
   FactoryGirl.definition_file_paths << File.expand_path('../../engines/data_provider/spec/factories', __FILE__)

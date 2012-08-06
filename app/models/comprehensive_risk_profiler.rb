@@ -67,7 +67,7 @@ class ComprehensiveRiskProfiler < ActiveRecord::Base
   end
 
   def initial_investment
-    return IndianCurrency.new(0) unless self.valid?
+    return IndianCurrency.new 0 unless self.valid?
     available_savings > 0 ? available_savings : household_savings / 2
   end
 

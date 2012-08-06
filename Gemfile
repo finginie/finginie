@@ -62,6 +62,7 @@ group :test, :development do
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'heroku_san'
+  gem 'poltergeist'
   gem 'pry'
   gem 'rspec'
   gem 'rspec-rails'
