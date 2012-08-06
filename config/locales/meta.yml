@@ -1,11 +1,12 @@
 en:
   title: "Finginie: India's best investment portal for beginners."
-  description: 'Investment for beginners is made easy. You can track your investments using our portfolio tracker.
-                You can plan your investments based on our suggested portfolio mix'
+  description: "Finginie is India's best investment portal for beginners. Our tools help small investors make smart investments in stocks,fixed deposits,bonds,mutual funds and gold.From market data to stock recommendations, research reports to portfolio trackers, insider holdings to company financials - we have it all."
   keywords: 'Investments, Shares, Mutual Funds, Assets, Portfolio Management, Track Investments'
   comprehensive_risk_profilers:
     edit:
-      title: 'Financial Planner'
+      title: 'Personalized financial planning. Get your ideal investment mix in less than a minute.'
+      description: 'Finginie makes your financial life easy by making financial planning and selection of investments a 1 minute job. Simply take our short financial quiz and we give you a basket of investments that is perfectly suited to your financial needs. These investments are specially chosen based on historic return,liquidity and riskiness. So what are you waiting for? Get started now!'
+      keywords: 'financial plan,planning,investments'
     show:
       title: 'Suggested Asset Allocation'
   portfolios:
@@ -27,6 +28,11 @@ en:
       title: 'Mutual Funds Analysis'
     fixed_deposits_analysis:
       title: 'Fixed Deposit Analysis'
+  research_reports:
+    index:
+      title: 'Latest and best research reports. Get stock reports, sector reports for free.'
+      description: 'Finginie gives you access to the latest and best stock market research reports from brokerages and research houses all over India ! Check out market reports, stock/company reports, sector reports and a lot more'
+      keywords: 'research, reports, sector reports,brokerage reports'
   fixed_deposits:
     index:
       title: 'Fixed Deposits | Bank Interest rates - Compare and Analyze Fixed Deposits in India'
@@ -123,6 +129,10 @@ en:
           title: 'Cheap Brokerage & Fees: Trade stocks,futures,options and currency with Finginie and Kotak at the lowest rates.'
           description: 'Finginie has teamed up with Kotak Securities-India’s best online broker to offer you a smooth trading experience at the lowest rates.Special introductory rates as low as 0.02% (2 paisa) and account opening fee waivers! What’s even better is that you will deal directly only with Kotak Securities and their executives. Open a trading account now to take advantage of this introductory offer.'
           keywords: 'low brokerage,trading account,kotak securities,stock trading,futures trading,options trading'
+        finginie-cares:
+          title: 'Finginie cares. You click, we donate to NGOs.'
+          description: "Finginie is proud to support India's most influential show -Satyamev Jayate. For every signup, we will donate Rs 2 to three NGOs featured on the show. So, do signup with us for free to make a difference to the lives of the less fortunate."
+          keywords: 'Satyamev Jayate, NGO, Finginie'
         home:
           title: 'Finginie'
         contact_us:
