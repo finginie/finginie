@@ -39,3 +39,18 @@
                 %td= asset[:asset_type]
                 %td= asset[:percentage]
 
+      .row
+        .span4.show-grid
+          %h1 Stocks Analysis
+          - unless resource.sector_wise_stock_percentage.empty?
+            - gchart( :data => resource.sector_wise_stock_percentage,
+                :title => 'Sector Wise Stocks Allocation', :chartType => 'Pie')
+        .span4.show-grid
+          %h1 Mutual Funds Analysis
+          - unless resource.category_wise_mutual_funds_percentage.empty?
+            - gchart(:data => resource.category_wise_mutual_funds_percentage, :title => 'Category Wise Mutual Fund Allocation', :chartType => 'Pie')
+        .span4.show-grid
+          %h1 Fixed Deposits Analysis
+          - unless resource.fixed_deposit_open_positions_rate_of_interests.empty?
+            - gchart(:header => ['Rate','Amount'], :data => resource.fixed_deposit_open_positions_rate_of_interests.map{ |fd| [fd.rate, fd.amount] },
+                     :title => 'Fixed Deposits', :yAxisTitle => 'Amount Invested (Rs)', :xAxisTitle => 'Interest Rate p.a.(%)', :chartType => 'Column')
