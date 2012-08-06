@@ -18,6 +18,7 @@ group :assets do
 end
 
 gem 'active_attr',                         :github => 'sankaranarayanan/active_attr'
+gem 'activerecord-postgres-hstore'
 gem 'airbrake'
 gem 'bootstrap-helper',                    :github => 'LoonyBin/bootstrap-helper'
 gem 'cancan'

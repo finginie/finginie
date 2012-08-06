@@ -17,6 +17,17 @@ describe User do
   it { should have_many :follows }
   it { should have_one  :comprehensive_risk_profiler }
 
+  context "#already_referred?" do
+    it "should return true if user is already referred" do
+      create :completed_step, { :user_id => create(:user).id, :step_id => Step::REFERRAL, :data    => { :referred_user_id => user.id } }
+      user.should be_already_referred
+    end
+
+    it "should return false if user is not a referred user" do
+      user.should_not be_already_referred
+    end
+  end
+
   it "should find a user by his authentication" do
     User.find_or_create_by_omniauth(auth_hash).should eq user
   end

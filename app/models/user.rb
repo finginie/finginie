@@ -18,4 +18,8 @@ class User < ActiveRecord::Base
   def comprehensive_risk_profiler
     super || build_comprehensive_risk_profiler
   end
+
+  def already_referred?
+    CompletedStep.where("data -> 'referred_user_id' = '#{self.id}'").present?
+  end
 end
