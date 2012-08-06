@@ -121,8 +121,9 @@ ActiveRecord::Schema.define(:version => 20120806061035) do
   create_table "portfolios", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "is_public",  :default => false
   end
 
   add_index "portfolios", ["user_id"], :name => "index_portfolios_on_user_id"

@@ -1,0 +1,14 @@
+.row
+  .span9
+    .page-header
+      %h1 Share #{resource.name}
+  .span9
+    %p
+      Your Portfolio
+      %strong= resource.name
+      shall be made public. Every one will be able to see the resource at
+      = link_to public_portfolio_url(resource), public_portfolio_path(resource)
+    %p Your actual amount holding shall not be shared. Only the corresponding percentages will be visible to a viewer.
+
+  = link_to 'Cancel', :back, :class => %w(btn btn-danger)
+  = button_to 'Share', create_public_portfolio_path(:portfolio => resource), :class => %w(btn btn-success)
