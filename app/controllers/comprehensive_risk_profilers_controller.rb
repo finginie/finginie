@@ -4,13 +4,18 @@ class ComprehensiveRiskProfilersController < InheritedResources::Base
 
   def public
     @user = User.find params[:id]
-    session[:referral_id] ||= @user.id
-   if params[:post_id]
-     flash.now[:notice] = I18n.t('comprehensive_risk_profilers.public.facebook.success_message')
+    session[:referrer_id] ||= @user.id
+    if params[:post_id]
+      @user.finished_share_financial_profile_on_fb_step({ :post_id => params[:post_id] })
+      # CompletedStep.create({
+      #   :user_id => @user.id,
+      #   :step_id => Step::SHARE_FINANCIAL_PROFILE_ON_FB
+      # })
+      flash.now[:notice] = I18n.t('comprehensive_risk_profilers.public.facebook.success_message')
     else
-     quiz_link = "<a href='/comprehensive_risk_profiler/edit'>Click Here</a>"
-     flash.now[:notice] = (I18n.t('.comprehensive_risk_profilers.public.personalize_message', :email => @user.email, :quiz_link => quiz_link)).html_safe
-   end
+      quiz_link = "<a href='/comprehensive_risk_profiler/edit'>Click Here</a>"
+      flash.now[:notice] = (I18n.t('.comprehensive_risk_profilers.public.personalize_message', :email => @user.email, :quiz_link => quiz_link)).html_safe
+    end
     @comprehensive_risk_profiler = ComprehensiveRiskProfilerDecorator.decorate(@user.comprehensive_risk_profiler)
   end
 

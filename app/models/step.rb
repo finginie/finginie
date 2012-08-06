@@ -11,4 +11,8 @@ class Step < ActiveRecord::Base
   SIGN_UP_FOR_TRADING                     = 7
   REFERRAL                                = 8
   NEW_TRADKING_ACCOUNT_FROM_SHARED_LINK   = 9
+
+  def self.ebola_steps
+    (constants(false) - [:GeneratedFeatureMethods]).map{ |step| step.to_s.downcase }
+  end
 end

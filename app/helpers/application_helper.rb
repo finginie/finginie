@@ -65,7 +65,7 @@ module ApplicationHelper
     name = t('facebook_share.name')
     caption = t('facebook_share.caption')
     description = t('facebook_share.description')
-    redirect_uri = url_with_complete_path shared_link
+    redirect_uri = url_with_complete_path social_network_facebook_callback_path(:return_to => shared_link, :step => Step::SHARE_FINANCIAL_PROFILE_ON_FB)
 
     {
       :app_id => app_id,

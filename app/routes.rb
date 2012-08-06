@@ -13,6 +13,8 @@ Finginie::Application.routes.draw do
   end
   get '/comprehensive_risk_profiler/:id/public' => 'comprehensive_risk_profilers#public', :as => :public_financial_profile
 
+  get 'social_network/facebook_callback' => 'social_network#facebook_callback'
+
   # Portfolio Tracker
   resources :portfolios do
     member do

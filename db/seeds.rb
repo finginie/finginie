@@ -567,6 +567,7 @@ Quiz.create :name => "Financial Risk Appetite",
                   }
                 ]
               }
+  ]
 
 Step.create([
     {
@@ -615,5 +616,3 @@ Step.create([
       :points => 1000
     }
   ])
-
-]
