@@ -4,6 +4,7 @@ class ComprehensiveRiskProfilersController < InheritedResources::Base
 
   def public
     @user = User.find params[:id]
+    session[:referral_id] ||= @user.id
    if params[:post_id]
      flash.now[:notice] = I18n.t('comprehensive_risk_profilers.public.facebook.success_message')
     else

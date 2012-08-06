@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120620115354) do
+ActiveRecord::Schema.define(:version => 20120806061035) do
 
   create_table "choices", :force => true do |t|
     t.decimal  "score"
@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(:version => 20120620115354) do
   end
 
   add_index "choices", ["question_id"], :name => "index_choices_on_question_id"
+
+  create_table "completed_steps", :force => true do |t|
+    t.integer "user_id"
+    t.integer "step_id"
+    t.hstore  "data"
+  end
 
   create_table "comprehensive_risk_profilers", :force => true do |t|
     t.integer  "user_id"
@@ -193,6 +199,11 @@ ActiveRecord::Schema.define(:version => 20120620115354) do
   end
 
   add_index "securities", ["user_id"], :name => "index_securities_on_user_id"
+
+  create_table "steps", :force => true do |t|
+    t.string  "name"
+    t.integer "points"
+  end
 
   create_table "stock_transactions", :force => true do |t|
     t.integer  "quantity"
