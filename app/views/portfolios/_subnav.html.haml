@@ -7,7 +7,7 @@
     %ul.dropdown-menu
       - current_user.portfolios.each do |portfolio|
         %li= link_to portfolio.name, portfolio
-  %li= render 'share_button', :portfolio => @portfolio
+  %li= render 'portfolios/share_button', :portfolio => @portfolio
   %li.btn-large.pull-right= l Time.now, :format => :date_time_IST
 .subnav.show-grid
   %ul.nav.nav-pills

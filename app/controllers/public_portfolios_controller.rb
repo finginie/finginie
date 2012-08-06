@@ -3,6 +3,11 @@ class PublicPortfoliosController < InheritedResources::Base
   load_and_authorize_resource
   actions :show, :create
   defaults :resource_class => Portfolio
+  custom_actions :resource => [ :current_holdings, :profit_loss, :historical_transactions]
+
+  def resource
+    PortfolioDecorator.decorate(super)
+  end
 
 private
   def create_public_portfolio

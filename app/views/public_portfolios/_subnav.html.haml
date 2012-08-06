@@ -1,0 +1,7 @@
+.subnav.show-grid
+  %ul.nav.nav-pills
+    = navigation_link 'Assets Breakdown',        main_app.public_portfolio_path(portfolio)
+    = navigation_link 'Current Holdings',        main_app.current_holdings_public_portfolio_path(portfolio)
+    = navigation_link 'Profit/Loss',             main_app.profit_loss_public_portfolio_path(portfolio)
+    = navigation_link 'Historical Transactions', main_app.historical_transactions_public_portfolio_path(portfolio)
+    %li.btn-large.pull-right= l Time.now, :format => :date_time_IST
