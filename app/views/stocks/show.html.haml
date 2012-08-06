@@ -12,6 +12,7 @@
             - %w( nse_code industry_name ).each do |attr|
               %strong #{t ".#{attr}"}:
               %span= resource.send(attr)
+      = facebook_recommendation_tag
 .row
   .span12
     -bt_table [resource] do |table|

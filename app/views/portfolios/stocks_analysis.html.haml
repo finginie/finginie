@@ -3,7 +3,7 @@
     = render 'subnav'
 .row
   .span12
-    %h1 Stocks Analysis
+    = facebook_recommendation('Stocks Analysis')
     - unless resource.sector_wise_stock_percentage.empty?
       - gchart( :data => resource.sector_wise_stock_percentage,
           :title => 'Sector Wise Stocks Allocation', :chartType => 'Pie')

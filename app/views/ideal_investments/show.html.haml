@@ -1,6 +1,6 @@
 .row.show-grid
   .span12
-    %h1 Ideal Investments
+    = facebook_recommendation('Ideal Investments')
     %p= t(".introduction")
     - if params[:initial_investment] && params[:initial_investment].to_f != resource.initial_investment
       = content_tag :div, t(".too_low_investment"), :id => 'result', :class => 'alert alert-notice'

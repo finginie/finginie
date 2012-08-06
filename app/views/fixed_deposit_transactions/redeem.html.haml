@@ -1,6 +1,6 @@
 = simple_nested_form_for [parent, resource], :url => create_redeem_portfolio_fixed_deposit_transaction_path,:html => {:class => 'form-horizontal'} do |f|
   = f.error_notification
-  %h1= resource.name
+  = facebook_recommendation(resource.name)
 
   .inputs
     = f.input :rate_of_redemption

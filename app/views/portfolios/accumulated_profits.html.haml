@@ -4,7 +4,7 @@
 .row.show-grid
   .span12
     #accumulated_profits_or_losses
-      %h1 Your Realized Profits and Losses
+      = facebook_recommendation('Your Realized Profits and Losses')
       - if resource.top_five_losses.empty? && resource.top_five_profits.empty?
         .well.show-grid
           %p.align-center

@@ -6,9 +6,7 @@
   .row
     .span12
       .page-header
-        %h1
-          Asset Allocation
-          %small= @scheme.name
+        = facebook_recommendation("Asset Allocation <small>#{@scheme.name}</small>")
   .row
     .span8.show-grid
       -gchart(:data => @scheme.asset_allocation.to_a, :title => 'Asset Allocation', chartType: 'Pie')

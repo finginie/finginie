@@ -6,9 +6,7 @@
   .row
     .span12
       .page-header
-        %h1
-          Detailed holdings
-          %small= @scheme.name
+        = facebook_recommendation("Detailed holdings <small>#{@scheme.name}</small>")
   .row
     .span12
       %table.table.table-striped.table-bordered
