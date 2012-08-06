@@ -1,0 +1,11 @@
+.row.show-grid
+  .span12
+    = render 'subnav', :portfolio => resource
+.row.show-grid
+  .span12
+    - %w(stock_transactions mutual_fund_transactions gold_transactions fixed_deposit_transactions).each do |transaction|
+      = render transaction, transaction.to_sym => resource.send(transaction)
+    -if resource.empty_transactions?
+      .well.show-grid
+        %p.align-center
+          = t(".empty_transactions")
