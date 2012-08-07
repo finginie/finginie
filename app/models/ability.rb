@@ -28,6 +28,10 @@ class Ability
       can :manage, Portfolio, :user_id => user.id
       can :manage, User, :id => user.id
       can :read, User
+      can :create, :public_portfolio
+      can [:current_holdings, :profit_loss, :historical_transactions], :public_portfolio
     end
+
+    can :show, :public_portfolio
   end
 end
