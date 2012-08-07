@@ -21,9 +21,12 @@
         We are upgrading our systems as we speak. You may face minor issues during this period. Thank you for understanding :)
     %header
       .container
-        %hgroup.social.pull-right
-          =render 'layouts/facebook'
-          =render 'layouts/twitter'
+        %hgroup.social
+          .row
+            .span11.align-right
+              =render 'layouts/twitter'
+            .span1
+              =render 'layouts/facebook'
         %hgroup.title
           %h1
             = link_to main_app.root_path do

@@ -1,22 +1,19 @@
 .row
   .span12
     -if resource.valid?
-      .page-header
-        %h1
-          Your Risk Appetite is :
-          %small
-            = resource.score
-            out of 10. (10 indicates maximum risk taking ability)
-        = facebook_recommendation_tag
+      %h1
+        Your Risk Appetite is :
+        %small
+          = resource.score
+          out of 10. (10 indicates maximum risk taking ability)
+      = facebook_recommendation_tag
       %ul
         = resource.private_summary
-      .page-header
-        = facebook_recommendation('Suggested Investment Mix')
+      %h5.show-gird Suggested Investment Mix
       %p= t ".suggestion"
     - else
-      .page-header
-        %h1 Balanced Portfolio
-        = facebook_recommendation_tag
+      %h1 Balanced Portfolio
+      = facebook_recommendation_tag
       %p= t( ".default_suggestion", :quiz_link => (link_to 'short quiz', edit_comprehensive_risk_profiler_path)).html_safe
 
 - if resource.score

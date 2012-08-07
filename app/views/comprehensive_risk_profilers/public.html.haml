@@ -1,22 +1,21 @@
 .row
   .span12
-    .page-header
-      - if @comprehensive_risk_profiler.valid?
-        %h1
-          = @user.email
-          Risk Appetite is :
-          %small
-            %span{ :data => { :role => 'risk_appetite' } }
-              = @comprehensive_risk_profiler.score
-            out of 10. (10 indicates maximum risk taking ability)
+    - if @comprehensive_risk_profiler.valid?
+      %h1
+        = @user.email
+        Risk Appetite is :
+        %small
+          %span{ :data => { :role => 'risk_appetite' } }
+            = @comprehensive_risk_profiler.score
+          out of 10. (10 indicates maximum risk taking ability)
 
-        %span{ :data => { :role => 'public_summary' } }
-          %ul
-            = @comprehensive_risk_profiler.public_summary
-      - else
-        %h1
-          %span{ :data => { :role => 'balanced_portfolio' } } Balanced Portfolio
-          %p= t( ".default_suggestion")
+      %span{ :data => { :role => 'public_summary' } }
+        %ul
+          = @comprehensive_risk_profiler.public_summary
+    - else
+      %h1
+        %span{ :data => { :role => 'balanced_portfolio' } } Balanced Portfolio
+        %p= t( ".default_suggestion")
 
 .row
   .span8.show-grid
