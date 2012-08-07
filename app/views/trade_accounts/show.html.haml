@@ -1,0 +1,25 @@
+%p#notice= notice
+
+- if @trade_account
+  %p
+    %b User:
+    = @trade_account.user
+  %p
+    %b Name:
+    = @trade_account.name
+  %p
+    %b Phone number:
+    = @trade_account.phone_number
+  %p
+    %b Address:
+    = @trade_account.address
+  %p
+    %b City:
+    = @trade_account.city
+  %p
+    %b Special requirements:
+    = @trade_account.special_requirements
+
+  = link_to 'Edit', edit_trade_account_path(@trade_account)
+- else
+  = link_to 'Apply for low cost brokerage', new_trade_account_path

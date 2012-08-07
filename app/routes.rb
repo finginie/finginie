@@ -1,4 +1,6 @@
 Finginie::Application.routes.draw do
+  resource :trade_account
+
   root :to => 'pages#show', :id => 'home'
 
   #Market Commentary
