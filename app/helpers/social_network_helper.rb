@@ -7,7 +7,7 @@ module SocialNetworkHelper
   end
 
   def facebook_recommendation_tag
-    tag :div, :class => 'fb-like', :data => { :action => "recommend", :font => "lucida grande",
+    tag :div, :class => 'fb-like show-grid', :data => { :action => "recommend", :font => "lucida grande",
                                               :href => current_page_url,
                                               :layout => "button_count", :send => "false",
                                               :'show-faces' => "true", :width => "450" }
