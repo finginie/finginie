@@ -1,5 +1,6 @@
 Finginie::Application.routes.draw do
   resource :trade_account
+  resources :research_ratings
 
   root :to => 'pages#show', :id => 'home'
 

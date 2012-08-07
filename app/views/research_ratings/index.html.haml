@@ -1,0 +1,31 @@
+.row
+  .span8
+    %h1 Consolidated Research Ratings
+    %section
+      %p
+        The table below shows a consolidated recommendation for 50 stocks on the NSE Index 'Nifty' based on research reports published by brokerages across India.
+    %section
+      %table.table.table.table-striped.table-bordered
+        %tr
+          %th.span5 Stock Name
+          %th.span2 Rating(out of 5)
+          %th.span2 Recommendation
+
+        %tr
+          -# Todo Click on Stock Name takes to stock quotes page, Buy/Sell/Accumulate/Neutral depends on Average Rating of Stock., Rating should be calculated.
+          %td= link_to 'Tata Consultancy Services'
+          %td= link_to '4'
+          %td= link_to 'Buy'
+        %tr
+          %td= link_to 'Axis Bank'
+          %td= link_to '3'
+          %td= link_to 'Accumulate'
+        %tr
+          %td= link_to 'Reliance Industries'
+          %td= link_to '2'
+          %td= link_to 'Neutral'
+        %tr
+          %td= link_to 'State Bank of India'
+          %td= link_to '1'
+          %td= link_to 'Sell'
+
