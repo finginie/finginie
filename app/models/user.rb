@@ -37,6 +37,16 @@ class User < ActiveRecord::Base
       completed_steps.where(:step_id => Step.const_get(step.upcase)).first
     end
 
+    completed_steps_obj_method = "completed_#{step}_steps"
+    define_method completed_steps_obj_method do
+      completed_steps.where(:step_id => Step.const_get(step.upcase))
+    end
+
+    number_of_times_a_step_completed_method = "number_of_times_finished_#{step}_step"
+    define_method number_of_times_a_step_completed_method do
+      completed_steps.where(:step_id => Step.const_get(step.upcase)).count
+    end
+
     create_completed_step_method = "finished_#{step}_step"
     define_method create_completed_step_method do |data = {}|
       step_id = Step.const_get(step.upcase)

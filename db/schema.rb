@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120807112911) do
+ActiveRecord::Schema.define(:version => 20120807110621) do
 
   create_table "choices", :force => true do |t|
     t.decimal  "score"
@@ -414,6 +414,7 @@ ActiveRecord::Schema.define(:version => 20120807112911) do
   create_table "steps", :force => true do |t|
     t.string  "name"
     t.integer "points"
+    t.string  "completion_link"
   end
 
   create_table "stock_transactions", :force => true do |t|

@@ -569,50 +569,61 @@ Quiz.create :name => "Financial Risk Appetite",
               }
   ]
 
+Step.destroy_all
+
 Step.create([
     {
-      :id     => 1,
-      :name   => 'Take Personalized financial profile quiz',
-      :points => 50
+      :id              => 1,
+      :name            => 'Take Personalized financial profile quiz',
+      :points          => 50,
+      :completion_link => '/comprehensive_risk_profiler/edit'
     },
     {
-      :id     => 2,
-      :name   => 'Sign up',
-      :points => 100
+      :id              => 2,
+      :name            => 'Sign up',
+      :points          => 100,
+      :completion_link => '#'
     },
     {
-      :id     => 3,
-      :name   => 'Like Facebook Page',
-      :points => 100
+      :id              => 3,
+      :name            => 'Like Facebook Page',
+      :points          => 100,
+      :completion_link => '#'
     },
     {
-      :id     => 4,
-      :name   => 'Share Personalized financial profile results on FB',
-      :points => 200
+      :id              => 4,
+      :name            => 'Share Personalized financial profile results on FB',
+      :points          => 200,
+      :completion_link => '/comprehensive_risk_profiler/ideal_investments'
     },
     {
-      :id     => 5,
-      :name   => 'Share Personalized financial profile results on Twitter',
-      :points => 200
+      :id              => 5,
+      :name            => 'Share Personalized financial profile results on Twitter',
+      :points          => 200,
+      :completion_link => '#'
     },
     {
-      :id     => 6,
-      :name   => 'Share Personalized financial profile results on Email',
-      :points => 500
+      :id              => 6,
+      :name            => 'Share Personalized financial profile results on Email',
+      :points          => 500,
+      :completion_link => '#'
     },
     {
-      :id     => 7,
-      :name   => 'Sign up for Trading account',
-      :points => 1000
+      :id              => 7,
+      :name            => 'Sign up for Trading account',
+      :points          => 1000,
+      :completion_link => '#'
     },
     {
-      :id     => 8,
-      :name   => 'Every sign up from shared link',
-      :points => 200
+      :id              => 8,
+      :name            => 'Every sign up from shared link',
+      :points          => 200,
+      :completion_link => '/comprehensive_risk_profiler/ideal_investments'
     },
     {
-      :id     => 9,
-      :name   => 'Every new trading account up from shared link',
-      :points => 1000
+      :id              => 9,
+      :name            => 'Every new trading account up from shared link',
+      :points          => 1000,
+      :completion_link => '#'
     }
   ])

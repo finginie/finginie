@@ -15,6 +15,8 @@ Finginie::Application.routes.draw do
 
   get 'social_network/facebook_callback' => 'social_network#facebook_callback'
 
+  resources :accumulated_points, :only => [:index]
+
   # Portfolio Tracker
   resources :portfolios do
     member do

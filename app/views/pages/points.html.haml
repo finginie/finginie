@@ -1,0 +1,63 @@
+.row
+  .span12
+    %h1 Accumulated Points
+  .span12
+    %section
+      -# TODO Points, Links, and Description should be editable at any point of time
+      %table.table
+        %thead
+          %tr
+            %th
+            %th Description
+            %th
+            %th Points
+          %tr
+            %td
+              %input{:type => "checkbox", :value => "option1"}/
+            %td
+            %td
+              = link_to 'Take Personalized financial profile quiz', main_app.edit_comprehensive_risk_profiler_path
+            %td 50
+          %tr
+            %td
+              %input{:type => "checkbox", :value => "option1"}/
+            %td
+            %td
+              = link_to 'Sign up', main_app.signin_path
+            %td 100
+          %tr
+            %td
+              %input{:type => "checkbox", :value => "option1"}/
+            %td
+            %td
+              = link_to 'Like Facebook Page', 'http://www.facebook.com/finginie'
+            %td 100
+          %tr
+            %td
+              %input{:type => "checkbox", :value => "option1"}/
+            %td
+            %td
+              = link_to 'Share Personalized financial profile results on FB', main_app.comprehensive_risk_profiler_ideal_investments_path
+            %td 200
+          %tr
+            %td
+              %input{:type => "checkbox", :value => "option1"}/
+            %td
+            %td
+              = link_to 'Sign up for Trading account', main_app.page_path('trade')
+            %td 1000
+          %tr
+            %td
+              %input{:type => "checkbox", :value => "option1"}/
+            %td
+            %td
+              Every sign up from shared link
+            %td 200
+          %tr
+            %td
+              %input{:type => "checkbox", :value => "option1"}/
+            %td
+            %td
+              Every sign up from shared link
+            %td 1000
+
