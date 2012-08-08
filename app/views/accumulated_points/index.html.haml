@@ -1,0 +1,30 @@
+.row
+  .span12
+    %h1 Accumulated Points
+  .span12
+    %section
+      %table.table
+        %thead
+          %tr
+            %th
+              = t '.completed'
+            %th
+              = t '.description'
+            %th
+              = t '.points_per_action'
+            %th
+              = t '.no_of_times'
+            %th
+              = t '.total_points'
+
+          - PointTracker::Steps().each do |step|
+            = PointTrackerDecorator.decorate(PointTracker::Find(step).new(current_user)).table_row
+
+          %tr
+            %td
+            %td
+            %td
+            %td
+              = t '.total_accumulated_points'
+            %td
+              = current_user.ebola_points

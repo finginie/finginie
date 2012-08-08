@@ -31,6 +31,8 @@
           %h1
             = link_to main_app.root_path do
               = image_tag 'logo.png'
+            %span{ :style => "float:right" }
+              = link_to "#{current_user.try(:ebola_points).to_i} points", accumulated_points_path
             %small India's Best Investment Portal for Beginners
         = render 'layouts/navigation'
         = yield :header

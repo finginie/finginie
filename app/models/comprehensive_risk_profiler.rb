@@ -35,6 +35,8 @@ class ComprehensiveRiskProfiler < ActiveRecord::Base
 
   before_save { score(true) }
 
+  after_create :add_financial_profile_quiz_step
+
   def score(recalculate = false)
     if recalculate && self.valid?
       self.score_cache = total_score
@@ -76,6 +78,10 @@ class ComprehensiveRiskProfiler < ActiveRecord::Base
   end
 
 private
+  def add_financial_profile_quiz_step
+    PointTracker::FinancialProfileQuizStep.new(user).save
+  end
+
   def age_score
     return 0 unless age
     age_value = (10 - (age - 20)/8)

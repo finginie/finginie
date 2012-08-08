@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120807112911) do
+ActiveRecord::Schema.define(:version => 20120808054700) do
 
   create_table "choices", :force => true do |t|
     t.decimal  "score"
@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(:version => 20120807112911) do
 
   create_table "completed_steps", :force => true do |t|
     t.integer "user_id"
-    t.integer "step_id"
-    t.hstore  "data"
+    t.hstore  "meta_data"
+    t.string  "step"
   end
 
   create_table "comprehensive_risk_profilers", :force => true do |t|
@@ -414,6 +414,7 @@ ActiveRecord::Schema.define(:version => 20120807112911) do
   create_table "steps", :force => true do |t|
     t.string  "name"
     t.integer "points"
+    t.string  "completion_link"
   end
 
   create_table "stock_transactions", :force => true do |t|

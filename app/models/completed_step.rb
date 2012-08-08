@@ -1,5 +1,6 @@
 class CompletedStep < ActiveRecord::Base
-  attr_accessible :data, :step_id, :user_id
+  attr_accessible :meta_data, :step, :user_id
 
-  serialize :data, ActiveRecord::Coders::Hstore
+  serialize :meta_data, ActiveRecord::Coders::Hstore
+
 end

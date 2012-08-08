@@ -1,0 +1,9 @@
+en:
+  accumulated_points:
+    index:
+      completed: 'Completed'
+      description: 'Description'
+      points_per_action: 'Points Per Action'
+      no_of_times: 'Number of times'
+      total_points: 'Total Points'
+      total_accumulated_points: 'Total Accumulated Points'
