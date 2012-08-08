@@ -28,8 +28,7 @@
       %p
         Your Portfolio
         %strong= portfolio.name
-        shall be made public. Every one will be able to see the portfolio at
-        = link_to public_portfolio_url(portfolio), public_portfolio_path(portfolio)
+        shall be made public. Every one will be able to see the portfolio.
       %p Your actual amount holding shall not be shared. Only the corresponding percentages shall be visible to a viewer.
     .modal-footer
       = link_to 'Cancel', '#', :class => %w(btn btn-danger), :data => {:dismiss => :modal}
