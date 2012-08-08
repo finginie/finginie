@@ -98,6 +98,11 @@ describe Portfolio, :redis do
       change(RealEstateTransaction, :count).by(-1)
   end
 
+  it '#make_public!' do
+    -> { portfolio.make_public! }.should change(portfolio, :is_public).from(false).to(true)
+  end
+
+private
   def create_positions_of_all_securities
     company = create :'data_provider/company', :industry_name => "FOO"
     scrip = create :'data_provider/nse_scrip', :last_traded_price => 5, :id => company.nse_code
@@ -118,4 +123,5 @@ describe Portfolio, :redis do
     real_estate = create :real_estate, :name => "Test Property", :location => "Mordor", :current_price => 600
     create :real_estate_transaction, :real_estate => real_estate, :portfolio => portfolio, :price => 500, :date => Date.civil(2011, 12, 01), :action => "buy"
   end
+
 end

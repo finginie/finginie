@@ -10,11 +10,21 @@
         %tbody
           - @portfolios.each do |portfolio|
             %tr
-              %td.name= portfolio.name
-              %td.actions= link_to 'View', details_portfolio_path(portfolio), :method => :get
-              %td.actions= link_to 'Add Transaction', add_transaction_portfolio_path(portfolio), :method => :get
-              %td.actions= link_to 'Rename', edit_portfolio_path(portfolio), :method => :get
-              %td.actions= link_to 'Delete', portfolio, :confirm => 'Are you sure you want to delete this portfolio?', :method => :delete
+              %td= link_to portfolio.name, details_portfolio_path(portfolio), :method => :get
+              %td.span3
+                = link_to add_transaction_portfolio_path(portfolio), :method => :get, :class => %w(btn) do
+                  %i.icon-plus
+                  Add Transaction
+              %td.span2= render 'share_button', :portfolio => portfolio
+              %td.span2
+                = link_to edit_portfolio_path(portfolio), :method => :get, :class => %w(btn btn-warning) do
+                  %i.icon-edit.icon-white
+                  Rename
+              %td.span2
+                = link_to portfolio, :confirm => 'Are you sure you want to delete this portfolio?', :method => :delete, :class => %w(btn btn-danger) do
+                  %i.icon-trash.icon-white
+                  Delete
+
       = link_to 'Create New Portfolio', new_portfolio_path, :method => :get, :class => "create_new_portfolio"
 
     -else

@@ -1,0 +1,76 @@
+.row.show-grid
+  .span12
+    = render 'subnav', :portfolio => resource
+.row
+  .span12
+    - [ 'stock_positions', 'mutual_fund_positions' ].each do |positions|
+      - unless resource.send(positions).empty?
+        %section{ :class => positions }
+          %h5= positions.gsub(/_positions/,'').titleize.pluralize
+          %div{ :id => "#{positions}"}
+            %table.table.table-striped.table-bordered
+              %tr
+                %th Name
+                %th Avg Cost Price
+                %th Current Price
+                %th Profit/Loss Percentage
+              %tr
+                %td
+                %td (Rs)
+                %td (Rs)
+                %td (%)
+
+              - resource.send(positions).each do |net_position|
+                %tr
+                  %td= link_to net_position.name, ( positions == "mutual_fund_positions" ? mutual_fund_path(net_position.mutual_fund.scheme_master) : stock_path(net_position.company) )
+                  %td= net_position.value
+                  %td= net_position.current_price
+                  %td= rg_colorize net_position.unrealised_profit_percentage
+
+    - unless resource.gold_transactions.empty?
+      %section{ :class => "Gold" }
+        %h5 Gold
+        #gold_positions
+          %table.table.table-striped.table-bordered
+            %tr
+              %th Name
+              %th Avg Cost price
+              %th Current Price
+              %th Profit/Loss Percentage
+            %tr
+              %td.name
+              %td (Rs)
+              %td (Rs)
+              %td (%)
+            %tr
+              %td Gold
+              %td= resource.gold_position.average_cost_price
+              %td= resource.gold_position.current_price
+              %td= rg_colorize resource.gold_position.unrealised_profit_percentage
+
+    - unless resource.fixed_deposit_positions.empty?
+      %section{ :class => "FixedDeposit" }
+        %h5 Fixed Deposits
+        %table.table.table-striped.table-bordered
+          %tr
+            %th.name Name
+            %th.center_align Deposit Date
+            %th Interest Rate
+            %th Duration
+            %th Profit/Loss Percentage
+          %tr
+            %td.name
+            %td
+            %td (%p.a)
+            %td (years)
+            %td (%)
+          - resource.fixed_deposit_positions.each do |net_position|
+            %tr
+              %td.name= net_position.name
+              %td.center_align= l net_position.first.date
+              %td= net_position.rate_of_interest
+              %td= net_position.period
+              %td= rg_colorize net_position.unrealised_profit_percentage
+
+    -if resource.empty_positions?
+      = render 'empty_transaction'

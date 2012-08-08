@@ -1,0 +1,23 @@
+- unless gold_transactions.empty?
+  %section{ :class => "GoldTransactions" }
+    %h5= "Gold Transactions"
+    %table.table.table-striped.table-bordered
+      %tr
+        %th.dates Date
+        %th.type Type
+        %th.name Name
+        %th.price Price
+        %th.comment Comments
+      %tr.right_align
+        %td
+        %td
+        %td
+        %td (Rs)
+        %td
+      - gold_transactions.each do |gold_transaction|
+        %tr
+          %td.dates= l gold_transaction.date
+          %td.type{:class => gold_transaction.action}= gold_transaction.action.to_s.titleize
+          %td.name Gold
+          %td.price= gold_transaction.price
+          %td.comment= gold_transaction.comments && gold_transaction.comments.strip.empty?  ? t("tables_not_available") : gold_transaction.comments

@@ -44,6 +44,16 @@ Finginie::Application.routes.draw do
     resources :gold_transactions
   end
 
+  # Public Portfolios
+  resources :public_portfolios, :only => [:show, :new] do
+    member do
+      post :create
+      get  :current_holdings
+      get  :profit_loss
+      get  :historical_transactions
+    end
+  end
+
   # Fixed Deposits
   resources "fixed-deposits", :controller => :fixed_deposits, :as => :fixed_deposits, :only => [:index]
 

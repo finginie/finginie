@@ -1,5 +1,6 @@
 class Portfolio < ActiveRecord::Base
   attr_accessible :name
+
   belongs_to :user
 
   has_many :stock_transactions,         :dependent => :destroy
@@ -73,5 +74,9 @@ class Portfolio < ActiveRecord::Base
 
   def fixed_deposits_value
     fixed_deposit_positions.sum(IndianCurrency.new(0),&:current_value)
+  end
+
+  def make_public!
+    update_attribute :is_public, true
   end
 end
