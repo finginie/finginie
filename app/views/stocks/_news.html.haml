@@ -1,4 +1,4 @@
-= facebook_recommendation('News')
+%h1 News
 %ul.nav.nav-tabs#news
   - DataProvider::NewsArticle.feeds.keys.each do |section_name|
     %li= link_to t(".#{section_name}"), "#news_#{section_name}", :data => {:toggle => :tab}

@@ -1,7 +1,7 @@
 .row
   - [ 'NseScrip', 'BseScrip' ].each do |klass|
     %div.span6{ :id => "#{klass[0..2].downcase}_gainers_losers" }
-      = facebook_recommendation("Trending Shares - #{klass[0..2].upcase}")
+      %h1= "Trending Shares - #{klass[0..2].upcase}"
       %ul.nav.nav-tabs
         %li= link_to t(".top_gainers"), "##{klass.to_s.underscore}_top_gainers", :data => {:toggle => :tab}
         %li= link_to t(".top_losers"), "##{klass.to_s.underscore}_top_losers", :data => {:toggle => :tab}
