@@ -65,7 +65,7 @@ module ApplicationHelper
     name = t('facebook_share.name')
     caption = t('facebook_share.caption')
     description = t('facebook_share.description')
-    facebook_callback_url = social_network_facebook_callback_path(:return_to => shared_link, :step => PointTracker::ShareFinancialProfileOnFb)
+    facebook_callback_url = social_network_facebook_callback_path(:return_to => shared_link, :step => PointTracker::ShareFinancialProfileOnFbStep)
     redirect_uri = url_with_complete_path(facebook_callback_url)
 
     {

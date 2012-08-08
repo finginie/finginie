@@ -1,4 +1,4 @@
-class UserAccount
+class SessionsHandler
   attr_reader :user, :attributes
 
   def initialize(user)
@@ -10,8 +10,7 @@ class UserAccount
 
     save_comprehensive_risk_profiler_from_session unless user.comprehensive_risk_profiler
     add_referral_step if new_referral?
-    pt_sign_up_step = PointTracker::SignUp.new(user)
-    pt_sign_up_step.add_step_for_user unless pt_sign_up_step.completed_step_for_user?
+    PointTracker::SignUpStep.new(user).save
   end
 
   private
@@ -26,7 +25,7 @@ class UserAccount
 
   def add_referral_step
     referrer = User.find attributes[:referrer_id]
-    PointTracker::Referral.new(referrer).add_step_for_user(:referred_user_id => user.id)
+    PointTracker::ReferralStep.new(referrer).save(:referred_user_id => user.id)
   end
 
   def is_quiz_skipped?

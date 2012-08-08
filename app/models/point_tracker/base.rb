@@ -6,12 +6,16 @@ module PointTracker
       @user = user
     end
 
-    def add_step_for_user(meta_data = {})
+    def valid?
+      true
+    end
+
+    def save(meta_data = {})
       CompletedStep.create({
         :step       => step_name,
         :user_id    => user.id,
         :meta_data => meta_data
-      })
+      }) if valid?
     end
 
     def completed_step_for_user?

@@ -1,5 +1,5 @@
 module PointTracker
-  class FinancialProfileQuiz < PointTracker::Base
+  class FinancialProfileQuizStep < Base
     DESCRIPTION = 'Take Personalized financial profile quiz'
     ACTION_LINK = '/comprehensive_risk_profiler/edit'
     POINTS      = 50

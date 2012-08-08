@@ -16,20 +16,10 @@
               = t '.no_of_times'
             %th
               = t '.total_points'
-          - PointTracker.steps.each do |step|
-            - step_klass = "PointTracker::#{step.to_s.classify}".constantize
-            - point_tracker_step = step_klass.new(current_user)
-            %tr
-              %td
-                = point_tracker_step.completed_step_for_user? ? 'Yes' : 'No'
-              %td
-                = link_to step_klass.const_get('DESCRIPTION'), step_klass.const_get('ACTION_LINK')
-              %td
-                = step_klass.const_get('POINTS')
-              %td
-                = point_tracker_step.number_of_times_done
-              %td
-                = point_tracker_step.total_points
+
+          - PointTracker::Steps().each do |step|
+            = PointTrackerDecorator.decorate(PointTracker::Find(step).new(current_user)).table_row
+
           %tr
             %td
             %td

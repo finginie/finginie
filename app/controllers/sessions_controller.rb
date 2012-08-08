@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   def success
-    user_account = UserAccount.new(current_user)
-    user_account.success_callback(session)
+    sessions_handler = SessionsHandler.new(current_user)
+    sessions_handler.success_callback(session)
     clear_session!(:comprehensive_risk_profiler, :referrer_id)
     @redirect_uri  = session[:user_return_to] || main_app.root_path
     flash[:notice] = special_offer?(@redirect_uri) ? I18n.t('.special_offer.message') : 'Successfully signed in'
@@ -15,6 +15,5 @@ private
 
   def clear_session!(*args)
     session[args] = nil
-    args.each {|arg| session[arg] = nil }
   end
 end

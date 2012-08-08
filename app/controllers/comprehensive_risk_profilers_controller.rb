@@ -7,10 +7,6 @@ class ComprehensiveRiskProfilersController < InheritedResources::Base
     session[:referrer_id] ||= @user.id
     if params[:post_id]
       @user.finished_share_financial_profile_on_fb_step({ :post_id => params[:post_id] })
-      # CompletedStep.create({
-      #   :user_id => @user.id,
-      #   :step_id => Step::SHARE_FINANCIAL_PROFILE_ON_FB
-      # })
       flash.now[:notice] = I18n.t('comprehensive_risk_profilers.public.facebook.success_message')
     else
       quiz_link = "<a href='/comprehensive_risk_profiler/edit'>Click Here</a>"

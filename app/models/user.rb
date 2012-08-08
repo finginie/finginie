@@ -25,10 +25,9 @@ class User < ActiveRecord::Base
   end
 
   def ebola_points
-    total_points = 0
-    PointTracker.steps.each do |step|
-      pt_obj = "PointTracker::#{step.to_s.classify}".constantize.new(self)
-      total_points += pt_obj.total_points
+    PointTracker::Steps().inject(0) do |result, step|
+      step_obj = PointTracker::Find(step).new(self)
+      result += step_obj.total_points
     end
   end
 
