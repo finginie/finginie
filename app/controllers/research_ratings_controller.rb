@@ -1,2 +1,2 @@
-class ResearchRatingsController < ApplicationController
+class ResearchRatingsController < InheritedResources::Base
 end

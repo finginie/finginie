@@ -15,6 +15,16 @@ class ResearchReport < SheetMappedRecord
 
   monetize :current_market_price, :target_price
 
+  def recommendation_value
+    case recommendation
+    when 'Buy';       ResearchRating::BUY
+    when 'Neutral';   ResearchRating::NEUTRAL
+    when 'Accumlate'; ResearchRating::Accumlate
+    when 'Sell';      ResearchRating::SELL
+    else 0
+    end
+  end
+
   def self.filter(params)
     query = params[:query].downcase if params[:query]
     reports = params.keys.include?(:nse_code) ? find_all_by_company(params) : all
@@ -22,6 +32,11 @@ class ResearchReport < SheetMappedRecord
           r.sector.downcase.include?(query) } if query
 
     reports
+  end
+
+  def self.short_term(company)
+    report_by_company = find_all_by_company({:nse_code => company})
+    report_by_company.select { |r| r.date >= Date.today.prev_month(3) }
   end
 
   def self.find_all_by_company(params)
