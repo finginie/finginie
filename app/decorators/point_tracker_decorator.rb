@@ -1,8 +1,8 @@
 class PointTrackerDecorator < ApplicationDecorator
-  decorates 'point_tracker/financial_profile_quiz'
-  decorates 'point_tracker/referral'
-  decorates 'point_tracker/share_financial_profile_on_fb'
-  decorates 'point_tracker/sign_up'
+  decorates 'point_tracker/financial_profile_quiz_step'
+  decorates 'point_tracker/referral_step'
+  decorates 'point_tracker/share_financial_profile_on_fb_step'
+  decorates 'point_tracker/sign_up_step'
 
   def table_row
     h.content_tag(:tr, :class => 'a') do
