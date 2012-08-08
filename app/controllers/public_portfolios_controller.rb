@@ -19,4 +19,7 @@ private
     @public_portfolio.make_public!
   end
 
+  def destroy_resource(object)
+    object.make_private!
+  end
 end

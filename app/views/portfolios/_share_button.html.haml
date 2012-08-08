@@ -1,18 +1,37 @@
-= link_to new_public_portfolio_path(:portfolio => portfolio), :class => %w(btn btn-success), :data => {:toggle => :modal, :target => "#share-#{portfolio.id}"} do
-  %i.icon-globe.icon-white
-  Share
-.modal.fade.hide{:id => "share-#{portfolio.id}"}
-  .modal-header
-    %button.close{:type => :button, :data => {:dismiss => :modal}} x
-    %h1 Share #{portfolio.name}
-  .modal-body
-    %p
-      Your Portfolio
-      %strong= portfolio.name
-      shall be made public. Every one will be able to see the portfolio at
-      = link_to public_portfolio_url(portfolio), public_portfolio_path(portfolio)
-    %p Your actual amount holding shall not be shared. Only the corresponding percentages shall be visible to a viewer.
-  .modal-footer
-    = link_to 'Cancel', '#', :class => %w(btn btn-danger), :data => {:dismiss => :modal}
-    = link_to 'Confirm', public_portfolio_path(portfolio), :method => :post, :class => %w(btn btn-success)   # TODO: Make the link post to share portfolio page
+- if portfolio.is_public?
+  = link_to public_portfolio_path(portfolio), :class => %w(btn btn-danger), :method => :delete, :data => {:toggle => :modal, :target => "#unshare-#{portfolio.id}"} do
+    %i.icon-globe.icon-white
+    Unshare
+  .modal.fade.hide{:id => "unshare-#{portfolio.id}"}
+    .modal-header
+      %button.close{:type => :button, :data => {:dismiss => :modal}} x
+      %h1 Unshare #{portfolio.name}
+    .modal-body
+      %p
+        Your Portfolio
+        %strong= portfolio.name
+        shall be made private. No one will be able to see the portfolio anymore
+      %p You can make it public again anytime if you change your mind.
+    .modal-footer
+      = link_to 'Cancel', '#', :class => %w(btn), :data => {:dismiss => :modal}
+      = link_to 'Confirm', public_portfolio_path(portfolio), :method => :delete, :class => %w(btn btn-danger)   # TODO: Make the link post to share portfolio page
+
+- else
+  = link_to new_public_portfolio_path(portfolio), :class => %w(btn btn-success), :data => {:toggle => :modal, :target => "#share-#{portfolio.id}"} do
+    %i.icon-globe.icon-white
+    Share
+  .modal.fade.hide{:id => "share-#{portfolio.id}"}
+    .modal-header
+      %button.close{:type => :button, :data => {:dismiss => :modal}} x
+      %h1 Share #{portfolio.name}
+    .modal-body
+      %p
+        Your Portfolio
+        %strong= portfolio.name
+        shall be made public. Every one will be able to see the portfolio at
+        = link_to public_portfolio_url(portfolio), public_portfolio_path(portfolio)
+      %p Your actual amount holding shall not be shared. Only the corresponding percentages shall be visible to a viewer.
+    .modal-footer
+      = link_to 'Cancel', '#', :class => %w(btn btn-danger), :data => {:dismiss => :modal}
+      = link_to 'Confirm', public_portfolio_path(portfolio), :method => :post, :class => %w(btn btn-success)   # TODO: Make the link post to share portfolio page
 

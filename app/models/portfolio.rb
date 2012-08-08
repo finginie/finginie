@@ -79,4 +79,8 @@ class Portfolio < ActiveRecord::Base
   def make_public!
     update_attribute :is_public, true
   end
+
+  def make_private!
+    update_attribute :is_public, false
+  end
 end
