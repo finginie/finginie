@@ -1,5 +1,5 @@
 - if portfolio.is_public?
-  = link_to public_portfolio_path(portfolio), :class => %w(btn btn-danger), :method => :delete, :data => {:toggle => :modal, :target => "#unshare-#{portfolio.id}"} do
+  = link_to public_portfolio_path(portfolio), :class => %w(btn btn-danger), :data => {:toggle => :modal, :target => "#unshare-#{portfolio.id}"} do
     %i.icon-globe.icon-white
     Unshare
   .modal.fade.hide{:id => "unshare-#{portfolio.id}"}

@@ -47,7 +47,7 @@ Finginie::Application.routes.draw do
   end
 
   # Public Portfolios
-  resources :public_portfolios, :only => [:show, :new] do
+  resources :public_portfolios, :only => [:show, :new, :destroy] do
     member do
       post :create
       get  :current_holdings

@@ -1,6 +1,7 @@
 %ul.nav.nav-pills
   %li.btn-large= portfolio.name
-  %li= link_to '< Back to my portfolio', portfolio, :class => 'btn'
+  - if portfolio.user == current_user
+    %li= link_to '< Back to my portfolio', portfolio, :class => 'btn'
   %li.btn-large.pull-right= l Time.now, :format => :date_time_IST
 .subnav.show-grid
   %ul.nav.nav-pills

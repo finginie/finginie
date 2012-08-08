@@ -28,7 +28,7 @@ class Ability
       can :manage, Portfolio, :user_id => user.id
       can :manage, User, :id => user.id
       can :read, User
-      can :create, :public_portfolio
+      can [:create, :destroy], :public_portfolio
       can [:current_holdings, :profit_loss, :historical_transactions], :public_portfolio
       can :manage, TradeAccount, :user_id => user.id
       cannot [:update, :destroy], TradeAccount, :issued => true

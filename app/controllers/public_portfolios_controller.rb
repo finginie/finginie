@@ -1,6 +1,6 @@
 class PublicPortfoliosController < InheritedResources::Base
   before_filter :create_public_portfolio, :only => :create
-  actions :show, :create
+  actions :show, :create, :destroy
   defaults :resource_class => Portfolio
   custom_actions :resource => [ :current_holdings, :profit_loss, :historical_transactions]
   authorize_resource :class => false
