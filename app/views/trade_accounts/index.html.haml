@@ -1,0 +1,29 @@
+%h1 Listing trade_accounts
+
+%table
+  %tr
+    %th User
+    %th Name
+    %th Phone number
+    %th Address
+    %th City
+    %th Special requirements
+    %th
+    %th
+    %th
+
+  - @trade_accounts.each do |trade_account|
+    %tr
+      %td= trade_account.user
+      %td= trade_account.name
+      %td= trade_account.phone_number
+      %td= trade_account.address
+      %td= trade_account.city
+      %td= trade_account.special_requirements
+      %td= link_to 'Show', trade_account
+      %td= link_to 'Edit', edit_trade_account_path(trade_account)
+      %td= link_to 'Destroy', trade_account, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Trade account', new_trade_account_path

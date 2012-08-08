@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_one :comprehensive_risk_profiler, :dependent => :destroy
   has_many :completed_steps
 
+  has_one :trade_account
+
   def merge_comprehensive_risk_profiler(attributes)
     return self if comprehensive_risk_profiler.persisted?
     attributes[:score_cache] ? comprehensive_risk_profiler.update_attribute(:score_cache, attributes[:score_cache]) : create_comprehensive_risk_profiler(attributes)
