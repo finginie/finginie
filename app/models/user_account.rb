@@ -5,27 +5,16 @@ class UserAccount
     @user = user
   end
 
-  def success_callback(session_hash) #Is there a better name we can give for this method?
+  def success_callback(session_hash)
     @attributes = session_hash
 
-    create_comprehensive_risk_profiler_if_not_persisted
-    create_referrer_completed_step_if_referred
-    create_sign_up_completed_step
+    save_comprehensive_risk_profiler_from_session unless user.comprehensive_risk_profiler
+    add_referral_step if new_referral?
+    pt_sign_up_step = PointTracker::SignUp.new(user)
+    pt_sign_up_step.add_step_for_user unless pt_sign_up_step.completed_step_for_user?
   end
 
   private
-  def create_referrer_completed_step_if_referred
-    # session of referrar_id is set and user is not already referred by some other user, this conditional should be moved to a method
-    if attributes[:referrer_id] && !user.already_referred?
-      referrer = User.find attributes[:referrer_id]
-      referrer.finished_referral_step({ :referred_user_id => user.id })
-    end
-  end
-
-  def create_comprehensive_risk_profiler_if_not_persisted
-    save_comprehensive_risk_profiler_from_session if user.has_no_comprehensive_risk_profiler?
-  end
-
   def save_comprehensive_risk_profiler_from_session
     if is_quiz_skipped?
       comprehensive_risk_profiler = user.build_comprehensive_risk_profiler(:score_cache => attributes[:score_cache])
@@ -35,11 +24,16 @@ class UserAccount
     end
   end
 
-  def create_sign_up_completed_step
-    user.finished_sign_up_step unless user.completed_sign_up_step?
+  def add_referral_step
+    referrer = User.find attributes[:referrer_id]
+    PointTracker::Referral.new(referrer).add_step_for_user(:referred_user_id => user.id)
   end
 
   def is_quiz_skipped?
     attributes[:score_cache].present?
+  end
+
+  def new_referral?
+    attributes[:referrer_id] && !user.already_referred?
   end
 end

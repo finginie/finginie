@@ -1,8 +1,8 @@
 class SocialNetworkController < ApplicationController
   def facebook_callback
     if published_on_fb_wall?
-      post = { :post_id => params[:post_id] }
-      CompletedStep.create(:step_id => params[:step], :user_id => current_user.id, :data => post )
+      step_klass = params[:step].constantize
+      step_klass.new(current_user).add_step_for_user(:post_id => params[:post_id])
     end
 
     redirect_to params[:return_to]

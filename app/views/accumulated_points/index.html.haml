@@ -16,19 +16,20 @@
               = t '.no_of_times'
             %th
               = t '.total_points'
-          - Step.ebola_steps.each do |step_label|
-            - step = Step.find(Step.const_get(step_label.upcase))
+          - PointTracker.steps.each do |step|
+            - step_klass = "PointTracker::#{step.to_s.classify}".constantize
+            - point_tracker_step = step_klass.new(current_user)
             %tr
               %td
-                = current_user.send("completed_#{step_label}_step?") ? 'Yes' : 'No'
+                = point_tracker_step.completed_step_for_user? ? 'Yes' : 'No'
               %td
-                = link_to step.name, step.completion_link
+                = link_to step_klass.const_get('DESCRIPTION'), step_klass.const_get('ACTION_LINK')
               %td
-                = step.points
+                = step_klass.const_get('POINTS')
               %td
-                = current_user.send("number_of_times_finished_#{step_label}_step")
+                = point_tracker_step.number_of_times_done
               %td
-                = step.points * current_user.send("number_of_times_finished_#{step_label}_step")
+                = point_tracker_step.total_points
           %tr
             %td
             %td
@@ -37,3 +38,6 @@
               = t '.total_accumulated_points'
             %td
               = current_user.ebola_points
+
+%a{ :href => 'mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.website.com.', :title => 'Share by Email'}
+  asdfasdf
