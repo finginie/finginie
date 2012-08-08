@@ -1,9 +1,8 @@
 %section.row
   .span12
-    .page-header
-      = facebook_recommendation("Our Stock Picks <small>#{t '.hint'}")
+    = facebook_recommendation("Our Stock Picks <small>#{t '.hint'}")
 %section.row
-  %section.span6
+  .span6
     %h1 Frequently asked questions
     %ol
       %li
@@ -36,102 +35,156 @@
         %p
           %b Why don’t I see many “sell” recommendations?
         %p While researching a company, if we find that its stock is not very attractive, we move on to the next company. This way, we don’t waste our time on stocks that we won’t recommend. We consider placing “Sell” ratings on stocks only if we previously covered those stocks with “Buy” or “Hold” ratings.
+  .span6
+    %ul.thumbnails
+      %li.span3
+        =link_to main_app.page_path('banking-sector') do
+          .thumbnail
+            %table.table.table-striped
+              %tr
+                %th.center_align{:colspan => 2} HDFC Bank
+              %tr
+                %td Short term rating
+                %td Hold
+              %tr
+                %td Long term rating
+                %td Hold
+              %tr
+                %td Long term target price
+                %td 651
+              %tr
+                %td Current Market Price
+                %td 542
 
-  %ul.thumbnails
-    %li.span3
-      =link_to main_app.page_path('banking-sector') do
-        .thumbnail
-          %table.table.table-striped
-            %tr
-              %th.center_align{:colspan => 2} HDFC Bank
-            %tr
-              %td Short term rating
-              %td Hold
-            %tr
-              %td Long term rating
-              %td Hold
-            %tr
-              %td Long term target price
-              %td 651
-            %tr
-              %td Current Market Price
-              %td 542
+      %li.span3
+        =link_to main_app.page_path('banking-sector') do
+          .thumbnail
+            %table.table.table-striped
+              %tr
+                %th.center_align{:colspan => 2} SBI
+              %tr
+                %td Short term rating
+                %td Sell
+              %tr
+                %td Long term rating
+                %td Sell
+              %tr
+                %td Long term target price
+                %td 1,789
+              %tr
+                %td Current Market Price
+                %td 2,177
 
-    %li.span3
-      =link_to main_app.page_path('banking-sector') do
-        .thumbnail
-          %table.table.table-striped
-            %tr
-              %th.center_align{:colspan => 2} SBI
-            %tr
-              %td Short term rating
-              %td Sell
-            %tr
-              %td Long term rating
-              %td Sell
-            %tr
-              %td Long term target price
-              %td 1,789
-            %tr
-              %td Current Market Price
-              %td 2,177
+      %li.span3
+        =link_to  main_app.page_path('banking-sector') do
+          .thumbnail
+            %table.table.table-striped
+              %tr
+                %th.center_align{:colspan => 2} ICICI Bank
+              %tr
+                %td Short term rating
+                %td Hold
+              %tr
+                %td Long term rating
+                %td Hold
+              %tr
+                %td Long term target price
+                %td 1,211
+              %tr
+                %td Current Market Price
+                %td 851
 
-    %li.span3
-      =link_to  main_app.page_path('banking-sector') do
-        .thumbnail
-          %table.table.table-striped
-            %tr
-              %th.center_align{:colspan => 2} ICICI Bank
-            %tr
-              %td Short term rating
-              %td Hold
-            %tr
-              %td Long term rating
-              %td Hold
-            %tr
-              %td Long term target price
-              %td 1,211
-            %tr
-              %td Current Market Price
-              %td 851
+      %li.span3
+        =link_to main_app.page_path('banking-sector') do
+          .thumbnail
+            %table.table.table-striped
+              %tr
+                %th.center_align{:colspan => 2} Axis Bank
+              %tr
+                %td Short term rating
+                %td Hold
+              %tr
+                %td Long term rating
+                %td Buy
+              %tr
+                %td Long term target price
+                %td 1,578
+              %tr
+                %td Current Market Price
+                %td 1,026
 
-    %li.span3
-      =link_to main_app.page_path('banking-sector') do
-        .thumbnail
-          %table.table.table-striped
-            %tr
-              %th.center_align{:colspan => 2} Axis Bank
-            %tr
-              %td Short term rating
-              %td Hold
-            %tr
-              %td Long term rating
-              %td Buy
-            %tr
-              %td Long term target price
-              %td 1,578
-            %tr
-              %td Current Market Price
-              %td 1,026
-
-    %li.span3
-      =link_to main_app.page_path('banking-sector') do
-        .thumbnail
-          %table.table.table-striped
-            %tr
-              %th.center_align{:colspan => 2} Yes Bank
-            %tr
-              %td Short term rating
-              %td Hold
-            %tr
-              %td Long term rating
-              %td Buy
-            %tr
-              %td Long term target price
-              %td 447
-            %tr
-              %td Current Market Price
-              %td 342
+      %li.span3
+        =link_to main_app.page_path('banking-sector') do
+          .thumbnail
+            %table.table.table-striped
+              %tr
+                %th.center_align{:colspan => 2} Yes Bank
+              %tr
+                %td Short term rating
+                %td Hold
+              %tr
+                %td Long term rating
+                %td Buy
+              %tr
+                %td Long term target price
+                %td 447
+              %tr
+                %td Current Market Price
+                %td 342
+      %li.span3
+        =link_to main_app.page_path('it-sector') do
+          .thumbnail
+            %table.table.table-striped
+              %tr
+                %th.center_align{:colspan => 2} TCS
+              %tr
+                %td Short term rating
+                %td Buy
+              %tr
+                %td Long term rating
+                %td Buy
+              %tr
+                %td Long term target price
+                %td 1515
+              %tr
+                %td Current Market Price
+                %td 1249
+      %li.span3
+        =link_to main_app.page_path('it-sector') do
+          .thumbnail
+            %table.table.table-striped
+              %tr
+                %th.center_align{:colspan => 2} Wipro
+              %tr
+                %td Short term rating
+                %td Sell
+              %tr
+                %td Long term rating
+                %td Hold
+              %tr
+                %td Long term target price
+                %td 375
+              %tr
+                %td Current Market Price
+                %td 350
+      %li.span3
+        =link_to main_app.page_path('it-sector') do
+          .thumbnail
+            %table.table.table-striped
+              %tr
+                %th.center_align{:colspan => 2} Infosys
+              %tr
+                %td Short term rating
+                %td Hold
+              %tr
+                %td Long term rating
+                %td Accumulate
+              %tr
+                %td Long term target price
+                %td 2490
+              %tr
+                %td Current Market Price
+                %td 2283
 %section.row
   .span12
     %h1 Caution
