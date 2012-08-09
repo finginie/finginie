@@ -1,0 +1,83 @@
+.row.show-grid
+  .span2
+    = image_tag 'profile.png'
+    %h2.align-center Aditya Rallabhandi
+  .span7
+    .row.show-gird
+      %a.btn.btn-primary.pull-right{:href => "#"} Import Contacts
+      .input-append
+        = text_field_tag :query, nil, :placeholder => 'Search Friends', :class => 'search-query input-xxlarge'
+        = button_tag :class => 'btn' do
+          %i.icon-search
+    .row.show-grid
+      -# Todo: Call Ideal Asset Allocation Chart here.
+      %h5 Risk Profile & Ideal Asset Allocation
+      = image_tag 'Suggested-Investments.gif'
+    .row.show-grid
+      -# Todo: All Portfolios of user should display here.
+      %h5 My Portfolios Performace
+      %table.table
+        %tr
+          %th Portfolio Name
+          %th Current Value
+          %th Today's Change %
+        %tr
+          %td.span5
+            = link_to 'Julayi'
+          %td 1234.12
+          %td 1.02
+        %tr
+          %td.span5
+            = link_to 'Julayi'
+          %td 1234.12
+          %td 1.02
+    .row.show-grid
+      -# Todo: All Portfolios of user should display here.
+      %h5 Top Performing Public Portfolios
+  .span3
+    %ul.thumbnails
+      %li.span3
+        .well
+          %p.header
+            News
+            %small.pull-right
+              = link_to 'See all'
+          %ul
+            %li=link_to "Corporations or governments issue bonds when they need capital."
+            %li=link_to "In return the bond holder receives interest and principal payments at pre-specified dates"
+            %li=link_to "Investors can directly deal with the bond issuer or on the secondary market through a broker."
+            %li=link_to "Be aware of credit risk, interest rate risk and liquidity risk while investing in bonds."
+      %li.span3.articles
+        .well
+          %p.header
+            Stock Recommendations
+            %small.pull-right
+              = link_to 'See all'
+          %ul
+            %li
+              =link_to "Reliance Industries"
+              %span.pull-right Hold
+            %li
+              =link_to "Tata consultant Services"
+              %span.pull-right Hold
+            %li
+              =link_to "Infosys Public limited"
+              %span.pull-right Hold
+            %li
+              =link_to "Reliance Industries"
+              %span.pull-right Hold
+            %li
+              =link_to "Tata consultant Services"
+              %span.pull-right Hold
+            %li
+              =link_to "Infosys Public limited"
+              %span.pull-right Hold
+            %li
+              =link_to "Reliance Industries"
+              %span.pull-right Hold
+            %li
+              =link_to "Tata consultant Services"
+              %span.pull-right Hold
+            %li
+              =link_to "Infosys Public limited"
+              %span.pull-right Hold
