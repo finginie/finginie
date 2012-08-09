@@ -1,0 +1,17 @@
+.row
+  .span8
+    %h1 Consolidated Research Ratings
+    %section
+      %p
+        The table below shows a consolidated recommendation for 50 stocks on the NSE Index 'Nifty' based on research reports published by brokerages across India.
+    %section
+      %table.table.table.table-striped.table-bordered
+        %tr
+          %th.span5 Stock Name
+          %th.span2 Rating(out of 5)
+          %th.span2 Recommendation
+        - collection.each do |stock|
+          %tr
+            %td= link_to stock.name, stock_path(stock)
+            %td= stock.rating
+            %td= stock.recommendation
