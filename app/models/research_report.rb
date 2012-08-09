@@ -1,6 +1,11 @@
 class ResearchReport < SheetMappedRecord
   include CurrencyFormatter
 
+  SELL       = 1
+  NEUTRAL    = 2
+  ACCUMULATE = 3
+  BUY        = 4
+
   attribute :date,                 type: Date
   attribute :source,               type: String
   attribute :name,                 type: String
@@ -17,10 +22,10 @@ class ResearchReport < SheetMappedRecord
 
   def recommendation_value
     case recommendation
-    when 'Buy';       ResearchRating::BUY
-    when 'Neutral';   ResearchRating::NEUTRAL
-    when 'Accumlate'; ResearchRating::Accumlate
-    when 'Sell';      ResearchRating::SELL
+    when 'Buy';       BUY
+    when 'Neutral';   NEUTRAL
+    when 'Accumlate'; Accumlate
+    when 'Sell';      SELL
     else 0
     end
   end
