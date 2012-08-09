@@ -23,7 +23,7 @@
               - resource.send(positions).each do |net_position|
                 %tr
                   %td= link_to net_position.name, ( positions == "mutual_fund_positions" ? mutual_fund_path(net_position.mutual_fund.scheme_master) : stock_path(net_position.company) )
-                  %td= net_position.value
+                  %td= net_position.average_cost_price
                   %td= net_position.current_price
                   %td= rg_colorize net_position.unrealised_profit_percentage
 
