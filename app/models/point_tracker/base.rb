@@ -19,17 +19,11 @@ module PointTracker
     end
 
     def completed_step_for_user?
-      CompletedStep.where({
-        :step    => step_name,
-        :user_id => user.id
-      }).present?
+      completed_steps.present?
     end
 
     def number_of_times_done
-      CompletedStep.where({
-        :step    => step_name,
-        :user_id => user.id
-      }).count
+      completed_steps.count
     end
 
     def total_points
@@ -37,6 +31,10 @@ module PointTracker
     end
 
     private
+    def completed_steps
+      user.completed_steps.where(:step => step_name)
+    end
+
     def step_name
       self.class.name.split("::").last.underscore
     end
