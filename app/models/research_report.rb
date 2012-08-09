@@ -6,6 +6,13 @@ class ResearchReport < SheetMappedRecord
   ACCUMULATE = 3
   BUY        = 4
 
+  RECOMMENDATION = {
+    SELL       => 'Sell',
+    NEUTRAL    => 'Neutral',
+    ACCUMULATE => 'Accumulate',
+    BUY        => 'Buy'
+  }
+
   attribute :date,                 type: Date
   attribute :source,               type: String
   attribute :name,                 type: String
@@ -21,13 +28,7 @@ class ResearchReport < SheetMappedRecord
   monetize :current_market_price, :target_price
 
   def recommendation_value
-    case recommendation
-    when 'Buy';       BUY
-    when 'Neutral';   NEUTRAL
-    when 'Accumlate'; Accumlate
-    when 'Sell';      SELL
-    else 0
-    end
+    RECOMMENDATION.select {|k,v| v == recommendation }.keys.first || 0
   end
 
   def self.filter(params)

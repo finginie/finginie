@@ -1,7 +1,7 @@
 class CompanyDecorator < ApplicationDecorator
   decorates :'data_provider/company'
 
-  FIELDS_TO_ROUND = [ 'eps', 'pe', 'price_to_book_value', 'book_value', 'face_value', 'dividend_yield' ]
+  FIELDS_TO_ROUND = ['eps', 'pe', 'price_to_book_value', 'book_value', 'face_value', 'dividend_yield']
 
   FIELDS_TO_ROUND.each do |key|                                                              ##
     define_method(key.to_sym) do                                                             # def key
@@ -10,11 +10,11 @@ class CompanyDecorator < ApplicationDecorator
   end                                                                                        ##
 
   def recommendation
-    model.recommendation ? model.recommendation : 'N/A'
+    model.recommendation ? model.recommendation : h.t('not_available')
   end
 
   def rating
-    model.rating == 0 ? 'N/A' : model.rating
+    model.rating == 0 ? h.t('not_available') : model.rating
   end
 
   def market_capitalization
