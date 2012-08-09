@@ -17,8 +17,8 @@ class App extends Spine.Controller
 
     # Initialize controllers:
     @append(@mutual_fund_gainers = new App.MutualFundGainers)
+    @append(@mutual_fund_losers  = new App.MutualFundLosers)
     #  ...
-    App.MutualFundGainer.one 'refresh', ->
-      Spine.Route.setup()
+    Spine.Route.setup()
 
 window.App = App
