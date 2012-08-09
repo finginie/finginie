@@ -2,6 +2,7 @@ class ResearchRatingsController < InheritedResources::Base
   actions :index
 
   def collection
-    DataProvider::Company.nifty.sort_by(&:rating).reverse
+    @company = DataProvider::Company.nifty.sort_by(&:rating).reverse
+    CompanyDecorator.decorate(@company)
   end
 end
