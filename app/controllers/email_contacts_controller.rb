@@ -1,29 +1,37 @@
-class EmailContactsController
+class EmailContactsController < ApplicationController
   SUPPORTED_EMAIL_SERVERS = [:gmail, :yahoo, :hotmail]
   class UnSupportedEmailServer < Exception; end
 
-  before_filter :validate_email_server
+  # before_filter :validate_email_server
 
-  def index
-    # "Contacts::#{email_server.classify}"
-    # Contacts::Gmail.new(login, password).contacts
-    # Contacts.new(params[]).contacts
+  respond_to :json
+
+  def import
+    validate_email_server!
     contacts = Contacts.new(*@input).contacts
-    msg = 'success'
+    contacts.map!{ |contact| ["<input type='checkbox' class='a' name='vehicle' value='Bike' />"] + contact }
+    result = {
+      :aaData => contacts
+    }
+
+    respond_to do |format|
+      format.json do
+        render :json => result.to_json
+      end
+    end
+
   rescue Contacts::AuthenticationError => error_msg
-    msg = error_msg
+    render :status => 401, :json => error_msg.message
   rescue UnSupportedEmailServer => error_msg
-    msg = error_msg
-  ensure
-    #render msg
+    render :status => 403, :json => error_msg.message
   end
 
   private
-  def validate_email_server
-    login = params[:login]
+  def validate_email_server!
+    email = params[:login]
     password = params[:password]
-    email_server = (@login[/\@(.*?)\./,1]).to_sym
-    raise UnSupportedEmailServer, 'this is wrong' unless SUPPORTED_EMAIL_SERVERS.include?(@email_server)
-    @input = [email_server, login, password]
+    email_server = (email[/\@(.*?)\./,1]).to_sym if email.present?
+    raise UnSupportedEmailServer, 'Email type is not supported' unless SUPPORTED_EMAIL_SERVERS.include?(email_server)
+    @input = [email_server, email, password]
   end
 end

@@ -19,6 +19,8 @@ Finginie::Application.routes.draw do
   get 'social_network/twitter_callback' => 'social_network#twitter_callback'
 
   resources :accumulated_points, :only => [:index]
+  # resources :email_contacts, :only => [:index]
+  post 'import_contacts' => 'email_contacts#import'
 
   # Portfolio Tracker
   resources :portfolios do
