@@ -1,0 +1,66 @@
+#myModal.modal.hide
+  .modal-header
+    %button.close{"data-dismiss" => "modal", :type => "button"} ×
+    %h4
+      = image_tag 'Mail.png'
+      Choose contacts
+  .modal-body
+    %table.table#example
+      %tr
+        %td
+          %input{:type => "checkbox", :value => "option1"}/
+        %td Kalyan
+        %td kalyan@gmail.com
+      %tr
+        %td
+          %input{:type => "checkbox", :value => "option1"}/
+        %td Kalyan
+        %td kalyan@gmail.com
+      %tr
+        %td
+          %input{:type => "checkbox", :value => "option1"}/
+        %td Kalyan
+        %td kalyan@gmail.com
+      %tr
+        %td
+          %input{:type => "checkbox", :value => "option1"}/
+        %td Kalyan
+        %td kalyan@gmail.com
+      %tr
+        %td
+          %input{:type => "checkbox", :value => "option1"}/
+        %td Kalyan
+        %td kalyan@gmail.com
+      %tr
+        %td
+          %input{:type => "checkbox", :value => "option1"}/
+        %td Kalyan
+        %td kalyan@gmail.com
+      %tr
+        %td
+          %input{:type => "checkbox", :value => "option1"}/
+        %td Kalyan
+        %td kalyan@gmail.com
+      %tr
+        %td
+          %input{:type => "checkbox", :value => "option1"}/
+        %td Kalyan
+        %td kalyan@gmail.com
+  .modal-footer
+    %a.btn.btn-primary{"data-dismiss" => "modal", :href => "#"} Invite 0 Friends
+    %a.btn{:href => "#"} Cancel
+
+
+
+%a.btn{"data-toggle" => "modal", :href => "#myModal"} Launch Modal
+
+:javascript
+   $(document).ready(function() {
+      $('#example').dataTable( {
+          "bScrollInfinite": true,
+          "bScrollCollapse": true,
+          "sScrollY": "200px",
+          "bSort": false,
+          "aoColumns": [ null, null, null]
+      } );
+    } );
