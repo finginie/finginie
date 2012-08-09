@@ -23,6 +23,7 @@
 #= require facebook
 #= require analytics
 #
+#= require app
 #= require_self
 #= require_tree .
 

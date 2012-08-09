@@ -15,6 +15,12 @@ class SchemeDecorator < ApplicationDecorator
     end                                                   # end
   end                                                     ##
 
+  [:percentage_change, :prev1_month_percent, :prev_year_percent, :prev3_year_percent].each do |attr|
+    define_method "#{attr}" do
+      h.rg_colorize model.send(attr)
+    end
+  end
+
   def comparative_returns_data_table
     [ ['Time Frame', 'Scheme Returns',        'Category Returns'  ],
       ['1 week',      prev1_week_percent,      one_week_return    ],
@@ -31,4 +37,10 @@ class SchemeDecorator < ApplicationDecorator
     model.portfolio_holdings.take(10).map { |p| [ p["InvestedCompanyName"] , p["Percentage"].to_f.round(2) ] } if model.portfolio_holdings
   end
 
-end
+  def as_json(options={})
+    model.as_json.update( "percentage_change"   => percentage_change,
+                          "prev1_month_percent" => prev1_month_percent,
+                          "prev_year_percent"   => prev_year_percent,
+                          "prev3_year_percent"  => prev3_year_percent)
+  end
+ end

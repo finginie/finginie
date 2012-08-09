@@ -15,6 +15,8 @@ group :assets do
   gem 'uglifier'
   gem 'jquery-ui-rails'
   gem 'twitter-bootstrap-rails'
+  gem 'spine-rails'
+    gem 'eco'
 end
 
 gem 'active_attr',                         :github => 'sankaranarayanan/active_attr'

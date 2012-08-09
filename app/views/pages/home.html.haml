@@ -88,76 +88,10 @@
             %span.red -2.03
           %td
             %span.green 0.0
-
+:javascript
+  jQuery(function(){
+      new App.MutualFundGainers({el: $("#mf_gainers")});
+  });
 .row.show-grid
   .span8
-    %h1 Top Equity Mutual Funds
-    %table.table.table-striped.table-bordered{"data-role" => "top_performers"}
-      %tbody
-        %tr
-          %th Name
-          %th NAV
-          %th % Change
-          %th 1m return (%)
-          %th 1y return (%)
-          %th 3y return (%)
-        %tr.odd
-          %td
-            %a{:href => "http://finginie.herokuapp.com/mutual_funds/dws-hybrid-fixed-term-fund-series-6-growth"} DWS Hybrid Fixed Term Fund - Series 6-Growth
-          %td 10.77
-          %td
-            %span.green 6.15
-          %td
-            %span.green 5.45
-          %td
-            %span.green 0.00
-          %td
-            %span.green 0.00
-        %tr.even
-          %td
-            %a{:href => "http://finginie.herokuapp.com/mutual_funds/dws-hybrid-fixed-term-fund-series-6-dividend"} DWS Hybrid Fixed Term Fund - Series 6-Dividend
-          %td 10.77
-          %td
-            %span.green 6.15
-          %td
-            %span.green 5.45
-          %td
-            %span.green 0.00
-          %td
-            %span.green 0.00
-        %tr.odd
-          %td
-            %a{:href => "http://finginie.herokuapp.com/mutual_funds/dsp-blackrock-dual-advantage-fund-series-2-36m-growth"} DSP BlackRock Dual Advantage Fund - Series 2- 36M-Growth
-          %td 10.36
-          %td
-            %span.green 4.75
-          %td
-            %span.green 3.88
-          %td
-            %span.green 0.00
-          %td
-            %span.green 0.00
-        %tr.even
-          %td
-            %a{:href => "http://finginie.herokuapp.com/mutual_funds/dsp-blackrock-dual-advantage-fund-series-2-36m-dividend"} DSP BlackRock Dual Advantage Fund - Series 2- 36M-Dividend
-          %td 10.36
-          %td
-            %span.green 4.75
-          %td
-            %span.green 3.88
-          %td
-            %span.green 0.00
-          %td
-            %span.green 0.00
-        %tr.odd
-          %td
-            %a{:href => "http://finginie.herokuapp.com/mutual_funds/dsp-blackrock-dual-advantage-fund-series-i-36m-growth"} DSP BlackRock Dual Advantage Fund - Series I - 36M-Growth
-          %td 10.27
-          %td
-            %span.green 4.74
-          %td
-            %span.green 3.79
-          %td
-            %span.green 0.00
-          %td
-            %span.green 0.00
+    #mf_gainers
