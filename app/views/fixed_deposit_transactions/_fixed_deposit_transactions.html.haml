@@ -3,14 +3,14 @@
     %h5= "Fixed Deposit Transactions"
     %table.table.table-striped.table-bordered
       %tr
-        %th.dates Date
-        %th.type Type
-        %th.name Name
-        %th.duration Duration
-        %th.rate Interest Rate
-        %th.amount Amount
-        %th.comment Comments
-      %tr.right_align
+        %th.span2 Date
+        %th.span1 Type
+        %th.span3 Name
+        %th.span1 Duration
+        %th.span2 Interest Rate
+        %th.span2 Amount
+        %th.span1 Comments
+      %tr
         %td
         %td
         %td
@@ -20,10 +20,10 @@
         %td
       - fixed_deposit_transactions.each do |transaction|
         %tr
-          %td.dates= l transaction.date
-          %td.type{:class => transaction.action}= transaction.display_action
-          %td.name= transaction.name
-          %td.duration= transaction.period
-          %td.rate=   number_with_precision transaction.rate_of_interest
-          %td.amount= transaction.invested_amount.abs
-          %td.comment= transaction.comments && transaction.comments.strip.empty?  ? t("tables_not_available") : transaction.comments
+          %td= l transaction.date
+          %td{:class => transaction.action}= transaction.display_action
+          %td= transaction.name
+          %td= transaction.period
+          %td=   number_with_precision transaction.rate_of_interest
+          %td= transaction.invested_amount.abs
+          %td= transaction.comments && transaction.comments.strip.empty?  ? t("tables_not_available") : transaction.comments

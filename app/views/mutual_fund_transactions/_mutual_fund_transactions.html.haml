@@ -3,14 +3,14 @@
     %h5= "Mutual Fund Transactions"
     %table.table.table-striped.table-bordered
       %tr
-        %th.dates Date
-        %th.type Type
-        %th.name Name
-        %th.quantity Quantity
-        %th.price Price
-        %th.amount Amount
-        %th.comment Comments
-      %tr.right_align
+        %th.span2 Date
+        %th.span1 Type
+        %th.span3 Name
+        %th.span1 Quantity
+        %th.span2 Price
+        %th.span2 Amount
+        %th.span1 Comments
+      %tr
         %td
         %td
         %td
@@ -20,10 +20,10 @@
         %td
       - mutual_fund_transactions.each do |mf_transaction|
         %tr
-          %td.dates= l mf_transaction.date
-          %td.type{:class => mf_transaction.action}= mf_transaction.action.to_s.titleize
-          %td.name= mf_transaction.mutual_fund.name
-          %td.quantity= mf_transaction.quantity
-          %td.price= mf_transaction.price
-          %td.amount= mf_transaction.value.abs
-          %td.comment= mf_transaction.comments && mf_transaction.comments.strip.empty?  ? t("tables_not_available") : mf_transaction.comments
+          %td= l mf_transaction.date
+          %td{:class => mf_transaction.action}= mf_transaction.action.to_s.titleize
+          %td= mf_transaction.mutual_fund.name
+          %td= mf_transaction.quantity
+          %td= mf_transaction.price
+          %td= mf_transaction.value.abs
+          %td= mf_transaction.comments && mf_transaction.comments.strip.empty?  ? t("tables_not_available") : mf_transaction.comments
