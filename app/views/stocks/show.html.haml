@@ -2,17 +2,25 @@
   .span12
     = render 'subnav'
 .row
-  .span12
+  .span8
     - if resource.model
       - provide :title, resource.name
       %h1
         = resource.name
         %small
           %span
-            - %w( nse_code industry_name ).each do |attr|
+            - %w( nse_code ticker_name industry_name ).each do |attr|
               %strong #{t ".#{attr}"}:
               %span= resource.send(attr)
-      = facebook_recommendation_tag
+  .span4
+    %h1
+      %small
+        = link_to "Rating: #{resource.rating}", main_app.stock_research_reports_path(@company)
+
+.row
+  .span12
+    = facebook_recommendation_tag
+
 .row
   .span12
     -bt_table [resource] do |table|
