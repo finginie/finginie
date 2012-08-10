@@ -1,12 +1,17 @@
-<h1>Mutual Fund Gainers</h1>
 <table class= "table table-striped table-bordered">
   <tr>
     <th>Name</th>
     <th>NAV</th>
     <th>% Change</th>
-    <th>1m return (%)</th>
-    <th>1y return (%)</th>
-    <th>3y return (%)</th>
+    <th>1m return</th>
+    <th>1y return</th>
+    <th>3y return</th>
+  </tr>
+  <tr>
+    <td/>
+    <td/>
+    <td/>
+    <td colspan="3" class="align-center">(%)</td>
   </tr>
   <% if @mutual_fund_gainers.length: %>
     <% for gainer in @mutual_fund_gainers: %>
