@@ -62,8 +62,7 @@ module ApplicationHelper
     app_id = ENV['FACEBOOK_KEY']
     link = url_with_complete_path shared_link
     img_url = host
-    name = t('facebook_share.name')
-    caption = t('facebook_share.caption', :user_slug => current_user.slug_name)
+    name = t('facebook_share.name', :user_slug => current_user.slug_name)
     description = t('facebook_share.description')
     facebook_callback_url = social_network_facebook_callback_path(:return_to => current_page_url, :step => PointTracker::ShareFinancialProfileOnFbStep)
     redirect_uri = url_with_complete_path(facebook_callback_url)
@@ -73,7 +72,6 @@ module ApplicationHelper
       :link => link,
       :picture => host + '/assets/logo.png',
       :name => name,
-      :caption => caption,
       :description => description,
       :redirect_uri => redirect_uri
     }.to_query

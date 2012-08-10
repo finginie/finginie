@@ -16,7 +16,7 @@ class SessionsHandler
   private
   def save_comprehensive_risk_profiler_from_session
     if is_quiz_skipped?
-      comprehensive_risk_profiler = user.build_comprehensive_risk_profiler(:score_cache => attributes[:score_cache])
+      comprehensive_risk_profiler = user.build_comprehensive_risk_profiler(:score_cache => attributes[:comprehensive_risk_profiler][:score_cache])
       comprehensive_risk_profiler.save(:validate => false)
     else
       user.create_comprehensive_risk_profiler(attributes[:comprehensive_risk_profiler])
@@ -29,7 +29,7 @@ class SessionsHandler
   end
 
   def is_quiz_skipped?
-    attributes[:score_cache].present?
+    attributes[:comprehensive_risk_profiler].present? && attributes[:comprehensive_risk_profiler][:score_cache].present?
   end
 
   def new_referral?
