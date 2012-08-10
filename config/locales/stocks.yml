@@ -2,6 +2,7 @@ en:
   stocks:
     show:
       nse_code: 'NSE CODE'
+      ticker_name: 'BSE CODE'
       industry_name: 'SECTOR'
       market_capitalization: 'Market Capitalization( Crores)'
     quotes:
