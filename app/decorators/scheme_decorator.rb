@@ -15,7 +15,7 @@ class SchemeDecorator < ApplicationDecorator
     end                                                   # end
   end                                                     ##
 
-  [:percentage_change, :prev1_month_percent, :prev_year_percent, :prev3_year_percent].each do |attr|
+  [:day_change, :percentage_change, :prev1_month_percent, :prev_year_percent, :prev3_year_percent].each do |attr|
     define_method "#{attr}" do
       h.rg_colorize model.send(attr)
     end
@@ -41,6 +41,7 @@ class SchemeDecorator < ApplicationDecorator
     model.as_json.update( "percentage_change"   => percentage_change,
                           "prev1_month_percent" => prev1_month_percent,
                           "prev_year_percent"   => prev_year_percent,
-                          "prev3_year_percent"  => prev3_year_percent)
+                          "prev3_year_percent"  => prev3_year_percent,
+                          "day_change" => day_change)
   end
  end
