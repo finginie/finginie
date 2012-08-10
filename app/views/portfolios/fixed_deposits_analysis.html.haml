@@ -2,34 +2,37 @@
   .span12
     = render 'subnav'
 
-.row.show-grid
+.row
   .span12
     = facebook_recommendation('Fixed Deposits Analysis')
-    - unless resource.fixed_deposit_open_positions_rate_of_interests.empty?
+- unless resource.fixed_deposit_open_positions_rate_of_interests.empty?
+  .row
+    .span8
       - gchart(:header => ['Rate','Amount'], :data => resource.fixed_deposit_open_positions_rate_of_interests.map{ |fd| [fd.rate, fd.amount] },
                :title => 'Fixed Deposits', :yAxisTitle => 'Amount Invested (Rs)', :xAxisTitle => 'Interest Rate p.a.(%)', :chartType => 'Column')
-      .show-grid
-        %h5 Interest rate wise Analysis
-        %table.table.table-striped.table-bordered
+    .span4
+      %h5 Interest rate wise Analysis
+      %table.table.table-striped.table-bordered
+        %tr
+          %th.name Name
+          %th Interest Rate
+          %th Invested Amount
+        %tr
+          %td
+          %td (%)
+          %td (Rs)
+        - resource.fixed_deposit_open_positions_rate_of_interests.each do |hsh|
           %tr
-            %th.name Name
-            %th Interest Rate
-            %th Invested Amount
-          %tr
-            %td
-            %td (%)
-            %td (Rs)
-          - resource.fixed_deposit_open_positions_rate_of_interests.each do |hsh|
-            %tr
-              %td.name= hsh.name
-              %td= hsh.rate
-              %td= hsh.amount
-          %tr.total
-            %td.name Total
-            %td
-            %td= resource.fixed_deposit_open_positions_rate_of_interests.sum(&:amount)
-      -else
-        .well.show-grid
-          %p.align-center
-            = t ".no_fixed_deposit_transaction"
-            = link_to "Add a fixed deposit", new_portfolio_fixed_deposit_transaction_path(resource), :class => 'btn btn-primary'
+            %td.name= hsh.name
+            %td= hsh.rate
+            %td= hsh.amount
+        %tr.total
+          %td.name Total
+          %td
+          %td= resource.fixed_deposit_open_positions_rate_of_interests.sum(&:amount)
+  -else
+  .row
+    .well.show-grid
+      %p.align-center
+        = t ".no_fixed_deposit_transaction"
+        = link_to "Add a fixed deposit", new_portfolio_fixed_deposit_transaction_path(resource), :class => 'btn btn-primary'
