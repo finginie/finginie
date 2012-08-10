@@ -26,6 +26,7 @@ class Ability
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
     if user
       can :manage, Portfolio, :user_id => user.id
+      can :manage, Subscription, :user_id => user.id
       can :manage, User, :id => user.id
       can :read, User
       can [:create, :destroy], :public_portfolio

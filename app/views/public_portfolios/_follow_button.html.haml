@@ -1,0 +1,8 @@
+- if subscription && subscription.persisted?
+  = link_to subscription_path(subscription), :method => :delete, :class => %w(btn btn-danger) do
+    %i.icon-eye-close.icon-white
+    Stop Following
+- else
+  = link_to subscriptions_path(:subscription => subscription.attributes.extract!('subscribable_type', 'subscribable_id')), :method => :post, :class => %w(btn btn-success) do
+    %i.icon-eye-open.icon-white
+    Follow

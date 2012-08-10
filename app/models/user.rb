@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   has_many :portfolios, :dependent => :destroy
   has_many :subscriptions, :dependent => :destroy
-  has_many :follows, :dependent => :destroy,
+  has_many :followers, :dependent => :destroy,
            :as => :subscribable, :class_name => 'Subscription'
 
   has_one :comprehensive_risk_profiler, :dependent => :destroy
