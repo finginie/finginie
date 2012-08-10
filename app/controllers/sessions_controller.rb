@@ -14,6 +14,6 @@ private
   end
 
   def clear_session!(*args)
-    session[args] = nil
+    args.each {|arg| session[arg] = nil }
   end
 end
