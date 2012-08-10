@@ -4,6 +4,8 @@ class Subscription < ActiveRecord::Base
   belongs_to :user
   belongs_to :subscribable, :polymorphic => true
 
+  scope :portfolios, where(:subscribable_type => 'Portfolio')
+
   validates :user_id, :presence => true
   validates :subscribable_type, :presence => true
   validates :subscribable_id, :presence => true,

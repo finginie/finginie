@@ -2,10 +2,13 @@
 
 %table.table.table-striped
   %tr
-    %th Subscribable
+    %th Portfolio
     %th
 
-  - @subscriptions.each do |subscription|
+  - @subscriptions.portfolios.each do |subscription|
     %tr
-      %td= subscription.subscribable.name
-      %td= link_to 'Destroy', subscription, :method => :delete, :data => {:confirm => 'Are you sure?'}
+      %td= link_to subscription.subscribable.name, public_portfolio_path(subscription.subscribable)
+      %td
+        = link_to subscription, :method => :delete, :class => %w(btn btn-danger) do
+          %i.icon-eye-close.icon-white
+          Stop Following
