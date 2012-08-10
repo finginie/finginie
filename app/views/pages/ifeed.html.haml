@@ -15,7 +15,7 @@
       = image_tag 'Suggested-Investments.gif'
     .row.show-grid
       -# Todo: All Portfolios of user should display here.
-      %h5 My Portfolios Performace
+      %h5.show-grid My Portfolios Performace
       %table.table
         %tr
           %th Portfolio Name
@@ -33,7 +33,34 @@
           %td 1.02
     .row.show-grid
       -# Todo: All Portfolios of user should display here.
-      %h5 Top Performing Public Portfolios
+      %h5.show-grid Top Performing Public Portfolios
+      %table.table
+        %tr
+          %td= image_tag 'no_photo_small.gif'
+          %td=link_to 'Aswini Anand'
+          %td Portfolio Gain: 25%
+          %td
+            %a.btn.btn-primary.pull-right{:href => "#"} Follow
+        %tr
+          %td= image_tag 'no_photo_small.gif'
+          %td=link_to 'Aswini Anand'
+          %td Portfolio Gain: 25%
+          %td
+            %a.btn.btn-primary.pull-right{:href => "#"} Follow
+        %tr
+          %td= image_tag 'no_photo_small.gif'
+          %td=link_to 'Aswini Anand'
+          %td Portfolio Gain: 25%
+          %td
+            %a.btn.btn-primary.pull-right{:href => "#"} Follow
+    .row.show-grid
+      -# Todo: Here image of user, name and comment text.
+      %h5.show-grid Events Feed
+      %ul.unstyled
+        %li
+          = image_tag 'no_photo_small.gif'
+        %li
+          = image_tag 'no_photo_small.gif'
   .span3
     %ul.thumbnails
       %li.span3
