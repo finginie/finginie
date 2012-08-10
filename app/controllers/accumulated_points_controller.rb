@@ -5,6 +5,6 @@ class AccumulatedPointsController < ApplicationController
   end
 
   def check_for_user_access
-    redirect_to root_path, :notice => "You don't have access to this page" unless current_user
+    redirect_to signin_path(:origin => accumulated_points_path), :notice => "Please Sign In or Register to view your points" unless current_user
   end
 end
