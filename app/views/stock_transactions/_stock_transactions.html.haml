@@ -3,14 +3,14 @@
     %h5= "Stock Transactions"
     %table.table.table-striped.table-bordered
       %tr
-        %th.dates Date
-        %th.type Type
-        %th.name Name
-        %th.quantity Quantity
-        %th.price Price
-        %th.amount Amount
-        %th.comment Comments
-      %tr.right_align
+        %th.span2 Date
+        %th.span1 Type
+        %th.span3 Name
+        %th.span1 Quantity
+        %th.span2 Price
+        %th.span2 Amount
+        %th.span1 Comments
+      %tr
         %td
         %td
         %td
@@ -22,13 +22,13 @@
       - stock_transactions.each do |stock_transaction|
         - if stock_transaction.company
           %tr
-            %td.dates= l stock_transaction.date
-            %td.type{:class => stock_transaction.action}= stock_transaction.action.to_s.titleize
-            %td.name= stock_transaction.company.name
-            %td.quantity= stock_transaction.quantity
-            %td.price= stock_transaction.price
-            %td.amount= stock_transaction.value.abs
-            %td.comment= stock_transaction.comments && stock_transaction.comments.strip.empty? ? t("tables_not_available") : stock_transaction.comments
+            %td= l stock_transaction.date
+            %td{:class => stock_transaction.action}= stock_transaction.action.to_s.titleize
+            %td= stock_transaction.company.name
+            %td= stock_transaction.quantity
+            %td= stock_transaction.price
+            %td= stock_transaction.value.abs
+            %td= stock_transaction.comments && stock_transaction.comments.strip.empty? ? t("tables_not_available") : stock_transaction.comments
         - else
           - company_data = true
     = company_data ? t("company_data_not_found") : ""

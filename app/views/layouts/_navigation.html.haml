@@ -88,31 +88,28 @@
                     personal_financial_tools.life_insurance_calculator_path
         = bar.item 'Retirement Calculator',
                     personal_financial_tools.retirement_calculator_path
-      = bar.dropdown 'Markets and Trading' do
+      = bar.dropdown 'Markets' do
         = bar.item 'Shares',
                     main_app.stocks_path
-        = bar.item 'Stock Screener',
-                    main_app.screener_stocks_path
-        = bar.item 'Research Ratings',
-                    main_app.research_ratings_path
         = bar.item 'Mutual Funds',
                     main_app.mutual_funds_path
         = bar.item 'Fixed Deposits',
                     main_app.fixed_deposits_path
+        = bar.item 'Stock Screener',
+                    main_app.screener_stocks_path
         = bar.item 'Open low cost brokerage account',
                     main_app.new_trade_account_path
+      = bar.dropdown 'Research' do
+        = bar.item "Finginie's stock picks",
+                    main_app.page_path('stock-recommendations')
+        = bar.item "Brokers' stock picks",
+                    main_app.research_ratings_path
+        = bar.item 'Broker Research Reports',
+                    main_app.research_reports_path
         = bar.item 'Market Commentary',
                     main_app.blog_path
-        = bar.item 'Research',
-                    main_app.research_reports_path
-        = bar.item 'Stock Recommendations',
-                    main_app.page_path('stock-recommendations')
       = bar.item 'Manage Investments',
                       main_app.portfolios_path
-      = bar.item 'We Care',
-                      main_app.page_path('finginie-cares')
-      = bar.item 'Programming Contest',
-                      main_app.page_path('programming-contest')
 
     = bar.second_nav do
       - if current_user

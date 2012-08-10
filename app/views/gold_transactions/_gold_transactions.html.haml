@@ -3,14 +3,14 @@
     %h5= "Gold Transactions"
     %table.table.table-striped.table-bordered
       %tr
-        %th.dates Date
-        %th.type Type
-        %th.name Name
-        %th.quantity Quantity
-        %th.price Price
-        %th.amount Amount
-        %th.comment Comments
-      %tr.right_align
+        %th.span2 Date
+        %th.span1 Type
+        %th.span3 Name
+        %th.span1 Quantity
+        %th.span2 Price
+        %th.span2 Amount
+        %th.span1 Comments
+      %tr
         %td
         %td
         %td
@@ -20,10 +20,10 @@
         %td
       - gold_transactions.each do |gold_transaction|
         %tr
-          %td.dates= l gold_transaction.date
-          %td.type{:class => gold_transaction.action}= gold_transaction.action.to_s.titleize
-          %td.name Gold
-          %td.quantity= gold_transaction.quantity
-          %td.price= gold_transaction.price
-          %td.amount= gold_transaction.value.abs
-          %td.comment= gold_transaction.comments && gold_transaction.comments.strip.empty?  ? t("tables_not_available") : gold_transaction.comments
+          %td= l gold_transaction.date
+          %td{:class => gold_transaction.action}= gold_transaction.action.to_s.titleize
+          %td Gold
+          %td= gold_transaction.quantity
+          %td= gold_transaction.price
+          %td= gold_transaction.value.abs
+          %td= gold_transaction.comments && gold_transaction.comments.strip.empty?  ? t("tables_not_available") : gold_transaction.comments
