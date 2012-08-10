@@ -21,8 +21,8 @@ en:
     message: 'Thank you for signing up with Finginie. Rs 2 will now be donated on your behalf through the Finginie Cares campaign.'
   facebook_share:
     name: 'Finginie - Personalized Financial Plan'
-    caption: "India's best investment portal for beginners"
-    description: 'Gives you personalized investment suggestions based on your unique financial needs & constraints. All suggestions are based on financial experts’ opinion & backed by 10 years of market data.'
+    caption: "Finginie- %{user_slug}'s Personalized Financial Plan"
+    description: "These are my personalized investment suggestions from Finginie customized to my unique financial needs and constraints backed by financial experts opinions and 10 years of market data. Check them out !"
   personal_financial_tools:
     home: 'Personal Financial Tools'
     list:

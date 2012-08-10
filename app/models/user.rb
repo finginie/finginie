@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
 
   has_one :trade_account
 
+  def slug_name
+    email.split('@').first
+  end
+
   def has_no_comprehensive_risk_profiler?
     !comprehensive_risk_profiler.persisted?
   end
