@@ -81,5 +81,7 @@ module Finginie
     # Do not initialize when compiling assets
     config.assets.initialize_on_precompile = false
 
+    config.middleware.insert_before 0, Rack::Deflater
+
   end
 end
