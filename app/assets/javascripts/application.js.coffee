@@ -22,6 +22,7 @@
 #= require twitter
 #= require facebook
 #= require analytics
+#= require airbrake_notifier
 #
 #= require_self
 #= require_tree .

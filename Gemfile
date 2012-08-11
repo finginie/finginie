@@ -19,7 +19,7 @@ end
 
 gem 'active_attr',                         :github => 'sankaranarayanan/active_attr'
 gem 'activerecord-postgres-hstore'
-gem 'airbrake'
+gem 'airbrake',                            :github => 'TMaYaD/airbrake'
 gem 'bootstrap-helper',                    :github => 'LoonyBin/bootstrap-helper'
 gem 'cancan'
 gem 'cells'
