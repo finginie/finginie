@@ -6,9 +6,9 @@
     %meta{ :name => 'keywords', :content => auto_page_seo_content('keywords', yield(:keywords) ) }
     %meta{ :name => 'viewport', :content => "width=device-width, initial-scale=1.0" }
     = stylesheet_link_tag :application
-    = javascript_include_tag 'https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization","version":"1.1"}]}'
-    = javascript_include_tag :application
-    = raw airbrake_javascript_notifier
+    = javascript_include_tag 'https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization","version":"1.1"}]}', :async => true
+    = javascript_include_tag :application, :async => true
+    = airbrake_javascript_configuration
     = csrf_meta_tags
 
   %body{ :class => auto_page_class_names }
