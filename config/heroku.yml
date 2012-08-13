@@ -41,6 +41,12 @@ staging: &staging
     SPREADSHEET_PASSWORD         : "gedesh123"
     TZ                           : "Asia/Kolkata"
 
+spare:
+  <<: *staging
+  app: immense-harbor-5702
+  config:
+    <<: *staging_config
+
 production:
   <<: *staging
   app: cold-planet-6262
