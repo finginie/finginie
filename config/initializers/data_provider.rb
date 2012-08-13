@@ -1,1 +1,1 @@
-require File.expand_path('../../../app/models/data_provider.rb', __FILE__)
+require Rails.root.join('app', 'models', 'data_provider')
