@@ -14,12 +14,20 @@ class IdealInvestmentsController < InheritedResources::Base
   def resource
     @resource = super
     @resource.initial_investment = (params[:initial_investment]) if params[:initial_investment]
-    starting_investment = @resource.comprehensive_risk_profiler.initial_investment
-    flash.now[:notice] =  starting_investment > IdealInvestmentMix::MINIMUM_INVESTMENT ? t('.display_initial_investment', :amount => starting_investment) : t('.too_low_investment')
+    flash[:notice] =  get_flash_message
     @resource
   end
 
 protected
+  def get_flash_message
+    if params[:msg]
+      params[:msg]
+    else
+      starting_investment = @resource.comprehensive_risk_profiler.initial_investment
+      starting_investment > IdealInvestmentMix::MINIMUM_INVESTMENT ? t('.display_initial_investment', :amount => starting_investment) : t('.too_low_investment')
+    end
+  end
+
   def begin_of_association_chain
     @current_user.comprehensive_risk_profiler
   end
