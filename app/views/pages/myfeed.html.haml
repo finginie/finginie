@@ -1,0 +1,102 @@
+
+.row.show-grid
+  .span2
+    = image_tag 'profile.png'
+    %h2.align-center Aditya Rallabhandi
+  .span7
+    .row.show-grid
+      %a.btn.btn-primary.pull-right{:href => "#"} Import Contacts
+      .input-append
+        = text_field_tag :query, nil, :placeholder => 'Search Friends', :class => 'search-query input-xxlarge'
+        = button_tag :class => 'btn' do
+          %i.icon-search
+    .row.show-grid
+      %h6
+        Favorite Stocks:
+        %small Itc, Tcs, Infosys,
+      %h6
+        Investment Style:
+        %small Risk
+      %h6
+        City:
+        %small Hyderabad
+    .row.show-grid
+      -# Todo: Show public portfolio of the user.
+      %h5 Public Portfolios
+      = image_tag 'Suggested-Investments.gif'
+    .row.show-grid
+      -# Todo: All Portfolios of user should display here.
+      %h5.show-grid My Portfolios Performace
+      %table.table
+        %tr
+          %th Portfolio Name
+          %th Current Value
+          %th Today's Change %
+        %tr
+          %td.span5
+            = link_to 'Julayi'
+          %td 1234.12
+          %td 1.02
+        %tr
+          %td.span5
+            = link_to 'Julayi'
+          %td 1234.12
+          %td 1.02
+    .row.show-grid
+      -# Todo: All Portfolios of user should display here.
+      %h5.show-grid Top Performing Public Portfolios
+      %table.table
+        %tr
+          %td= image_tag 'no_photo_small.gif'
+          %td=link_to 'Aswini Anand'
+          %td Portfolio Gain: 25%
+          %td
+            %a.btn.btn-primary.pull-right{:href => "#"} Follow
+        %tr
+          %td= image_tag 'no_photo_small.gif'
+          %td=link_to 'Aswini Anand'
+          %td Portfolio Gain: 25%
+          %td
+            %a.btn.btn-primary.pull-right{:href => "#"} Follow
+        %tr
+          %td= image_tag 'no_photo_small.gif'
+          %td=link_to 'Aswini Anand'
+          %td Portfolio Gain: 25%
+          %td
+            %a.btn.btn-primary.pull-right{:href => "#"} Follow
+    .row.show-grid
+      -# Todo: Here image of user, name and comment text.
+      %h5.show-grid Events Feed
+      %ul.unstyled
+        %li
+          = image_tag 'no_photo_small.gif'
+        %li
+          = image_tag 'no_photo_small.gif'
+  .span3
+    %ul.thumbnails
+      %li.span3
+        .well
+          %p.header
+            Following
+            %small.pull-right
+              = link_to 'See all'
+          %ul
+      %li.span3
+        .well
+          %p.header
+            Followers
+            %small.pull-right
+              = link_to 'See all'
+          .suggestion-container
+            %ul.unstyled
+              %li.suggestions-item
+                .img
+                  %a
+                    = image_tag 'no_photo_small.gif'
+                .description
+                  = link_to do
+                    %i.icon-remove
+                  %a.btn.btn-primary{:href => "#"} Follow
+                  .name
+                    %a Aditya Gupta
+                  .position AVP, Strategy
