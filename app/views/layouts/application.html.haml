@@ -8,7 +8,7 @@
     = stylesheet_link_tag :application
     = javascript_include_tag 'https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization","version":"1.1"}]}', :async => true
     = javascript_include_tag :application, :async => true
-    = airbrake_javascript_configuration
+    = airbrake_javascript_notifier
     = csrf_meta_tags
 
   %body{ :class => auto_page_class_names }

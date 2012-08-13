@@ -1,4 +1,17 @@
 module ApplicationHelper
+  def airbrake_javascript_notifier
+    host = Airbrake.configuration.host.dup
+    port = Airbrake.configuration.port
+    host << ":#{port}" unless [80, 443].include?(port)
+
+    javascript_tag %Q[
+      window.AirbrakeKey =  '#{Airbrake.configuration.js_api_key}';
+      window.AirbrakeHost = '#{host}';
+      window.controller_name = '#{params[:controller]}';
+      window.action_name = '#{params[:action]}';
+    ]
+  end
+
   def rg_colorize(content, value = content.to_f)
     content_tag :span, content, :class => (value < 0 ? :red : :green)
   end
