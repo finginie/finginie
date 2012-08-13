@@ -5,7 +5,7 @@
     .pull-right
       = simple_form_for @reports, :url => research_reports_path, :method => :get, :class => 'form-search' do |f|
         .input-append
-          = f.input :source_or_company_name_or_sector_contains, :label => false, :placeholder => 'Search by company,source or sector'
+          = f.input :source_or_company_name_or_sector_contains, :label => false, :placeholder => 'Search by company,source or sector', :input_html => {:class => 'input-xlarge' }
           %span{:data => {:role => 'research_report_query' } }
             = button_tag :class => 'btn' do
               %i.icon-search

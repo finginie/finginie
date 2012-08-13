@@ -11,19 +11,19 @@ module AbstractCompany
   def rating
     return 0 if all_brokerages_recommendation_values.empty?
 
-    if brokerage_strong_recommendation_criteria?
-      5
-    else
-      (all_brokerages_recommendation_values.sum.to_f / all_brokerages_recommendation_values.size).round
-    end
+    @rating ||= if brokerage_strong_recommendation_criteria?
+        5
+      else
+        (all_brokerages_recommendation_values.sum.to_f / all_brokerages_recommendation_values.size).round
+      end
   end
 
   def recommendation
-    if brokerage_strong_recommendation_criteria?
-      "Strong Buy"
-    else
-      ResearchReport::RECOMMENDATION[rating]
-    end
+    @recommendation ||= if brokerage_strong_recommendation_criteria?
+          "Strong Buy"
+        else
+          ResearchReport::RECOMMENDATION[rating]
+        end
   end
 
 private
@@ -32,8 +32,8 @@ private
   end
 
   def all_brokerages_recommendation_values
-    report = ResearchReport.short_term(nse_code)
-    report.map(&:recommendation_value)
+    @report ||= ResearchReport.short_term(nse_code)
+    @report.map(&:recommendation_value)
   end
 end
 

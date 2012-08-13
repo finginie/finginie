@@ -20,6 +20,6 @@ class ResearchReport < ActiveRecord::Base
   end
 
   def self.short_term(company)
-    where(:nse_code => company).where("date >= '#{Date.today.prev_month(3)}'")
+    where("nse_code like '#{company}%'").where("date >= '#{Date.today.prev_month(3)}'")
   end
 end
