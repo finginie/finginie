@@ -17,11 +17,24 @@
 %hr.soften
 
 :javascript
-  jQuery(function(){
-      new App.BiggestMutualFunds({el: $("#big_equity_mfs")});
-      new App.MutualFundGainers({el: $("#mf_gainers")});
-      new App.MutualFundLosers({el: $("#mf_losers")});
-  });
+  function wait_for_jQuery(){
+    if (typeof jQuery == 'undefined'){
+        setTimeout(wait_for_jQuery, 50);
+    }
+    else{
+      get_all_widgets();
+    }
+  }
+  wait_for_jQuery();
+
+  function get_all_widgets() {
+     jQuery(function(){
+        new App.BiggestMutualFunds({el: $("#big_equity_mfs")});
+        new App.MutualFundGainers({el: $("#mf_gainers")});
+        new App.MutualFundLosers({el: $("#mf_losers")});
+        new App.ResearchReports({el: $("#research_reports")});
+     });
+
 
 .row.show-grid
   .span8

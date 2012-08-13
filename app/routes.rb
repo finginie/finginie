@@ -101,11 +101,6 @@ Finginie::Application.routes.draw do
   match "/success" => "sessions#success", :as  => :success
   mount OmniauthSingleSignon::Engine => ""
 
-  #Widgets
-  match 'mutual_fund_gainers' => "mutual_fund_gainers#index"
-  match 'mutual_fund_losers'  => "mutual_fund_losers#index"
-  match 'biggest_mutual_funds'  => "biggest_mutual_funds#index"
-
   # Social Features, TODO: move to authentication
   resources :profiles, :only => [:index, :show]
   resource  :profile,  :only => [:show, :edit, :update], :as => :own_profile

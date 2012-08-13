@@ -37,11 +37,4 @@ class SchemeDecorator < ApplicationDecorator
     model.portfolio_holdings.take(10).map { |p| [ p["InvestedCompanyName"] , p["Percentage"].to_f.round(2) ] } if model.portfolio_holdings
   end
 
-  def as_json(options={})
-    model.as_json.update( "percentage_change"   => percentage_change,
-                          "prev1_month_percent" => prev1_month_percent,
-                          "prev_year_percent"   => prev_year_percent,
-                          "prev3_year_percent"  => prev3_year_percent,
-                          "day_change" => day_change)
-  end
- end
+end

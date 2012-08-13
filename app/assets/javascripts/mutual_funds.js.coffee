@@ -21,6 +21,11 @@ jQuery ->
     bServerSide: true
     sAjaxSource: $('#schemes_table').data('source')
     oLanguage: { "sSearch": 'Get Fund NAV' }
+    aoColumns: [
+      { "mDataProp": "name" },
+      { "mDataProp": "class_description" },
+      { "mDataProp": "minimum_investment_amount" }
+    ]
 
   $(".dataTables_processing").css('visibility', 'hidden');
 

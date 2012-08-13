@@ -16,7 +16,7 @@
   <% if @mutual_fund_losers.length: %>
     <% for loser in @mutual_fund_losers: %>
       <tr class="item" data-id="<%= loser.id %>">
-        <td><a href="/mutual_funds/<%=loser.slug %>"><%= loser.name %></a></td>
+        <td><%- loser.name %></td>
         <td><%= loser.nav_amount %></td>
         <td><%- loser.percentage_change %></td>
         <td><%- loser.prev1_month_percent %></td>

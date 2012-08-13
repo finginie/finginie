@@ -21,7 +21,7 @@
   <% if @biggest_mutual_funds.length: %>
     <% for fund in @biggest_mutual_funds: %>
       <tr class="item" data-id="<%= fund.id %>">
-        <td><a href="/mutual_funds/<%=fund.slug %>"><%= fund.name %></a></td>
+        <td><%- fund.name %></td>
         <td><%= fund.size %></td>
         <td><%= fund.nav_amount %></td>
         <td><%- fund.day_change %></td>
