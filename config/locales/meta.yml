@@ -153,6 +153,15 @@ en:
           title: 'Stock recommendations and tips'
           description: "Finginie's stock recommendations and tips cover a variety of sectors and companies listed in the Indian stock markets. We place Buy,Hold and Sell ratings on stocks to help you identify which stocks to invest in."
           keywords: 'stock tips,stock recommendations'
+        it-sector:
+          title: 'How to analyze and invest in IT sector shares'
+          description: 'IT sector shares like Infosys and TCS have been the darlings of investors over the years. Learn
+          what influences the share prices of IT companies and how to invest in them.'
+          keywords: 'IT sector, TCS,Infosys, shares'
+        it-sector-midcap:
+          title: 'Stock recommendations: Midcap IT companies'
+          description: 'Finginie analyzes the stocks of major midcap IT companies to determine which of them are good investments. We look at a host of factors such as profitability, growth, growth potential,valuation and return history before placing long term and short term recommendations on them.'
+          keywords: 'stock recommendations, stock tips, midcap, IT'
         investment_education:
           title: 'Learn how to invest.Investing in shares, mutual funds,fixed deposits and gold made easy for beginners.'
           description: 'Learn investing.Investing in shares, mutual funds,fixed deposits and gold made easy for beginners.'
@@ -245,11 +254,6 @@ en:
              India. We go over the risk,return and tax aspects of all of these investments and tell you how to reduce
              risk and maximize your return while investing.'
             keywords: ''
-          it-sector:
-            title: 'How to analyze and invest in IT sector shares'
-            description: 'IT sector shares like Infosys and TCS have been the darlings of investors over the years. Learn
-            what influences the share prices of IT companies and how to invest in them.'
-            keywords: 'IT sector, TCS,Infosys, shares'
           mutual-funds-etf:
             title: 'Mutual Funds'
             description: ''
