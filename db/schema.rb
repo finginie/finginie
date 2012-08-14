@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120808134609) do
+ActiveRecord::Schema.define(:version => 20120813054054) do
 
   create_table "choices", :force => true do |t|
     t.decimal  "score"
@@ -161,6 +161,22 @@ ActiveRecord::Schema.define(:version => 20120808134609) do
 
   add_index "real_estate_transactions", ["portfolio_id"], :name => "index_real_estate_transactions_on_portfolio_id"
   add_index "real_estate_transactions", ["real_estate_id"], :name => "index_real_estate_transactions_on_real_estate_id"
+
+  create_table "research_reports", :force => true do |t|
+    t.date     "date"
+    t.string   "source"
+    t.string   "name"
+    t.string   "company_name"
+    t.string   "sector"
+    t.string   "nse_code"
+    t.string   "bse_code"
+    t.string   "link_url"
+    t.string   "recommendation"
+    t.decimal  "current_market_price"
+    t.decimal  "target_price"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
 
   create_table "responses", :force => true do |t|
     t.integer  "risk_profiler_id"
