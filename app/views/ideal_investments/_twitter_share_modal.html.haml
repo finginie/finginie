@@ -1,0 +1,61 @@
+:css
+  .freshbutton-lightblue {
+    color: #1E75BD;
+    border-top: 1px #93CEF8 solid;
+    border-right: 1px #79BCEA solid;
+    border-bottom: 1px #79BCEA solid;
+    border-left: 1px #79BCEA solid;
+    background: #E4F3FF;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f4fafe", endColorstr="#e4f3ff");
+    -moz-box-shadow: 0 1px 1px #d3d3d3,inset 0px 1px 0px #fff;
+    -webkit-box-shadow: 0 1px 1px lightGrey,inset 0px 1px 0px white;
+    box-shadow: 0 1px 1px lightGrey,inset 0px 1px 0px white;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    padding: 5px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    overflow: visible;
+  }
+
+  .freshbutton-lightblue img.sprite{
+    margin-bottom: 3px;
+    margin-right: -2px;
+  }
+
+  .s_web_twitter {
+    background-position: left -8923px;
+  }
+
+  .sprite_web {
+    width: 16px;
+    height: 16px;
+    background-image: url(/assets/web_sprites.png);
+    background-repeat: no-repeat;
+  }
+
+:javascript
+  $(document).ready(function() {
+    $("#twittershare").click(function(){
+      $('#twitter_post_form').submit();
+    });
+  });
+
+#twitterModal.modal.hide
+  .modal-header
+    %button.close{"data-dismiss" => "modal", :type => "button"} ×
+    %h3 Share your financial plan on twitter
+  .modal-body
+    = form_tag "http://127.0.0.1:3001/twitter_post?redirect_uri=#{current_page_url}", :id => 'twitter_post_form' do
+      .sector.control-group
+        .controls
+          = text_area(:twitter, :message, :cols => 20, :rows => 5, :value => twitter_share_description, :style => 'width:400px')
+      .actions
+        %span#twittershare.freshbutton-lightblue{:style => "margin-right: 0px;"}
+          %img.sprite.sprite_web.s_web_twitter{:alt => "", :src => "/assets/icon_spacer.gif"}
+            Tweet on Twitter
