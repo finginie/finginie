@@ -1,7 +1,6 @@
 .row
-  .span9
+  .span8
     = facebook_recommendation('Personalized Financial Plan')
-    
     = image_tag 'Quiz-page-mf-selection.png', :class => 'show-grid';
     .row
       .span10.show-grid
@@ -34,4 +33,21 @@
             .form-actions
               = f.submit 'Submit', :class => %w(btn btn-primary)
 
-  .span3
+  .span4
+    %ul.thumbnails
+      %li
+        = image_tag 'Personalized.png', :class => 'bs-icon'
+        %h5 Personalized investment suggestions
+        %p Gives you personalized investment suggestions based on your unique financial needs & constraints.
+      %li
+        = image_tag 'Sectoral_Analysis.png', :class => 'bs-icon'
+        %h5 Balance between risk and return
+        %p Ensures that you strike a perfect balance between risk and return. All suggestions are based on financial experts’ opinion & backed by 10 years of market data.
+      %li
+        = image_tag 'Diversification.png', :class => 'bs-icon'
+        %h5 Diversification
+        %p Automatically ensures diversification across asset classes such as stocks, fixed deposits and gold. This reduces the riskiness of your portfolio drastically.
+      %li
+        = image_tag 'Quick_-free_and_beginner_-friendly.png', :class => 'bs-icon'
+        %h5 Quick, free and beginner friendly
+        %p Completely free of cost and doesn’t require a credit card or email address. Takes less than a minute to finish and requires no prior knowledge of investing.
