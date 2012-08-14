@@ -9,7 +9,7 @@
         =@scheme.name
         %small
           %strong= @scheme.nav_amount
-          = @scheme.day_change
+          %span= @scheme.day_change
           = rg_colorize "(#{@scheme.percentage_change}%)", @scheme.percentage_change.to_f
       = facebook_recommendation_tag
   .row
