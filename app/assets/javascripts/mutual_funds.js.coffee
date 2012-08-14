@@ -34,3 +34,5 @@ jQuery ->
   )
 
   $('.nav-tabs a:first').tab('show')
+
+  new App.MutualFundGainers({el: $("#top_performers"), data: { limit: 10}})

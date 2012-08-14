@@ -15,10 +15,6 @@ class App extends Spine.Controller
   constructor: ->
     super
 
-    # Initialize controllers:
-    @append(@mutual_fund_gainers = new App.MutualFundGainers)
-    @append(@mutual_fund_losers  = new App.MutualFundLosers)
-    #  ...
     Spine.Route.setup()
 
 window.App = App

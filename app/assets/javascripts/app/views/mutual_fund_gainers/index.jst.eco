@@ -13,15 +13,15 @@
     <td/>
     <td colspan="3" class="align-center">(%)</td>
   </tr>
-  <% if @mutual_fund_gainers.length: %>
-    <% for gainer in @mutual_fund_gainers: %>
-      <tr class="item" data-id="<%= gainer.id %>">
-        <td><%- gainer.name %></td>
-        <td><%= gainer.nav_amount %></td>
-        <td><%- gainer.percentage_change %></td>
-        <td><%- gainer.prev1_month_percent %></td>
-        <td><%- gainer.prev_year_percent %></td>
-        <td><%- gainer.prev3_year_percent %></td>
+  <% if @mutual_funds.length: %>
+    <% for fund in @mutual_funds: %>
+      <tr class="item" data-id="<%= fund.id %>">
+        <td><%- fund.name %></td>
+        <td><%= fund.nav_amount %></td>
+        <td><%- fund.percentage_change %></td>
+        <td><%- fund.prev1_month_percent %></td>
+        <td><%- fund.prev_year_percent %></td>
+        <td><%- fund.prev3_year_percent %></td>
       </tr>
     <% end %>
   <% else: %>

@@ -1,6 +1,9 @@
 class SchemeDecorator < ApplicationDecorator
   decorates :'data_provider/scheme'
 
+
+  PERCENTAGES_WITH_RED_OR_GREEN_FOR_WIDGETS =
+   [ :day_change, :percentage_change, :prev1_month_percent, :prev_year_percent, :prev3_year_percent ]
   def sip
     if model.sip == "True"
       "Yes"
@@ -15,7 +18,7 @@ class SchemeDecorator < ApplicationDecorator
     end                                                   # end
   end                                                     ##
 
-  [:day_change, :percentage_change, :prev1_month_percent, :prev_year_percent, :prev3_year_percent].each do |attr|
+  PERCENTAGES_WITH_RED_OR_GREEN_FOR_WIDGETS.each do |attr|
     define_method "#{attr}" do
       h.rg_colorize model.send(attr)
     end

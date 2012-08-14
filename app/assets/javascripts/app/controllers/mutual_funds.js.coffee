@@ -4,12 +4,6 @@ BiggestMutualFund = App.BiggestMutualFund
 MutualFundLoser = App.MutualFundLoser
 
 class App.MutualFundGainers extends Spine.Controller
-  className: 'mutual_fund_gainers stack'
-  # elements:
-  #   '.items': items
-  #
-  # events:
-  #   'click .item': 'itemClick'
 
   constructor: (params)->
     super
@@ -18,15 +12,9 @@ class App.MutualFundGainers extends Spine.Controller
 
   render: =>
     mutual_funds = MutualFundGainer.all()[0].aaData
-    @html @view('mutual_fund_gainers/index')(mutual_fund_gainers: mutual_funds)
+    @html @view('mutual_fund_gainers/index')(mutual_funds: mutual_funds)
 
 class App.BiggestMutualFunds extends Spine.Controller
-  className: 'biggest_mutual_funds stack'
-  # elements:
-  #   '.items': items
-  #
-  # events:
-  #   'click .item': 'itemClick'
 
   constructor: ->
     super
@@ -38,11 +26,6 @@ class App.BiggestMutualFunds extends Spine.Controller
     @html @view('biggest_mutual_funds/index')(biggest_mutual_funds: mutual_funds)
 
 class App.MutualFundLosers extends Spine.Controller
-  # elements:
-  #   '.items': items
-  #
-  # events:
-  #   'click .item': 'itemClick'
 
   constructor: ->
     super
@@ -51,6 +34,6 @@ class App.MutualFundLosers extends Spine.Controller
 
   render: =>
     mutual_funds = MutualFundLoser.all()[0].aaData
-    @html @view('mutual_fund_losers/index')(mutual_fund_losers: mutual_funds)
+    @html @view('mutual_fund_gainers/index')(mutual_funds: mutual_funds)
 
 
