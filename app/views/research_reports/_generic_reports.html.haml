@@ -3,15 +3,15 @@
     = facebook_recommendation('Research reports')
   .span6
     .pull-right
-      = form_tag research_reports_path, :method => :get, :class => 'form-search' do
+      = simple_form_for @reports, :url => research_reports_path, :method => :get, :class => 'form-search' do |f|
         .input-append
-          = text_field_tag :query, nil, :placeholder => 'Search by company,source or sector', :class => 'search-query input-xlarge'
+          = f.input :source_or_company_name_or_sector_contains, :label => false, :placeholder => 'Search by company,source or sector', :input_html => {:class => 'input-xlarge' }
           %span{:data => {:role => 'research_report_query' } }
             = button_tag :class => 'btn' do
               %i.icon-search
 
 = content_tag :div, flash[:result], :id => 'result' if flash[:result].is_a?(String)
-- unless collection.empty?
+- unless collection.count == 0
   %table.table.table-striped.table-bordered
     %tr
       %th Date

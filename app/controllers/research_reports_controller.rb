@@ -3,10 +3,10 @@ class ResearchReportsController < InheritedResources::Base
 
   def collection
     @search = DataProvider::Company.new
-    conditions = { :query => params[:query] }
-    conditions.merge!({ :nse_code => parent.nse_code, :bse_code => parent.bse_code1 }) if parent
-    @reports = ResearchReport.filter(conditions)
-    flash.now[:result] = @reports.empty? ? t('.empty_search') : (t('.results_for_search', :term => params[:query]) if params[:query])
+    conditions = params[:search] ? params[:search] : {}
+    conditions.merge!({ :nse_code_contains => parent.nse_code, :bse_code_equals => parent.bse_code1 }) if parent
+    @reports = ResearchReport.search(conditions)
+    flash.now[:result] = @reports.count == 0 ? t('.empty_search') : (t('.results_for_search', :term => conditions[:source_or_company_name_or_sector_contains]) if params[:search])
     @reports
   end
 end
