@@ -1,0 +1,67 @@
+.row
+  .span12
+    %section
+      %h1 Signup and Win
+    %section
+      %h2 Prizes
+      %h3
+        1st prize:
+        %small A/C + TV + Refrigerator Or Hero Passion motorcycle
+      %h3
+        2nd prize:
+        %small Apple ipad 3(WiFi)
+    %section
+      %h2 How it works
+      %p Want to win a Hero Passion, an iPad 3 and a host of other cool stuff? All you have to do is to signup for a free Finginie account. Here is how it works:
+
+      %p You get points for every action that you take on Finginie.
+      %table.table.table-bordered
+        %tr
+          %th Action
+          %th Points
+          %th No of times you can take action
+        %tr
+          %td Take Personalized financial profile quiz
+          %td 50
+          %td 1
+        %tr
+          %td Sign up
+          %td 100
+          %td 1
+        %tr
+          %td Share link on Facebook
+          %td 200
+          %td Unlimited
+        %tr
+          %td Share link on Twitter
+          %td 200
+          %td Unlimited
+        %tr
+          %td Share link via Email
+          %td 200
+          %td Unlimited
+        %tr
+          %td Every friend who signs up from a shared link
+          %td 200
+          %td Unlimited
+        %tr
+          %td Like our Facebook Page
+          %td 50
+          %td 1
+        %tr
+          %td Follow us on Twitter
+          %td 50
+          %td 1
+        %tr
+          %td +1 us on Google Plus
+          %td 50
+          %td 1
+        %tr
+          %td Tell us what you think of Finginie
+          %td 200
+          %td 1
+      %p Users with the highest number of points have the highest chances of winning prizes.
+      .alert.alert-notice
+        %p.align-center So, go ahead and sign up now! Be the proud owner of a Hero Passion and an Apple iPad 3(WiFi).#{link_to 'Terms and Conditions', main_app.page_path('ebola-terms-and-conditions'), :target => '_blank'}
+    = render 'sessions/form', :origin => params[:origin]
+
