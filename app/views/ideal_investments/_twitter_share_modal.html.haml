@@ -51,7 +51,7 @@
     %button.close{"data-dismiss" => "modal", :type => "button"} ×
     %h3 Share your financial plan on twitter
   .modal-body
-    = form_tag "http://127.0.0.1:3001/twitter_post?redirect_uri=#{current_page_url}", :id => 'twitter_post_form' do
+    = form_tag twitter_post_url, :id => 'twitter_post_form' do
       .sector.control-group
         .controls
           = text_area(:twitter, :message, :cols => 20, :rows => 5, :value => twitter_share_description, :style => 'width:400px')

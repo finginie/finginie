@@ -1,3 +1,4 @@
+ENV['AUTHENTICATION_URL'] = 'http://127.0.0.1:3001'
 Finginie::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 

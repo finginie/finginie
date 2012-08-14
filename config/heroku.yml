@@ -13,6 +13,7 @@ staging: &staging
   app: finginie
   stack: cedar
   config: &staging_config
+    AUTHENTICATION_URL           : "http://login.finginie.com"
     AIRBRAKE_KEY                 : "d32bd5cf0a8135db0b96b89c0ce468f9"
     BLOG_URI                     : "http://finginie.github.com/commentary"
     BUNDLE_WITHOUT               : "development:test"
