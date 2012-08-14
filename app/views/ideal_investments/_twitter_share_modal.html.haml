@@ -39,10 +39,14 @@
     background-repeat: no-repeat;
   }
 
+- url = twitter_post_url
 :javascript
   $(document).ready(function() {
     $("#twittershare").click(function(){
-      $('#twitter_post_form').submit();
+      var x = "#{url}&twitter_message=" + $('#twitter_message').val()
+      window.location = x
+      // window.location = "http://www.google.com/"
+      // $('#twitter_post_form').submit();
     });
   });
 

@@ -6,7 +6,8 @@ module PointTracker
       :financial_profile_quiz_step,
       :referral_step,
       :sign_up_step,
-      :share_financial_profile_on_fb_step
+      :share_financial_profile_on_fb_step,
+      :share_financial_profile_on_twitter_step
     ]
   end
 

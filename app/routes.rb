@@ -14,6 +14,7 @@ Finginie::Application.routes.draw do
   get '/ideal_investments/:id/public' => 'ideal_investments#public', :as => :public_financial_profile
 
   get 'social_network/facebook_callback' => 'social_network#facebook_callback'
+  get 'social_network/twitter_callback' => 'social_network#twitter_callback'
 
   resources :accumulated_points, :only => [:index]
 
