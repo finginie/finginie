@@ -24,8 +24,6 @@ staging: &staging
     DEPLOYHOOKS_HTTP_URL         : "http://airbrake.io/deploys.txt?deploy[rails_env]=staging&api_key=d32bd5cf0a8135db0b96b89c0ce468f9"
     FACEBOOK_KEY                 : "218506538203759"
     FACEBOOK_SECRET              : "60131991fc9d5faeb78a164789d22a3e"
-    GOOGLE_KEY                   : "991503885080.apps.googleusercontent.com"
-    GOOGLE_SECRET                : "wgBNGF4LH4K8X8zZeHruc3Pg"
     FINGINIE_KEY            : "a0dfee3532cf52d9e479eff18701f5420788be609c59ed0d5959cb18964f97df"
     FINGINIE_SECRET         : "9071834b8fcf9028d2cd2d46b0a715c585b1b833086c7e4d4dc7a3bcfe68b34c"
     MAINTENANCE_PAGE_URL         : "https://docs.google.com/a/finginie.com/spreadsheet/viewform?formkey=dFJaRjVMaTdSUml1TTlkWG9uaGdKNmc6MA"
@@ -46,6 +44,8 @@ spare:
   app: immense-harbor-5702
   config:
     <<: *staging_config
+    FINGINIE_KEY             : "c75928c1f5a2a376dba4c417ce63083d4c4d2433fe1d615d30dbeb4e64867b97"
+    FINGINIE_SECRET          : "78566c4e0a3b375565ddda0e7f75b2f4a26d3000046c05abc3182a8334d851fd"
 
 production:
   <<: *staging
@@ -56,8 +56,6 @@ production:
     FACEBOOK_KEY                 : "227202437375090"
     FACEBOOK_SECRET              : "38dd90840dc6d9a83a8e7578780ddbd8"
     GOOGLE_ANALYTICS             : "UA-12345678-1"
-    GOOGLE_KEY                   : "924488085977.apps.googleusercontent.com"
-    GOOGLE_SECRET                : "lWCmvtoikvhfXnB31PJAUsBT"
     FINGINIE_KEY            : "115714224b640202bdb03280c2549099fd455ea0b062cd7a76305c700a770b3b"
     FINGINIE_SECRET         : "d3ff0cc8d111ba368484aeeef23968559676daa87cc550544409a7d8d50acdd3"
     RACK_ENV                     : "production"

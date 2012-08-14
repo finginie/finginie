@@ -22,22 +22,20 @@
 #= require twitter
 #= require facebook
 #= require analytics
-#= require airbrake_notifier
 #
 #= require_self
 #= require_tree .
-
-google.load('visualization', '1')
 
 $ ->
   $('.carousel').carousel
     interval: 3000
 
-  $("div.chart").each ->
-    if $(this).attr("data-chartType") is "Column"
-      google.setOnLoadCallback drawColumnChart(this)
-    else
-      google.setOnLoadCallback drawPieChart(this)
+  $.getScript 'https://www.google.com/jsapi', ->
+    draw_charts = ->
+      $('[data-chart_type]').each ->
+        google.setOnLoadCallback window["draw#{$(this).data('chart_type')}Chart"](this)
+
+    google.load('visualization', '1', {'callback': draw_charts})
 
   $('[data-autocomplete-source]').each ->
     $(this).keypress (e) ->

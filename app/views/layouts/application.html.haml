@@ -6,8 +6,7 @@
     %meta{ :name => 'keywords', :content => auto_page_seo_content('keywords', yield(:keywords) ) }
     %meta{ :name => 'viewport', :content => "width=device-width, initial-scale=1.0" }
     = stylesheet_link_tag :application
-    = javascript_include_tag 'https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization","version":"1.1"}]}', :async => true
-    = javascript_include_tag :application, :async => true
+    = javascript_include_tag :application, :async => !Rails.env.development?
     = airbrake_javascript_notifier
     = csrf_meta_tags
 

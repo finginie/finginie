@@ -8,7 +8,7 @@
 - unless resource.category_wise_mutual_funds_percentage.empty?
   .row
     .span8
-      - gchart(:data => resource.category_wise_mutual_funds_percentage, :title => 'Category Wise Mutual Fund Allocation', :chartType => 'Pie')
+      - gchart(:data => resource.category_wise_mutual_funds_percentage, :title => 'Category Wise Mutual Fund Allocation', :chart_type => 'Pie')
 
   .row
     .span12.show-grid
@@ -63,7 +63,7 @@
   .row
     .span8
       - gchart(:data => resource.mutual_fund_positions_profit_or_loss.map { |r| [r.name, r.percentage] },
-               :title => 'Realized Profit/Loss on Mutual Funds', :yAxisTitle => 'Percentage (%)', :chartType => 'Column')
+               :title => 'Realized Profit/Loss on Mutual Funds', :yAxisTitle => 'Percentage (%)', :chart_type => 'Column')
   .row
     .span12.show-grid
       %h5 Realized Profits/Losses

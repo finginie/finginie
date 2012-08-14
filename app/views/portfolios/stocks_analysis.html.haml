@@ -6,7 +6,7 @@
     = facebook_recommendation('Stocks Analysis')
     - unless resource.sector_wise_stock_percentage.empty?
       - gchart( :data => resource.sector_wise_stock_percentage,
-          :title => 'Sector Wise Stocks Allocation', :chartType => 'Pie')
+          :title => 'Sector Wise Stocks Allocation', :chart_type => 'Pie')
       %h5
         Current Holdings:
         %small Sector wise Analysis
@@ -58,7 +58,7 @@
     #stocks_profit_or_loss_analysis
       - unless resource.stocks_positions_profit_or_loss.empty?
         - gchart(:data => resource.stocks_positions_profit_or_loss.map { |r| [r.name, r.percentage] },
-                 :title => 'Realized Profit/Loss on Stocks', :yAxisTitle => 'Percentage (%)', :chartType => 'Column')
+                 :title => 'Realized Profit/Loss on Stocks', :yAxisTitle => 'Percentage (%)', :chart_type => 'Column')
         %h5 Realized Profits/Losses
         %table.table.table-striped.table-bordered
           %tr
