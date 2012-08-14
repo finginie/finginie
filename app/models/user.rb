@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
     email.split('@').first
   end
 
-  def has_no_comprehensive_risk_profiler?
-    !comprehensive_risk_profiler.persisted?
+  def has_comprehensive_risk_profiler?
+    comprehensive_risk_profiler.persisted?
   end
 
   def comprehensive_risk_profiler

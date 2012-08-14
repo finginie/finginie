@@ -8,7 +8,7 @@ class SessionsHandler
   def success_callback(session_hash)
     @attributes = session_hash
 
-    save_comprehensive_risk_profiler_from_session unless user.comprehensive_risk_profiler
+    save_comprehensive_risk_profiler_from_session unless user.has_comprehensive_risk_profiler?
     add_referral_step if new_referral?
     PointTracker::SignUpStep.new(user).save
   end
