@@ -19,7 +19,7 @@
         %li= link_to 'Today\'s top 10 funds', "#top_performers", :data => { :toggle => :tab }
         %li= link_to 'Biggest funds', "#biggest_schemes", :data => { :toggle => :tab }
       .tab-content
-        #top_performers.tab-pane= render_cell :mutual_funds, :top_funds
+        #top_performers.tab-pane
         #biggest_schemes.tab-pane= render_cell :mutual_funds, :biggest_funds
 
     .show-grid
