@@ -21,6 +21,7 @@ Finginie::Application.routes.draw do
   resources :accumulated_points, :only => [:index]
   # resources :email_contacts, :only => [:index]
   post 'import_contacts' => 'email_contacts#import'
+  get 'send_mail' => 'email_contacts#send_mail'
 
   # Portfolio Tracker
   resources :portfolios do

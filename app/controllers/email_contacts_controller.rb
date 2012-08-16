@@ -16,6 +16,10 @@ class EmailContactsController < ApplicationController
     render :status => 403, :json => error_msg.message
   end
 
+  def send_mail
+    EbolaMailer.welcome_email.deliver
+  end
+
   private
   def data_table_converted_contacts(contacts)
     data_table_converted_contacts = contacts.map do |contact|
