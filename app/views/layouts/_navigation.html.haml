@@ -110,6 +110,9 @@
                     main_app.blog_path
       = bar.item 'Manage Investments',
                       main_app.portfolios_path
+      = bar.item 'Signup and Win',
+                      main_app.page_path('signup-and-win')
+
 
     = bar.second_nav do
       - if current_user
