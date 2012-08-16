@@ -41,4 +41,9 @@ private
     redirect_uri=CGI::escape("#{host}/auth/single_signon/callback")
     "#{ENV['AUTH_SITE_URL']}/oauth/authorize?response_type=code&client_id=#{ENV['FINGINIE_KEY']}&redirect_uri=#{redirect_uri}"
   end
+
+  def clear_session!(*args)
+    args.each {|arg| session[arg] = nil }
+  end
+
 end

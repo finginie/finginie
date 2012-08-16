@@ -25,6 +25,14 @@ module ApplicationHelper
     content_tag :span, content, :class => (value < 0 ? :red : :green)
   end
 
+  def facebook_share_url_with_link(shared_link)
+    ENV['FACEBOOK_SHARE_DIALOG_URL'] + fb_share_query_params(shared_link)
+  end
+
+  def facebook_share_url_with_description(score)
+    ENV['FACEBOOK_SHARE_DIALOG_URL'] + fb_share_query_params_description(score)
+  end
+
   def row_for(translate_label, field, objects)
     haml_tag :tr do
       haml_tag(:td, t("#{translate_label}.#{field}"))
@@ -76,4 +84,39 @@ module ApplicationHelper
     'http://' + request.host_with_port
   end
 
+  def fb_share_query_params(shared_link)
+    app_id = ENV['FACEBOOK_KEY']
+    link = url_with_complete_path shared_link
+    img_url = host
+    name = t('facebook_share.name', :user_slug => current_user.slug_name)
+    description = t('facebook_share.description')
+    facebook_callback_url = social_network_facebook_callback_path(:return_to => current_page_url, :step => PointTracker::ShareFinancialProfileOnFbStep)
+    redirect_uri = url_with_complete_path(facebook_callback_url)
+
+    {
+      :app_id => app_id,
+      :link => link,
+      :picture => host + '/assets/logo.png',
+      :name => name,
+      :description => description,
+      :redirect_uri => redirect_uri
+    }.to_query
+  end
+
+  def fb_share_query_params_description(score)
+    app_id = ENV['FACEBOOK_KEY']
+    img_url = host
+    name = t('facebook_share.name', :user_slug => current_user.slug_name)
+    description = t('facebook_share.quiz_description', :score => "#{score}" ,:questions => "#{Question::QUIZLIMIT}" )
+    facebook_callback_url = social_network_facebook_callback_path(:return_to => learning_tools_url, :step => PointTracker::ShareFinancialProfileOnFbStep)
+    redirect_uri = url_with_complete_path(facebook_callback_url)
+    {
+      :app_id => app_id,
+      :link => "http://finginie.com/learning_tools/start_quiz",
+      :picture => host + '/assets/logo.png',
+      :name => "Investo presto quiz. ",
+      :description => description,
+      :redirect_uri => redirect_uri
+    }.to_query
+  end
 end

@@ -1,10 +1,16 @@
 Finginie::Application.routes.draw do
   resources :research_ratings, :only => [:index]
 
-  #Learning investing
   root :to => 'pages#show', :id => 'home'
   match "/pages/*id" => 'pages#show', :as => :page, :format => false
-  resources :learning_tools
+
+  #Learning investing
+  resources :questions
+  resources :learning_tools do
+    collection do
+      get 'start_quiz'
+    end
+  end
 
   #Market Commentary
   get '/blog' => redirect("/blog/index"), :as => :blog

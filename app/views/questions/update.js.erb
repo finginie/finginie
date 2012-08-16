@@ -1,0 +1,15 @@
+$("#reason_part").show();
+$(".form-actions").hide();
+if("<%= @next_question %>" == 0 )
+  $("#next_link").html('<%= link_to "Complete Quiz",learning_tools_path %>');
+else
+  $("#next_link").html('<%= link_to "Next",question_path(@next_question) %>');
+if(<%= @score %> == 0)
+  $("#result_part").html('<%= image_tag('wrong.png') %> wrong');
+else
+  {
+    $("#result_part").html('<%= image_tag('tick.png') %> correct');
+    $("#score_part").html(<%= @score %>);
+  }
+
+

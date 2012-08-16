@@ -1,0 +1,36 @@
+.row
+  .span9
+    %h1= t '.title'
+    %h2
+      Your score  :
+      %span#score_part
+        #{session[:learning_tools][:score]}
+    %section
+      %h3= t '.description'
+      %p= t '.about'
+    = simple_form_for @question,:remote => true, :html => {:id => 'quiz_form'} do |f|
+      %h3 Question #{@current_question_number} :  #{@question.news}
+
+      %ol.unstyled
+        %li
+          .control-group
+            %label.required.control-label
+              #{@question.text}
+            .controls
+              %fieldset#special_goals
+                = f.input :choices, :collection => @question.choices.map {|u| [u.text,u.id]}, :as => :radio_buttons ,:label => ""
+      .form-actions
+        %input.btn.btn-primary#answerBtn{ :name => "commit", :value => "Answer" ,:type => "submit" }
+    %section
+      .well#reason_part.hide
+        %h2#result_part
+        %h3 Explanation
+        %p #{@question.reason}
+        #next_link
+
+
+  .span3
+    %img{:src => "http://placehold.it/270x300&text=ads"}/
+    %img{:src => "http://placehold.it/270x300&text=ads"}/
+
+

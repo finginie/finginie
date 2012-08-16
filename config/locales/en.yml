@@ -24,6 +24,7 @@ en:
   facebook_share:
     name: "Finginie- %{user_slug}'s Personalized Investment Suggestions"
     description: "These are my personalized investment suggestions from Finginie customized to my unique financial needs and constraints backed by financial experts opinions and 10 years of market data. Check them out !"
+    quiz_description: "I have answered %{score} questions out of %{questions} questions."
   personal_financial_tools:
     home: 'Personal Financial Tools'
     list:
