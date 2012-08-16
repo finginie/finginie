@@ -24,7 +24,7 @@
               :chart_type => 'Pie' )
 
     .span4.show-grid
-      %table.table.table-striped
+      %table.table.table-striped.table-bordered
         %tr
           %th Asset Class
           %th Percentage
@@ -32,6 +32,8 @@
           %tr
             %td= asset_class
             %td= "#{percentage}%"
+      .pull-right
+        = link_to image_tag('ebola-370.jpg'), main_app.page_path('signup-and-win')
 .row
   .span12.show-grid
     .well
