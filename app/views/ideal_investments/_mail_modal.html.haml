@@ -23,6 +23,27 @@
 
 .temp
 
+#mailModal.modal.hide
+  .modal-header
+    %button.close{"data-dismiss" => "modal", :type => "button"} ×
+    %h3 Share your financial plan via email
+  .modal-body
+    %h2#option-b Invite by email
+    .option
+      %p{:style => "margin-bottom:1em;"} Invite your contacts (Gmail, AOL, Yahoo, etc.)
+    .alert.alert-error#error_msg{:style => 'display:none'}
+    = form_tag import_contacts_path, :remote => true, :id => 'contacts_form' do
+      .sector.control-group
+        = label_tag "Contact", "Email", :class => 'control-label'
+        .controls
+          = email_field_tag("login")
+      .sector.control-group
+        = label_tag "Contact", "Password", :class => 'control-label'
+        .controls
+          = password_field_tag("password")
+      .actions
+        = submit_tag 'Retrieve Contacts'
+
 #myModal.modal.hide
   .modal-header
     %button.close{"data-dismiss" => "modal", :type => "button"} ×
@@ -37,37 +58,23 @@
       %span#count Invite 0 Friends
     %a.btn{:href => "#"} Cancel
 
-%h2#option-b Invite by email
-.option
-  %p{:style => "margin-bottom:1em;"} Invite your contacts (Gmail, AOL, Yahoo, etc.)
-.alert.alert-error#error_msg{:style => 'display:none'}
-= form_tag import_contacts_path, :remote => true, :id => 'contacts_form' do
-  .sector.control-group
-    = label_tag "Contact", "Email", :class => 'control-label'
-    .controls
-      = email_field_tag("login")
-  .sector.control-group
-    = label_tag "Contact", "Password", :class => 'control-label'
-    .controls
-      = password_field_tag("password")
-  .actions
-    = submit_tag 'Retrieve Contacts'
 
 :javascript
   $(document).ready(function() {
     $("#contacts_form").bind("ajax:beforeSend", function(data) {
-      $("#error_msg").hide()
-      $("#count").html("Invite 0 Friends")
+      $("#error_msg").hide();
+      $("#count").html("Invite 0 Friends");
+      $('#mailModal').modal('hide')
       $('body').addClass("loading")
-    });
-
-    $("#contacts_form").bind("ajax:error", function(xhr, data, status) {
-      $("#error_msg").show()
-      $("#error_msg").html(data.responseText)
     });
 
     $("#contacts_form").bind("ajax:complete", function(){
       $('body').removeClass("loading")
+    });
+
+    $("#contacts_form").bind("ajax:error", function(xhr, data, status) {
+      $("#error_msg").show();
+      $("#error_msg").html(data.responseText);
     });
 
     $("#contacts_form").bind("ajax:success", function(xhr, data) {
@@ -83,8 +90,8 @@
       } );
 
       $('#example tr .a').live('click', function () {
-        var x  = $('.a').filter(":checked").length
-        $("#count").html("Invite "+ x + " Friends")
+        var x  = $('.a').filter(":checked").length;
+        $("#count").html("Invite "+ x + " Friends");
       });
 
       $('#myModal').modal()
