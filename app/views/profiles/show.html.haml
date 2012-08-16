@@ -1,24 +1,51 @@
-%p#notice= notice
-
-%p
-  %b Name:
-  = @profile.name
-%p
-  %b Avatar url:
-  = @profile.avatar_url
-%p
-  %b Location:
-  = @profile.location
-%p
-  %b Occupation:
-  = @profile.occupation
-%p
-  %b Company:
-  = @profile.company
-
-- if can? :edit, @profile
-  = link_to 'Edit', edit_own_profile_path
-
-= @profile.follow_unfollow_button
-
-= link_to 'Back', profiles_path
+.row.show-grid
+  .span2
+    = image_tag @profile.avatar_url
+    %h2.align-center
+      = @profile.name
+      - if can? :edit, @profile
+        %small= link_to 'Edit', edit_own_profile_path
+      -# @profile.follow_unfollow_button
+    %h6
+      Occupation:
+      %small= @profile.occupation
+    %h6
+      City:
+      %small= @profile.location
+  .span7
+    .row.show-grid
+      .span7
+        %h5 Public Portfolios
+        #public_portfolios_carousel.carousel.slide
+          .carousel-inner
+            - PortfolioDecorator.decorate(@profile.portfolios.public).each do |portfolio|
+              .item.wide
+                = gchart( :header => ['Asset Class','Percenatge'],
+                          :data => portfolio.total_assets_distribution,
+                          :chart_type => 'Pie',
+                          :title => portfolio.name )
+          %a.carousel-control.left{:href => '#public_portfolios_carousel', :data => {:slide => :prev}} &lsaquo;
+          %a.carousel-control.right{:href => '#public_portfolios_carousel', :data => {:slide => :next}} &rsaquo;
+    .row.show-grid
+      .span7
+        %h5 Activity
+  .span3
+    %ul.thumbnails
+      %li.span3
+        .well
+          %p.header
+            Following
+            %small.pull-right
+              = link_to 'See all', subscriptions_path
+          %ul
+            - SubscriptionDecorator.decorate(@profile.subscriptions.users).each do |subscription|
+              %li= subscription.render_profile
+      %li.span3
+        .well
+          %p.header
+            Followers
+            %small.pull-right
+              = link_to 'See all', subscriptions_path
+          %ul
+            - SubscriptionDecorator.decorate(@profile.follows).each do |subscription|
+              %li= subscription.render_user

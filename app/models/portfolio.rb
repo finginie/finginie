@@ -24,6 +24,7 @@ class Portfolio < ActiveRecord::Base
   has_many :fixed_deposits, :through => :fixed_deposit_transactions, :uniq => true
   has_many :real_estates,   :through => :real_estate_transactions,   :uniq => true
 
+  scope :public, where(:is_public => true)
 
   validates :user_id, :presence => true
   validates :name, :presence => true,

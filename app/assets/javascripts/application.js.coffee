@@ -52,6 +52,7 @@ $ ->
   $("form").live "ajax:aborted:required", (event, elements) ->
     elements.filter(":not([type=radio])").length isnt 0
 
+  $('.carousel item:first').addClass 'active'
   $('.carousel').carousel
     interval: 10000
 
