@@ -20,7 +20,7 @@ en:
   special_offer:
     message: 'Thank you for signing up with Finginie. Rs 2 will now be donated on your behalf through the Finginie Cares campaign.'
   facebook_share:
-    name: "Finginie- %{user_slug}'s Personalized Financial Plan"
+    name: "Finginie- %{user_slug}'s Personalized Investment Suggestions"
     description: "These are my personalized investment suggestions from Finginie customized to my unique financial needs and constraints backed by financial experts opinions and 10 years of market data. Check them out !"
   personal_financial_tools:
     home: 'Personal Financial Tools'
