@@ -17,26 +17,7 @@
         %span{ :data => { :role => 'balanced_portfolio' } } Balanced Portfolio
         %p= t( ".default_suggestion")
 
-.row
-  .span8.show-grid
-    -gchart( :data => @ideal_investment_mix.public_security_mix, title: 'Ideal Investments', chart_type: 'Pie' )
-
-  - %w(fixed_deposits gold_investments large_caps mid_caps).each do |type|
-    - unless @ideal_investment_mix.send(type).empty?
-      = render 'investments', :type => type, :value => 'percentage'
-
-.row
-  .span12
-    %p= t("ideal_investments.show.elss_message")
-    %h5 Top ELSS funds
-    %table.table.table-striped.table-bordered{:data => {:role => 'top_elss_funds'} }
-      %tr
-        %th Name
-        %th 3 Yr Return (%)
-        - @ideal_investment_mix.top_elss_funds.limit(5).each do |fund|
-          %tr
-            %td= link_to fund.name, mutual_fund_path(@ideal_investment_mix.scheme(fund.name))
-            %td= number_with_precision fund.prev3_year_comp_percent
+= render_cell :ideal_investments, :public, :ideal_investment_mix => @ideal_investment_mix
 
 - unless current_user && current_user.id == @user.id
   = link_to t('.take_quiz'), edit_comprehensive_risk_profiler_path

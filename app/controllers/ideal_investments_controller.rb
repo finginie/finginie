@@ -1,6 +1,5 @@
 class IdealInvestmentsController < InheritedResources::Base
-  defaults :singleton => true, :resource_class => IdealInvestmentMix,:instance_name => 'ideal_investment_mix'
-  actions :show, :public
+  defaults :singleton => true, :resource_class => IdealInvestmentMix, :instance_name => 'ideal_investment_mix'
   before_filter :user_logged_in, :only => [:show]
 
   def public
@@ -16,7 +15,7 @@ class IdealInvestmentsController < InheritedResources::Base
     @resource = super
     @resource.initial_investment = (params[:initial_investment]) if params[:initial_investment]
     starting_investment = @resource.comprehensive_risk_profiler.initial_investment
-    flash[:notice] =  starting_investment > IdealInvestmentMix::MINIMUM_INVESTMENT ? t('.display_initial_investment', :amount => starting_investment) : t('.too_low_investment')
+    flash.now[:notice] =  starting_investment > IdealInvestmentMix::MINIMUM_INVESTMENT ? t('.display_initial_investment', :amount => starting_investment) : t('.too_low_investment')
     @resource
   end
 

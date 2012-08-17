@@ -64,7 +64,7 @@ class IdealInvestmentMix
     return [] if large_cap_amount == 0
 
     if amount_greater_than_min_investment?(large_cap_amount / 2)
-      top_large_caps(2).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => large_cap_amount/2, :percentage => asset_allocation['Large Cap Stocks'] }) }
+      top_large_caps(2).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => large_cap_amount/2, :percentage => asset_allocation['Large Cap Stocks']/2 }) }
     else
       top_large_caps(1).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => large_cap_amount, :percentage => asset_allocation['Large Cap Stocks'] }) }
     end
