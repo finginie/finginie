@@ -19,19 +19,24 @@
 
 .row
   .span8.show-grid
-    -gchart(:data => FinancialPlanner.ideal_asset_allocation(@comprehensive_risk_profiler).to_a,
-            :title => 'Suggested Asset Allocation',
-            :chart_type => 'Pie' )
+    -gchart( :data => @ideal_investment_mix.public_security_mix, title: 'Ideal Investments', chart_type: 'Pie' )
 
-  .span4.show-grid
-    %table.table.table-striped
+  - %w(fixed_deposits gold_investments large_caps mid_caps).each do |type|
+    - unless @ideal_investment_mix.send(type).empty?
+      = render 'investments', :type => type
+
+.row
+  .span12
+    %p= t("ideal_investments.show.elss_message")
+    %h5 Top ELSS funds
+    %table.table.table-striped.table-bordered{:data => {:role => 'top_elss_funds'} }
       %tr
-        %th Asset Class
-        %th Percentage
-      - FinancialPlanner.ideal_asset_allocation(@comprehensive_risk_profiler).each do |asset_class,percentage|
-        %tr
-          %td= asset_class
-          %td= "#{percentage}%"
+        %th Name
+        %th 3 Yr Return (%)
+        - @ideal_investment_mix.top_elss_funds.limit(5).each do |fund|
+          %tr
+            %td= link_to fund.name, mutual_fund_path(@ideal_investment_mix.scheme(fund.name))
+            %td= number_with_precision fund.prev3_year_comp_percent
 
 - unless current_user && current_user.id == @user.id
   = link_to t('.take_quiz'), edit_comprehensive_risk_profiler_path

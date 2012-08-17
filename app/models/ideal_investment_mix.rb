@@ -19,9 +19,12 @@ class IdealInvestmentMix
 
   def gold_investments
     return [] if gold_amount == 0
-    amount_greater_than_min_investment?(gold_amount / 2) ? top_gold_etfs(2)
-      .map{ |scheme| Hashie::Mash.new({:name => scheme.name, :amount => gold_amount / 2  }) } :
-        top_gold_etfs(1).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => gold_amount }) }
+
+    if amount_greater_than_min_investment?(gold_amount / 2)
+      top_gold_etfs(2).map{ |scheme| Hashie::Mash.new({:name => scheme.name, :amount => gold_amount/2, :percentage => asset_allocation['Gold']/2 }) }
+    else
+      top_gold_etfs(1).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => gold_amount, :percentage => asset_allocation['Gold'] }) }
+    end
   end
 
   def fixed_deposits
@@ -29,9 +32,11 @@ class IdealInvestmentMix
                   FixedDepositCollection.top_five_private_banks_interest_rates.first ]
 
     highest_interest_fd = top_two_fds.select { |fd| fd.one_year_interest_rate == top_two_fds.map(&:one_year_interest_rate).max }
-    amount_greater_than_min_investment?(fd_amount / 2) ?
-      top_two_fds.map{ |fd| Hashie::Mash.new({:name => "Fixed Deposit at #{fd.name}", :amount => fd_amount / 2  }) } :
-        highest_interest_fd.map {|fd| Hashie::Mash.new({:name => "Fixed Deposit at #{fd.name}", :amount => fd_amount }) }
+    if amount_greater_than_min_investment?(fd_amount / 2)
+      top_two_fds.map{ |fd| Hashie::Mash.new({:name => "Fixed Deposit at #{fd.name}", :amount => fd_amount/2, :percentage => asset_allocation['Fixed Deposits']/2 }) }
+    else
+      highest_interest_fd.map {|fd| Hashie::Mash.new({:name => "Fixed Deposit at #{fd.name}", :amount => fd_amount, :percentage => asset_allocation['Fixed Deposits'] }) }
+    end
   end
 
   def distinct_schemes(schemes, limit)
@@ -57,9 +62,12 @@ class IdealInvestmentMix
 
   def large_caps
     return [] if large_cap_amount == 0
-    amount_greater_than_min_investment?(large_cap_amount / 2) ?
-      top_large_caps(2).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => large_cap_amount / 2  }) } :
-        top_large_caps(1).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => large_cap_amount}) }
+
+    if amount_greater_than_min_investment?(large_cap_amount / 2)
+      top_large_caps(2).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => large_cap_amount/2, :percentage => asset_allocation['Large Cap Stocks'] }) }
+    else
+      top_large_caps(1).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => large_cap_amount, :percentage => asset_allocation['Large Cap Stocks'] }) }
+    end
   end
 
   def top_mid_caps(limit)
@@ -72,14 +80,22 @@ class IdealInvestmentMix
 
   def mid_caps
     return [] if mid_cap_amount == 0
-    amount_greater_than_min_investment?(mid_cap_amount / 2) ?
-      top_mid_caps(2).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => mid_cap_amount / 2  }) } :
-        top_mid_caps(1).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => mid_cap_amount}) }
+
+    if amount_greater_than_min_investment?(mid_cap_amount / 2)
+      top_mid_caps(2).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => mid_cap_amount/2, :percentage => asset_allocation['Mid Cap Stocks']/2 }) }
+    else
+      top_mid_caps(1).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => mid_cap_amount, :percentage => asset_allocation['Mid Cap Stocks'] }) }
+    end
   end
 
   def security_mix
     [fixed_deposits, gold_investments, large_caps, mid_caps].flatten.map{ |security|
       [ security.name, security.amount.to_f ] }
+  end
+
+  def public_security_mix
+    [fixed_deposits, gold_investments, large_caps, mid_caps].flatten.map{ |security|
+      [ security.name, security.percentage ] }
   end
 
   def scheme(name)
