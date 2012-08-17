@@ -2,15 +2,6 @@ class ComprehensiveRiskProfilersController < InheritedResources::Base
   defaults :singleton => true
   actions :show, :edit, :update
 
-  def public
-    @user = User.find params[:id]
-    session[:referrer_id] ||= @user.id
-    quiz_link = "<a href='/comprehensive_risk_profiler/edit'>Click Here</a>"
-    flash.now[:notice] = (I18n.t('.comprehensive_risk_profilers.public.personalize_message', :email => @user.email, :quiz_link => quiz_link)).html_safe
-    @comprehensive_risk_profiler = ComprehensiveRiskProfilerDecorator.decorate(@user.comprehensive_risk_profiler)
-    @ideal_investment_mix = IdealInvestmentMix.new(@comprehensive_risk_profiler)
-  end
-
   def show
     if first_time?
       redirect_to edit_comprehensive_risk_profiler_path, :notice => t(".comprehensive_risk_profilers.message")

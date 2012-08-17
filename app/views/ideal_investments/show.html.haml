@@ -15,13 +15,14 @@
           = submit_tag t('.submit'), :class => 'btn btn-primary'
 
     %p= t('.default_amount', :amount => [ resource.comprehensive_risk_profiler.initial_investment, IdealInvestmentMix::MINIMUM_INVESTMENT].max.to_s)
+
 .row.show-grid
   .span8
     -gchart( :data => resource.security_mix, :header => ['Name','Amount'], title: 'Ideal Investments', chart_type: 'Pie' )
 
   - %w(fixed_deposits gold_investments large_caps mid_caps).each do |type|
     - unless resource.send(type).empty?
-      = render 'investments', :type => type
+      = render 'investments', :type => type, :value => 'amount'
 
 .row
   .span12

@@ -23,7 +23,7 @@
 
   - %w(fixed_deposits gold_investments large_caps mid_caps).each do |type|
     - unless @ideal_investment_mix.send(type).empty?
-      = render 'investments', :type => type
+      = render 'investments', :type => type, :value => 'percentage'
 
 .row
   .span12
