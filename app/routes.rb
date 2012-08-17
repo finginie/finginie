@@ -12,7 +12,7 @@ Finginie::Application.routes.draw do
   resource :comprehensive_risk_profiler, :only =>[:edit, :update, :show] do
     resource :ideal_investments, :only => [:show]
   end
-  get '/comprehensive_risk_profiler/:id/public' => 'comprehensive_risk_profilers#public', :as => :public_financial_profile
+  get '/ideal_investments/:id/public' => 'ideal_investments#public', :as => :public_financial_profile
 
   get 'social_network/facebook_callback' => 'social_network#facebook_callback'
 

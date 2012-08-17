@@ -1,5 +1,7 @@
 en:
   ideal_investments:
+    amount: 'Amount (Rs)'
+    percentage: 'Percentage'
     show:
       submit: 'Update'
       too_low_investment: 'You should increase your savings before starting to invest.We recommend that you first save atleast Rs 30,000 for emergencies before you start investing.'

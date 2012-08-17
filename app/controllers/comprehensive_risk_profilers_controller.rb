@@ -2,19 +2,6 @@ class ComprehensiveRiskProfilersController < InheritedResources::Base
   defaults :singleton => true
   actions :show, :edit, :update
 
-  def public
-    @user = User.find params[:id]
-    session[:referrer_id] ||= @user.id
-    if params[:post_id]
-      @user.finished_share_financial_profile_on_fb_step({ :post_id => params[:post_id] })
-      flash.now[:notice] = I18n.t('comprehensive_risk_profilers.public.facebook.success_message')
-    else
-      quiz_link = "<a href='/comprehensive_risk_profiler/edit'>Click Here</a>"
-      flash.now[:notice] = (I18n.t('.comprehensive_risk_profilers.public.personalize_message', :email => @user.email, :quiz_link => quiz_link)).html_safe
-    end
-    @comprehensive_risk_profiler = ComprehensiveRiskProfilerDecorator.decorate(@user.comprehensive_risk_profiler)
-  end
-
   def show
     if first_time?
       redirect_to edit_comprehensive_risk_profiler_path, :notice => t(".comprehensive_risk_profilers.message")
