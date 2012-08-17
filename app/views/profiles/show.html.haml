@@ -29,6 +29,15 @@
     .row.show-grid
       .span7
         %h5 Activity
+        %ul.thumbnails
+          - EventDecorator.decorate(@profile.events).each do |event|
+            %li.span7
+              .thumbnail
+                .row
+                  .span1= image_tag "#{event.action}_event_icon.png"
+                  .span5
+                    %h3= event.action.titleize
+                    %p= event.content
   .span3
     %ul.thumbnails
       %li.span3

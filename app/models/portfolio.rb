@@ -96,6 +96,11 @@ class Portfolio < ActiveRecord::Base
 
   def make_public!
     update_attribute :is_public, true
+    Event.create do |event|
+      event.user = user
+      event.target = self
+      event.action = 'portfolio_share'
+    end
   end
 
   def make_private!
