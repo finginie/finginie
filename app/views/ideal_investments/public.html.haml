@@ -1,5 +1,5 @@
 .row
-  .span12
+  .span8
     - if @comprehensive_risk_profiler.valid?
       %h1
         = @user.email
@@ -16,6 +16,10 @@
       %h1
         %span{ :data => { :role => 'balanced_portfolio' } } Balanced Portfolio
         %p= t( ".default_suggestion")
+
+  .span4
+    .pull-right
+      = link_to image_tag('ebola-370.jpg'), main_app.page_path('win-an-ipad3')
 
 = render_cell :ideal_investments, :public, :ideal_investment_mix => @ideal_investment_mix
 
