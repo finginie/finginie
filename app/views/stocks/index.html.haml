@@ -9,13 +9,13 @@
     %table#stocks_table.table.table-striped.table-bordered{ :data => { :source => stocks_path(format: 'json') } }
       %thead
         %tr
-          %th.name Name
-          %th.name Sector
-          %th.stock_value Price
-          %th.stock_value % Change
-          %th.stock_value P/E
+          %th Name
+          %th Sector
+          %th Price
+          %th % Change
+          %th P/E
       %tbody
-        %tr.right_align
+        %tr
           %td.dataTables_empty{colspan:5} Start typing the name or symbol of the company in the box above to get a quote
 
 .row.show-grid
@@ -37,7 +37,7 @@
       Use our #{ link_to "Share Screener tool", screener_stocks_path } to find shares that match your criteria.
 
   .span12
-    %h5 Important information about investing in shares.
+    %h3 Important information about investing in shares.
     %p
       Shares/stocks are very popular investments across India, both among beginners and season investors. However,
       investing in shares involves risks such as market risk and unsystematic risk. Please consult your financial advisor

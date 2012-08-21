@@ -1,29 +1,28 @@
 - unless mutual_fund_transactions.empty?
   %section{ :class => "MutualFundTransactions" }
-    %h5= "Mutual Fund Transactions"
+    %h3= "Mutual Fund Transactions"
     %table.table.table-striped.table-bordered
       %tr
-        %th.span2 Date
-        %th.span1 Type
+        %th.span2.align-center Date
+        %th.span1.align-center Type
         %th.span3 Name
-        %th.span1 Quantity
-        %th.span2 Price
-        %th.span2 Amount
+        %th.span1.align-center Quantity
+        %th.span2.align-center Price
+        %th.span2.align-center Amount
         %th.span1 Comments
       %tr
         %td
         %td
         %td
         %td
-        %td (Rs)
-        %td (Rs)
+        %td.align-center{:colspan => '2'} (Rs)
         %td
       - mutual_fund_transactions.each do |mf_transaction|
         %tr
-          %td= l mf_transaction.date
-          %td{:class => mf_transaction.action}= mf_transaction.action.to_s.titleize
+          %td.align-center= l mf_transaction.date
+          %td.align-center{:class => mf_transaction.action}= mf_transaction.action.to_s.titleize
           %td= mf_transaction.mutual_fund.name
-          %td= mf_transaction.quantity
-          %td= mf_transaction.price
-          %td= mf_transaction.value.abs
+          %td.align-right= mf_transaction.quantity
+          %td.align-right= mf_transaction.price
+          %td.align-right= mf_transaction.value.abs
           %td= mf_transaction.comments && mf_transaction.comments.strip.empty?  ? t("tables_not_available") : mf_transaction.comments

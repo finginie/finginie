@@ -1,33 +1,31 @@
 - unless real_estate_positions.empty?
   %section{ :class => "RealEstate" }
-    %h5= "Real Estate"
+    %h3= "Real Estate"
     %table.table.table-striped.table-bordered
       %tr
-        %th.name Name
-        %th Buy Value
-        %th Current Value
-        %th Unrealised Profit
-        %th Profit/Loss Percentage
-        %th.center_align Sell
+        %th.span4 Name
+        %th.span2.align-center Buy Value
+        %th.span2.align-center Current Value
+        %th.span3.align-center Unrealised Profit
+        %th.span3.align-center Profit/Loss
+        %th.span2.align-center Sell
       %tr
-        %td.name
-        %td (Rs)
-        %td (Rs)
-        %td (Rs)
-        %td (%)
+        %td
+        %td.align-center{:colspan => 3} (Rs)
+        %td.align-center (%)
         %td
       - real_estate_positions.each do |net_position|
         %tr
-          %td.name= net_position.name
-          %td= net_position.buy_value
-          %td= net_position.current_value
-          %td= rg_colorize net_position.unrealised_profit
-          %td= rg_colorize(number_with_precision(net_position.unrealised_profit_percentage), net_position.unrealised_profit_percentage)
-          %td.center_align= link_to 'Sell', sell_portfolio_real_estate_transaction_path(net_position.first.portfolio_id, net_position.first), :method => :get
+          %td= net_position.name
+          %td.align-right= net_position.buy_value
+          %td.align-right= net_position.current_value
+          %td.align-right= rg_colorize net_position.unrealised_profit
+          %td.align-right= rg_colorize(number_with_precision(net_position.unrealised_profit_percentage), net_position.unrealised_profit_percentage)
+          %td.align-center= link_to 'Sell', sell_portfolio_real_estate_transaction_path(net_position.first.portfolio_id, net_position.first), :method => :get
       %tr.total
-        %td.name Total
-        %td= real_estate_positions.sum(&:buy_value)
-        %td= real_estate_positions.sum(&:current_value)
-        %td= rg_colorize real_estate_positions.sum(&:unrealised_profit)
+        %td Total
+        %td.align-right= real_estate_positions.sum(&:buy_value)
+        %td.align-right= real_estate_positions.sum(&:current_value)
+        %td.align-right= rg_colorize real_estate_positions.sum(&:unrealised_profit)
         %td
         %td

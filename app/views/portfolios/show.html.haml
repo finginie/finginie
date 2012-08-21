@@ -14,34 +14,34 @@
             - gchart(:elements => resource.assets_and_liabilities, :title => 'Portfolio Summary',
                       :yAxisTitle => 'Amount(Rupees)', :chart_type => 'Column')
 
-        .span4.show-grid
+        .span4
           %table.table.table-striped.show-grid.assets.table-bordered
             %tr
-              %th Assets
-              %th Amount
-              %th Percentage
+              %th.span4 Assets
+              %th.span4.align-center Amount
+              %th.span4.align-center Percentage
             %tr
               %td
-              %td (Rs)
-              %td (%)
+              %td.align-center (Rs)
+              %td.align-center (%)
             -resource.total_assets_distribution_table.each do |asset|
               %tr{:class => asset[:class]}
                 %td= asset[:asset_type]
-                %td= asset[:amount]
-                %td= asset[:percentage]
+                %td.align-right= asset[:amount]
+                %td.align-right= asset[:percentage]
 
           %table.table.table-striped.show-grid.liabilities.table-bordered
             %tr
-              %th Liabilities
-              %th Amount
-              %th Percentage
+              %th.span4 Liabilities
+              %th.span4.align-center Amount
+              %th.span4.align-center Percentage
             %tr
               %td
-              %td (Rs)
-              %td (%)
+              %td.align-center (Rs)
+              %td.align-center (%)
             -resource.total_liabilities_distribution_table.each do |asset|
               %tr{:class => asset[:class]}
                 %td= asset[:asset_type]
-                %td= asset[:amount]
-                %td= asset[:percentage]
+                %td.align-right= asset[:amount]
+                %td.align-right= asset[:percentage]
 

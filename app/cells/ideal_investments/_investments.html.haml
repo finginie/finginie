@@ -1,9 +1,9 @@
 .span4
-  %h5= t(".#{type}")
+  %h3= t(".#{type}")
   %table.table.table-striped.table-bordered{ :data => { :role => type } }
     %tr
-      %th.span10 Name
-      %th.span2
+      %th.span9 Name
+      %th.span3
         = I18n.send('t', "ideal_investments.#{value}")
     -ideal_investment_mix.send(type).each do |investment|
       %tr
