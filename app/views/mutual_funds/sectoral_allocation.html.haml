@@ -5,10 +5,9 @@
 - if @scheme.sectoral_allocation
   .row
     .span12
-      .page-header
-        = facebook_recommendation("Sectoral Allocation <small>#{@scheme.name}</small>")
+      = facebook_recommendation("Sectoral Allocation <small>#{@scheme.name}</small>")
   .row
-    .span8.show-grid
+    .span8
       -gchart(:data => @scheme.sectoral_allocation, :title => 'Sectoral Allocation', chart_type: 'Pie')
     .span4
       %table.table.table-striped.table-bordered

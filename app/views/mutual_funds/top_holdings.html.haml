@@ -6,10 +6,9 @@
 - if @scheme.portfolio_holdings
   .row
     .span12
-      .page-header
-        = facebook_recommendation("Top holdings <small>#{@scheme.name}</small>")
+      = facebook_recommendation("Top holdings <small>#{@scheme.name}</small>")
   .row
-    .span12.show-grid
+    .span8.show-grid
       -gchart(:data => @scheme.top_ten_holdings_percentages, :title => 'Top 10 holdings Distribution', :chart_type => 'Pie')
 
   .row.show-grid
