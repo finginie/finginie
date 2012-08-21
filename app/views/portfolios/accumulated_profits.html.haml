@@ -16,7 +16,7 @@
                 :chart_type => 'Column', :yAxisTitle => 'Percentage (%)',
                 :title =>'Your Top Realised Profit/Losses by Percentage')
   .show-grid
-    %h5 Realized Profits
+    %h3 Realized Profits
     - unless resource.top_five_profits.empty?
       #accumulated_profits
         = render 'profit_or_loss', :net_income => resource.profits
@@ -24,7 +24,7 @@
       %p
         = t(".no_profit")
 
-  %h5 Realized Losses
+  %h3 Realized Losses
   - unless resource.top_five_losses.empty?
     #accumulated_losses
       = render 'profit_or_loss', :net_income => resource.losses
@@ -32,8 +32,8 @@
     %p
       = t(".no_loss")
   - unless resource.positions.empty?
-    %h5 Net Profit/Loss
+    %h3 Net Profit/Loss
     %table.table.table-striped.table-bordered{ :data => {:role => 'net_profit_loss'}}
       %tr
-        %td.name.total= t('.net_profit_loss')
-        %td= rg_colorize resource.net_profit_or_loss
+        %td.span10= t('.net_profit_loss')
+        %td.span2.align-right= rg_colorize resource.net_profit_or_loss

@@ -6,7 +6,7 @@
     - [ 'stock_positions', 'mutual_fund_positions' ].each do |positions|
       - unless resource.send(positions).empty?
         %section{ :class => positions }
-          %h5= positions.gsub(/_positions/,'').titleize.pluralize
+          %h3= positions.gsub(/_positions/,'').titleize.pluralize
           %div{ :id => "#{positions}"}
             %table.table.table-striped.table-bordered
               %tr
@@ -54,7 +54,7 @@
 
     - unless resource.gold_transactions.empty?
       %section{ :class => "Gold" }
-        %h5 Gold
+        %h3 Gold
         #gold_positions
           %table.table.table-striped.table-bordered
             %tr
