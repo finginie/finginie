@@ -3,31 +3,31 @@
     %h5 Loans
     %table.table.table-striped.table-bordered
       %tr
-        %th.name Name
-        %th.center_align Borrow Date
-        %th Interest
-        %th Duration
-        %th Outstanding Amt
-        %th.center_align Clear Loan
+        %th.span4 Name
+        %th.span2.align-center.span2 Borrow Date
+        %th.span2.align-center Interest
+        %th.span3.align-center Duration
+        %th.span3.align-center Outstanding Amount
+        %th.span2.align-center Clear Loan
       %tr
-        %td.name
         %td
-        %td (%p.a.)
-        %td (years)
-        %td (Rs)
+        %td
+        %td.align-center (%p.a.)
+        %td.align-center (years)
+        %td.align-center (Rs)
         %td
       - loan_positions.each do |net_position|
         %tr
-          %td.name= net_position.name
-          %td.center_align= l net_position.date
-          %td= net_position.rate_of_interest
-          %td= net_position.period
-          %td= net_position.outstanding_amount.abs
-          %td.center_align= link_to 'Clear Loan', clear_portfolio_loan_transaction_path(net_position.first.portfolio_id, net_position.first), :method => :post
+          %td= net_position.name
+          %td.align-center= l net_position.date
+          %td.align-right= net_position.rate_of_interest
+          %td.align-right= net_position.period
+          %td.align-right= net_position.outstanding_amount.abs
+          %td.align-center= link_to 'Clear Loan', clear_portfolio_loan_transaction_path(net_position.first.portfolio_id, net_position.first), :method => :post
       %tr.total
-        %td.name Total
+        %td Total
         %td
         %td
         %td
-        %td= loan_positions.sum(&:outstanding_amount).abs
+        %td.align-right= loan_positions.sum(&:outstanding_amount).abs
         %td

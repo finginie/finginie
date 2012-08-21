@@ -3,43 +3,41 @@
     %h5 Fixed Deposits
     %table.table.table-striped.table-bordered
       %tr
-        %th.name Name
-        %th.center_align Deposit Date
-        %th Interest Rate
-        %th Duration
-        %th Amt Invested
-        %th Current Value
-        %th Interest Earned
-        %th Profit/Loss Percentage
-        %th.center_align Redeem
+        %th.span4 Name
+        %th.align-center Deposit Date
+        %th.align-center Interest Rate
+        %th.align-center Duration
+        %th.align-center Amt Invested
+        %th.align-center Current Value
+        %th.align-center Interest Earned
+        %th.align-center Profit/Loss
+        %th.align-center.span1 Redeem
       %tr
-        %td.name
         %td
-        %td (%p.a)
-        %td (years)
-        %td (Rs)
-        %td (Rs)
-        %td (Rs)
-        %td (%)
+        %td
+        %td.align-center (%p.a)
+        %td.align-center (years)
+        %td.align-center{:colspan => '3'} (Rs)
+        %td.align-center (%)
         %td
       - fixed_deposit_positions.each do |net_position|
         %tr
-          %td.name= net_position.name
-          %td.center_align= l net_position.first.date
-          %td= net_position.rate_of_interest
-          %td= net_position.period
-          %td= net_position.invested_amount
-          %td= net_position.current_value
-          %td= rg_colorize net_position.unrealised_profit
-          %td= rg_colorize net_position.unrealised_profit_percentage
-          %td.center_align= link_to 'Redeem', redeem_portfolio_fixed_deposit_transaction_path(net_position.first.portfolio_id, net_position.first), :method => :get
+          %td= net_position.name
+          %td.align-center= l net_position.first.date
+          %td.align-right= net_position.rate_of_interest
+          %td.align-right= net_position.period
+          %td.align-right= net_position.invested_amount
+          %td.align-right= net_position.current_value
+          %td.align-right= rg_colorize net_position.unrealised_profit
+          %td.align-right= rg_colorize net_position.unrealised_profit_percentage
+          %td.align-right= link_to 'Redeem', redeem_portfolio_fixed_deposit_transaction_path(net_position.first.portfolio_id, net_position.first), :method => :get
       %tr.total
-        %td.name Total
+        %td Total
         %td
         %td
         %td
-        %td= fixed_deposit_positions.sum(&:invested_amount)
-        %td= fixed_deposit_positions.sum(&:current_value)
-        %td= rg_colorize fixed_deposit_positions.sum(&:unrealised_profit)
+        %td.align-right= fixed_deposit_positions.sum(&:invested_amount)
+        %td.align-right= fixed_deposit_positions.sum(&:current_value)
+        %td.align-right= rg_colorize fixed_deposit_positions.sum(&:unrealised_profit)
         %td
         %td

@@ -10,49 +10,45 @@
           %div{ :id => "#{positions}"}
             %table.table.table-striped.table-bordered
               %tr
-                %th Name
-                %th Quantity
-                %th Avg Cost Price
-                %th Amt Invested
-                %th Current Price
-                %th Current Value
-                %th Unrealised Profit
-                %th Profit/Loss Percentage
-                %th Sell
+                %th.span4 Name
+                %th.span1.align-center Quantity
+                %th.align-center Avg Cost Price
+                %th.align-center Amt Invested
+                %th.align-center Current Price
+                %th.align-center Current Value
+                %th.align-center Unrealised Profit
+                %th.align-center Profit/Loss
+                %th.span1.align-center Sell
               %tr
-                %td.name
                 %td
-                %td (Rs)
-                %td (Rs)
-                %td (Rs)
-                %td (Rs)
-                %td (Rs)
-                %td (%)
+                %td
+                %td.align-center{:colspan => '5'} (Rs)
+                %td.align-center (%)
                 %td
 
               - resource.send(positions).each do |net_position|
                 %tr
                   %td= link_to net_position.name, ( positions == "mutual_fund_positions" ? mutual_fund_path(net_position.mutual_fund.scheme_master) : stock_path(net_position.company) )
-                  %td= net_position.quantity
-                  %td= net_position.average_cost_price
-                  %td= net_position.value
-                  %td= net_position.current_price
+                  %td.align-right= net_position.quantity
+                  %td.align-right= net_position.average_cost_price
+                  %td.align-right= net_position.value
+                  %td.align-right= net_position.current_price
                   - unless net_position.current_price == "-"
-                    %td= net_position.current_value
+                    %td.align-right= net_position.current_value
                   - else
                     %td -
-                  %td= net_position.unrealised_profit
-                  %td= rg_colorize net_position.unrealised_profit_percentage
+                  %td.align-right= rg_colorize net_position.unrealised_profit
+                  %td.align-right= rg_colorize net_position.unrealised_profit_percentage
                   -transaction = positions.gsub(/_positions/,'_transaction')
-                  %td= link_to "Sell", send("new_portfolio_#{transaction}_path",resource, transaction.to_sym => net_position.action_params)
+                  %td.align-center= link_to "Sell", send("new_portfolio_#{transaction}_path",resource, transaction.to_sym => net_position.action_params)
               %tr.total
                 %td Total
                 %td
                 %td
-                %td= resource.send(positions).sum(&:value)
+                %td.align-right= resource.send(positions).sum(&:value)
                 %td
-                %td= resource.send(positions).sum(&:current_value)
-                %td{:data => {:attribute => :unrealised_profit}}= resource.unrealised_profit positions
+                %td.align-right= resource.send(positions).sum(&:current_value)
+                %td.align-right{:data => {:attribute => :unrealised_profit}}= rg_colorize resource.resource.unrealised_profit positions
                 %td
                 %td
 
@@ -62,43 +58,39 @@
         #gold_positions
           %table.table.table-striped.table-bordered
             %tr
-              %th Name
-              %th Quantity
-              %th Avg Cost price
-              %th Amt Invested
-              %th Current Price
-              %th Current Value
-              %th Unrealised Profit
-              %th Profit/Loss Percentage
-              %th Sell
+              %th.span4 Name
+              %th.span1.align-center Quantity
+              %th.align-center Avg Cost price
+              %th.align-center Amt Invested
+              %th.align-center Current Price
+              %th.align-center Current Value
+              %th.align-center Unrealised Profit
+              %th.align-center Profit/Loss
+              %th.span1.align-center Sell
             %tr
-              %td.name
-              %td (grams)
-              %td (Rs)
-              %td (Rs)
-              %td (Rs)
-              %td (Rs)
-              %td (Rs)
-              %td (%)
+              %td
+              %td.align-center (gm)
+              %td.align-center{:colspan => '5'} (Rs)
+              %td.align-center (%)
               %td
             %tr
               %td Gold
-              %td= resource.gold_position.quantity
-              %td= resource.gold_position.average_cost_price
-              %td= resource.gold_position.value
-              %td= resource.gold_position.current_price
-              %td= resource.gold_position.current_value
-              %td= rg_colorize resource.gold_position.unrealised_profit
-              %td= rg_colorize resource.gold_position.unrealised_profit_percentage
-              %td= link_to "Sell", new_portfolio_gold_transaction_path(resource, gold_transaction: resource.gold_position.action_params)
+              %td.align-right= resource.gold_position.quantity
+              %td.align-right= resource.gold_position.average_cost_price
+              %td.align-right= resource.gold_position.value
+              %td.align-right= resource.gold_position.current_price
+              %td.align-right= resource.gold_position.current_value
+              %td.align-right= rg_colorize resource.gold_position.unrealised_profit
+              %td.align-right= rg_colorize resource.gold_position.unrealised_profit_percentage
+              %td.align-center= link_to "Sell", new_portfolio_gold_transaction_path(resource, gold_transaction: resource.gold_position.action_params)
             %tr.total
               %td Total
               %td
               %td
-              %td= resource.gold_position.value
+              %td.align-right= resource.gold_position.value
               %td
-              %td= resource.gold_position.current_value
-              %td= rg_colorize resource.gold_position.unrealised_profit
+              %td.align-right= resource.gold_position.current_value
+              %td.align-right= rg_colorize resource.gold_position.unrealised_profit
               %td
               %td
 
