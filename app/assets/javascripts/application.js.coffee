@@ -6,6 +6,8 @@
 #
 #= require environment
 #
+# Libraries
+#
 #= require jquery
 #= require jquery-ui
 #= require jquery_ujs
@@ -14,9 +16,17 @@
 #= require dataTables/jquery.dataTables.bootstrap
 #
 #= require html5
-#= require personal_financial_tools
 #= require chosen.jquery.min
 #= require google_charts
+#
+# Backbone
+#
+#= require underscore
+#= require backbone
+#= require backbone_rails_sync
+#= require backbone_datalink
+#
+# Third party Services
 #
 #= require disqus
 #= require twitter
@@ -26,8 +36,15 @@
 #
 # Main App
 #
+# Main App
+#
 #= require_self
+#= require backbone/finginie
 #= require_tree .
+#
+# Engines
+#
+#= require personal_financial_tools
 
 $ ->
   $('.carousel').carousel
