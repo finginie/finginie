@@ -2,7 +2,7 @@
   .span12
     = render 'subnav'
 .row
-  .span8
+  .span9
     - if resource.model
       - provide :title, resource.name
       %h1
@@ -12,7 +12,7 @@
             - %w( nse_code ticker_name industry_name ).each do |attr|
               %strong #{t ".#{attr}"}:
               %span= resource.send(attr)
-  .span4
+  .span3
     %h1
       %small
         = link_to "Rating: #{resource.rating}", main_app.stock_research_reports_path(@company)

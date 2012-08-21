@@ -4,8 +4,7 @@
 - provide :title, @company.name if @company
 
 - if @audited_results[0] && @audited_results[0].model
-  .page-header
-    = facebook_recommendation("#{@company.name} - Balance Sheet")
+  = facebook_recommendation("#{@company.name} - Balance Sheet")
   %p *All Numbers are in crores of rupees unless specified otherwise
   %table.table.table-striped.table-bordered
     %tr

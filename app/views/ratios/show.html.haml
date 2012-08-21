@@ -5,8 +5,7 @@
 - provide :title, @company.name if @company
 
 - if @company
-  .page-header
-    = facebook_recommendation("Ratios - #{@company.name}")
+  = facebook_recommendation("Ratios - #{@company.name}")
 
 - if @company && @ratios.first && @ratios.first.model
   %table.table.table-striped.table-bordered

@@ -12,4 +12,6 @@
         = simple_form_for @search, :url => main_app.stocks_path, :method => :get, :html => {:novalidate => true, :id => 'new_company', :class => 'form-search'} do |f|
           .input-append
             = f.text_field :name, data: { autocomplete_source: stocks_path}, :placeholder => 'Search', :class => 'search-query'
+            = button_tag :class => 'btn' do
+              %i.icon-search
 
