@@ -1,34 +1,33 @@
 - unless stock_transactions.empty?
   %section{ :class => "StockTransactions" }
-    %h5= "Stock Transactions"
+    %h3= "Stock Transactions"
     %table.table.table-striped.table-bordered
       %tr
-        %th.span2 Date
-        %th.span1 Type
+        %th.span2.align-center Date
+        %th.span1.align-center Type
         %th.span3 Name
-        %th.span1 Quantity
-        %th.span2 Price
-        %th.span2 Amount
+        %th.span1.align-center Quantity
+        %th.span2.align-center Price
+        %th.span2.align-center Amount
         %th.span1 Comments
       %tr
         %td
         %td
         %td
         %td
-        %td (Rs)
-        %td (Rs)
+        %td.align-center{:colspan => '2'} (Rs)
         %td
       - company_data = false
       - stock_transactions.each do |stock_transaction|
         - if stock_transaction.company
           %tr
-            %td= l stock_transaction.date
-            %td{:class => stock_transaction.action}= stock_transaction.action.to_s.titleize
+            %td.align-center= l stock_transaction.date
+            %td.align-center{:class => stock_transaction.action}= stock_transaction.action.to_s.titleize
             %td= stock_transaction.company.name
-            %td= stock_transaction.quantity
-            %td= stock_transaction.price
-            %td= stock_transaction.value.abs
-            %td= stock_transaction.comments && stock_transaction.comments.strip.empty? ? t("tables_not_available") : stock_transaction.comments
+            %td.align-right= stock_transaction.quantity
+            %td.align-right= stock_transaction.price
+            %td.align-right= stock_transaction.value.abs
+            %td.align-right= stock_transaction.comments && stock_transaction.comments.strip.empty? ? t("tables_not_available") : stock_transaction.comments
         - else
           - company_data = true
     = company_data ? t("company_data_not_found") : ""

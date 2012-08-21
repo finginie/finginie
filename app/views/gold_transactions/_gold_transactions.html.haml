@@ -1,29 +1,28 @@
 - unless gold_transactions.empty?
   %section{ :class => "GoldTransactions" }
-    %h5= "Gold Transactions"
+    %h3= "Gold Transactions"
     %table.table.table-striped.table-bordered
       %tr
-        %th.span2 Date
-        %th.span1 Type
+        %th.span2.align-center Date
+        %th.span1.align-center Type
         %th.span3 Name
-        %th.span1 Quantity
-        %th.span2 Price
-        %th.span2 Amount
+        %th.span1.align-center Quantity
+        %th.span2.align-center Price
+        %th.span2.align-center Amount
         %th.span1 Comments
       %tr
         %td
         %td
         %td
-        %td (grams)
-        %td (Rs)
-        %td (Rs)
+        %td.align-center (gm)
+        %td.align-center{:colspan => '2'} (Rs)
         %td
       - gold_transactions.each do |gold_transaction|
         %tr
-          %td= l gold_transaction.date
-          %td{:class => gold_transaction.action}= gold_transaction.action.to_s.titleize
+          %td.align-center= l gold_transaction.date
+          %td.align-center{:class => gold_transaction.action}= gold_transaction.action.to_s.titleize
           %td Gold
-          %td= gold_transaction.quantity
-          %td= gold_transaction.price
-          %td= gold_transaction.value.abs
+          %td.align-right= gold_transaction.quantity
+          %td.align-right= gold_transaction.price
+          %td.align-right= gold_transaction.value.abs
           %td= gold_transaction.comments && gold_transaction.comments.strip.empty?  ? t("tables_not_available") : gold_transaction.comments

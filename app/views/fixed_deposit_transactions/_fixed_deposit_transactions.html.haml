@@ -1,29 +1,29 @@
 - unless fixed_deposit_transactions.empty?
   %section{ :class => "FixedDepositTransactions" }
-    %h5= "Fixed Deposit Transactions"
+    %h3= "Fixed Deposit Transactions"
     %table.table.table-striped.table-bordered
       %tr
-        %th.span2 Date
-        %th.span1 Type
+        %th.align-center.span2 Date
+        %th.align-center.span1 Type
         %th.span3 Name
-        %th.span1 Duration
-        %th.span2 Interest Rate
-        %th.span2 Amount
+        %th.align-center.span1 Duration
+        %th.align-center.span2 Interest Rate
+        %th.align-center.span2 Amount
         %th.span1 Comments
       %tr
         %td
         %td
         %td
-        %td (years)
-        %td (% p.a.)
-        %td (Rs)
+        %td.align-center (years)
+        %td.align-center (% p.a.)
+        %td.align-center (Rs)
         %td
       - fixed_deposit_transactions.each do |transaction|
         %tr
-          %td= l transaction.date
-          %td{:class => transaction.action}= transaction.display_action
+          %td.align-center= l transaction.date
+          %td.align-center{:class => transaction.action}= transaction.display_action
           %td= transaction.name
-          %td= transaction.period
-          %td=   number_with_precision transaction.rate_of_interest
-          %td= transaction.invested_amount.abs
+          %td.align-right= transaction.period
+          %td.align-right=   number_with_precision transaction.rate_of_interest
+          %td.align-right= transaction.invested_amount.abs
           %td= transaction.comments && transaction.comments.strip.empty?  ? t("tables_not_available") : transaction.comments

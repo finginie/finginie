@@ -1,23 +1,23 @@
 - unless real_estate_transactions.empty?
   %section{ :class => "RealEstateTransactions" }
-    %h5= "Real Estate Transactions"
+    %h3= "Real Estate Transactions"
     %table.table.table-striped.table-bordered
       %tr
-        %th.dates Date
-        %th.type Type
-        %th.name Name
-        %th.real_amount Amount
-        %th.comment Comments
-      %tr.right_align
+        %th.span2.align-center Date
+        %th.span1.align-center Type
+        %th.span3 Name
+        %th.span5.align-center Amount
+        %th.span1 Comments
+      %tr
         %td
         %td
         %td
-        %td (Rs)
+        %td.align-center (Rs)
         %td
       - real_estate_transactions.each do |real_estate_transaction|
         %tr
-          %td.dates= l real_estate_transaction.date
-          %td.type{:class => real_estate_transaction.action}= real_estate_transaction.action.to_s.titleize
-          %td.name= real_estate_transaction.name
-          %td.real_amount= real_estate_transaction.price.abs
-          %td.comment= real_estate_transaction.comments && real_estate_transaction.comments.strip.empty? ? t("tables_not_available") : real_estate_transaction.comments
+          %td.align-center= l real_estate_transaction.date
+          %td.align-center{:class => real_estate_transaction.action}= real_estate_transaction.action.to_s.titleize
+          %td= real_estate_transaction.name
+          %td.align-right= real_estate_transaction.price.abs
+          %td= real_estate_transaction.comments && real_estate_transaction.comments.strip.empty? ? t("tables_not_available") : real_estate_transaction.comments

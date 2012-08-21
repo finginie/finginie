@@ -1,31 +1,31 @@
 - unless loan_transactions.empty?
   %section{ :class => "LoanTransactions" }
-    %h5= "Loan Transactions"
+    %h3= "Loan Transactions"
     %table.table.table-striped.table-bordered
       %tr
-        %th.span2 Date
-        %th.span1 Type
+        %th.span2.align-center Date
+        %th.span1.align-center Type
         %th.span3 Name
-        %th.span1 Duration
-        %th.span2 Interest Rate
-        %th.span2 Amount
+        %th.span1.align-center Duration
+        %th.span2.align-center Interest Rate
+        %th.span2.align-center Amount
         %th.span1 Comments
       %tr
         %td
         %td
         %td
-        %td (years)
-        %td (% p.a.)
-        %td (Rs)
+        %td.align-center (years)
+        %td.align-center (% p.a.)
+        %td.align-center (Rs)
         %td
 
       - loan_transactions.each do |loan_transaction|
         %tr
-          %td= l loan_transaction.date
-          %td{:class => loan_transaction.action}= loan_transaction.action.to_s.titleize
+          %td.align-center= l loan_transaction.date
+          %td.align-center{:class => loan_transaction.action}= loan_transaction.action.to_s.titleize
           %td= loan_transaction.name
-          %td= loan_transaction.period
-          %td=   number_with_precision loan_transaction.rate_of_interest
-          %td= loan_transaction.price
+          %td.align-right= loan_transaction.period
+          %td.align-right=   number_with_precision loan_transaction.rate_of_interest
+          %td.align-right= loan_transaction.price
           %td= loan_transaction.comments && loan_transaction.comments.strip.empty?  ? t("tables_not_available") : loan_transaction.comments
 
