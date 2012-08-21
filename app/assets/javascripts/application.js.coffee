@@ -11,6 +11,7 @@
 #= require jquery
 #= require jquery-ui
 #= require jquery_ujs
+#= require jquery.outerhtml
 #= require twitter/bootstrap
 #= require dataTables/jquery.dataTables
 #= require dataTables/jquery.dataTables.bootstrap

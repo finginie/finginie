@@ -77,6 +77,10 @@ Finginie::Application.routes.draw do
     resources :research_reports, :only => [:index]
   end
 
+  # Scrips
+  resources :nse_scrips, :only => [:index, :show]
+  resources :bse_scrips, :only => [:index, :show]
+
   # Mutual funds
   resources :mutual_funds, :only => [:index, :show] do
     member do
