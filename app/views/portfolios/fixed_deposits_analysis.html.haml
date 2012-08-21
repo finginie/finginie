@@ -11,28 +11,29 @@
       - gchart(:header => ['Rate','Amount'], :data => resource.fixed_deposit_open_positions_rate_of_interests.map{ |fd| [fd.rate, fd.amount] },
                :title => 'Fixed Deposits', :yAxisTitle => 'Amount Invested (Rs)', :xAxisTitle => 'Interest Rate p.a.(%)', :chart_type => 'Column')
     .span4
-      %h5 Interest rate wise Analysis
+      %h3 Interest rate wise Analysis
       %table.table.table-striped.table-bordered
         %tr
-          %th.name Name
-          %th Interest Rate
-          %th Invested Amount
+          %th Name
+          %th.align-center Interest Rate
+          %th.align-center Invested Amount
         %tr
           %td
-          %td (%)
-          %td (Rs)
+          %td.align-center (%)
+          %td.align-center (Rs)
         - resource.fixed_deposit_open_positions_rate_of_interests.each do |hsh|
           %tr
-            %td.name= hsh.name
-            %td= hsh.rate
-            %td= hsh.amount
-        %tr.total
-          %td.name Total
+            %td= hsh.name
+            %td.align-right= hsh.rate
+            %td.align-right= hsh.amount
+        %tr
+          %td Total
           %td
-          %td= resource.fixed_deposit_open_positions_rate_of_interests.sum(&:amount)
+          %td.align-right= resource.fixed_deposit_open_positions_rate_of_interests.sum(&:amount)
   -else
   .row
-    .well.show-grid
-      %p.align-center
-        = t ".no_fixed_deposit_transaction"
-        = link_to "Add a fixed deposit", new_portfolio_fixed_deposit_transaction_path(resource), :class => 'btn btn-primary'
+    .span12
+      .well.show-grid
+        %p.align-center
+          = t ".no_fixed_deposit_transaction"
+          = link_to "Add a fixed deposit", new_portfolio_fixed_deposit_transaction_path(resource), :class => 'btn btn-primary'
