@@ -1,5 +1,4 @@
 Finginie::Application.routes.draw do
-  resource :trade_account
   resources :research_ratings, :only => [:index]
 
   root :to => 'pages#show', :id => 'home'
@@ -110,4 +109,7 @@ Finginie::Application.routes.draw do
 
   # Sitemap and other meta
   match 'sitemap.xml' => 'sitemaps#sitemap'
+
+  # trade page is disabled while the company is being registered
+  # resource :trade_account
 end
