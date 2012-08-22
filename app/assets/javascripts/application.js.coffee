@@ -22,6 +22,7 @@
 #= require twitter
 #= require facebook
 #= require analytics
+#= require analytics_event_tracking
 #
 #= require app
 #= require_self
