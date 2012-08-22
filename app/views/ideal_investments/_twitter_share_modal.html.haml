@@ -16,9 +16,9 @@
         = text_area_tag(:twitter_message,
                         twitter_share_description(url_with_complete_path(public_financial_profile_path(current_user))),
                         :size => '20*5',
-                        :style => 'width:400px')
+                        :class => 'span5')
       .actions
-        %a.btn.btn-primary.btn-large{:href => "#"}
+        %a.btn.btn-primary.btn-large#twittershare{:href => "#"}
           %i
             = image_tag 'twitter_icon.png'
           Tweet on Twitter

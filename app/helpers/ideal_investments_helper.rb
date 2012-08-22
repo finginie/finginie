@@ -1,6 +1,6 @@
 module IdealInvestmentsHelper
-  def twitter_share_description
-    I18n.t('twitter_share.description', :share_url => url_with_complete_path(public_financial_profile_path(current_user)))
+  def twitter_share_description(share_url)
+    I18n.t('twitter_share.description', :share_url => share_url)
   end
 
   def twitter_post_url
