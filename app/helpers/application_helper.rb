@@ -90,4 +90,8 @@ module ApplicationHelper
     }.to_query
   end
 
+  def current_user_public_financial_profile_full_path
+    url_with_complete_path(public_financial_profile_path(current_user))
+  end
+
 end

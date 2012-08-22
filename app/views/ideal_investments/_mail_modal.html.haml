@@ -1,5 +1,5 @@
 :css
-  .temp {
+  .ajax_spinner {
       display:    none;
       position:   fixed;
       z-index:    1000;
@@ -8,7 +8,7 @@
       height:     100%;
       width:      100%;
       background: rgba( 255, 255, 255, .8 )
-                  url('http://sampsonresume.com/labs/pIkfp.gif')
+                  url('/assets/loading.gif')
                   50% 50%
                   no-repeat;
   }
@@ -17,11 +17,11 @@
       overflow: hidden;
   }
 
-  body.loading .temp {
+  body.loading .ajax_spinner {
       display: block;
   }​
 
-.temp
+.ajax_spinner
 
 #mailModal.modal.hide
   .modal-header
@@ -36,11 +36,11 @@
       .sector.control-group
         = label_tag "Contact", "Email", :class => 'control-label'
         .controls
-          = email_field_tag("login")
+          = email_field_tag("login", 'julayiaugust@gmail.com')
       .sector.control-group
         = label_tag "Contact", "Password", :class => 'control-label'
         .controls
-          = password_field_tag("password")
+          = password_field_tag("password", 'alluarjun')
       .actions
         = submit_tag 'Retrieve Contacts'
 
@@ -51,49 +51,12 @@
       = image_tag 'Mail.png'
       Choose contacts
   .modal-body
-    %table.table#example
+    = form_tag send_mail_path, :remote => true, :id => 'mail_form' do
+      %table.table#contacts_list
+      .actions
+        = submit_tag 'test'
 
   .modal-footer
     %a.btn.btn-primary{"data-dismiss" => "modal", :href => "#"}
       %span#count Invite 0 Friends
     %a.btn{:href => "#"} Cancel
-
-
-:javascript
-  $(document).ready(function() {
-    $("#contacts_form").bind("ajax:beforeSend", function(data) {
-      $("#error_msg").hide();
-      $("#count").html("Invite 0 Friends");
-      $('#mailModal').modal('hide')
-      $('body').addClass("loading")
-    });
-
-    $("#contacts_form").bind("ajax:complete", function(){
-      $('body').removeClass("loading")
-    });
-
-    $("#contacts_form").bind("ajax:error", function(xhr, data, status) {
-      $("#error_msg").show();
-      $("#error_msg").html(data.responseText);
-    });
-
-    $("#contacts_form").bind("ajax:success", function(xhr, data) {
-      $('#example').dataTable( {
-          "aaData": data['aaData'],
-          "bScrollInfinite": true,
-          "bScrollCollapse": true,
-          "sScrollY": "200px",
-          "bSort": false,
-          "bDestroy": true,
-          "bFilter": true,
-          "aoColumns": [ null, null, null]
-      } );
-
-      $('#example tr .a').live('click', function () {
-        var x  = $('.a').filter(":checked").length;
-        $("#count").html("Invite "+ x + " Friends");
-      });
-
-      $('#myModal').modal()
-    });
-  });

@@ -1,9 +1,9 @@
 class EbolaMailer < ActionMailer::Base
   default from: "contact2vamsi@gmail.com"
 
-  def welcome_email
+  def welcome_email(invited_users, share_url)
     @url  = "http://example.com/login"
-    test_users = ['vamsi@finginie.com', 'vamsi.skrishna@gmail.com']
-    mail(:to => 'vamsi.skrishna@gmail.com', :subject => "Welcome to My Awesome Site")
+    invited_users = invited_users.recipients.join("; ")
+    mail(:to => invited_users, :subject => "Welcome to My Awesome Site")
   end
 end
