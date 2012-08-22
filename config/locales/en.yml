@@ -20,7 +20,7 @@ en:
   special_offer:
     message: 'Thank you for signing up with Finginie. Rs 2 will now be donated on your behalf through the Finginie Cares campaign.'
   twitter_share:
-    description: "@finginie- Check out my personalized financial plan %{share_url}"
+    description: "@finginie- Check out my personalized financial plan based on financial experts' opinion & 10 years of market data %{share_url}"
   facebook_share:
     name: "Finginie- %{user_slug}'s Personalized Investment Suggestions"
     description: "These are my personalized investment suggestions from Finginie customized to my unique financial needs and constraints backed by financial experts opinions and 10 years of market data. Check them out !"

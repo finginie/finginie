@@ -22,18 +22,6 @@ class IdealInvestmentsController < InheritedResources::Base
   end
 
 protected
-  # def set_flash_message
-  #   if params[:msg]
-  #     msg = params[:msg]
-  #   else
-
-  #   end
-
-  #   msg_type = params[:type] || 'notice'
-  #   binding.pry
-  #   flash.now[msg_type] ||= msg
-  # end
-
   def begin_of_association_chain
     @current_user.comprehensive_risk_profiler
   end
