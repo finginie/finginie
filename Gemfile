@@ -47,6 +47,7 @@ gem 'paper_trail'
 gem 'pg'
 gem 'rack-environmental'
 gem 'sheet_mapper',                        :github => 'TMaYaD/sheet_mapper'
+gem 'shortly'
 gem 'simple_form',                         :github => 'plataformatec/simple_form'
 gem 'thin'
 

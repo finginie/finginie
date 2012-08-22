@@ -1,6 +1,7 @@
 module IdealInvestmentsHelper
   def twitter_share_description(share_url)
-    I18n.t('twitter_share.description', :share_url => share_url)
+    shortened_share_url = Shortly::Clients::Googl.shorten(share_url).shortUrl
+    I18n.t('twitter_share.description', :share_url => shortened_share_url)
   end
 
   def twitter_post_url
