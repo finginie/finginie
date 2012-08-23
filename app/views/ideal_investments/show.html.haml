@@ -4,7 +4,8 @@
     %p= t(".introduction")
     - if params[:initial_investment] && params[:initial_investment].to_f != resource.initial_investment
       = content_tag :div, t(".too_low_investment"), :id => 'result', :class => 'alert alert-notice'
-    = link_to t('.facebook.post_wall'), facebook_share_url_with_link(public_financial_profile_path(current_user)), :class => 'btn btn-primary'
+    .ga-track-event{:data => {:category => 'share', :action => 'facebook'}}
+      = link_to t('.facebook.post_wall'), facebook_share_url_with_link(public_financial_profile_path(current_user)), :class => 'btn btn-primary'
     %p
       = t('.public.message', :profile_link => link_to(t('.public.profile_link'), public_financial_profile_path(current_user))).html_safe
     = form_tag comprehensive_risk_profiler_ideal_investments_path, :method => :get, :class => 'form-horizontal' do
