@@ -1,6 +1,3 @@
-ENV['AUTH_SITE_URL']   = 'http://127.0.0.1:3001'
-ENV['FINGINIE_KEY']    = 'df8f53739b65c920033c82149809136be1d48520b9fa8f62f4be741e8990ce40'
-ENV['FINGINIE_SECRET'] = '3860c873517735a74dab4b81c2c163c10e11bc84505834c41ea2b9b65038e385'
 Finginie::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
