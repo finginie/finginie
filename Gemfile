@@ -14,7 +14,7 @@ group :assets do
   gem 'sass-rails'
   gem 'uglifier'
   gem 'jquery-ui-rails'
-  gem 'twitter-bootstrap-rails',          :github => 'seyhunak/twitter-bootstrap-rails'
+  gem 'twitter-bootstrap-rails',          :github => 'TMaYaD/twitter-bootstrap-rails'
     gem 'therubyracer'
   gem 'spine-rails'
     gem 'eco'

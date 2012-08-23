@@ -48,6 +48,15 @@ GIT
       google-spreadsheet-ruby (~> 0.2.1)
 
 GIT
+  remote: git://github.com/TMaYaD/twitter-bootstrap-rails.git
+  revision: 6509fbc01073ac202e71d4b49b66e147d57d6bdd
+  specs:
+    twitter-bootstrap-rails (2.1.2)
+      actionpack (>= 3.1)
+      less-rails (~> 2.2.3)
+      railties (>= 3.1)
+
+GIT
   remote: git://github.com/plataformatec/simple_form.git
   revision: 82c0a52f2ea04a7c24ece0def56bc32545aee695
   specs:
@@ -69,15 +78,6 @@ GIT
     active_attr (0.6.0.alpha1)
       activemodel (>= 3.0.2, < 4.1)
       activesupport (>= 3.0.2, < 4.1)
-
-GIT
-  remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: aea3f7e5935290cb63806d98bb72c64c71ffca91
-  specs:
-    twitter-bootstrap-rails (2.1.2)
-      actionpack (>= 3.1)
-      less-rails (~> 2.2.3)
-      railties (>= 3.1)
 
 PATH
   remote: engines/data_provider
