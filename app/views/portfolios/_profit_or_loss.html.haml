@@ -1,13 +1,13 @@
 %table.table.table-striped.table-bordered
   %tr
     %th.span4 Security
-    %th.align-center Security Type
-    %th.align-center Quantity
-    %th.align-center Avg Cost Price
-    %th.align-center Avg Sell Price
+    %th.span2 Security Type
+    %th.span1.align-center Quantity
+    %th.span2.align-center Avg Cost Price
+    %th.span2.align-center Avg Sell Price
     - profit_or_loss = net_income.sum(&:profit_or_loss) > 0 ? "profit" : "loss"
-    %th.align-center{ :class => profit_or_loss}= profit_or_loss.titleize
-    %th.align-center= "#{profit_or_loss.titleize} Percentage"
+    %th.span2.align-center{ :class => profit_or_loss}= profit_or_loss.titleize
+    %th.span2.align-center= "#{profit_or_loss.titleize} Percentage"
   %tr
     %td
     %td
@@ -17,7 +17,7 @@
   - net_income.each do |security|
     %tr
       %td= security.name
-      %td.align-center= security.type
+      %td= security.type
       %td.align-right= security.quantity ? security.quantity : ""
       %td.align-right= security.average_cost_price ? security.average_cost_price : ""
       %td.align-right= security.average_sell_price ? security.average_sell_price : ""
