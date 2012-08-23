@@ -10,7 +10,7 @@
                         :size => '20*5',
                         :class => 'span5')
       .actions
-        %a.btn.btn-primary.btn-large#twittershare{ :href => "#", :data => { :post_url => twitter_post_url } }
+        = link_to '#', { :id => 'twittershare', :class => %W(btn btn-primary btn-large), :data => { :post_url => twitter_post_url }} do
           %i
             = image_tag 'twitter_icon.png'
           Tweet on Twitter

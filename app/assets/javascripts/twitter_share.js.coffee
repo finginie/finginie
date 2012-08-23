@@ -1,3 +1,3 @@
 $ ->
   $("#twittershare").click ->
-    window.location = "#{$(@).data().post_url}&twitter_message=#{$('#twitter_message').val()}"
+    window.location = "#{$(@).data().postUrl}&twitter_message=#{$('#twitter_message').val()}"

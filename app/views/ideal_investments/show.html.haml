@@ -6,9 +6,9 @@
     Share
     = link_to facebook_share_url_with_link(public_financial_profile_path(current_user)) do
       = image_tag 'facebook.png'
-    %a{'data-toggle' => 'modal', :href => '#twitterModal'}
-      %img{:alt => "Twitter", :src => "/assets/twitter.png"}
-    = link_to facebook_share_url_with_link(public_financial_profile_path(current_user)) do
+    = link_to '#twitterModal', { 'data-toggle' => 'modal' } do
+      = image_tag 'twitter.png'
+    = link_to '#' do
       = image_tag 'mail.png'
 
     %p= t(".introduction")
@@ -37,7 +37,7 @@
       Share
       = link_to facebook_share_url_with_link(public_financial_profile_path(current_user)) do
         = image_tag 'facebook.png'
-      = link_to facebook_share_url_with_link(public_financial_profile_path(current_user)) do
+      = link_to '#twitterModal', { 'data-toggle' => 'modal' } do
         = image_tag 'twitter.png'
-      = link_to facebook_share_url_with_link(public_financial_profile_path(current_user)) do
+      = link_to '#' do
         = image_tag 'mail.png'
