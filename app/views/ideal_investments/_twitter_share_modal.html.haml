@@ -1,11 +1,3 @@
-- url = twitter_post_url
-:javascript
-  $(document).ready(function() {
-    $("#twittershare").click(function(){
-      window.location = "#{url}&twitter_message=" + $('#twitter_message').val()
-    });
-  });
-
 #twitterModal.modal.hide
   .modal-header
     %button.close{"data-dismiss" => "modal", :type => "button"} ×
@@ -18,7 +10,7 @@
                         :size => '20*5',
                         :class => 'span5')
       .actions
-        %a.btn.btn-primary.btn-large#twittershare{:href => "#"}
+        %a.btn.btn-primary.btn-large#twittershare{ :href => "#", :data => { :post_url => twitter_post_url } }
           %i
             = image_tag 'twitter_icon.png'
           Tweet on Twitter
