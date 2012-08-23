@@ -84,41 +84,41 @@ en:
       index:
         title: 'Financial Tools'
       emi_calculator:
-        title: 'EMI Calculator'
-        description: 'This is a EMI Calculator'
-        keywords: 'Loan, EMI Calculator'
+        title: 'EMI Calculator for Home Loan / Car Loan / Personal Loan in India.'
+        description: 'Use Finginie’s Equated Monthly Installment-EMI calculator for home loan, car loan and personal loan in India.'
+        keywords: 'loan calculator, emi calculator, calculate monthly EMI, personal loan emi calculator, home loan emi calculator, loan emi calculator'
       fixed_deposit_calculators:
         title: 'Fixed Deposit Calculator'
-        description: 'This is a Fixed Deposit Calculator for calculating the maturity amount on fixed deposits'
-        keywords: 'Fixed Deposit Calculator'
+        description: 'Use Finginie’s fixed deposit calculator to find out how your investment grows'
+        keywords: 'Financial planning india, fixed deposit, retirement planning'
       recurring_deposit_calculator:
         title: 'Recurring Deposit Calculator'
-        description: 'This is a Recurring deposit calculator'
-        keywords: 'Recurring Deposit calculator'
+        description: 'Use Finginie’s recurring deposit calculator to find out how your investment grows'
+        keywords: 'Financial planning india, recurring deposit, retirement planning'
       sip_calculator:
-        title: 'Sip Calculator'
-        description: 'This is a Sip Calculator for Systematic Investment plans that yield a fixed return per year.'
-        keywords: 'Sip Calculator, Systematic Investment Plan'
+        title: 'SIP Calculator: Systematic Investment Plan (SIP) Calculator Mutual Fund SIP Calculator'
+        description: 'Use Finginie’s SIP calculator to plan your future investments.'
+        keywords: 'SIP calculator, systematic investment calculator,  investment calculator, systematic investment plan calculator, Financial planning india'
       monthly_sip_calculator:
-        title: 'Monthly Sip Calculator'
-        description: 'This is a Monthly Sip Calculator for Systematic Investment plans that yield a fixed return per year.'
-        keywords: 'Monthly Sip Calculator, Systematic Investment Plan'
+        title: 'SIP Calculator: Systematic Investment Plan (SIP) Calculator Mutual Fund SIP Calculator'
+        description: 'Use Finginie’s SIP calculator to plan your future investments.'
+        keywords: 'SIP calculator, systematic investment calculator,  investment calculator, systematic investment plan calculator, Financial planning india.'
       income_tax_calculator:
-        title: 'Income Tax Calculator'
-        description: 'This is an Income Tax Calculator India.'
-        keywords: 'Income Tax Calculator'
+        title: 'Income tax Calculator AY 2012-2013 India'
+        description: 'Income Tax Calculator for AY 2012-13, Calculate Taxable Income and Income Tax Liability for Individual Male, Female, HUFs, Senior Citizen and Very Senior Citizen.'
+        keywords: 'Income Tax Calculator,AY 2012-13,Calculate taxable income, Individual,Male,Female,Senior Citizens,Very Senior Citizen,HUFs'
       rate_of_return_calculator:
-        title: 'Rate of Return Calculator'
-        description: 'This is a Rate of Return Calculator'
-        keywords: 'Rate of Return Calculator'
+        title: 'Rate Of Interest On Your Investment, Rate Of Return Calculator India'
+        description: 'Finginie’s calculator to calculate the rate of interest on your investment.'
+        keywords: 'Rate Of Return Calculator India, Rate Of Return Calculator, Rate Of Interest On Your Investment, Rate Of Interest, Financial planning india'
       life_insurance_calculator:
-        title: 'Life Insurance Calculator'
-        description: 'This is a Life Insurance Calculator'
-        keywords: 'Life Insurance Calculator'
+        title: 'Insurance Calculator - How Much Insurance Do I Need '
+        description: 'Use this calculator to find out how much life insurance you need and invest'
+        keywords: 'Premium calculator, financial planning, general life insurance, individual insurance, insurance financial planning, insurance premium, insurance premium calculator, insurance premium india, insurance premium calculation, insurance premium,  life insurance cost'
       retirement_calculator:
-        title: 'Retirement Calculator'
-        description: 'This is a Retirement Calculator'
-        keywords: 'Retirement Calculator'
+        title: 'Online Retirement Calculator India, Pension Calculation Online, Free Retirement Life Calculator'
+        description: 'Use this calculator to find how much money you need after retirement and invest.'
+        keywords: 'retirement savings calculator, retirement planning calculator, retirement planner, retirement, retirement income, retirement investment, Financial planning india'
   sessions:
     new:
       title: 'Signin'
