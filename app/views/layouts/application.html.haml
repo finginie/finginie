@@ -35,7 +35,7 @@
               = link_to "#{current_user.try(:ebola_points).to_i} points", main_app.accumulated_points_path
         = render 'layouts/navigation'
         = yield :header
-        = render 'layouts/indices'
+        #indices
     #main.container
       .row
         .span12
