@@ -11,13 +11,15 @@ gem 'data_provider',            :path => 'engines/data_provider'
 # in production environments by default.
 group :assets do
   gem 'coffee-rails'
-  gem 'sass-rails'
-  gem 'uglifier'
   gem 'jquery-ui-rails'
-  gem 'twitter-bootstrap-rails',          :github => 'TMaYaD/twitter-bootstrap-rails'
-    gem 'therubyracer'
+  gem 'rails-backbone'
+  gem 'ruby-haml-js'
+  gem 'sass-rails'
   gem 'spine-rails'
     gem 'eco'
+  gem 'twitter-bootstrap-rails',          :github => 'TMaYaD/twitter-bootstrap-rails'
+    gem 'therubyracer'
+  gem 'uglifier'
 end
 
 gem 'active_attr',                         :github => 'sankaranarayanan/active_attr'

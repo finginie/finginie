@@ -1,0 +1,12 @@
+.span4
+  %h3.align-center
+    = name
+    &nbsp;
+    %small
+      %strong
+        = last_traded_price
+        &nbsp;
+      %span{class: net_change_color}
+        = net_change
+        &nbsp;
+      %span{class: percent_change_color} ( #{percent_change}% )
