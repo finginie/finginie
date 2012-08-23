@@ -24,7 +24,8 @@
 #= require analytics
 #= require analytics_event_tracking
 #
-#= require app
+# Main App
+#
 #= require_self
 #= require_tree .
 
