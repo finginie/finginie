@@ -15,7 +15,7 @@
       %h3 Category wise Analysis
       %table.table.table-striped.table-bordered
         %tr
-          %th.span3 Category
+          %th.span4 Category
           %th.align-center Quantity
           %th.align-center Avg Cost Price
           %th.align-center Invested Amount
@@ -65,7 +65,7 @@
       %h3 Realized Profits/Losses
       %table.table.table-striped.table-bordered
         %tr
-          %th.span3 Scheme Name
+          %th.span4 Scheme Name
           %th Category
           %th.align-center Quantity
           %th.align-center Avg cost Price
@@ -93,5 +93,5 @@
           %td
           %td
           %td
-          %td= rg_colorize resource.mutual_fund_positions_profit_or_loss.sum(&:profit_or_loss)
+          %td.align-right= rg_colorize resource.mutual_fund_positions_profit_or_loss.sum(&:profit_or_loss)
           %td
