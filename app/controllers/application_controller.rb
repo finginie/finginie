@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   respond_to :html, :json
   include OmniauthSingleSignon::ApplicationHelper
+  include ApplicationHelper
 
   rescue_from CanCan::AccessDenied do |exception|
     current_user ? redirect_back_with(exception) : redirect_to_login
@@ -34,7 +35,10 @@ private
     main_app.signin_path(:origin => origin)
   end
 
+  # patch to load login page fastly
   def single_signon_path(origin)
-    "/auth/single_signon?origin=#{origin}"
+    session[:user_return_to] = origin
+    redirect_uri=CGI::escape("#{host}/auth/single_signon/callback")
+    "#{ENV['AUTH_SITE_URL']}/oauth/authorize?response_type=code&client_id=#{ENV['FINGINIE_KEY']}&redirect_uri=#{redirect_uri}"
   end
 end

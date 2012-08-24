@@ -46,6 +46,7 @@ gem 'omniauth_single_signon',              :github => 'FinGinie/omniauth-single-
 gem 'paper_trail'
 gem 'pg'
 gem 'rack-environmental'
+gem 'rack-iframe'
 gem 'sheet_mapper',                        :github => 'TMaYaD/sheet_mapper'
 gem 'shortly'
 gem 'simple_form',                         :github => 'plataformatec/simple_form'
