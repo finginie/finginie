@@ -87,7 +87,7 @@ en:
         title: 'EMI Calculator for Home Loan / Car Loan / Personal Loan in India.'
         description: 'Use Finginie’s Equated Monthly Installment-EMI calculator for home loan, car loan and personal loan in India.'
         keywords: 'loan calculator, emi calculator, calculate monthly EMI, personal loan emi calculator, home loan emi calculator, loan emi calculator'
-      fixed_deposit_calculators:
+      fixed_deposit_calculator:
         title: 'Fixed Deposit Calculator'
         description: 'Use Finginie’s fixed deposit calculator to find out how your investment grows'
         keywords: 'Financial planning india, fixed deposit, retirement planning'
