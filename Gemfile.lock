@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/FinGinie/omniauth-single-signon.git
-  revision: cb975f920a9fb0bb1aed2728a52825808f3e8528
+  revision: ad1804c1052a0e9c4bf7a93ce2bd62279213c5e0
   specs:
     omniauth_single_signon (0.0.1)
       active_attr
@@ -57,8 +57,16 @@ GIT
       railties (>= 3.1)
 
 GIT
+  remote: git://github.com/intridea/omniauth-oauth2.git
+  revision: 74a15ad545d2f070f59ad9744774a8835103384a
+  specs:
+    omniauth-oauth2 (1.1.0)
+      oauth2 (~> 0.8.0)
+      omniauth (~> 1.0)
+
+GIT
   remote: git://github.com/plataformatec/simple_form.git
-  revision: 82c0a52f2ea04a7c24ece0def56bc32545aee695
+  revision: 46d4bb406bf8d465b96719493df007b19ae260bb
   specs:
     simple_form (2.1.0.dev)
       actionpack (~> 3.0)
@@ -226,7 +234,7 @@ GEM
     factory_girl_rails (3.6.0)
       factory_girl (~> 3.6.0)
       railties (>= 3.0.0)
-    faraday (0.8.1)
+    faraday (0.8.4)
       multipart-post (~> 1.1)
     fast-stemmer (1.0.1)
     fastercsv (1.5.5)
@@ -264,7 +272,7 @@ GEM
     guard-spork (1.1.0)
       guard (>= 1.1)
       spork (>= 0.8.4)
-    haml (3.1.6)
+    haml (3.1.7)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
       activesupport (~> 3.0)
@@ -381,9 +389,6 @@ GEM
     omniauth (1.1.0)
       hashie (~> 1.2)
       rack
-    omniauth-oauth2 (1.1.0)
-      oauth2 (~> 0.8.0)
-      omniauth (~> 1.0)
     paper_trail (2.6.3)
       activerecord (~> 3.0)
       railties (~> 3.0)
@@ -592,6 +597,7 @@ DEPENDENCIES
   money!
   nested_form!
   newrelic_rpm
+  omniauth-oauth2!
   omniauth_single_signon!
   paper_trail
   personal_financial_tools!
