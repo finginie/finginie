@@ -19,9 +19,12 @@ Finginie::Application.routes.draw do
   get 'social_network/twitter_callback' => 'social_network#twitter_callback'
 
   resources :accumulated_points, :only => [:index]
-  # resources :email_contacts, :only => [:index]
-  post 'import_contacts' => 'email_contacts#import'
-  post 'send_mail' => 'email_contacts#send_mail'
+
+  resources :email_contacts, :only => [:index] do
+    collection do
+      post :send_mail
+    end
+  end
 
   # Portfolio Tracker
   resources :portfolios do
@@ -55,6 +58,8 @@ Finginie::Application.routes.draw do
     resources :mutual_fund_transactions
     resources :gold_transactions
   end
+
+  mount Resque::Server.new, :at => "/resque"
 
   # Public Portfolios
   resources :public_portfolios, :only => [:show, :new, :destroy] do

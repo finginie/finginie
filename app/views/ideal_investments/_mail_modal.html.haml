@@ -9,7 +9,7 @@
     .option
       %p{:style => "margin-bottom:1em;"} Invite your contacts (Gmail, AOL, Yahoo, etc.)
     .alert.alert-error#error_msg{:style => 'display:none'}
-    = form_tag import_contacts_path, :remote => true, :id => 'contacts_form' do
+    = form_tag email_contacts_path, :remote => true, :method => :get, :id => 'contacts_form' do
       .sector.control-group
         = label_tag "Contact", "Email", :class => 'control-label'
         .controls
@@ -28,7 +28,7 @@
       = image_tag 'Mail.png'
       Choose contacts
   .modal-body
-    = form_tag send_mail_path, :remote => true, :id => 'mail_form' do
+    = form_tag send_mail_email_contacts_path, :remote => true, :id => 'mail_form' do
       %table.table#contacts_list
       .actions
         = submit_tag 'test'
