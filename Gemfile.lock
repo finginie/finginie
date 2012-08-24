@@ -413,6 +413,8 @@ GEM
       rack (>= 0.4)
     rack-environmental (1.2.0)
       rack-plastic (>= 0.1.1)
+    rack-iframe (0.0.3)
+      rack
     rack-plastic (0.1.3)
       nokogiri (~> 1.4)
       rack (~> 1.0)
@@ -605,6 +607,7 @@ DEPENDENCIES
   poltergeist
   pry
   rack-environmental
+  rack-iframe
   rails (= 3.2.6)
   rails-backbone
   rails-footnotes (>= 3.7.5.rc4)
