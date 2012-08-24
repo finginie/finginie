@@ -26,7 +26,7 @@ class EmailContactsController < ApplicationController
       share_financial_profile_mail_step = PointTracker::ShareFinancialProfileViaMailStep.new(current_user)
       share_financial_profile_mail_step.save(meta_data)
     end
-    EbolaMailer.welcome_email(params[:contacts], public_financial_profile_path(current_user), session[:from_email_id]).deliver
+    EbolaMailer.welcome_email(params[:contacts], current_user_public_financial_profile_full_path, session[:from_email_id]).deliver
 
     respond_to do |format|
       format.json do
