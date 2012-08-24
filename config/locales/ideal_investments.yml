@@ -1,5 +1,11 @@
 en:
   ideal_investments:
+    public:
+      take_quiz: 'Take your own quiz'
+      default_suggestion: 'This is a balanced portfolio suitable for most investors.'
+      personalize_message: "These are %{email}'s personalized investment suggestions. %{quiz_link} to view yours"
+      facebook:
+        success_message: 'Successfully posted on your facebook wall'
     amount: 'Amount (Rs)'
     percentage: 'Percentage'
     show:

@@ -3,19 +3,19 @@
 .row.show-grid
   .span12
     = facebook_recommendation('Ideal Investments')
-    Share
-    = link_to facebook_share_url_with_link(public_financial_profile_path(current_user)) do
-      = image_tag 'facebook.png'
-    = link_to '#twitterModal', { 'data-toggle' => 'modal' } do
-      = image_tag 'twitter.png'
-    = link_to '#' do
-      = image_tag 'mail.png'
+    %h3
+      Share
+      %span.ga-track-event{:data => {:category => 'share', :action => 'facebook'}}
+        = link_to facebook_share_url_with_link(public_financial_profile_path(current_user)) do
+          = image_tag 'facebook.png'
+      = link_to '#twitterModal', { 'data-toggle' => 'modal' } do
+        = image_tag 'twitter.png'
+      = link_to '#' do
+        = image_tag 'mail.png'
 
     %p= t(".introduction")
     - if params[:initial_investment] && params[:initial_investment].to_f != resource.initial_investment
       = content_tag :div, t(".too_low_investment"), :id => 'result', :class => 'alert alert-notice'
-    .ga-track-event{:data => {:category => 'share', :action => 'facebook'}}
-      = link_to t('.facebook.post_wall'), facebook_share_url_with_link(public_financial_profile_path(current_user)), :class => 'btn btn-primary'
     %p
       = t('.public.message', :profile_link => link_to(t('.public.profile_link'), public_financial_profile_path(current_user))).html_safe
     = form_tag comprehensive_risk_profiler_ideal_investments_path, :method => :get, :class => 'form-horizontal' do
@@ -32,11 +32,11 @@
 .row
   .span12
     %p= t('.intro_to_trade')
-    %h6
-      = link_to 'Continue', page_path('trade'), :class => 'btn btn-primary'
+    %h3
       Share
-      = link_to facebook_share_url_with_link(public_financial_profile_path(current_user)) do
-        = image_tag 'facebook.png'
+      %span.ga-track-event{:data => {:category => 'share', :action => 'facebook'}}
+        = link_to facebook_share_url_with_link(public_financial_profile_path(current_user)) do
+          = image_tag 'facebook.png'
       = link_to '#twitterModal', { 'data-toggle' => 'modal' } do
         = image_tag 'twitter.png'
       = link_to '#' do
