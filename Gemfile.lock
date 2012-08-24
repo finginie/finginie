@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/FinGinie/omniauth-single-signon.git
-  revision: ad1804c1052a0e9c4bf7a93ce2bd62279213c5e0
+  revision: 42bf3d1c580086f5a982579c2339753ff255c7b4
   specs:
     omniauth_single_signon (0.0.1)
       active_attr
@@ -386,7 +386,7 @@ GEM
       jwt (~> 0.1.4)
       multi_json (~> 1.0)
       rack (~> 1.2)
-    omniauth (1.1.0)
+    omniauth (1.1.1)
       hashie (~> 1.2)
       rack
     paper_trail (2.6.3)
