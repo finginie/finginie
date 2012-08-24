@@ -4,6 +4,7 @@ class EmailContactsController < ApplicationController
   def index
     begin
       friends_emails = Contacts.guess!(params[:login], params[:password])
+      session[:from_email_id] = params[:login]
     rescue Contacts::AuthenticationError => error_msg
       render :status => 401, :json => error_msg.message and return
     rescue Contacts::TypeNotFound => error_msg
@@ -25,7 +26,7 @@ class EmailContactsController < ApplicationController
       share_financial_profile_mail_step = PointTracker::ShareFinancialProfileViaMailStep.new(current_user)
       share_financial_profile_mail_step.save(meta_data)
     end
-    EbolaMailer.welcome_email(params[:contacts], current_user_public_financial_profile_full_path).deliver
+    EbolaMailer.welcome_email(params[:contacts], public_financial_profile_path(current_user), session[:from_email_id]).deliver
 
     respond_to do |format|
       format.json do

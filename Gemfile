@@ -49,7 +49,7 @@ gem 'omniauth_single_signon',             :github => 'FinGinie/omniauth-single-s
 gem 'paper_trail'
 gem 'periscope',                          :github => 'TMaYaD/periscope'
 gem 'pg'
-gem 'rack-environmental'
+#gem 'rack-environmental'
 gem 'rack-iframe'
 gem 'sheet_mapper',                       :github => 'TMaYaD/sheet_mapper'
 gem 'shortly'
