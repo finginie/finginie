@@ -64,7 +64,7 @@ module ApplicationHelper
   end
 
   def current_page_url
-    host + request.fullpath
+    host + request.path
   end
 
   def host

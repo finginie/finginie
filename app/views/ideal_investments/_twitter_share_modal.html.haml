@@ -1,0 +1,16 @@
+#twitterModal.modal.hide
+  .modal-header
+    %button.close{"data-dismiss" => "modal", :type => "button"} ×
+    %h3 Share your financial plan on twitter
+  .modal-body
+    .sector.control-group
+      .controls
+        = text_area_tag(:twitter_message,
+                        twitter_share_description(url_with_complete_path(public_financial_profile_path(current_user))),
+                        :size => '20*5',
+                        :class => 'span5')
+      .actions
+        = link_to '#', { :id => 'twittershare', :class => %W(btn btn-primary btn-large), :data => { :post_url => twitter_post_url }} do
+          %i
+            = image_tag 'twitter_icon.png'
+          Tweet on Twitter

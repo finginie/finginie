@@ -501,6 +501,9 @@ GEM
       multi_json (~> 1.0)
       rubyzip
     sexp_processor (3.2.0)
+    shortly (0.3.3)
+      httparty
+      json
     shoulda-matchers (1.2.0)
       activesupport (>= 3.0.0)
     simplecov (0.6.4)
@@ -617,6 +620,7 @@ DEPENDENCIES
   ruby-haml-js
   sass-rails
   sheet_mapper!
+  shortly
   shoulda-matchers
   simple_form!
   simplecov
