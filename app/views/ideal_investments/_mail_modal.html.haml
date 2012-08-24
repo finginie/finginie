@@ -7,7 +7,7 @@
   .modal-body
     %h2#option-b Invite by email
     .option
-      %p{:style => "margin-bottom:1em;"} Invite your contacts (Gmail, AOL, Yahoo, etc.)
+      %p{:style => "margin-bottom:1em;"} Invite your contacts (Gmail, Yahoo, Hotmail etc.)
     .alert.alert-error#error_msg{:style => 'display:none'}
     = form_tag email_contacts_path, :remote => true, :method => :get, :id => 'email_contacts_form' do
       .sector.control-group

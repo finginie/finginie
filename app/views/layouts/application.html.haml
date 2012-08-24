@@ -32,7 +32,7 @@
               = image_tag 'logo.png'
             %small India's Best Investment Portal for Beginners
             .pull-right
-              = link_to "#{current_user.try(:ebola_points).to_i} points", main_app.accumulated_points_path
+              = link_to "#{current_user.try(:ebola_points).to_i} points", main_app.accumulated_points_path, :id => 'points'
         = render 'layouts/navigation'
         = yield :header
         #indices

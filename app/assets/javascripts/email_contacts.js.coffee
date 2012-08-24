@@ -14,10 +14,11 @@ $(document).ready ->
 
   $("#invite_frnds_form").bind "ajax:success", (xhr, data) ->
     $("#flash_notice").html(data.msg)
+    $('#points').html(data.points + ' points')
 
   $("#email_contacts_form").bind "ajax:beforeSend", (data) ->
     $("#error_msg").hide()
-    $("#count").html "Invite 0 Friends"
+    $("#invite_frnds").html "Invite 0 Friends"
     $("#email_contact_modal").modal "hide"
     $("body").addClass "loading"
 

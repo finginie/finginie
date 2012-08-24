@@ -25,11 +25,11 @@ class EmailContactsController < ApplicationController
       share_financial_profile_mail_step = PointTracker::ShareFinancialProfileViaMailStep.new(current_user)
       share_financial_profile_mail_step.save(meta_data)
     end
-    EbolaMailer.welcome_email(params[:contacts], '#').deliver
+    EbolaMailer.welcome_email(params[:contacts], current_user_public_financial_profile_full_path).deliver
 
     respond_to do |format|
       format.json do
-        render :json => { 'msg' => 'success' }
+        render :json => { :msg => "You have invited #{params[:contacts].size} friends", :points => current_user.ebola_points }
       end
     end
   end
