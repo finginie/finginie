@@ -1,11 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.8'
 
 # Unbuilt gems from the project modules
 #
 gem 'personal_financial_tools', :path => 'engines/personal_financial_tools'
 gem 'data_provider',            :path => 'engines/data_provider'
+gem 'data_consumer',            :path => 'engines/data_consumer'
 
 # Gems used only for assets and not required
 # in production environments by default.
