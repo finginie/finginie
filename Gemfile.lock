@@ -41,6 +41,11 @@ GIT
     nested_form (0.1.1)
 
 GIT
+  remote: git://github.com/TMaYaD/periscope.git
+  revision: 8ba64faa1e8b48858ff2244ae5db07676d64dae4
+  specs:
+
+GIT
   remote: git://github.com/TMaYaD/sheet_mapper.git
   revision: 8a98bd57cbe3cc292ef61a964fa41f4b99c4ebba
   specs:
@@ -405,8 +410,8 @@ GEM
     periscope-activerecord (1.0.0)
       activerecord (~> 3.0)
       periscope (~> 1.0)
-    periscope-mongoid (1.1.0)
-      mongoid (>= 2, < 4)
+    periscope-mongoid (1.0.0)
+      mongoid (~> 2.0)
       periscope (~> 1.0)
     pg (0.14.0)
     pinch (0.3.0)
@@ -622,6 +627,7 @@ DEPENDENCIES
   omniauth-oauth2!
   omniauth_single_signon!
   paper_trail
+  periscope!
   personal_financial_tools!
   pg
   poltergeist
