@@ -20,5 +20,4 @@ staging:
   <<: *production
 
 development:
-  host: localhost
-  database: finginie_development
+  <<: *production
