@@ -15,6 +15,14 @@ class Finginie.Routers.HomeRouter extends Backbone.Router
       data:
         desc: 'size'
         limit: 5
+    @nse_sectoral_indices = new Finginie.Collections.ScripsCollection()
+    @nse_sectoral_indices.fetch
+      data:
+        exchange: 'Nse'
+    @bse_sectoral_indices = new Finginie.Collections.ScripsCollection()
+    @bse_sectoral_indices.fetch
+      data:
+        exchange: 'Bse'
 
   routes:
     ""    : "index"
@@ -26,3 +34,7 @@ class Finginie.Routers.HomeRouter extends Backbone.Router
     $("#lowest_mutual_funds").html(@lowest_mutual_funds_view.render().el)
     @biggest_mutual_funds_view = new Finginie.Views.MutualFunds.BigMutualFundsView(mutual_funds: @biggest_mutual_funds)
     $("#biggest_mutual_funds").html(@biggest_mutual_funds_view.render().el)
+    @nse_sectoral_indices_view = new Finginie.Views.SectoralIndices.IndicesView(indices: @nse_sectoral_indices)
+    $("#nse_sectoral_indices").html(@nse_sectoral_indices_view.render().el)
+    @bse_sectoral_indices_view = new Finginie.Views.SectoralIndices.IndicesView(indices: @bse_sectoral_indices)
+    $("#bse_sectoral_indices").html(@bse_sectoral_indices_view.render().el)

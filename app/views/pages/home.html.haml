@@ -19,18 +19,32 @@
 
 .row.show-grid
   .span8
-    %h5 Biggest Equity Mutual Funds
-    #biggest_mutual_funds
+    .row.show-grid
+      .span8
+        %h5 Biggest Equity Mutual Funds
+        #biggest_mutual_funds
 
-.row.show-grid
-  .span8
-    %h5 Mutual Fund Gainers
-    #top_mutual_funds
+    .row.show-grid
+      .span8
+        %h5 Mutual Fund Gainers
+        #top_mutual_funds
 
-.row.show-grid
-  .span8
-    %h5 Mutual Fund Losers
-    #lowest_mutual_funds
+    .row.show-grid
+      .span8
+        %h5 Mutual Fund Losers
+        #lowest_mutual_funds
+  .span4
+    .row.show-grid
+      .span4
+        %h1 Sectoral Indices
+
+        %ul.nav.nav-tabs
+          %li= link_to 'NSE', "#nse_sectoral_indices", :data => { :toggle => :tab }
+          %li= link_to 'BSE', "#bse_sectoral_indices", :data => { :toggle => :tab }
+
+        .tab-content
+          #nse_sectoral_indices.tab-pane
+          #bse_sectoral_indices.tab-pane
 
 :javascript
   $(function() {
