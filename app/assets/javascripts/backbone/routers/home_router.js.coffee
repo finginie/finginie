@@ -8,6 +8,8 @@ class Finginie.Routers.HomeRouter extends Backbone.Router
     @render_biggest_mutual_funds()
     @render_sectoral_indices('Nse')
     @render_sectoral_indices('Bse')
+    @render_trending_shares('Nse')
+    @render_trending_shares('Bse')
 
   render_top_mutual_funds: ->
     @top_mutual_funds = new Finginie.Collections.MutualFundsCollection()
@@ -44,3 +46,26 @@ class Finginie.Routers.HomeRouter extends Backbone.Router
         sectoral_indices: 'all'
     sectoral_indices_view = new Finginie.Views.SectoralIndices.IndicesView(indices: sectoral_indices)
     $("##{exchange}_sectoral_indices").html(sectoral_indices_view.render().el)
+
+  render_trending_shares: (exchange)->
+    @render_top_shares exchange, 'gainers'
+    @render_top_shares exchange, 'losers'
+    @render_active_shares exchange
+
+  render_top_shares: (exchange, trend)->
+    scrips = new Finginie.Collections.ScripsCollection()
+    data = exchange: exchange
+    data["top_#{trend}"]= 5
+    scrips.fetch
+      data: data
+    view = new Finginie.Views.Scrips.TrendingSharesView(scrips: scrips)
+    $("##{exchange}_top_#{trend}").html(view.render().el)
+
+  render_active_shares: (exchange)->
+    scrips = new Finginie.Collections.ScripsCollection()
+    scrips.fetch
+      data:
+        exchange: exchange
+        most_active: 5
+    view = new Finginie.Views.Scrips.MostActiveSharesView(scrips: scrips)
+    $("##{exchange}_most_active").html(view.render().el)
