@@ -39,15 +39,9 @@
         %h1 Sectoral Indices
 
         %ul.nav.nav-tabs
-          %li= link_to 'NSE', "#nse_sectoral_indices", :data => { :toggle => :tab }
-          %li= link_to 'BSE', "#bse_sectoral_indices", :data => { :toggle => :tab }
+          %li= link_to 'NSE', "#Nse_sectoral_indices", :data => { :toggle => :tab }
+          %li= link_to 'BSE', "#Bse_sectoral_indices", :data => { :toggle => :tab }
 
         .tab-content
-          #nse_sectoral_indices.tab-pane
-          #bse_sectoral_indices.tab-pane
-
-:javascript
-  $(function() {
-    window.router = new Finginie.Routers.HomeRouter();
-    Backbone.history.start({pushState: true});
-  });
+          #Nse_sectoral_indices.tab-pane
+          #Bse_sectoral_indices.tab-pane

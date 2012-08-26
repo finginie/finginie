@@ -32,3 +32,6 @@ $ ->
 
   setInterval(@update_indices, 60 * 1000)
 
+  window.router = new Finginie.Routers.HomeRouter()
+  Backbone.history.start
+    pushState: true
