@@ -19,10 +19,12 @@ class Finginie.Routers.HomeRouter extends Backbone.Router
     @nse_sectoral_indices.fetch
       data:
         exchange: 'Nse'
+        sectoral_indices: 'all'
     @bse_sectoral_indices = new Finginie.Collections.ScripsCollection()
     @bse_sectoral_indices.fetch
       data:
         exchange: 'Bse'
+        sectoral_indices: 'all'
 
   routes:
     ""    : "index"

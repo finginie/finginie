@@ -8,4 +8,4 @@ class Finginie.Models.Scrip extends Backbone.Model
 
 class Finginie.Collections.ScripsCollection extends Backbone.Collection
   model: Finginie.Models.Scrip
-  url: '/data/tmp/sectoral_indices'
+  url: '/data/tmp/scrips'
