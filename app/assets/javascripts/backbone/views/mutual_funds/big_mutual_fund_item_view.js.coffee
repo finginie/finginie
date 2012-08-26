@@ -1,0 +1,30 @@
+Finginie.Views.MutualFunds ||= {}
+
+class Finginie.Views.MutualFunds.BigMutualFundItemView extends Backbone.View
+  template: JST["backbone/templates/mutual_funds/big_mutual_fund_item"]
+
+  tagName: "tr"
+
+  render: =>
+    $(@el).html(@template(@attributes()))
+    return this
+
+  attributes: =>
+    _.extend {},
+      @model.toJSON(),
+      @color_classes('percentage_change', 'prev_year_percent'),
+      @round('percentage_change', 'size', 'prev_year_percent')
+
+  color_classes: (attrs...)->
+    color_classes = {}
+    for attr in attrs
+      value = @model.get attr
+      color_classes["#{attr}_color"] = if value?
+        if value < 0 then 'red' else 'green'
+    color_classes
+
+  round: (attrs...)->
+    ret = {}
+    for attr in attrs
+      ret[attr] = Math.round(@model.get(attr) * 100)/100
+    ret
