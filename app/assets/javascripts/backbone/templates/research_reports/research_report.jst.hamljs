@@ -1,0 +1,6 @@
+%p
+  = recommendation
+  &nbsp; - &nbsp;
+  %a{ href: link_url }= name
+  &nbsp; : &nbsp;
+  = source

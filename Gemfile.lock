@@ -44,6 +44,9 @@ GIT
   remote: git://github.com/TMaYaD/periscope.git
   revision: 8ba64faa1e8b48858ff2244ae5db07676d64dae4
   specs:
+    periscope-activerecord (1.0.0)
+      activerecord (~> 3.0)
+      periscope (~> 1.0)
 
 GIT
   remote: git://github.com/TMaYaD/sheet_mapper.git
@@ -407,9 +410,6 @@ GEM
       activerecord (~> 3.0)
       railties (~> 3.0)
     periscope (1.0.0)
-    periscope-activerecord (1.0.0)
-      activerecord (~> 3.0)
-      periscope (~> 1.0)
     periscope-mongoid (1.0.0)
       mongoid (~> 2.0)
       periscope (~> 1.0)

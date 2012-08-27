@@ -1,0 +1,5 @@
+%h5.header
+  Research Reports
+  %small
+    %a.pull-right{ href: '/research_reports'} See all
+%ul#reaserch_report_items
