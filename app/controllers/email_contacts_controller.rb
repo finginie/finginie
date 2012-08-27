@@ -1,7 +1,7 @@
 class EmailContactsController < ApplicationController
   respond_to :json
 
-  def index
+  def import_contacts
     begin
       email_contacts_decorator = EmailContactsDecorator.new(Contacts.guess!(params[:login], params[:password]))
       session[:from_email_id] = params[:login]
@@ -11,11 +11,7 @@ class EmailContactsController < ApplicationController
       render :status => 403, :json => error_msg.message and return
     end
 
-    respond_to do |format|
-      format.json do
-        render :json => email_contacts_decorator.data_table_response
-      end
-    end
+    render :json => email_contacts_decorator.data_table_response
   end
 
   def send_mail
@@ -26,11 +22,7 @@ class EmailContactsController < ApplicationController
     end
     EbolaMailer.welcome_email(params[:contacts], current_user_public_financial_profile_full_path, session[:from_email_id]).deliver
 
-    respond_to do |format|
-      format.json do
-        render :json => { :msg => "You have invited #{params[:contacts].size} friends", :points => current_user.ebola_points }
-      end
-    end
+    render :json => { :msg => "You have invited #{params[:contacts].size} friends", :points => current_user.ebola_points }
   end
 
 end

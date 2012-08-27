@@ -9,7 +9,7 @@
     .option
       %p Invite your contacts (Gmail, Yahoo, Hotmail etc.)
     .alert.alert-error#error_msg.hide
-    = form_tag email_contacts_path, :remote => true, :method => :get, :id => 'email_contacts_form' do
+    = form_tag import_contacts_email_contacts_path, :remote => true, :id => 'email_contacts_form' do
       .sector.control-group
         = label_tag "Contact", "Email", :class => 'control-label'
         .controls
