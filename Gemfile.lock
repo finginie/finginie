@@ -67,7 +67,7 @@ GIT
 
 GIT
   remote: git://github.com/code-R/contacts.git
-  revision: fc0ee37963ab211308d18d15e4c164c0b281aa7a
+  revision: 89d4a29a411d89e6bccca35d29a52aea6da2b4b3
   specs:
     liangzan-contacts (1.2.20)
       gdata_19 (~> 1.1.3)
