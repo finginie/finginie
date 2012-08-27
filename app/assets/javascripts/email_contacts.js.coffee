@@ -1,4 +1,8 @@
 $(document).ready ->
+  $('#back_btn').click ->
+    close_modal_dialog('invitations')
+    $("#email_contact_modal").modal()
+
   $('#retrive_contacts').click ->
     $('#email_contacts_form').submit()
 
