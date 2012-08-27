@@ -6,6 +6,17 @@ class Finginie.Views.NewsArticles.NewsArticleView extends Backbone.View
   tagName: "article"
 
   render: =>
-    $(@el).html(@template(@model.toJSON()))
+    $(@el).html(@template(@attributes()))
     return this
 
+  attributes: =>
+    _.extend {},
+      @model.toJSON(),
+      @localize_date('published')
+
+  localize_date: (attrs...)=>
+    ret = {}
+    for attr in attrs
+      date = new Date(@model.get(attr))
+      ret[attr] = date.toLocaleDateString() + ' ' + date.toLocaleTimeString()
+    ret
