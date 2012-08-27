@@ -1,6 +1,6 @@
 %table.table.table-striped.table-bordered
   %thead
-    %td Name
-    %td Today's Price
-    %td Volume
+    %th Name
+    %th Today's Price
+    %th Volume
   %tbody

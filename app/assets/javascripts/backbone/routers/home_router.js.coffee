@@ -10,6 +10,7 @@ class Finginie.Routers.HomeRouter extends Backbone.Router
     @render_sectoral_indices('Bse')
     @render_trending_shares('Nse')
     @render_trending_shares('Bse')
+    @render_news_articles(section) for section in [ "markets", "economy", "companies", "global_news", "stock_tips" ]
 
   render_top_mutual_funds: ->
     @top_mutual_funds = new Finginie.Collections.MutualFundsCollection()
@@ -69,3 +70,12 @@ class Finginie.Routers.HomeRouter extends Backbone.Router
         most_active: 5
     view = new Finginie.Views.Scrips.MostActiveSharesView(scrips: scrips)
     $("##{exchange}_most_active").html(view.render().el)
+
+  render_news_articles: (section)->
+    news_articles = new Finginie.Collections.NewsArticlesCollection()
+    news_articles.fetch
+      data:
+        where: "this.section_name=='#{section}'"
+        limit: 5
+    view = new Finginie.Views.NewsArticles.NewsArticlesView(news_articles: news_articles)
+    $("#news_#{section}").html(view.render().el)

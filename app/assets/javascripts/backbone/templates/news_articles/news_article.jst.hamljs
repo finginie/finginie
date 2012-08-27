@@ -1,0 +1,4 @@
+%h4
+  %a{ href: url, title: source, target: '_blank' }= title
+%h6 #{source} - #{published}
+%p= summary

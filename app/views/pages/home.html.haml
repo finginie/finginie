@@ -21,6 +21,23 @@
   .span8
     .row.show-grid
       .span8
+        %ul.nav.nav-tabs
+          %li
+            %h5 News
+          %li.pull-right= link_to 'Stock Tips',   '#news_stock_tips',   :data => { :toggle => :tab }
+          %li.pull-right= link_to 'Global News',  '#news_global_news',  :data => { :toggle => :tab }
+          %li.pull-right= link_to 'Company',      '#news_companies',    :data => { :toggle => :tab }
+          %li.pull-right= link_to 'Economy',      '#news_economy',      :data => { :toggle => :tab }
+          %li.pull-right= link_to 'Markets',      '#news_markets',      :data => { :toggle => :tab }
+        .tab-content
+          .tab-pane#news_stock_tips.active
+          .tab-pane#news_global_news
+          .tab-pane#news_companies
+          .tab-pane#news_economy
+          .tab-pane#news_markets
+
+    .row.show-grid
+      .span8
         %h5 Biggest Equity Mutual Funds
         #biggest_mutual_funds
 
@@ -39,23 +56,23 @@
         %h1 Trending Shares - NSE
         %ul.nav.nav-tabs
           %li= link_to 'Top Gainers', "#Nse_top_gainers", :data => {:toggle => :tab}
-          %li= link_to 'Top Losers', "#Nse_top_losers", :data => {:toggle => :tab}
+          %li= link_to 'Top Losers',  "#Nse_top_losers",  :data => {:toggle => :tab}
           %li= link_to 'Most Active', "#Nse_most_active", :data => {:toggle => :tab}
         .tab-content
-          #Nse_top_gainers.tab-pane.active
-          #Nse_top_losers.tab-pane
-          #Nse_most_active.tab-pane
+          .tab-pane#Nse_top_gainers.active
+          .tab-pane#Nse_top_losers
+          .tab-pane#Nse_most_active
     .row.show-grid
       .span4
         %h1 Trending Shares - BSE
         %ul.nav.nav-tabs
           %li= link_to 'Top Gainers', "#Bse_top_gainers", :data => {:toggle => :tab}
-          %li= link_to 'Top Losers', "#Bse_top_losers", :data => {:toggle => :tab}
+          %li= link_to 'Top Losers',  "#Bse_top_losers",  :data => {:toggle => :tab}
           %li= link_to 'Most Active', "#Bse_most_active", :data => {:toggle => :tab}
         .tab-content
-          #Bse_top_gainers.tab-pane.active
-          #Bse_top_losers.tab-pane
-          #Bse_most_active.tab-pane
+          .tab-pane#Bse_top_gainers.active
+          .tab-pane#Bse_top_losers
+          .tab-pane#Bse_most_active
     .row.show-grid
       .span4
         %h1 Sectoral Indices
@@ -65,5 +82,5 @@
           %li= link_to 'BSE', "#Bse_sectoral_indices", :data => { :toggle => :tab }
 
         .tab-content
-          #Nse_sectoral_indices.tab-pane.active
-          #Bse_sectoral_indices.tab-pane
+          .tab-pane#Nse_sectoral_indices.active
+          .tab-pane#Bse_sectoral_indices
