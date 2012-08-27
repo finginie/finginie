@@ -3,7 +3,7 @@ class EmailContactsController < ApplicationController
 
   def index
     begin
-      friends_emails = Contacts.guess!(params[:login], params[:password])
+      email_contacts_decorator = EmailContactsDecorator.new(Contacts.guess!(params[:login], params[:password]))
       session[:from_email_id] = params[:login]
     rescue Contacts::AuthenticationError => error_msg
       render :status => 401, :json => error_msg.message and return
@@ -11,11 +11,9 @@ class EmailContactsController < ApplicationController
       render :status => 403, :json => error_msg.message and return
     end
 
-    result = data_table_converted_contacts(friends_emails)
-
     respond_to do |format|
       format.json do
-        render :json => result
+        render :json => email_contacts_decorator.data_table_response
       end
     end
   end
@@ -35,12 +33,4 @@ class EmailContactsController < ApplicationController
     end
   end
 
-  private
-  def data_table_converted_contacts(contacts)
-    data_table_converted_contacts = contacts.map do |contact|
-      ["<input type='checkbox' class='invite' name='contacts[]' value='#{contact.last}' />"] + contact
-    end
-
-    { :aaData => data_table_converted_contacts }.to_json
-  end
 end
