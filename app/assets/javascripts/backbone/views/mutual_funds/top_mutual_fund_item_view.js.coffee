@@ -13,7 +13,8 @@ class Finginie.Views.MutualFunds.TopMutualFundItemView extends Backbone.View
     _.extend {},
       @model.toJSON(),
       @color_classes('percentage_change', 'prev1_month_percent', 'prev_year_percent', 'prev3_year_percent'),
-      @round('percentage_change', 'prev1_month_percent', 'prev_year_percent', 'prev3_year_percent')
+      @round('percentage_change', 'prev1_month_percent', 'prev_year_percent', 'prev3_year_percent'),
+      { slug: string_to_slug(@model.get('name')) }
 
   color_classes: (attrs...)->
     color_classes = {}
