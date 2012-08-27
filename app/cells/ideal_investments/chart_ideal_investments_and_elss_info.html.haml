@@ -1,4 +1,4 @@
-.row.show-grid
+.show-grid
   .span8
     -gchart( :data => @chart_data, title: 'Ideal Investments', chart_type: 'Pie' )
 
@@ -7,8 +7,7 @@
       - unless @ideal_investment_mix.send(type).empty?
         = render 'investments', :type => type, :value => @value_type, :ideal_investment_mix => @ideal_investment_mix
 
-.row
-  .span12
+  .span5
     %p= t("ideal_investments.show.elss_message")
     %h3 Top ELSS funds
     %table.table.table-striped.table-bordered{:data => {:role => 'top_elss_funds'} }
