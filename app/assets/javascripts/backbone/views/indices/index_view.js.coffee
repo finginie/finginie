@@ -11,16 +11,21 @@ class Finginie.Views.Indices.IndexView extends Backbone.View
     return this
 
   attributes: =>
-    _.extend @model.toJSON(),
-      percent_change_color: @colorize(@model.get('percent_change'))
-      last_traded_price: @money_to_d(@model.get('last_traded_price'))
-      net_change: @money_to_d(@model.get('net_change'))
-      net_change_color: @colorize(@money_to_d(@model.get('net_change')))
+    _.extend {},
+      @model.toJSON(),
+      @color_classes('percent_change', 'net_change')
+      @round('percent_change', 'net_change', 'last_traded_price')
 
-  money_to_d: (value)=>
-    if value?
-      value.cents/100
+  color_classes: (attrs...)->
+    color_classes = {}
+    for attr in attrs
+      value = @model.get attr
+      color_classes["#{attr}_color"] = if value?
+        if value < 0 then 'red' else 'green'
+    color_classes
 
-  colorize: (value)=>
-    if value?
-      if value < 0 then 'red' else 'green'
+  round: (attrs...)->
+    ret = {}
+    for attr in attrs
+      ret[attr] = Math.round(@model.get(attr) * 100)/100
+    ret
