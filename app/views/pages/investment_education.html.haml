@@ -1,48 +1,55 @@
 -#= render_navigation :expand_all => true, :level => 2, :renderer => DescriptiveList
 .row.show-grid
-  .span3
-    %pre
-      =image_tag "investment_education/smart_investments.jpg"
-    %h3 Preparing to Invest
-    %ul
-      %li= link_to 'How to invest', main_app.page_path('investment_education/smart-investments')
-      %li= link_to 'Types Of Investemnts', main_app.page_path('investment_education/investment-types')
-      %li= link_to 'Investing vs Trading', main_app.page_path('investment_education/investing-trading-shares')
-  .span3
-    %pre
-      =image_tag "investment_education/InvestmentConcepts_1.jpg"
-    %h3 Before you Invest
-    %ul
-      %li= link_to 'Investment Plan', main_app.page_path('investment_education/investment-plan')
-      %li= link_to 'Where to Invest', main_app.page_path('investment_education/where-to-invest')
-      %li= link_to 'Diversification', main_app.page_path('investment_education/investment-diversification')
-      %li= link_to 'Planning your Taxes', main_app.page_path('investment_education/tax-planning')
-  .span3
-    %pre
-      =image_tag "investment_education/InvestmentAnalysis.jpg"
-    %h3 Investing in Shares
-    %ul
-      %li= link_to 'Share Market', main_app.page_path('investment_education/share-market')
-      %li= link_to 'Fundamental Analysis', main_app.page_path('investment_education/fundamental-analysis-shares')
-      %li= link_to 'Technical Analysis', main_app.page_path('investment_education/technical-analysis-shares')
-      %li= link_to 'Banking Sector', main_app.page_path('investment_education/banking-sector-shares')
-      %li= link_to 'IT Sector', main_app.page_path('investment_education/it-sector')
-  .span3
-    %pre
-      =image_tag "investment_education/InvestmentTypes_1.jpg"
-    %h3 Types of Investments
-    %ul
-      %li= link_to 'Fixed Deposits', main_app.page_path('investment_education/investment-fixed-deposits')
-      %li= link_to 'Gold', main_app.page_path('investment_education/gold-investment')
-      %li= link_to 'Shares', main_app.page_path('investment_education/shares')
-      %li= link_to 'Mutual Funds and ETFs', main_app.page_path('investment_education/mutual-funds-etf')
-      %li= link_to 'Bonds', main_app.page_path('investment_education/bonds')
-      %li= link_to 'Life Insurance', main_app.page_path('investment_education/life-insurance-policies')
-      %li= link_to 'Sip', main_app.page_path('investment_education/sip')
-.row.show-grid
-  .span3
-    %pre
-      =image_tag "investment_education/InvestmentEducation.png", {:style => "height: 200px;"}
-    %h3 Further Reading
-    %ul
-      %li= link_to 'Articles', main_app.page_path('investment_education/articles')
+  .span8
+    %section
+      %h5.page-header Preparing to invest
+      %h3= link_to 'How to invest', main_app.page_path('investment_education/smart-investments')
+      %p 5 tips to transform the way you invest: This guide will help you make smart investments using the principles that experts use to build market-beating portfolios .
+      %h3= link_to 'Types Of Investemnts', main_app.page_path('investment_education/investment-types')
+      %p Shares,mutual funds,fixed deposits and gold are the major types of investments available in India. We go over the risk,return and tax aspects of all of these investments and tell you how to reduce risk and maximize your return while investing.
+    %h3= link_to 'Investing vs Trading', main_app.page_path('investment_education/investing-trading-shares')
+    %p This article explains the differences between investing and trading in shares.
+    %section
+      %h5.page-header Before you Invest
+      %h3= link_to 'Investment Plan', main_app.page_path('investment_education/investment-plan')
+      %p This article explains the investment planning process in simple language for beginners.
+      %h3= link_to 'Where to Invest', main_app.page_path('investment_education/where-to-invest')
+      %p Where should you invest? We show you how to allocate your money among different investments and assets such as shares, fixed deposits,gold and mutual funds.
+      %h3= link_to 'Diversification', main_app.page_path('investment_education/investment-diversification')
+      %p This article helps investors and beginners understand how diversification works. Readers will are taught how to diversify their investment portfolios across asset classes (such as shares,fixed deposits etc), and sectors.The benefits of diversification such as reduced risk and enhanced returns are emphasized.
+      %h3= link_to 'Planning your Taxes', main_app.page_path('investment_education/tax-planning')
+      %p Taxes can eat into your investment returns if you dont plan carefully. Find out how you can minimize taxes and achieve superior returns.Tax planning for short and long term capital gains tax as well as tax exemptions under Section 80c & 80ccf are emphasized in this article.
+    %section
+      %h5.page-header Investing in Shares
+      %h3= link_to 'Share Market', main_app.page_path('investment_education/share-market')
+      %p Ever wondered about what drives the share market? About what market sentiment is all about? About how macroeconomic indicators such as GDP,inflation and growth effect it?We tell you how the share/stock market works, what drives share prices and how you can participate and profit from your investments in shares and mutual funds.
+      %h3= link_to 'Fundamental Analysis', main_app.page_path('investment_education/fundamental-analysis-shares')
+      %p This article helps investors and beginners understand how to use fundamental analysis to analyze shares. Proper application of these principles can help increase your investment return and reduce investment risk.
+      %h3= link_to 'Technical Analysis', main_app.page_path('investment_education/technical-analysis-shares')
+      %p We show you how to use technical analysis to achieve superior returns on your investments in shares.
+      %h3= link_to 'Banking Sector', main_app.page_path('investment_education/banking-sector-shares')
+      %p This article explains how an investor can analyze banking sector shares, the factors influencing banking sector shares and how one can profit from investing in them.
+      %h3= link_to 'IT Sector', main_app.page_path('investment_education/it-sector')
+      %p IT sector shares like Infosys and TCS have been the darlings of investors over the years. Learn what influences the share prices of IT companies and how to invest in them.
+    %section
+      %h5.page-header Types of Investments
+      %h3= link_to 'Fixed Deposits', main_app.page_path('investment_education/investment-fixed-deposits')
+      %p Investing in fixed deposits is an excellent way to earn good returns while keeping your money safe. Learn how to invest in fixed deposits while minimizing risk and maximizing return.
+      %h3= link_to 'Gold', main_app.page_path('investment_education/gold-investment')
+      %p This article guides investors and beginners on investing in gold in India. Special emphasis is laid on risk,return, taxation and the general principles of investing in gold.
+      %h3= link_to 'Shares', main_app.page_path('investment_education/shares')
+      %p This article tells you everything you need to know about investing in shares. We cover aspects such as risk,returns,taxation and strategies to maximize returns.
+      %h3= link_to 'Mutual Funds and ETFs', main_app.page_path('investment_education/mutual-funds-etf')
+      %p A mutual fund is a pool of money invested by small investors and managed by investment professionals to meet certain investment objectives. Small investors get together and invest in this pool known as a corpus which is then used by professional money managers to invest in a diversified portfolio of investments.
+      %h3= link_to 'Bonds', main_app.page_path('investment_education/bonds')
+      %p This article guides investors on investing in bonds in India.Special emphasis is laid on risk,return, taxation and the general principles of investing in bonds.
+      %h3= link_to 'Life Insurance', main_app.page_path('investment_education/life-insurance-policies')
+      %p Life insurance policies have been very popular in India for decades. Apart from providing life cover, insurance policies also have investment-like features. Confused by words like "term life insurance", "whole life insurance " and "universal life insurance"? Look no further. This article covers different characteristics of life insurance and how you can choose a policy wisely to protect the financial future of your loved ones.'
+      %h3= link_to 'Sip', main_app.page_path('investment_education/sip')
+      %p A Systematic Investment Plan(SIP) is a great way for small investors to invest in mutual funds using the principle of rupee cost averaging. This not only helps smoothen out heavy fluctuations from your portfolio but also helps you stay disciplined and develop a habit of saving. Read on to understand how you should best benefit from a SIP.
+    %section
+      %h3.page-header Further Reading
+      %p= link_to 'Articles', main_app.page_path('investment_education/articles')
+      %p A miscellaneous collection of articles that cover a broad range of topics ranging from Foreign Exchange to Time Value of money and from Options to Futures.
+  .span4
+    = link_to image_tag('ebola-370.jpg'), main_app.page_path('win-an-ipad3')

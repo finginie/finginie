@@ -251,17 +251,17 @@ en:
             title: 'Investing in Fixed Deposits'
             description: 'Investing in fixed deposits is an excellent way to earn good returns while keeping your money
              safe. Learn how to invest in fixed deposits while minimizing risk and maximizing return.'
-            keywords: ''
+            keywords: 'fixed deposits, fd, bank, interest'
           investment-types:
             title: 'Shares, Mutual Funds, Fixed Deposits, Bonds and Gold - Types of Investments'
             description: 'Shares,mutual funds,fixed deposits and gold are the major types of investments available in
              India. We go over the risk,return and tax aspects of all of these investments and tell you how to reduce
              risk and maximize your return while investing.'
-            keywords: ''
+            keywords: 'investment types, stocks, bonds, gold, fixed deposits, bonds'
           mutual-funds-etf:
             title: 'Mutual Funds'
-            description: ''
-            keywords: ''
+            description: 'A mutual fund is a pool of money invested by small investors and managed by investment professionals to meet certain investment objectives. Small investors get together and invest in this pool known as a corpus which is then used by professional money managers to invest in a diversified portfolio of investments.'
+            keywords: 'mutual funds, mutual fund, fund, MF, ETF,etfs'
           options:
             title: 'Options'
             description: 'Options give the astute investor leverage and downside protection.They are powerful tools that
@@ -299,8 +299,8 @@ en:
             keywords: 'technical analysis,shares,investment,investing'
           time-value-of-money:
             title: 'Time Value Of Money'
-            description: ''
-            keywords: ''
+            description: 'Is time really money? Learn why a rupee today is worth more than a rupee next year. The principles of compound interest will never cease to amaze you.'
+            keywords: 'time value of money, interest'
           insurance-products:
             title: 'Insurance Products Demystified'
             description: 'Confused by the myriad of insurance products in the market? Look no further. We will teach you
