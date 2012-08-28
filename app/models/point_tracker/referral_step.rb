@@ -5,7 +5,7 @@ module PointTracker
     POINTS      = 200
 
     def valid?
-      !referred_himself? && !already_referred?
+      !(referred_himself? || already_referred?)
     end
 
     private
