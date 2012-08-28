@@ -5,12 +5,14 @@ module PointTracker
     POINTS      = 500
 
     def valid?
-      !completed_step_for_user?
+      !completed_step_for_user? && has_more_than_four_transactions?
     end
 
     private
-    def has_five_transactions?
+    def has_more_than_four_transactions?
+      portfolio = Portfolio.find(meta_data[:portfolio_id])
 
+      portfolio.all_transactions.size > 4
     end
   end
 end

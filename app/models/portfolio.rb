@@ -1,4 +1,12 @@
 class Portfolio < ActiveRecord::Base
+  TRANSACTION_TYPES = [
+    :stock_transaction,
+    :gold_transaction,
+    :mutual_fund_transaction,
+    :loan_transaction,
+    :fixed_deposit_transaction,
+    :real_estate_transaction
+  ]
   attr_accessible :name
 
   belongs_to :user
@@ -19,6 +27,12 @@ class Portfolio < ActiveRecord::Base
   validates :user_id, :presence => true
   validates :name, :presence => true,
                   :uniqueness => { :scope => :user_id }
+
+  def all_transactions
+    TRANSACTION_TYPES.inject([]) do |result, transaction|
+      result << send(transaction.to_s.pluralize)
+    end.flatten
+  end
 
   def companies
     stock_transactions.map(&:company).uniq.compact
