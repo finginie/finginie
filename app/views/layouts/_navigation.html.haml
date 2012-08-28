@@ -98,8 +98,12 @@
         = bar.item 'Stock Screener',
                     main_app.screener_stocks_path
       = bar.dropdown 'Research' do
-        = bar.item "Finginie's stock picks",
-                    main_app.page_path('stock-recommendations')
+        - if current_user
+          = bar.item "Finginie's stock picks",
+                      main_app.page_path('stock-recommendations')
+        - else
+          = bar.item "Finginie's stock picks",
+                      main_app.page_path('guest-stocks-picks')
         = bar.item "Brokers' stock picks",
                     main_app.research_ratings_path
         = bar.item 'Broker Research Reports',
