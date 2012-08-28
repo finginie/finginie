@@ -4,13 +4,21 @@ module PointTracker
     ACTION_LINK = '/comprehensive_risk_profiler/ideal_investments'
     POINTS      = 200
 
-    def save(meta_data = {})
-      super unless referred_himself?(meta_data[:referred_user_id])
+    def valid?
+      !referred_himself? && !already_referred?
     end
 
     private
-    def referred_himself?(referred_user_id)
-      referred_user_id == user.id
+    def already_referred?
+      referred_user.already_referred?
+    end
+
+    def referred_himself?
+      referred_user.id == user.id
+    end
+
+    def referred_user
+      User.find meta_data[:referred_user_id]
     end
   end
 end

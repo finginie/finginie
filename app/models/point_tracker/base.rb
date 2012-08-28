@@ -1,16 +1,17 @@
 module PointTracker
   class Base
-    attr_reader :user
+    attr_reader :user, :meta_data
 
-    def initialize(user)
+    def initialize(user, meta_data = {})
       @user = user
+      @meta_data = meta_data
     end
 
     def valid?
       true
     end
 
-    def save(meta_data = {})
+    def save
       CompletedStep.create({
         :step       => step_name,
         :user_id    => user.id,
