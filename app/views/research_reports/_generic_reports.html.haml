@@ -1,4 +1,4 @@
-.row.show-grid
+.row-fluid
   .span6
     = facebook_recommendation('Research reports')
   .span6
@@ -7,8 +7,6 @@
         .input-append
           = f.input :source_or_company_name_or_sector_contains, :label => false, :placeholder => 'Search by company,source or sector', :input_html => {:class => 'input-xlarge' }
           %span{:data => {:role => 'research_report_query' } }
-            = button_tag :class => 'btn' do
-              %i.icon-search
 
 = content_tag :div, flash[:result], :id => 'result' if flash[:result].is_a?(String)
 - unless collection.count == 0
