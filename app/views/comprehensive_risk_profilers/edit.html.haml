@@ -2,12 +2,12 @@
   .span8
     = facebook_recommendation('Personalized Financial Plan')
     = image_tag 'Quiz-page-mf-selection.png', :class => 'show-grid';
-    .row
+    .row-fluid
       .span10.show-grid
         -unless resource.persisted?
           = link_to "Skip Step and load balanced portfolio (Not Recommended)", comprehensive_risk_profiler_path(score: 6), html_options = { id: "skip_quiz"}
 
-    .row
+    .row-fluid
       .span10.show-grid
         = simple_form_for resource, :url => comprehensive_risk_profiler_path, :method => :put do |f|
           %ol
@@ -33,23 +33,27 @@
             .form-actions
               = f.submit 'Submit', :class => %w(btn btn-primary)
 
-  .span4
-    %ul.thumbnails
-      %li
+.span4
+  %ul.thumbnails
+    %li
+      %h5
         = image_tag 'Personalized.png', :class => 'bs-icon'
-        %h5 Personalized investment suggestions
-        %p Gives you personalized investment suggestions based on your unique financial needs & constraints.
-      %li
+        Personalized investment suggestions
+      %p Gives you personalized investment suggestions based on your unique financial needs & constraints.
+    %li
+      %h5
         = image_tag 'Sectoral_Analysis.png', :class => 'bs-icon'
-        %h5 Balance between risk and return
-        %p Ensures that you strike a perfect balance between risk and return. All suggestions are based on financial experts’ opinion & backed by 10 years of market data.
-      %li
+        Balance between risk and return
+      %p Ensures that you strike a perfect balance between risk and return. All suggestions are based on financial experts’ opinion & backed by 10 years of market data.
+    %li
+      %h5
         = image_tag 'Diversification.png', :class => 'bs-icon'
-        %h5 Diversification
-        %p Automatically ensures diversification across asset classes such as stocks, fixed deposits and gold. This reduces the riskiness of your portfolio drastically.
-      %li
+        Diversification
+      %p Automatically ensures diversification across asset classes such as stocks, fixed deposits and gold. This reduces the riskiness of your portfolio drastically.
+    %li
+      %h5
         = image_tag 'Quick_-free_and_beginner_-friendly.png', :class => 'bs-icon'
-        %h5 Quick, free and beginner friendly
-        %p Completely free of cost and doesn’t require a credit card or email address. Takes less than a minute to finish and requires no prior knowledge of investing.
-    .pull-right
-      = link_to image_tag('ebola-370.jpg'), main_app.page_path('win-an-ipad3')
+        Quick, free and beginner friendly
+      %p Completely free of cost and doesn’t require a credit card or email address. Takes less than a minute to finish and requires no prior knowledge of investing.
+  .pull-right
+    = link_to image_tag('ebola-370.jpg'), main_app.page_path('win-an-ipad3')

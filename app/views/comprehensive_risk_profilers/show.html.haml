@@ -17,24 +17,22 @@
       %p= t( ".default_suggestion", :quiz_link => (link_to 'short quiz', edit_comprehensive_risk_profiler_path)).html_safe
 
 - if resource.score
-  .row
-    .span8.show-grid
-      -gchart(:data => FinancialPlanner.ideal_asset_allocation(resource).to_a,
-              :title => 'Suggested Asset Allocation',
-              :chart_type => 'Pie' )
+  .span8.show-grid
+    -gchart(:data => FinancialPlanner.ideal_asset_allocation(resource).to_a,
+            :title => 'Suggested Asset Allocation',
+            :chart_type => 'Pie' )
 
-    .span4.show-grid
-      %table.table.table-striped.table-bordered
+  .span4.show-grid
+    %table.table.table-striped.table-bordered
+      %tr
+        %th Asset Class
+        %th Percentage
+      - FinancialPlanner.ideal_asset_allocation(resource).each do |asset_class,percentage|
         %tr
-          %th Asset Class
-          %th Percentage
-        - FinancialPlanner.ideal_asset_allocation(resource).each do |asset_class,percentage|
-          %tr
-            %td= asset_class
-            %td= "#{percentage}%"
-      .pull-right
-        = link_to image_tag('ebola-370.jpg'), main_app.page_path('win-an-ipad3')
-.row
+          %td= asset_class
+          %td= "#{percentage}%"
+    .pull-right
+      = link_to image_tag('ebola-370.jpg'), main_app.page_path('win-an-ipad3')
   .span12.show-grid
     .well
       %p= t ".future_investment"
