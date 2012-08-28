@@ -8,7 +8,7 @@ class SessionsHandler
   def success_callback(session_hash)
     @attributes = session_hash
     save_comprehensive_risk_profiler_from_session unless user.has_comprehensive_risk_profiler?
-    add_referral_step if new_referral?
+    add_referral_step if is_referred?
     PointTracker::SignUpStep.new(user).save
   end
 
@@ -23,15 +23,16 @@ class SessionsHandler
   end
 
   def add_referral_step
-    referrer = User.find attributes[:referrer_id]
-    PointTracker::ReferralStep.new(referrer).save(:referred_user_id => user.id)
+    referrer           = User.find attributes[:referrer_id]
+    referral_meta_data = { :referred_user_id => user.id }
+    PointTracker::ReferralStep.new(referrer, referral_meta_data).save
   end
 
   def is_quiz_skipped?
     attributes[:comprehensive_risk_profiler].present? && attributes[:comprehensive_risk_profiler][:score_cache].present?
   end
 
-  def new_referral?
-    attributes[:referrer_id] && !user.already_referred?
+  def is_referred?
+    attributes[:referrer_id]
   end
 end
