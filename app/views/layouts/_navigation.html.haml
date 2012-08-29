@@ -14,9 +14,12 @@
       = bar.dropdown 'Learn Investing' do
         .container
           .row
-            .span6
-              .row
-                .span2
+            .span9
+              .row-fluid
+                .span3
+                  %li.nav-header Investment Education
+                  = bar.item 'Home',
+                              main_app.page_path('investment_education')
                   %li.nav-header Preparing to Invest
                   = bar.item 'How to Invest',
                               main_app.page_path('investment_education/smart-investments')
@@ -24,7 +27,7 @@
                               main_app.page_path('investment_education/investment-types')
                   = bar.item 'Investing vs Trading',
                               main_app.page_path('investment_education/investing-trading-shares')
-
+                .span3
                   %li.nav-header Before you Invest
                   = bar.item 'Investment Plan',
                               main_app.page_path('investment_education/investment-plan')
@@ -35,7 +38,7 @@
                   = bar.item 'Planning your Taxes',
                               main_app.page_path('investment_education/tax-planning')
 
-                .span2
+                .span3
                   %li.nav-header Investments Types
                   = bar.item 'Fixed Deposits',
                               main_app.page_path('investment_education/investment-fixed-deposits')
@@ -52,7 +55,7 @@
                   = bar.item 'Sip',
                               main_app.page_path('investment_education/sip')
 
-                .span2
+                .span3
                   %li.nav-header Investing in Shares
                   = bar.item 'Share Market',
                               main_app.page_path('investment_education/share-market')
