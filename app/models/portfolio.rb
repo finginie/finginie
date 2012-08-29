@@ -1,4 +1,12 @@
 class Portfolio < ActiveRecord::Base
+  TRANSACTION_TYPES = [
+    :stock_transaction,
+    :gold_transaction,
+    :mutual_fund_transaction,
+    :loan_transaction,
+    :fixed_deposit_transaction,
+    :real_estate_transaction
+  ]
   attr_accessible :name
 
   belongs_to :user
@@ -19,6 +27,14 @@ class Portfolio < ActiveRecord::Base
   validates :user_id, :presence => true
   validates :name, :presence => true,
                   :uniqueness => { :scope => :user_id }
+
+  after_destroy :clear_create_portfolio_and_add_transaction_step
+
+  def all_transactions
+    TRANSACTION_TYPES.inject([]) do |result, transaction|
+      result << send(transaction.to_s.pluralize)
+    end.flatten
+  end
 
   def companies
     stock_transactions.map(&:company).uniq.compact
@@ -82,5 +98,10 @@ class Portfolio < ActiveRecord::Base
 
   def make_private!
     update_attribute :is_public, false
+  end
+
+  private
+  def clear_create_portfolio_and_add_transaction_step
+    CompletedStep.where("meta_data -> 'portfolio_id' = '#{self.id}'").destroy_all
   end
 end
