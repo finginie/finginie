@@ -28,6 +28,8 @@ class Portfolio < ActiveRecord::Base
   validates :name, :presence => true,
                   :uniqueness => { :scope => :user_id }
 
+  after_destroy :clear_create_portfolio_and_add_transaction_step
+
   def all_transactions
     TRANSACTION_TYPES.inject([]) do |result, transaction|
       result << send(transaction.to_s.pluralize)
@@ -96,5 +98,10 @@ class Portfolio < ActiveRecord::Base
 
   def make_private!
     update_attribute :is_public, false
+  end
+
+  private
+  def clear_create_portfolio_and_add_transaction_step
+    CompletedStep.where("meta_data -> 'portfolio_id' = '#{self.id}'").destroy_all
   end
 end

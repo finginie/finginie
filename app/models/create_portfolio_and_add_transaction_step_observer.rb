@@ -5,7 +5,6 @@ class CreatePortfolioAndAddTransactionStepObserver < ActiveRecord::Observer
     portfolio = model.portfolio
     user      = portfolio.user
     meta_data = { :portfolio_id => portfolio.id }
-    pt_obj    = PointTracker::CreatePortfolioAndAddTransactionStep.new(user, meta_data)
-    pt_obj.save
+    PointTracker::CreatePortfolioAndAddTransactionStep.new(user, meta_data).save
   end
 end
