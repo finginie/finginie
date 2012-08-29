@@ -34,4 +34,4 @@ $ ->
 
   window.router = new Finginie.Routers.HomeRouter()
   Backbone.history.start
-    pushState: true
+    pushState: false
