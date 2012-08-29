@@ -79,7 +79,8 @@ class ComprehensiveRiskProfiler < ActiveRecord::Base
 
 private
   def add_financial_profile_quiz_step
-    PointTracker::FinancialProfileQuizStep.new(user).save
+    meta_data = { :quiz_id => self.id }
+    PointTracker::FinancialProfileQuizStep.new(user, meta_data).save
   end
 
   def age_score
