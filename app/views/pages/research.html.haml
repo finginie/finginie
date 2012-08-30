@@ -4,42 +4,34 @@
       %ul.thumbnails
         %li.span6
           .thumbnail
-            %img{:alt => "", :src => "http://placehold.it/500x300"}
-              .caption
-                %h3 Finginie's Stock Picks
-                %p Ride the money wave by investing in stocks picked by our finance experts.
-                %p
-                  %a.btn.btn-primary{:href => "#"} Action
-                  %a.btn{:href => "#"} Action
+            = image_tag 'stock-recommendations-image.png'
+            .caption
+              %h2 Finginie's Stock Picks
+              %p Ride the money wave by investing in stocks picked by our finance experts.
+              = link_to 'Go', main_app.page_path('stock-recommendations'), :class => %w(btn btn-primary)
         %li.span6
           .thumbnail
-            %img{:alt => "", :src => "http://placehold.it/500x300"}
-              .caption
-                %h3 Broker's Stock picks
-                %p Find out which stocks are the brokers' darlings.
-                %p
-                  %a.btn.btn-primary{:href => "#"} Action
-                  %a.btn{:href => "#"} Action
+            = image_tag 'broker-recommendations-image.png'
+            .caption
+              %h2 Broker's Stock picks
+              %p Find out which stocks are the brokers' darlings. View consolidated ratings for each stock.
+              = link_to 'Go', main_app.research_ratings_path, :class => %w(btn btn-primary)
       .row-fluid
         %ul.thumbnails
           %li.span6
             .thumbnail
-              %img{:alt => "", :src => "http://placehold.it/500x300"}
-                .caption
-                  %h3 Research Reports
-                  %p If you would like to do the research yourself, look through hundreds of research reports published by brokerages across India.
-                  %p
-                    %a.btn.btn-primary{:href => "#"} Action
-                    %a.btn{:href => "#"} Action
+              = image_tag 'research-reports-image.png'
+              .caption
+                %h2 Research Reports
+                %p If you would like to do the research yourself, look through hundreds of research reports published by brokerages across India.
+                = link_to 'Go', main_app.research_reports_path, :class => %w(btn btn-primary)
           %li.span6
             .thumbnail
-              %img{:alt => "", :src => "http://placehold.it/500x300"}
-                .caption
-                  %h3 Research Reports
-                  %p If you would like to do the research yourself, look through hundreds of research reports published by brokerages across India.
-                  %p
-                    %a.btn.btn-primary{:href => "#"} Action
-                    %a.btn{:href => "#"} Action
+              = image_tag 'market-commentary-image.png'
+              .caption
+                %h2 Market Commentary
+                %p Stay up-to-date with the latest action in the India stock markets with our daily market commentary.
+                = link_to 'Go', main_app.blog_path, :class => %w(btn btn-primary)
 
 
 
@@ -59,14 +51,6 @@
         .thumbanail
           %h5= link_to 'Stock Market data', main_app.stocks_path
           %p The stock market is flooding with information. Stay ahead of others with the latest news, quotes and detailed corporate information. We support 3,500 stocks and 5,000 mutual funds
-      %li.span3
-        .thumbanail
-          %h5= link_to 'Stock Recommendations', main_app.page_path('stock-recommendations')
-          %p No one has become a crorepati by saving money in a bank account or fixed deposit. That’s why we recommend money-multiplying stocks
-      %li.span3
-        .thumbanail
-          %h5= link_to 'Research Reports', main_app.research_reports_path
-          %p Our research report aggregator tool is so vast that you can become a Ph.d in Financial Research
       %li.span3
         .thumbanail
           %h5= link_to 'Portfolio Tracking', portfolios_path

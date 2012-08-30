@@ -1,11 +1,10 @@
 -#= render_navigation :expand_all => true, :level => 2, :renderer => DescriptiveList
 .row.show-grid
-  .span8
-    .row
-      .span4
+  .span9
+    .row-fluid
+      .span6
         %section
           %h5.page-header Preparing to invest
-          %span
           %h3= link_to 'How to invest', main_app.page_path('investment_education/smart-investments')
           %p 5 tips to transform the way you invest: This guide will help you make smart investments using the principles that experts use to build market-beating portfolios .
           %hr.soften
@@ -38,7 +37,7 @@
           %h3= link_to 'SIP', main_app.page_path('investment_education/sip')
           %p A Systematic Investment Plan(SIP) is a great way for small investors to invest in mutual funds using the principle of rupee cost averaging. This not only helps smoothen out heavy fluctuations from your portfolio but also helps you stay disciplined and develop a habit of saving. Read on to understand how you should best benefit from a SIP.
           %hr.soften
-      .span4
+      .span6
         %section
           %h5.page-header Before you Invest
           %h3= link_to 'Investment Plan', main_app.page_path('investment_education/investment-plan')
@@ -75,5 +74,37 @@
           %h3= link_to 'Articles', main_app.page_path('investment_education/articles')
           %p A miscellaneous collection of articles that cover a broad range of topics ranging from Foreign Exchange to Time Value of money and from Options to Futures.
           %hr.soften
-  .span4
-    = link_to image_tag('ebola-370.jpg'), main_app.page_path('win-an-ipad3')
+  .span3
+    %ul.thumbnails
+      %li.span3
+        .thumbanail
+          = link_to image_tag('ebola-370.jpg'), main_app.page_path('win-an-ipad3')
+      %li.span3
+        .thumbanail
+          %h5
+            = link_to 'Financial Planning', main_app.edit_comprehensive_risk_profiler_path
+
+          %p Planning can be nerve-wracking. That’s why we did all the complicated number crunching so that you can invest with a single click.
+      %li.span3
+        .thumbanail
+          %h5= link_to 'Stock Recommendations', main_app.page_path('stock-recommendations')
+          %p No one has become a crorepati by saving money in a bank account or fixed deposit. That’s why we recommend money-multiplying stocks.
+      %li.span3
+        .thumbanail
+          %h5= link_to 'Research Reports', main_app.research_reports_path
+          %p No one has become a crorepati by saving money in a bank account or fixed deposit. That’s why we recommend money-multiplying stocks.
+      %li.span3
+        .thumbanail
+          %h5= link_to 'Stock Market data', main_app.stocks_path
+          %p The stock market is flooding with information. Stay ahead of others with the latest news, quotes and detailed corporate information. We support 3,500 stocks and 5,000 mutual funds
+      %li.span3
+        .thumbanail
+          %h5= link_to 'Portfolio Tracking', portfolios_path
+          %p No unnecessary paperwork, excel formulas or any other fancy tools. Get a financial analyst’s perspective of all your investments with just a few clicks.
+      %li.span3
+        .thumbanail
+          %h5
+            Social Features
+            %small Coming Soon
+          %p Connect with the kings of investing and learn how to make profitable investments.If you are a king yourself, build a kingdom of followers.
+
