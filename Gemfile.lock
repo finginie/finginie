@@ -433,6 +433,8 @@ GEM
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
+    postageapp (1.0.14)
+      json
     progressbar (0.11.0)
     pry (0.9.10)
       coderay (~> 1.0.5)
@@ -637,6 +639,7 @@ DEPENDENCIES
   personal_financial_tools!
   pg
   poltergeist
+  postageapp
   pry
   rack-iframe
   rails (= 3.2.8)
