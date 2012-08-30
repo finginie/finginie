@@ -95,15 +95,20 @@
               %td 931
 
     .row.show-grid
-      .span4#research_reports
-      .span4#latest_articles
+      .span5#research_reports
+      .span3#latest_articles
         %h5 Latest Articles
         %ul
-          %li= link_to 'Mid-cap IT stocks', page_path('it-sector-midcap')
-          %li= link_to 'Alcohol Sector Report', page_path('alcohol-sector')
-          %li= link_to 'Banking Sector Analysis', page_path('investment_education/banking-sector-shares')
-          %li= link_to 'How to Invest?', page_path('investment_education/smart-investments')
-          %li= link_to 'Types of Investments', page_path('investment_education/investment-types')
+          %li
+            %p= link_to 'Mid-cap IT stocks',        page_path('it-sector-midcap')
+          %li
+            %p= link_to 'Alcohol Sector Report',    page_path('alcohol-sector')
+          %li
+            %p= link_to 'Banking Sector Analysis',  page_path('investment_education/banking-sector-shares')
+          %li
+            %p= link_to 'How to Invest?',           page_path('investment_education/smart-investments')
+          %li
+            %p= link_to 'Types of Investments',     page_path('investment_education/investment-types')
 
   .span4
     .row.show-grid
