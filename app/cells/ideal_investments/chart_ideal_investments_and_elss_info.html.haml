@@ -1,4 +1,4 @@
-.show-grid
+.row.show-grid
   .span8
     -gchart( :data => @chart_data, title: 'Ideal Investments', chart_type: 'Pie' )
 
@@ -6,7 +6,7 @@
     - %w(fixed_deposits gold_investments large_caps mid_caps).each do |type|
       - unless @ideal_investment_mix.send(type).empty?
         = render 'investments', :type => type, :value => @value_type, :ideal_investment_mix => @ideal_investment_mix
-
+.row.show-grid
   .span5
     %p= t("ideal_investments.show.elss_message")
     %h3 Top ELSS funds
