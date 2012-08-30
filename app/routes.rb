@@ -5,7 +5,11 @@ Finginie::Application.routes.draw do
   match "/pages/*id" => 'pages#show', :as => :page, :format => false
 
   #Learning investing
-  resources :questions
+  resources :questions do
+    member do
+      put 'update_response'
+    end
+  end
   resources :learning_tools do
     collection do
       get 'start_quiz'

@@ -1,19 +1,21 @@
 class LearningToolsController < InheritedResources::Base
+before_filter :require_login_to_show_quiz_review, :only => :index
 
-  def index
-    @review_questions = Question.review_questions(session[:learning_tools][:attempted_questions].keys)
-    @user_responses = Choice.find(session[:learning_tools][:attempted_questions].values).group_by(&:id)
+  def collection
+    @learning_tool = LearningTool.new(session[:learning_tools][:quiz_info])
   end
 
   def start_quiz
-    session_start
-    redirect_to question_path(session[:learning_tools][:attempted_questions].first)
+    clear_session!(:learning_tools)
+    session[:learning_tools] = { :quiz_info => LearningTool.initialize_quiz_info, :score => 0 }
+    first_question = session[:learning_tools][:quiz_info].first
+    redirect_to question_path(first_question)
   end
 
-private
-  def session_start
-    clear_session!(:learning_tools)
-    session[:learning_tools]= {:attempted_questions => Question.random_question_ids,:score =>  0}
+  def require_login_to_show_quiz_review
+    if !logged_in?
+      redirect_to_login
+    end
   end
 
 end

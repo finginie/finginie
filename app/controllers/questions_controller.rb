@@ -1,38 +1,32 @@
 class QuestionsController < InheritedResources::Base
-  before_filter :require_login_after_five_questions, :only => :show
+  custom_actions :resource => :update_response
+  before_filter :get_question, :only => [:show, :update_response]
+#  before_filter :require_login_after_five_questions, :only => :show
 
   def show
+    @current_question_number = @learning_tool.question_number(@question.id)
+  end
+
+  def update_response
+    user_response = params[:question][:user_response_id].to_i
+    session[:learning_tools][:quiz_info][@question.id] = user_response
+
+    @learning_tool = LearningTool.new(session[:learning_tools][:quiz_info])
+    next_question = @learning_tool.next_question_id
+    redirect_to next_question ? question_path(next_question) : learning_tools_path
+  end
+
+  private
+  def get_question
     @question = Question.find(params[:id])
-    @current_question_number = Question::QUIZLIMIT-Question.not_attempted_questions(session[:learning_tools][:attempted_questions]).size+1
+    @learning_tool = LearningTool.new(session[:learning_tools][:quiz_info])
   end
 
-  def update
-    @question = Question.find(params[:id])
-    @score = score_update(@question.check_answer(params[:question][:choices].to_i))
-    store_attempted_question(params[:id],params[:question][:choices])
-    @next_question = Question.not_attempted_questions(session[:learning_tools][:attempted_questions]).first
-    @next_question = 0 unless @next_question
-    @score = 0 unless @score
-  end
 
-private
-
-  def require_login_after_five_questions
-    if Question.not_attempted_questions(session[:learning_tools][:attempted_questions]).size <= Question::LOGINLIMIT && !@current_user
-     #redirect_to_login
-      redirect_to "/auth/developer"
-    end
-  end
-
-  def store_attempted_question(id,val)
-    session[:learning_tools][:attempted_questions][id.to_i] = val
-  end
-
-  def score_update(result)
-    if result
-      session[:learning_tools][:score] = session[:learning_tools][:score]+1
-      session[:learning_tools][:score]
-    end
-  end
-
+  # def require_login_after_five_questions
+  #   @learning_tool = LearningTool.new(session[:learning_tools][:quiz_info])
+  #   if !logged_in? && @learning_tool.exceeded_quiz_limit?
+  #     redirect_to_login
+  #   end
+  # end
 end

@@ -1,26 +1,18 @@
 .row
   .span9
     %h1= t '.title'
-    %h2
-      Your score  :
-      %span#score_part
-        #{session[:learning_tools][:score]}
     %section
       %h3= t '.description'
       %p= t '.about'
-    = simple_form_for @question,:remote => true, :html => {:id => 'quiz_form'} do |f|
+    = simple_form_for @question , :url => update_response_question_path(@question.id) do |f|
       %h3 Question #{@current_question_number} :  #{@question.news}
-
       %ol.unstyled
         %li
-          .control-group
-            %label.required.control-label
-              #{@question.text}
-            .controls
-              %fieldset#special_goals
-                = f.input :choices, :collection => @question.choices.map {|u| [u.text,u.id]}, :as => :radio_buttons ,:label => ""
+          %fieldset#special_goals
+            = f.input :user_response_id, :collection => @question.choices, :as => :radio_buttons, :label => @question.text,
+                      :label_method => :text, :value_method => :id
       .form-actions
-        %input.btn.btn-primary#answerBtn{ :name => "commit", :value => "Answer" ,:type => "submit" }
+        = f.submit 'Answer', :class => %w(btn.btn-primary)
     %section
       .well#reason_part.hide
         %h2#result_part

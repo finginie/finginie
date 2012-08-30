@@ -29,8 +29,9 @@ module ApplicationHelper
     ENV['FACEBOOK_SHARE_DIALOG_URL'] + fb_share_query_params(shared_link)
   end
 
-  def facebook_share_url_with_description(score)
-    ENV['FACEBOOK_SHARE_DIALOG_URL'] + fb_share_query_params_description(score)
+  def facebook_share_url_with_quiz_details(score)
+    #description = t('facebook_share.quiz_description', :score => "#{score}" ,:questions => "#{LearningTool::QUIZLIMIT}" )
+    ENV['FACEBOOK_SHARE_DIALOG_URL'] + fb_share_query_quiz_details(score)
   end
 
   def row_for(translate_label, field, objects)
@@ -84,7 +85,7 @@ module ApplicationHelper
     'http://' + request.host_with_port
   end
 
-  def fb_share_query_params(shared_link)
+  def fb_share_query_params(shared_link,description=nil)
     app_id = ENV['FACEBOOK_KEY']
     link = url_with_complete_path shared_link
     img_url = host
@@ -103,11 +104,11 @@ module ApplicationHelper
     }.to_query
   end
 
-  def fb_share_query_params_description(score)
+  def fb_share_query_quiz_details(score)
     app_id = ENV['FACEBOOK_KEY']
     img_url = host
     name = t('facebook_share.name', :user_slug => current_user.slug_name)
-    description = t('facebook_share.quiz_description', :score => "#{score}" ,:questions => "#{Question::QUIZLIMIT}" )
+    description = t('facebook_share.quiz_description', :score => "#{score}" ,:questions => "#{LearningTool::QUIZLIMIT}" )
     facebook_callback_url = social_network_facebook_callback_path(:return_to => learning_tools_url, :step => PointTracker::ShareFinancialProfileOnFbStep)
     redirect_uri = url_with_complete_path(facebook_callback_url)
     {

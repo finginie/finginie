@@ -1,7 +1,7 @@
 .row
   .span9
     %h1 You have successfully completed your quiz.
-    %h2 Your score  :  #{session[:learning_tools][:score]} out of #{Question::QUIZLIMIT}
+    %h2 Your score  :  #{@learning_tool.score} out of #{LearningTool::QUIZLIMIT}
     %h2 Listing attempted questions
 
 
@@ -11,17 +11,15 @@
         %th Question
         %th Your Response
         %th Answer
-      - @review_questions.each_with_index do |question,index|
+      - @learning_tool.quiz_data.each_with_index do |quiz, index|
         %tr
-          %td= index+1
-          %td= question.text
-          %td= @user_responses["#{session[:learning_tools][:attempted_questions][question.id]}".to_i].first.text
-          %td= question.correct_answer.text
-
-
+          %td= index + 1
+          %td= quiz.question_text
+          %td= quiz.user_choice
+          %td= quiz.correct_answer
 
     Share your score on facebook.
-    = link_to t('.facebook.post_wall'), facebook_share_url_with_description(session[:learning_tools][:score]), :class => 'btn btn-primary'
+    = link_to t('.facebook.post_wall'), facebook_share_url_with_quiz_details(session[:learning_tools][:score]), :class => 'btn btn-primary'
     Start new quiz.
     = link_to "Restart Quiz",start_quiz_learning_tools_path
   .span3
