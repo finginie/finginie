@@ -1,0 +1,80 @@
+.row.show-grid
+  .span9
+    .row-fluid
+      %ul.thumbnails
+        %li.span6
+          .thumbnail
+            %img{:alt => "", :src => "http://placehold.it/500x300"}
+              .caption
+                %h3 Finginie's Stock Picks
+                %p Ride the money wave by investing in stocks picked by our finance experts.
+                %p
+                  %a.btn.btn-primary{:href => "#"} Action
+                  %a.btn{:href => "#"} Action
+        %li.span6
+          .thumbnail
+            %img{:alt => "", :src => "http://placehold.it/500x300"}
+              .caption
+                %h3 Broker's Stock picks
+                %p Find out which stocks are the brokers' darlings.
+                %p
+                  %a.btn.btn-primary{:href => "#"} Action
+                  %a.btn{:href => "#"} Action
+      .row-fluid
+        %ul.thumbnails
+          %li.span6
+            .thumbnail
+              %img{:alt => "", :src => "http://placehold.it/500x300"}
+                .caption
+                  %h3 Research Reports
+                  %p If you would like to do the research yourself, look through hundreds of research reports published by brokerages across India.
+                  %p
+                    %a.btn.btn-primary{:href => "#"} Action
+                    %a.btn{:href => "#"} Action
+          %li.span6
+            .thumbnail
+              %img{:alt => "", :src => "http://placehold.it/500x300"}
+                .caption
+                  %h3 Research Reports
+                  %p If you would like to do the research yourself, look through hundreds of research reports published by brokerages across India.
+                  %p
+                    %a.btn.btn-primary{:href => "#"} Action
+                    %a.btn{:href => "#"} Action
+
+
+
+  .span3
+    %ul.thumbnails
+      %li.span3
+        .thumbanail
+          %h5
+            = link_to 'Financial Planning', main_app.edit_comprehensive_risk_profiler_path
+
+          %p Planning can be nerve-wracking. That’s why we did all the complicated number crunching so that you can invest with a single click.
+      %li.span3
+        .thumbanail
+          %h5= link_to 'Learn Investing', main_app.page_path('investment_education')
+          %p An investment in knowledge pays the best interest." - Benjamin Franklin Learn how to make good investment decisions.
+      %li.span3
+        .thumbanail
+          %h5= link_to 'Stock Market data', main_app.stocks_path
+          %p The stock market is flooding with information. Stay ahead of others with the latest news, quotes and detailed corporate information. We support 3,500 stocks and 5,000 mutual funds
+      %li.span3
+        .thumbanail
+          %h5= link_to 'Stock Recommendations', main_app.page_path('stock-recommendations')
+          %p No one has become a crorepati by saving money in a bank account or fixed deposit. That’s why we recommend money-multiplying stocks
+      %li.span3
+        .thumbanail
+          %h5= link_to 'Research Reports', main_app.research_reports_path
+          %p Our research report aggregator tool is so vast that you can become a Ph.d in Financial Research
+      %li.span3
+        .thumbanail
+          %h5= link_to 'Portfolio Tracking', portfolios_path
+          %p No unnecessary paperwork, excel formulas or any other fancy tools. Get a financial analyst’s perspective of all your investments with just a few clicks.
+      %li.span3
+        .thumbanail
+          %h5
+            Social Features
+            %small Coming Soon
+          %p Connect with the kings of investing and learn how to make profitable investments.If you are a king yourself, build a kingdom of followers.
+
