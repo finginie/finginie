@@ -1,3 +1,4 @@
-%td= id
+%td
+  %a{href: "/shares/#{company.slug}"}= company.name
 %td= last_traded_price
 %td{class: percent_change_color} #{percent_change}%
