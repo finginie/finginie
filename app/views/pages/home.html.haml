@@ -50,6 +50,51 @@
           .tab-pane#lowest_mutual_funds
 
     .row.show-grid
+      .span8#stock_recommendations
+        %h5
+          Stock Recommendations
+          %small.pull-right= link_to 'See all', page_path('stock-recommendations')
+        %table.table.table-striped.table-bordered
+          %thead
+            %tr
+              %th Date
+              %th Name
+              %th Recommendation
+              %th CMP
+              %th Target Price
+          %tbody
+            %tr
+              %td 26-Jun-12
+              %td Yes Bank
+              %td Buy
+              %td 342
+              %td 447
+            %tr
+              %td 8-Aug-12
+              %td TCS
+              %td Buy
+              %td 1249
+              %td 1515
+            %tr
+              %td 8-Aug-12
+              %td Mind Tree
+              %td Hold
+              %td 631
+              %td 700
+            %tr
+              %td 21-Aug-12
+              %td United Breweries
+              %td Sell
+              %td 557
+              %td 474
+            %tr
+              %td 21-Aug-12
+              %td United Spirits
+              %td Sell
+              %td 980
+              %td 931
+
+    .row.show-grid
       .span4#research_reports
       .span4#latest_articles
         %h5 Latest Articles
@@ -95,48 +140,3 @@
           .tab-pane#Bse_top_gainers.active
           .tab-pane#Bse_top_losers
           .tab-pane#Bse_most_active
-    .row.show-grid
-      .span4#stock_recommendations
-        %h5
-          Stock Recommendations
-          %small.pull-right= link_to 'See all', page_path('stock-recommendations')
-        %table.table.table-striped.table-bordered
-          %thead
-            %tr
-              %th Date
-              %th Name
-              %th Recommendation
-              %th CMP
-              %th Target Price
-          %tbody
-            %tr
-              %td 26-Jun-12
-              %td Yes Bank
-              %td Buy
-              %td 342
-              %td 447
-            %tr
-              %td 8-Aug-12
-              %td TCS
-              %td Buy
-              %td 1249
-              %td 1515
-            %tr
-              %td 8-Aug-12
-              %td Mind Tree
-              %td Hold
-              %td 631
-              %td 700
-            %tr
-              %td 21-Aug-12
-              %td United Breweries
-              %td Sell
-              %td 557
-              %td 474
-            %tr
-              %td 21-Aug-12
-              %td United Spirits
-              %td Sell
-              %td 980
-              %td 931
-
