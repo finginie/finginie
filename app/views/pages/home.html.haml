@@ -38,18 +38,16 @@
 
     .row.show-grid
       .span8
-        %h5 Biggest Equity Mutual Funds
-        #biggest_mutual_funds
-
-    .row.show-grid
-      .span8
-        %h5 Mutual Fund Gainers
-        #top_mutual_funds
-
-    .row.show-grid
-      .span8
-        %h5 Mutual Fund Losers
-        #lowest_mutual_funds
+        %ul.nav.nav-tabs
+          %li
+            %h5 Mutual Funds
+          %li.pull-right.active= link_to 'Biggest Equity', '#biggest_mutual_funds', :data => {:toggle => :tab}
+          %li.pull-right= link_to 'Top Gainers', '#top_mutual_funds', :data => {:toggle => :tab}
+          %li.pull-right= link_to 'Top Losers', '#lowest_mutual_funds', :data => {:toggle => :tab}
+        .tab-content
+          .tab-pane#biggest_mutual_funds.active
+          .tab-pane#top_mutual_funds
+          .tab-pane#lowest_mutual_funds
 
     .row.show-grid
       .span4#research_reports
@@ -65,33 +63,34 @@
   .span4
     .row.show-grid
       .span4
-        %h1 Sectoral Indices
-
         %ul.nav.nav-tabs
-          %li.active= link_to 'NSE', "#Nse_sectoral_indices", :data => { :toggle => :tab }
-          %li= link_to 'BSE', "#Bse_sectoral_indices", :data => { :toggle => :tab }
+          %li
+            %h5 Sectoral Indices
+          %li.pull-right.active= link_to 'NSE', "#Nse_sectoral_indices", :data => { :toggle => :tab }
+          %li.pull-right= link_to 'BSE', "#Bse_sectoral_indices", :data => { :toggle => :tab }
 
         .tab-content
           .tab-pane#Nse_sectoral_indices.active
           .tab-pane#Bse_sectoral_indices
     .row.show-grid
       .span4
-        %h1 Trending Shares - NSE
+        %h1 Trending Shares
         %ul.nav.nav-tabs
-          %li.active= link_to 'Top Gainers', "#Nse_top_gainers", :data => {:toggle => :tab}
-          %li= link_to 'Top Losers',  "#Nse_top_losers",  :data => {:toggle => :tab}
-          %li= link_to 'Most Active', "#Nse_most_active", :data => {:toggle => :tab}
+          %li
+            %h5 NSE
+          %li.pull-right.active= link_to 'Top Gainers', "#Nse_top_gainers", :data => {:toggle => :tab}
+          %li.pull-right= link_to 'Top Losers',  "#Nse_top_losers",  :data => {:toggle => :tab}
+          %li.pull-right= link_to 'Most Active', "#Nse_most_active", :data => {:toggle => :tab}
         .tab-content
           .tab-pane#Nse_top_gainers.active
           .tab-pane#Nse_top_losers
           .tab-pane#Nse_most_active
-    .row.show-grid
-      .span4
-        %h1 Trending Shares - BSE
         %ul.nav.nav-tabs
-          %li.active= link_to 'Top Gainers', "#Bse_top_gainers", :data => {:toggle => :tab}
-          %li= link_to 'Top Losers',  "#Bse_top_losers",  :data => {:toggle => :tab}
-          %li= link_to 'Most Active', "#Bse_most_active", :data => {:toggle => :tab}
+          %li
+            %h5 BSE
+          %li.pull-right.active= link_to 'Top Gainers', "#Bse_top_gainers", :data => {:toggle => :tab}
+          %li.pull-right= link_to 'Top Losers',  "#Bse_top_losers",  :data => {:toggle => :tab}
+          %li.pull-right= link_to 'Most Active', "#Bse_most_active", :data => {:toggle => :tab}
         .tab-content
           .tab-pane#Bse_top_gainers.active
           .tab-pane#Bse_top_losers
