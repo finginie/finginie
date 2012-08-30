@@ -1,0 +1,64 @@
+.row.show-grid
+  .span9
+    .row-fluid
+      %ul.thumbnails
+        %li.span6
+          .thumbnail
+            = image_tag 'stock-recommendations-image.png'
+            .caption
+              %h2 Finginie's Stock Picks
+              %p Ride the money wave by investing in stocks picked by our finance experts.
+              = link_to 'Go', main_app.page_path('stock-recommendations'), :class => %w(btn btn-primary)
+        %li.span6
+          .thumbnail
+            = image_tag 'broker-recommendations-image.png'
+            .caption
+              %h2 Broker's Stock picks
+              %p Find out which stocks are the brokers' darlings. View consolidated ratings for each stock.
+              = link_to 'Go', main_app.research_ratings_path, :class => %w(btn btn-primary)
+      .row-fluid
+        %ul.thumbnails
+          %li.span6
+            .thumbnail
+              = image_tag 'research-reports-image.png'
+              .caption
+                %h2 Research Reports
+                %p If you would like to do the research yourself, look through hundreds of research reports published by brokerages across India.
+                = link_to 'Go', main_app.research_reports_path, :class => %w(btn btn-primary)
+          %li.span6
+            .thumbnail
+              = image_tag 'market-commentary-image.png'
+              .caption
+                %h2 Market Commentary
+                %p Stay up-to-date with the latest action in the India stock markets with our daily market commentary.
+                = link_to 'Go', main_app.blog_path, :class => %w(btn btn-primary)
+
+
+
+  .span3
+    %ul.thumbnails
+      %li.span3
+        .thumbanail
+          %h5
+            = link_to 'Financial Planning', main_app.edit_comprehensive_risk_profiler_path
+
+          %p Planning can be nerve-wracking. That’s why we did all the complicated number crunching so that you can invest with a single click.
+      %li.span3
+        .thumbanail
+          %h5= link_to 'Learn Investing', main_app.page_path('investment_education')
+          %p An investment in knowledge pays the best interest." - Benjamin Franklin Learn how to make good investment decisions.
+      %li.span3
+        .thumbanail
+          %h5= link_to 'Stock Market data', main_app.stocks_path
+          %p The stock market is flooding with information. Stay ahead of others with the latest news, quotes and detailed corporate information. We support 3,500 stocks and 5,000 mutual funds
+      %li.span3
+        .thumbanail
+          %h5= link_to 'Portfolio Tracking', portfolios_path
+          %p No unnecessary paperwork, excel formulas or any other fancy tools. Get a financial analyst’s perspective of all your investments with just a few clicks.
+      %li.span3
+        .thumbanail
+          %h5
+            Social Features
+            %small Coming Soon
+          %p Connect with the kings of investing and learn how to make profitable investments.If you are a king yourself, build a kingdom of followers.
+
