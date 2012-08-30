@@ -60,8 +60,6 @@ Finginie::Application.routes.draw do
     resources :gold_transactions
   end
 
-  mount Resque::Server.new, :at => "/resque"
-
   # Public Portfolios
   resources :public_portfolios, :only => [:show, :new, :destroy] do
     member do
