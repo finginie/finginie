@@ -19,7 +19,7 @@ _.extend Backbone.Model.prototype,
       slugs["#{attr}_slug"] = string_to_slug @get attr
     slugs
 
-  localize_date: (attrs...)=>
+  localize_date: (attrs...)->
     ret = {}
     for attr in attrs
       date = new Date(@get(attr))
