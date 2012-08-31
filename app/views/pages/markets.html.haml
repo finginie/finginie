@@ -1,0 +1,62 @@
+.row.show-grid
+  .span9
+    .row-fluid
+      %ul.thumbnails
+        %li.span6
+          .thumbnail
+            = image_tag 'stocks-box.png', :alt => 'Stocks Price,Income Statement,Financial Ratios,Balance Sheet,Cash Flow Statement,Research Reports'
+            .caption
+              %h2 Stocks
+              %p Get detailed information about all stocks listed on the NSE and BSE.
+              = link_to 'Go', main_app.stocks_path, :class => %w(btn btn-primary)
+        %li.span6
+          .thumbnail
+            = image_tag 'mutualfunds-box.png', :alt => 'NAV Details,Scheme vs Category Returns,Scheme Holdings,Asset Breakup,Sector Allocation,Historic Returns'
+            .caption
+              %h2 Mutual funds
+              %p Get the latest NAV, asset allocation and detailed holdings of all Mutual Funds in the market.
+              = link_to 'Go', main_app.mutual_funds_path, :class => %w(btn btn-primary)
+      .row-fluid
+        %ul.thumbnails
+          %li.span6
+            .thumbnail
+              = image_tag 'fixeddepoits-box.png', :alt => 'Public Banks,Private Banks,Compare FDs,Best FDs'
+              .caption
+                %h2 Fixed Deposits
+                %p Find out the best interest rates offered by public and private banks in India.
+                = link_to 'Go', main_app.fixed_deposits_path, :class => %w(btn btn-primary)
+          %li.span6
+            .thumbnail
+              = image_tag 'stock-screener-box.jpg', :alt => 'P/E, EPS, P/BV, Book Value'
+              .caption
+                %h2 Stock Screener
+                %p Find out the diamonds in a coalfield by selecting stocks based on key metrics.
+                = link_to 'Go', main_app.screener_stocks_path, :class => %w(btn btn-primary)
+
+
+
+  .span3
+    .thumb
+      = link_to image_tag('ebola-370.jpg', :class => %w(img-rounded)), main_app.page_path('win-an-ipad3')
+    .row-fluid
+      .span12.well
+        .thumb
+          %h5= link_to 'Financial Planning', main_app.edit_comprehensive_risk_profiler_path
+          %p Planning can be nerve-wracking. That’s why we did all the complicated number crunching so that you can invest with a single click.
+        .thumb
+          %h5= link_to 'Learn Investing', main_app.page_path('investment_education')
+          %p An investment in knowledge pays the best interest." - Benjamin Franklin Learn how to make good investment decisions.
+        .thumb
+          %h5= link_to 'Stock Recommendations', main_app.page_path('guest-stocks-picks')
+          %p No one has become a crorepati by saving money in a bank account or fixed deposit. That’s why we recommend money-multiplying stocks.
+        .thumb
+          %h5= link_to 'Research Reports', main_app.research_reports_path
+          %p Our research report aggregator tool is so vast that you can become a Ph.d in Financial Research.
+        .thumb
+          %h5= link_to 'Portfolio Tracking', portfolios_path
+          %p No unnecessary paperwork, excel formulas or any other fancy tools. Get a financial analyst’s perspective of all your investments with just a few clicks.
+        .thumb
+          %h5
+            Social Features
+            %small Coming Soon
+          %p Connect with the kings of investing and learn how to make profitable investments.If you are a king yourself, build a kingdom of followers.

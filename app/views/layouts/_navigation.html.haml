@@ -92,6 +92,8 @@
         = bar.item 'Retirement Calculator',
                     personal_financial_tools.retirement_calculator_path
       = bar.dropdown 'Markets' do
+        = bar.item 'Home',
+                        main_app.page_path('markets')
         = bar.item 'Shares',
                     main_app.stocks_path
         = bar.item 'Mutual Funds',
