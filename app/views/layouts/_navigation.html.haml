@@ -92,6 +92,8 @@
         = bar.item 'Retirement Calculator',
                     personal_financial_tools.retirement_calculator_path
       = bar.dropdown 'Markets' do
+        = bar.item 'Home',
+                        main_app.page_path('markets')
         = bar.item 'Shares',
                     main_app.stocks_path
         = bar.item 'Mutual Funds',
@@ -103,12 +105,8 @@
       = bar.dropdown 'Research' do
         = bar.item 'Home',
                         main_app.page_path('research')
-        - if current_user
-          = bar.item "Finginie's stock picks",
-                      main_app.page_path('stock-recommendations')
-        - else
-          = bar.item "Finginie's stock picks",
-                      main_app.page_path('guest-stocks-picks')
+        = bar.item "Finginie's stock picks",
+                        main_app.page_path('stock-recommendations')
         = bar.item "Brokers' stock picks",
                     main_app.research_ratings_path
         = bar.item 'Broker Research Reports',

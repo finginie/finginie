@@ -294,7 +294,7 @@ GEM
       heroku (>= 2)
       heroku-api (>= 0.1.2)
       rake
-    high_voltage (1.1.1)
+    high_voltage (1.2.0)
     highline (1.6.13)
     hike (1.2.1)
     http_parser.rb (0.5.3)
