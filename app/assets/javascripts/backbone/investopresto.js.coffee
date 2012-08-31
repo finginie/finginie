@@ -1,3 +1,4 @@
+#= require_tree ./core_ext
 #= require_self
 #= require_tree ./templates
 #= require_tree ./models

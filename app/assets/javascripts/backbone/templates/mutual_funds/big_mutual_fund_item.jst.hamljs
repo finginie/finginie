@@ -1,5 +1,5 @@
 %td
-  %a{href:"/mutual_funds/#{slug}"}= name
+  %a{href:"/mutual_funds/#{name_slug}"}= name
 %td= nav_amount
 %td{class: percentage_change_color}   #{percentage_change}%
 %td= size

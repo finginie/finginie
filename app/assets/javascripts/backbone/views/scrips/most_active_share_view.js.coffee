@@ -12,10 +12,4 @@ class Finginie.Views.Scrips.MostActiveShareView extends Backbone.View
   attributes: =>
     _.extend {},
       @model.toJSON(),
-      @round('last_traded_price')
-
-  round: (attrs...)=>
-    ret = {}
-    for attr in attrs
-      ret[attr] = Math.round(@model.get(attr) * 100)/100
-    ret
+      @model.round('last_traded_price')

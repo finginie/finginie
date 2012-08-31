@@ -12,20 +12,6 @@ class Finginie.Views.MutualFunds.BigMutualFundItemView extends Backbone.View
   attributes: =>
     _.extend {},
       @model.toJSON(),
-      @color_classes('percentage_change', 'prev_year_percent'),
-      @round('percentage_change', 'size', 'prev_year_percent'),
-      { slug: string_to_slug(@model.get('name')) }
-
-  color_classes: (attrs...)->
-    color_classes = {}
-    for attr in attrs
-      value = @model.get attr
-      color_classes["#{attr}_color"] = if value?
-        if value < 0 then 'red' else 'green'
-    color_classes
-
-  round: (attrs...)->
-    ret = {}
-    for attr in attrs
-      ret[attr] = Math.round(@model.get(attr) * 100)/100
-    ret
+      @model.color_classes('percentage_change', 'prev_year_percent'),
+      @model.round('percentage_change', 'size', 'prev_year_percent'),
+      @model.slug('name')
