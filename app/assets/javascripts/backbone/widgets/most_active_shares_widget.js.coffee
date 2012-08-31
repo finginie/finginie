@@ -1,14 +1,14 @@
 class Finginie.Widgets.MostActiveSharesWidget
   constructor: (opts={})->
-    _.extend opts,
+    _.defaults opts,
       exchange: 'Nse'
 
     @shares = new Finginie.Collections.ScripsCollection()
     @shares.fetch
       data:
-        exchange: exchange
+        exchange: opts.exchange
         most_active: 5
 
   render: (target)=>
-    @view = new Finginie.Views.Shares.MostActiveSharesView(shares: @shares)
+    @view = new Finginie.Views.Scrips.MostActiveSharesView(scrips: @shares)
     $(target).html(@view.render().el)
