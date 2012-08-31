@@ -1,0 +1,6 @@
+%td
+  %a{href:"/mutual_funds/#{name_slug}"}= name
+%td= nav_amount
+%td{class: percentage_change_color}   #{percentage_change}%
+%td= size
+%td{class: prev_year_percent_color}   #{prev_year_percent}%

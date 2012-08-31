@@ -1,0 +1,4 @@
+%td
+  %a{href: "/shares/#{company.slug}"}= company.name
+%td= last_traded_price
+%td= volume

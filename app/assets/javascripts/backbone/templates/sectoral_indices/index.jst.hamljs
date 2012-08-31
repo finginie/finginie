@@ -1,0 +1,4 @@
+%td= id
+%td= last_traded_price
+%td{class: net_change_color}= net_change
+%td{class: percent_change_color} #{percent_change}%

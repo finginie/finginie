@@ -1,0 +1,6 @@
+%table.table.table-striped.table-bordered
+  %thead
+    %th Name
+    %th Today's Price
+    %th % Change
+  %tbody

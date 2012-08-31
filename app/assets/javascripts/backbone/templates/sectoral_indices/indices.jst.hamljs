@@ -1,0 +1,7 @@
+%table.table.table-striped.table-bordered
+  %thead
+    %th Index Name
+    %th Value
+    %th Change
+    %th % Change
+  %tbody

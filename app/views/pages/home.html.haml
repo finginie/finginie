@@ -17,17 +17,131 @@
 %hr.soften
 
 
-.row.show-grid.hide
+.row.show-grid
   .span8
-    %h5 Biggest Equity Mutual Funds
-    #big_equity_mfs
+    .row.show-grid
+      .span8
+        %ul.nav.nav-tabs
+          %li
+            %h5 News
+          %li.pull-right= link_to 'Stock Tips',   '#news_stock_tips',   :data => { :toggle => :tab }
+          %li.pull-right= link_to 'Global News',  '#news_global_news',  :data => { :toggle => :tab }
+          %li.pull-right= link_to 'Company',      '#news_companies',    :data => { :toggle => :tab }
+          %li.pull-right= link_to 'Economy',      '#news_economy',      :data => { :toggle => :tab }
+          %li.pull-right= link_to 'Markets',      '#news_markets',      :data => { :toggle => :tab }
+        .tab-content
+          .tab-pane#news_stock_tips.active
+          .tab-pane#news_global_news
+          .tab-pane#news_companies
+          .tab-pane#news_economy
+          .tab-pane#news_markets
 
-.row.show-grid.hide
-  .span8
-    %h5 Mutual Fund Gainers
-    #mf_gainers
+    .row.show-grid
+      .span8
+        %ul.nav.nav-tabs
+          %li
+            %h5 Mutual Funds
+          %li.pull-right.active= link_to 'Biggest Equity', '#biggest_mutual_funds', :data => {:toggle => :tab}
+          %li.pull-right= link_to 'Top Gainers', '#top_mutual_funds', :data => {:toggle => :tab}
+          %li.pull-right= link_to 'Top Losers', '#lowest_mutual_funds', :data => {:toggle => :tab}
+        .tab-content
+          .tab-pane#biggest_mutual_funds.active
+          .tab-pane#top_mutual_funds
+          .tab-pane#lowest_mutual_funds
 
-.row.show-grid.hide
-  .span8
-    %h5 Mutual Fund Losers
-    #mf_losers
+    .row.show-grid
+      .span8#stock_recommendations
+        %h5
+          Stock Recommendations
+          %small.pull-right= link_to 'See all', page_path('stock-recommendations')
+        %table.table.table-striped.table-bordered
+          %thead
+            %tr
+              %th Date
+              %th Name
+              %th Recommendation
+              %th CMP
+              %th Target Price
+          %tbody
+            %tr
+              %td 26-Jun-12
+              %td Yes Bank
+              %td Buy
+              %td 342
+              %td 447
+            %tr
+              %td 8-Aug-12
+              %td TCS
+              %td Buy
+              %td 1249
+              %td 1515
+            %tr
+              %td 8-Aug-12
+              %td Mind Tree
+              %td Hold
+              %td 631
+              %td 700
+            %tr
+              %td 21-Aug-12
+              %td United Breweries
+              %td Sell
+              %td 557
+              %td 474
+            %tr
+              %td 21-Aug-12
+              %td United Spirits
+              %td Sell
+              %td 980
+              %td 931
+
+    .row.show-grid
+      .span5#research_reports
+      .span3#latest_articles
+        %h5 Latest Articles
+        %ul
+          %li
+            %p= link_to 'Mid-cap IT stocks',        page_path('it-sector-midcap')
+          %li
+            %p= link_to 'Alcohol Sector Report',    page_path('alcohol-sector')
+          %li
+            %p= link_to 'Banking Sector Analysis',  page_path('investment_education/banking-sector-shares')
+          %li
+            %p= link_to 'How to Invest?',           page_path('investment_education/smart-investments')
+          %li
+            %p= link_to 'Types of Investments',     page_path('investment_education/investment-types')
+
+  .span4
+    .row.show-grid
+      .span4
+        %ul.nav.nav-tabs
+          %li
+            %h5 Sectoral Indices
+          %li.pull-right.active= link_to 'NSE', "#Nse_sectoral_indices", :data => { :toggle => :tab }
+          %li.pull-right= link_to 'BSE', "#Bse_sectoral_indices", :data => { :toggle => :tab }
+
+        .tab-content
+          .tab-pane#Nse_sectoral_indices.active
+          .tab-pane#Bse_sectoral_indices
+    .row.show-grid
+      .span4
+        %h1 Trending Shares
+        %ul.nav.nav-tabs
+          %li
+            %h5 NSE
+          %li.pull-right.active= link_to 'Top Gainers', "#Nse_top_gainers", :data => {:toggle => :tab}
+          %li.pull-right= link_to 'Top Losers',  "#Nse_top_losers",  :data => {:toggle => :tab}
+          %li.pull-right= link_to 'Most Active', "#Nse_most_active", :data => {:toggle => :tab}
+        .tab-content
+          .tab-pane#Nse_top_gainers.active
+          .tab-pane#Nse_top_losers
+          .tab-pane#Nse_most_active
+        %ul.nav.nav-tabs
+          %li
+            %h5 BSE
+          %li.pull-right.active= link_to 'Top Gainers', "#Bse_top_gainers", :data => {:toggle => :tab}
+          %li.pull-right= link_to 'Top Losers',  "#Bse_top_losers",  :data => {:toggle => :tab}
+          %li.pull-right= link_to 'Most Active', "#Bse_most_active", :data => {:toggle => :tab}
+        .tab-content
+          .tab-pane#Bse_top_gainers.active
+          .tab-pane#Bse_top_losers
+          .tab-pane#Bse_most_active

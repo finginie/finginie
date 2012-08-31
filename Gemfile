@@ -1,17 +1,19 @@
 source 'http://rubygems.org'
+ruby '1.9.3'
 
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.8'
 
 # Unbuilt gems from the project modules
 #
 gem 'personal_financial_tools', :path => 'engines/personal_financial_tools'
+gem 'data_consumer',            :path => 'engines/data_consumer'
 gem 'data_provider',            :path => 'engines/data_provider'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'coffee-rails'
-  gem 'jquery-ui-rails'
+  gem 'jquery-ui-rails', '>=1.1.0'
   gem 'rails-backbone'
   gem 'ruby-haml-js'
   gem 'sass-rails'
@@ -22,10 +24,10 @@ group :assets do
   gem 'uglifier'
 end
 
-gem 'active_attr',                         :github => 'sankaranarayanan/active_attr'
+gem 'active_attr',                        :github => 'sankaranarayanan/active_attr'
 gem 'activerecord-postgres-hstore'
-gem 'airbrake',                            :github => 'TMaYaD/airbrake'
-gem 'bootstrap-helper',                    :github => 'LoonyBin/bootstrap-helper'
+gem 'airbrake',                           :github => 'TMaYaD/airbrake'
+gem 'bootstrap-helper',                   :github => 'LoonyBin/bootstrap-helper'
 gem 'cancan'
 gem 'cells'
 gem 'dimensions-rails'
@@ -34,22 +36,23 @@ gem 'dynamic_sitemaps'
 gem 'haml-rails'
 gem 'high_voltage'
 gem 'inherited_resources'
-gem 'jquery-datatables-rails',             :github => 'rweng/jquery-datatables-rails'
-gem 'jquery-rails'
+gem 'jquery-datatables-rails',            :github => 'rweng/jquery-datatables-rails'
+gem 'jquery-rails', '>=2.0.2'
 gem 'kaminari'
 gem 'meta_search'
-gem 'money',                               :github => 'FinGinie/money'
-gem 'nested_form',                         :github => 'TMaYaD/nested_form'
+gem 'money',                              :github => 'FinGinie/money'
+gem 'nested_form',                        :github => 'TMaYaD/nested_form'
 gem 'newrelic_rpm'
-gem 'omniauth-oauth2',                     :github => 'intridea/omniauth-oauth2'
-gem 'omniauth_single_signon',              :github => 'FinGinie/omniauth-single-signon'
+gem 'omniauth-oauth2',                    :github => 'intridea/omniauth-oauth2'
+gem 'omniauth_single_signon',             :github => 'FinGinie/omniauth-single-signon'
 gem 'paper_trail'
+gem 'periscope',                          :github => 'TMaYaD/periscope'
 gem 'pg'
 gem 'rack-environmental'
 gem 'rack-iframe'
-gem 'sheet_mapper',                        :github => 'TMaYaD/sheet_mapper'
+gem 'sheet_mapper',                       :github => 'TMaYaD/sheet_mapper'
 gem 'shortly'
-gem 'simple_form',                         :github => 'plataformatec/simple_form'
+gem 'simple_form',                        :github => 'plataformatec/simple_form'
 gem 'thin'
 
 group :test, :development do

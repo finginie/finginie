@@ -15,6 +15,7 @@
 #= require twitter/bootstrap
 #= require dataTables/jquery.dataTables
 #= require dataTables/jquery.dataTables.bootstrap
+#= require String.Slugify
 #
 #= require html5
 #= require chosen.jquery.min

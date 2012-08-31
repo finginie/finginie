@@ -66,6 +66,8 @@ Finginie::Application.routes.draw do
   # Fixed Deposits
   resources "fixed-deposits", :controller => :fixed_deposits, :as => :fixed_deposits, :only => [:index]
 
+  # RESTful market data
+  mount DataConsumer::Engine => '/data'
   # Shares
   resources "shares", :controller => :stocks, :as => :stocks, :only => [:index, :show], :constraints => { :id => /.*/ } do
     collection do
