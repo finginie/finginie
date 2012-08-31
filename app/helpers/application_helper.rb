@@ -25,15 +25,6 @@ module ApplicationHelper
     content_tag :span, content, :class => (value < 0 ? :red : :green)
   end
 
-  def facebook_share_url_with_link(shared_link)
-    ENV['FACEBOOK_SHARE_DIALOG_URL'] + fb_share_query_params(shared_link)
-  end
-
-  def facebook_share_url_with_quiz_details(score)
-    #description = t('facebook_share.quiz_description', :score => "#{score}" ,:questions => "#{LearningTool::QUIZLIMIT}" )
-    ENV['FACEBOOK_SHARE_DIALOG_URL'] + fb_share_query_quiz_details(score)
-  end
-
   def row_for(translate_label, field, objects)
     haml_tag :tr do
       haml_tag(:td, t("#{translate_label}.#{field}"))
@@ -73,10 +64,6 @@ module ApplicationHelper
     end
   end
 
-  def url_with_complete_path(relative_url)
-    host + relative_url
-  end
-
   def current_page_url
     host + request.path
   end
@@ -85,39 +72,35 @@ module ApplicationHelper
     'http://' + request.host_with_port
   end
 
-  def fb_share_query_params(shared_link,description=nil)
-    app_id = ENV['FACEBOOK_KEY']
-    link = url_with_complete_path shared_link
-    img_url = host
-    name = t('facebook_share.name', :user_slug => current_user.slug_name)
-    description = t('facebook_share.description')
-    facebook_callback_url = social_network_facebook_callback_path(:return_to => current_page_url, :step => PointTracker::ShareFinancialProfileOnFbStep)
-    redirect_uri = url_with_complete_path(facebook_callback_url)
-
-    {
-      :app_id => app_id,
-      :link => link,
-      :picture => host + '/assets/logo.png',
-      :name => name,
-      :description => description,
-      :redirect_uri => redirect_uri
-    }.to_query
+  def facebook_share_url(hsh)
+    ENV['FACEBOOK_SHARE_DIALOG_URL'] + fb_share_query_params(hsh)
   end
 
-  def fb_share_query_quiz_details(score)
-    app_id = ENV['FACEBOOK_KEY']
-    img_url = host
-    name = t('facebook_share.name', :user_slug => current_user.slug_name)
-    description = t('facebook_share.quiz_description', :score => "#{score}" ,:questions => "#{LearningTool::QUIZLIMIT}" )
-    facebook_callback_url = social_network_facebook_callback_path(:return_to => learning_tools_url, :step => PointTracker::ShareFinancialProfileOnFbStep)
-    redirect_uri = url_with_complete_path(facebook_callback_url)
+  def public_financial_profile_fb_hsh
+    facebook_callback_url = social_network_facebook_callback_url(:return_to => current_page_url, :step => PointTracker::ShareFinancialProfileOnFbStep)
     {
-      :app_id => app_id,
-      :link => "http://finginie.com/learning_tools/start_quiz",
-      :picture => host + '/assets/logo.png',
-      :name => "Investo presto quiz. ",
-      :description => description,
-      :redirect_uri => redirect_uri
-    }.to_query
+      :link => public_financial_profile_url(current_user),
+      :name => t('facebook_share.public_portfolio.name', :user_slug => current_user.slug_name),
+      :description => t('facebook_share.public_portfolio.description'),
+      :redirect_uri => facebook_callback_url
+    }
+  end
+
+  def quiz_details_fb_hsh(score)
+      facebook_callback_url = social_network_facebook_callback_url(:return_to => learning_tools_url, :step => PointTracker::ShareQuizDetailsOnFbStep)
+    {
+      :link => start_quiz_learning_tools_url,
+      :name => t('facebook_share.learning_tool.quiz_name'),
+      :description => t('facebook_share.learning_tool.quiz_description', :score => "#{score}" ,:questions => "#{LearningTool::QUIZ_LIMIT}" ),
+      :redirect_uri => facebook_callback_url
+    }
+  end
+
+  private
+  def fb_share_query_params(hsh)
+    {
+      :app_id => ENV['FACEBOOK_KEY'],
+      :picture => host + '/assets/logo.png'
+    }.merge(hsh).to_query
   end
 end

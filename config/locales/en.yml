@@ -22,9 +22,12 @@ en:
   twitter_share:
     description: "@finginie Check out my personalized financial plan based on financial experts' opinion and 10 years of market data %{share_url}"
   facebook_share:
-    name: "Finginie- %{user_slug}'s Personalized Investment Suggestions"
-    description: "These are my personalized investment suggestions from Finginie customized to my unique financial needs and constraints backed by financial experts opinions and 10 years of market data. Check them out !"
-    quiz_description: "I have answered %{score} questions out of %{questions} questions."
+    public_portfolio:
+      name: "Finginie- %{user_slug}'s Personalized Financial Plan"
+      description: "These are my personalized investment suggestions from Finginie customized to my unique financial needs and constraints backed by financial experts opinions and 10 years of market data. Check them out !"
+    learning_tool:
+      quiz_name: "Finginie quiz"
+      quiz_description: "I have answered %{score} questions out of %{questions} questions."
   personal_financial_tools:
     home: 'Personal Financial Tools'
     list:

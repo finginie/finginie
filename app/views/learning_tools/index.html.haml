@@ -1,7 +1,7 @@
 .row
-  .span9
+  .span12
     %h1 You have successfully completed your quiz.
-    %h2 Your score  :  #{@learning_tool.score} out of #{LearningTool::QUIZLIMIT}
+    %h2 Your score  :  #{@learning_tool.score} out of #{LearningTool::QUIZ_LIMIT}
     %h2 Listing attempted questions
 
 
@@ -11,18 +11,17 @@
         %th Question
         %th Your Response
         %th Answer
+        %th Reason
       - @learning_tool.quiz_data.each_with_index do |quiz, index|
         %tr
           %td= index + 1
           %td= quiz.question_text
           %td= quiz.user_choice
           %td= quiz.correct_answer
+          %td= quiz.reason
 
     Share your score on facebook.
-    = link_to t('.facebook.post_wall'), facebook_share_url_with_quiz_details(session[:learning_tools][:score]), :class => 'btn btn-primary'
+    = link_to t('.facebook.post_wall'), facebook_share_url(quiz_details_fb_hsh(@learning_tool.score)), :class => 'btn btn-primary'
     Start new quiz.
     = link_to "Restart Quiz",start_quiz_learning_tools_path
-  .span3
-    %img{:src => "http://placehold.it/270x300&text=ads"}/
-    %img{:src => "http://placehold.it/270x300&text=ads"}/
 

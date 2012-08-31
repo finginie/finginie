@@ -13,7 +13,7 @@ class Question < ActiveRecord::Base
 
   scope :review_questions, lambda { |question_ids| includes(:correct_answer).find(question_ids)}
 
-  scope :random_questions, :order => 'random()', :select => 'id', :limit => LearningTool::QUIZLIMIT
+  scope :random_questions, :order => 'random()', :select => 'id', :limit => LearningTool::QUIZ_LIMIT
 
   delegate :text, :to => :correct_answer, :allow_nil => true, :prefix => true
 

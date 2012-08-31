@@ -1,5 +1,5 @@
 class LearningTool
-  QUIZLIMIT  = 10
+  QUIZ_LIMIT  = 3
   NOT_YET_ANSWERED  = nil
 
   attr_reader :quiz_info
@@ -14,10 +14,6 @@ class LearningTool
   def initialize(quiz_info)
     @quiz_info = quiz_info
   end
-
-  # def exceeded_quiz_limit?
-  #   number_of_questions_user_answered <= QUESTION_LIMIT
-  # end
 
   def question_number(question_id)
     quiz_info.keys.index(question_id) + 1
@@ -47,10 +43,6 @@ class LearningTool
   end
 
   private
-  # def number_of_questions_user_answered
-  #   quiz_info.select {|question_id, user_choice| user_choice != NOT_YET_ANSWERED}.size
-  # end
-
   def questions
     Question.find(quiz_info.keys, :include => :correct_answer)
   end

@@ -1,7 +1,6 @@
 class QuestionsController < InheritedResources::Base
-  custom_actions :resource => :update_response
+  actions :show
   before_filter :get_question, :only => [:show, :update_response]
-#  before_filter :require_login_after_five_questions, :only => :show
 
   def show
     @current_question_number = @learning_tool.question_number(@question.id)
@@ -22,11 +21,4 @@ class QuestionsController < InheritedResources::Base
     @learning_tool = LearningTool.new(session[:learning_tools][:quiz_info])
   end
 
-
-  # def require_login_after_five_questions
-  #   @learning_tool = LearningTool.new(session[:learning_tools][:quiz_info])
-  #   if !logged_in? && @learning_tool.exceeded_quiz_limit?
-  #     redirect_to_login
-  #   end
-  # end
 end
