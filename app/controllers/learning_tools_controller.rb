@@ -8,8 +8,8 @@ class LearningToolsController < InheritedResources::Base
 
   def start_quiz
     clear_session!(:learning_tools)
-    session[:learning_tools] = { :quiz_info => LearningTool.initialize_quiz_info}
-    first_question = session[:learning_tools][:quiz_info].first
+    session[:learning_tools] = { :quiz_info => LearningTool.initialize_quiz_info }
+    first_question           = session[:learning_tools][:quiz_info].first
     redirect_to question_path(first_question)
   end
 
