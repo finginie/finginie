@@ -5,7 +5,7 @@ class Finginie.Routers.HomeRouter extends Backbone.Router
   index: ->
     (new Finginie.Widgets.TrendingMutualFundsWidget(trend: 'desc')).render('#top_mutual_funds')
     (new Finginie.Widgets.TrendingMutualFundsWidget(trend: 'asc')).render('#lowest_mutual_funds')
-    @render_biggest_mutual_funds()
+    (new Finginie.Widgets.BiggestMutualFundsWidget()).render('#biggest_mutual_funds')
     @render_news_articles(section) for section in [ "markets", "economy", "companies", "global_news", "stock_tips" ]
     @render_research_reports()
     (new Finginie.Widgets.SectoralIndicesWidget(exchange: exchange)).render("##{exchange}_sectoral_indices") for exchange in ['Nse', 'Bse']
@@ -14,15 +14,6 @@ class Finginie.Routers.HomeRouter extends Backbone.Router
   render_trending_shares: (exchange)->
     (new Finginie.Widgets.TrendingSharesWidget(exchange: exchange, trend: trend)).render("##{exchange}_top_#{trend}") for trend in ['gainers', 'losers']
     (new Finginie.Widgets.MostActiveSharesWidget(exchange: exchange)).render("##{exchange}_most_active")
-
-  render_biggest_mutual_funds: ->
-    @biggest_mutual_funds = new Finginie.Collections.MutualFundsCollection()
-    @biggest_mutual_funds.fetch
-      data:
-        desc: 'size'
-        limit: 5
-    @biggest_mutual_funds_view = new Finginie.Views.MutualFunds.BigMutualFundsView(mutual_funds: @biggest_mutual_funds)
-    $("#biggest_mutual_funds").html(@biggest_mutual_funds_view.render().el)
 
   render_news_articles: (section)->
     news_articles = new Finginie.Collections.NewsArticlesCollection()
