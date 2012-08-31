@@ -77,26 +77,28 @@ module ApplicationHelper
   end
 
   def public_financial_profile_fb_hsh
-    facebook_callback_url = social_network_facebook_callback_url(:return_to => current_page_url, :step => PointTracker::ShareFinancialProfileOnFbStep)
     {
       :link => public_financial_profile_url(current_user),
       :name => t('facebook_share.public_portfolio.name', :user_slug => current_user.slug_name),
       :description => t('facebook_share.public_portfolio.description'),
-      :redirect_uri => facebook_callback_url
+      :redirect_uri => facebook_callback_url(current_page_url, PointTracker::ShareFinancialProfileOnFbStep)
     }
   end
 
   def quiz_details_fb_hsh(score)
-      facebook_callback_url = social_network_facebook_callback_url(:return_to => learning_tools_url, :step => PointTracker::ShareQuizDetailsOnFbStep)
     {
       :link => start_quiz_learning_tools_url,
       :name => t('facebook_share.learning_tool.quiz_name'),
       :description => t('facebook_share.learning_tool.quiz_description', :score => "#{score}" ,:questions => "#{LearningTool::QUIZ_LIMIT}" ),
-      :redirect_uri => facebook_callback_url
+      :redirect_uri => facebook_callback_url(learning_tools_url, PointTracker::ShareQuizDetailsOnFbStep)
     }
   end
 
   private
+  def facebook_callback_url(return_url, step)
+    social_network_facebook_callback_url(:return_to => return_url, :step => step)
+  end
+
   def fb_share_query_params(hsh)
     {
       :app_id => ENV['FACEBOOK_KEY'],
