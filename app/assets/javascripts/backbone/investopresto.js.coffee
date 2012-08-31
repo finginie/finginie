@@ -2,6 +2,7 @@
 #= require_tree ./templates
 #= require_tree ./models
 #= require_tree ./views
+#= require_tree ./widgets
 #= require_tree ./routers
 
 window.Finginie =
@@ -9,6 +10,7 @@ window.Finginie =
   Collections: {}
   Routers: {}
   Views: {}
+  Widgets: {}
 
 $ ->
   @nifty = new Finginie.Models.NseScrip
@@ -34,4 +36,5 @@ $ ->
 
   window.router = new Finginie.Routers.HomeRouter()
   Backbone.history.start
-    pushState: false
+    pushState: true
+    hashChange: false

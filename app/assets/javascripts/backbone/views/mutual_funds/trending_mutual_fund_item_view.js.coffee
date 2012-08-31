@@ -1,7 +1,7 @@
 Finginie.Views.MutualFunds ||= {}
 
-class Finginie.Views.MutualFunds.TopMutualFundItemView extends Backbone.View
-  template: JST["backbone/templates/mutual_funds/top_mutual_fund_item"]
+class Finginie.Views.MutualFunds.TrendingMutualFundItemView extends Backbone.View
+  template: JST["backbone/templates/mutual_funds/trending_mutual_fund_item"]
 
   tagName: "tr"
 
