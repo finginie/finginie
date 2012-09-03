@@ -3,5 +3,15 @@ module PointTracker
     DESCRIPTION = 'Take Personalized financial profile quiz'
     ACTION_LINK = '/comprehensive_risk_profiler/edit'
     POINTS      = 50
+
+    def valid?
+      !completed_step_for_user? && user_taken_quiz?
+    end
+
+    private
+    def user_taken_quiz?
+      quiz = ComprehensiveRiskProfiler.find meta_data[:quiz_id]
+      quiz.valid?
+    end
   end
 end
