@@ -49,6 +49,9 @@
 #= require personal_financial_tools
 
 $ ->
+  $("form").live "ajax:aborted:required", (event, elements) ->
+    elements.filter(":not([type=radio])").length isnt 0
+
   $('.carousel').carousel
     interval: 10000
 
