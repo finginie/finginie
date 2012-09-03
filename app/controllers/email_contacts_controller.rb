@@ -5,10 +5,10 @@ class EmailContactsController < ApplicationController
     begin
       email_contacts_decorator = EmailContactsDecorator.new(Contacts.guess!(params[:login], params[:password]))
       session[:from_email_id] = params[:login]
-    rescue Contacts::AuthenticationError => error_msg
-      render :status => 401, :json => error_msg.message and return
-    rescue Contacts::TypeNotFound => error_msg
-      render :status => 403, :json => error_msg.message and return
+    rescue Contacts::AuthenticationError
+      head :unauthorized and return
+    rescue Contacts::TypeNotFound
+      head :forbidden and return
     end
 
     render :json => email_contacts_decorator.data_table_response
@@ -20,7 +20,7 @@ class EmailContactsController < ApplicationController
       share_financial_profile_mail_step = PointTracker::ShareFinancialProfileViaMailStep.new(current_user, meta_data)
       share_financial_profile_mail_step.save
     end
-    EbolaMailer.welcome_email(params[:contacts], current_user_public_financial_profile_full_path, session[:from_email_id]).deliver
+    EbolaMailer.welcome_email(params[:contacts], public_financial_profile_url(current_user), session[:from_email_id]).deliver
 
     render :json => { :msg => "You have invited #{params[:contacts].size} friends", :points => current_user.ebola_points }
   end

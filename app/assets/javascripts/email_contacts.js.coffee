@@ -1,63 +1,58 @@
 $(document).ready ->
-  $('#back_btn').click ->
-    close_modal_dialog('invitations')
-    $("#email_contact_modal").modal()
+  $("#invitations_list .back").click ->
+    $("#invitations_list").hide()
+    $("#email_contact").show()
 
-  $('#retrive_contacts').click ->
-    $('#email_contacts_form').submit()
+  $("#invitations_list form").bind "ajax:beforeSend", ->
+    $("#mail_modal").modal "hide"
 
-  $('#invite_frnds').click ->
-    $('#invite_frnds_form').submit()
-
-  $("#invite_frnds_form").bind "ajax:beforeSend", ->
-    close_modal_dialog('invitations')
-    show_ajax_spinner()
-
-  $("#invite_frnds_form").bind "ajax:success", (xhr, data) ->
-    hide_ajax_spinner()
+  $("#invitations_list form").bind "ajax:success", (xhr, data) ->
     update_message_and_ebola_points(data)
 
-  $("#email_contacts_form").bind "ajax:beforeSend", (data) ->
+  $("#email_contact form").bind "ajax:beforeSend", (data) ->
     hide_error_msg_and_clear_invited_friends_label()
-    close_modal_dialog('email_contact')
+    $("#email_contact").hide()
     show_ajax_spinner()
 
-  $("#email_contacts_form").bind "ajax:complete", ->
+  $("#email_contact form").bind "ajax:complete", ->
     hide_ajax_spinner()
 
-  $("#email_contacts_form").bind "ajax:error", (xhr, data, status) ->
-    $("#email_contact_modal").modal()
-    show_error_msg(data)
+  $("#email_contact form").bind "ajax:error", (xhr, data) ->
+    $("#email_contact").show()
+    show_error_msg(data.status)
 
-
-  $("#email_contacts_form").bind "ajax:success", (xhr, data) ->
-    $("#invitations_modal").modal()
+  $("#email_contact form").bind "ajax:success", (xhr, data) ->
+    $("#invitations_list").show()
     initialize_data_tables(data)
     bind_checkbox_event()
 
-  show_error_msg = (data) ->
-    $("#error_msg").show()
-    $("#error_msg").html data.responseText
+  show_error_msg = (status) ->
+    $("#email_contact .alert-error").show()
+    switch status
+      when 401
+        error_msg = 'Username or password are incorrect'
+      when 403
+        error_msg = 'Email Server type is not supported, please choose one of the following: [:gmail, :hotmail, :yahoo, :plaxo, :aol, :mailru, :gmx, :web_de, :seznam, :onelt, :inbox_lt, :tonline_de]'
+      else
+        error_msg = "Responded with #{status}, please email us at contact@finginie.com"
+    $("#email_contact .alert-error").html(error_msg)
 
   hide_error_msg_and_clear_invited_friends_label = ->
-    $("#error_msg").hide()
-    $("#invite_frnds").html "Invite 0 Friends"
-
-  close_modal_dialog = (modal_id) ->
-    $("##{modal_id}_modal").modal "hide"
+    $("#email_contact .alert-error").hide()
+    $("#invitations_list .invite_frnds").val "Invite 0 Friends"
 
   update_message_and_ebola_points = (data) ->
     $("#flash_notice").html(data.msg)
     $('#points').html(data.points + ' points')
 
   hide_ajax_spinner = ->
-    $("body").removeClass "loading"
+    $("#spinner").hide()
 
   show_ajax_spinner = ->
-    $("body").addClass "loading"
+    $("#spinner").show()
 
   initialize_data_tables = (data) ->
-    $("#contacts_list").dataTable
+    $("#invitations_list .table").dataTable
       aaData: data["aaData"]
       bScrollInfinite: true
       bScrollCollapse: true
@@ -68,6 +63,6 @@ $(document).ready ->
       aoColumns: [null, null, null]
 
   bind_checkbox_event = ->
-    $("#contacts_list tr .invite").live "click", ->
+    $("#invitations_list .table tr .invite").live "click", ->
       no_of_selected_frnds = $(".invite").filter(":checked").length
-      $("#invite_frnds").html "Invite " + no_of_selected_frnds + " Friends"
+      $("#invitations_list .invite_frnds").val "Invite " + no_of_selected_frnds + " Friends"

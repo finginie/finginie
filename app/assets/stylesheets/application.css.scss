@@ -117,3 +117,28 @@ ul.ui-autocomplete li a {
     repeat:    no-repeat;
   }
 }
+
+body.loading {
+  overflow: hidden;
+  .ajax_spinner {
+    display: block;
+  }
+}
+
+body.loading .ajax_spinner {
+  display: block;
+}
+
+#spinner{
+  height: 274px;
+  background: {
+    color:     rgba( 255, 255, 255, .8 );
+    image:     url('/assets/loading.gif');
+    position:  50% 50%;
+    repeat:    no-repeat;
+  }
+}
+
+#invitations_list{
+  height: 274px;
+}
