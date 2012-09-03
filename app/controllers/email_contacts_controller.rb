@@ -22,7 +22,11 @@ class EmailContactsController < ApplicationController
     end
     EbolaMailer.welcome_email(params[:contacts], public_financial_profile_url(current_user), session[:from_email_id]).deliver
 
-    render :json => { :msg => "You have invited #{params[:contacts].size} friends", :points => current_user.ebola_points }
+    respond_to do |format|
+      format.json  do
+        render :json => { :msg => "You have invited #{params[:contacts].size} friends", :points => current_user.ebola_points }
+      end
+    end
   end
 
 end

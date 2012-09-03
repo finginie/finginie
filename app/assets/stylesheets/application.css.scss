@@ -102,33 +102,6 @@ ul.ui-autocomplete li a {
   margin-bottom: 20px;
 }
 
-.ajax_spinner {
-  display:    none;
-  position:   fixed;
-  z-index:    1000;
-  top:        0;
-  left:       0;
-  height:     100%;
-  width:      100%;
-  background: {
-    color:     rgba( 255, 255, 255, .8 );
-    image:     url('/assets/loading.gif');
-    position:  50% 50%;
-    repeat:    no-repeat;
-  }
-}
-
-body.loading {
-  overflow: hidden;
-  .ajax_spinner {
-    display: block;
-  }
-}
-
-body.loading .ajax_spinner {
-  display: block;
-}
-
 #spinner{
   height: 274px;
   background: {

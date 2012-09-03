@@ -39,6 +39,7 @@ $(document).ready ->
     $("<a href='##{id}'/>").tab('show')
 
   hide_error_msg_and_clear_invited_friends_label = ->
+    $("#check_all").attr('checked', false)
     $("#email_contact .alert-error").hide()
     $("#invitations_list .invite_frnds").val "Invite 0 Friends"
 
@@ -59,7 +60,7 @@ $(document).ready ->
 
   bind_checkbox_event = ->
     $("#invitations_list .table tr .invite").live "click", ->
-      update_invitations_label
+      update_invitations_label()
 
   update_invitations_label = ->
     no_of_selected_frnds = $(".invite").filter(":checked").length

@@ -1,5 +1,3 @@
-.ajax_spinner
-
 #mail_modal.modal.hide
   .modal-header
     %button.close{"data-dismiss" => "modal", :type => "button"} ×
@@ -31,6 +29,7 @@
 
     #invitations_list.tab-pane
       = check_box_tag 'check_all'
+      Select/Unselect All
       = form_tag send_mail_email_contacts_path, :remote => true do
         %table.table
         = submit_tag 'Invite 0 Friends', :class => %w(btn btn-primary invite_frnds)
