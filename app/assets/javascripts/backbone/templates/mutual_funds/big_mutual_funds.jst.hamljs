@@ -1,8 +1,8 @@
 %table.table.table-striped.table-bordered{data: {role: 'top_performers'} }
   %tr
-    %th Name
-    %th NAV
-    %th % Change
-    %th Size (Crores)
-    %th 1y return (%)
+    %th.span3 Name
+    %th.span1 NAV
+    %th.span1 % Change
+    %th.span1 Size (Crores)
+    %th.span1 1y Change
 

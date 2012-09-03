@@ -1,4 +1,4 @@
 %td
-  %a{href: "/shares/#{company.slug}", title: company.name}= company.name.substring(0,18)
+  %a{href: "/shares/#{company.slug}", title: company.name}= company.name.substring(0,20)
 %td= last_traded_price
 %td{class: percent_change_color} #{percent_change}%
