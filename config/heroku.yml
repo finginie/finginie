@@ -28,6 +28,7 @@ staging: &staging
     FINGINIE_SECRET         : "9071834b8fcf9028d2cd2d46b0a715c585b1b833086c7e4d4dc7a3bcfe68b34c"
     MAINTENANCE_PAGE_URL         : "https://docs.google.com/a/finginie.com/spreadsheet/viewform?formkey=dFJaRjVMaTdSUml1TTlkWG9uaGdKNmc6MA"
     MONGOLAB_URI                 : "mongodb://heroku_app4427460:kcfr65imah2j5cumpcjql0tpot@ds033007.mongolab.com:33007/heroku_app4427460"
+    POSTAGEAPP_API_KEY           : "WMXkyiNWwa0k1JMJVBGKe2ttBGlysgHa"
     RACK_ENV                     : "staging"
     RAILS_ENV                    : "staging"
     REDIS_URL                    : "redis://redistogo:2b89b00bbd027a6a3d5eecd059ef7d70@panga.redistogo.com:9105/"

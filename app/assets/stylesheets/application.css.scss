@@ -10,7 +10,7 @@
  *= require_directory .
 */
 
-ul.nav li.dropdown:hover>ul.dropdown-menu{
+ul.nav li.dropdown:hover>ul.dropdown-menu {
   display: block;
 }
 
@@ -102,5 +102,16 @@ ul.ui-autocomplete li a {
   margin-bottom: 20px;
 }
 
+#spinner{
+  height: 274px;
+  background: {
+    color:     rgba( 255, 255, 255, .8 );
+    image:     url('/assets/loading.gif');
+    position:  50% 50%;
+    repeat:    no-repeat;
+  }
+}
 
-
+#invitations_list{
+  height: 274px;
+}

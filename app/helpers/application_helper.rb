@@ -89,5 +89,4 @@ module ApplicationHelper
       :redirect_uri => redirect_uri
     }.to_query
   end
-
 end

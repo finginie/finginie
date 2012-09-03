@@ -1,4 +1,5 @@
 = render :partial => 'twitter_share_modal'
+= render :partial => 'mail_modal'
 
 .row.show-grid
   .span12
@@ -10,7 +11,7 @@
           = image_tag 'facebook.png'
       = link_to '#twitterModal', { 'data-toggle' => 'modal' } do
         = image_tag 'twitter.png'
-      = link_to '#' do
+      = link_to '#mail_modal', { 'data-toggle' => 'modal' } do
         = image_tag 'mail.png'
 
     %p= t(".introduction")
@@ -39,5 +40,6 @@
           = image_tag 'facebook.png'
       = link_to '#twitterModal', { 'data-toggle' => 'modal' } do
         = image_tag 'twitter.png'
-      = link_to '#' do
+      = link_to '#mail_modal', { 'data-toggle' => 'modal' } do
         = image_tag 'mail.png'
+    = link_to 'Continue', page_path('trade'), :class => 'btn btn-primary'

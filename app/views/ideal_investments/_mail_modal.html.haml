@@ -1,0 +1,42 @@
+#mail_modal.modal.hide
+  .modal-header
+    %button.close{"data-dismiss" => "modal", :type => "button"} ×
+    %h3
+      = image_tag 'Mail.png'
+      Share your financial plan via email
+  .modal-body.tab-content
+    #email_contact.tab-pane.active
+      %h2 Invite by email
+      .option
+        %p Invite your contacts (Gmail, Yahoo, Hotmail etc.)
+      .alert.alert-error.hide
+      = form_tag import_contacts_email_contacts_path, :remote => true do
+        .sector.control-group
+          = label_tag "Contact", "Email", :class => 'control-label'
+          .controls
+            = email_field_tag("login")
+        .sector.control-group
+          = label_tag "Contact", "Password", :class => 'control-label'
+          .controls
+            = password_field_tag("password")
+        = submit_tag 'Retrieve Contacts', :class => %w(btn btn-primary)
+
+      .disclaimer
+        %h6
+          %i.icon-lock
+          Your email is safe with us!
+        %p We will not store your password or email anyone without your permission.
+
+    #invitations_list.tab-pane
+      = check_box_tag 'check_all'
+      Select/Unselect All
+      = form_tag send_mail_email_contacts_path, :remote => true do
+        %table.table
+        = submit_tag 'Invite 0 Friends', :class => %w(btn btn-primary invite_frnds)
+
+        %span
+          %a.btn.btn-primary{ :href => '#email_contact', 'data-toggle' => 'tab'} Back
+
+    #spinner.tab-pane
+
+  .modal-footer
