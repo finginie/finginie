@@ -1,7 +1,7 @@
 module PointTracker
   class ReferralStep < Base
     DESCRIPTION = 'Every sign up from shared link'
-    ACTION_LINK = '/comprehensive_risk_profiler/ideal_investments'
+    ACTION_LINK = { :controller => 'ideal_investments', :action => 'show' }
     POINTS      = 200
 
     def valid?
