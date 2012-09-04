@@ -2,18 +2,18 @@
   .span9
     %h1= t '.title'
     %section
-      %h3= t '.description'
-      %p= t '.about'
-
-    = simple_form_for @question , :url => update_response_question_path(@question.id) do |f|
-      %h3 Question #{@current_question_number} :  #{@question.news}
-      %ol.unstyled
-        %li
-          %fieldset#special_goals
-            = f.input :user_response_id, :collection => @question.choices, :as => :radio_buttons, :label => @question.text,
-                      :label_method => :text, :value_method => :id
+    = form_tag responses_path do
+      %h3 #{@question.news}
+      .control-group.radio_buttons.required
+        %label.radio_buttons.required.control-label
+          %h3 Question #{flash[:question_number]} : #{@question.text}
+        .controls
+          - @question.choices.each do |choice|
+            %label.radio
+              = radio_button_tag :choice_id, choice.id, false, :required => :required
+              = choice.text
       .form-actions
-        = f.submit 'Answer', :class => %w(btn.btn-primary)
+        = submit_tag 'Answer', :class => %w(.btn.btn-primary)
 
   .span3
     .thumb

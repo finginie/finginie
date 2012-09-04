@@ -33,6 +33,7 @@ class Ability
       can [:current_holdings, :profit_loss, :historical_transactions], :public_portfolio
       can :manage, TradeAccount, :user_id => user.id
       cannot [:update, :destroy], TradeAccount, :issued => true
+      can :index, :response
     end
 
     can :show, :public_portfolio

@@ -5,16 +5,8 @@ Finginie::Application.routes.draw do
   match "/pages/*id" => 'pages#show', :as => :page, :format => false
 
   #Learning investing
-  resources :questions do
-    member do
-      put 'update_response'
-    end
-  end
-  resources :learning_tools do
-    collection do
-      get 'start_quiz'
-    end
-  end
+  resources :responses
+  resources :questions, :only => :show
 
   #Market Commentary
   get '/blog' => redirect("/blog/index"), :as => :blog
