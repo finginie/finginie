@@ -4,33 +4,34 @@
       %ul.thumbnails
         %li.span6
           .thumbnail
-            = image_tag 'stocks-box.png', :alt => 'Stocks Price,Income Statement,Financial Ratios,Balance Sheet,Cash Flow Statement,Research Reports'
+            = image_tag 'Add-transactions.png', :alt => 'Stocks Price,Income Statement,Financial Ratios,Balance Sheet,Cash Flow Statement,Research Reports'
             .caption
-              %h2 Stocks
-              %p Get detailed information about all stocks listed on the NSE and BSE.
+              %h2 Add Transactions
+              %p Add all your investments to a portfolio and see the latest market value of your portfolio.
+              %br
               = link_to 'Go', main_app.stocks_path, :class => %w(btn btn-primary)
         %li.span6
           .thumbnail
-            = image_tag 'mutualfunds-box.png', :alt => 'NAV Details,Scheme vs Category Returns,Scheme Holdings,Asset Breakup,Sector Allocation,Historic Returns'
+            = image_tag 'Historical-Transactions.jpg', :alt => 'NAV Details,Scheme vs Category Returns,Scheme Holdings,Asset Breakup,Sector Allocation,Historic Returns'
             .caption
-              %h2 Mutual funds
-              %p Get the latest NAV, asset allocation and detailed holdings of all Mutual Funds in the market.
+              %h2 Assets Breakdown, Current Holdings, Historical Transactions
+              %p View your assets composition, current open holdings and all the transactions you have made.
               = link_to 'Go', main_app.mutual_funds_path, :class => %w(btn btn-primary)
       .row-fluid
         %ul.thumbnails
           %li.span6
             .thumbnail
-              = image_tag 'fixeddepoits-box.png', :alt => 'Public Banks,Private Banks,Compare FDs,Best FDs'
+              = image_tag 'profit-loss.png', :alt => 'Public Banks,Private Banks,Compare FDs,Best FDs'
               .caption
-                %h2 Fixed Deposits
-                %p Find out the best interest rates offered by public and private banks in India.
+                %h2 Profit/Loss
+                %p See which investments are fetching you money and which investments are sinking you.
                 = link_to 'Go', main_app.fixed_deposits_path, :class => %w(btn btn-primary)
           %li.span6
             .thumbnail
-              = image_tag 'stock-screener-box.jpg', :alt => 'P/E, EPS, P/BV, Book Value'
+              = image_tag 'Analaysis.jpg', :alt => 'P/E, EPS, P/BV, Book Value'
               .caption
-                %h2 Stock Screener
-                %p Find out the diamonds in a coalfield by selecting stocks based on key metrics.
+                %h2 Analysis
+                %p Get a financial analyst's perspective with our advanced analysis tools for stocks, mutual funds and fixed deposits.
                 = link_to 'Go', main_app.screener_stocks_path, :class => %w(btn btn-primary)
 
 
