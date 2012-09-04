@@ -32,7 +32,8 @@
       Select/Unselect All
       = form_tag send_mail_email_contacts_path, :remote => true do
         %table.table
-        = submit_tag 'Invite 0 Friends', :class => %w(btn btn-primary invite_frnds)
+        %span.ga-track-event{:data => {:category => 'share', :action => 'email'}}
+          = submit_tag 'Invite 0 Friends', :class => %w(btn btn-primary invite_frnds)
 
         %span
           %a.btn.btn-primary{ :href => '#email_contact', 'data-toggle' => 'tab'} Back
