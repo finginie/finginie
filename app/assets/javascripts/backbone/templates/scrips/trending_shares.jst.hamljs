@@ -1,6 +1,6 @@
 %table.table.table-striped.table-bordered
   %thead
-    %th Name
-    %th Today's Price
-    %th % Change
+    %th.span6 Name
+    %th.span4 Today's Price
+    %th.span2 Change
   %tbody

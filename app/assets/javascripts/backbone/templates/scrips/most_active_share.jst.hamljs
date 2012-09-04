@@ -1,4 +1,4 @@
 %td
-  %a{href: "/shares/#{company.slug}"}= company.name
+  %a{href: "/shares/#{company.slug}", title: company.name}= company.name.substring(0,18)
 %td= last_traded_price
 %td= volume

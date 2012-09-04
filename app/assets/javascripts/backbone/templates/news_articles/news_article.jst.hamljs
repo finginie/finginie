@@ -3,3 +3,4 @@
   %br
   %small #{source} - #{published}
 %p= summary
+%hr.soften
