@@ -9,7 +9,7 @@
       = facebook_recommendation("Top holdings <small>#{@scheme.name}</small>")
   .row
     .span8.show-grid
-      -gchart(:data => @scheme.top_ten_holdings_percentages, :title => 'Top 10 holdings Distribution', :chart_type => 'Pie')
+      = gchart(:data => @scheme.top_ten_holdings_percentages, :title => 'Top 10 holdings Distribution', :chart_type => 'Pie')
 
   .row.show-grid
     .span12

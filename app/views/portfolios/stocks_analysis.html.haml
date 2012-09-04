@@ -7,7 +7,7 @@
 - unless resource.sector_wise_stock_percentage.empty?
   .row
     .span8
-      - gchart( :data => resource.sector_wise_stock_percentage,
+      = gchart( :data => resource.sector_wise_stock_percentage,
           :title => 'Sector Wise Stocks Allocation', :chart_type => 'Pie')
   .row
     .span12.show-grid
@@ -58,7 +58,7 @@
 - unless resource.stocks_positions_profit_or_loss.empty?
   .row
     .span8
-      - gchart(:data => resource.stocks_positions_profit_or_loss.map { |r| [r.name, r.percentage] },
+      = gchart(:data => resource.stocks_positions_profit_or_loss.map { |r| [r.name, r.percentage] },
                :title => 'Realized Profit/Loss on Stocks', :yAxisTitle => 'Percentage (%)', :chart_type => 'Column')
   .row
     .span12.show-grid

@@ -10,7 +10,7 @@
           %p.align-center
             = t ".no_profit_or_loss"
       - else
-        - gchart(:data => (resource.top_five_profits + resource.top_five_losses).map{ |r| [ r.name, r.percentage ] },
+        = gchart(:data => (resource.top_five_profits + resource.top_five_losses).map{ |r| [ r.name, r.percentage ] },
                   :chart_type => 'Column', :yAxisTitle => 'Percentage (%)',
                   :title =>'Your Top Realised Profit/Losses by Percentage')
         .show-grid

@@ -8,7 +8,7 @@
       = facebook_recommendation("Comparative returns <small>#{@scheme.name}</small>")
   .row
     .span8.show-grid
-      -gchart(:data => @scheme.comparative_returns_data_table, :title => 'Comparative Returns', :yAxisTitle => 'Return(%)', :chart_type => 'Column', :legend => 'bottom')
+      = gchart(:data => @scheme.comparative_returns_data_table, :title => 'Comparative Returns', :yAxisTitle => 'Return(%)', :chart_type => 'Column', :legend => 'bottom')
     .span4.show-grid
       %table.table.table-striped.table-bordered
         %tr

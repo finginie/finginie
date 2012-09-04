@@ -1,6 +1,6 @@
 .row.show-grid
   .span8
-    -gchart( :data => @chart_data, title: 'Ideal Investments', chart_type: 'Pie' )
+    = gchart( :data => @chart_data, title: 'Ideal Investments', chart_type: 'Pie' )
 
   .span4
     - %w(fixed_deposits gold_investments large_caps mid_caps).each do |type|

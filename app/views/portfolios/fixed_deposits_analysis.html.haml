@@ -8,7 +8,7 @@
 - unless resource.fixed_deposit_open_positions_rate_of_interests.empty?
   .row
     .span8
-      - gchart(:header => ['Rate','Amount'], :data => resource.fixed_deposit_open_positions_rate_of_interests.map{ |fd| [fd.rate, fd.amount] },
+      = gchart(:header => ['Rate','Amount'], :data => resource.fixed_deposit_open_positions_rate_of_interests.map{ |fd| [fd.rate, fd.amount] },
                :title => 'Fixed Deposits', :yAxisTitle => 'Amount Invested (Rs)', :xAxisTitle => 'Interest Rate p.a.(%)', :chart_type => 'Column')
     .span4
       %h3 Interest rate wise Analysis

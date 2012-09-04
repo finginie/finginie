@@ -8,10 +8,10 @@
     - else
       .row
         .span8.show-grid
-          - gchart( :header => ['Asset Class','Percenatge'], :data => resource.total_assets_distribution,
+          = gchart( :header => ['Asset Class','Percenatge'], :data => resource.total_assets_distribution,
                     :chart_type => 'Pie', :title => 'Portfolio Assets Composition')
           - if resource.assets_and_liabilities?
-            - gchart(:elements => resource.assets_and_liabilities, :title => 'Portfolio Summary',
+            = gchart(:elements => resource.assets_and_liabilities, :title => 'Portfolio Summary',
                       :yAxisTitle => 'Amount(Rupees)', :chart_type => 'Column')
 
         .span4

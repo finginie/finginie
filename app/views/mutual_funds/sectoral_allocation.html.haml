@@ -8,7 +8,7 @@
       = facebook_recommendation("Sectoral Allocation <small>#{@scheme.name}</small>")
   .row
     .span8
-      -gchart(:data => @scheme.sectoral_allocation, :title => 'Sectoral Allocation', chart_type: 'Pie')
+      = gchart(:data => @scheme.sectoral_allocation, :title => 'Sectoral Allocation', chart_type: 'Pie')
     .span4
       %table.table.table-striped.table-bordered
         %th Sector

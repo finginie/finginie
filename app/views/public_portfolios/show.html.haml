@@ -8,10 +8,10 @@
     - else
       .row
         .span8.show-grid
-          - gchart( :header => ['Asset Class','Percenatge'], :data => resource.total_assets_distribution,
+          = gchart( :header => ['Asset Class','Percenatge'], :data => resource.total_assets_distribution,
                     :chart_type => 'Pie', :title => 'Portfolio Assets Composition')
           - if resource.assets_and_liabilities?
-            - gchart(:elements => resource.assets_and_liabilities, :title => 'Portfolio Summary',
+            = gchart(:elements => resource.assets_and_liabilities, :title => 'Portfolio Summary',
                       :yAxisTitle => 'Amount(Rupees)', :chart_type => 'Column')
 
         .span4.show-grid
@@ -43,14 +43,14 @@
         .span4.show-grid
           %h1 Stocks Analysis
           - unless resource.sector_wise_stock_percentage.empty?
-            - gchart( :data => resource.sector_wise_stock_percentage,
+            = gchart( :data => resource.sector_wise_stock_percentage,
                 :title => 'Sector Wise Stocks Allocation', :chart_type => 'Pie')
         .span4.show-grid
           %h1 Mutual Funds Analysis
           - unless resource.category_wise_mutual_funds_percentage.empty?
-            - gchart(:data => resource.category_wise_mutual_funds_percentage, :title => 'Category Wise Mutual Fund Allocation', :chart_type => 'Pie')
+            = gchart(:data => resource.category_wise_mutual_funds_percentage, :title => 'Category Wise Mutual Fund Allocation', :chart_type => 'Pie')
         .span4.show-grid
           %h1 Fixed Deposits Analysis
           - unless resource.fixed_deposit_open_positions_rate_of_interests.empty?
-            - gchart(:header => ['Rate','Amount'], :data => resource.fixed_deposit_open_positions_rate_of_interests.map{ |fd| [fd.rate, fd.amount] },
+            = gchart(:header => ['Rate','Amount'], :data => resource.fixed_deposit_open_positions_rate_of_interests.map{ |fd| [fd.rate, fd.amount] },
                      :title => 'Fixed Deposits', :yAxisTitle => 'Amount Invested (Rs)', :xAxisTitle => 'Interest Rate p.a.(%)', :chart_type => 'Column')
