@@ -9,14 +9,14 @@
               %h2 Add Transactions
               %p Add all your investments to a portfolio and see the latest market value of your portfolio.
               %br
-              = link_to 'Go', main_app.stocks_path, :class => %w(btn btn-primary)
+              = link_to 'Go', main_app.portfolios_path, :class => %w(btn btn-primary)
         %li.span6
           .thumbnail
             = image_tag 'Historical-Transactions.jpg', :alt => 'NAV Details,Scheme vs Category Returns,Scheme Holdings,Asset Breakup,Sector Allocation,Historic Returns'
             .caption
               %h2 Assets Breakdown, Current Holdings, Historical Transactions
               %p View your assets composition, current open holdings and all the transactions you have made.
-              = link_to 'Go', main_app.mutual_funds_path, :class => %w(btn btn-primary)
+              = link_to 'Go', main_app.portfolios_path, :class => %w(btn btn-primary)
       .row-fluid
         %ul.thumbnails
           %li.span6
@@ -25,14 +25,14 @@
               .caption
                 %h2 Profit/Loss
                 %p See which investments are fetching you money and which investments are sinking you.
-                = link_to 'Go', main_app.fixed_deposits_path, :class => %w(btn btn-primary)
+                = link_to 'Go', main_app.portfolios_path, :class => %w(btn btn-primary)
           %li.span6
             .thumbnail
               = image_tag 'Analaysis.jpg', :alt => 'P/E, EPS, P/BV, Book Value'
               .caption
                 %h2 Analysis
                 %p Get a financial analyst's perspective with our advanced analysis tools for stocks, mutual funds and fixed deposits.
-                = link_to 'Go', main_app.screener_stocks_path, :class => %w(btn btn-primary)
+                = link_to 'Go', main_app.portfolios_path,:class => %w(btn btn-primary)
 
 
 
