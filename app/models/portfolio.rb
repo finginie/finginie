@@ -10,6 +10,7 @@ class Portfolio < ActiveRecord::Base
   attr_accessible :name
 
   belongs_to :user
+  has_many :subscriptions, :as => :subscribable
 
   has_many :stock_transactions,         :dependent => :destroy
   has_many :mutual_fund_transactions,   :dependent => :destroy

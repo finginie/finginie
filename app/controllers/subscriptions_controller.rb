@@ -1,4 +1,5 @@
 class SubscriptionsController < InheritedResources::Base
+  load_and_authorize_resource
   actions :index, :create, :destroy
 
 protected
