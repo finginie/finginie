@@ -30,26 +30,27 @@
           = f.submit 'Submit', :class => %w(btn btn-primary)
 
   .span4
-    %ul.thumbnails
-      %li
-        %h5
-          = image_tag 'Personalized.png', :class => 'bs-icon'
-          Personalized investment suggestions
-        %p Gives you personalized investment suggestions based on your unique financial needs & constraints.
-      %li
-        %h5
-          = image_tag 'Sectoral_Analysis.png', :class => 'bs-icon'
-          Balance between risk and return
-        %p Ensures that you strike a perfect balance between risk and return. All suggestions are based on financial experts’ opinion & backed by 10 years of market data.
-      %li
-        %h5
-          = image_tag 'Diversification.png', :class => 'bs-icon'
-          Diversification
-        %p Automatically ensures diversification across asset classes such as stocks, fixed deposits and gold. This reduces the riskiness of your portfolio drastically.
-      %li
-        %h5
-          = image_tag 'Quick_-free_and_beginner_-friendly.png', :class => 'bs-icon'
-          Quick, free and beginner friendly
-        %p Completely free of cost and doesn’t require a credit card or email address. Takes less than a minute to finish and requires no prior knowledge of investing.
-    .pull-right
-      = link_to image_tag('ebola-370.jpg'), main_app.page_path('win-an-ipad3')
+    .row-fluid
+      .span12.well
+        .thumb
+          %h5
+            = image_tag 'Personalized.png', :class => 'bs-icon'
+            Personalized investment suggestions
+          %p Gives you personalized investment suggestions based on your unique financial needs & constraints.
+        .thumb
+          %h5
+            = image_tag 'Sectoral_Analysis.png', :class => 'bs-icon'
+            Balance between risk and return
+          %p Ensures that you strike a perfect balance between risk and return. All suggestions are based on financial experts’ opinion & backed by 10 years of market data.
+        .thumb
+          %h5
+            = image_tag 'Diversification.png', :class => 'bs-icon'
+            Diversification
+          %p Automatically ensures diversification across asset classes such as stocks, fixed deposits and gold. This reduces the riskiness of your portfolio drastically.
+        .thumb
+          %h5
+            = image_tag 'Quick_-free_and_beginner_-friendly.png', :class => 'bs-icon'
+            Quick, free and beginner friendly
+          %p Completely free of cost and doesn’t require a credit card or email address. Takes less than a minute to finish and requires no prior knowledge of investing.
+    .thumb
+      = link_to image_tag('ebola-370.jpg', :class => %w(img-rounded)), main_app.page_path('win-an-ipad3')

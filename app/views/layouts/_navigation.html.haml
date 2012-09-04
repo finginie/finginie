@@ -113,8 +113,9 @@
                     main_app.research_reports_path
         = bar.item 'Market Commentary',
                     main_app.blog_path
-      = bar.item 'Manage Investments',
-                      main_app.portfolios_path
+      = bar.dropdown 'Manage Investments' do
+        = bar.item "Home",
+                    main_app.page_path('manage-investments')
       = bar.item 'Win an iPad 3',
                       main_app.page_path('win-an-ipad3')
 
