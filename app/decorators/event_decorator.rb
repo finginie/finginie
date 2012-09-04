@@ -1,6 +1,10 @@
 class EventDecorator < ApplicationDecorator
   decorates :event
 
+  def icon
+    h.image_tag "#{action}_event_icon.png"
+  end
+
   def content
     h.content_tag :p, send("#{action}_content")
   end

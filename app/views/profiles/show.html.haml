@@ -1,24 +1,24 @@
 .row.show-grid
   .span2
-    = image_tag @profile.avatar_url
+    = image_tag resource.avatar_url
     %h2.align-center
-      = @profile.name
-      - if can? :edit, @profile
+      = resource.name
+      - if can? :edit, resource
         %small= link_to 'Edit', edit_own_profile_path
-      -# @profile.follow_unfollow_button
+      -# resource.follow_unfollow_button
     %h6
       Occupation:
-      %small= @profile.occupation
+      %small= resource.occupation
     %h6
       City:
-      %small= @profile.location
+      %small= resource.location
   .span7
     .row.show-grid
       .span7
         %h5 Public Portfolios
         #public_portfolios_carousel.carousel.slide
           .carousel-inner
-            - PortfolioDecorator.decorate(@profile.portfolios.public).each do |portfolio|
+            - PortfolioDecorator.decorate(resource.portfolios.public).each do |portfolio|
               .item.wide
                 = gchart( :header => ['Asset Class','Percenatge'],
                           :data => portfolio.total_assets_distribution,
@@ -30,11 +30,11 @@
       .span7
         %h5 Activity
         %ul.thumbnails
-          - EventDecorator.decorate(@profile.events).each do |event|
+          - EventDecorator.decorate(resource.events).each do |event|
             %li.span7
               .thumbnail
                 .row
-                  .span1= image_tag "#{event.action}_event_icon.png"
+                  .span1= event.icon
                   .span5
                     %h3= event.action.titleize
                     %p= event.content
@@ -47,7 +47,7 @@
             %small.pull-right
               = link_to 'See all', subscriptions_path
           %ul
-            - SubscriptionDecorator.decorate(@profile.subscriptions.users).each do |subscription|
+            - SubscriptionDecorator.decorate(resource.subscriptions.users).each do |subscription|
               %li= subscription.render_profile
       %li.span3
         .well
@@ -56,5 +56,5 @@
             %small.pull-right
               = link_to 'See all', subscriptions_path
           %ul
-            - SubscriptionDecorator.decorate(@profile.follows).each do |subscription|
+            - SubscriptionDecorator.decorate(resource.follows).each do |subscription|
               %li= subscription.render_user
