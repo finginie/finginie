@@ -1,7 +1,7 @@
 .row
   .span12
     = facebook_recommendation('Alcohol Sector')
-    %small Report published on August 21th, 2012
+    %small Report published on August 21st, 2012
     %p #{link_to 'By Aditya Gupta', main_app.page_path('research-team')}
     %section
       %h5 Sector Overview
@@ -31,12 +31,13 @@
         few years the industry has been clocking earnings growth in double digits. However last year the momentum
         seems to have slowed down. In fact the three largest players by sales; United Spirits, United Breweries and
         Radico Khaitan ; have all registered a fall in ‘per share earnings’ during this period.
-    %section.align-center
-      = image_tag 'EPS-from-June- 2008- June-2012.png'
+    %section
+      = image_tag 'EPS-from-June-2008-June-2012.png'
       %h3 EPS from June 2008 - June 2008
-    %section.align-center
-      = image_tag 'Standalone-Dion-Global.png'
-      %h3.align-center Source: Standalone quarterly filings of various companies from Dion Global
+    %section
+      = image_tag 'Source-Standalone-quarterly-filings-of-various-companies-from-Dion-Global.png'
+      %br
+      %small Source: Standalone quarterly filings of various companies from Dion Global
     %section
       %h5 Growth Prospects
       %p
@@ -90,10 +91,120 @@
           %td B
           %td A
         %tr
-          %td{:colspan => '6'} * 2 year CAGR growth
-    %section.align-center
-      = image_tag 'most-prominent-brand.png'
-      %h3.align-center List of prominent brands by company (brands with sales in excess of 1 million cases)
+          %td{:colspan => '6'}
+            %small* 2 year CAGR growth
+    %section
+      %table.table.table-bordered.table-striped
+        %tr
+          %caption
+            %b Most Prominent Brand (sales of over 1 million cases)
+        %tr
+          %th Whisky
+          %th Brandy
+          %th Rum
+          %th Vodka & Gin
+          %th Beer
+        %tr
+          %th.align-center{:colspan => 5} United Breweries
+        %tr
+          %th -
+          %th -
+          %th -
+          %th -
+          %th -
+        %tr
+          %th.align-center{:colspan => 5} United Spirits
+        %tr
+          %td Director's Special
+          %td McDowell's No.1
+          %td Old Cask Rum
+          %td Carew's
+          %td -
+        %tr
+          %td Old Tavern
+          %td Honey Bee
+          %td Bagpiper Rum
+          %td White Mischief
+          %td -
+        %tr
+          %td Haywards
+          %td McDowell's VSOP Brandy
+          %td McDowell's No.1 Celebration Rum
+          %td Romanov
+          %td - 
+        %tr
+          %td McDowell's Green Label
+          %td - 
+          %td - 
+          %td - 
+          %td - 
+        %tr
+          %td Gold Riband Royal Challenge
+          %td - 
+          %td - 
+          %td - 
+          %td - 
+        %tr
+          %td DSP Black Signature
+          %td - 
+          %td - 
+          %td - 
+          %td - 
+        %tr
+          %td Derby Special Whisky
+          %td - 
+          %td - 
+          %td - 
+          %td - 
+        %tr
+          %td Men's Club Whisky
+          %td - 
+          %td - 
+          %td - 
+          %td - 
+        %tr
+          %td Bagpiper
+          %td - 
+          %td - 
+          %td - 
+          %td - 
+        %tr
+          %td McDowell's No.1
+          %td - 
+          %td - 
+          %td - 
+          %td - 
+        %tr
+          %td McDowell's No.1 Platinum Whisky
+          %td - 
+          %td - 
+          %td - 
+          %td -
+        %tr
+          %th.align-center{:colspan => 5} Radico
+        %tr
+          %td 8 PM
+          %td Old Admiral Brandy
+          %td Contessa Rum
+          %td Magic Moments
+          %td -
+        %tr
+          %th.align-center{:colspan => 5} Tilaknagar Industries
+        %tr
+          %td -
+          %td Mansion House
+          %td Madira Rum
+          %td -
+          %td -
+          %tr
+            %th.align-center{:colspan => 5} Globus Spirits
+          %tr
+            %td -
+            %td -
+            %td -
+            %td -
+            %td -
+
     %section
       %h5 Profitability
       %p
@@ -145,7 +256,8 @@
           %td B
           %td B
         %tr
-          %td{:colspan => '6'} * 2 year growth
+          %td{:colspan => '6'}
+            %small * 2 year growth
 
       %table.table.table-bordered.table-striped
         %caption
@@ -203,7 +315,8 @@
           %td 8.80%
           %td 6.62%
         %tr
-          %td{:colspan => '6'} * As on June 30th, 2012 filing
+          %td{:colspan => '6'}
+            %small * As on June 30th, 2012 filing
       %p
         United Spirits has been able to maintain an operating profit which is in line with that of the industry but it suffers from heavy outflow of cash in the form of interest expense. Last year, United Spirits paid almost 54% of its operating profits towards interest expenses. Over the past 5 years, interest expense has costed the company nearly 38.5% of its operating profit. Tilaknagar Industries has the most impressive operating profit margins but again the company is a victim of high interest expense.
       %table.table.table-bordered.table-striped
@@ -238,7 +351,8 @@
           %td 29.69%
           %td 12.59%
         %tr
-          %td{:colspan => '6'} * Average of quarterly operating margins for the corresponding period.
+          %td{:colspan => '6'}
+            %small * Average of quarterly operating margins for the corresponding period.
       %table.table.table-bordered.table-striped
         %caption
           %b Interest paid as percentage of Gross Profit
@@ -271,7 +385,8 @@
           %td C
           %td A
         %tr
-          %td{:colspan => '6'} * Average = average of quarterly results
+          %td{:colspan => '6'}
+            %small * Average = average of quarterly results
     %section
       %h5 Short term solvency
       %p United Spirits looks comfortable to meet its short term obligations. Tilaknagar Industries and Globus Spirits seem to be on the border line and any deterioration from this point will be a cause of concern.
@@ -348,8 +463,8 @@
           %td B
           %td A
     %section.align-center
-      = image_tag 'Historical- PE-12months.png'
       %h3 Historical PE (based on trailing 12 months earnings)
+      = image_tag 'Historical-PE.png'
     %section
       %h5 Return History
       %p United Breweries and Tilaknagar Industries have returned the most over a 4 year period, while United Spirits and Globus Spirits have yielded negative returns. Radico Khaitan has yielded mediocre returns during the same period.
@@ -399,7 +514,8 @@
           %td 11.87%
           %td 11.87%
         %tr
-          %td{:colspan => '6'} * 2.5 years return
+          %td{:colspan => '6'}
+            %small * 2.5 years return
     %section
       %h5 Short term recommendations
       %p Due to the on-going Kingfisher Airline crises, the UB Group may be forced to sell a piece of their holdings in United Breweries and United Spirits which may result in some value unlocking in the respective companies. But at a PE of 95.26, we feel United Breweries is an extremely over-priced counter and calls for an immediate sell. United Spirits seems to be fairly priced and investors, who have already invested in it, may continue holding their shares and expect moderate returns. While the industry PE is 41.28 (source: www.moneycontrol.com), at just 6.39, Globus Spirits seems to be available at a bargain and thus we put a “Buy” on it.
