@@ -47,7 +47,7 @@
             %small.pull-right
               = link_to 'See all', subscriptions_path
           %ul
-            - SubscriptionDecorator.decorate(resource.subscriptions.users).each do |subscription|
+            - SubscriptionDecorator.decorate(resource.subscriptions.of_type('User')).each do |subscription|
               %li= subscription.render_profile
       %li.span3
         .well
