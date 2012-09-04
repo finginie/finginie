@@ -112,6 +112,21 @@ ul.ui-autocomplete li a {
   }
 }
 
+.suggestion-container .suggestion-item {
+  display: block;
+}
+
+.suggestions-container .name {
+  color: #16509E;
+  font-weight: bold;
+  width: 130px;
+}
+
 #invitations_list{
   height: 274px;
 }
+
+.wide {
+  width: 100%;
+}
+

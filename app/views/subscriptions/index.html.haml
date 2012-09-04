@@ -5,7 +5,7 @@
     %th Portfolio
     %th
 
-  - @subscriptions.portfolios.each do |subscription|
+  - @subscriptions.of_type('Portfolio').each do |subscription|
     %tr
       %td= link_to subscription.subscribable.name, public_portfolio_path(subscription.subscribable)
       %td

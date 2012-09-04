@@ -6,7 +6,7 @@ class PublicPortfoliosController < InheritedResources::Base
   authorize_resource :class => false
 
   def end_of_association_chain
-    super.where(:is_public => true)
+    super.public
   end
 
   def resource

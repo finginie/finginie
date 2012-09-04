@@ -24,6 +24,7 @@ class Portfolio < ActiveRecord::Base
   has_many :fixed_deposits, :through => :fixed_deposit_transactions, :uniq => true
   has_many :real_estates,   :through => :real_estate_transactions,   :uniq => true
 
+  scope :public, where(:is_public => true)
 
   validates :user_id, :presence => true
   validates :name, :presence => true,
@@ -95,6 +96,11 @@ class Portfolio < ActiveRecord::Base
 
   def make_public!
     update_attribute :is_public, true
+    Event.create do |event|
+      event.user = user
+      event.target = self
+      event.action = 'portfolio_share'
+    end
   end
 
   def make_private!
