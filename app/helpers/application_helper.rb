@@ -1,4 +1,13 @@
 module ApplicationHelper
+  def social_network_link(icon, url, &block)
+    content = link_to url, { 'data-toggle' => 'modal' } do
+      image_tag icon
+    end
+    content += capture(&block) if block_given?
+
+    content
+  end
+
   def airbrake_javascript_notifier
     host = Airbrake.configuration.host.dup
     port = Airbrake.configuration.port
