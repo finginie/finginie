@@ -10,7 +10,8 @@
                         :size => '20*5',
                         :class => 'span5')
       .actions
-        = link_to '#', { :id => 'twittershare', :class => %W(btn btn-primary btn-large), :data => { :post_url => twitter_post_url }} do
-          %i
-            = image_tag 'twitter_icon.png'
-          Tweet on Twitter
+        %span.ga-track-event{:data => {:category => 'share', :action => 'twitter'}}
+          = link_to '#', { :id => 'twittershare', :class => %W(btn btn-primary btn-large), :data => { :post_url => twitter_post_url }} do
+            %i
+              = image_tag 'twitter_icon.png'
+            Tweet on Twitter
