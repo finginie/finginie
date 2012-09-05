@@ -7,3 +7,8 @@ en:
       public_financial_profile:
         name: "Finginie- %{user_slug}'s Personalized Investment Suggestions"
         description: 'These are my personalized investment suggestions from Finginie customized to my unique financial needs and constraints backed by financial experts opinions and 10 years of market data. Check them out !'
+    twitter:
+      public_portfolio:
+        description: "@finginie Check out my portfolio %{share_url}"
+      public_financial_profile:
+        description: "@finginie Check out my personalized financial plan based on financial experts' opinion and 10 years of market data %{share_url}"

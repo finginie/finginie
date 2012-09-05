@@ -6,12 +6,12 @@
     .sector.control-group
       .controls
         = text_area_tag(:twitter_message,
-                        twitter_share_description(public_financial_profile_url(current_user)),
+                        twitter_share_description_for(share_type),
                         :size => '20*5',
                         :class => 'span5')
       .actions
         %span.ga-track-event{:data => {:category => 'share', :action => 'twitter'}}
-          = link_to '#', { :id => 'twittershare', :class => %W(btn btn-primary btn-large), :data => { :post_url => twitter_post_url }} do
+          = link_to '#', { :id => 'twittershare', :class => %W(btn btn-primary btn-large), :data => { :post_url => twitter_post_url_for(share_type) }} do
             %i
               = image_tag 'twitter_icon.png'
             Tweet on Twitter
