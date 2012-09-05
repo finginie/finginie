@@ -3,9 +3,7 @@
     = facebook_recommendation('Ideal Investments')
     %h3
       Share
-      %span.ga-track-event{:data => {:category => 'share', :action => 'facebook'}}
-        = link_to facebook_share_url_with_link(public_financial_profile_path(current_user)) do
-          = image_tag 'facebook.png'
+      = tracked_facebook_share_url_for('public_financial_profile')
       = social_network_link('twitter.png', '#twitterModal') do
         = render :partial => 'twitter_share_modal'
       = social_network_link('mail.png', '#mail_modal') do
@@ -32,9 +30,7 @@
     %h5= t('.intro_to_trade')
     %h3
       Share
-      %span.ga-track-event{:data => {:category => 'share', :action => 'facebook'}}
-        = link_to facebook_share_url_with_link(public_financial_profile_path(current_user)) do
-          = image_tag 'facebook.png'
+      = tracked_facebook_share_url_for('public_financial_profile')
       = social_network_link('twitter.png', '#twitterModal')
       = social_network_link('mail.png', '#mail_modal')
     = link_to 'Continue', page_path('trade'), :class => 'btn btn-primary'

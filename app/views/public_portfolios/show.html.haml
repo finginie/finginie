@@ -1,6 +1,14 @@
 .row.show-grid
   .span12
     = render 'subnav', :portfolio => resource
+
+    - if can? :manage, resource
+      %h3
+        Share
+        = tracked_facebook_share_url_for('public_portfolio')
+        = social_network_link('twitter.png', '#')
+        = social_network_link('mail.png', '#')
+
 .row.show-grid
   .span12
     - if resource.empty_transactions?
