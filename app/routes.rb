@@ -6,7 +6,7 @@ Finginie::Application.routes.draw do
 
   #Learning investing
   resources :responses, :only => [:index, :new, :create]
-  resources :questions, :only => :show
+  resources :questions, :only => [:index, :show]
 
   #Market Commentary
   get '/blog' => redirect("/blog/index"), :as => :blog

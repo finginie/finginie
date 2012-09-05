@@ -94,11 +94,6 @@ module ApplicationHelper
     }
   end
 
-  def start_quiz_with_random_question_ids_link
-    ids = Question.random_questions.map(&:id)
-    new_response_path(:question_ids => ids.join('-'))
-  end
-
   private
   def facebook_callback_url(return_url, step)
     social_network_facebook_callback_url(:return_to => return_url, :step => step)
