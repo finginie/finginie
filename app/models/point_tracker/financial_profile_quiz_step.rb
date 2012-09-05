@@ -1,7 +1,7 @@
 module PointTracker
   class FinancialProfileQuizStep < Base
     DESCRIPTION = 'Take Personalized financial profile quiz'
-    ACTION_LINK = { :controller => 'comprehensive_risk_profilers', :action => 'edit' }
+    ACTION_LINK = { :controller => :comprehensive_risk_profilers, :action => :edit }
     POINTS      = 50
 
     def valid?
