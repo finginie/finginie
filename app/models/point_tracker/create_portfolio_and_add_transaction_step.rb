@@ -1,7 +1,7 @@
 module PointTracker
   class CreatePortfolioAndAddTransactionStep < Base
     DESCRIPTION = 'Create Portfolio and add five transactions'
-    ACTION_LINK = '/portfolios/new'
+    ACTION_LINK = { :controller => :portfolios, :action => :new }
     POINTS      = 500
 
     def valid?
