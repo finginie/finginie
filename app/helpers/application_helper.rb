@@ -64,10 +64,6 @@ module ApplicationHelper
     end
   end
 
-  def url_with_complete_path(relative_url)
-    host + relative_url
-  end
-
   def current_page_url
     host + request.path
   end
@@ -76,4 +72,37 @@ module ApplicationHelper
     'http://' + request.host_with_port
   end
 
+  def facebook_share_url(hsh)
+    ENV['FACEBOOK_SHARE_DIALOG_URL'] + fb_share_query_params(hsh)
+  end
+
+  def public_financial_profile_fb_hsh
+    {
+      :link => public_financial_profile_url(current_user),
+      :name => t('facebook_share.public_portfolio.name', :user_slug => current_user.slug_name),
+      :description => t('facebook_share.public_portfolio.description'),
+      :redirect_uri => facebook_callback_url(current_page_url, PointTracker::ShareFinancialProfileOnFbStep)
+    }
+  end
+
+  def quiz_details_fb_hsh(score, ids)
+    {
+      :link => new_response_url(:question_ids => ids.join('-')) ,
+      :name => t('facebook_share.learning_tool.quiz_name'),
+      :description => t('facebook_share.learning_tool.quiz_description', :score => score, :questions => Response::QUIZ_LIMIT),
+      :redirect_uri => facebook_callback_url(responses_url, PointTracker::ShareQuizDetailsOnFbStep)
+    }
+  end
+
+  private
+  def facebook_callback_url(return_url, step)
+    social_network_facebook_callback_url(:return_to => return_url, :step => step)
+  end
+
+  def fb_share_query_params(hsh)
+    {
+      :app_id => ENV['FACEBOOK_KEY'],
+      :picture => host + '/assets/logo.png'
+    }.merge(hsh).to_query
+  end
 end

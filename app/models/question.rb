@@ -1,9 +1,16 @@
 class Question < ActiveRecord::Base
-  attr_accessible :text, :weight, :choices_attributes
-  belongs_to :quiz
+  attr_accessible :text, :weight, :news, :reason
+
   has_many :choices, :dependent => :destroy
 
   validates :text, :presence => true
 
-  accepts_nested_attributes_for :choices, :reject_if => lambda { |a| a[:text].blank? }, :allow_destroy => true
+  belongs_to :correct_answer, :foreign_key => 'correct_choice_id', :class_name => 'Choice'
+
+  scope :questions_with_correct_answers, lambda { |question_ids| includes(:correct_answer).find(question_ids)}
+
+  scope :random_questions, :order => 'random()', :select => 'id', :limit => Response::QUIZ_LIMIT
+
+  delegate :text, :to => :correct_answer, :allow_nil => true, :prefix => true
+
 end

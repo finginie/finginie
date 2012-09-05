@@ -1,0 +1,47 @@
+.row
+  .span9
+    %h1 You have successfully completed your quiz.
+    %h2
+      Your score  :  #{@responses.score} out of #{Response::QUIZ_LIMIT}
+    %h2 Listing attempted questions
+
+    %table.table
+      %thead
+        %tr
+          %th No
+          %th Question
+          %th Your Response
+          %th Answer
+      - @responses.summary.each_with_index do |summary, index|
+        = QuizSummaryDecorator.new(summary, index).table_rows
+
+    Share your score on facebook.
+    = link_to t('.facebook.post_wall'), facebook_share_url(quiz_details_fb_hsh(@responses.score,@responses.quiz_info.keys)), :class => 'btn btn-primary'
+    Start new quiz.
+    = link_to "Restart Quiz", main_app.questions_path
+
+  .span3
+    .thumb
+      = link_to image_tag('ebola-370.jpg', :class => %w(img-rounded)), main_app.page_path('win-an-ipad3')
+    .row-fluid
+      .span12.well
+        .thumb
+          %h5= link_to 'Financial Planning', main_app.edit_comprehensive_risk_profiler_path
+          %p Planning can be nerve-wracking. That’s why we did all the complicated number crunching so that you can invest with a single click.
+        .thumb
+          %h5= link_to 'Learn Investing', main_app.page_path('investment_education')
+          %p An investment in knowledge pays the best interest." - Benjamin Franklin Learn how to make good investment decisions.
+        .thumb
+          %h5= link_to 'Stock Recommendations', main_app.page_path('stock-recommendations')
+          %p No one has become a crorepati by saving money in a bank account or fixed deposit. That’s why we recommend money-multiplying stocks.
+        .thumb
+          %h5= link_to 'Research Reports', main_app.research_reports_path
+          %p Our research report aggregator tool is so vast that you can become a Ph.d in Financial Research.
+        .thumb
+          %h5= link_to 'Portfolio Tracking', portfolios_path
+          %p No unnecessary paperwork, excel formulas or any other fancy tools. Get a financial analyst’s perspective of all your investments with just a few clicks.
+        .thumb
+          %h5
+            Social Features
+            %small Coming Soon
+          %p Connect with the kings of investing and learn how to make profitable investments.If you are a king yourself, build a kingdom of followers.

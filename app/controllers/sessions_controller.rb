@@ -13,7 +13,4 @@ private
     redirect_uri.include?("special_offer=true")
   end
 
-  def clear_session!(*args)
-    args.each {|arg| session[arg] = nil }
-  end
 end

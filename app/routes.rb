@@ -1,9 +1,12 @@
 Finginie::Application.routes.draw do
   resources :research_ratings, :only => [:index]
 
-  #Learn Investing
   root :to => 'pages#show', :id => 'home'
   match "/pages/*id" => 'pages#show', :as => :page, :format => false
+
+  #Learning investing
+  resources :responses, :only => [:index, :new, :create]
+  resources :questions, :only => [:index, :show]
 
   #Market Commentary
   get '/blog' => redirect("/blog/index"), :as => :blog
