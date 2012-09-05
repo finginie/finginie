@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/FinGinie/omniauth-single-signon.git
-  revision: 42bf3d1c580086f5a982579c2339753ff255c7b4
+  revision: b3e019ccda1439bf735f1e2e4b76e1f1e8c007d4
   specs:
     omniauth_single_signon (0.0.1)
       active_attr
@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: git://github.com/plataformatec/simple_form.git
-  revision: 4e6508e45f2cb46cf1a3e6a125e8f39233c7822d
+  revision: ece4dcaa4396cee8e935ecfb1df63ad6602f68fa
   specs:
     simple_form (2.1.0.dev)
       actionpack (~> 3.0)
