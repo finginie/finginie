@@ -27,10 +27,6 @@ class ApplicationController < ActionController::Base
   helper_method :single_signon_path
 
 private
-  def logged_in?
-    !!current_user
-  end
-
   def auto_page_class_names
     [params[:controller], params[:action], params[:id]].compact.map{ |n| n.split('/') }.flatten
   end

@@ -6,7 +6,7 @@
     .sector.control-group
       .controls
         = text_area_tag(:twitter_message,
-                        twitter_share_description(url_with_complete_path(public_financial_profile_path(current_user))),
+                        twitter_share_description(public_financial_profile_url(current_user)),
                         :size => '20*5',
                         :class => 'span5')
       .actions

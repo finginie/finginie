@@ -85,25 +85,19 @@ module ApplicationHelper
     }
   end
 
-  def quiz_details_fb_hsh(score)
+  def quiz_details_fb_hsh(score, ids)
     {
-      :link => start_quiz_with_random_question_ids_url ,
+      :link => new_response_url(:question_ids => ids.join('-')) ,
       :name => t('facebook_share.learning_tool.quiz_name'),
-      :description => t('facebook_share.learning_tool.quiz_description', :score => "#{score}" ,:questions => "#{Response::QUIZ_LIMIT}" ),
+      :description => t('facebook_share.learning_tool.quiz_description', :score => score, :questions => Response::QUIZ_LIMIT),
       :redirect_uri => facebook_callback_url(responses_url, PointTracker::ShareQuizDetailsOnFbStep)
     }
   end
 
   def start_quiz_with_random_question_ids_link
-    ids=Question.random_questions.map(&:id)
-    new_response_path + "?question_ids=" + ids.join('-')
+    ids = Question.random_questions.map(&:id)
+    new_response_path(:question_ids => ids.join('-'))
   end
-
-  def start_quiz_with_random_question_ids_url
-    ids=Question.random_questions.map(&:id)
-    new_response_url + "?question_ids=" + ids.join('-')
-  end
-
 
   private
   def facebook_callback_url(return_url, step)

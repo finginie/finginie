@@ -5,7 +5,7 @@ Finginie::Application.routes.draw do
   match "/pages/*id" => 'pages#show', :as => :page, :format => false
 
   #Learning investing
-  resources :responses
+  resources :responses, :only => [:index, :new, :create]
   resources :questions, :only => :show
 
   #Market Commentary

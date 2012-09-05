@@ -8,7 +8,7 @@ module IdealInvestmentsHelper
     hsh = {
       :return_to    => current_page_url,
       :step         => PointTracker::ShareFinancialProfileOnTwitterStep,
-      :callback_url => url_with_complete_path(social_network_twitter_callback_path)
+      :callback_url => social_network_twitter_callback_url
     }
     "#{ENV['AUTH_SITE_URL']}/twitter_post?#{hsh.to_query}"
   end
