@@ -27,6 +27,7 @@ class Ability
     if user
       can :manage, Portfolio, :user_id => user.id
       can :manage, Subscription, :user_id => user.id
+      can :read, EventUpdate
       can :manage, User, :id => user.id
       can :read, User
       can [:create, :destroy], :public_portfolio

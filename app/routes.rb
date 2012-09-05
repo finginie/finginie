@@ -125,6 +125,7 @@ Finginie::Application.routes.draw do
 
   # Social Features
   resources :subscriptions, :only => [:index, :create, :destroy]
+  resources :event_updates, :only => [:index]
 
   # Sitemap and other meta
   match 'sitemap.xml' => 'sitemaps#sitemap'

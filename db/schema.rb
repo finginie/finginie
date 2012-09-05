@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(:version => 20120910065213) do
 
   add_index "comprehensive_risk_profilers", ["user_id"], :name => "index_comprehensive_risk_profilers_on_user_id"
 
+  create_table "event_updates", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "event_updates", ["event_id"], :name => "index_event_updates_on_event_id"
+  add_index "event_updates", ["user_id"], :name => "index_event_updates_on_user_id"
+
   create_table "events", :force => true do |t|
     t.integer  "user_id"
     t.integer  "target_id"

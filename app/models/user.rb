@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :portfolios, :dependent => :destroy
 
   has_many :subscriptions, :dependent => :destroy
-  has_many :followers, :dependent => :destroy,
+  has_many :follow_subscriptions, :dependent => :destroy,
            :as => :subscribable, :class_name => 'Subscription'
   has_many :events, :dependent => :destroy
 
