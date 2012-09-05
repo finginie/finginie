@@ -238,3 +238,62 @@ ul.ui-autocomplete li a {
     padding: 20px 19px 14px;
     position: relative;
 }
+
+/*--------------------------------------------------------------------------
+Styling Testimonials
+--------------------------------------------------------------------------*/
+.styling-testimonials ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+	
+.styling-testimonials blockquote {
+	font-size: 11px;
+	color: #4b4b4b;
+	margin: 0;
+}
+
+.styling-testimonials blockquote span {
+	width: 30px;
+	height: 17px;
+	display: block;
+	margin: -5px 0 0 0;
+	background: transparent url(styleguide/images/blockquote.png) no-repeat 0 0;
+	float: left;
+}
+
+.styling-testimonials cite {
+	font-size: 10px;
+	color: #B32002;
+}
+
+.styling-testimonials h2 {
+	padding: 20px 25px 0 25px;
+	background: #eeeeee;
+	color: #B32002;
+}
+
+.styling-testimonials li {
+	padding: 0 0 20px 0;
+	margin: 0 0 5px 0;
+	background: #eeeeee;
+	float: left;
+}
+
+.styling-testimonials li.last {
+	margin: 0;
+}
+
+.styling-testimonials li p {
+	padding: 15px 0 0 0;
+}
+
+.styling-testimonials li blockquote {
+	padding: 5px 21px 4px;
+}
+
+.styling-testimonials li cite {
+	padding: 0 25px;
+	float: right;
+}
