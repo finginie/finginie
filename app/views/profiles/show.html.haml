@@ -5,7 +5,7 @@
       = resource.name
       - if can? :edit, resource
         %small= link_to 'Edit', edit_own_profile_path
-      -# resource.follow_unfollow_button
+      = resource.follow_unfollow_button
     %h6
       Occupation:
       %small= resource.occupation
