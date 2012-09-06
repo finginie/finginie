@@ -15,10 +15,10 @@
       - @responses.summary.each_with_index do |summary, index|
         = QuizSummaryDecorator.new(summary, index).table_rows
 
+
     Share your score on facebook.
     = link_to t('.facebook.post_wall'), facebook_share_url(quiz_details_fb_hsh(@responses.score,@responses.quiz_info.keys)), :class => 'btn btn-primary'
-    Start new quiz.
-    = link_to "Restart Quiz", main_app.questions_path
+    = link_to "Start New Quiz", main_app.questions_path
 
   .span3
     .thumb

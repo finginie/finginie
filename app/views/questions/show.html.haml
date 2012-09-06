@@ -1,20 +1,21 @@
 .row
   .span9
-    %h1= t '.title'
+    %h1= t('quiz.title')
+    %h5= t('quiz.question_number', :number => flash[:question_number], :questions => Response::QUIZ_LIMIT)
     %section
     = form_tag responses_path do
       %h3 #{@question.news}
       .control-group.radio_buttons.required
         %label.radio_buttons.required.control-label
-          %h3 Question #{flash[:question_number]} : #{@question.text}
+          %h3 Q: #{@question.text}
         .controls
           - @question.choices.each do |choice|
             %label.radio
               = radio_button_tag :choice_id, choice.id, false, :required => :required
               = choice.text
       .form-actions
-        = submit_tag 'Answer', :class => %w(.btn.btn-primary)
-
+        = submit_tag 'Next Question', :class => %w(.btn.btn-primary)
+      %p= t('quiz.note')
   .span3
     .thumb
       = link_to image_tag('ebola-370.jpg', :class => %w(img-rounded)), main_app.page_path('win-an-ipad3')
