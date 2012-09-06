@@ -44,7 +44,7 @@ $(document).ready ->
     $("#invitations_list .invite_frnds").val "Invite 0 Friends"
 
   update_message_and_ebola_points = (data) ->
-    $("#flash_notice").html(data.msg)
+    $(".notice").html(data.msg)
     $('#points').html(data.points + ' points')
 
   initialize_data_tables = (data) ->

@@ -16,4 +16,13 @@ module PointTracker
   def self.Find(step)
     "PointTracker::#{step.to_s.classify}".constantize
   end
+
+  def self.add_points_for(params, user)
+    step, invited_users = params[:step], params[:contacts]
+    step_klass = step.constantize
+    invited_users.each do |email|
+      meta_data = { :invited_user_mail => email }
+      step_klass.new(user, meta_data).save
+    end
+  end
 end

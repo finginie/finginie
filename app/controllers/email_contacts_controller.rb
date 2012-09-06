@@ -15,11 +15,7 @@ class EmailContactsController < ApplicationController
   end
 
   def send_mail
-    params[:contacts].each do |email|
-      meta_data = { :invited_user_mail => email }
-      share_financial_profile_mail_step = PointTracker::ShareFinancialProfileViaMailStep.new(current_user, meta_data)
-      share_financial_profile_mail_step.save
-    end
+    PointTracker.add_points_for(params, current_user)
     EbolaMailer.welcome_email(params[:contacts], public_financial_profile_url(current_user), session[:from_email_id]).deliver
 
     respond_to do |format|

@@ -7,7 +7,8 @@
         Share
         = tracked_facebook_share_url_for('public_portfolio')
         = social_network_link('twitter.png', '#')
-        = social_network_link('mail.png', '#')
+        = social_network_link('mail.png', '#mail_modal') do
+          = render :partial => 'shared/mail_modal', :locals => { :step => PointTracker::SharePortfolioViaMailStep }
 
 .row.show-grid
   .span12

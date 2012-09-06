@@ -7,7 +7,7 @@
       = social_network_link('twitter.png', '#twitterModal') do
         = render :partial => 'twitter_share_modal'
       = social_network_link('mail.png', '#mail_modal') do
-        = render :partial => 'mail_modal'
+        = render :partial => 'shared/mail_modal', :locals => { :step => PointTracker::ShareFinancialProfileViaMailStep }
 
     %p= t(".introduction")
     - if params[:initial_investment] && params[:initial_investment].to_f != resource.initial_investment
