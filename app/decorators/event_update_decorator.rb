@@ -5,5 +5,5 @@ class EventUpdateDecorator < ApplicationDecorator
     EventDecorator.decorate model.event
   end
 
-  delegate :icon, :content, :to => :event
+  delegate :icon, :content, :title, :to => :event
 end

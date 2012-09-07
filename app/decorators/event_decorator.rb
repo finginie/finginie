@@ -5,6 +5,10 @@ class EventDecorator < ApplicationDecorator
     h.image_tag "#{action}_event_icon.png"
   end
 
+  def title
+    model.action.titleize
+  end
+
   def content
     h.content_tag :p, send("#{action}_content")
   end
