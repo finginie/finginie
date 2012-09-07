@@ -6,7 +6,7 @@ protected
     current_user
   end
 
-  def resource
+  def collection
     EventUpdateDecorator.decorate end_of_association_chain
   end
 
