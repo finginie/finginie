@@ -1,4 +1,4 @@
-.row.show-grid
+.row
   .span12
     = facebook_recommendation('Ideal Investments')
     %h3
@@ -8,12 +8,50 @@
         = render :partial => 'twitter_share_modal'
       = social_network_link('mail.png', '#mail_modal') do
         = render :partial => 'mail_modal'
+    %p
+      = t('.public.message', :profile_link => link_to(t('.public.profile_link'), public_financial_profile_path(current_user))).html_safe
 
+    -if resource.decorated_comprehensive_risk_profiler.valid?
+      %h1
+        Your Risk Appetite is :
+        %small
+          = resource.decorated_comprehensive_risk_profiler.score
+          out of 10. (10 indicates maximum risk taking ability)
+      = facebook_recommendation_tag
+      %ul
+        = resource.decorated_comprehensive_risk_profiler.private_summary
+      %h5.show-gird Suggested Investment Mix
+      %p= t ".suggestion"
+    - else
+      %h1 Balanced Portfolio
+      = facebook_recommendation_tag
+      %p= t( ".default_suggestion", :quiz_link => (link_to 'short quiz', edit_comprehensive_risk_profiler_path)).html_safe
+
+- if resource.decorated_comprehensive_risk_profiler.score
+  .row
+    .span8.show-grid
+      = gchart(:data => FinancialPlanner.ideal_asset_allocation(resource.decorated_comprehensive_risk_profiler).to_a,
+              :title => 'Suggested Asset Allocation',
+              :chart_type => 'Pie' )
+
+    .span4.show-grid
+      %table.table.table-striped.table-bordered
+        %tr
+          %th Asset Class
+          %th Percentage
+        - FinancialPlanner.ideal_asset_allocation(resource.decorated_comprehensive_risk_profiler).each do |asset_class,percentage|
+          %tr
+            %td= asset_class
+            %td= "#{percentage}%"
+      .pull-right
+        = link_to image_tag('ebola-370.jpg'), main_app.page_path('win-an-ipad3')
+
+.row.show-grid
+  .span12
     %p= t(".introduction")
     - if params[:initial_investment] && params[:initial_investment].to_f != resource.initial_investment
       = content_tag :div, t(".too_low_investment"), :id => 'result', :class => 'alert alert-notice'
-    %p
-      = t('.public.message', :profile_link => link_to(t('.public.profile_link'), public_financial_profile_path(current_user))).html_safe
+
     = form_tag comprehensive_risk_profiler_ideal_investments_path, :method => :get, :class => 'form-horizontal' do
       .input-append
         = label_tag :initial_investment, t('.initial_investment'), :class => 'control-label'

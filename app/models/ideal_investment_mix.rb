@@ -11,6 +11,10 @@ class IdealInvestmentMix
     @initial_investment = [comprehensive_risk_profiler.initial_investment, MINIMUM_INVESTMENT].max
   end
 
+  def decorated_comprehensive_risk_profiler
+    ComprehensiveRiskProfilerDecorator.decorate(comprehensive_risk_profiler)
+  end
+
   def top_gold_etfs(limit)
     DataProvider::Scheme.where(:name.in => ['Goldman Sachs Gold Exchange Traded Scheme-Growth',
       'SBI Gold Exchange Traded Scheme-Growth', 'Kotak Gold ETF-Growth' ])

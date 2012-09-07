@@ -3,8 +3,7 @@
     = facebook_recommendation('Personalized Financial Plan')
     = image_tag 'Quiz-page-mf-selection.png', :class => 'show-grid';
     -unless resource.persisted?
-      = link_to "Skip Step and load balanced portfolio (Not Recommended)", comprehensive_risk_profiler_path(score: 6), html_options = { id: "skip_quiz"}
-
+      = resource.skip_link
     = simple_form_for resource, :url => comprehensive_risk_profiler_path, :method => :put do |f|
       %ol
         %li= f.input :age
@@ -27,6 +26,7 @@
         %li= f.input :preference, :collection => t("comprehensive_risk_profiler.preference").invert, :as => :radio_buttons
         %li= f.input :portfolio_investment, :collection => t("comprehensive_risk_profiler.portfolio_investment").invert, :as => :radio_buttons
         .form-actions
+          %p= t ".future_investment"
           = f.submit 'Submit', :class => %w(btn btn-primary)
 
   .span4
