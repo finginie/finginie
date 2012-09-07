@@ -1,5 +1,5 @@
 class Response
-  QUIZ_LIMIT  = 20
+  QUIZ_LIMIT  = 10
   NOT_YET_ANSWERED  = nil
 
   attr_reader :quiz_info
