@@ -1,7 +1,7 @@
-%table.table.table-striped.table-bordered
+%table.table.table-striped
   %thead
     %th.span4 Index Name
-    %th.span2 Value
-    %th.span2 Change
-    %th.span4 % Change
+    %th.span3 Value
+    %th.span3 Change
+    %th.span3 % Change
   %tbody

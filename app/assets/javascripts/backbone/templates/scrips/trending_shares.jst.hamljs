@@ -1,4 +1,4 @@
-%table.table.table-striped.table-bordered
+%table.table.table-striped
   %thead
     %th.span6 Name
     %th.span4 Today's Price
