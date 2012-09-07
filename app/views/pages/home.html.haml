@@ -16,8 +16,8 @@
 
 .row.show-grid
   .span8
-    .row.show-grid
-      .span8
+    .row-fluid.show-grid
+      .span12.well-border
         %ul.nav.nav-tabs
           %li
             %h5 News
@@ -32,11 +32,11 @@
           .tab-pane#news_companies
           .tab-pane#news_economy
           .tab-pane#news_markets
-    .row.show-grid
-      .span8
+    .row-fluid.show-grid
+      .span12
         %h5 Trending Shares
-        .row
-          .span4
+        .row-fluid.show-grid
+          .span6.well-border
             %ul.nav.nav-tabs
               %li
                 %h5 NSE
@@ -47,7 +47,7 @@
               .tab-pane#Nse_top_gainers.active
               .tab-pane#Nse_top_losers
               .tab-pane#Nse_most_active
-          .span4
+          .span6.well-border
             %ul.nav.nav-tabs
               %li
                 %h5 BSE
@@ -59,8 +59,8 @@
               .tab-pane#Bse_top_losers
               .tab-pane#Bse_most_active
 
-    .row.show-grid
-      .span8
+    .row-fluid.show-grid
+      .span12.well-border
         %ul.nav.nav-tabs
           %li
             %h5 Mutual Funds
@@ -72,19 +72,19 @@
           .tab-pane#top_mutual_funds
           .tab-pane#lowest_mutual_funds
 
-    .row.show-grid
-      .span8#stock_recommendations
+    .row-fluid.show-grid
+      .span12.well-border#stock_recommendations
         %h5
           Stock Recommendations
           %small.pull-right= link_to 'See all', page_path('stock-recommendations')
-        %table.table.table-striped.table-bordered
+        %table.table.table-striped
           %thead
             %tr
-              %th.span1 Date
-              %th.span3 Name
-              %th.span4 Recommendation
+              %th.span2 Date
+              %th.span4 Name
+              %th.span3 Recommendation
               %th.span2 CMP
-              %th.span3 Target Price
+              %th.span2 Target Price
           %tbody
             %tr
               %td 26-Jun-12
@@ -118,8 +118,8 @@
               %td 931
 
   .span4
-    .row.show-grid
-      .span4
+    .row-fluid.show-grid
+      .span12.well-border
         %ul.nav.nav-tabs
           %li
             %h5 Sectoral Indices

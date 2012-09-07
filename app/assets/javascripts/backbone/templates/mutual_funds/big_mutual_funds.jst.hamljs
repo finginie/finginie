@@ -1,4 +1,4 @@
-%table.table.table-striped.table-bordered{data: {role: 'top_performers'} }
+%table.table.table-striped{data: {role: 'top_performers'} }
   %tr
     %th.span3 Name
     %th.span1 NAV
