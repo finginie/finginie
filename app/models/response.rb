@@ -15,14 +15,12 @@ class Response
 
   def summary
     questions.inject([]) do |result, question|
-      correct_answer  = question.correct_answer_text
-      user_response   = user_choices[question.id].first.text
+      correct_answer  = question.correct_choice_id
+      user_choice_id   = quiz_info[question.id].to_i
       result << OpenStruct.new({
-        :question_text        => question.text,
-        :correct_answer       => correct_answer,
-        :user_choice          => user_response,
-        :question_explanation => question.reason,
-        :question_status      => correct_answer == user_response
+        :question             => question,
+        :question_status      => correct_answer == user_choice_id,
+        :user_choice_id          => user_choice_id
       })
       result
     end
@@ -30,7 +28,7 @@ class Response
 
   private
   def questions
-    Question.questions_with_correct_answers(question_ids)
+    Question._with_choices(question_ids)
   end
 
   def question_ids
@@ -41,7 +39,4 @@ class Response
     quiz_info.values.map(&:to_i)
   end
 
-  def user_choices
-    Choice.find(user_choice_ids).group_by(&:question_id)
-  end
 end

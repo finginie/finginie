@@ -11,14 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120830111730) do
-
-  create_table "bubbles", :force => true do |t|
-    t.integer  "number"
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+ActiveRecord::Schema.define(:version => 20120828070419) do
 
   create_table "choices", :force => true do |t|
     t.decimal  "score"
@@ -150,13 +143,6 @@ ActiveRecord::Schema.define(:version => 20120830111730) do
   end
 
   add_index "portfolios", ["user_id"], :name => "index_portfolios_on_user_id"
-
-  create_table "posts", :force => true do |t|
-    t.string   "title"
-    t.string   "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "questions", :force => true do |t|
     t.decimal  "weight"

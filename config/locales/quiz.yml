@@ -1,0 +1,9 @@
+en:
+  quiz:
+    title: 'Interactive Investment Learning'
+    about: '<p>At Finginie, we believe in learning by doing. The flow of news in the markets has a huge impact on stock prices. Understanding how stocks respond to news flows is the key to making smart investment decisions. So, what are you waiting for? Start learning now!  Its fun and easy.</p><p>Disclaimer: While some scenarios are factual, many are hypothetical and have been created purely from the perspective of educating our users. Finginie does not guarantee the accuracy of any scenario or its possible effects.<p>'
+    note: 'Your score and answers will be revealed at the end of the quiz'
+    question_number: ' %{number} of %{questions}'
+    reason_to_signup: '<p>Congratulations. You have completed the quiz. To view your answers, you have to either sign-up or sign-in.</p><p> Sign-up is easy and takes less than a minute.</p>'
+    compelete_quiz: 'You have successfully completed your quiz.'
+    score_message: 'Your score is %{score} out of %{limit}'

@@ -3,13 +3,14 @@ class ResponsesController < InheritedResources::Base
 
   def new
     session[:responses] = initialize_quiz_info
-    flash[:about_quiz] = t('questions.quiz.about').html_safe
+    flash[:info] = t('quiz.about').html_safe
     flash[:question_number] = current_question_number
     redirect_to question_path(next_unanswered_question_id)
   end
 
   def index
     @responses = Response.new(session[:responses])
+    flash[:about_quiz] = t('quiz.reason_to_signup').html_safe unless current_user
     authorize! :index, current_user
   end
 
