@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/FinGinie/omniauth-single-signon.git
-  revision: b3e019ccda1439bf735f1e2e4b76e1f1e8c007d4
+  revision: 6395727ef22223a51ac1edf9c734f953cc80e7d9
   specs:
     omniauth_single_signon (0.0.1)
       active_attr
@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: git://github.com/plataformatec/simple_form.git
-  revision: ece4dcaa4396cee8e935ecfb1df63ad6602f68fa
+  revision: d444d6ceefd9d72555e1782a8b796473c4478ef3
   specs:
     simple_form (2.1.0.dev)
       actionpack (~> 3.0)
@@ -193,7 +193,7 @@ GEM
     bson (1.7.0)
     bson_ext (1.7.0)
       bson (~> 1.7.0)
-    builder (3.0.0)
+    builder (3.0.2)
     cancan (1.6.8)
     capybara (1.1.2)
       mime-types (>= 1.16)
