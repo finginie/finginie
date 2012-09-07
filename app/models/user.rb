@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :follow_subscriptions, :dependent => :destroy,
            :as => :subscribable, :class_name => 'Subscription'
   has_many :events, :dependent => :destroy
+  has_many :event_updates, :dependent => :destroy
 
   has_one :comprehensive_risk_profiler, :dependent => :destroy
 
