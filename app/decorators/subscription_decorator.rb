@@ -12,8 +12,7 @@ class SubscriptionDecorator < ApplicationDecorator
 private
   def render_person(person, size = :big)
     person = ProfileDecorator.decorate person
-    image = h.image_tag person.avatar_url, :class => size
     name = h.content_tag :h6, person.name, :class => size
-    h.content_tag :div, (image + name)
+    h.content_tag :div, (person.avatar(size) + name)
   end
 end

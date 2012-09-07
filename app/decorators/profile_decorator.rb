@@ -5,6 +5,14 @@ class ProfileDecorator < ApplicationDecorator
     model.avatar_url || 'profile.png'
   end
 
+  def avatar(size = :big)
+    h.image_tag avatar_url, :class => size
+  end
+
+  def name
+    model.name || model.slug_name
+  end
+
   def follow_unfollow_button
     if subscription && subscription.persisted?
       h.link_to h.subscription_path(subscription), :method => :delete, :class => %w(btn btn-danger) do
