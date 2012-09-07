@@ -129,3 +129,112 @@ ul.ui-autocomplete li a {
 .wide {
   width: 100%;
 }
+
+//============================== Styling for beginners tool =====================
+#bs-quiz-answer-true:after {
+    background-color: #EAFCF0;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 0 4px 0;
+    color: #04B40E;
+    content: "Correct";
+    font-size: 12px;
+    font-weight: bold;
+    left: -1px;
+    padding: 3px 7px;
+    position: absolute;
+    top: -1px;
+}
+#bs-quiz-answer-true {
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 4px 4px 4px;
+    margin: 15px 0;
+    padding: 39px 19px 14px;
+    position: relative;
+}
+
+#bs-quiz-answer-false:after {
+    background-color: #FFEDED;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 0 4px 0;
+    color: #FF0000;
+    content: "Incorrect";
+    font-size: 12px;
+    font-weight: bold;
+    left: -1px;
+    padding: 3px 7px;
+    position: absolute;
+    top: -1px;
+}
+#bs-quiz-answer-false {
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 4px 4px 4px;
+    margin: 15px 0;
+    padding: 39px 19px 14px;
+    position: relative;
+}
+
+#icon_question_correct_answer {
+    background: url("button_ok.png") no-repeat scroll left center transparent;
+    padding-left: 15px;
+    padding-right: 20px;
+    margin-left: 10px;
+}
+
+#icon_question_correct_answer:after {
+  content: "(Your Answer)";
+  padding-left: 10px;
+}
+
+#icon_question_incorrect {
+    background: url("wrong.png") no-repeat scroll left center transparent;
+    padding-left: 15px;
+    padding-right: 20px;
+    margin-left: 10px;
+}
+
+#icon_question_incorrect:after {
+  content: "(Your Answer)";
+  padding-left: 10px;
+}
+
+#icon_question_correctanswer {
+    background: url("button_ok.png") no-repeat scroll left center transparent;
+    padding-left: 15px;
+    padding-right: 20px;
+    margin-left: 10px;
+}
+
+#icon_question_correctanswer:after {
+  content: "(Correct Answer)";
+  padding-left: 10px;
+}
+
+#choices_order_list {
+  list-style-type: upper-alpha
+}
+
+
+#bs-quiz-question-block:after {
+    background-color: #0088CC;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 0 4px 0;
+    color: #FFF;
+    content: "Question";
+    font-size: 12px;
+    font-weight: bold;
+    left: -1px;
+    padding: 3px 7px;
+    position: absolute;
+    top: -1px;
+}
+
+#bs-quiz-question-block {
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 4px 4px 4px;
+    margin: 15px 0;
+    padding: 20px 19px 14px;
+    position: relative;
+}

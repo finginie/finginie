@@ -3,7 +3,7 @@ class ResponsesController < InheritedResources::Base
 
   def new
     session[:responses] = initialize_quiz_info
-    flash[:about_quiz] = t('quiz.about').html_safe
+    flash[:info] = t('quiz.about').html_safe
     flash[:question_number] = current_question_number
     redirect_to question_path(next_unanswered_question_id)
   end

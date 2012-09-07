@@ -1,22 +1,23 @@
 .row
   .span9
     %h1= t('quiz.title')
-    %h5= t('quiz.question_number', :number => flash[:question_number], :questions => Response::QUIZ_LIMIT)
     %section
-    = form_tag responses_path do
-      %h3 #{@question.news}
-      .control-group.radio_buttons.required
-        %label.radio_buttons.required.control-label
-          %h3 Q: #{@question.text}
-        .controls
-          - @question.choices.each do |choice|
-            %label.radio
-              = radio_button_tag :choice_id, choice.id, false, :required => :required
-              = choice.text
-      .form-actions
-        = submit_tag 'Next Question', :class => %w(.btn.btn-primary)
-      %p= t('quiz.note')
-  .span3
+    #bs-quiz-question-block
+      %h2= t('quiz.question_number', :number => flash[:question_number], :questions => Response::QUIZ_LIMIT)
+      = form_tag responses_path do
+        %h3 #{@question.news}
+        .control-group.radio_buttons.required
+          %label.radio_buttons.required.control-label
+            %h3 Q: #{@question.text}
+          .controls
+            - @question.choices.each do |choice|
+              %label.radio
+                = radio_button_tag :choice_id, choice.id, false, :required => :required
+                = choice.text
+        .show-grid
+          = submit_tag 'Next Question', :class => %w(btn btn-primary)
+    %h3.green= t('quiz.note')
+  .span3.show-grid
     .thumb
       = link_to image_tag('ebola-370.jpg', :class => %w(img-rounded)), main_app.page_path('win-an-ipad3')
     .row-fluid
@@ -28,10 +29,13 @@
           %h5= link_to 'Learn Investing', main_app.page_path('investment_education')
           %p An investment in knowledge pays the best interest." - Benjamin Franklin Learn how to make good investment decisions.
         .thumb
-          %h5= link_to 'Stock Recommendations', '#'
+          %h5= link_to 'Stock Recommendations', main_app.page_path('stock-recommendations')
           %p No one has become a crorepati by saving money in a bank account or fixed deposit. That’s why we recommend money-multiplying stocks.
         .thumb
-          %h5= link_to 'Research Reports', main_app.research_reports_path
+          %h5= link_to 'Stock Market data', main_app.page_path('markets')
+          %p The stock market is flooding with information. Stay ahead of others with the latest news, quotes and detailed corporate information. We support 3,500 stocks and 5,000 mutual funds
+        .thumb
+          %h5= link_to 'Research Reports', main_app.page_path('research')
           %p Our research report aggregator tool is so vast that you can become a Ph.d in Financial Research.
         .thumb
           %h5= link_to 'Portfolio Tracking', portfolios_path
