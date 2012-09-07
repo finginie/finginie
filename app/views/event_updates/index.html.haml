@@ -15,14 +15,14 @@
         -# Todo: Here image of user, name and comment text.
         %h5.show-grid Events Feed
         %ul.thumbnails
-        - collection.each do |update|
-          %li.span8
-            .thumbnail
-              .row
-                .span1= update.icon
-                .span7
-                  %h3= update.title
-                  %p= update.content
+          - collection.each do |update|
+            %li.span8
+              .thumbnail
+                .row
+                  .span1= update.icon
+                  .span6
+                    %h3= update.title
+                    %p= update.content
   .span4
     %ul.thumbnails
       %li.span4
