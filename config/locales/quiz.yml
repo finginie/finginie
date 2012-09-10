@@ -7,3 +7,6 @@ en:
     reason_to_signup: '<p>Congratulations. You have completed the quiz. To view your answers, you have to either sign-up or sign-in.</p><p> Sign-up is easy and takes less than a minute.</p>'
     compelete_quiz: 'You have successfully completed your quiz.'
     score_message: 'Your score is %{score} out of %{limit}'
+    error_message: 'Please choose any option.'
+  facebook:
+    post_wall: 'Post to Wall'

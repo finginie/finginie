@@ -12,7 +12,7 @@
         %h3
           Share your score on facebook
           %span
-            = link_to t('.facebook.post_wall'), facebook_share_url(quiz_details_fb_hsh(@responses.score,@responses.quiz_info.keys)),
+            = link_to t('facebook.post_wall'), facebook_share_url(quiz_details_fb_hsh(@responses.score,@responses.quiz_info.keys)),
              :class =>'btn btn-primary'
             = link_to "Start New Quiz", main_app.questions_path, :class => 'btn btn-success'
     .row
@@ -24,7 +24,7 @@
         %h3
           Share your score on facebook
           %span
-            = link_to t('.facebook.post_wall'), facebook_share_url(quiz_details_fb_hsh(@responses.score,@responses.quiz_info.keys)),
+            = link_to t('facebook.post_wall'), facebook_share_url(quiz_details_fb_hsh(@responses.score,@responses.quiz_info.keys)),
              :class =>'btn btn-primary'
             = link_to "Start New Quiz", main_app.questions_path, :class => 'btn btn-success'
   .span3.show-grid
