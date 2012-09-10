@@ -8,3 +8,5 @@ en:
     compelete_quiz: 'You have successfully completed your quiz.'
     score_message: 'Your score is %{score} out of %{limit}'
     error_message: 'Please choose any option.'
+  facebook:
+    post_wall: 'Post to Wall'
