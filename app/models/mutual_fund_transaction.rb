@@ -27,6 +27,7 @@ class MutualFundTransaction < ActiveRecord::Base
 
   alias :security :mutual_fund
 
+
 private
   def create_event
     event = Event.create do |event|
@@ -35,6 +36,6 @@ private
       event.action = "mutual_fund_#{action}"
     end
     # hstore requires object be saved before using hstore
-    event.update_attributes :data => {'mutual_fund' => mutual_fund_id, 'price' => price}
+    event.update_attributes :data => {'scheme' => scheme, 'param' => mutual_fund.scheme_master.slug, 'price' => price}
   end
 end

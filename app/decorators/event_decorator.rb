@@ -34,6 +34,14 @@ private
     "#{user_link} has sold gold at Rs.#{data['price']} per gm.".html_safe
   end
 
+  def mutual_fund_buy_content
+    "#{user_link} has invested in #{mutual_fund_link} scheme at Rs.#{data['price']}".html_safe
+  end
+
+  def mutual_fund_sell_content
+    "#{user_link} has sold #{mutual_fund_link} at Rs.#{data['price']}".html_safe
+  end
+
   def user_link(profile = user)
     h.link_to profile.slug_name, h.profile_path(profile)
   end
@@ -51,5 +59,9 @@ private
 
   def public_portfolio_link
     h.link_to target.name, h.public_portfolio_path(target)
+  end
+
+  def mutual_fund_link
+    h.link_to data['scheme'], h.mutual_fund_path(:id => data['param'])
   end
 end
