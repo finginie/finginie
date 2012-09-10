@@ -10,6 +10,7 @@
           %label.radio_buttons.required.control-label
             %h3 Q: #{@question.text}
           .controls
+            = hidden_field_tag  :question_id, params[:id]
             - @question.choices.each do |choice|
               %label.radio
                 = radio_button_tag :choice_id, choice.id, false, :required => :required

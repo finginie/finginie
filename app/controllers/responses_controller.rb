@@ -19,9 +19,10 @@ class ResponsesController < InheritedResources::Base
   end
 
   def create
-    save params[:choice_id]
+    save params
     if next_unanswered_question_id
       flash[:question_number] = current_question_number
+      flash[:error] = t('quiz.error_message') unless params[:choice_id]
       redirect_to question_path(next_unanswered_question_id)
     else
       redirect_to :action => "index"
@@ -29,9 +30,8 @@ class ResponsesController < InheritedResources::Base
   end
 
 private
-  def save(choice_id)
-    choice = Choice.find(choice_id)
-    collection[choice.question_id] = choice_id
+  def save(params)
+    collection[params[:question_id].to_i]= params[:choice_id]
   end
 
   def next_unanswered_question_id
