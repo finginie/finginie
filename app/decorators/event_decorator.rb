@@ -22,8 +22,23 @@ private
     "#{user_link} made the portfolio #{target.name} private.".html_safe
   end
 
-  def user_link
-    h.link_to user.slug_name, h.profile_path(user)
+  def new_subscription_content
+    "#{user_link} is now following #{target_link}".html_safe
+  end
+
+  def user_link(profile = user)
+    h.link_to profile.slug_name, h.profile_path(profile)
+  end
+
+  def target_link
+    case target_type
+    when 'Portfolio'
+      public_portfolio_link
+    when 'User'
+      user_link target
+    else
+      target.name
+    end
   end
 
   def public_portfolio_link
