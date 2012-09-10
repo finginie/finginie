@@ -6,6 +6,10 @@ class IdealInvestmentMix
   attr_reader :comprehensive_risk_profiler
   attr_accessor :initial_investment
 
+  %w(valid? score private_summary initial_investment).each do |method|
+    delegate method, :to => :decorated_comprehensive_risk_profiler, :prefix => 'comprehensive_risk_profiler'
+  end
+
   def initialize(comprehensive_risk_profiler)
     @comprehensive_risk_profiler = comprehensive_risk_profiler
     @initial_investment = [comprehensive_risk_profiler.initial_investment, MINIMUM_INVESTMENT].max

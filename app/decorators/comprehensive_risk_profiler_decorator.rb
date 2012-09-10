@@ -15,7 +15,7 @@ class ComprehensiveRiskProfilerDecorator < ApplicationDecorator
   include Draper::LazyHelpers
   include NumberHelper
 
-  def skip_link
+  def skip_quiz_link
     params = { :comprehensive_risk_profiler => { :score_cache => ComprehensiveRiskProfiler::DEFAULT_SCORE } }
     link_to(
       "Skip Step and load balanced portfolio (Not Recommended)",

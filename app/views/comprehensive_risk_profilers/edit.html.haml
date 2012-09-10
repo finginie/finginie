@@ -3,7 +3,7 @@
     = facebook_recommendation('Personalized Financial Plan')
     = image_tag 'Quiz-page-mf-selection.png', :class => 'show-grid';
     -unless resource.persisted?
-      = resource.skip_link
+      = resource.skip_quiz_link
     = simple_form_for resource, :url => comprehensive_risk_profiler_path, :method => :put do |f|
       %ol
         %li= f.input :age
