@@ -1,0 +1,15 @@
+-if ideal_investment_mix.comprehensive_risk_profiler_valid?
+  %h1
+    Your Risk Appetite is :
+    %small
+      = ideal_investment_mix.comprehensive_risk_profiler_score
+      out of 10. (10 indicates maximum risk taking ability)
+  = facebook_recommendation_tag
+  %ul
+    = ideal_investment_mix.comprehensive_risk_profiler_private_summary
+  %h5.show-gird Suggested Investment Mix
+  %p= t ".suggestion"
+- else
+  %h1 Balanced Portfolio
+  = facebook_recommendation_tag
+  %p= t( ".default_suggestion", :quiz_link => (link_to 'short quiz', edit_comprehensive_risk_profiler_path)).html_safe

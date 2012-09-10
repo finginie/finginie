@@ -1,5 +1,7 @@
 en:
   ideal_investments:
+    risk_summary:
+      suggestion: 'Based on your responses,we suggest that your investment mix be structured as follows. Remember, these are guidelines only.'
     public:
       take_quiz: 'Take your own quiz'
       default_suggestion: 'This is a balanced portfolio suitable for most investors.'
