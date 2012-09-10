@@ -42,6 +42,14 @@ private
     "#{user_link} has sold #{mutual_fund_link} at Rs.#{data['price']}".html_safe
   end
 
+  def stock_buy_content
+    "#{user_link} has invested in #{stock_link} shares at Rs.#{data['price']} per share.".html_safe
+  end
+
+  def stock_sell_content
+    "#{user_link} has sold #{stock_link} at Rs.#{data['price']} per share.".html_safe
+  end
+
   def user_link(profile = user)
     h.link_to profile.slug_name, h.profile_path(profile)
   end
@@ -62,6 +70,10 @@ private
   end
 
   def mutual_fund_link
-    h.link_to data['scheme'], h.mutual_fund_path(:id => data['param'])
+    h.link_to data['name'], h.mutual_fund_path(:id => data['param'])
+  end
+
+  def stock_link
+    h.link_to data['name'], h.stock_path(:id => data['param'])
   end
 end

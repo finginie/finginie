@@ -28,12 +28,13 @@ class StockTransaction < ActiveRecord::Base
  private
 
   def create_event
-    Event.create do |event|
+    event = Event.create do |event|
       event.user = portfolio.user
       event.target = portfolio
       event.action = "stock_#{action}"
-      event.data = {'stock' => company_code, 'price' => price}
     end
+    # hstore requires object be saved before using hstore
+    event.update_attributes :data => {'name' => company.name, 'param' => company.slug, 'price' => price}
   end
 
  end
