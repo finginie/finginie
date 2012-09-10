@@ -7,7 +7,7 @@ protected
   end
 
   def collection
-    EventUpdateDecorator.decorate end_of_association_chain
+    EventUpdateDecorator.decorate end_of_association_chain.order "created_at DESC"
   end
 
 end

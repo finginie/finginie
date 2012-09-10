@@ -18,6 +18,10 @@ private
     "#{user_link} made the portfolio #{public_portfolio_link} public.".html_safe
   end
 
+  def portfolio_hide_content
+    "#{user_link} made the portfolio #{target.name} private.".html_safe
+  end
+
   def user_link
     h.link_to user.slug_name, h.profile_path(user)
   end
