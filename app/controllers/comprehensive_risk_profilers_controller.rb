@@ -3,12 +3,8 @@ class ComprehensiveRiskProfilersController < InheritedResources::Base
   actions :edit, :update
 
   def update
-    if current_user
-      redirect_to comprehensive_risk_profiler_ideal_investments_path, :notice =>t(".comprehensive_risk_profilers.success_message")
-    else
-      session[:comprehensive_risk_profiler] = params[:comprehensive_risk_profiler]
-      redirect_to login_and_go_to(comprehensive_risk_profiler_ideal_investments_path)
-    end
+    financial_quiz_creator = FinancialQuizCreator.new(self, params[:comprehensive_risk_profiler])
+    financial_quiz_creator.create_for(current_user)
   end
 
   def resource
@@ -16,4 +12,12 @@ class ComprehensiveRiskProfilersController < InheritedResources::Base
     ComprehensiveRiskProfilerDecorator.decorate(@comprehensive_risk_profiler)
   end
 
+  def create_comprehensive_risk_profiler_succeeded
+    redirect_to comprehensive_risk_profiler_ideal_investments_path, :notice =>t(".comprehensive_risk_profilers.success_message")
+  end
+
+  def create_comprehensive_risk_profiler_failed
+    session[:comprehensive_risk_profiler] = params[:comprehensive_risk_profiler]
+    redirect_to login_and_go_to(comprehensive_risk_profiler_ideal_investments_path)
+  end
 end
