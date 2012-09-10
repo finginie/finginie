@@ -26,6 +26,14 @@ private
     "#{user_link} is now following #{target_link}".html_safe
   end
 
+  def gold_buy_content
+    "#{user_link} has bought gold at Rs.#{data['price']} per gm.".html_safe
+  end
+
+  def gold_sell_content
+    "#{user_link} has sold gold at Rs.#{data['price']} per gm.".html_safe
+  end
+
   def user_link(profile = user)
     h.link_to profile.slug_name, h.profile_path(profile)
   end

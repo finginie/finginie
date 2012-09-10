@@ -17,11 +17,12 @@ class GoldTransaction < ActiveRecord::Base
  private
 
   def create_event
-    Event.create do |event|
+    event = Event.create do |event|
       event.user = portfolio.user
       event.target = portfolio
       event.action = "gold_#{action}"
-      event.data = {'price' => price}
     end
+    # hstore requires object be saved before using hstore
+    event.update_attributes :data => { :price => price }
   end
 end

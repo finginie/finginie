@@ -29,11 +29,12 @@ class MutualFundTransaction < ActiveRecord::Base
 
 private
   def create_event
-    Event.create do |event|
+    event = Event.create do |event|
       event.user = portfolio.user
       event.target = portfolio
       event.action = "mutual_fund_#{action}"
-      event.data = {'mutual_fund' => mutual_fund_id, 'price' => price}
     end
+    # hstore requires object be saved before using hstore
+    event.update_attributes :data => {'mutual_fund' => mutual_fund_id, 'price' => price}
   end
 end
