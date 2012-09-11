@@ -60,7 +60,10 @@ section, .show-grid {
 
 
 hr.soften {
-  background-image: -moz-linear-gradient(left center , transparent, rgba(0, 0, 0, 0.1), transparent);
+  background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+  background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+  background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+  background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
   border: 0 none;
   height: 1px;
   margin: 10px 0;
@@ -215,7 +218,6 @@ ul.ui-autocomplete li a {
   list-style-type: upper-alpha
 }
 
-
 #bs-quiz-question-block:after {
     background-color: #0088CC;
     border: 1px solid #DDDDDD;
@@ -237,4 +239,28 @@ ul.ui-autocomplete li a {
     margin: 15px 0;
     padding: 20px 19px 14px;
     position: relative;
+}
+
+//==================== Styling for user testimonials ====================
+
+.styling-testimonials li {
+	padding: 10px 0 20px 0;
+	margin: 0 0 5px 0;
+}
+
+.styling-testimonials li.last {
+	margin: 0;
+}
+
+.styling-testimonials li cite {
+	padding: 0 2px;
+	float: right;
+}
+
+.styling-testimonials cite {
+	font-size: 11px;
+	color: #B32002;
+}
+.styling-testimonials li blockquote {
+	padding: 0 0 0 7px;
 }
