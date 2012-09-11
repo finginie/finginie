@@ -10,7 +10,8 @@ class ProfilesController < InheritedResources::Base
   end
 
   def collection
-    @search   = end_of_association_chain.search(params[:search])
-    @profiles = @search.page params[:page]
+    @search   ||= end_of_association_chain.search(params[:search])
+    @profiles ||= @search.page params[:page]
+    @collection ||= ProfileDecorator.decorate @profiles
   end
 end
