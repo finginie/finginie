@@ -10,6 +10,7 @@
       .thumbnail
         = profile.avatar
         %h3= link_to profile.name, profile_path(profile)
+        = profile.follow_unfollow_button
         %p= profile.location
         %p= profile.occupation
         %p= profile.company
