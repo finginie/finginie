@@ -29,6 +29,10 @@
             = link_to "Start New Quiz", main_app.questions_path, :class => 'btn btn-success'
   .span3.show-grid
     .row-fluid
+      .span12
+        .thumb
+          = link_to image_tag('investment-workshop.png',:class => 'img-rounded'), main_app.page_path('investment-workshop')
+    .row-fluid
       .span12.well
         .thumb
           %h5= link_to 'Financial Planning', main_app.edit_comprehensive_risk_profiler_path
