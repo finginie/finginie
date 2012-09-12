@@ -1,0 +1,7 @@
+en:
+  special_offer:
+    message: 'Thank you for signing up with Finginie. Rs 2 will now be donated on your behalf through the Finginie Cares campaign.'
+  change_password:
+    message: 'An email with password reset instructions has been sent to your registered email id.'
+  signin:
+    message: 'Successfully signed in'

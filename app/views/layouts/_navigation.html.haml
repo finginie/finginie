@@ -119,14 +119,3 @@
                   main_app.page_path('manage-investments')
       = bar.item 'Win an iPad 3',
                       main_app.page_path('win-an-ipad3')
-
-
-    = bar.second_nav do
-      - if current_user
-        = bar.dropdown current_user.email do
-          = bar.item 'Profile', own_profile_path
-          = bar.item 'Sign out', omniauth_single_signon.signout_path
-      - else
-        = bar.item 'Sign in', main_app.signin_path
-        = bar.item 'Register', main_app.signin_path
-

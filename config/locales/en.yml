@@ -17,8 +17,6 @@ en:
       date_time_IST: "%d-%B-%Y %H:%M IST" #31-March-2011 13:53 IST
   not_available: "-"
   tables_not_available: "-"
-  special_offer:
-    message: 'Thank you for signing up with Finginie. Rs 2 will now be donated on your behalf through the Finginie Cares campaign.'
   twitter_share:
     description: "@finginie Check out my personalized financial plan based on financial experts' opinion and 10 years of market data %{share_url}"
   facebook_share:
