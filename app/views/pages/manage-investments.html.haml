@@ -34,31 +34,4 @@
                 %p Get a financial analyst's perspective with our advanced analysis tools for stocks, mutual funds and fixed deposits.
                 = link_to 'Go', main_app.portfolios_path,:class => %w(btn btn-primary)
 
-
-
-  .span3
-    .thumb
-      = link_to image_tag('ebola-370.jpg', :class => %w(img-rounded)), main_app.page_path('win-an-ipad3')
-    .row-fluid
-      .span12.well
-        .thumb
-          %h5= link_to 'Financial Planning', main_app.edit_comprehensive_risk_profiler_path
-          %p Planning can be nerve-wracking. That’s why we did all the complicated number crunching so that you can invest with a single click.
-        .thumb
-          %h5= link_to 'Learn Investing', main_app.page_path('investment_education')
-          %p An investment in knowledge pays the best interest." - Benjamin Franklin Learn how to make good investment decisions.
-        .thumb
-          %h5= link_to 'Stock Recommendations', main_app.page_path('stock-recommendations')
-          %p No one has become a crorepati by saving money in a bank account or fixed deposit. That’s why we recommend money-multiplying stocks.
-        .thumb
-          %h5= link_to 'Research Reports', main_app.research_reports_path
-          %p Our research report aggregator tool is so vast that you can become a Ph.d in Financial Research.
-        .thumb
-          %h5= link_to 'Stock Market data', portfolios_path
-          %p The stock market is flooding with information. Stay ahead of others with the latest news, quotes and detailed corporate information. We support 3,500 stocks and 5,000 mutual funds.
-        .thumb
-          %h5
-            Social Features
-            %small Coming Soon
-          %p Connect with the kings of investing and learn how to make profitable investments.If you are a king yourself, build a kingdom of followers.
-
+  = render 'easy_navigation_right_aside'

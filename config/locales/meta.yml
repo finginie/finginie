@@ -134,202 +134,213 @@ en:
   sessions:
     new:
       title: 'Signin'
-  high_voltage:
-    pages:
-      show:
-        trade:
-          title: 'Cheap Brokerage & Fees: Trade stocks,futures,options and currency with Finginie and Kotak at the lowest rates.'
-          description: 'Finginie has teamed up with Kotak Securities-India’s best online broker to offer you a smooth trading experience at the lowest rates.Special introductory rates as low as 0.02% (2 paisa) and account opening fee waivers! What’s even better is that you will deal directly only with Kotak Securities and their executives. Open a trading account now to take advantage of this introductory offer.'
-          keywords: 'low brokerage,trading account,kotak securities,stock trading,futures trading,options trading'
-        finginie-cares:
-          title: 'Finginie cares. You click, we donate to NGOs.'
-          description: "Finginie is proud to support India's most influential show -Satyamev Jayate. For every signup, we will donate Rs 2 to three NGOs featured on the show. So, do signup with us for free to make a difference to the lives of the less fortunate."
-          keywords: 'Satyamev Jayate, NGO, Finginie'
-        home:
-          title: 'Finginie'
-        contact_us:
-          title: 'Contact Us'
-        team:
-          title: 'Team'
-        careers:
-          title: 'Careers'
-        about_us:
-          title: 'About Us'
-        terms_of_use:
-          title: 'Terms of use'
-        banking-sector:
-          title: 'Banking Sector: Attractive valuations, short term weakness'
-          description: "Despite short term weakness in the banking sector, we think that valuations of some of India's top banks are attractive enough to start accumulating positions for the long term. Our long term picks in this sector are Axis Bank and Yes Bank. Read on for detailed analysis of some of India's top banks and for recommendations on which banking stocks to invest in."
-          keywords: 'banking sector,banks,ICICI,HDFC,Yes Bank,CASA,stock recommendations,stock tips'
-        stock-recommendations:
-          title: 'Stock recommendations and tips'
-          description: "Finginie's stock recommendations and tips cover a variety of sectors and companies listed in the Indian stock markets. We place Buy,Hold and Sell ratings on stocks to help you identify which stocks to invest in."
-          keywords: 'stock tips,stock recommendations'
-        it-sector:
-          title: 'How to analyze and invest in IT sector shares'
-          description: 'IT sector shares like Infosys and TCS have been the darlings of investors over the years. Learn
-          what influences the share prices of IT companies and how to invest in them.'
-          keywords: 'IT sector, TCS,Infosys, shares'
-        win-an-ipad3:
-          title: 'Win an iPad 3'
-          description: 'Signup and win an iPad or a Samsung Galaxy !'
-          keywords: 'iPad, Samsung Galaxy, Signup'
-        it-sector-midcap:
-          title: 'Stock recommendations: Midcap IT companies'
-          description: 'Finginie analyzes the stocks of major midcap IT companies to determine which of them are good investments. We look at a host of factors such as profitability, growth, growth potential,valuation and return history before placing long term and short term recommendations on them.'
-          keywords: 'stock recommendations, stock tips, midcap, IT'
-        investment_education:
-          title: 'Learn how to invest.Investing in shares, mutual funds,fixed deposits and gold made easy for beginners.'
-          description: 'Learn investing.Investing in shares, mutual funds,fixed deposits and gold made easy for beginners.'
-          keywords: 'Learn investing, Investing,shares, mutual funds,fixed deposits, gold, made easy,beginners.'
-          articles:
-            title: 'Further Reading - Articles'
-          risk_and_return:
-            title: 'Investment Risk And Return: An introduction for beginners'
-            description: 'This article explains the relationship between investment risk and investment return in
-            simple language such that even beginners can understand it.'
-            keywords: 'risk, return, investment risk'
-          banking-sector-shares:
-            title: 'How to analyze and invest in banking sector shares'
-            description: 'This article explains how an investor can analyze banking sector shares, the factors
-            influencing banking sector shares and how one can profit from investing in them.'
-            keywords: 'banking, shares, analyze banking shares, banking sector, banks'
-          bonds:
-            title: 'Investing in bonds: A guide'
-            description: 'This article guides investors on investing in bonds in India.Special emphasis is laid on risk,return, taxation and the general principles of investing in bonds.'
-            keywords: 'bonds, India, beginners, investing, invest'
-          life-insurance-policies:
-            title: 'Life Insurance policies as investments'
-            description: 'Life insurance policies have been very popular in India for decades. Apart from providing life cover,
-            insurance policies also have investment-like features. Confused by words like "term life insurance", "whole life insurance " and "universal life insurance"? Look no further. This article covers different characteristics of life insurance and how you can choose a policy wisely to protect the financial future of your loved ones.'
-            keywords: 'Life insurance policy, insurance,term life,whole life'
-          sip:
-            title: 'SIP: How to invest in a systematic investment plan'
-            description: 'A Systematic Investment Plan(SIP) is a great way for small investors to invest in mutual funds using the principle of rupee cost averaging. This not only helps smoothen out heavy fluctuations from your portfolio but also helps you stay disciplined and develop a habit of saving. Read on to understand how you should best benefit from a SIP.'
-            keywords: 'sip, mutual fund, systematic investment plan, invest, rupee cost averaging'
-          cash-equivalents:
-            title: 'Investing in cash equivalents: A guide'
-            description: 'This article guides investors on investing in cash equivalents in India such as savings
-            deposits, bank deposits.Special emphasis is laid on the risk,return, taxation and the general principles of investing in cash
-             equivalents.'
-            keywords: 'cash equivalents, beginners, investing, invest, savings, deposits'
-          commodities:
-            title: 'Investing in commodities: A guide'
-            description: 'This article guides investors on investing in commodities in India such as
-            gold,oil,precious and base metals.Special emphasis is laid on the risk,return, taxation and the general
-            principles of investing in commodities and derivatives.'
-            keywords: 'commodities, gold,silver, beginners, investing, invest'
-          foreign-exchange:
-            title: 'Investing in Foreign Exchange/ Currencies: A guide'
-            description: 'This article guides investors on investing in foreign exchange aka currencies.
-            Special emphasis is laid on risk,return, taxation and the general principles of investing in foreign
-            exchange/currencies and derivatives.'
-            keywords: 'foreign exchange, currencies, dollar, beginners, investing, invest'
-          forwards:
-            title: 'Forwards'
-            description: ''
-            keywords: ''
-          futures:
-            title: 'Futures'
-            description: ''
-            keywords: ''
-          fundamental-analysis-shares:
-            title: 'Fundamental Analysis of shares : A guide'
-            description: 'This article helps investors and beginners understand how to use fundamental analysis to
-            analyze shares. Proper application of these principles can help increase your investment return and reduce
-            investment risk.'
-            keywords: 'fundamental analysis, shares, investment,beginners'
-          gold-investment:
-            title: 'Gold as an investment: Understanding how to invest successfully in gold.'
-            description: 'This article guides investors and beginners on investing in
-             gold in India. Special emphasis is laid on risk,return, taxation and the general principles of investing
-             in gold.'
-            keywords: 'gold,beginners, investing, invest,ETF,gold fund'
-          investment-diversification:
-            title: 'Diversifying investments across sectors and asset classes'
-            description: 'This article helps investors and beginners understand how diversification works. Readers will
-             are taught how to diversify their investment portfolios across asset classes (such as shares,fixed deposits etc),
-             and sectors.The benefits of diversification such as reduced risk and enhanced returns are emphasized.'
-            keywords: 'diversification,asset classes,sectors,shares, beginners, investing, invest'
-          investing-trading-shares:
-            title: 'Investing v/s Trading in shares'
-            description: 'This article explains the differences between investing and trading in shares.'
-            keywords: 'investing,trading,shares'
-          investment-plan:
-            title: 'Investment Planning: How to plan your investments'
-            description: 'This article explains the investment planning process in simple language for beginners.'
-            keywords: 'investment planning, investment plan'
-          investment-fixed-deposits:
-            title: 'Investing in Fixed Deposits'
-            description: 'Investing in fixed deposits is an excellent way to earn good returns while keeping your money
-             safe. Learn how to invest in fixed deposits while minimizing risk and maximizing return.'
-            keywords: 'fixed deposits, fd, bank, interest'
-          investment-types:
-            title: 'Shares, Mutual Funds, Fixed Deposits, Bonds and Gold - Types of Investments'
-            description: 'Shares,mutual funds,fixed deposits and gold are the major types of investments available in
-             India. We go over the risk,return and tax aspects of all of these investments and tell you how to reduce
-             risk and maximize your return while investing.'
-            keywords: 'investment types, stocks, bonds, gold, fixed deposits, bonds'
-          mutual-funds-etf:
-            title: 'Mutual Funds'
-            description: 'A mutual fund is a pool of money invested by small investors and managed by investment professionals to meet certain investment objectives. Small investors get together and invest in this pool known as a corpus which is then used by professional money managers to invest in a diversified portfolio of investments.'
-            keywords: 'mutual funds, mutual fund, fund, MF, ETF,etfs'
-          options:
-            title: 'Options'
-            description: 'Options give the astute investor leverage and downside protection.They are powerful tools that
-            can be used for risk management as well as for speculation. Find out how you can make use of options to
-            protect your shares as well as take big positions on the share/stock market.'
-            keywords: 'options, put,call,shares'
-          share-market:
-            title: 'Share market : What drives it?'
-            description: 'Ever wondered about what drives the share market? About what market sentiment is all about?
-            About how macroeconomic indicators such as GDP,inflation and growth effect it?We tell you how the share/stock
-             market works, what drives share prices and how you can participate and profit from your investments in
-             shares and mutual funds.'
-            keywords: 'share,share market, stock, sentiment'
-          shares:
-            title: 'Investing in shares : A guide'
-            description: 'This article tells you everything you need to know about investing in shares. We cover aspects
-             such as risk,returns,taxation and strategies to maximize returns.'
-            keywords: 'shares, stocks,risk,return,tax,capital gains'
-          smart-investments:
-            title: 'Making smart investments'
-            description: '5 tips to transform the way you invest: This guide will help you make smart investments using
-             the principles that experts use to build market-beating portfolios .'
-            keywords: 'smart investments,diversification,shares,invest'
-          tax-planning:
-            title: 'Planning your taxes'
-            description: 'Taxes can eat into your investment returns if you dont plan carefully. Find out how you can
-            minimize taxes and achieve superior returns.Tax planning for short and long term capital gains tax as well
-             as tax exemptions under Section 80c & 80ccf are emphasized in this article.'
-            keywords: 'tax,tax planning,capital gains tax,long term,short term,80c,infrastructure bonds,invest,
-            investments,investing'
-          technical-analysis-shares:
-            title: 'Technical Analysis of shares'
-            description: 'We show you how to use technical analysis to achieve superior returns on your investments in
-            shares.'
-            keywords: 'technical analysis,shares,investment,investing'
-          time-value-of-money:
-            title: 'Time Value Of Money'
-            description: 'Is time really money? Learn why a rupee today is worth more than a rupee next year. The principles of compound interest will never cease to amaze you.'
-            keywords: 'time value of money, interest'
-          insurance-products:
-            title: 'Insurance Products Demystified'
-            description: 'Confused by the myriad of insurance products in the market? Look no further. We will teach you
-            everything you need to know about insurance and how you should pick the right policy to suit your insurance
-            and investment needs.'
-            keywords: 'insurance, policy,investing,invest,beginners'
-          real-estate-investment:
-            title: 'Real estate Investments'
-            description: ''
-            keywords: ''
-          risk-management:
-            title: 'Risk Management'
-            description: ''
-            keywords: ''
-          where-to-invest:
-            title: 'Where to invest'
-            description: 'Where should you invest? We show you how to allocate your money among different investments
-            and assets such as shares, fixed deposits,gold and mutual funds.'
-            keywords: 'asset allocation,shares,fixed deposits,invest,investment,where to invest,gold,mutual funds'
+  pages:
+    show:
+      trade:
+        title: 'Cheap Brokerage & Fees: Trade stocks,futures,options and currency with Finginie and Kotak at the lowest rates.'
+        description: 'Finginie has teamed up with Kotak Securities-India’s best online broker to offer you a smooth trading experience at the lowest rates.Special introductory rates as low as 0.02% (2 paisa) and account opening fee waivers! What’s even better is that you will deal directly only with Kotak Securities and their executives. Open a trading account now to take advantage of this introductory offer.'
+        keywords: 'low brokerage,trading account,kotak securities,stock trading,futures trading,options trading'
+      finginie-cares:
+        title: 'Finginie cares. You click, we donate to NGOs.'
+        description: "Finginie is proud to support India's most influential show -Satyamev Jayate. For every signup, we will donate Rs 2 to three NGOs featured on the show. So, do signup with us for free to make a difference to the lives of the less fortunate."
+        keywords: 'Satyamev Jayate, NGO, Finginie'
+      home:
+        title: 'Finginie'
+      contact_us:
+        title: 'Contact Us'
+      team:
+        title: 'Team'
+      careers:
+        title: 'Careers'
+      about_us:
+        title: 'About Us'
+      terms_of_use:
+        title: 'Terms of use'
+      investment-workshop:
+        title: 'Investing simplified for beginners: Investment workshop in Hyderabad on Sunday, 23rd September 2012'
+        description: 'Do you want to start investing? Are you tired of losing money on stock tips given by your friends or brokers? Join us for an investment workshop in Hyderabad on Sunday, 23rd September at Midtown Banjara. The theme of the workshop is "Investing simplified for beginners."'
+        keywords: 'Investment, Workshop, Beginners, Simplified'
+      banking-sector:
+        title: 'Banking Sector: Attractive valuations, short term weakness'
+        description: "Despite short term weakness in the banking sector, we think that valuations of some of India's top banks are attractive enough to start accumulating positions for the long term. Our long term picks in this sector are Axis Bank and Yes Bank. Read on for detailed analysis of some of India's top banks and for recommendations on which banking stocks to invest in."
+        keywords: 'banking sector,banks,ICICI,HDFC,Yes Bank,CASA,stock recommendations,stock tips'
+      stock-recommendations:
+        title: 'Stock recommendations and tips'
+        description: "Finginie's stock recommendations and tips cover a variety of sectors and companies listed in the Indian stock markets. We place Buy,Hold and Sell ratings on stocks to help you identify which stocks to invest in."
+        keywords: 'stock tips,stock recommendations'
+      it-sector:
+        title: 'How to analyze and invest in IT sector shares'
+        description: 'IT sector shares like Infosys and TCS have been the darlings of investors over the years. Learn
+        what influences the share prices of IT companies and how to invest in them.'
+        keywords: 'IT sector, TCS,Infosys, shares'
+      win-an-ipad3:
+        title: 'Win an iPad 3'
+        description: 'Signup and win an iPad or a Samsung Galaxy !'
+        keywords: 'iPad, Samsung Galaxy, Signup'
+      it-sector-midcap:
+        title: 'Stock recommendations: Midcap IT companies'
+        description: 'Finginie analyzes the stocks of major midcap IT companies to determine which of them are good investments. We look at a host of factors such as profitability, growth, growth potential,valuation and return history before placing long term and short term recommendations on them.'
+        keywords: 'stock recommendations, stock tips, midcap, IT'
+      alcohol-sector:
+        title: 'Stock recommendations: Alcohol Industries'
+        description: 'Finginie analyzes the stocks of largest alcohol producers in India to determine which of them are good investments. We look at a host of fundamental factors such as profitability, growth, growth potential,valuation and stock return history before placing long term and short term recommendations on them.The UB Group stocks are over valued. We recommend you exit your positions in United Breweries and United Spirits.'
+        keywords: 'stock recommendations, stock tips, alcohol, beverages, United Breweries, United Spirits, Radico Khaitan, Tilaknagar Industries,Globus Spirits '
+      pharma-sector:
+        title: 'Stock recommendations- Pharmaceuticals: DRL to OUTPERFORM. Ranbaxy is a strong sell'
+        description: "Finginie analyzes the stocks of largest pharmaceutical companies to determine which of them are good investments. We look at a host of factors such as profitability, growth, growth potential,debt, valuation and return history before placing long term and short term recommendations on them. Ranbaxy has been disappointing on back of weak fundamentals. Dr. Reddy's is trading at a large discount and is strong BUY."
+        keywords: 'stock recommendations, stock tips, pharma, pharmaceuticals, Department of Pharmaceuticals, National Pharmaceuticals Pricing Policy, NPPP, National List of Essential Medicines, Dr. Reddy, Sun Pharma, Sun Pharmaceuticals, Ranbaxy, Lupin, Cadila, Cadila Healthcare, Cipla'
+      investment_education:
+        title: 'Learn how to invest.Investing in shares, mutual funds,fixed deposits and gold made easy for beginners.'
+        description: 'Learn investing.Investing in shares, mutual funds,fixed deposits and gold made easy for beginners.'
+        keywords: 'Learn investing, Investing,shares, mutual funds,fixed deposits, gold, made easy,beginners.'
+        articles:
+          title: 'Further Reading - Articles'
+        risk_and_return:
+          title: 'Investment Risk And Return: An introduction for beginners'
+          description: 'This article explains the relationship between investment risk and investment return in
+          simple language such that even beginners can understand it.'
+          keywords: 'risk, return, investment risk'
+        banking-sector-shares:
+          title: 'How to analyze and invest in banking sector shares'
+          description: 'This article explains how an investor can analyze banking sector shares, the factors
+          influencing banking sector shares and how one can profit from investing in them.'
+          keywords: 'banking, shares, analyze banking shares, banking sector, banks'
+        bonds:
+          title: 'Investing in bonds: A guide'
+          description: 'This article guides investors on investing in bonds in India.Special emphasis is laid on risk,return, taxation and the general principles of investing in bonds.'
+          keywords: 'bonds, India, beginners, investing, invest'
+        life-insurance-policies:
+          title: 'Life Insurance policies as investments'
+          description: 'Life insurance policies have been very popular in India for decades. Apart from providing life cover,
+          insurance policies also have investment-like features. Confused by words like "term life insurance", "whole life insurance " and "universal life insurance"? Look no further. This article covers different characteristics of life insurance and how you can choose a policy wisely to protect the financial future of your loved ones.'
+          keywords: 'Life insurance policy, insurance,term life,whole life'
+        sip:
+          title: 'SIP: How to invest in a systematic investment plan'
+          description: 'A Systematic Investment Plan(SIP) is a great way for small investors to invest in mutual funds using the principle of rupee cost averaging. This not only helps smoothen out heavy fluctuations from your portfolio but also helps you stay disciplined and develop a habit of saving. Read on to understand how you should best benefit from a SIP.'
+          keywords: 'sip, mutual fund, systematic investment plan, invest, rupee cost averaging'
+        cash-equivalents:
+          title: 'Investing in cash equivalents: A guide'
+          description: 'This article guides investors on investing in cash equivalents in India such as savings
+          deposits, bank deposits.Special emphasis is laid on the risk,return, taxation and the general principles of investing in cash
+           equivalents.'
+          keywords: 'cash equivalents, beginners, investing, invest, savings, deposits'
+        commodities:
+          title: 'Investing in commodities: A guide'
+          description: 'This article guides investors on investing in commodities in India such as
+          gold,oil,precious and base metals.Special emphasis is laid on the risk,return, taxation and the general
+          principles of investing in commodities and derivatives.'
+          keywords: 'commodities, gold,silver, beginners, investing, invest'
+        foreign-exchange:
+          title: 'Investing in Foreign Exchange/ Currencies: A guide'
+          description: 'This article guides investors on investing in foreign exchange aka currencies.
+          Special emphasis is laid on risk,return, taxation and the general principles of investing in foreign
+          exchange/currencies and derivatives.'
+          keywords: 'foreign exchange, currencies, dollar, beginners, investing, invest'
+        forwards:
+          title: 'Forwards'
+          description: ''
+          keywords: ''
+        futures:
+          title: 'Futures'
+          description: ''
+          keywords: ''
+        fundamental-analysis-shares:
+          title: 'Fundamental Analysis of shares : A guide'
+          description: 'This article helps investors and beginners understand how to use fundamental analysis to
+          analyze shares. Proper application of these principles can help increase your investment return and reduce
+          investment risk.'
+          keywords: 'fundamental analysis, shares, investment,beginners'
+        gold-investment:
+          title: 'Gold as an investment: Understanding how to invest successfully in gold.'
+          description: 'This article guides investors and beginners on investing in
+           gold in India. Special emphasis is laid on risk,return, taxation and the general principles of investing
+           in gold.'
+          keywords: 'gold,beginners, investing, invest,ETF,gold fund'
+        investment-diversification:
+          title: 'Diversifying investments across sectors and asset classes'
+          description: 'This article helps investors and beginners understand how diversification works. Readers will
+           are taught how to diversify their investment portfolios across asset classes (such as shares,fixed deposits etc),
+           and sectors.The benefits of diversification such as reduced risk and enhanced returns are emphasized.'
+          keywords: 'diversification,asset classes,sectors,shares, beginners, investing, invest'
+        investing-trading-shares:
+          title: 'Investing v/s Trading in shares'
+          description: 'This article explains the differences between investing and trading in shares.'
+          keywords: 'investing,trading,shares'
+        investment-plan:
+          title: 'Investment Planning: How to plan your investments'
+          description: 'This article explains the investment planning process in simple language for beginners.'
+          keywords: 'investment planning, investment plan'
+        investment-fixed-deposits:
+          title: 'Investing in Fixed Deposits'
+          description: 'Investing in fixed deposits is an excellent way to earn good returns while keeping your money
+           safe. Learn how to invest in fixed deposits while minimizing risk and maximizing return.'
+          keywords: 'fixed deposits, fd, bank, interest'
+        investment-types:
+          title: 'Shares, Mutual Funds, Fixed Deposits, Bonds and Gold - Types of Investments'
+          description: 'Shares,mutual funds,fixed deposits and gold are the major types of investments available in
+           India. We go over the risk,return and tax aspects of all of these investments and tell you how to reduce
+           risk and maximize your return while investing.'
+          keywords: 'investment types, stocks, bonds, gold, fixed deposits, bonds'
+        mutual-funds-etf:
+          title: 'Mutual Funds'
+          description: 'A mutual fund is a pool of money invested by small investors and managed by investment professionals to meet certain investment objectives. Small investors get together and invest in this pool known as a corpus which is then used by professional money managers to invest in a diversified portfolio of investments.'
+          keywords: 'mutual funds, mutual fund, fund, MF, ETF,etfs'
+        options:
+          title: 'Options'
+          description: 'Options give the astute investor leverage and downside protection.They are powerful tools that
+          can be used for risk management as well as for speculation. Find out how you can make use of options to
+          protect your shares as well as take big positions on the share/stock market.'
+          keywords: 'options, put,call,shares'
+        share-market:
+          title: 'Share market : What drives it?'
+          description: 'Ever wondered about what drives the share market? About what market sentiment is all about?
+          About how macroeconomic indicators such as GDP,inflation and growth effect it?We tell you how the share/stock
+           market works, what drives share prices and how you can participate and profit from your investments in
+           shares and mutual funds.'
+          keywords: 'share,share market, stock, sentiment'
+        shares:
+          title: 'Investing in shares : A guide'
+          description: 'This article tells you everything you need to know about investing in shares. We cover aspects
+           such as risk,returns,taxation and strategies to maximize returns.'
+          keywords: 'shares, stocks,risk,return,tax,capital gains'
+        smart-investments:
+          title: 'Making smart investments'
+          description: '5 tips to transform the way you invest: This guide will help you make smart investments using
+           the principles that experts use to build market-beating portfolios .'
+          keywords: 'smart investments,diversification,shares,invest'
+        tax-planning:
+          title: 'Planning your taxes'
+          description: 'Taxes can eat into your investment returns if you dont plan carefully. Find out how you can
+          minimize taxes and achieve superior returns.Tax planning for short and long term capital gains tax as well
+           as tax exemptions under Section 80c & 80ccf are emphasized in this article.'
+          keywords: 'tax,tax planning,capital gains tax,long term,short term,80c,infrastructure bonds,invest,
+          investments,investing'
+        technical-analysis-shares:
+          title: 'Technical Analysis of shares'
+          description: 'We show you how to use technical analysis to achieve superior returns on your investments in
+          shares.'
+          keywords: 'technical analysis,shares,investment,investing'
+        time-value-of-money:
+          title: 'Time Value Of Money'
+          description: 'Is time really money? Learn why a rupee today is worth more than a rupee next year. The principles of compound interest will never cease to amaze you.'
+          keywords: 'time value of money, interest'
+        insurance-products:
+          title: 'Insurance Products Demystified'
+          description: 'Confused by the myriad of insurance products in the market? Look no further. We will teach you
+          everything you need to know about insurance and how you should pick the right policy to suit your insurance
+          and investment needs.'
+          keywords: 'insurance, policy,investing,invest,beginners'
+        real-estate-investment:
+          title: 'Real estate Investments'
+          description: ''
+          keywords: ''
+        risk-management:
+          title: 'Risk Management'
+          description: ''
+          keywords: ''
+        where-to-invest:
+          title: 'Where to invest'
+          description: 'Where should you invest? We show you how to allocate your money among different investments
+          and assets such as shares, fixed deposits,gold and mutual funds.'
+          keywords: 'asset allocation,shares,fixed deposits,invest,investment,where to invest,gold,mutual funds'
 
