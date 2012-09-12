@@ -27,7 +27,7 @@ en:
       description: "These are my personalized investment suggestions from Finginie customized to my unique financial needs and constraints backed by financial experts opinions and 10 years of market data. Check them out !"
     learning_tool:
       quiz_name: "Finginie quiz"
-      quiz_description: "I have answered %{score} questions out of %{questions} questions."
+      quiz_description: "I just took an investment quiz through Finginie's Beginners' Learning tool and scored %{score} out of %{questions}. How much will you score? Check it out."
   personal_financial_tools:
     home: 'Personal Financial Tools'
     list:
