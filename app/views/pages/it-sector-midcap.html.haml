@@ -321,33 +321,4 @@
       %p
         This report is intended for use by the recipients only and may not be distributed/circulated. The numbers/figures used in this report are sourced from publicly available sources which we considered to be accurate and/or reliable. Adjustments are made to numbers or figures, where deemed appropriate. Finginie, its analysts, management, shareholders, affiliates are not responsible for any discrepancies/errors in any of the numbers/figures/information contained in
         this report. Finginie, its analysts, management, shareholders and/or affiliates do not guarantee the accuracy, completeness or timeliness of any information contained in this report. Further, the contents of this report, including any recommendations are the opinions of the analysts who have prepared this report. The suitability of any of the investments mentioned in this report must be assessed by the investor in the context of his/her needs and his/her overall portfolio. The investor must consult a qualified/licensed financial advisor before making any investment decisions. Finginie, its analysts, management, shareholders and/or affiliates will not be responsible or liable for the results of any investment decisions made after reading this report. This is not an offer or solicitation to buy/sell securities and should not be treated as such. Finginie, its analysts/shareholders/management may have existing positions and/or may take new positions in some/all of the securities mentioned in this report.
-  .span3.show-grid
-    .thumb
-      = link_to image_tag('ebola-370.jpg', :class => %w(img-rounded)), main_app.page_path('win-an-ipad3')
-    .thumb
-      = link_to image_tag('investment-workshop.png',:class => 'img-rounded'), main_app.page_path('investment-workshop')
-    .row-fluid
-      .span12.well
-        .thumb
-          %h5= link_to 'Financial Planning', main_app.edit_comprehensive_risk_profiler_path
-          %p Planning can be nerve-wracking. That’s why we did all the complicated number crunching so that you can invest with a single click.
-        .thumb
-          %h5= link_to 'Learn Investing', main_app.page_path('investment_education')
-          %p An investment in knowledge pays the best interest." - Benjamin Franklin Learn how to make good investment decisions.
-        .thumb
-          %h5= link_to 'Stock Recommendations', main_app.page_path('stock-recommendations')
-          %p No one has become a crorepati by saving money in a bank account or fixed deposit. That’s why we recommend money-multiplying stocks.
-        .thumb
-          %h5= link_to 'Stock Market data', main_app.page_path('markets')
-          %p The stock market is flooding with information. Stay ahead of others with the latest news, quotes and detailed corporate information. We support 3,500 stocks and 5,000 mutual funds
-        .thumb
-          %h5= link_to 'Research Reports', main_app.page_path('research')
-          %p Our research report aggregator tool is so vast that you can become a Ph.d in Financial Research.
-        .thumb
-          %h5= link_to 'Portfolio Tracking', portfolios_path
-          %p No unnecessary paperwork, excel formulas or any other fancy tools. Get a financial analyst’s perspective of all your investments with just a few clicks.
-        .thumb
-          %h5
-            Social Features
-            %small Coming Soon
-          %p Connect with the kings of investing and learn how to make profitable investments.If you are a king yourself, build a kingdom of followers.
+  = render 'easy_navigation_right_aside'
