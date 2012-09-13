@@ -12,15 +12,18 @@ class IdealInvestmentsController < InheritedResources::Base
   end
 
   def show
-    comprehensive_risk_profiler = current_user.comprehensive_risk_profiler
-    financial_planner = FinancialPlanner.new(comprehensive_risk_profiler.score)
-    amount = params[:initial_investment] || comprehensive_risk_profiler.initial_investment
-    ideal_investment_mix = IdealInvestmentMix.new(financial_planner, amount)
-    @ideal_investment_mix_decorator = IdealInvestmentMixDecorator.decorate(ideal_investment_mix)
-    @decorated_comprehensive_risk_profiler = ComprehensiveRiskProfilerDecorator.decorate(comprehensive_risk_profiler)
+    FinancialQuiz.new(self).get_details(current_user, params[:initial_investment])
     unless flash['error'] || flash['notice']
       flash[:notice] = @ideal_investment_mix_decorator.flash_message
     end
+  end
+
+  def prepare_ideal_investment_mix(ideal_investment_mix)
+    @ideal_investment_mix_decorator = IdealInvestmentMixDecorator.decorate(ideal_investment_mix)
+  end
+
+  def prepare_comprehensive_risk_profiler(comprehensive_risk_profiler)
+    @decorated_comprehensive_risk_profiler = ComprehensiveRiskProfilerDecorator.decorate(comprehensive_risk_profiler)
   end
 
 protected
@@ -29,5 +32,16 @@ protected
       flash.keep(:notice)
       redirect_to edit_comprehensive_risk_profiler_path
     end
+  end
+end
+
+class FinancialQuiz < Struct.new(:listener)
+  def get_details(user, initial_investment)
+    comprehensive_risk_profiler = user.comprehensive_risk_profiler
+    financial_planner = FinancialPlanner.new(comprehensive_risk_profiler.score)
+    amount = initial_investment || comprehensive_risk_profiler.initial_investment
+    ideal_investment_mix = IdealInvestmentMix.new(financial_planner, amount)
+    listener.prepare_comprehensive_risk_profiler(comprehensive_risk_profiler)
+    listener.prepare_ideal_investment_mix(ideal_investment_mix)
   end
 end

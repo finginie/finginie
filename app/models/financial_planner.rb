@@ -41,7 +41,4 @@ class FinancialPlanner
     @ideal_asset_allocation ||= IDEAL_ASSET_ALLOCATION_CONFIG[score - 1]
   end
 
-  # def self.ideal_asset_allocation(comprehensive_risk_profiler)
-  #   IDEAL_ASSET_ALLOCATION[comprehensive_risk_profiler.score.round] if comprehensive_risk_profiler.score
-  # end
 end
