@@ -1,145 +1,73 @@
 class IdealInvestmentMix
-
   MINIMUM_INVESTMENT = IndianCurrency.new(30000)
-  MINIMUM_AMOUNT_FOR_INVESTMENT = 5000
+  INVESTMENT_THRESHOLD = 10000
 
-  attr_reader :comprehensive_risk_profiler
-  attr_accessor :initial_investment
+  attr_reader :financial_planner, :investment_amount
 
-  %w(valid? score private_summary initial_investment).each do |method|
-    delegate method, :to => :decorated_comprehensive_risk_profiler, :prefix => 'comprehensive_risk_profiler'
+  def initialize(financial_planner, amount)
+    @financial_planner = financial_planner
+    @investment_amount = [amount, MINIMUM_INVESTMENT].max
   end
 
-  def initialize(comprehensive_risk_profiler)
-    @comprehensive_risk_profiler = comprehensive_risk_profiler
-    @initial_investment = [comprehensive_risk_profiler.initial_investment, MINIMUM_INVESTMENT].max
-  end
-
-  def decorated_comprehensive_risk_profiler
-    ComprehensiveRiskProfilerDecorator.decorate(comprehensive_risk_profiler)
-  end
-
-  def top_gold_etfs(limit)
-    DataProvider::Scheme.where(:name.in => ['Goldman Sachs Gold Exchange Traded Scheme-Growth',
-      'SBI Gold Exchange Traded Scheme-Growth', 'Kotak Gold ETF-Growth' ])
-        .order_by([[:prev3_year_comp_percent, :desc]]).limit(limit)
-  end
-
-  def gold_investments
-    return [] if gold_amount == 0
-
-    if amount_greater_than_min_investment?(gold_amount / 2)
-      top_gold_etfs(2).map{ |scheme| Hashie::Mash.new({:name => scheme.name, :amount => gold_amount/2, :percentage => asset_allocation['Gold']/2 }) }
-    else
-      top_gold_etfs(1).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => gold_amount, :percentage => asset_allocation['Gold'] }) }
-    end
-  end
+  FinancialPlanner::ASSET_CLASSES.each do |asset_class|
+    percent_method = "#{asset_class.singularize}_percent"                     ##
+    define_method(percent_method) do                                          # def fixed_deposit_percent
+      financial_planner.send("#{asset_class}_percent").to_f                   #   financial_planner.fixed_depoists_percent.to_f
+    end                                                                       # end
+                                                                              ##
+    amount_method = "#{asset_class.singularize}_amount"                       ##
+    define_method(amount_method) do                                           # def fixed_deposit_amount
+      investment_amount * send(percent_method)/100                            #   investment_amount * fixed_deposit_percent/100
+    end                                                                       # end
+  end                                                                         ##
 
   def fixed_deposits
-    top_two_fds = [ FixedDepositCollection.top_five_public_banks_interest_rates.first,
-                  FixedDepositCollection.top_five_private_banks_interest_rates.first ]
-
-    highest_interest_fd = top_two_fds.select { |fd| fd.one_year_interest_rate == top_two_fds.map(&:one_year_interest_rate).max }
-    if amount_greater_than_min_investment?(fd_amount / 2)
-      top_two_fds.map{ |fd| Hashie::Mash.new({:name => "Fixed Deposit at #{fd.name}", :amount => fd_amount/2, :percentage => asset_allocation['Fixed Deposits']/2 }) }
-    else
-      highest_interest_fd.map {|fd| Hashie::Mash.new({:name => "Fixed Deposit at #{fd.name}", :amount => fd_amount, :percentage => asset_allocation['Fixed Deposits'] }) }
+    get_or_set_assets(:fixed_deposits) do
+      top_two_fds = [ FixedDepositCollection.top_five_public_banks_interest_rates.first,
+                      FixedDepositCollection.top_five_private_banks_interest_rates.first ].sort_by(&:one_year_interest_rate).reverse
+      invest_in_one_or_two_assets(fixed_deposit_amount, top_two_fds)
     end
   end
 
-  def distinct_schemes(schemes, limit)
-    distinct_schemes = []
-    growth_plan_code = 2066; dividend_plan_code = 2067
-    schemes.group_by(&:code).each { |code,plans| distinct_schemes << ( plans.select{ |scheme| scheme.plan_code == growth_plan_code}.first ||
-                                                  plans.select{ |scheme| scheme.plan_code == dividend_plan_code}.first ) }
-    distinct_schemes.compact.take(limit)
-  end
-
-  def top_large_caps(limit)
-    large_cap_schemes = ( DataProvider::Scheme.only(:code, :name, :plan_code, :minimum_investment_amount, :size, :entry_load, :exit_load, :prev3_year_comp_percent)
-      .where(:bench_mark_index_name.in => ["BSE 100 Index", "S&P CNX 500 Equity Index", "NSE Index", "NSE CNX 100"])
-        .where(:minimum_investment_amount.lte => 5000, :size.gte => 50 ).order_by([[:prev3_year_comp_percent, :desc]])
-          .select{ |scheme| (scheme.entry_load.to_f + scheme.exit_load.to_f) <= 2 }.take(3*limit) + [ goldman_sachs_nifty_etf ] )
-              .compact.sort_by(&:prev3_year_comp_percent).reverse.take(3*limit)
-    distinct_schemes(large_cap_schemes, limit)
-  end
-
-  def goldman_sachs_nifty_etf
-    DataProvider::Scheme.where( :security_code => "17024319.002066").first
-  end
-
-  def large_caps
-    return [] if large_cap_amount == 0
-
-    if amount_greater_than_min_investment?(large_cap_amount / 2)
-      top_large_caps(2).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => large_cap_amount/2, :percentage => asset_allocation['Large Cap Stocks']/2 }) }
-    else
-      top_large_caps(1).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => large_cap_amount, :percentage => asset_allocation['Large Cap Stocks'] }) }
+  def gold
+    return [] if gold_amount == 0
+    get_or_set_assets(:gold) do
+      top_2_gold_etfs = DataProvider::Scheme.top_gold_etfs.order_by_prev3_year_comp_percent.limit(2)
+      invest_in_one_or_two_assets(gold_amount, top_2_gold_etfs)
     end
   end
 
-  def top_mid_caps(limit)
-    mid_cap_schemes = DataProvider::Scheme.only(:code, :name, :plan_code, :minimum_investment_amount, :size, :entry_load, :exit_load, :prev3_year_comp_percent)
-      .where(:bench_mark_index_name.in => ["CNX Midcap Index", "BSE Mid-Cap Index"])
-        .where(:minimum_investment_amount.lte => 5000, :size.gte => 50 ).order_by([[:prev3_year_comp_percent, :desc]])
-          .select{ |scheme| (scheme.entry_load.to_f + scheme.exit_load.to_f) <= 2 }.take(3 * limit)
-    distinct_schemes(mid_cap_schemes, limit)
-  end
-
-  def mid_caps
-    return [] if mid_cap_amount == 0
-
-    if amount_greater_than_min_investment?(mid_cap_amount / 2)
-      top_mid_caps(2).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => mid_cap_amount/2, :percentage => asset_allocation['Mid Cap Stocks']/2 }) }
-    else
-      top_mid_caps(1).map { |scheme| Hashie::Mash.new({:name => scheme.name, :amount => mid_cap_amount, :percentage => asset_allocation['Mid Cap Stocks'] }) }
+  def large_cap_stocks
+    return [] if large_cap_stock_amount == 0
+    get_or_set_assets(:large_cap_stocks) do
+      top_2_large_caps = DataProvider::Scheme.top_large_cap_stocks(2)
+      invest_in_one_or_two_assets(large_cap_stock_amount, top_2_large_caps)
     end
   end
 
-  def security_mix
-    [fixed_deposits, gold_investments, large_caps, mid_caps].flatten.map{ |security|
-      [ security.name, security.amount.to_f ] }
-  end
-
-  def public_security_mix
-    [fixed_deposits, gold_investments, large_caps, mid_caps].flatten.map{ |security|
-      [ security.name, security.percentage ] }
-  end
-
-  def scheme(name)
-    DataProvider::Scheme.where(:name => name).first
+  def mid_cap_stocks
+    return [] if mid_cap_stock_amount == 0
+    get_or_set_assets(:mid_cap_stocks) do
+      top_2_mid_caps = DataProvider::Scheme.top_large_cap_stocks(2)
+      invest_in_one_or_two_assets(mid_cap_stock_amount, top_2_mid_caps)
+    end
   end
 
   def top_elss_funds
-    DataProvider::Scheme.active.where(:class_code => 2119).order_by([[:prev3_year_comp_percent, :desc]])
+    DataProvider::Scheme.active.elss_funds.order_by_prev3_year_comp_percent
   end
 
-  def initial_investment=(amount)
-    @initial_investment = [ IndianCurrency.new(amount), MINIMUM_INVESTMENT].max
+  private
+  def invest_in_one_or_two_assets(asset_amount, asset_investments)
+    result = asset_amount > INVESTMENT_THRESHOLD ? asset_investments.take(2) : asset_investments.take(1)
+    result.map(&:name)
   end
 
-private
-  def amount_greater_than_min_investment?(amount)
-    amount > MINIMUM_AMOUNT_FOR_INVESTMENT
+  def get_or_set_assets(var, &block)
+    assets = "@#{var}"
+    value = instance_variable_get(assets) || yield
+    instance_variable_set(assets, value)
+    value
   end
 
-  def gold_amount
-    initial_investment * asset_allocation['Gold'] / 100
-  end
-
-  def fd_amount
-    initial_investment * asset_allocation['Fixed Deposits'] / 100
-  end
-
-  def large_cap_amount
-    initial_investment * asset_allocation['Large Cap Stocks'] / 100
-  end
-
-  def mid_cap_amount
-    initial_investment * asset_allocation['Mid Cap Stocks'] / 100
-  end
-
-  def asset_allocation
-    @asset_allocation ||= FinancialPlanner.ideal_asset_allocation(comprehensive_risk_profiler)
-  end
 end
