@@ -4,7 +4,8 @@
     %h3
       Share
       = tracked_facebook_share_url_for('public_financial_profile')
-      = social_network_link('twitter.png', '#twitterModal')
+      = social_network_link('twitter.png', '#twitterModal') do
+        = render :partial => 'shared/twitter_share_modal', :locals => { :share_type => 'public_financial_profile' }
       = social_network_link('mail.png', '#mail_modal') do
         = render :partial => 'shared/mail_modal', :locals => { :step => PointTracker::ShareFinancialProfileViaMailStep }
 
