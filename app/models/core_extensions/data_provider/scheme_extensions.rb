@@ -9,8 +9,8 @@ module SchemeExtensions
     'SBI Gold Exchange Traded Scheme-Growth',
     'Kotak Gold ETF-Growth'
   ]
-  LARGE_CAP_INDICES = ["BSE 100 Index", "S&P CNX 500 Equity Index", "NSE Index", "NSE CNX 100"]
-  MID_CAP_INDICES   = ["CNX Midcap Index", "BSE Mid-Cap Index"]
+  LARGE_CAP_INDICES = ['BSE 100 Index', 'S&P CNX 500 Equity Index', 'NSE Index', 'NSE CNX 100']
+  MID_CAP_INDICES   = ['CNX Midcap Index', 'BSE Mid-Cap Index']
 
   included do
     scope :top_gold_etfs, where(:name.in => TOP_GOLD_ETFS)
@@ -30,7 +30,7 @@ module SchemeExtensions
     end
 
     def top_large_cap_stocks(limit)
-      goldman_sachs_nifty_etf = where(:security_code => "17024319.002066").first
+      goldman_sachs_nifty_etf = where(:security_code => '17024319.002066').first
       large_cap_schemes = [
         get_indices_with_min_entry_and_exit_load(LARGE_CAP_INDICES).take(3 * limit),
         goldman_sachs_nifty_etf
@@ -40,7 +40,9 @@ module SchemeExtensions
     end
 
     def get_indices_with_min_entry_and_exit_load(indices)
-      viable_indices(indices).order_by_prev3_year_comp_percent.select{ |scheme| (scheme.entry_load.to_f + scheme.exit_load.to_f) <= 2 }
+      viable_indices(indices).order_by_prev3_year_comp_percent.select do |scheme|
+        (scheme.entry_load.to_f + scheme.exit_load.to_f) <= 2
+      end
     end
 
     def distinct_schemes(schemes)
@@ -53,18 +55,15 @@ module SchemeExtensions
       end
     end
 
-    def top_gainers(count)
-      count ||= 5
+    def top_gainers(count=5)
       active.equity_funds.order([[ :percentage_change, :desc ]]).limit(count)
     end
 
-    def top_losers(count)
-      count ||= 5
+    def top_losers(count=5)
       active.equity_funds.where(:percentage_change.lt => 0).order([[ :percentage_change, :asc ]]).limit(count)
     end
 
-    def biggest_funds(count)
-      count ||= 5
+    def biggest_funds(count=5)
       active.equity_funds.order([[ :size, :desc ]]).limit(count)
     end
   end

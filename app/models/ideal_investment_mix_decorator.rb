@@ -20,7 +20,7 @@ class IdealInvestmentMixDecorator < ApplicationDecorator
   end
 
   def top_elss_table
-    elss_header = h.content_tag(:p, I18n.t("ideal_investments.show.elss_message"))
+    elss_header = h.content_tag(:p, I18n.t('ideal_investments.show.elss_message'))
     elss_table = h.content_tag(:table, :class => %w(table table-striped table-bordered), :data => { :role => 'top_elss_funds' } ) do
       elss_table_header + elss_table_body
     end
