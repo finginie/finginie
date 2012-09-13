@@ -30,6 +30,6 @@ en:
         message: 'You can share this page with your friends. No personal information will be shared. %{profile_link} to view what your friends can see.'
     investments:
       fixed_deposits: 'Fixed Deposits'
-      gold_investments: 'Gold ETFs'
-      large_caps: 'Large Caps'
-      mid_caps: 'Mid Caps'
+      gold: 'Gold ETFs'
+      large_cap_stocks: 'Large Caps'
+      mid_cap_stocks: 'Mid Caps'

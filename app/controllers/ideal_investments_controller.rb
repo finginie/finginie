@@ -11,23 +11,21 @@ class IdealInvestmentsController < InheritedResources::Base
     @ideal_investment_mix = IdealInvestmentMix.new(@comprehensive_risk_profiler)
   end
 
-  def resource
-    @resource = super
-    @resource.initial_investment = (params[:initial_investment]) if params[:initial_investment]
-    starting_investment = @resource.comprehensive_risk_profiler.initial_investment
+  def show
+    comprehensive_risk_profiler = current_user.comprehensive_risk_profiler
+    financial_planner = FinancialPlanner.new(comprehensive_risk_profiler.score)
+    amount = params[:initial_investment] || comprehensive_risk_profiler.initial_investment
+    ideal_investment_mix = IdealInvestmentMix.new(financial_planner, amount)
+    @ideal_investment_mix_decorator = IdealInvestmentMixDecorator.decorate(ideal_investment_mix)
+    @decorated_comprehensive_risk_profiler = ComprehensiveRiskProfilerDecorator.decorate(comprehensive_risk_profiler)
     unless flash['error'] || flash['notice']
-      flash[:notice] = starting_investment > IdealInvestmentMix::MINIMUM_INVESTMENT ? t('.display_initial_investment', :amount => starting_investment) : t('.too_low_investment')
+      flash[:notice] = @ideal_investment_mix_decorator.flash_message
     end
-    @resource
   end
 
 protected
-  def begin_of_association_chain
-    @current_user.comprehensive_risk_profiler
-  end
-
   def user_logged_in
-    unless @current_user && @current_user.comprehensive_risk_profiler.persisted?
+    unless current_user && current_user.comprehensive_risk_profiler.persisted?
       flash.keep(:notice)
       redirect_to edit_comprehensive_risk_profiler_path
     end

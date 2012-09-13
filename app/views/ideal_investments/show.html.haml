@@ -4,42 +4,62 @@
     %h3
       Share
       = tracked_facebook_share_url_for('public_financial_profile')
-      = social_network_link('twitter.png', '#twitterModal') do
-        = render :partial => 'shared/twitter_share_modal', :locals => { :share_type => 'public_financial_profile' }
+      = social_network_link('twitter.png', '#twitterModal')
       = social_network_link('mail.png', '#mail_modal') do
         = render :partial => 'shared/mail_modal', :locals => { :step => PointTracker::ShareFinancialProfileViaMailStep }
 
     %p
       = t('.public.message', :profile_link => link_to(t('.public.profile_link'), public_financial_profile_path(current_user))).html_safe
 
-    = render :partial => 'risk_summary', :locals => { :ideal_investment_mix => resource }
+    -if @decorated_comprehensive_risk_profiler.valid?
+      %h1
+        Your Risk Appetite is :
+        %small
+          = @decorated_comprehensive_risk_profiler.score
+          out of 10. (10 indicates maximum risk taking ability)
+      = facebook_recommendation_tag
+      %ul
+        = @decorated_comprehensive_risk_profiler.private_summary
+      %h5.show-gird Suggested Investment Mix
+      %p= t "ideal_investments.risk_summary.suggestion"
+    - else
+      %h1 Balanced Portfolio
+      = facebook_recommendation_tag
+      %p= t(".default_suggestion", :quiz_link => (link_to 'short quiz', edit_comprehensive_risk_profiler_path)).html_safe
 
 .row
   .span12
     %p= t(".introduction")
-    - if params[:initial_investment] && params[:initial_investment].to_f != resource.initial_investment
+    - if params[:initial_investment] && IndianCurrency.new(params[:initial_investment]) != @ideal_investment_mix_decorator.investment_amount
       = content_tag :div, t(".too_low_investment"), :id => 'result', :class => 'alert alert-notice'
 
     = form_tag comprehensive_risk_profiler_ideal_investments_path, :method => :get, :class => 'form-horizontal' do
       .input-append
         = label_tag :initial_investment, t('.initial_investment'), :class => 'control-label'
         .controls
-          = text_field_tag :initial_investment, resource.initial_investment.to_s
+          = text_field_tag :initial_investment, @ideal_investment_mix_decorator.investment_amount.to_s
           = submit_tag t('.submit'), :class => 'btn btn-primary'
 
-    %p= t('.default_amount', :amount => [ resource.comprehensive_risk_profiler_initial_investment, IdealInvestmentMix::MINIMUM_INVESTMENT].max.to_s)
+    %p= t('.default_amount', :amount => @ideal_investment_mix_decorator.investment_amount.to_s)
 
+.row
+  .span6
+    - fp = FinancialPlanner.new(@decorated_comprehensive_risk_profiler.score)
+    = gchart(:data => fp.ideal_asset_allocation.to_a, :title => 'Suggested Asset Allocation', :chart_type => 'Pie')
+    %h3 HEADER
+    %table.table.table-striped.table-bordered
+      %tr
+        %th Asset Class
+        %th Percentage
+      - fp.ideal_asset_allocation.each do |asset_class, percentage|
+        %tr
+          %td= asset_class
+          %td= "#{percentage}%"
+    = @ideal_investment_mix_decorator.top_elss_table
 
-- if resource.comprehensive_risk_profiler_score
-  .row
-    .span6
-      = render :partial => 'asset_allocation_data', :locals => { :ideal_investment_mix => resource }
-      = render :partial => 'top_elss_funds', :locals => { :ideal_investment_mix => resource }
-    .span6
-      = gchart( :data => resource.security_mix, title: 'Ideal Investments', chart_type: 'Pie' )
-      - %w(fixed_deposits gold_investments large_caps mid_caps).each do |type|
-        - unless resource.send(type).empty?
-          = render 'investments', :type => type, :value => 'amount', :ideal_investment_mix => resource
+  .span6
+    = @ideal_investment_mix_decorator.draw_chart
+    = @ideal_investment_mix_decorator.draw_asset_tables
 
 .row
   .span12

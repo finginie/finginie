@@ -5,6 +5,7 @@ class IdealInvestmentMix
   attr_reader :financial_planner, :investment_amount
 
   def initialize(financial_planner, amount)
+    amount = IndianCurrency.new(amount)
     @financial_planner = financial_planner
     @investment_amount = [amount, MINIMUM_INVESTMENT].max
   end
