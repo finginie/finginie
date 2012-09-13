@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120910065213) do
+ActiveRecord::Schema.define(:version => 20120913082853) do
 
   create_table "choices", :force => true do |t|
     t.decimal  "score"
@@ -301,13 +301,15 @@ ActiveRecord::Schema.define(:version => 20120910065213) do
 
   create_table "users", :force => true do |t|
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.string   "name"
     t.string   "avatar_url"
     t.string   "location"
     t.string   "occupation"
     t.string   "company"
+    t.string   "favourite_stocks"
+    t.string   "investing_style"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
