@@ -1,12 +1,11 @@
-= gchart(:data => FinancialPlanner.ideal_asset_allocation(ideal_investment_mix.decorated_comprehensive_risk_profiler).to_a,
-              :title => 'Suggested Asset Allocation',
-              :chart_type => 'Pie' )
+- fp = FinancialPlanner.new(ideal_investment_mix.comprehensive_risk_profiler_score)
+= gchart(:data => fp.ideal_asset_allocation.to_a, :title => 'Suggested Asset Allocation', :chart_type => 'Pie')
 %h3 HEADER
 %table.table.table-striped.table-bordered
   %tr
     %th Asset Class
     %th Percentage
-  - FinancialPlanner.ideal_asset_allocation(ideal_investment_mix.decorated_comprehensive_risk_profiler).each do |asset_class,percentage|
+  - fp.ideal_asset_allocation.each do |asset_class, percentage|
     %tr
       %td= asset_class
       %td= "#{percentage}%"
