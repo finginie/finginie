@@ -1,24 +1,12 @@
-class ProfileDecorator < ApplicationDecorator
-  decorates :user
-
-  def avatar_url
-    model.avatar_url.present? ? model.avatar_url : 'profile.png'
-  end
+class PublicPortfolioDecorator < ApplicationDecorator
+  decorates :portfolio
 
   def avatar(size = :small)
-    h.image_tag avatar_url, :class => "avatar_#{size}"
-  end
-
-  def name
-    model.name || model.slug_name
-  end
-
-  def link
-    h.link_to_unless_current name, h.profile_path(model)
+    h.image_tag 'portfolio_icon', :class => "avatar_#{size}"
   end
 
   def follow_unfollow_button(size = :small)
-    return if model == h.current_user
+    return if model.user == h.current_user
     if subscription && subscription.persisted?
       h.link_to h.subscription_path(subscription), :method => :delete, :class => ['btn', 'btn-danger', "btn-#{size}"] do
         h.content_tag(:i, nil, :class => %w(icon-eye-close icon-white)) + 'Unfollow'
@@ -30,8 +18,12 @@ class ProfileDecorator < ApplicationDecorator
     end
   end
 
+  def link
+    h.link_to_unless_current name, h.public_portfolio_path(model)
+  end
+
 private
   def subscription
-    @subscription ||= model.follow_subscriptions.where(:user_id => h.current_user.id).first_or_initialize
+    @subscription ||= model.subscriptions.where(:user_id => h.current_user.id).first_or_initialize
   end
 end
