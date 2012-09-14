@@ -11,19 +11,23 @@ class IdealInvestmentMix
   end
 
   FinancialPlanner::ASSET_CLASSES.each do |asset_class|
-    percent_method = "#{asset_class.singularize}_percent"                     ##
-    define_method(percent_method) do                                          # def fixed_deposit_percent
-      financial_planner.send("#{asset_class}_percent").to_f                   #   financial_planner.fixed_depoists_percent.to_f
+    percent_method = "#{asset_class.singularize}_percent_per_investment"      ##
+    define_method(percent_method) do                                          # def fixed_deposit_percent_per_investment
+      asset_percent     = send("#{asset_class.singularize}_percent")          #   asset_percent = fixed_deposit_percent
+      total_investments = send(asset_class).singularize                       #   total_investments = fixed_depoists.size
+      asset_percent.to_f/total_investments                                    #   asset_percent.to_f / total_investments.size
     end                                                                       # end
                                                                               ##
-    amount_method = "#{asset_class.singularize}_amount"                       ##
-    define_method(amount_method) do                                           # def fixed_deposit_amount
-      investment_amount * send(percent_method)/100                            #   investment_amount * fixed_deposit_percent/100
+    amount_method = "#{asset_class.singularize}_amount_per_investment"        ##
+    define_method(amount_method) do                                           # def fixed_deposit_percent_per_investment
+      asset_amount      = send("#{asset_class.singularize}_amount")           #   asset_amount = fixed_deposit_amount
+      total_investments = send(asset_class).size                              #   total_investments = fixed_depoists.size
+      asset_amount.to_f/total_investments                                     #   asset_amount.to_f / total_investments.size
     end                                                                       # end
   end                                                                         ##
 
   def fixed_deposits
-    get_or_set_assets(:fixed_deposits) do
+    @fixed_deposits ||= begin
       top_two_fds = [ FixedDepositCollection.top_five_public_banks_interest_rates.first,
                       FixedDepositCollection.top_five_private_banks_interest_rates.first ].sort_by(&:one_year_interest_rate).reverse
       invest_in_one_or_two_assets(fixed_deposit_amount, top_two_fds)
@@ -32,7 +36,7 @@ class IdealInvestmentMix
 
   def gold
     return [] if gold_amount == 0
-    get_or_set_assets(:gold) do
+    @gold ||= begin
       top_2_gold_etfs = DataProvider::Scheme.top_gold_etfs.order_by_prev3_year_comp_percent.limit(2)
       invest_in_one_or_two_assets(gold_amount, top_2_gold_etfs)
     end
@@ -40,7 +44,7 @@ class IdealInvestmentMix
 
   def large_cap_stocks
     return [] if large_cap_stock_amount == 0
-    get_or_set_assets(:large_cap_stocks) do
+    @large_cap_stocks ||= begin
       top_2_large_caps = DataProvider::Scheme.top_large_cap_stocks(2)
       invest_in_one_or_two_assets(large_cap_stock_amount, top_2_large_caps)
     end
@@ -48,7 +52,7 @@ class IdealInvestmentMix
 
   def mid_cap_stocks
     return [] if mid_cap_stock_amount == 0
-    get_or_set_assets(:mid_cap_stocks) do
+    @mid_cap_stocks ||= begin
       top_2_mid_caps = DataProvider::Scheme.top_large_cap_stocks(2)
       invest_in_one_or_two_assets(mid_cap_stock_amount, top_2_mid_caps)
     end
@@ -64,11 +68,15 @@ class IdealInvestmentMix
     result.map(&:name)
   end
 
-  def get_or_set_assets(var, &block)
-    assets = "@#{var}"
-    value = instance_variable_get(assets) || yield
-    instance_variable_set(assets, value)
-    value
+  FinancialPlanner::ASSET_CLASSES.each do |asset_class|
+    percent_method = "#{asset_class.singularize}_percent"                     ##
+    define_method(percent_method) do                                          # def fixed_deposit_percent
+      financial_planner.send("#{asset_class}_percent").to_f                   #   financial_planner.fixed_depoists_percent.to_f
+    end                                                                       # end
+                                                                              ##
+    amount_method = "#{asset_class.singularize}_amount"                       ##
+    define_method(amount_method) do                                           # def fixed_deposit_amount
+      investment_amount * send(percent_method)/100                            #   investment_amount * fixed_deposit_percent/100
+    end                                                                       # end
   end
-
 end

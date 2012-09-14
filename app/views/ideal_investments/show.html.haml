@@ -11,7 +11,7 @@
         = render :partial => 'shared/mail_modal', :locals => { :step => PointTracker::ShareFinancialProfileViaMailStep }
 
     %p
-      = t('.public.message', :profile_link => link_to(t('.public.profile_link'), public_financial_profile_path(current_user))).html_safe
+      = t('.public.message', :profile_link => link_to(t('.public.profile_link'), public_ideal_investment_path(current_user))).html_safe
 
     -if resource.comprehensive_risk_profiler_valid?
       %h1
@@ -32,8 +32,6 @@
 .row
   .span12
     %p= t(".introduction")
-    - if params[:initial_investment] && IndianCurrency.new(params[:initial_investment]) != resource.ideal_investment_investment_amount
-      = content_tag :div, t(".too_low_investment"), :id => 'result', :class => 'alert alert-notice'
 
     = form_tag comprehensive_risk_profiler_ideal_investments_path, :method => :get, :class => 'form-horizontal' do
       .input-append
@@ -46,14 +44,13 @@
 
 .row
   .span6
-    - fp = FinancialPlanner.new(resource.comprehensive_risk_profiler_score)
-    = gchart(:data => fp.ideal_asset_allocation.to_a, :title => 'Suggested Asset Allocation', :chart_type => 'Pie')
-    %h3 HEADER
+    = gchart(:data => resource.financial_planner_ideal_asset_allocation.to_a, :title => 'Suggested Asset Allocation', :chart_type => 'Pie')
+    %h3 Ideal Portfolio Mix
     %table.table.table-striped.table-bordered
       %tr
         %th Asset Class
         %th Percentage
-      - fp.ideal_asset_allocation.each do |asset_class, percentage|
+      - resource.financial_planner_ideal_asset_allocation.each do |asset_class, percentage|
         %tr
           %td= asset_class
           %td= "#{percentage}%"

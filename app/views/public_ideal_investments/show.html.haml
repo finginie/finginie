@@ -15,13 +15,15 @@
     - else
       %h1 Balanced Portfolio
       = facebook_recommendation_tag
-      %p= t(".default_suggestion", :quiz_link => (link_to 'short quiz', edit_comprehensive_risk_profiler_path)).html_safe
+      %p= t("ideal_investments.show.default_suggestion", :quiz_link => (link_to 'short quiz', edit_comprehensive_risk_profiler_path)).html_safe
+      %h5.show-gird Suggested Investment Mix
+      %p= t "ideal_investments.risk_summary.suggestion"
 
   .span4
     .pull-right
       = link_to image_tag('ebola-370.jpg'), main_app.page_path('win-an-ipad3')
 
-.row
+.row.show-grid
   .span6
     - fp = FinancialPlanner.new(resource.comprehensive_risk_profiler_score)
     = gchart(:data => fp.ideal_asset_allocation.to_a, :title => 'Suggested Asset Allocation', :chart_type => 'Pie')

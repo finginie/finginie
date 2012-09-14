@@ -1,6 +1,4 @@
 class ComprehensiveRiskProfiler < ActiveRecord::Base
-  DEFAULT_SCORE = 6
-
   include CurrencyFormatter
 
   attr_accessible :age, :dependent, :household_expenditure, :household_income, :household_savings,

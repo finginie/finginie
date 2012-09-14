@@ -72,8 +72,8 @@ class IdealInvestmentMixDecorator < ApplicationDecorator
 
   def table_body_for(asset_class)
     investments = send(asset_class)
-    amount      = send("#{asset_class.singularize}_amount") / investments.size
-    percent     = send("#{asset_class.singularize}_percent") / investments.size
+    amount      = send("#{asset_class.singularize}_amount_per_investment")
+    percent     = send("#{asset_class.singularize}_percent_per_investment")
 
     investments.inject(ActiveSupport::SafeBuffer.new) do |result, investment|
       if asset_class == 'fixed_deposits'
@@ -92,7 +92,7 @@ class IdealInvestmentMixDecorator < ApplicationDecorator
   def security_mix
     FinancialPlanner::ASSET_CLASSES.inject([]) do |result, asset_class|
       asset_investments = send(asset_class)
-      amount      = send("#{asset_class.singularize}_amount").to_f / asset_investments.size
+      amount      = send("#{asset_class.singularize}_amount_per_investment")
       result     += asset_investments.map {|investment| [investment, amount] }
     end
   end
