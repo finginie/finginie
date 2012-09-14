@@ -1,27 +1,44 @@
+= resource.comprehensive_risk_profiler_alert_message
 .row
   .span8
-    - if @comprehensive_risk_profiler.valid?
+    -if resource.comprehensive_risk_profiler_valid?
       %h1
-        = @user.email
-        Risk Appetite is :
+        Your Risk Appetite is :
         %small
-          %span{ :data => { :role => 'risk_appetite' } }
-            = @comprehensive_risk_profiler.score
+          = resource.comprehensive_risk_profiler_score
           out of 10. (10 indicates maximum risk taking ability)
-
-      %span{ :data => { :role => 'public_summary' } }
-        %ul
-          = @comprehensive_risk_profiler.public_summary
+      = facebook_recommendation_tag
+      %ul
+        = resource.comprehensive_risk_profiler_public_summary
+      %h5.show-gird Suggested Investment Mix
+      %p= t "ideal_investments.risk_summary.suggestion"
     - else
-      %h1
-        %span{ :data => { :role => 'balanced_portfolio' } } Balanced Portfolio
-        %p= t( ".default_suggestion")
+      %h1 Balanced Portfolio
+      = facebook_recommendation_tag
+      %p= t(".default_suggestion", :quiz_link => (link_to 'short quiz', edit_comprehensive_risk_profiler_path)).html_safe
 
   .span4
     .pull-right
       = link_to image_tag('ebola-370.jpg'), main_app.page_path('win-an-ipad3')
 
-= render_cell :ideal_investments, :public, :ideal_investment_mix => @ideal_investment_mix
+.row
+  .span6
+    - fp = FinancialPlanner.new(resource.comprehensive_risk_profiler_score)
+    = gchart(:data => fp.ideal_asset_allocation.to_a, :title => 'Suggested Asset Allocation', :chart_type => 'Pie')
+    %h3 HEADER
+    %table.table.table-striped.table-bordered
+      %tr
+        %th Asset Class
+        %th Percentage
+      - fp.ideal_asset_allocation.each do |asset_class, percentage|
+        %tr
+          %td= asset_class
+          %td= "#{percentage}%"
+    = resource.ideal_investment_draw_top_elss_table
 
-- unless current_user && current_user.id == @user.id
+  .span6
+    = resource.ideal_investment_draw_asset_chart
+    = resource.ideal_investment_draw_asset_tables
+
+- unless current_user && current_user.id == resource.comprehensive_risk_profiler_user.id
   = link_to t('.take_quiz'), edit_comprehensive_risk_profiler_path

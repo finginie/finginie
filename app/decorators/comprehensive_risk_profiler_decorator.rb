@@ -15,6 +15,13 @@ class ComprehensiveRiskProfilerDecorator < ApplicationDecorator
   include Draper::LazyHelpers
   include NumberHelper
 
+  def alert_message
+    h.content_tag :div, :class => 'alert alert-notice' do
+      quiz_link = h.link_to 'Click Here', edit_comprehensive_risk_profiler_path
+      I18n.t('.comprehensive_risk_profilers.public.personalize_message', :email => user.email, :quiz_link => quiz_link).html_safe
+    end
+  end
+
   def skip_quiz_link
     params = { :comprehensive_risk_profiler => { :score_cache => ComprehensiveRiskProfiler::DEFAULT_SCORE } }
     link_to(

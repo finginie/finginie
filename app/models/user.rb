@@ -37,4 +37,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  def ideal_investment_presenter(initial_investment)
+    financial_planner = FinancialPlanner.new(comprehensive_risk_profiler.score)
+    amount = initial_investment || comprehensive_risk_profiler.initial_investment
+    ideal_investment_mix = IdealInvestmentMix.new(financial_planner, amount)
+
+    IdealInvestmentPresenter.new(ideal_investment_mix, comprehensive_risk_profiler)
+  end
+
 end

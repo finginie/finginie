@@ -1,11 +1,13 @@
 class IdealInvestmentMixDecorator < ApplicationDecorator
   decorates :ideal_investment_mix
 
-  def flash_message
-    if investment_amount.to_f > IdealInvestmentMix::MINIMUM_INVESTMENT.to_f
-      I18n.t('display_initial_investment', :amount => investment_amount.to_s)
-    else
-      I18n.t('ideal_investments.show.too_low_investment')
+  def alert_message
+    h.content_tag :div, :class => 'alert alert-notice' do
+      if investment_amount.to_f > IdealInvestmentMix::MINIMUM_INVESTMENT.to_f
+        I18n.t('display_initial_investment', :amount => investment_amount.to_s)
+      else
+        I18n.t('ideal_investments.show.too_low_investment')
+      end
     end
   end
 
@@ -15,11 +17,11 @@ class IdealInvestmentMixDecorator < ApplicationDecorator
     end
   end
 
-  def draw_chart
+  def draw_asset_chart
     h.gchart(:data => security_mix, title: 'Ideal Investments', chart_type: 'Pie')
   end
 
-  def top_elss_table
+  def draw_top_elss_table
     elss_header = h.content_tag(:p, I18n.t('ideal_investments.show.elss_message'))
     elss_table = h.content_tag(:table, :class => %w(table table-striped table-bordered), :data => { :role => 'top_elss_funds' } ) do
       elss_table_header + elss_table_body
@@ -40,7 +42,7 @@ class IdealInvestmentMixDecorator < ApplicationDecorator
       elss_fund_path = h.mutual_fund_path(DataProvider::Scheme.where(:name => fund.name).first)
       result << h.content_tag(:tr) do
         h.content_tag(:td) { h.link_to(fund.name, elss_fund_path) } +
-        h.content_tag(:td, h.number_with_precision(fund.prev3_year_comp_percent))
+          h.content_tag(:td, h.number_with_precision(fund.prev3_year_comp_percent))
       end
     end
   end
@@ -63,8 +65,8 @@ class IdealInvestmentMixDecorator < ApplicationDecorator
   def table_header
     h.content_tag(:tr) do
       h.content_tag(:th, 'Name', :class => 'span9')                                 +
-      h.content_tag(:th, I18n.t('ideal_investments.amount'), :class => 'span3')     +
-      h.content_tag(:th, I18n.t('ideal_investments.percentage'), :class => 'span3')
+        h.content_tag(:th, I18n.t('ideal_investments.amount'), :class => 'span3')     +
+        h.content_tag(:th, I18n.t('ideal_investments.percentage'), :class => 'span3')
     end
   end
 
