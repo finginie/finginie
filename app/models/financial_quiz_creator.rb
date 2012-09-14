@@ -7,12 +7,9 @@ class FinancialQuizCreator
   end
 
   def create_for(user)
-    if user
-      save_quiz_data_for(user)
-      listener.create_comprehensive_risk_profiler_succeeded
-    else
-      listener.create_comprehensive_risk_profiler_failed
-    end
+    return false unless user
+
+    save_quiz_data_for(user)
   end
 
   private
