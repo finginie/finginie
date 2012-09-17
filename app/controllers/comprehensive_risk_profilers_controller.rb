@@ -3,7 +3,7 @@ class ComprehensiveRiskProfilersController < InheritedResources::Base
   actions :edit, :update
 
   def update
-    financial_quiz_creator = FinancialQuizCreator.new(self, params[:comprehensive_risk_profiler])
+    financial_quiz_creator = FinancialQuizCreator.new(params[:comprehensive_risk_profiler])
     if financial_quiz_creator.create_for(current_user)
       redirect_to comprehensive_risk_profiler_ideal_investments_path, :notice =>t(".comprehensive_risk_profilers.success_message")
     else

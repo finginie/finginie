@@ -1,7 +1,7 @@
 class IdealInvestmentMixDecorator < ApplicationDecorator
   decorates :ideal_investment_mix
 
-  def alert_message
+  def investment_message
     h.content_tag :div, :class => 'alert alert-notice' do
       if investment_amount.to_f > IdealInvestmentMix::MINIMUM_INVESTMENT.to_f
         I18n.t('display_initial_investment', :amount => investment_amount.to_s)
@@ -22,15 +22,25 @@ class IdealInvestmentMixDecorator < ApplicationDecorator
   end
 
   def draw_top_elss_table
-    elss_header = h.content_tag(:p, I18n.t('ideal_investments.show.elss_message'))
-    elss_table = h.content_tag(:table, :class => %w(table table-striped table-bordered), :data => { :role => 'top_elss_funds' } ) do
-      elss_table_header + elss_table_body
-    end
-
     elss_header + elss_table
   end
 
   private
+  def elss_table
+    elss_table_hsh = {
+      :class => %w(table table-striped table-bordered),
+      :data => { :role => 'top_elss_funds' }
+    }
+
+    h.content_tag(:table, elss_table_hsh) do
+      elss_table_header + elss_table_body
+    end
+  end
+
+  def elss_header
+    h.content_tag(:p, I18n.t('ideal_investments.show.elss_message'))
+  end
+
   def elss_table_header
     h.content_tag(:tr) do
       h.content_tag(:th, 'Name') + h.content_tag(:th, '3 Yr Return (%)')
@@ -65,8 +75,8 @@ class IdealInvestmentMixDecorator < ApplicationDecorator
   def table_header
     h.content_tag(:tr) do
       h.content_tag(:th, 'Name', :class => 'span9')                                 +
-        h.content_tag(:th, I18n.t('ideal_investments.amount'), :class => 'span3')     +
-        h.content_tag(:th, I18n.t('ideal_investments.percentage'), :class => 'span3')
+      h.content_tag(:th, I18n.t('ideal_investments.amount'), :class => 'span3')     +
+      h.content_tag(:th, I18n.t('ideal_investments.percentage'), :class => 'span3')
     end
   end
 

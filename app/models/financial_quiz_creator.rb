@@ -1,14 +1,12 @@
 class FinancialQuizCreator
-  attr_reader :listener, :attributes
+  attr_reader :attributes
 
-  def initialize(listener, attributes)
-    @listener   = listener
+  def initialize(attributes)
     @attributes = attributes
   end
 
   def create_for(user)
     return false unless user
-
     save_quiz_data_for(user)
   end
 
