@@ -1,6 +1,5 @@
 class PublicIdealInvestmentsController < InheritedResources::Base
   actions :show
-  defaults :resource_class => Portfolio
 
   def show
     session[:referrer_id] ||= params[:id]
