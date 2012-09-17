@@ -14,7 +14,7 @@ class IdealInvestmentMix
     percent_method = "#{asset_class.singularize}_percent_per_investment"      ##
     define_method(percent_method) do                                          # def fixed_deposit_percent_per_investment
       asset_percent     = send("#{asset_class.singularize}_percent")          #   asset_percent = fixed_deposit_percent
-      total_investments = send(asset_class).singularize                       #   total_investments = fixed_depoists.size
+      total_investments = send(asset_class).size                              #   total_investments = fixed_depoists.size
       asset_percent.to_f/total_investments                                    #   asset_percent.to_f / total_investments.size
     end                                                                       # end
                                                                               ##
@@ -53,7 +53,7 @@ class IdealInvestmentMix
   def mid_cap_stocks
     return [] if mid_cap_stock_amount == 0
     @mid_cap_stocks ||= begin
-      top_2_mid_caps = DataProvider::Scheme.top_large_cap_stocks(2)
+      top_2_mid_caps = DataProvider::Scheme.top_mid_cap_stocks(2)
       invest_in_one_or_two_assets(mid_cap_stock_amount, top_2_mid_caps)
     end
   end

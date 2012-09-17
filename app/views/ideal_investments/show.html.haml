@@ -42,23 +42,7 @@
 
     %p= t('.default_amount', :amount => resource.ideal_investment_investment_amount.to_s)
 
-.row
-  .span6
-    = gchart(:data => resource.financial_planner_ideal_asset_allocation.to_a, :title => 'Suggested Asset Allocation', :chart_type => 'Pie')
-    %h3 Ideal Portfolio Mix
-    %table.table.table-striped.table-bordered
-      %tr
-        %th Asset Class
-        %th Percentage
-      - resource.financial_planner_ideal_asset_allocation.each do |asset_class, percentage|
-        %tr
-          %td= asset_class
-          %td= "#{percentage}%"
-    = resource.ideal_investment_draw_top_elss_table
-
-  .span6
-    = resource.ideal_investment_draw_asset_chart
-    = resource.ideal_investment_draw_asset_tables
+= render :partial => 'shared/ideal_investments_info', :locals => { :financial_profile => resource }
 
 .row
   .span12
