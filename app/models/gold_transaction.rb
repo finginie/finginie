@@ -21,8 +21,7 @@ class GoldTransaction < ActiveRecord::Base
       event.user = portfolio.user
       event.target = portfolio
       event.action = "gold_#{action}"
+      event.data = { :price => price }
     end
-    # hstore requires object be saved before using hstore
-    event.update_attributes :data => { :price => price }
   end
 end

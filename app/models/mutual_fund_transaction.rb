@@ -34,8 +34,7 @@ private
       event.user = portfolio.user
       event.target = portfolio
       event.action = "mutual_fund_#{action}"
+      event.data = {'scheme' => scheme, 'param' => mutual_fund.scheme_master.slug, 'price' => price}
     end
-    # hstore requires object be saved before using hstore
-    event.update_attributes :data => {'scheme' => scheme, 'param' => mutual_fund.scheme_master.slug, 'price' => price}
   end
 end

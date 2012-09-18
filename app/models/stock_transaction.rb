@@ -32,9 +32,8 @@ class StockTransaction < ActiveRecord::Base
       event.user = portfolio.user
       event.target = portfolio
       event.action = "stock_#{action}"
+      event.data = {'name' => company.name, 'param' => company.slug, 'price' => price}
     end
-    # hstore requires object be saved before using hstore
-    event.update_attributes :data => {'name' => company.name, 'param' => company.slug, 'price' => price}
   end
 
  end
