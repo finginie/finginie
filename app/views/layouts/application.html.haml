@@ -21,11 +21,26 @@
     %header
       .container
         %hgroup.social
-          .row
-            .span11.align-right
+          .row.show-grid
+            .span8.align-right
               =render 'layouts/twitter'
             .span1
               =render 'layouts/facebook'
+            .span3
+              - if current_user
+                %ul.nav.nav-pills
+                  %li.dropdown.pull-right
+                    %a.dropdown-toggle{ :href => '#', :data => {:toggle => :dropdown}}
+                      = current_user.email
+                      %b.caret
+                    %ul.dropdown-menu
+                      = navigation_link 'Change Password', single_signon_change_passwords_path("#{request.fullpath}?message=change_password")
+                      = navigation_link 'Profile',  own_profile_path
+                      %li.divider
+                      = navigation_link 'Sign out', omniauth_single_signon.signout_path
+              - else
+                = link_to 'Signin / Register', main_app.signin_path, :class => 'pull-right'
+
         %hgroup.title
           %h1
             = link_to main_app.root_path do
