@@ -27,27 +27,27 @@ private
   end
 
   def gold_buy_content
-    "#{user_link} has bought gold at Rs.#{data['price']} per gm.".html_safe
+    "#{target_link} portfolio: #{user_link} has bought gold at Rs.#{data['price']} per gm.".html_safe
   end
 
   def gold_sell_content
-    "#{user_link} has sold gold at Rs.#{data['price']} per gm.".html_safe
+    "#{target_link} portfolio: #{user_link} has sold gold at Rs.#{data['price']} per gm.".html_safe
   end
 
   def mutual_fund_buy_content
-    "#{user_link} has invested in #{mutual_fund_link} scheme at Rs.#{data['price']}".html_safe
+    "#{target_link} portfolio: #{user_link} has invested in #{mutual_fund_link} scheme at Rs.#{data['price']}".html_safe
   end
 
   def mutual_fund_sell_content
-    "#{user_link} has sold #{mutual_fund_link} at Rs.#{data['price']}".html_safe
+    "#{target_link} portfolio: #{user_link} has sold #{mutual_fund_link} at Rs.#{data['price']}".html_safe
   end
 
   def stock_buy_content
-    "#{user_link} has invested in #{stock_link} shares at Rs.#{data['price']} per share.".html_safe
+    "#{target_link} portfolio: #{user_link} has invested in #{stock_link} shares at Rs.#{data['price']} per share.".html_safe
   end
 
   def stock_sell_content
-    "#{user_link} has sold #{stock_link} at Rs.#{data['price']} per share.".html_safe
+    "#{target_link} portfolio: #{user_link} has sold #{stock_link} at Rs.#{data['price']} per share.".html_safe
   end
 
   def user_link(profile = user)
