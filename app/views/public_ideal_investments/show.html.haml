@@ -1,5 +1,5 @@
 = resource.comprehensive_risk_profiler_public_personalize_message
-.row
+.row.show-grid
   .span8
     -if resource.comprehensive_risk_profiler_valid?
       %h1
@@ -17,7 +17,7 @@
       = facebook_recommendation_tag
       %p= t("ideal_investments.show.default_suggestion", :quiz_link => (link_to 'short quiz', edit_comprehensive_risk_profiler_path)).html_safe
       %h5.show-gird Suggested Investment Mix
-      %p= t "ideal_investments.risk_summary.suggestion"
+      %p= t("ideal_investments.risk_summary.suggestion", :stock_reco_link => (link_to 'Stock Recommendations', page_path('guest-stocks-picks'))).html_safe
 
   .span4
     .pull-right

@@ -1,13 +1,12 @@
 class IdealInvestmentMix
-  MINIMUM_INVESTMENT = IndianCurrency.new(30000)
+  MINIMUM_INVESTMENT   = 30000
   INVESTMENT_THRESHOLD = 10000
 
   attr_reader :financial_planner, :investment_amount
 
   def initialize(financial_planner, amount)
-    amount = IndianCurrency.new(amount)
     @financial_planner = financial_planner
-    @investment_amount = [amount, MINIMUM_INVESTMENT].max
+    @investment_amount = IndianCurrency.new([amount, MINIMUM_INVESTMENT].max)
   end
 
   FinancialPlanner::ASSET_CLASSES.each do |asset_class|
@@ -15,14 +14,14 @@ class IdealInvestmentMix
     define_method(percent_method) do                                          # def fixed_deposit_percent_per_investment
       asset_percent     = send("#{asset_class.singularize}_percent")          #   asset_percent = fixed_deposit_percent
       total_investments = send(asset_class).size                              #   total_investments = fixed_depoists.size
-      asset_percent.to_f/total_investments                                    #   asset_percent.to_f / total_investments.size
+      asset_percent/total_investments                                         #   asset_percent / total_investments.size
     end                                                                       # end
                                                                               ##
     amount_method = "#{asset_class.singularize}_amount_per_investment"        ##
-    define_method(amount_method) do                                           # def fixed_deposit_percent_per_investment
+    define_method(amount_method) do                                           # def fixed_deposit_amount_per_investment
       asset_amount      = send("#{asset_class.singularize}_amount")           #   asset_amount = fixed_deposit_amount
       total_investments = send(asset_class).size                              #   total_investments = fixed_depoists.size
-      asset_amount.to_f/total_investments                                     #   asset_amount.to_f / total_investments.size
+      asset_amount/total_investments                                          #   asset_amount / total_investments.size
     end                                                                       # end
   end                                                                         ##
 

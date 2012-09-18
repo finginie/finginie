@@ -1,5 +1,4 @@
 class IdealInvestmentsController < InheritedResources::Base
-  defaults :singleton => true, :resource_class => IdealInvestmentMix, :instance_name => 'ideal_investment_mix'
   load_and_authorize_resource :user, :parent => false
   before_filter :user_taken_quiz?, :only => [:show]
 

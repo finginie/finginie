@@ -23,7 +23,7 @@
       %ul
         = resource.comprehensive_risk_profiler_private_summary
       %h5.show-gird Suggested Investment Mix
-      %p= t "ideal_investments.risk_summary.suggestion"
+      %p= t("ideal_investments.risk_summary.suggestion", :stock_reco_link => (link_to 'Stock Recommendations', page_path('guest-stocks-picks'))).html_safe
     - else
       %h1 Balanced Portfolio
       = facebook_recommendation_tag
