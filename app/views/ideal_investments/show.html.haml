@@ -1,4 +1,5 @@
-.row.show-grid
+= resource.ideal_investment_investment_message
+.row
   .span12
     = facebook_recommendation('Ideal Investments')
     %h3
@@ -9,28 +10,48 @@
       = social_network_link('mail.png', '#mail_modal') do
         = render :partial => 'shared/mail_modal', :locals => { :step => PointTracker::ShareFinancialProfileViaMailStep }
 
-    %p= t(".introduction")
-    - if params[:initial_investment] && params[:initial_investment].to_f != resource.initial_investment
-      = content_tag :div, t(".too_low_investment"), :id => 'result', :class => 'alert alert-notice'
     %p
-      = t('.public.message', :profile_link => link_to(t('.public.profile_link'), public_financial_profile_path(current_user))).html_safe
+      = t('.public.message', :profile_link => link_to(t('.public.profile_link'), public_ideal_investment_path(current_user))).html_safe
+
+    -if resource.comprehensive_risk_profiler_valid?
+      %h1
+        Your Risk Appetite is :
+        %small
+          = resource.comprehensive_risk_profiler_score
+          out of 10. (10 indicates maximum risk taking ability)
+      = facebook_recommendation_tag
+      %ul
+        = resource.comprehensive_risk_profiler_private_summary
+      %h5.show-gird Suggested Investment Mix
+      %p= t("ideal_investments.risk_summary.suggestion", :stock_reco_link => (link_to 'Stock Recommendations', page_path('guest-stocks-picks'))).html_safe
+    - else
+      %h1 Balanced Portfolio
+      = facebook_recommendation_tag
+      %p= t(".default_suggestion", :quiz_link => (link_to 'short quiz', edit_comprehensive_risk_profiler_path)).html_safe
+
+.row
+  .span12
+    %p= t(".introduction")
+
     = form_tag comprehensive_risk_profiler_ideal_investments_path, :method => :get, :class => 'form-horizontal' do
       .input-append
         = label_tag :initial_investment, t('.initial_investment'), :class => 'control-label'
         .controls
-          = text_field_tag :initial_investment, resource.initial_investment.to_s
+          = text_field_tag :initial_investment, resource.ideal_investment_investment_amount.to_s
           = submit_tag t('.submit'), :class => 'btn btn-primary'
 
-    %p= t('.default_amount', :amount => [ resource.comprehensive_risk_profiler.initial_investment, IdealInvestmentMix::MINIMUM_INVESTMENT].max.to_s)
+    %p= t('.default_amount', :amount => resource.ideal_investment_investment_amount.to_s)
 
-= render_cell :ideal_investments, :private, :ideal_investment_mix => resource
+= render :partial => 'shared/ideal_investments_info', :locals => { :financial_profile => resource }
 
-.span12
-  .well
-    %h5= t('.intro_to_trade')
-    %h3
-      Share
-      = tracked_facebook_share_url_for('public_financial_profile')
-      = social_network_link('twitter.png', '#twitterModal')
-      = social_network_link('mail.png', '#mail_modal')
-    = link_to 'Continue', page_path('trade'), :class => 'btn btn-primary'
+.row
+  .span12
+    .well
+      %h3
+        Share
+        = tracked_facebook_share_url_for('public_financial_profile')
+        = social_network_link('twitter.png', '#twitterModal')
+        = social_network_link('mail.png', '#mail_modal')
+
+      %h5= t('.intro_to_trade')
+      = link_to 'Continue', page_path('trade'), :class => 'btn btn-primary'

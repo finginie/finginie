@@ -1,0 +1,29 @@
+= resource.comprehensive_risk_profiler_public_personalize_message
+.row.show-grid
+  .span8
+    -if resource.comprehensive_risk_profiler_valid?
+      %h1
+        Your Risk Appetite is :
+        %small
+          = resource.comprehensive_risk_profiler_score
+          out of 10. (10 indicates maximum risk taking ability)
+      = facebook_recommendation_tag
+      %ul
+        = resource.comprehensive_risk_profiler_public_summary
+      %h5.show-gird Suggested Investment Mix
+      %p= t "ideal_investments.risk_summary.suggestion"
+    - else
+      %h1 Balanced Portfolio
+      = facebook_recommendation_tag
+      %p= t("ideal_investments.show.default_suggestion", :quiz_link => (link_to 'short quiz', edit_comprehensive_risk_profiler_path)).html_safe
+      %h5.show-gird Suggested Investment Mix
+      %p= t("ideal_investments.risk_summary.suggestion", :stock_reco_link => (link_to 'Stock Recommendations', page_path('guest-stocks-picks'))).html_safe
+
+  .span4
+    .pull-right
+      = link_to image_tag('ebola-370.jpg'), main_app.page_path('win-an-ipad3')
+
+= render :partial => 'shared/ideal_investments_info', :locals => { :financial_profile => resource }
+
+- unless current_user && current_user.id == resource.comprehensive_risk_profiler_user.id
+  = link_to t('.take_quiz'), edit_comprehensive_risk_profiler_path

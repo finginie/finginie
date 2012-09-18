@@ -15,6 +15,23 @@ class ComprehensiveRiskProfilerDecorator < ApplicationDecorator
   include Draper::LazyHelpers
   include NumberHelper
 
+  def public_personalize_message
+    h.content_tag :div, :class => 'alert alert-notice' do
+      quiz_link = h.link_to 'Click Here', edit_comprehensive_risk_profiler_path
+      I18n.t('.comprehensive_risk_profilers.public.personalize_message', :email => user.email, :quiz_link => quiz_link).html_safe
+    end
+  end
+
+  def skip_quiz_link
+    params = { :comprehensive_risk_profiler => { :score_cache => ComprehensiveRiskProfiler::DEFAULT_SCORE } }
+    link_to(
+      "Skip Step and load balanced portfolio (Not Recommended)",
+      comprehensive_risk_profiler_path(params),
+      :html_options => { :id => "skip_quiz" },
+      :method => :put
+    )
+  end
+
   def three_month_household_expenditure
     model.household_expenditure * 3
   end
@@ -52,13 +69,13 @@ class ComprehensiveRiskProfilerDecorator < ApplicationDecorator
 
   def age_summary(summary_type = 'private')
     label = case model.age
-      when 0..34
-        'below_thirty_five'
-      when 35..49
-        'below_fifty'
-      else
-        'above_fifty'
-      end
+    when 0..34
+      'below_thirty_five'
+    when 35..49
+      'below_fifty'
+    else
+      'above_fifty'
+    end
     h.t("#{summary_type}.age_summary.#{label}")
   end
 
@@ -80,13 +97,13 @@ class ComprehensiveRiskProfilerDecorator < ApplicationDecorator
 
   def time_horizon_summary(summary_type = 'private')
     label = case model.time_horizon
-      when 0..2
-        'below_three_years'
-      when 3..4
-        'below_five_years'
-      else
-        'above_five_years'
-      end
+    when 0..2
+      'below_three_years'
+    when 3..4
+      'below_five_years'
+    else
+      'above_five_years'
+    end
 
     translation_key = "#{summary_type}.time_horizon_summary.#{label}"
     h.t "#{translation_key}", :time_horizon_years => time_horizon
@@ -94,15 +111,15 @@ class ComprehensiveRiskProfilerDecorator < ApplicationDecorator
 
   def score_view_summary(summary_type = 'private')
     label = case model.score
-      when 0..3
-        'below_three'
-      when 4..5
-        'below_five'
-      when 6..8
-        'below_eight'
-      else
-        'above_eight'
-      end
+    when 0..3
+      'below_three'
+    when 4..5
+      'below_five'
+    when 6..8
+      'below_eight'
+    else
+      'above_eight'
+    end
 
     h.t("#{summary_type}.score_summary.#{label}")
   end

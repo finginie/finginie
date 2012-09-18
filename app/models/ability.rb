@@ -35,6 +35,7 @@ class Ability
       can :manage, TradeAccount, :user_id => user.id
       cannot [:update, :destroy], TradeAccount, :issued => true
       can :index, :response
+      can :show, :ideal_investment_mix
     end
 
     can :show, :public_portfolio

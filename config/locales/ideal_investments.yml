@@ -1,5 +1,8 @@
 en:
   ideal_investments:
+    risk_summary:
+      suggestion: 'Based on your responses,we suggest that your investment mix be structured as follows. Remember, these are guidelines only.
+      Checkout some of our %{stock_reco_link}'
     public:
       take_quiz: 'Take your own quiz'
       default_suggestion: 'This is a balanced portfolio suitable for most investors.'
@@ -9,6 +12,8 @@ en:
     amount: 'Amount (Rs)'
     percentage: 'Percentage'
     show:
+      default_suggestion: 'This is a balanced portfolio suitable for most investors.However, to see a portfolio and financial plan suitable for your unique needs please take a
+        %{quiz_link} (Strongly Recommended).'
       submit: 'Update'
       too_low_investment: 'You should increase your savings before starting to invest.We recommend that you first save atleast Rs 30,000 for emergencies before you start investing.'
       initial_investment: 'Amount to be invested (Rs)'
@@ -23,9 +28,9 @@ en:
       elss_message: 'If you would like to invest in tax-saving mutual funds, here are some options'
       public:
         profile_link: 'Click here'
-        message: 'You can share this page with your friends on Facebook. No personal information will be shared. %{profile_link} to view what your friends can see.'
+        message: 'You can share this page with your friends. No personal information will be shared. %{profile_link} to view what your friends can see.'
     investments:
       fixed_deposits: 'Fixed Deposits'
-      gold_investments: 'Gold ETFs'
-      large_caps: 'Large Caps'
-      mid_caps: 'Mid Caps'
+      gold: 'Gold ETFs'
+      large_cap_stocks: 'Large Caps'
+      mid_cap_stocks: 'Mid Caps'

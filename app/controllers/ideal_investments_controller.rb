@@ -1,33 +1,14 @@
 class IdealInvestmentsController < InheritedResources::Base
-  defaults :singleton => true, :resource_class => IdealInvestmentMix, :instance_name => 'ideal_investment_mix'
-  before_filter :user_logged_in, :only => [:show]
-
-  def public
-    @user = User.find(params[:id])
-    session[:referrer_id] ||= @user.id
-    quiz_link = "<a href='/comprehensive_risk_profiler/edit'>Click Here</a>"
-    flash.now[:notice] = (I18n.t('.comprehensive_risk_profilers.public.personalize_message', :email => @user.email, :quiz_link => quiz_link)).html_safe
-    @comprehensive_risk_profiler = ComprehensiveRiskProfilerDecorator.decorate(@user.comprehensive_risk_profiler)
-    @ideal_investment_mix = IdealInvestmentMix.new(@comprehensive_risk_profiler)
-  end
+  load_and_authorize_resource :user, :parent => false
+  before_filter :user_taken_quiz?, :only => [:show]
 
   def resource
-    @resource = super
-    @resource.initial_investment = (params[:initial_investment]) if params[:initial_investment]
-    starting_investment = @resource.comprehensive_risk_profiler.initial_investment
-    unless flash['error'] || flash['notice']
-      flash[:notice] = starting_investment > IdealInvestmentMix::MINIMUM_INVESTMENT ? t('.display_initial_investment', :amount => starting_investment) : t('.too_low_investment')
-    end
-    @resource
+    @ideal_investment ||= current_user.ideal_investment(:initial_investment => params[:initial_investment])
   end
 
-protected
-  def begin_of_association_chain
-    @current_user.comprehensive_risk_profiler
-  end
-
-  def user_logged_in
-    unless @current_user && @current_user.comprehensive_risk_profiler.persisted?
+  protected
+  def user_taken_quiz?
+    unless current_user.has_comprehensive_risk_profiler?
       flash.keep(:notice)
       redirect_to edit_comprehensive_risk_profiler_path
     end
