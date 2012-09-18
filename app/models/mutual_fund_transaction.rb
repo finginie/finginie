@@ -34,7 +34,7 @@ private
       event.user = portfolio.user
       event.target = portfolio
       event.action = "mutual_fund_#{action}"
-      event.data = {'scheme' => scheme, 'param' => mutual_fund.scheme_master.slug, 'price' => price}
+      event.data = {'name' => scheme, 'param' => mutual_fund.scheme_master.slug, 'price' => price}
     end
   end
 end
