@@ -9,7 +9,7 @@ class PublicIdealInvestmentsController < InheritedResources::Base
   def resource
     @public_ideal_investment ||= begin
       user = User.find params[:id]
-      IdealInvestmentPresenter.new(user, :public => true)
+      user.ideal_investment(:public => true)
     end
   end
 

@@ -37,4 +37,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  def ideal_investment(*args)
+    IdealInvestmentPresenter.new(self, *args)
+  end
 end

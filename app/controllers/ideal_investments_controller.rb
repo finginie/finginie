@@ -1,16 +1,15 @@
 class IdealInvestmentsController < InheritedResources::Base
   defaults :singleton => true, :resource_class => IdealInvestmentMix, :instance_name => 'ideal_investment_mix'
-  before_filter :user_logged_in, :only => [:show]
+  load_and_authorize_resource :user, :parent => false
+  before_filter :user_taken_quiz?, :only => [:show]
 
   def resource
-    @ideal_investment ||= begin
-      IdealInvestmentPresenter.new(current_user, :initial_investment => params[:initial_investment])
-    end
+    @ideal_investment ||= current_user.ideal_investment(:initial_investment => params[:initial_investment])
   end
 
   protected
-  def user_logged_in
-    unless current_user && current_user.comprehensive_risk_profiler.persisted?
+  def user_taken_quiz?
+    unless current_user.has_comprehensive_risk_profiler?
       flash.keep(:notice)
       redirect_to edit_comprehensive_risk_profiler_path
     end
