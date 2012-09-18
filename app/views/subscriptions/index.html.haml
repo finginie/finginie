@@ -1,14 +1,29 @@
-= facebook_recommendation('Listing subscriptions')
+.row
+  .span4
+    %table.table.table-striped
+      %tr
+        %th.span2 User
+        %th.span2
 
-%table.table.table-striped
-  %tr
-    %th Portfolio
-    %th
+      - collection.of_type('User').each do |subscription|
+        %tr
+          %td= link_to subscription.subscribable.name, profile_path(subscription.subscribable)
+          %td
+            = link_to subscription, :method => :delete, :class => %w(btn btn-danger) do
+              %i.icon-eye-close.icon-white
+              Stop Following
 
-  - @subscriptions.of_type('Portfolio').each do |subscription|
-    %tr
-      %td= link_to subscription.subscribable.name, public_portfolio_path(subscription.subscribable)
-      %td
-        = link_to subscription, :method => :delete, :class => %w(btn btn-danger) do
-          %i.icon-eye-close.icon-white
-          Stop Following
+  .span4
+    %table.table.table-striped
+      %tr
+        %th.span2 Portfolio
+        %th.span2
+
+      - collection.of_type('Portfolio').each do |subscription|
+        %tr
+          %td= link_to subscription.subscribable.name, public_portfolio_path(subscription.subscribable)
+          %td
+            = link_to subscription, :method => :delete, :class => %w(btn btn-danger) do
+              %i.icon-eye-close.icon-white
+              Stop Following
+

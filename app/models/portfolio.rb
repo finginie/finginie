@@ -105,6 +105,11 @@ class Portfolio < ActiveRecord::Base
 
   def make_private!
     update_attribute :is_public, false
+    Event.create do |event|
+      event.user = user
+      event.target = self
+      event.action = 'portfolio_hide'
+    end
   end
 
   private

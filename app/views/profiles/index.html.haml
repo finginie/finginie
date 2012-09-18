@@ -1,23 +1,16 @@
 = facebook_recommendation('Listing profiles')
 
 = simple_form_for @search, :url => collection_path, :html => {:novalidate => true}, :html => {:class => 'form-horizontal'} do |f|
-  = f.input :name_contains
+  = f.input :name_or_email_contains, :as => :string
   = f.submit 'Search'
 
-%table.table.table-striped
-  %tr
-    %th Name
-    %th Avatar url
-    %th Location
-    %th Occupation
-    %th Company
-    %th
-
-  - @profiles.each do |profile|
-    %tr
-      %td= profile.name
-      %td= profile.avatar_url
-      %td= profile.location
-      %td= profile.occupation
-      %td= profile.company
-      %td= link_to 'Show', profile_path(profile)
+%ul.thumbnails
+  - collection.each do |profile|
+    %li.span3
+      .thumbnail
+        = profile.avatar
+        %h3= link_to profile.name, profile_path(profile)
+        = profile.follow_unfollow_button
+        %p= profile.location
+        %p= profile.occupation
+        %p= profile.company

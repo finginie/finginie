@@ -13,6 +13,8 @@ class StockTransaction < ActiveRecord::Base
     delegate :name, :sector, :current_price, :to => :company
   end
 
+  after_create :create_event
+
   def company
     @company ||= (company_code && DataProvider::Company.where( code: company_code).first)
   end
@@ -22,4 +24,16 @@ class StockTransaction < ActiveRecord::Base
   end
 
   alias :security :company
-end
+
+ private
+
+  def create_event
+    event = Event.create do |event|
+      event.user = portfolio.user
+      event.target = portfolio
+      event.action = "stock_#{action}"
+      event.data = {'name' => company.name, 'param' => company.slug, 'price' => price}
+    end
+  end
+
+ end

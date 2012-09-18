@@ -14,6 +14,8 @@ class MutualFundTransaction < ActiveRecord::Base
     delegate :name, :category, :current_price, :to => :mutual_fund
   end
 
+  after_create :create_event
+
   def scheme
     @scheme ||= mutual_fund && mutual_fund.name
   end
@@ -24,4 +26,15 @@ class MutualFundTransaction < ActiveRecord::Base
   end
 
   alias :security :mutual_fund
+
+
+private
+  def create_event
+    event = Event.create do |event|
+      event.user = portfolio.user
+      event.target = portfolio
+      event.action = "mutual_fund_#{action}"
+      event.data = {'scheme' => scheme, 'param' => mutual_fund.scheme_master.slug, 'price' => price}
+    end
+  end
 end

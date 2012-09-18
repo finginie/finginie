@@ -1,14 +1,17 @@
 require OmniauthSingleSignon::Engine.root.join('app', 'models', 'user')
 
 class User < ActiveRecord::Base
+  attr_accessible :favourite_stocks, :investing_style
+
   has_many :completed_steps
 
   has_many :portfolios, :dependent => :destroy
 
   has_many :subscriptions, :dependent => :destroy
-  has_many :followers, :dependent => :destroy,
+  has_many :follow_subscriptions, :dependent => :destroy,
            :as => :subscribable, :class_name => 'Subscription'
   has_many :events, :dependent => :destroy
+  has_many :event_updates, :dependent => :destroy
 
   has_one :comprehensive_risk_profiler, :dependent => :destroy
 
